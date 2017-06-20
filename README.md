@@ -1,4 +1,4 @@
-# sc-boardwalk-2.0
+# sc-boardwalk-production
 Refactor of Boardwalk with Terminal as option
 
 Polymer 2.0
