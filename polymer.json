@@ -1,0 +1,30 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/swarm-city.html",
+  "sources": [
+    "src/**/*",
+    "images/**/*",
+    "bower.json"
+  ],
+  "extraDependencies": [
+    "manifest.json",
+    "bower_components/webcomponentsjs/*.js"
+  ],
+  "builds": [
+  {
+    "name": "production",
+    "js": {"minify": true},
+    "css": {"minify": true},
+    "html": {"minify": true},
+    "bundle": true,
+    "addServiceWorker": true,
+    "addPushManifest": true,
+    "insertPrefetchLinks": true
+  }
+],
+  "lint": {
+    "rules": [
+      "polymer-2"
+    ]
+  }
+}
