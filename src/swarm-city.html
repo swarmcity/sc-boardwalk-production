@@ -1,0 +1,32 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="swarm-city">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class SwarmCity extends Polymer.Element {
+      static get is() { return 'swarm-city'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'swarm-city',
+          },
+        };
+      }
+    }
+
+    window.customElements.define(SwarmCity.is, SwarmCity);
+  </script>
+</dom-module>
