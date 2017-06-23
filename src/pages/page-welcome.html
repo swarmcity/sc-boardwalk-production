@@ -1,7 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../displays/display-enter-button.html">
 <link rel="import" href="../shared-styles.html">
 <!--Animation Pack-->
 <link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
@@ -120,16 +120,16 @@
     .bottom[wide-layout] {
         padding:100px;
     }
+
     </style>
     <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
-    <app-location route="{{route}}"></app-location>
     <div class="top" wide-layout$="{{wide}}">
         <div class="left">
             <div class="logo"></div>
             <h1>Welcome to <span class="black">swarm. city<span></h1>
         </div>
         <div class="right">
-            <span role="button" tabindex="0" class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">enter here</span>
+            <display-enter-button class="big-btn"></display-enter-button>
         </div>
     </div>
     <div class="middle">
@@ -193,15 +193,6 @@
             },
             },
         };
-    }
-    _btnClick() {
-        this.set('route.path', 'new/');
-    }
-    _btnKeyPress(event) {
-        if (event.keyCode === 32 || event.keyCode === 13) {
-            event.preventDefault();
-            this.set('route.path', 'new/');
-        }
     }
     } window.customElements.define(PageWelcome.is, PageWelcome);
 </script>
