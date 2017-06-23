@@ -1,4 +1,4 @@
-![Swarm City](https://github.com/swarmcity/sc-boardwalk-production/blob/%231_initialise_a_new_polymer_2_project/images/icons/icon-48x48.png?raw=true "Swarm City")
+![Swarm City](https://github.com/swarmcity/sc-boardwalk-production/images/icons/icon-48x48.png?raw=true "Swarm City")
 # Swarm City
 ### boardwalk-production
 [![Build Status](https://travis-ci.org/swarmcity/sc-boardwalk-production.svg?branch=master)](https://travis-ci.org/swarmcity/sc-boardwalk-production)
@@ -11,7 +11,7 @@ install [Polymer CLI](https://github.com/Polymer/polymer-cli) using
 [npm](https://www.npmjs.com) (we assume you have pre-installed [node.js](https://nodejs.org)).
 
     npm install -g polymer-cli
-
+   
 install [Bower](https://bower.io/) using [npm](https://www.npmjs.com)
 
     npm install -g bower
@@ -19,6 +19,7 @@ install [Bower](https://bower.io/) using [npm](https://www.npmjs.com)
 Bower install
 
     bower install
+*Linux permissions issues can be solved by adding --allow-root*
 
 npm install
 
@@ -33,6 +34,7 @@ google linter
 test
 
     npm run test
+*On Windows systems the tests might fail on their first run if the firewall permissions have yet to be set*
 
 ## Build
 polymer build
