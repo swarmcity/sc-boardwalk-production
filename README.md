@@ -25,14 +25,14 @@ npm install
     npm install
 
 ## Lint
-google linter
+eslint
 
     npm run lint
 
 ## Test
 test
 
-    npm run test
+    polymer test -p
 
 ## Build
 polymer build
@@ -43,10 +43,10 @@ polymer build
 polymer serve
 
     polymer serve
-    polymer serve build
+    polymer serve build/production
 
 ## Deploy
-netlify deploy
+netlify deploy, set the deploy directory to build/production
 
     npm install netlify-cli -g
     netlify deploy
