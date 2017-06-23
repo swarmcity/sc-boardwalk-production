@@ -25,7 +25,11 @@
 </template>
 
 <script>
-    class PageNew extends Polymer.mixinBehaviors([Polymer.NeonAnimationRunnerBehavior, Polymer.NeonAnimatableBehavior], Polymer.Element) {
+    class PageNew extends Polymer.mixinBehaviors([
+        Polymer.NeonAnimationRunnerBehavior,
+        Polymer.NeonAnimatableBehavior],
+        Polymer.Element
+    ) {
         static get is() { return 'page-new'; }
         static get properties() {
             return {
@@ -36,23 +40,19 @@
                     name: 'fade-in-animation',
                     node: this,
                     nodeDelay: 300,
-                    timing:{duration:300}
+                    timing: {duration: 300},
                 },
                 'exit': {
                     name: 'fade-out-animation',
                     node: this,
                     nodeDelay: 300,
-                    timing:{duration:300}
-                }
-                }
-            }
-            }
+                    timing: {duration: 300},
+                },
+                };
+            },
+            },
         };
     }
-        ready(){
-            super.ready()
-        }
-
     } window.customElements.define(PageNew.is, PageNew);
 </script>
 </dom-module>
