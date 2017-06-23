@@ -1,11 +1,22 @@
 {
   "name": "swarm-city",
   "main": "index.html",
+  "private": false,
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0"
+    "polymer": "Polymer/polymer#^2.0.0",
+    "app-layout": "PolymerElements/app-layout#2.0-preview",
+    "app-route": "PolymerElements/app-route#2.0-preview",
+    "neon-animation": "PolymerElements/neon-animation#2.0-preview",
+    "iron-selector": "PolymerElements/iron-selector#2.0-preview",
+    "iron-pages": "PolymerElements/iron-pages#2.0-preview",
+    "web-animations-js": "^2.2.5",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#2.0-preview"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  },
+  "resolutions": {
+    "polymer": "^2.0.0"
   }
 }
