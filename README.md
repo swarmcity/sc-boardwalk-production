@@ -5,6 +5,9 @@
 
 Refactor of Boardwalk in Polymer 2.0
 
+## Contributions 
+We activly welcome community contributions. Below are a set of instructions to get your dev environment setup. We have a living [Development Document](https://docs.google.com/document/d/1pHS30zEOy6rXduNZmA2EEwSOmhEgXVxs7sJIx7F66Co/edit?usp=sharing) detailing what, how and why we are developing this production release. Once setup head on over to the issues and see whats marked for contributions welcome.
+
 ## Install
 
 install [Polymer CLI](https://github.com/Polymer/polymer-cli) using
