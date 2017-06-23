@@ -5,3 +5,5 @@ node_modules/
 firebase.json
 firebase-debug.log
 .firebaserc
+service-worker.js
+sw-precache-config.js

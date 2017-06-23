@@ -1,13 +1,39 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+
+<link rel="lazy-import" href="pages/page-welcome.html">
+<link rel="lazy-import" href="pages/page-new.html">
+<link rel="lazy-import" href="pages/page-view404.html">
+
+
 
 <dom-module id="swarm-city">
   <template>
     <style>
       :host {
         display: block;
+        padding:0;
+        margin:0;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <app-location route="{{route}}"></app-location>
+    <app-route
+        route="{{route}}"
+        pattern="[[rootPattern]]:page"
+        data="{{routeData}}"
+        tail="{{subroute}}">
+    </app-route>
+    <neon-animated-pages
+        selected="[[page]]"
+        attr-for-selected="name"
+        fallback-selection="view404"
+        role="main">
+      <page-welcome name="welcome"></page-welcome>
+      <page-new name="new"></page-new>
+      <page-view404 name="view404"></page-view404>
+    </neon-animated-pages>
   </template>
 
   <script>
@@ -19,14 +45,42 @@
       static get is() { return 'swarm-city'; }
       static get properties() {
         return {
-          prop1: {
+          page: {
             type: String,
-            value: 'swarm-city',
+            reflectToAttribute: true,
+            observer: '_pageChanged',
           },
+          rootPattern: String,
+          routeData: Object,
+          subroute: String,
         };
       }
-    }
-
-    window.customElements.define(SwarmCity.is, SwarmCity);
+      static get observers() {
+        return [
+          '_routePageChanged(routeData.page)',
+        ];
+      }
+      constructor() {
+        super();
+        this.rootPattern = (new URL(this.rootPath)).pathname;
+      }
+      _routePageChanged(page) {
+        if (page === undefined) {
+          return;
+        }
+        this.page = page || 'welcome';
+      }
+      _pageChanged(page) {
+        var resolvedPageUrl = this.resolveUrl('pages/page-' + page + '.html');
+        Polymer.importHref(
+            resolvedPageUrl,
+            null,
+            this._showPage404.bind(this),
+            true);
+      }
+      _showPage404() {
+        this.page = 'view404';
+      }
+    } window.customElements.define(SwarmCity.is, SwarmCity);
   </script>
 </dom-module>

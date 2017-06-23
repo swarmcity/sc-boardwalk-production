@@ -1,0 +1,40 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../data/data-local-storage.html">
+<!--Do not import shared styles, instead apply them via a mixin-->
+<dom-module id="display-enter-button">
+<template>
+    <style>
+    :host {
+        display: block;
+    }
+    .btn{
+        @apply --big-btn;
+    }
+    </style>
+    <data-local-storage id="localStorage"></data-local-storage>
+    <app-location route="{{route}}"></app-location>
+    <span role="button" tabindex="0" class="btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">enter here</span>
+</template>
+<script>
+    class DisplayEnterButton extends Polymer.Element {
+        static get is() { return 'display-enter-button';}
+        _btnClick() {
+            this.$.localStorage.accountExists()
+            .then((accountExists) => {
+                if(!accountExists) {
+                    this.set('route.path', 'new/');
+                } else {
+                    this.set('route.path', 'login/');
+                }
+            });
+        }
+        _btnKeyPress(event) {
+            if (event.keyCode === 32 || event.keyCode === 13) {
+                event.preventDefault();
+                this._btnClick();
+            }
+        }
+    } window.customElements.define(DisplayEnterButton.is, DisplayEnterButton);
+</script>
+</dom-module>
