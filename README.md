@@ -30,6 +30,8 @@ google linter
 
     npm run lint
 
+*If you're on Windows, add the following line to .eslintrc.json to make sure linebreaks are read correctly: "linebreak-style": ["error", "windows"]*    
+
 ## Test
 test
 
