@@ -1,4 +1,6 @@
-![Swarm City](https://github.com/swarmcity/sc-boardwalk-production/blob/%231_initialise_a_new_polymer_2_project/images/icons/icon-48x48.png?raw=true "Swarm City")
+![Swarm City](https://github.com/swarmcity/sc-boardwalk-production/blob/master/images/icons/icon-128x128.png?raw=true "Swarm City")
+
+
 # Swarm City
 ### boardwalk-production
 [![Build Status](https://travis-ci.org/swarmcity/sc-boardwalk-production.svg?branch=master)](https://travis-ci.org/swarmcity/sc-boardwalk-production)
