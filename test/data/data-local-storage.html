@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>data-local-storage</title>
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../bower_components/web-component-tester/browser.js"></script>
+    <link rel="import" href="../../src/data/data-local-storage.html">
+</head>
+<body>
+    <test-fixture id="callDirect">
+    <template>
+        <data-local-storage id="storage"></data-local-storage>
+    </template>
+    </test-fixture>
+    <script>
+    suite('page-welcome tests', function() {
+        // test('acocunt exists', () => {
+        //     return fixture('callDirect').accountExists()
+        //     .then((res) => {
+        //         assert.equal(res, false);
+        //     })
+        // });
+        test('save account', () => {
+            return fixture('callDirect').saveAccount({test:'testing'})
+            .then((res) => {
+                assert.equal(res.test, 'testing');
+            })
+        });
+    });
+    </script>
+</body>
+</html>
