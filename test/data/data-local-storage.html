@@ -15,17 +15,29 @@
     </template>
     </test-fixture>
     <script>
-    suite('page-welcome tests', function() {
-        // test('acocunt exists', () => {
-        //     return fixture('callDirect').accountExists()
-        //     .then((res) => {
-        //         assert.equal(res, false);
-        //     })
-        // });
+    suite('sccunt exists', function() {
+        test('acocunt exists', () => {
+            return fixture('callDirect').accountExists()
+            .then((res) => {
+                assert.equal(res, false);
+            })
+        });
         test('save account', () => {
             return fixture('callDirect').saveAccount({test:'testing'})
             .then((res) => {
                 assert.equal(res.test, 'testing');
+                return fixture('callDirect').removeAccount()
+            })
+        });
+        test('make account', () => {
+            return fixture('callDirect').saveAccount({test:'testing'})
+            .then((res) => {
+                assert.equal(res.test, 'testing');
+                return fixture('callDirect').accountExists()
+            })
+            .then((res) => {
+                assert.equal(res, true);
+                return fixture('callDirect').removeAccount()
             })
         });
     });
