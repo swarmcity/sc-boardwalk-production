@@ -20,25 +20,25 @@
             return fixture('callDirect').accountExists()
             .then((res) => {
                 assert.equal(res, false);
-            })
+            });
         });
         test('save account', () => {
-            return fixture('callDirect').saveAccount({test:'testing'})
+            return fixture('callDirect').saveAccount({test: 'testing'})
             .then((res) => {
                 assert.equal(res.test, 'testing');
-                return fixture('callDirect').removeAccount()
-            })
+                return fixture('callDirect').removeAccount();
+            });
         });
         test('make account', () => {
-            return fixture('callDirect').saveAccount({test:'testing'})
+            return fixture('callDirect').saveAccount({test: 'testing'})
             .then((res) => {
                 assert.equal(res.test, 'testing');
-                return fixture('callDirect').accountExists()
+                return fixture('callDirect').accountExists();
             })
             .then((res) => {
                 assert.equal(res, true);
-                return fixture('callDirect').removeAccount()
-            })
+                return fixture('callDirect').removeAccount();
+            });
         });
     });
     </script>
