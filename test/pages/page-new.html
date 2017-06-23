@@ -1,25 +1,33 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>swarm-city test</title>
-    <script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../../web-component-tester/browser.js"></script>
-    <link rel="import" href="../../src/swarm-city.html">
-  </head>
-  <body>
-    <test-fixture id="BasicTestFixture">
-      <template>
-        <swarm-city></swarm-city>
-      </template>
+    <title>page-welcome</title>
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../bower_components/web-component-tester/browser.js"></script>
+    <link rel="import" href="../../src/pages/page-new.html">
+</head>
+<body>
+    <test-fixture id="BasicView">
+    <template>
+        <page-new></page-new>
+    </template>
     </test-fixture>
-    <test-fixture id="ChangedPropertyTestFixture">
-      <template>
-        <swarm-city prop1="new-prop1"></swarm-city>
-      </template>
-    </test-fixture>
+
     <script>
+    suite('page-new tests', function() {
+        test('Number in circle should be 1', function() {
+        var myView = fixture('BasicView');
+        var circle = myView.shadowRoot.querySelector('.circle');
+        assert.equal(circle.textContent, '2');
+        });
+    });
+    </script>
+</body>
+</html>
+
+    <!--<script>
       suite('swarm-city', function() {
         test('instantiating the element with default properties works', function() {
           var element = fixture('BasicTestFixture');
@@ -36,6 +44,4 @@
           assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
         });
       });
-    </script>
-  </body>
-</html>
+    </script>-->
