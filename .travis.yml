@@ -2,22 +2,28 @@ language: node_js
 sudo: required
 dist: trusty
 addons:
-  firefox: "latest"
+  browserstack:
+    username: "williamhill2"
+    access_key:
+      secure: "DkgVpPgM+RceNHjJCl8cHBVIw5ZUsLetSwuaeaiBxPomuTbXDDa5BLS/Wdb0TuFhmXJleESYuQPCAsYHs71CTc5PQdradynLYNC/yvTjpWg8lMol1jV3YkSEuVyfLMthaU2iSmnGPndI4A60n3MFq89fjH/uVTblkxvoKSZi3uRr/JxRQjo8C+I6B3T6pBtf2bL0y46Mx/CGCi4EDKpwLMfknGl8tvdKieBoVeNn0TvdKd4P7awrZWeSgKOvJb6ExnNdBNIBTogLcCc9ltZY7CtWlOMFgM7xSNhAqjPT87uKJH/CnITSRUVys5gkErlC3RzA4OHHcoTZ1FPuZQTR7ey+K60KMChPTagiSYNRetOBxCRAtdLB4hIhREiHsicFN8e/967spHqAeS7OFXIj4AGcnmmuqd3ubn7MSbjw0v4j04HCR4jlJmZnP4YNOlPobvik6bTOKwr3ICRZpQZXKNq1jZS2jdCeQiRfE/TaZ46VGcTUHESVB49R0YFiAB8lL5dpE8JSQvENkbHLPu0c9HOT9wKMeBMpfpzZXLPmpALFg5vufvRFpGGpjJHATb+NWHdbCpYkq57vsoKMvl2vvNUFcHrI0F9GV7bjn88p4NBkR8qnMnuLBnR5VxEUoasgqEhODIlzvyjoHMmdccmWp0B3uy2H3kAWQDfM0RvLQf4="
+  firefox: latest
   apt:
     sources:
-      - google-chrome
+    - google-chrome
     packages:
-      - google-chrome-stable
+    - google-chrome-stable
 node_js:
-  - "node"
-  - "6"
+- node
+- '6'
 install:
-  - npm install
-  - npm install -g polymer-cli
-  - polymer install
+- npm install
+- npm install -g polymer-cli
+- polymer install
 before_script:
-  - npm run lint
+- npm run lint
 script:
-  - xvfb-run npm run test
-  - xvfb-run npm run test:integration
-  
+- xvfb-run npm run test
+- xvfb-run npm run test:integration
+env:
+  global:
+    secure: DkgVpPgM+RceNHjJCl8cHBVIw5ZUsLetSwuaeaiBxPomuTbXDDa5BLS/Wdb0TuFhmXJleESYuQPCAsYHs71CTc5PQdradynLYNC/yvTjpWg8lMol1jV3YkSEuVyfLMthaU2iSmnGPndI4A60n3MFq89fjH/uVTblkxvoKSZi3uRr/JxRQjo8C+I6B3T6pBtf2bL0y46Mx/CGCi4EDKpwLMfknGl8tvdKieBoVeNn0TvdKd4P7awrZWeSgKOvJb6ExnNdBNIBTogLcCc9ltZY7CtWlOMFgM7xSNhAqjPT87uKJH/CnITSRUVys5gkErlC3RzA4OHHcoTZ1FPuZQTR7ey+K60KMChPTagiSYNRetOBxCRAtdLB4hIhREiHsicFN8e/967spHqAeS7OFXIj4AGcnmmuqd3ubn7MSbjw0v4j04HCR4jlJmZnP4YNOlPobvik6bTOKwr3ICRZpQZXKNq1jZS2jdCeQiRfE/TaZ46VGcTUHESVB49R0YFiAB8lL5dpE8JSQvENkbHLPu0c9HOT9wKMeBMpfpzZXLPmpALFg5vufvRFpGGpjJHATb+NWHdbCpYkq57vsoKMvl2vvNUFcHrI0F9GV7bjn88p4NBkR8qnMnuLBnR5VxEUoasgqEhODIlzvyjoHMmdccmWp0B3uy2H3kAWQDfM0RvLQf4=
