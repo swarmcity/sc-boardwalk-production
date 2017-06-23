@@ -3,14 +3,46 @@
 <template>
     <style>
         :host {
-            --white-1: #fafafa;
-            --blue-1: #24b1ff;
-            --yellow-1: #f1dd7e;
-            --yellow-2: #efd96f;
+            --swarm-city-white: #fafafa;
+            --swarm-city-blue: #24b1ff;
+            --swarm-city-yellow: #efd96f;
             --grey-1: #f4f4f4;
             --grey-3: #666666;
             --grey-4: #333333;
             --grey-5: #191919;
+            -webkit-user-select: none;  
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none; 
+            cursor: default;  
+        }
+        .big-btn{
+            display:block;
+            cursor: pointer;
+            font-weight: 900;
+            color: var(--grey-4);
+            padding: 28px 42px 28px 42px;
+            background-color: rgba(255,255,255,0.1);
+            box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+            -o-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+            -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+        }
+        .blue-link{
+            color: var(--swarm-city-blue);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--swarm-city-blue);
+            font-size: 12px;
+            font-weight:400;
+            cursor: pointer;
+        }
+        .grey-link{
+            color: var(--grey-4);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--grey-4);
+            font-size: 12px;
+            font-weight:400;
+            cursor: pointer;
         }
     </style>
 </template>

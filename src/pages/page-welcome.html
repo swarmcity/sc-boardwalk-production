@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../shared-styles.html">
 <!--Animation Pack-->
 <link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
@@ -15,17 +16,161 @@
     :host {
         display: block;
     }
-    p{
-        background-color: var(--blue-1);
+    .top{
+        background-color: var(--swarm-city-yellow);
+        padding: 100px 18px 100px 18px;
+        @apply --layout-horizontal;
+        @apply --layout-wrap;
+    }
+    .top .left{
+        @apply --layout-flex;
+    }
+    .top .left .logo{
+        width:146px;
+        height:55px;
+        background-image: url('../../../images/welcome-sprite.webp');
+        zoom: .5;
+    }
+    .top .right {
+        @apply --layout-self-end;
+    }
+    h1{
+        font-size:50px;
+        font-weight:100;
+        max-width: 246px;
+        line-height: 60px;
+        color: var(--grey-4)
+    }
+    .middle{
+        background-color: var(--swarm-city-white);
+        padding: 75px 18px 75px;
+        @apply --layout-vertical;
+        @apply --layout-center;
+    }
+    h2{
+        text-align: center;
+        letter-spacing: 2.1px;
+        max-width: 560px;
+        font-size:30px;
+        font-weight:200;
+        line-height: 30px;
+        color: var(--grey-3)
+    }
+    .black{
+        font-size:75px;
+        font-weight:800;
+    }
+    .container{
+        padding: 18px;
+        font-size: 12px;
+        color: var(--grey-5);
+        font-weight: 500;
+        @apply --layout-horizontal;
+        @apply --layout-wrap;
+        @apply --layout-center-justified;
+    }
+    .container .third{
+        text-align: center;
+        width: 210px;
+        padding: 10px 10px;
+        @apply --layout-center-justified;
+    }
+    .container .third div{
+        width:175px;
+        height:175px;
+        zoom: .5;
+        border-radius: 50%;
+        overflow:hidden;
+        margin: 0 auto;
+        margin-bottom:50px;
+    }
+    .image-one{
+        background: url('../../../images/welcome-sprite.webp') -149px -3px;
+    }
+    .image-two{
+        background: url('../../../images/welcome-sprite.webp') -327px -11px;
+    }
+    .image-three{
+        background: url('../../../images/welcome-sprite.webp') -506px -2px;
+    }
+    .bottom{
+        color: var(--grey-4);
+        font-size:13px;
+        font-weight:700;
+        padding: 50px 18px 50px 18px;
+        @apply --layout-horizontal;
+        @apply --layout-wrap;
+    }
+    .bottom .left{
+        @apply --layout-flex;
+    }
+    .bottom .right{
+        text-align: right; 
+    }
+    ul{
+        list-style: none;
+        padding:0;
+    }
+    li{
+        padding-top:5px;
+    }
+    .top[wide-layout] {
+        padding:100px;
+    }
+    .bottom[wide-layout] {
+        padding:100px;
     }
     </style>
-    <p><a href="/new">test<a></p>
-    <p class="circle">1</p>
-    <iron-media-query query="(min-width: 600px)" query-matches="{{mobileScreen}}"></iron-media-query>
+    <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+    <app-location route="{{route}}"></app-location>
+    <div class="top" wide-layout$="{{wide}}">
+        <div class="left">
+            <div class="logo"></div>
+            <h1>Welcome to <span class="black">swarm. city<span></h1>
+        </div>
+        <div class="right">
+            <span role="button" tabindex="0" class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">enter here</span>
+        </div>
+    </div>
+    <div class="middle">
+        <h2>Swarm City is a decentralized commerce platform.</h2>
+        <a href="http://zly.mjo.mybluehost.me/thisis" target="_blank" class="blue-link">tell me more</a>
+        <div class="container">
+            <div class="third"><div class="image-one"></div>Enabled by the SWT token, running on the Ethereum blockchain</div>
+            <div class="third"><div class="image-two"></div> locally on your device, no central database</div>
+            <div class="third"><div class="image-three"></div>It's an open source project, so you can jump right in</div>
+        </div>
+    </div>
+    <div class="bottom" wide-layout$="{{wide}}">
+        <div class="left">
+            <ul>
+                <li><a href="http://zly.mjo.mybluehost.me/thisis" target="_blank" class="blue-link">This is Swarm City</a></li>
+                <li><a href="http://zly.mjo.mybluehost.me/forum" target="_blank" class="blue-link">Support</a></li>
+                <li><a href="http://zly.mjo.mybluehost.me/forum/viewforum.php?f=3" target="_blank" class="blue-link">FAQ</a></li>
+                <li><a href="http://advisors.swarm.city/" target="_blank" class="blue-link">Advisors</a></li>
+            </ul>
+        </div>
+        <div class="right">
+            <ul>
+                <li>Find Swarm City on</li>
+                <li><a href="https://swarm-slack-invite.herokuapp.com/" target="_blank" class="grey-link">Slack</a></a></li>
+                <li><a href="https://medium.com/swarm-city-times" target="_blank" class="grey-link">Medium</li>
+                <li><a href="https://github.com/swarmcity" target="_blank" class="grey-link">Github</a></li>
+                <li><a href="https://twitter.com/swarmcitydapp" target="_blank" class="grey-link">Twitter</a></li>
+                <li><a href="https://www.youtube.com/channel/UCsHBWn_ytZ3xdMbTyYe5Ifg" target="_blank" class="grey-link">Youtube</a></li>
+                <li><a href="https://www.facebook.com/groups/SwarmCity/" target="_blank" class="grey-link">Facebook</a></li>
+                <li><a href="https://www.reddit.com/r/SwarmCity/" target="_blank" class="grey-link">Reddit</a></li>
+            </ul>
+        </div>
+    </div>
 </template>
 
 <script>
-    class PageWelcome extends Polymer.mixinBehaviors([Polymer.NeonAnimationRunnerBehavior, Polymer.NeonAnimatableBehavior], Polymer.Element) {
+    class PageWelcome extends Polymer.mixinBehaviors([
+        Polymer.NeonAnimationRunnerBehavior,
+        Polymer.NeonAnimatableBehavior],
+        Polymer.Element
+        ) {
         static get is() { return 'page-welcome'; }
         static get properties() {
             return {
@@ -36,23 +181,28 @@
                     name: 'fade-in-animation',
                     node: this,
                     nodeDelay: 300,
-                    timing:{duration:300}
+                    timing: {duration: 300},
                 },
                 'exit': {
                     name: 'fade-out-animation',
                     node: this,
                     nodeDelay: 300,
-                    timing:{duration:300}
-                }
-                }
-            }
-            }
+                    timing: {duration: 300},
+                },
+                };
+            },
+            },
         };
     }
-        ready(){
-            super.ready()
+    _btnClick() {
+        this.set('route.path', 'new/');
+    }
+    _btnKeyPress(event) {
+        if (event.keyCode === 32 || event.keyCode === 13) {
+            event.preventDefault();
+            this.set('route.path', 'new/');
         }
-
+    }
     } window.customElements.define(PageWelcome.is, PageWelcome);
 </script>
 </dom-module>
