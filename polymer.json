@@ -1,8 +1,14 @@
 {
   "entrypoint": "index.html",
   "shell": "src/swarm-city.html",
+    "fragments": [
+    "src/pages/page-welcome.html",
+    "src/pages/page-new.html",
+    "src/pages/page-view404.html"
+  ],
   "sources": [
     "src/**/*",
+    "src/pages/**/*",
     "images/**/*",
     "bower.json"
   ],
