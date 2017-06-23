@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>page-welcome</title>
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../bower_components/web-component-tester/browser.js"></script>
+    <link rel="import" href="../../src/displays/display-enter-button.html">
+</head>
+<body>
+    <test-fixture id="BasicView">
+    <template>
+        <display-enter-button></display-enter-button>
+    </template>
+    </test-fixture>
+    <script>
+    suite('page-welcome tests', function() {
+        test('btn', function() {
+            var myView = fixture('BasicView');
+            var circle = myView.shadowRoot.querySelector('.btn');
+            assert.equal(circle.textContent,
+            'enter here'
+            );
+        });
+    });
+    </script>
+</body>
+</html>
