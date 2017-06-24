@@ -8,11 +8,16 @@
 Refactor of Boardwalk in Polymer 2.0
 
 ## Contributions 
-We activly welcome community contributions. Below are a set of instructions to get your dev environment setup. We have a living [Development Document](https://docs.google.com/document/d/1pHS30zEOy6rXduNZmA2EEwSOmhEgXVxs7sJIx7F66Co/edit?usp=sharing) detailing what, how and why we are developing this production release. Once setup head on over to the issues and see whats marked for contributions welcome.
+We activly welcome community contributions. Below are a set of instructions to get your dev environment setup. We have a living [Production Wiki](https://github.com/swarmcity/sc-boardwalk-production/wiki/Coding-Styles-&-Standards) detailing what, how and why we are developing this production release. Once setup head on over to the issues and see whats marked for contributions welcome.
 
-## Install
+* Keep a lookout for weekend "Tidy-up" sprints, and issues labeled with "Contributions Welcome" with these are a great way to meet the team and get started making contributions.
 
-install [Polymer CLI](https://github.com/Polymer/polymer-cli) using
+## Setup verssion control & clone 
+
+grab a copy of [Source Forge](https://sourceforge.net/) or [Gitkracken](https://www.gitkraken.com/) then clone the repo!
+
+## Install developement environment
+next install [Polymer CLI](https://github.com/Polymer/polymer-cli) using
 [npm](https://www.npmjs.com) (we assume you have pre-installed [node.js](https://nodejs.org)).
 
     npm install -g polymer-cli
@@ -31,8 +36,8 @@ npm install
 
     npm install
 
-## Lint
-eslint
+## Linting with eslint
+Ensuring the code base stays clean and standardized we need all merges to pass linting 
 
     npm run lint
 
@@ -40,15 +45,14 @@ If you're on Windows, add the following line to .eslintrc.json to make sure line
 
     "linebreak-style": ["error", "windows"]
 
-## Test
-test
+## Test with Mocha and Chai via WCT
 
     polymer test -p
 
 *On Windows systems the tests might fail on their first run if the firewall permissions have yet to be set*
 
 ## Build
-polymer build
+Ensure the project builds before testing 
 
     polymer build
 
