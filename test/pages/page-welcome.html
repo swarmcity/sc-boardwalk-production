@@ -41,6 +41,14 @@
             'Swarm City is a decentralized commerce platform.'
             );
         });
+
+        test('H2 font size is 30px', function() {
+            var test = fixture('fixture-one').shadowRoot.querySelector('h2');
+            assert.equal(
+                window.getComputedStyle(test, null)
+                .getPropertyValue('font-size'), '30px', 'should be 30px'
+            );
+        });
     });
     </script>
 </body>
