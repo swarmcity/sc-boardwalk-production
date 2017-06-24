@@ -10,7 +10,7 @@ Refactor of Boardwalk in Polymer 2.0
 ## Contributions 
 We activly welcome community contributions. Below are a set of instructions to get your dev environment setup. We have a living [Production Wiki](https://github.com/swarmcity/sc-boardwalk-production/wiki/Coding-Styles-&-Standards) detailing what, how and why we are developing this production release. Once setup head on over to the issues and see whats marked for contributions welcome.
 
-* Keep a lookout for weekend "Tidy-up" sprints, and issues labeled with "Contributions Welcome" with these are a great way to meet the team and get started making contributions.
+* Keep a lookout for weekend "Tidy-up" sprints, and issues labeled with "Contributions Welcome" these are a great way to meet the team and get started making contributions.
 
 ## Setup verssion control & clone 
 

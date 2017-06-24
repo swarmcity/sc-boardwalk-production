@@ -30,17 +30,22 @@
         @apply --layout-horizontal;
         @apply --layout-wrap;
     }
-    .top .left{
+
+    .top div:nth-child(1) {
         @apply --layout-flex;
     }
-    .top .left .logo{
+    .top div:nth-child(1) .logo{
         width:146px;
         height:55px;
         background-image: url('../../../images/welcome-sprite.webp');
         zoom: .5;
     }
-    .top .right {
+    .top div:nth-child(2) {
         @apply --layout-self-end;
+    }
+    .top div:nth-child(1) h1 span{
+        font-size:75px;
+        font-weight:800;
     }
     h1{
         font-size:50px;
@@ -55,7 +60,7 @@
         @apply --layout-vertical;
         @apply --layout-center;
     }
-    h2{
+    .middle h2{
         text-align: center;
         letter-spacing: 2.1px;
         max-width: 560px;
@@ -64,11 +69,7 @@
         line-height: 30px;
         color: var(--grey-3)
     }
-    .black{
-        font-size:75px;
-        font-weight:800;
-    }
-    .container{
+    .middle div:nth-child(3){
         padding: 18px;
         font-size: 12px;
         color: var(--grey-5);
@@ -77,13 +78,13 @@
         @apply --layout-wrap;
         @apply --layout-center-justified;
     }
-    .container .third{
+    .middle div:nth-child(3) div{
         text-align: center;
-        width: 210px;
+        width: 175px;
         padding: 10px 10px;
         @apply --layout-center-justified;
     }
-    .container .third div{
+    .image-one, .image-two, .image-three{
         width:175px;
         height:175px;
         zoom: .5;
@@ -93,13 +94,13 @@
         margin-bottom:50px;
     }
     .image-one{
-        background: url('../../../images/welcome-sprite.webp') -149px -3px;
+        background: url('../../../images/welcome-sprite.webp') -140px 9px;
     }
     .image-two{
-        background: url('../../../images/welcome-sprite.webp') -327px -11px;
+        background: url('../../../images/welcome-sprite.webp') -316px 9px;
     }
     .image-three{
-        background: url('../../../images/welcome-sprite.webp') -506px -2px;
+        background: url('../../../images/welcome-sprite.webp') -493px 9px;
     }
     .bottom{
         color: var(--grey-4);
@@ -109,10 +110,10 @@
         @apply --layout-horizontal;
         @apply --layout-wrap;
     }
-    .bottom .left{
+    .bottom div:nth-child(1){
         @apply --layout-flex;
     }
-    .bottom .right{
+    .bottom div:nth-child(2){
         text-align: right; 
     }
     ul{
@@ -132,25 +133,25 @@
     </style>
     <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
     <div class="top" wide-layout$="{{wide}}">
-        <div class="left">
+        <div>
             <div class="logo"></div>
-            <h1>Welcome to <span class="black">swarm. city<span></h1>
+            <h1>Welcome to <span>swarm. city<span></h1>
         </div>
-        <div class="right">
+        <div>
             <display-enter-button class="big-btn"></display-enter-button>
         </div>
     </div>
     <div class="middle">
         <h2>Swarm City is a decentralized commerce platform.</h2>
         <a href="http://zly.mjo.mybluehost.me/thisis" target="_blank" class="blue-link">tell me more</a>
-        <div class="container">
-            <div class="third"><div class="image-one"></div>Enabled by the SWT token, running on the Ethereum blockchain</div>
-            <div class="third"><div class="image-two"></div> locally on your device, no central database</div>
-            <div class="third"><div class="image-three"></div>It's an open source project, so you can jump right in</div>
+        <div>
+            <div><div class="image-one"></div>Enabled by the SWT token, running on the Ethereum blockchain</div>
+            <div><div class="image-two"></div> locally on your device, no central database</div>
+            <div><div class="image-three"></div>It's an open source project, so you can jump right in</div>
         </div>
     </div>
     <div class="bottom" wide-layout$="{{wide}}">
-        <div class="left">
+        <div>
             <ul>
                 <li><a href="http://zly.mjo.mybluehost.me/thisis" target="_blank" class="blue-link">This is Swarm City</a></li>
                 <li><a href="http://zly.mjo.mybluehost.me/forum" target="_blank" class="blue-link">Support</a></li>
@@ -158,7 +159,7 @@
                 <li><a href="http://advisors.swarm.city/" target="_blank" class="blue-link">Advisors</a></li>
             </ul>
         </div>
-        <div class="right">
+        <div>
             <ul>
                 <li>Find Swarm City on</li>
                 <li><a href="https://swarm-slack-invite.herokuapp.com/" target="_blank" class="grey-link">Slack</a></a></li>
