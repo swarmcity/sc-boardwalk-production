@@ -24,6 +24,9 @@ before_script:
 script:
 - xvfb-run npm run test
 - xvfb-run npm run test:integration
+env:
+  global:
+    - secure: rcaaGKONNxRJvPBUgq8rVwzkw0N/YWVzp7hSEa2CMGh0CNBdGI/HfRo4VBsfVXP6bXWiNluqPWU1hKELyvPuSFvIQ6wLAL+nRNAFBw7P4CZHo8gHrXl+G0K6shv1cwoRLbaYU1W9VJyr91oiBMg15R7j/RYJYf0LHpFPeWq251P+KVzA5gw5SowlOlv2YgEJpqOXydzPajb8q1h+a8FIL5BaXhjWcbw01jjua7p9Y2dh9ygpB5jfi2TMaPfwC4UQPvpE1anKMLFGh5BCvPRsVl41/ToXVSJlkfXi8gNAUk4+YFuvP0815AXez/tiEYT624z1u0Au4MNXW3LC7c3p9lFP8fXovUHZnGH/Fv3YXudzFzcYbHgcIA5SK6sisKMfrxxVoBUstUoLYixLTgccKzyL6zxC1OZtoVInQ6kKPG0Ueaq3kfYdNW+GZy8aEcZC78frhlZo5moK7o0EZRrH6tUsf41OimAb6zQrPUqy785aX8n+lJjiefE5gjwzURIyRwMzsx/s5/DoXHXHuQLqDJx9dht8u8xau0IUfORpHfIbeCXQwiYGNYqqSrZzDdv16vcGpYXW9cx9Bq5HN3ZOUgRLFcdjQeHrDx7JdKTN7gq5FTAA71qcFqACMRx450R/dBaLHILof7CPMQZVIFuqFU1b47kS0SmNNL3cZZ3WTjw=
 after_success:
 - ./node_modules/.bin/jscoverage lib lib-cov
 - ./node_modules/.bin/mocha YOUR_TESTS/**.js -R mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js
