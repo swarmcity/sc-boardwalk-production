@@ -2,12 +2,25 @@
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
-
+<!--
+  Lazy import all routes. Do not import any element from data or displays
+-->
 <link rel="lazy-import" href="pages/page-welcome.html">
 <link rel="lazy-import" href="pages/page-new.html">
 <link rel="lazy-import" href="pages/page-view404.html">
 
+<!--
+The main swarm city element that handles all routing.
+When adding a new route ensure to...
+1 - Lazy import it
+2 - Add it and name it in neon-animated-pages
+3 - Add it as afragment inpolymer.json
 
+Example:
+```
+<swarm-city></swarm-city>
+```
+-->
 
 <dom-module id="swarm-city">
   <template>
@@ -18,6 +31,9 @@
         margin:0;
       }
     </style>
+<!--
+  app-location and app-route elements provide the state of the URL for the app.
+-->
     <app-location route="{{route}}"></app-location>
     <app-route
         route="{{route}}"
@@ -25,6 +41,9 @@
         data="{{routeData}}"
         tail="{{subroute}}">
     </app-route>
+<!--
+  neon-animated-pages shows and hides the reuested page componnt
+-->
     <neon-animated-pages
         selected="[[page]]"
         attr-for-selected="name"
@@ -35,16 +54,19 @@
       <page-view404 name="view404"></page-view404>
     </neon-animated-pages>
   </template>
-
   <script>
-    /**
-     * @customElement
-     * @polymer
-     */
+/**
+* @customElement
+* @polymer
+*/
     class SwarmCity extends Polymer.Element {
       static get is() { return 'swarm-city'; }
       static get properties() {
         return {
+/**
+* Page represents the pattern
+* @type {String}
+*/
           page: {
             type: String,
             reflectToAttribute: true,
@@ -64,12 +86,20 @@
         super();
         this.rootPattern = (new URL(this.rootPath)).pathname;
       }
+/**
+* Sets the default page of there is not a page requested
+* @param {string} page
+*/
       _routePageChanged(page) {
         if (page === undefined) {
           return;
         }
         this.page = page || 'welcome';
       }
+/**
+* Imports the requested page or the 404 if it cant be found
+* @param {string} page
+*/
       _pageChanged(page) {
         var resolvedPageUrl = this.resolveUrl('pages/page-' + page + '.html');
         Polymer.importHref(
@@ -78,6 +108,9 @@
             this._showPage404.bind(this),
             true);
       }
+/**
+* Sets the 404 page to display
+*/
       _showPage404() {
         this.page = 'view404';
       }

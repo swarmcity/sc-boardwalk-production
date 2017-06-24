@@ -3,16 +3,22 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>Tests</title>
+    <title>Swarm City Tests</title>
     <script src="../bower_components/web-component-tester/browser.js"></script>
 </head>
     <body>
         <script>
         WCT.loadSuites([
+// test in shadow dom
             'pages/page-welcome.html?dom=shadow',
-            'pages/page-welcome.html?wc-shadydom=true',
             'pages/page-new.html?dom=shadow',
+            'data/data-local-storage.html?dom=shadow',
+            'displays/display-enter-button.html?dom=shadow',
+// test in shady dom
+            'pages/page-welcome.html?wc-shadydom=true',
             'pages/page-new.html?wc-shadydom=true',
+            'data/data-local-storage.html?wc-shadydom=true',
+            'displays/display-enter-button.html?wc-shadydom=true',
         ]);
         </script>
     </body>

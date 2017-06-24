@@ -6,13 +6,13 @@
 <!--
     Name the title the same as the component
 -->
-    <title>page-welcome</title>
+    <title>display-enter-button</title>
     <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../bower_components/web-component-tester/browser.js"></script>
 <!--
     Load component to test
 -->
-    <link rel="import" href="../../src/pages/page-new.html">
+    <link rel="import" href="../../src/displays/display-enter-button.html">
 </head>
 <body>
 <!--
@@ -20,21 +20,21 @@
 -->
 <test-fixture id="fixture-one">
     <template>
-        <page-new></page-new>
+        <display-enter-button></display-enter-button>
     </template>
 </test-fixture>
 
-<script>
+    <script>
 // Name the suite the same as the type of tests
-    suite('Query Selector Tests', function() {
-// Discribe the test in plain english
-        test('number in circle should equal 2', function() {
-// Select the element to test
-        var test = fixture('fixture-one').shadowRoot.querySelector('.circle');
-// Test it
-        assert.equal(test.textContent, '2');
-        });
+suite('Query Selector Tests', function() {
+    // Discribe the test in plain english
+    test('buttontext is correct', function() {
+        // Select the element to test
+        var circle = fixture('fixture-one').shadowRoot.querySelector('.btn');
+        // Test it
+        assert.equal(circle.textContent, 'enter here');
     });
-</script>
+});
+    </script>
 </body>
 </html>

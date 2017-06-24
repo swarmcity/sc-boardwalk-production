@@ -1,7 +1,25 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../data/data-local-storage.html">
-<!--Do not import shared styles, instead apply them via a mixin-->
+<!--
+
+Example:
+```
+<display-local-storage></display-local-storage>
+```
+
+### Styling
+
+Style the button with CSS as you would a normal DOM element.
+
+The following custom properties and mixins are available for styling:
+
+| Custom property | Description | Default |
+| --- | --- | --- |
+| `--big-btn` | Mixin applied to the enter here button | `{}` |
+
+
+-->
 <dom-module id="display-enter-button">
 <template>
     <style>
@@ -19,6 +37,10 @@
 <script>
     class DisplayEnterButton extends Polymer.Element {
         static get is() { return 'display-enter-button';}
+
+/**
+* If the user has an account change route on button click
+*/
         _btnClick() {
             this.$.localStorage.accountExists()
             .then((accountExists) => {
@@ -29,6 +51,10 @@
                 }
             });
         }
+/**
+* Fired when the user presses a key when selecting the entr button
+* @param {object} event The event from the on-KeyPress
+*/
         _btnKeyPress(event) {
             if (event.keyCode === 32 || event.keyCode === 13) {
                 event.preventDefault();
