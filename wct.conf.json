@@ -1,21 +1,10 @@
 {
-  "verbose": false,
-  "plugins": {
-    "local": {
-        "browsers": ["chrome"]
-    },
-    "istanbul": {
-      "dir": "./coverage",
-      "reporters": ["text-summary", "lcov"],
-      "include": [
-        "test/**/*.html"
-      ],
-      "exclude": [
-        "/polymer/polymer.js",
-        "/platform/platform.js"
-      ]
+    "verbose": false,
+    "plugins": {
+        "local": {
+            "browsers": ["chrome"]
+        }
     }
-  }
 }
 
 
