@@ -13,9 +13,10 @@ install [Polymer CLI](https://github.com/Polymer/polymer-cli) using
     npm install -g polymer-cli
 
 install [Bower](https://bower.io/) using [npm](https://www.npmjs.com)
-*Linux permissions issues can be solved by adding --allow-root*
 
     npm install -g bower
+
+*Linux permissions issues can be solved by adding --allow-root*
 
 Bower install
 
@@ -36,9 +37,10 @@ If you're on Windows, add the following line to .eslintrc.json to make sure line
 
 ## Test
 test
-*On Windows systems the tests might fail on their first run if the firewall permissions have yet to be set*
 
     npm run test
+
+*On Windows systems the tests might fail on their first run if the firewall permissions have yet to be set*
 
 ## Build
 polymer build
