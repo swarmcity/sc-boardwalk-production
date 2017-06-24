@@ -2,7 +2,9 @@
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
-
+<!--
+  Lazy import all routes. Do not import any element from data or displays
+-->
 <link rel="lazy-import" href="pages/page-welcome.html">
 <link rel="lazy-import" href="pages/page-new.html">
 <link rel="lazy-import" href="pages/page-view404.html">
@@ -29,6 +31,9 @@ Example:
         margin:0;
       }
     </style>
+<!--
+  app-location and app-route elements provide the state of the URL for the app.
+-->
     <app-location route="{{route}}"></app-location>
     <app-route
         route="{{route}}"
@@ -36,6 +41,9 @@ Example:
         data="{{routeData}}"
         tail="{{subroute}}">
     </app-route>
+<!--
+  neon-animated-pages shows and hides the reuested page componnt
+-->
     <neon-animated-pages
         selected="[[page]]"
         attr-for-selected="name"
@@ -46,7 +54,6 @@ Example:
       <page-view404 name="view404"></page-view404>
     </neon-animated-pages>
   </template>
-
   <script>
 /**
 * @customElement

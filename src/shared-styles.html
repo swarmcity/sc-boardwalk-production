@@ -1,8 +1,14 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<!--
+Only add stles that are being used on more than one page.
+Page specific styles belong on the page not here. 
+Colors are all lower case, There is a spave after the :
+-->
 <dom-module id="shared-styles">
 <template>
     <style>
         :host {
+/* only listcolors that are being used, keep to absolute minimum */
             --swarm-city-white: #fafafa;
             --swarm-city-blue: #24b1ff;
             --swarm-city-yellow: #efd96f;
@@ -10,12 +16,14 @@
             --grey-3: #666666;
             --grey-4: #333333;
             --grey-5: #191919;
+/* users can not select unless we explicity allow */
             -webkit-user-select: none;  
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none; 
             cursor: default;  
         }
+/* global mixin for big buttons */
         .big-btn{
             --big-btn:{
                 display:block;
@@ -30,12 +38,13 @@
                 -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
             }
         }
+/* text links */
         .blue-link{
             color: var(--swarm-city-blue);
             text-decoration: none;
             border-bottom: 1px dotted var(--swarm-city-blue);
             font-size: 12px;
-            font-weight:400;
+            font-weight: 400;
             cursor: pointer;
         }
         .grey-link{
@@ -43,7 +52,7 @@
             text-decoration: none;
             border-bottom: 1px dotted var(--grey-4);
             font-size: 12px;
-            font-weight:400;
+            font-weight: 400;
             cursor: pointer;
         }
     </style>

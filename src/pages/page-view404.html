@@ -1,7 +1,22 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<!--
+    Displays and shared styles only
+-->
+<link rel="import" href="../shared-styles.html">
+<!--
+    Aimation pack, only load the animations you need for this page.
+-->
+<link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
 <dom-module id="page-view404">
 <template>
+<!--
+    Page specific styles, if the style is used on more than one page, moveit to shared styles.
+-->
     <style>
     :host {
         display: block;
@@ -13,13 +28,35 @@
 </template>
 
 <script>
+// Class must be unique, name is same as the page element but in capital case.
     class MyView404 extends Polymer.Element {
+// Must be names the same as the page element
     static get is() { return 'page-view404'; }
-    static get properties() {
-        return {
+// Properties
+    static get properties() { return {
         rootPath: String,
+// Animations
+            animationConfig: {
+            value: function() {
+                return {
+                'entry': {
+                    name: 'fade-in-animation',
+                    node: this,
+                    nodeDelay: 300,
+                    timing: {duration: 300},
+                },
+                'exit': {
+                    name: 'fade-out-animation',
+                    node: this,
+                    nodeDelay: 300,
+                    timing: {duration: 300},
+                },
+                };
+            },
+            },
         };
     }
+// Class must be unique, name is same as the page element but in capital case
     } window.customElements.define(MyView404.is, MyView404);
 </script>
 </dom-module>

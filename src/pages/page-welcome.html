@@ -1,9 +1,14 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<!--
+    Displays and shared styles only
+-->
 <link rel="import" href="../displays/display-enter-button.html">
 <link rel="import" href="../shared-styles.html">
-<!--Animation Pack-->
+<!--
+    Animation pack, only load the animations you need for this page.
+-->
 <link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
 <link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
@@ -12,6 +17,9 @@
 
 <dom-module id="page-welcome">
 <template>
+<!--
+    Page specific styles, if the style is used on more than one page, moveit to shared styles.
+-->
     <style include="shared-styles">
     :host {
         display: block;
@@ -166,14 +174,17 @@
 </template>
 
 <script>
+// Class must be unique, name is same as the page element but in capital case.
     class PageWelcome extends Polymer.mixinBehaviors([
         Polymer.NeonAnimationRunnerBehavior,
         Polymer.NeonAnimatableBehavior],
         Polymer.Element
         ) {
+// Must be names the same as the page element
         static get is() { return 'page-welcome'; }
-        static get properties() {
-            return {
+// Properties
+        static get properties() { return {
+// Animations
             animationConfig: {
             value: function() {
                 return {
@@ -194,6 +205,7 @@
             },
         };
     }
+// Class must be unique, name is same as the page element but in capital case
     } window.customElements.define(PageWelcome.is, PageWelcome);
 </script>
 </dom-module>
