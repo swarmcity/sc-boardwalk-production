@@ -24,8 +24,7 @@
     "lint": "npm run lint:javascript",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",
-    "test-travis": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./test/*",
-    "test:integration": "polymer build # test that psk builds without error with the CLI",
+    "test:integration": "polymer build",
     "build": "polymer build",
     "deploy": "netlify deploy -p build/production"
   }
