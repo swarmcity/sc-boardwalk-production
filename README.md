@@ -21,6 +21,8 @@ install [Bower](https://bower.io/) using [npm](https://www.npmjs.com)
 
     npm install -g bower
 
+*Linux permissions issues can be solved by adding --allow-root*
+
 Bower install
 
     bower install
@@ -34,10 +36,16 @@ eslint
 
     npm run lint
 
+If you're on Windows, add the following line to .eslintrc.json to make sure linebreaks are read correctly:
+
+    "linebreak-style": ["error", "windows"]
+
 ## Test
 test
 
     polymer test -p
+
+*On Windows systems the tests might fail on their first run if the firewall permissions have yet to be set*
 
 ## Build
 polymer build
