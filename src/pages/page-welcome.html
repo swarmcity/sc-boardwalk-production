@@ -175,17 +175,13 @@
 </template>
 
 <script>
-// Class must be unique, name is same as the page element but in capital case.
     class PageWelcome extends Polymer.mixinBehaviors([
         Polymer.NeonAnimationRunnerBehavior,
         Polymer.NeonAnimatableBehavior],
         Polymer.Element
         ) {
-// Must be names the same as the page element
         static get is() { return 'page-welcome'; }
-// Properties
         static get properties() { return {
-// Animations
             animationConfig: {
             value: function() {
                 return {
@@ -206,7 +202,6 @@
             },
         };
     }
-// Class must be unique, name is same as the page element but in capital case
     } window.customElements.define(PageWelcome.is, PageWelcome);
 </script>
 </dom-module>
