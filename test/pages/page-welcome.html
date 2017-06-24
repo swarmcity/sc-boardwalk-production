@@ -3,30 +3,41 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<!--
+    Name the title the same as the component
+-->
     <title>page-welcome</title>
     <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../bower_components/web-component-tester/browser.js"></script>
+<!--
+    Load component to test
+-->
     <link rel="import" href="../../src/pages/page-welcome.html">
 </head>
 <body>
-    <test-fixture id="BasicView">
+<!--
+    Add component to test fixure and give it an incrementing id
+-->
+<test-fixture id="fixture-one">
     <template>
         <page-welcome></page-welcome>
     </template>
-    </test-fixture>
+</test-fixture>
+
     <script>
-    suite('page-welcome tests', function() {
-        test('H1 should welcome', function() {
-            var myView = fixture('BasicView');
-            var circle = myView.shadowRoot.querySelector('h1');
-            assert.equal(circle.textContent,
-            'Welcome to swarm. city'
-            );
+// Name the suite the same as the type of tests
+    suite('Query Selector Tests', function() {
+        // Discribe the test in plain english
+        test('title is correct', function() {
+        // Select the element to test
+        var test = fixture('fixture-one').shadowRoot.querySelector('h1');
+        // Test it
+        assert.equal(test.textContent, 'Welcome to swarm. city');
         });
-        test('H2 should detail', function() {
-            var myView = fixture('BasicView');
-            var circle = myView.shadowRoot.querySelector('h2');
-            assert.equal(circle.textContent,
+
+        test('sub heading is correct', function() {
+            var test = fixture('fixture-one').shadowRoot.querySelector('h2');
+            assert.equal(test.textContent,
             'Swarm City is a decentralized commerce platform.'
             );
         });
