@@ -39,7 +39,7 @@ suite('Query Selector Tests', function() {
         var circle = fixture('fixture-one').shadowRoot.querySelector('.btn');
         // Spy on the method that should run
         var obj = DisplayEnterButton.prototype;
-        var clickButton = sinon.spy(obj,'_btnClick');
+        var clickButton = sinon.spy(obj, '_btnClick');
         // Trigger the event
         circle.click();
         // Test it

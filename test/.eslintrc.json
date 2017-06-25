@@ -1,6 +1,6 @@
 {
     "env": {
-        "mocha": true,
+        "mocha": true
     },
     "globals": {
         "assert": false,
