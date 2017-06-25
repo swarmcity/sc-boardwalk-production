@@ -32,6 +32,14 @@ Bower install
 
     bower install
 
+After install check to see which version of chai you have installed:
+
+    bower ls | grep chai
+
+If chai is a version lower than 4.0.2 install it manually:
+
+    bower i -D chai
+
 npm install
 
     npm install
