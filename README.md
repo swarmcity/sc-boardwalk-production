@@ -3,7 +3,7 @@
 
 # Swarm City
 ### boardwalk-production
-[![Build Status](https://travis-ci.org/swarmcity/sc-boardwalk-production.svg?branch=master)](https://travis-ci.org/swarmcity/sc-boardwalk-production) [![Coverage Status](https://coveralls.io/repos/github/swarmcity/sc-boardwalk-production/badge.svg?branch=master)](https://coveralls.io/github/swarmcity/sc-boardwalk-production?branch=master)
+[![Build Status](https://travis-ci.org/swarmcity/sc-boardwalk-production.svg?branch=master)](https://travis-ci.org/swarmcity/sc-boardwalk-production) 
 
 Refactor of Boardwalk in Polymer 2.0
 
