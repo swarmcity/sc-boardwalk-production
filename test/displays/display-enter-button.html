@@ -35,11 +35,16 @@ suite('Query Selector Tests', function() {
         assert.equal(circle.textContent, 'enter here');
     });
     test('On click function called', function() {
+        // Create instance of the class we want to test the methods of
         var proto = document.createElement('display-enter-button')
         .constructor.prototype;
+        // Replace the method with a spy
         var func = sinon.spy(proto, '_btnClick');
+        // Select the elemen to test
         var btn = fixture('fixture-one').shadowRoot.querySelector('.btn');
+        // Simulate the trigger
         btn.click();
+        // Check if the function was called
         sinon.assert.called(func);
     });
 });
