@@ -1,11 +1,11 @@
 {
     "env": {
         "mocha": true,
-        "sinon": true
     },
     "globals": {
         "assert": false,
         "fixture": false,
-        "WCT": false
+        "WCT": false,
+        "sinon": true
     }
 }
