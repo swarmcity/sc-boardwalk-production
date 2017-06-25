@@ -25,12 +25,12 @@
 </test-fixture>
 <script>
     suite('Query Selector Tests', function() {
-        test('does the custom component does exist', function() {
+        test('does the custom component exist', function() {
             var test = fixture('fixture-one').shadowRoot
             .querySelector('.big-btn');
             assert.exists(test, 'foo is neither `null` nor `undefined`');
         });
-        test('does the custom component does not exist', function() {
+        test('does the custom component not exist', function() {
             var test = fixture('fixture-one').shadowRoot
             .querySelector('.DOES_NOT_EXIST');
             assert.notExists(test);
