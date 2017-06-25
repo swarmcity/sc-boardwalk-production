@@ -35,11 +35,11 @@ suite('Query Selector Tests', function() {
         // Test it
         assert.equal(circle.textContent, 'enter here');
     });
-    test('On click function called', function(){
+    test('On click function called', function() {
         // Select element to trigger event
         var circle = fixture('fixture-one').shadowRoot.querySelector('.btn');
         // Spy on the method that should run
-        var clickButton = sinon.spy(DisplayEnterButton.prototype, '_btnClick');      
+        var clickButton = sinon.spy(DisplayEnterButton.prototype, '_btnClick');
         // Trigger the event
         circle.click();
         // Test it
