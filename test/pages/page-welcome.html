@@ -6,118 +6,103 @@
 <!--
     Name the title the same as the component
 -->
-    <title>page-welcome</title>
-    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../bower_components/web-component-tester/browser.js"></script>
-    <script src="../../test-fixture/test-fixture-mocha.js"></script>
+<title>page-welcome</title>
+<script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+<script src="../../bower_components/web-component-tester/browser.js"></script>
 <!--
     Load component to test
 -->
-    <link rel="import" href="../../src/pages/page-welcome.html">
+<link rel="import" href="../../src/pages/page-welcome.html">
 </head>
 <body>
 <!--
-    Add component to test fixure and give it an incrementing id
+    Add component to test fixture and give it an incrementing id
 -->
 <test-fixture id="fixture-one">
     <template>
         <page-welcome></page-welcome>
     </template>
 </test-fixture>
-
 <script>
-suite('Query Selector Tests', function() {
-test('does the custom component does exist', function() {
-    var test = fixture('fixture-one').shadowRoot
-    .querySelector('.big-btn');
-    assert.exists(test, 'foo is neither `null` nor `undefined`');
-});
-test('does the custom component does not exist', function() {
-    var test = fixture('fixture-one').shadowRoot
-    .querySelector('.DOES_NOT_EXIST');
-    assert.notExists(test);
-});
-
-test('H2 font size is 30px', function() {
-    var test = fixture('fixture-one')
-    .shadowRoot.querySelector('h2');
-    assert.equal(window.getComputedStyle(test, null)
-    .getPropertyValue('font-size'), '30px');
-});
-
-test('H2 font size is not 31px', function() {
-    var test = fixture('fixture-one')
-    .shadowRoot.querySelector('h2');
-    assert.notEqual(window.getComputedStyle(test, null)
-    .getPropertyValue('font-size'), '31px');
-});
-
-test('Link to Reddit exists and has link text of Reddit ', function() {
-    var test = fixture('fixture-one')
-    .shadowRoot.querySelector(`[href='https://www.reddit.com/r/SwarmCity/']`);
-    assert.equal(test.textContent, 'Reddit');
-});
-
-test('Link to Facebook exists and has link text of Facebook ', function() {
-    var test = fixture('fixture-one')
-    .shadowRoot.querySelector(`[href='https://www.facebook.com/groups/SwarmCity/']`);
-    assert.equal(test.textContent, 'Facebook');
-});
-
-test('Link to Youtube exists and has link text of Youtube ', function() {
-    var test = fixture('fixture-one')
-    .shadowRoot.querySelector(`[href='https://www.youtube.com/channel/UCsHBWn_ytZ3xdMbTyYe5Ifg']`);
-    assert.equal(test.textContent, 'Youtube');
-});
-
-test('Link to Twitter exists and has link text of Twitter ', function() {
-    var test = fixture('fixture-one')
-    .shadowRoot.querySelector(`[href='https://twitter.com/swarmcitydapp']`);
-    assert.equal(test.textContent, 'Twitter');
-});
-
-test('Link to Github exists and has link text of Github ', function() {
-    var test = fixture('fixture-one')
-    .shadowRoot.querySelector(`[href='https://github.com/swarmcity']`);
-    assert.equal(test.textContent, 'Github');
-});
-
-test('Link to Medium exists and has link text of Medium ', function() {
-    var test = fixture('fixture-one')
-    .shadowRoot.querySelector(`[href='https://medium.com/swarm-city-times']`);
-    assert.equal(test.textContent, 'Medium');
-});
-
-test('Link to Slack exists and has link text of Slack ', function() {
-    var test = fixture('fixture-one')
-    .shadowRoot.querySelector(`[href='https://swarm-slack-invite.herokuapp.com/']`);
-    assert.equal(test.textContent, 'Slack');
-});
-
-test('Link to Advisors exists and has link text of Advisors ', function() {
-    var test = fixture('fixture-one')
-    .shadowRoot.querySelector(`[href='http://advisors.swarm.city/']`);
-    assert.equal(test.textContent, 'Advisors');
-});
-
-test('Link to FAQ exists and has link text of FAQ ', function() {
-    var test = fixture('fixture-one')
-    .shadowRoot.querySelector(`[href='http://zly.mjo.mybluehost.me/forum/viewforum.php?f=3']`);
-    assert.equal(test.textContent, 'FAQ');
-});
-
-test('Link to Support exists and has link text of Support ', function() {
-    var test = fixture('fixture-one')
-    .shadowRoot.querySelector(`[href='http://zly.mjo.mybluehost.me/forum']`);
-    assert.equal(test.textContent, 'Support');
-});
-
-test('Link to This is Swarm City exists', function() {
-    var test = fixture('fixture-one')
-    .shadowRoot.querySelector(`[href='http://zly.mjo.mybluehost.me/thisis']:last-child`);
-    assert.equal(test.textContent, 'This is Swarm City');
-});
+    suite('Query Selector Tests', function() {
+        test('does the custom component exist', function() {
+            var test = fixture('fixture-one').shadowRoot
+            .querySelector('.big-btn');
+            assert.exists(test, 'foo is neither `null` nor `undefined`');
+        });
+        test('does the custom component not exist', function() {
+            var test = fixture('fixture-one').shadowRoot
+            .querySelector('.DOES_NOT_EXIST');
+            assert.notExists(test);
+        });
+        test('H2 font size is 30px', function() {
+            var test = fixture('fixture-one')
+            .shadowRoot.querySelector('h2');
+            assert.equal(window.getComputedStyle(test, null)
+                .getPropertyValue('font-size'), '30px');
+        });
+        test('H2 font size is not 31px', function() {
+            var test = fixture('fixture-one')
+            .shadowRoot.querySelector('h2');
+            assert.notEqual(window.getComputedStyle(test, null)
+                .getPropertyValue('font-size'), '31px');
+        });
+        test('Link to Reddit exists and has link text of Reddit ', function() {
+            var test = fixture('fixture-one')
+            .shadowRoot.querySelector(`[href='https://www.reddit.com/r/SwarmCity/']`);
+            assert.equal(test.textContent, 'Reddit');
+        });
+        test('Link to Facebook exists and has link text of Facebook ', function() {
+            var test = fixture('fixture-one')
+            .shadowRoot.querySelector(`[href='https://www.facebook.com/groups/SwarmCity/']`);
+            assert.equal(test.textContent, 'Facebook');
+        });
+        test('Link to Youtube exists and has link text of Youtube ', function() {
+            var test = fixture('fixture-one')
+            .shadowRoot.querySelector(`[href='https://www.youtube.com/channel/UCsHBWn_ytZ3xdMbTyYe5Ifg']`);
+            assert.equal(test.textContent, 'Youtube');
+        });
+        test('Link to Twitter exists and has link text of Twitter ', function() {
+            var test = fixture('fixture-one')
+            .shadowRoot.querySelector(`[href='https://twitter.com/swarmcitydapp']`);
+            assert.equal(test.textContent, 'Twitter');
+        });
+        test('Link to Github exists and has link text of Github ', function() {
+            var test = fixture('fixture-one')
+            .shadowRoot.querySelector(`[href='https://github.com/swarmcity']`);
+            assert.equal(test.textContent, 'Github');
+        });
+        test('Link to Medium exists and has link text of Medium ', function() {
+            var test = fixture('fixture-one')
+            .shadowRoot.querySelector(`[href='https://medium.com/swarm-city-times']`);
+            assert.equal(test.textContent, 'Medium');
+        });
+        test('Link to Slack exists and has link text of Slack ', function() {
+            var test = fixture('fixture-one')
+            .shadowRoot.querySelector(`[href='https://swarm-slack-invite.herokuapp.com/']`);
+            assert.equal(test.textContent, 'Slack');
+        });
+        test('Link to Advisors exists and has link text of Advisors ', function() {
+            var test = fixture('fixture-one')
+            .shadowRoot.querySelector(`[href='http://advisors.swarm.city/']`);
+            assert.equal(test.textContent, 'Advisors');
+        });
+        test('Link to FAQ exists and has link text of FAQ ', function() {
+            var test = fixture('fixture-one')
+            .shadowRoot.querySelector(`[href='http://zly.mjo.mybluehost.me/forum/viewforum.php?f=3']`);
+            assert.equal(test.textContent, 'FAQ');
+        });
+        test('Link to Support exists and has link text of Support ', function() {
+            var test = fixture('fixture-one')
+            .shadowRoot.querySelector(`[href='http://zly.mjo.mybluehost.me/forum']`);
+            assert.equal(test.textContent, 'Support');
+        });
+        test('Link to This is Swarm City exists', function() {
+            var test = fixture('fixture-one')
+            .shadowRoot.querySelector(`[href='http://zly.mjo.mybluehost.me/thisis']:last-child`);
+            assert.equal(test.textContent, 'This is Swarm City');
+        });
     });
-    </script>
+</script>
 </body>
 </html>
