@@ -20,7 +20,7 @@
 -->
 <test-fixture id="fixture-one">
     <template>
-        <display-enter-button></display-enter-button>
+        <display-enter-button id="testEl"></display-enter-button>
     </template>
 </test-fixture>
 
@@ -35,16 +35,15 @@ suite('Query Selector Tests', function() {
         assert.equal(circle.textContent, 'enter here');
     });
     test('On click function called', function() {
-        // Create instance of the class we want to test the methods of
-        var proto = document.createElement('display-enter-button')
-        .constructor.prototype;
-        // Replace the method with a spy
+        // Select the element to test
+        var circle = fixture('fixture-one').shadowRoot.querySelector('.btn');
+        // Define the element class instance
+        var proto = document.getElementById('testEl').constructor.prototype;
+        // Spy on the method to test
         var func = sinon.spy(proto, '_btnClick');
-        // Select the elemen to test
-        var btn = fixture('fixture-one').shadowRoot.querySelector('.btn');
         // Simulate the trigger
-        btn.click();
-        // Check if the function was called
+        circle.click();
+        // Test it
         sinon.assert.called(func);
     });
 });
