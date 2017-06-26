@@ -64,13 +64,10 @@ This code may only be used under the license found at https://github.com/swarmci
             sinon.assert.called(func);
         });
 
-        test('On clicking restore function called', function() {
-            var circle = fixture('fixture-one')
-                .shadowRoot.querySelector('.restore');
-            var proto = document.getElementById('testEl').constructor.prototype;
-            var func = sinon.spy(proto, '_restoreClick');
-            circle.click();
-            sinon.assert.called(func);
+        test('Link to restore exists and has link text', function() {
+            var test = fixture('fixture-one')
+            .shadowRoot.querySelector(`[href='restore/']`);
+            assert.equal(test.textContent, 'restore a backup-file');
         });
     });
 </script>

@@ -6,6 +6,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
 <!--
     Displays and shared styles only
 -->
@@ -145,14 +146,18 @@ This code may only be used under the license found at https://github.com/swarmci
     }
 
     </style>
+    <app-location route="{{route}}"></app-location>
     <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
     <div class="top" wide-layout$="{{wide}}">
         <div>
             <div class="logo"></div>
-            <h1>Welcome to<span> swarm. city<span></h1>
+            <h1>Welcome to<span> swarm. city{{pathz}}<span></h1>
         </div>
         <div>
-            <display-enter-button class="big-btn"></display-enter-button>
+            <display-enter-button 
+                class="big-btn"
+                path="{{path}}">
+            </display-enter-button>
         </div>
     </div>
     <div class="middle">
@@ -196,6 +201,10 @@ This code may only be used under the license found at https://github.com/swarmci
         ) {
         static get is() { return 'page-welcome'; }
         static get properties() { return {
+            path: {
+                type: String,
+                observer: '_path',
+            },
             animationConfig: {
             value: function() {
                 return {
@@ -215,6 +224,12 @@ This code may only be used under the license found at https://github.com/swarmci
             },
             },
         };
+    }
+    _path() {
+        if(this.path != null) {
+            this.set('route.path', this.path);
+        }
+        this.path = null;
     }
     } window.customElements.define(PageWelcome.is, PageWelcome);
 </script>
