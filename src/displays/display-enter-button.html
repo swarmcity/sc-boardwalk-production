@@ -4,7 +4,6 @@ Copyright (c) 2017 Swarm City
 This code may only be used under the license found at https://github.com/swarmcity/license
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../data/data-local-storage.html">
 <!--
 
@@ -23,7 +22,6 @@ The following custom properties and mixins are available for styling:
 | --- | --- | --- |
 | `--big-btn` | Mixin applied to the enter here button | `{}` |
 
-
 -->
 <dom-module id="display-enter-button">
     <template>
@@ -31,22 +29,26 @@ The following custom properties and mixins are available for styling:
             :host {
                 display: block;
             }
-            .btn{
+            .btn-enter{
                 @apply --big-btn;
-                border: none;
-                outline: none;
             }
-            .btn:active{
-               transform: scale(0.97,0.97);
-           }
-       </style>
-       <data-local-storage id="localStorage"></data-local-storage>
-       <app-location route="{{route}}"></app-location>
-       <button type="button" autofocus class="btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">enter here</button>
-   </template>
-   <script>
+            .btn-enter:active{
+                transform: scale(0.97,0.97);
+            }
+        </style>
+        <data-local-storage id="localStorage"></data-local-storage>
+        <button type="button" autofocus class="btn-enter" on-click="_btnClick" on-KeyPress="_btnKeyPress">enter here</button>
+    </template>
+    <script>
     class DisplayEnterButton extends Polymer.Element {
         static get is() { return 'display-enter-button';}
+        static get properties() { return {
+            path: {
+                type: String,
+                notify: true,
+            },
+        };
+    }
 
 /**
 * If the user has an account change route on button click
@@ -55,9 +57,9 @@ _btnClick() {
     this.$.localStorage.accountExists()
     .then((accountExists) => {
         if(!accountExists) {
-            this.set('route.path', 'new/');
+            this.path = 'new/';
         } else {
-            this.set('route.path', 'login/');
+            this.path = 'login/';
         }
     });
 }

@@ -11,7 +11,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <!--
     Name the title the same as the component
 -->
-    <title>page-welcome</title>
+    <title>page-new</title>
     <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../bower_components/web-component-tester/browser.js"></script>
 <!--
@@ -25,18 +25,51 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <test-fixture id="fixture-one">
     <template>
-        <page-new></page-new>
+        <page-new id="testEl"></page-new>
     </template>
 </test-fixture>
 <script>
-// Name the suite the same as the type of tests
+
     suite('Query Selector Tests', function() {
-// Discribe the test in plain english
-        test('number in circle should equal 2', function() {
-// Select the element to test
-        var test = fixture('fixture-one').shadowRoot.querySelector('.circle');
-// Test it
-        assert.equal(test.textContent, '2');
+        test('does the escape X button exist', function() {
+            var test = fixture('fixture-one').shadowRoot
+            .querySelector('.esc-btn');
+            assert.exists(test);
+        });
+
+        test('does the new Account button exist', function() {
+            var test = fixture('fixture-one').shadowRoot
+            .querySelector('.acc-btn');
+            assert.exists(test);
+        });
+        test('does the restore backup link exist', function() {
+            var test = fixture('fixture-one').shadowRoot
+            .querySelector('.restore');
+            assert.exists(test);
+        });
+
+        test('On clicking Esc function called', function() {
+            var circle = fixture('fixture-one').shadowRoot
+            .querySelector('.esc-btn');
+            var proto = document.getElementById('testEl').constructor.prototype;
+            var func = sinon.spy(proto, '_escClick');
+            circle.click();
+            sinon.assert.called(func);
+        });
+
+        test('On clicking Btn function called', function() {
+            var circle = fixture('fixture-one').shadowRoot
+            .querySelector('.acc-btn');
+            var proto = document.getElementById('testEl').constructor.prototype;
+            var func = sinon.spy(proto, '_btnClick');
+            circle.click();
+            sinon.assert.called(func);
+        });
+
+        test('Link to restore exists and has link text', function() {
+            var test = fixture('fixture-one')
+            .shadowRoot.querySelector(`[href='restore/']`);
+            assert.equal(test.textContent, 'restore a backup-file');
         });
     });
 </script>

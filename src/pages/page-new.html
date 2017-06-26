@@ -6,6 +6,9 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/iron-a11y-keys/iron-a11y-keys.html">
+
 <!--
     Displays and shared styles only
 -->
@@ -28,13 +31,76 @@ This code may only be used under the license found at https://github.com/swarmci
     :host {
         display: block;
     }
-    p{
-        background-color: var(--blue-1);
+    .top-container{
+        padding: 100px 18px 100px 18px;
+        @apply --layout-horizontal;
+        @apply --layout-wrap;
+    }
+    .top-container div:nth-child(1) {
+        @apply --layout-flex;
+    }
+    .top-container div:nth-child(1) p {
+        max-width: 700px;
+        font-weight: 500;
+    }
+    .esc-btn{
+        display:block;
+        font-size:20px;
+        text-align: center;
+        width:50px;
+        height:50px;
+        color: var(--grey-3);
+        cursor: pointer;
+        position:fixed;
+        top:18px;
+        right:18px;
+        font-weight:400;
+        background: url('../../../images/swarm-city-sprite.webp') -46px -75px;
+    }
+    .top-container div:nth-child(2) span{
+        display:block;
+        width:100%;
+        font-size:8px;
+        opacity:0.5;
+        padding-top:30px;
+    }
+    h1{
+        word-spacing: 5px;
+        font-size: 50px;
+        font-weight: 800;
+        max-width: 350px;
+        line-height: 50px;
+        color: var(--swarm-city-yellow)
+    }
+    .acc-btn{
+        @apply --big-btn;
+        margin-top:60px;
+        margin-bottom:20px;
+    }
+    .acc-btn:active{
+        transform: scale(0.97,0.97);
+    }
+    .top-container div:nth-child(1) div a{
+        @apply --grey-links;
+    }
+    .top-container[wide-layout] {
+        padding:100px;
     }
     </style>
-    <p><a href="/">New<a></p>
-    <p class="circle">2</p>
-    <iron-media-query query="(min-width: 600px)" query-matches="{{mobileScreen}}"></iron-media-query>
+    <app-location route="{{route}}"></app-location>
+    <iron-a11y-keys id="a11y" keys="esc" on-keys-pressed="_escClick"></iron-a11y-keys>
+    <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+    <div class="top-container" wide-layout$="{{wide}}">
+        <div>
+            <h1>You must be new here</h1>
+            <p>There’s no account found on this device. When creating a new account, it is stored locally on your device.</p>
+            <button type="button" autofocus class="acc-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">Create new account</button>
+            <div><a href="restore/" class="restore">restore a backup-file</a></div>
+        </div>
+        <div>
+            <div on-click="_escClick" class="esc-btn"><span>ESC</span></div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -65,6 +131,24 @@ This code may only be used under the license found at https://github.com/swarmci
             },
         };
     }
+
+    connectedCallback() {
+        super.connectedCallback();
+        this.$.a11y.target = document.querySelector('body');
+    }
+    _btnKeyPress(event) {
+        if (event.keyCode === 32 || event.keyCode === 13) {
+            event.preventDefault();
+            this._btnClick();
+        }
+    }
+    _escClick() {
+        this.set('route.path', '/');
+    }
+    _btnClick() {
+        this.set('route.path', 'tokens/');
+    }
+
     } window.customElements.define(PageNew.is, PageNew);
 </script>
 </dom-module>
