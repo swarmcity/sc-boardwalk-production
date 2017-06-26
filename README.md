@@ -3,12 +3,12 @@
 
 # Swarm City
 ### boardwalk-production
-[![Build Status](https://travis-ci.org/swarmcity/sc-boardwalk-production.svg?branch=master)](https://travis-ci.org/swarmcity/sc-boardwalk-production)
+[![Build Status](https://travis-ci.org/swarmcity/sc-boardwalk-production.svg?branch=master)](https://travis-ci.org/swarmcity/sc-boardwalk-production) 
 
 Refactor of Boardwalk in Polymer 2.0
 
 ## Contributions 
-We activly welcome community contributions. Below are a set of instructions to get your dev environment setup. We have a living [Production Wiki](https://github.com/swarmcity/sc-boardwalk-production/wiki/Coding-Styles-&-Standards) detailing what, how and why we are developing this production release. Once setup head on over to the issues and see whats marked for contributions welcome.
+We activly welcome community contributions. Below are a set of instructions to get your dev environment setup. We have a living [Production Wiki](https://github.com/swarmcity/sc-boardwalk-production/wiki/Welcome-to-Swarm-City) detailing what, how and why we are developing this production release. Once setup head on over to the issues and see whats marked for contributions welcome.
 
 * Keep a lookout for weekend "Tidy-up" sprints, and issues labeled with "Contributions Welcome" these are a great way to meet the team and get started making contributions.
 
@@ -31,6 +31,14 @@ install [Bower](https://bower.io/) using [npm](https://www.npmjs.com)
 Bower install
 
     bower install
+
+After install check to see which version of chai you have installed:
+
+    bower ls | grep chai
+
+If chai is a version lower than 4.0.2 install it manually:
+
+    bower i -D chai
 
 npm install
 

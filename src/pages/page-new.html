@@ -1,3 +1,8 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
@@ -33,17 +38,13 @@
 </template>
 
 <script>
-// Class must be unique, name is same as the page element but in capital case.
     class PageNew extends Polymer.mixinBehaviors([
         Polymer.NeonAnimationRunnerBehavior,
         Polymer.NeonAnimatableBehavior],
         Polymer.Element
     ) {
-// Must be names the same as the page element
         static get is() { return 'page-new'; }
-// Properties
         static get properties() { return {
-// Animations
             animationConfig: {
             value: function() {
                 return {
@@ -64,7 +65,6 @@
             },
         };
     }
-// Class must be unique, name is same as the page element but in capital case
     } window.customElements.define(PageNew.is, PageNew);
 </script>
 </dom-module>

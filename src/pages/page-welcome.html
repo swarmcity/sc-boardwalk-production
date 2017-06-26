@@ -1,3 +1,8 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
@@ -35,8 +40,8 @@
         @apply --layout-flex;
     }
     .top div:nth-child(1) .logo{
-        width:146px;
-        height:55px;
+        width: 146px;
+        height: 55px;
         background-image: url('../../../images/welcome-sprite.webp');
         zoom: .5;
     }
@@ -44,12 +49,12 @@
         @apply --layout-self-end;
     }
     .top div:nth-child(1) h1 span{
-        font-size:75px;
-        font-weight:800;
+        font-size: 75px;
+        font-weight: 800;
     }
     h1{
-        font-size:50px;
-        font-weight:100;
+        font-size: 50px;
+        font-weight: 100;
         max-width: 246px;
         line-height: 60px;
         color: var(--grey-4)
@@ -60,12 +65,15 @@
         @apply --layout-vertical;
         @apply --layout-center;
     }
+    .middle a{
+        @apply --blue-links;
+    }
     .middle h2{
         text-align: center;
         letter-spacing: 2.1px;
         max-width: 560px;
-        font-size:30px;
-        font-weight:200;
+        font-size: 30px;
+        font-weight: 200;
         line-height: 30px;
         color: var(--grey-3)
     }
@@ -81,17 +89,17 @@
     .middle div:nth-child(3) div{
         text-align: center;
         width: 175px;
-        padding: 10px 10px;
+        padding: 10px;
         @apply --layout-center-justified;
     }
     .image-one, .image-two, .image-three{
-        width:175px;
-        height:175px;
+        width: 175px;
+        height: 175px;
         zoom: .5;
         border-radius: 50%;
-        overflow:hidden;
+        overflow: hidden;
         margin: 0 auto;
-        margin-bottom:50px;
+        margin-bottom: 50px;
     }
     .image-one{
         background: url('../../../images/welcome-sprite.webp') -140px 9px;
@@ -104,17 +112,23 @@
     }
     .bottom{
         color: var(--grey-4);
-        font-size:13px;
-        font-weight:700;
-        padding: 50px 18px 50px 18px;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 50px 18px;
         @apply --layout-horizontal;
         @apply --layout-wrap;
     }
     .bottom div:nth-child(1){
         @apply --layout-flex;
     }
+    .bottom div:nth-child(1) ul li a{
+        @apply --blue-links;
+    }
     .bottom div:nth-child(2){
-        text-align: right; 
+        text-align: right;
+    }
+    .bottom div:nth-child(2) ul li a{
+        @apply --grey-links;
     }
     ul{
         list-style: none;
@@ -135,7 +149,7 @@
     <div class="top" wide-layout$="{{wide}}">
         <div>
             <div class="logo"></div>
-            <h1>Welcome to <span>swarm. city<span></h1>
+            <h1>Welcome to<span> swarm. city<span></h1>
         </div>
         <div>
             <display-enter-button class="big-btn"></display-enter-button>
@@ -143,7 +157,7 @@
     </div>
     <div class="middle">
         <h2>Swarm City is a decentralized commerce platform.</h2>
-        <a href="http://zly.mjo.mybluehost.me/thisis" target="_blank" class="blue-link">tell me more</a>
+        <a href="http://zly.mjo.mybluehost.me/thisis" target="_blank">tell me more</a>
         <div>
             <div><div class="image-one"></div>Enabled by the SWT token, running on the Ethereum blockchain</div>
             <div><div class="image-two"></div> locally on your device, no central database</div>
@@ -153,39 +167,35 @@
     <div class="bottom" wide-layout$="{{wide}}">
         <div>
             <ul>
-                <li><a href="http://zly.mjo.mybluehost.me/thisis" target="_blank" class="blue-link">This is Swarm City</a></li>
-                <li><a href="http://zly.mjo.mybluehost.me/forum" target="_blank" class="blue-link">Support</a></li>
-                <li><a href="http://zly.mjo.mybluehost.me/forum/viewforum.php?f=3" target="_blank" class="blue-link">FAQ</a></li>
-                <li><a href="http://advisors.swarm.city/" target="_blank" class="blue-link">Advisors</a></li>
+                <li><a href="http://zly.mjo.mybluehost.me/thisis" target="_blank">This is Swarm City</a></li>
+                <li><a href="http://zly.mjo.mybluehost.me/forum" target="_blank">Support</a></li>
+                <li><a href="http://zly.mjo.mybluehost.me/forum/viewforum.php?f=3" target="_blank">FAQ</a></li>
+                <li><a href="http://advisors.swarm.city/" target="_blank">Advisors</a></li>
             </ul>
         </div>
         <div>
             <ul>
                 <li>Find Swarm City on</li>
-                <li><a href="https://swarm-slack-invite.herokuapp.com/" target="_blank" class="grey-link">Slack</a></a></li>
-                <li><a href="https://medium.com/swarm-city-times" target="_blank" class="grey-link">Medium</li>
-                <li><a href="https://github.com/swarmcity" target="_blank" class="grey-link">Github</a></li>
-                <li><a href="https://twitter.com/swarmcitydapp" target="_blank" class="grey-link">Twitter</a></li>
-                <li><a href="https://www.youtube.com/channel/UCsHBWn_ytZ3xdMbTyYe5Ifg" target="_blank" class="grey-link">Youtube</a></li>
-                <li><a href="https://www.facebook.com/groups/SwarmCity/" target="_blank" class="grey-link">Facebook</a></li>
-                <li><a href="https://www.reddit.com/r/SwarmCity/" target="_blank" class="grey-link">Reddit</a></li>
+                <li><a href="https://swarm-slack-invite.herokuapp.com/" target="_blank">Slack</a></a></li>
+                <li><a href="https://medium.com/swarm-city-times" target="_blank">Medium</li>
+                <li><a href="https://github.com/swarmcity" target="_blank">Github</a></li>
+                <li><a href="https://twitter.com/swarmcitydapp" target="_blank">Twitter</a></li>
+                <li><a href="https://www.youtube.com/channel/UCsHBWn_ytZ3xdMbTyYe5Ifg" target="_blank">Youtube</a></li>
+                <li><a href="https://www.facebook.com/groups/SwarmCity/" target="_blank">Facebook</a></li>
+                <li><a href="https://www.reddit.com/r/SwarmCity/" target="_blank">Reddit</a></li>
             </ul>
         </div>
     </div>
 </template>
 
 <script>
-// Class must be unique, name is same as the page element but in capital case.
     class PageWelcome extends Polymer.mixinBehaviors([
         Polymer.NeonAnimationRunnerBehavior,
         Polymer.NeonAnimatableBehavior],
         Polymer.Element
         ) {
-// Must be names the same as the page element
         static get is() { return 'page-welcome'; }
-// Properties
         static get properties() { return {
-// Animations
             animationConfig: {
             value: function() {
                 return {
@@ -206,7 +216,6 @@
             },
         };
     }
-// Class must be unique, name is same as the page element but in capital case
     } window.customElements.define(PageWelcome.is, PageWelcome);
 </script>
 </dom-module>

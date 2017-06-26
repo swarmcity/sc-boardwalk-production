@@ -1,3 +1,8 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <!--
     Displays and shared styles only
@@ -28,14 +33,10 @@
 </template>
 
 <script>
-// Class must be unique, name is same as the page element but in capital case.
     class MyView404 extends Polymer.Element {
-// Must be names the same as the page element
     static get is() { return 'page-view404'; }
-// Properties
     static get properties() { return {
         rootPath: String,
-// Animations
             animationConfig: {
             value: function() {
                 return {
@@ -56,7 +57,6 @@
             },
         };
     }
-// Class must be unique, name is same as the page element but in capital case
     } window.customElements.define(MyView404.is, MyView404);
 </script>
 </dom-module>

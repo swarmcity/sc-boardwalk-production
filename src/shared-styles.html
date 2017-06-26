@@ -1,3 +1,8 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <!--
 Only add stles that are being used on more than one page.
@@ -22,6 +27,23 @@ Colors are all lower case, There is a spave after the :
             -ms-user-select: none;
             user-select: none; 
             cursor: default;  
+
+            --blue-links:{
+                color: var(--swarm-city-blue);
+                text-decoration: none;
+                border-bottom: 1px dotted var(--swarm-city-blue);
+                font-size: 12px;
+                font-weight: 400;
+                cursor: pointer;
+            }
+            --grey-links:{
+                color: var(--grey-4);
+                text-decoration: none;
+                border-bottom: 1px dotted var(--grey-4);
+                font-size: 12px;
+                font-weight: 400;
+                cursor: pointer;
+            }
         }
 /* global mixin for big buttons */
         .big-btn{
@@ -37,23 +59,6 @@ Colors are all lower case, There is a spave after the :
                 -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
                 -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
             }
-        }
-/* text links */
-        .blue-link{
-            color: var(--swarm-city-blue);
-            text-decoration: none;
-            border-bottom: 1px dotted var(--swarm-city-blue);
-            font-size: 12px;
-            font-weight: 400;
-            cursor: pointer;
-        }
-        .grey-link{
-            color: var(--grey-4);
-            text-decoration: none;
-            border-bottom: 1px dotted var(--grey-4);
-            font-size: 12px;
-            font-weight: 400;
-            cursor: pointer;
         }
     </style>
 </template>

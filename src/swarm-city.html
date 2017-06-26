@@ -1,3 +1,8 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
@@ -63,10 +68,6 @@ Example:
       static get is() { return 'swarm-city'; }
       static get properties() {
         return {
-/**
-* Page represents the pattern
-* @type {String}
-*/
           page: {
             type: String,
             reflectToAttribute: true,
@@ -86,20 +87,12 @@ Example:
         super();
         this.rootPattern = (new URL(this.rootPath)).pathname;
       }
-/**
-* Sets the default page of there is not a page requested
-* @param {string} page
-*/
       _routePageChanged(page) {
         if (page === undefined) {
           return;
         }
         this.page = page || 'welcome';
       }
-/**
-* Imports the requested page or the 404 if it cant be found
-* @param {string} page
-*/
       _pageChanged(page) {
         var resolvedPageUrl = this.resolveUrl('pages/page-' + page + '.html');
         Polymer.importHref(
@@ -108,9 +101,6 @@ Example:
             this._showPage404.bind(this),
             true);
       }
-/**
-* Sets the 404 page to display
-*/
       _showPage404() {
         this.page = 'view404';
       }
