@@ -75,3 +75,9 @@ netlify deploy, set the deploy directory to build/production
 
     npm install netlify-cli -g
     netlify deploy
+
+## Browser Testing
+
+[![BrowserStack](http://i.imgur.com/Pg0utrk.png)](http://browserstack.com/)
+
+Thanks to the support of [BrowserStack](http://browserstack.com/) we can do real cross browser testing on multiple desktop and mobile platforms.
