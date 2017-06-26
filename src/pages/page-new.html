@@ -6,6 +6,9 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/iron-a11y-keys/iron-a11y-keys.html">
+
 <!--
     Displays and shared styles only
 -->
@@ -40,7 +43,7 @@ This code may only be used under the license found at https://github.com/swarmci
         max-width: 700px;
         font-weight: 500;
     }
-    .top div:nth-child(2) div {
+    .esc{
         display:block;
         font-size:20px;
         text-align: center;
@@ -52,12 +55,14 @@ This code may only be used under the license found at https://github.com/swarmci
         top:18px;
         right:18px;
         font-weight:400;
+        background: url('../../../images/swarm-city-sprite.webp') -46px -75px;
     }
     .top div:nth-child(2) span{
         display:block;
         width:100%;
         font-size:8px;
         opacity:0.5;
+        padding-top:30px;
     }
     h1{
         word-spacing: 5px;
@@ -82,16 +87,18 @@ This code may only be used under the license found at https://github.com/swarmci
         padding:100px;
     }
     </style>
+    <app-location route="{{route}}"></app-location>
+    <iron-a11y-keys id="a11y" keys="esc" on-keys-pressed="_escClick"></iron-a11y-keys>
     <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
     <div class="top" wide-layout$="{{wide}}">
         <div>
             <h1>You must be new here</h1>
             <p>There’s no account found on this device. When creating a new account, it is stored locally on your device.</p>
             <button type="button" autofocus class="btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">Create new account</button>
-            <div><a href="">restore a backup-file</a></div>
+            <div><a href="restore/">restore a backup-file</a></div>
         </div>
         <div>
-            <div on-click="_escClick">X<span>ESC</span></div>
+            <div on-click="_escClick" class="esc"><span>ESC</span></div>
         </div>
     </div>
 </template>
@@ -124,12 +131,26 @@ This code may only be used under the license found at https://github.com/swarmci
             },
         };
     }
-    _escClick(){
 
+    connectedCallback(){
+        super.connectedCallback();
+        this.$.a11y.target = document.querySelector('body');
+    }
+
+    _escClick(){
+        this.set('route.path', '/');
     }
     _btnClick(){
-
+        this.set('route.path', 'tokens/');
     }
+    _btnKeyPress(event) {
+        if (event.keyCode === 32 || event.keyCode === 13) {
+            event.preventDefault();
+            this._btnClick();
+        }
+    }
+
+
     } window.customElements.define(PageNew.is, PageNew);
 </script>
 </dom-module>
