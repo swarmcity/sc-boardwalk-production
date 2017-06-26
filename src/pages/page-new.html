@@ -95,7 +95,7 @@ This code may only be used under the license found at https://github.com/swarmci
             <h1>You must be new here</h1>
             <p>There’s no account found on this device. When creating a new account, it is stored locally on your device.</p>
             <button type="button" autofocus class="btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">Create new account</button>
-            <div><a href="restore/" class="restore">restore a backup-file</a></div>
+            <div><a on-click="_restoreClick" class="restore">restore a backup-file</a></div>
         </div>
         <div>
             <div on-click="_escClick" class="esc"><span>ESC</span></div>
@@ -136,21 +136,21 @@ This code may only be used under the license found at https://github.com/swarmci
         super.connectedCallback();
         this.$.a11y.target = document.querySelector('body');
     }
-
-    _escClick(){
-        this.set('route.path', '/');
-    }
-    _btnClick(){
-        this.set('route.path', 'tokens/');
-    }
     _btnKeyPress(event) {
         if (event.keyCode === 32 || event.keyCode === 13) {
             event.preventDefault();
             this._btnClick();
         }
     }
-
-
+    _escClick(){
+        this.set('route.path', '/');
+    }
+    _btnClick(){
+        this.set('route.path', 'tokens/');
+    }
+    _restoreClick(){
+        this.set('route.path', 'restore/');
+    }
     } window.customElements.define(PageNew.is, PageNew);
 </script>
 </dom-module>

@@ -25,7 +25,7 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <test-fixture id="fixture-one">
     <template>
-        <page-new></page-new>
+        <page-new id="testEl"></page-new>
     </template>
 </test-fixture>
 <script>
@@ -47,6 +47,30 @@ This code may only be used under the license found at https://github.com/swarmci
             var test = fixture('fixture-one').shadowRoot
             .querySelector('.restore');
             assert.exists(test);
+        });
+
+        test('On clicking Esc function called', function() {
+            var circle = fixture('fixture-one').shadowRoot.querySelector('.esc');
+            var proto = document.getElementById('testEl').constructor.prototype;
+            var func = sinon.spy(proto, '_escClick');
+            circle.click();
+            sinon.assert.called(func);
+        });
+
+        test('On clicking Btn function called', function() {
+            var circle = fixture('fixture-one').shadowRoot.querySelector('.btn');
+            var proto = document.getElementById('testEl').constructor.prototype;
+            var func = sinon.spy(proto, '_btnClick');
+            circle.click();
+            sinon.assert.called(func);
+        });
+
+        test('On clicking restore function called', function() {
+            var circle = fixture('fixture-one').shadowRoot.querySelector('.restore');
+            var proto = document.getElementById('testEl').constructor.prototype;
+            var func = sinon.spy(proto, '_restoreClick');
+            circle.click();
+            sinon.assert.called(func);
         });
     });
 </script>
