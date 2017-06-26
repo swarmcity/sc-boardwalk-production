@@ -10,7 +10,8 @@
     "iron-selector": "PolymerElements/iron-selector#2.0-preview",
     "iron-pages": "PolymerElements/iron-pages#2.0-preview",
     "web-animations-js": "^2.2.5",
-    "iron-flex-layout": "PolymerElements/iron-flex-layout#2.0-preview"
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#2.0-preview",
+    "iron-a11y-keys": "PolymerElements/iron-a11y-keys#2.0-preview"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
