@@ -31,18 +31,17 @@ The following custom properties and mixins are available for styling:
             :host {
                 display: block;
             }
-            .btn{ 
-                @apply --big-btn; 
-                border: none; 
-            } 
-            -
-            .btn:active{ 
-                transform: scale(0.97,0.97); 
-            } 
-        </style> 
-        <data-local-storage id="localStorage"></data-local-storage> 
-        <app-location route="{{route}}"></app-location> 
-        <button type="button" autofocus class="btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">enter here</button> 
+            .btn{
+                @apply --big-btn;
+                border: none;
+            }
+            .btn:active{
+                transform: scale(0.97,0.97);
+            }
+        </style>
+        <data-local-storage id="localStorage"></data-local-storage>
+        <app-location route="{{route}}"></app-location>
+        <button type="button" autofocus class="btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">enter here</button>
     </template>
     <script>
         class DisplayEnterButton extends Polymer.Element {
