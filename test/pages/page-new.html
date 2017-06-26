@@ -33,13 +33,13 @@ This code may only be used under the license found at https://github.com/swarmci
     suite('Query Selector Tests', function() {
         test('does the escape X button exist', function() {
             var test = fixture('fixture-one').shadowRoot
-            .querySelector('.esc');
+            .querySelector('.esc-btn');
             assert.exists(test);
         });
 
         test('does the new Account button exist', function() {
             var test = fixture('fixture-one').shadowRoot
-            .querySelector('.btn');
+            .querySelector('.acc-btn');
             assert.exists(test);
         });
         test('does the restore backup link exist', function() {
@@ -49,7 +49,8 @@ This code may only be used under the license found at https://github.com/swarmci
         });
 
         test('On clicking Esc function called', function() {
-            var circle = fixture('fixture-one').shadowRoot.querySelector('.esc');
+            var circle = fixture('fixture-one').shadowRoot
+            .querySelector('.esc-btn');
             var proto = document.getElementById('testEl').constructor.prototype;
             var func = sinon.spy(proto, '_escClick');
             circle.click();
@@ -57,7 +58,8 @@ This code may only be used under the license found at https://github.com/swarmci
         });
 
         test('On clicking Btn function called', function() {
-            var circle = fixture('fixture-one').shadowRoot.querySelector('.btn');
+            var circle = fixture('fixture-one').shadowRoot
+            .querySelector('.acc-btn');
             var proto = document.getElementById('testEl').constructor.prototype;
             var func = sinon.spy(proto, '_btnClick');
             circle.click();

@@ -29,15 +29,15 @@ The following custom properties and mixins are available for styling:
             :host {
                 display: block;
             }
-            .btn{
+            .btn-enter{
                 @apply --big-btn;
             }
-            .btn:active{
+            .btn-enter:active{
                 transform: scale(0.97,0.97);
             }
         </style>
         <data-local-storage id="localStorage"></data-local-storage>
-        <button type="button" autofocus class="btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">enter here</button>
+        <button type="button" autofocus class="btn-enter" on-click="_btnClick" on-KeyPress="_btnKeyPress">enter here</button>
     </template>
     <script>
     class DisplayEnterButton extends Polymer.Element {

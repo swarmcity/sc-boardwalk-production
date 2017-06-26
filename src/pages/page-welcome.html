@@ -30,26 +30,26 @@ This code may only be used under the license found at https://github.com/swarmci
     :host {
         display: block;
     }
-    .top{
+    .top-container{
         background-color: var(--swarm-city-yellow);
         padding: 100px 18px 100px 18px;
         @apply --layout-horizontal;
         @apply --layout-wrap;
     }
 
-    .top div:nth-child(1) {
+    .top-container div:nth-child(1) {
         @apply --layout-flex;
     }
-    .top div:nth-child(1) .logo{
+    .top-container div:nth-child(1) .sc-logo{
         width: 146px;
         height: 55px;
         background-image: url('../../../images/swarm-city-sprite.webp');
         zoom: .5;
     }
-    .top div:nth-child(2) {
+    .top-container div:nth-child(2) {
         @apply --layout-self-end;
     }
-    .top div:nth-child(1) h1 span{
+    .top-container div:nth-child(1) h1 span{
         font-size: 75px;
         font-weight: 800;
     }
@@ -60,16 +60,16 @@ This code may only be used under the license found at https://github.com/swarmci
         line-height: 60px;
         color: var(--grey-4)
     }
-    .middle{
+    .middle-container{
         background-color: var(--swarm-city-white);
         padding: 75px 18px 75px;
         @apply --layout-vertical;
         @apply --layout-center;
     }
-    .middle a{
+    .middle-container a{
         @apply --blue-links;
     }
-    .middle h2{
+    .middle-container h2{
         text-align: center;
         letter-spacing: 2.1px;
         max-width: 560px;
@@ -78,7 +78,7 @@ This code may only be used under the license found at https://github.com/swarmci
         line-height: 30px;
         color: var(--grey-3)
     }
-    .middle div:nth-child(3){
+    .middle-container div:nth-child(3){
         padding: 18px;
         font-size: 12px;
         color: var(--grey-5);
@@ -87,7 +87,7 @@ This code may only be used under the license found at https://github.com/swarmci
         @apply --layout-wrap;
         @apply --layout-center-justified;
     }
-    .middle div:nth-child(3) div{
+    .middle-container div:nth-child(3) div{
         text-align: center;
         width: 175px;
         padding: 10px;
@@ -111,7 +111,7 @@ This code may only be used under the license found at https://github.com/swarmci
     .image-three{
         background: url('../../../images/swarm-city-sprite.webp') -493px 9px;
     }
-    .bottom{
+    .bottom-container{
         color: var(--grey-4);
         font-size: 13px;
         font-weight: 700;
@@ -119,16 +119,16 @@ This code may only be used under the license found at https://github.com/swarmci
         @apply --layout-horizontal;
         @apply --layout-wrap;
     }
-    .bottom div:nth-child(1){
+    .bottom-container div:nth-child(1){
         @apply --layout-flex;
     }
-    .bottom div:nth-child(1) ul li a{
+    .bottom-container div:nth-child(1) ul li a{
         @apply --blue-links;
     }
-    .bottom div:nth-child(2){
+    .bottom-container div:nth-child(2){
         text-align: right;
     }
-    .bottom div:nth-child(2) ul li a{
+    .bottom-container div:nth-child(2) ul li a{
         @apply --grey-links;
     }
     ul{
@@ -138,19 +138,19 @@ This code may only be used under the license found at https://github.com/swarmci
     li{
         padding-top:5px;
     }
-    .top[wide-layout] {
+    .top-container[wide-layout] {
         padding:100px;
     }
-    .bottom[wide-layout] {
+    .bottom-container[wide-layout] {
         padding:100px;
     }
 
     </style>
     <app-location route="{{route}}"></app-location>
     <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
-    <div class="top" wide-layout$="{{wide}}">
+    <div class="top-container" wide-layout$="{{wide}}">
         <div>
-            <div class="logo"></div>
+            <div class="sc-logo"></div>
             <h1>Welcome to<span> swarm. city{{pathz}}<span></h1>
         </div>
         <div>
@@ -160,7 +160,7 @@ This code may only be used under the license found at https://github.com/swarmci
             </display-enter-button>
         </div>
     </div>
-    <div class="middle">
+    <div class="middle-container">
         <h2>Swarm City is a decentralized commerce platform.</h2>
         <a href="http://zly.mjo.mybluehost.me/thisis" target="_blank">tell me more</a>
         <div>
@@ -169,7 +169,7 @@ This code may only be used under the license found at https://github.com/swarmci
             <div><div class="image-three"></div>It's an open source project, so you can jump right in</div>
         </div>
     </div>
-    <div class="bottom" wide-layout$="{{wide}}">
+    <div class="bottom-container" wide-layout$="{{wide}}">
         <div>
             <ul>
                 <li><a href="http://zly.mjo.mybluehost.me/thisis" target="_blank">This is Swarm City</a></li>
