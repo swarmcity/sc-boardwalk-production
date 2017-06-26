@@ -42,7 +42,8 @@ suite('Query Selector Tests', function() {
     });
     test('On click function called', function() {
         // Select the element to test
-        // Note: fixture() will return the element inside the template (testEl in this case)
+        // fixture() returns element inside the template
+        // (testEl in this case)
         var el = fixture('fixture-one');
         // Select the button element
         var circle = el.shadowRoot.querySelector('.btn-enter');
