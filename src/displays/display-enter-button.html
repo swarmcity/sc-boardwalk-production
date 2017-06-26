@@ -26,46 +26,50 @@ The following custom properties and mixins are available for styling:
 
 -->
 <dom-module id="display-enter-button">
-<template>
-    <style>
-    :host {
-        display: block;
-    }
-    .btn{
-        @apply --big-btn;
-    }
-    </style>
-    <data-local-storage id="localStorage"></data-local-storage>
-    <app-location route="{{route}}"></app-location>
-    <span role="button" tabindex="0" class="btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">enter here</span>
-</template>
-<script>
-    class DisplayEnterButton extends Polymer.Element {
-        static get is() { return 'display-enter-button';}
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+            .btn{
+                @apply --big-btn;
+                border: none;
+            }
+            .btn:active{
+                transform: scale(0.97,0.97);
+            }
+        </style>
+        <data-local-storage id="localStorage"></data-local-storage>
+        <app-location route="{{route}}"></app-location>
+        <button type="button" autofocus class="btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">enter here</button>
+    </template>
+    <script>
+        class DisplayEnterButton extends Polymer.Element {
+            static get is() { return 'display-enter-button';}
 
 /**
 * If the user has an account change route on button click
 */
-        _btnClick() {
-            this.$.localStorage.accountExists()
-            .then((accountExists) => {
-                if(!accountExists) {
-                    this.set('route.path', 'new/');
-                } else {
-                    this.set('route.path', 'login/');
-                }
-            });
+_btnClick() {
+    this.$.localStorage.accountExists()
+    .then((accountExists) => {
+        if(!accountExists) {
+            this.set('route.path', 'new/');
+        } else {
+            this.set('route.path', 'login/');
         }
+    });
+}
 /**
 * Fired when the user presses a key when selecting the entr button
 * @param {object} event The event from the on-KeyPress
 */
-        _btnKeyPress(event) {
-            if (event.keyCode === 32 || event.keyCode === 13) {
-                event.preventDefault();
-                this._btnClick();
-            }
-        }
-    } window.customElements.define(DisplayEnterButton.is, DisplayEnterButton);
+_btnKeyPress(event) {
+    if (event.keyCode === 32 || event.keyCode === 13) {
+        event.preventDefault();
+        this._btnClick();
+    }
+}
+} window.customElements.define(DisplayEnterButton.is, DisplayEnterButton);
 </script>
 </dom-module>
