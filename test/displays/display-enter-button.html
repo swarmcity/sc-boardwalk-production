@@ -41,11 +41,13 @@ suite('Query Selector Tests', function() {
         assert.equal(circle.textContent, 'enter here');
     });
     test('On click function called', function() {
-        // Select the element to test
-        var circle = fixture('fixture-one').shadowRoot
-        .querySelector('.btn-enter');
-        // Define the element class instance
-        var proto = document.getElementById('testEl').constructor.prototype;
+        // fixture() returns element inside the template
+        // (testEl in this case)
+        var el = fixture('fixture-one');
+        // Select the button element
+        var circle = el.shadowRoot.querySelector('.btn-enter');
+        // Instantiate the class
+        var proto = el.constructor.prototype;
         // Spy on the method to test
         var func = sinon.spy(proto, '_btnClick');
         // Simulate the trigger
