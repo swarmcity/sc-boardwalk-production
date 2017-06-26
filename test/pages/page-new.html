@@ -42,7 +42,6 @@ This code may only be used under the license found at https://github.com/swarmci
             .querySelector('.btn');
             assert.exists(test);
         });
-        
         test('does the restore backup link exist', function() {
             var test = fixture('fixture-one').shadowRoot
             .querySelector('.restore');
@@ -66,7 +65,8 @@ This code may only be used under the license found at https://github.com/swarmci
         });
 
         test('On clicking restore function called', function() {
-            var circle = fixture('fixture-one').shadowRoot.querySelector('.restore');
+            var circle = fixture('fixture-one')
+                .shadowRoot.querySelector('.restore');
             var proto = document.getElementById('testEl').constructor.prototype;
             var func = sinon.spy(proto, '_restoreClick');
             circle.click();

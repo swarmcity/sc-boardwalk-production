@@ -132,7 +132,7 @@ This code may only be used under the license found at https://github.com/swarmci
         };
     }
 
-    connectedCallback(){
+    connectedCallback() {
         super.connectedCallback();
         this.$.a11y.target = document.querySelector('body');
     }
@@ -142,13 +142,13 @@ This code may only be used under the license found at https://github.com/swarmci
             this._btnClick();
         }
     }
-    _escClick(){
+    _escClick() {
         this.set('route.path', '/');
     }
-    _btnClick(){
+    _btnClick() {
         this.set('route.path', 'tokens/');
     }
-    _restoreClick(){
+    _restoreClick() {
         this.set('route.path', 'restore/');
     }
     } window.customElements.define(PageNew.is, PageNew);
