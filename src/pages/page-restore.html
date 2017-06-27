@@ -44,12 +44,9 @@ This code may only be used under the license found at https://github.com/swarmci
         @apply --layout-wrap;
         
     }
-        .top-container div:after {
-            width:500px;
-            
-
+    .centered{
+        width:300px;        
     }
-
     .esc-btn{
         display:block;
         font-size:20px;
@@ -74,7 +71,7 @@ This code may only be used under the license found at https://github.com/swarmci
     .big-btn{
         @apply --big-btn;
         color:var(--swarm-city-blue);
-        min-width:300px;
+        width:100%;
     }
     .big-btn:active{
         transform: scale(0.97,0.97);
@@ -86,8 +83,10 @@ This code may only be used under the license found at https://github.com/swarmci
     <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
     <div class="top-container">
         <div>
-            <button type="button" autofocus class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">Restore From IPFS</button>
-            <button type="button" autofocus class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">Restore From backup file</button>
+            <div class="centered">
+                <button type="button" autofocus class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">Restore From IPFS</button>
+                <button type="button" autofocus class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">Restore From backup file</button>
+            </div>
         </div>
         <div>
             <div on-click="_escClick" class="esc-btn"><span>ESC</span></div>
