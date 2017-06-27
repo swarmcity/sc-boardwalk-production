@@ -35,23 +35,23 @@ suite('Query Selector Tests', function() {
     // Describe the test in plain english
     test('Buttontext is correct', function() {
         // Select the element to test
-        var circle = fixture('fixture-one').shadowRoot
+        var btn = fixture('fixture-one').shadowRoot
         .querySelector('.btn-enter');
         // Test it
-        assert.equal(circle.textContent, 'enter here');
+        assert.equal(btn.textContent, 'enter here');
     });
     test('On click function called', function() {
         // fixture() returns element inside the template
         // (testEl in this case)
         var el = fixture('fixture-one');
         // Select the button element
-        var circle = el.shadowRoot.querySelector('.btn-enter');
+        var btn = el.shadowRoot.querySelector('.btn-enter');
         // Instantiate the class
         var proto = el.constructor.prototype;
         // Spy on the method to test
         var func = sinon.spy(proto, '_btnClick');
         // Simulate the trigger
-        circle.click();
+        btn.click();
         // Test it
         sinon.assert.called(func);
     });
