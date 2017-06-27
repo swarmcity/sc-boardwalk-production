@@ -18,11 +18,11 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
 <link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
-<link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
-<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/slide-from-right-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/slide-left-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
-<dom-module id="page-new">
+<dom-module id="page-restore">
 <template>
 <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
@@ -39,10 +39,7 @@ This code may only be used under the license found at https://github.com/swarmci
     .top-container div:nth-child(1) {
         @apply --layout-flex;
     }
-    .top-container div:nth-child(1) p {
-        max-width: 700px;
-        font-weight: 500;
-    }
+
     .esc-btn{
         display:block;
         font-size:20px;
@@ -64,24 +61,12 @@ This code may only be used under the license found at https://github.com/swarmci
         opacity:0.5;
         padding-top:30px;
     }
-    h1{
-        word-spacing: 5px;
-        font-size: 50px;
-        font-weight: 800;
-        max-width: 350px;
-        line-height: 50px;
-        color: var(--swarm-city-yellow)
-    }
-    .acc-btn{
+    .big-btn{
         @apply --big-btn;
-        margin-top:60px;
-        margin-bottom:20px;
+        color:var(--swarm-city-blue)
     }
-    .acc-btn:active{
+    .big-btn:active{
         transform: scale(0.97,0.97);
-    }
-    .top-container div:nth-child(1) div a{
-        @apply --grey-links;
     }
     .top-container[wide-layout] {
         padding:100px;
@@ -92,10 +77,8 @@ This code may only be used under the license found at https://github.com/swarmci
     <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
     <div class="top-container" wide-layout$="{{wide}}">
         <div>
-            <h1>You must be new here</h1>
-            <p>There’s no account found on this device. When creating a new account, it is stored locally on your device.</p>
-            <button type="button" autofocus class="acc-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">Create new account</button>
-            <div><a href="restore/" class="restore">restore a backup-file</a></div>
+            <button type="button" autofocus class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">Restore From IPFS</button>
+            <button type="button" autofocus class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">Restore From backup file</button>
         </div>
         <div>
             <div on-click="_escClick" class="esc-btn"><span>ESC</span></div>
@@ -104,27 +87,27 @@ This code may only be used under the license found at https://github.com/swarmci
 </template>
 
 <script>
-    class PageNew extends Polymer.mixinBehaviors([
+    class PageRestore extends Polymer.mixinBehaviors([
         Polymer.NeonAnimationRunnerBehavior,
         Polymer.NeonAnimatableBehavior],
         Polymer.Element
     ) {
-        static get is() { return 'page-new'; }
+        static get is() { return 'page-restore'; }
         static get properties() { return {
             animationConfig: {
             value: function() {
                 return {
                 'entry': {
-                    name: 'fade-in-animation',
+                    name: 'slide-from-right-animation',
                     node: this,
-                    nodeDelay: 300,
-                    timing: {duration: 300},
+                    nodeDelay: 0,
+                    timing: {duration: 600},
                 },
                 'exit': {
-                    name: 'fade-out-animation',
+                    name: 'slide-left-animation',
                     node: this,
-                    nodeDelay: 300,
-                    timing: {duration: 300},
+                    nodeDelay: 0,
+                    timing: {duration: 600},
                 },
                 };
             },
@@ -142,15 +125,16 @@ This code may only be used under the license found at https://github.com/swarmci
             this._btnClick();
         }
     }
+
     _escClick() {
-        if(this.route.path == '/new/') {
-            this.set('route.path', '/');
+        if(this.route.path == '/restore/') {
+            this.set('route.path', 'new/');
         }
     }
     _btnClick() {
         this.set('route.path', 'tokens/');
     }
 
-    } window.customElements.define(PageNew.is, PageNew);
+    } window.customElements.define(PageRestore.is, PageRestore);
 </script>
 </dom-module>
