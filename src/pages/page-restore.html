@@ -72,6 +72,7 @@ This code may only be used under the license found at https://github.com/swarmci
         @apply --big-btn;
         color:var(--swarm-city-blue);
         width:100%;
+        margin-bottom:18px;
     }
     .big-btn:active{
         transform: scale(0.97,0.97);
@@ -84,8 +85,8 @@ This code may only be used under the license found at https://github.com/swarmci
     <div class="top-container">
         <div>
             <div class="centered">
-                <button type="button" autofocus class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">Restore From IPFS</button>
-                <button type="button" autofocus class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">Restore From backup file</button>
+                <button type="button" autofocus class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress" tabindex="0">Restore From IPFS</button>
+                <button type="button" autofocus class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress" tabindex="1">Restore From backup file</button>
             </div>
         </div>
         <div>
