@@ -5,7 +5,8 @@
     "src/pages/page-welcome.html",
     "src/pages/page-new.html",
     "src/pages/page-restore.html",
-    "src/pages/page-view404.html"
+    "src/pages/page-view404.html",
+    "src/pages/page-restore-ipfs.html"
   ],
   "sources": [
     "src/**/*",

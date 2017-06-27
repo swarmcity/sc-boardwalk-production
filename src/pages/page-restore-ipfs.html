@@ -22,7 +22,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/animations/slide-left-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
-<dom-module id="page-restore">
+<dom-module id="page-restore-ipfs">
 <template>
 <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
@@ -39,7 +39,10 @@ This code may only be used under the license found at https://github.com/swarmci
     .top-container div:nth-child(1) {
         @apply --layout-flex;
     }
-
+    .top-container div:nth-child(1) p {
+        max-width: 700px;
+        font-weight: 500;
+    }
     .esc-btn{
         display:block;
         font-size:20px;
@@ -61,12 +64,23 @@ This code may only be used under the license found at https://github.com/swarmci
         opacity:0.5;
         padding-top:30px;
     }
+    h1{
+        word-spacing: 5px;
+        font-size: 50px;
+        font-weight: 800;
+        max-width: 350px;
+        line-height: 50px;
+        color: var(--swarm-city-yellow)
+    }
     .big-btn{
         @apply --big-btn;
         color:var(--swarm-city-blue)
     }
     .big-btn:active{
         transform: scale(0.97,0.97);
+    }
+    .top-container div:nth-child(1) div a{
+        @apply --grey-links;
     }
     .top-container[wide-layout] {
         padding:100px;
@@ -77,22 +91,25 @@ This code may only be used under the license found at https://github.com/swarmci
     <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
     <div class="top-container" wide-layout$="{{wide}}">
         <div>
-            <button type="button" autofocus class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">Restore From IPFS</button>
-            <button type="button" autofocus class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">Restore From backup file</button>
+        	<h1>Restore a backup from IPFS</h1>
+        	<p class="reg grey4 maxwidth">Enter your IPFS-hash joo</p>
+          	<paper-input class="" id="importipfshash" label="Your ipfs-hash" type="text" value="{{importipfshash}}" on-keypress="importipfshashuploadclicksubmit"></paper-input>
+            <div class="whitespace"></div>
+            <button type="button" autofocus class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">restore</button>
         </div>
         <div>
             <div on-click="_escClick" class="esc-btn"><span>ESC</span></div>
         </div>
     </div>
-</template>
 
+</template>
 <script>
-    class PageRestore extends Polymer.mixinBehaviors([
+    class PageRestoreIpfs extends Polymer.mixinBehaviors([
         Polymer.NeonAnimationRunnerBehavior,
         Polymer.NeonAnimatableBehavior],
         Polymer.Element
     ) {
-        static get is() { return 'page-restore'; }
+        static get is() { return 'page-restore-ipfs'; }
         static get properties() { return {
             animationConfig: {
             value: function() {
@@ -127,14 +144,14 @@ This code may only be used under the license found at https://github.com/swarmci
     }
 
     _escClick() {
-        if(this.route.path == '/restore/') {
+        if(this.route.path == '/restore-ipfs/') {
             this.set('route.path', 'new/');
         }
     }
     _btnClick() {
-        this.set('route.path', 'restore-ipfs/');
+        this.set('route.path', 'tokens/');
     }
 
-    } window.customElements.define(PageRestore.is, PageRestore);
+    } window.customElements.define(PageRestoreIpfs.is, PageRestoreIpfs);
 </script>
 </dom-module>
