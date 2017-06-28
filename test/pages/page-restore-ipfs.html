@@ -31,21 +31,26 @@ This code may only be used under the license found at https://github.com/swarmci
 <script>
 
     suite('Query Selector Tests', function() {
-       test('does the escape X button exist', function() {
-        var test = fixture('fixture-one').shadowRoot
-        .querySelector('.esc-btn');
-        assert.exists(test);
-    });
-       test('On click function called', function() {
+        test('Does the display component exist', function() {
+            var test = fixture('fixture-one').shadowRoot
+            .querySelector('display-restore-ipfs');
+            assert.exists(test);
+        });
+       test('Does the escape X button exist', function() {
+            var test = fixture('fixture-one').shadowRoot
+            .querySelector('.esc-btn');
+            assert.exists(test);
+        });
+       test('On esc click function called', function() {
             // fixture() returns element inside the template
             // (testEl in this case)
             var el = fixture('fixture-one');
             // Select the button element
-            var btn = el.shadowRoot.querySelector('.big-btn');
+            var btn = el.shadowRoot.querySelector('.esc-btn');
             // Instantiate the class
             var proto = el.constructor.prototype;
             // Spy on the method to test
-            var func = sinon.spy(proto, '_btnClick');
+            var func = sinon.spy(proto, '_escClick');
             // Simulate the trigger
             btn.click();
             // Test it
