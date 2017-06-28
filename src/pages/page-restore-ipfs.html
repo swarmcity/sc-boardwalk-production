@@ -109,6 +109,10 @@ This code may only be used under the license found at https://github.com/swarmci
     ) {
         static get is() { return 'page-restore-ipfs'; }
         static get properties() { return {
+            path: {
+                type: String,
+                observer: '_path',
+            },
             animationConfig: {
             value: function() {
                 return {
