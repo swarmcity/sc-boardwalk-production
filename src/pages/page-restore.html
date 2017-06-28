@@ -77,8 +77,8 @@ This code may only be used under the license found at https://github.com/swarmci
     <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
     <div class="top-container" wide-layout$="{{wide}}">
         <div>
-            <button type="button" autofocus class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">Restore From IPFS</button>
-            <button type="button" autofocus class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">Restore From backup file</button>
+            <button type="button" autofocus class="big-btn" on-click="_btnClickIpfs" on-KeyPress="_btnKeyPressIpfs">Restore From IPFS</button>
+            <button type="button" autofocus class="big-btn" on-click="_btnClickFile" on-KeyPress="_btnKeyPressFile">Restore From backup file</button>
         </div>
         <div>
             <div on-click="_escClick" class="esc-btn"><span>ESC</span></div>
@@ -119,20 +119,28 @@ This code may only be used under the license found at https://github.com/swarmci
         super.connectedCallback();
         this.$.a11y.target = document.querySelector('body');
     }
-    _btnKeyPress(event) {
+    _btnKeyPressIpfs(event) {
         if (event.keyCode === 32 || event.keyCode === 13) {
             event.preventDefault();
-            this._btnClick();
+            this._btnClickIpfs();
         }
     }
-
+    _btnKeyPressFile(event) {
+        if (event.keyCode === 32 || event.keyCode === 13) {
+            event.preventDefault();
+            this._btnClickFile();
+        }
+    }
     _escClick() {
         if(this.route.path == '/restore/') {
             this.set('route.path', 'new/');
         }
     }
-    _btnClick() {
+    _btnClickIpfs() {
         this.set('route.path', 'restore-ipfs/');
+    }
+    _btnClickFile() {
+        this.set('route.path', 'restore-file/');
     }
 
     } window.customElements.define(PageRestore.is, PageRestore);
