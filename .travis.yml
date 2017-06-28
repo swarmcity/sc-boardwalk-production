@@ -6,7 +6,6 @@ addons:
     username: will369
     access_key:
       secure: gWRjjvS2p9iNI11hN/c3MDtha18cMC2h1dJF4SbSzbX7KzKFug1tq8HTHKxc2CXQX4EivU56fcHHZryI9vXHbBNbLPMFRfmqCx31y8fRnoj+dsUMkfnep5h8wkBlzTMesGHT9NtDsDfgIv+LGznEZAKbRqo8H68kBp+rzZGmGuBshku59svuvfsJo28mPqYzfZDUtL/GJyz8bt/f+jwccSNfrUw/6gTmNdvCmPnxVydTpmitdE+UHhwueViQCCrZKQELfi5EfnnQHCVjrG+1HWLIkxxzRanbJudiJQkyyyfqzTzuETEF4xBgTLHT+XwqCQS+FKps5vyYIFczBsyK9QmYY2vG0xsEJgMd/7TBB7yhemjTE1RkW2aVVkA9pB8S5bAYtNyWKKcS+JcDIwJu520HRAbG/HvIFcCySh48Hi1GdZGnzYbvkNWKLXdk3IhJ8JhpFY2eC5fsgSVvvgeG3hBsCkCdOs7KX382q62d/kovFiXK4hYmv1oYcIzHEsJhpRrf/bRQHxjzIBnRwkF3Adp78S97IR1sKZmbVlF2ZpQq6kJqkeJfaTZve4Fl8UhG5kNx6jtwQkOUSTu1+rg7jfBtcorzqhJ9Nnb9IXdGVFtiBBkzDe67U4h8x95a8kD4KQ2t72IZVt2wyMZcy7eNx1apMXOeUjn/eGTnLVFZMnI=
-
   firefox: latest
   apt:
     sources:
@@ -16,6 +15,14 @@ addons:
 node_js:
 - node
 - '6'
+require 'rubygems'
+require 'selenium-webdriver'
+caps = Selenium::WebDriver::Remote::Capabilities.new
+caps['browserstack.local'] = 'true'
+caps['browserstack.localIdentifier'] = ENV['BROWSERSTACK_LOCAL_IDENTIFIER']
+driver = Selenium::WebDriver.for(:remote,
+  :url => "http://will369:cNLBN3CYxPYQDZNXULLv@hub-cloud.browserstack.com/wd/hub",
+  :desired_capabilities => caps)
 install:
 - npm install
 - npm install -g polymer-cli
