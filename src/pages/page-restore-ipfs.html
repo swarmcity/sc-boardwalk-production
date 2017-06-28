@@ -4,13 +4,14 @@ Copyright (c) 2017 Swarm City
 This code may only be used under the license found at https://github.com/swarmcity/license
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/iron-a11y-keys/iron-a11y-keys.html">
-
 <!--
     Displays and shared styles only
 -->
+<link rel="import" href="../displays/display-restore-ipfs.html">
 <link rel="import" href="../shared-styles.html">
 <!--
     Animation pack, only load the animations you need for this page.
@@ -18,11 +19,10 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
 <link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
 <link rel="import" href="../../bower_components/neon-animation/animations/slide-from-right-animation.html">
-<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
-<link rel="import" href="../../bower_components/neon-animation/animations/slide-right-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/slide-left-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
-<dom-module id="page-restore">
+<dom-module id="page-restore-ipfs">
 <template>
 <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
@@ -32,19 +32,16 @@ This code may only be used under the license found at https://github.com/swarmci
         display: block;
     }
     .top-container{
-        display:block;
+        padding: 100px 18px 100px 18px;
         @apply --layout-horizontal;
-        @apply --layout-center-justified;
-        height:100vh;
-    }
-    .top-container div {
-        @apply --layout-horizontal;
-        @apply --layout-center;
         @apply --layout-wrap;
-        
     }
-    .centered{
-        width:300px;        
+    .top-container div:nth-child(1) {
+        @apply --layout-flex;
+    }
+    .top-container div:nth-child(1) p {
+        max-width: 700px;
+        font-weight: 500;
     }
     .esc-btn{
         display:block;
@@ -67,40 +64,55 @@ This code may only be used under the license found at https://github.com/swarmci
         opacity:0.5;
         padding-top:30px;
     }
-    .big-btn{
-        @apply --big-btn;
-        color:var(--swarm-city-blue);
-        width:100%;
-        margin-bottom:18px;
+    .top-container div:nth-child(1) div a{
+        @apply --grey-links;
     }
-    .big-btn:active{
-        transform: scale(0.97,0.97);
+    .top-container[wide-layout] {
+        padding:100px;
     }
-
+    h1{
+        word-spacing: 5px;
+        font-size: 50px;
+        font-weight: 800;
+        max-width: 100%;
+        line-height: 50px;
+        color: var(--swarm-city-yellow)
+    }
     </style>
     <app-location route="{{route}}"></app-location>
     <iron-a11y-keys id="a11y" keys="esc" on-keys-pressed="_escClick"></iron-a11y-keys>
-    <div class="top-container">
+    <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+    <div class="top-container" wide-layout$="{{wide}}">
         <div>
-            <div class="centered">
-                <button type="button" autofocus class="big-btn restore-ipfs" on-click="_btnIpfs" on-KeyPress="_btnIpfs" tabindex="0">Restore From IPFS</button>
-                <button type="button" autofocus class="big-btn restore-file" on-click="_btnFile" on-KeyPress="_btnFile" tabindex="1">Restore From backup file</button>
-            </div>
+        	<h1>Restore a backup from IPFS</h1>
+        <div>
+            <display-restore-ipfs                
+                path="{{path}}">
+            </display-restore-ipfs>
+        </div>
         </div>
         <div>
             <div on-click="_escClick" class="esc-btn"><span>ESC</span></div>
         </div>
     </div>
-</template>
+        
 
+        
+    
+
+</template>
 <script>
-    class PageRestore extends Polymer.mixinBehaviors([
+    class PageRestoreIpfs extends Polymer.mixinBehaviors([
         Polymer.NeonAnimationRunnerBehavior,
         Polymer.NeonAnimatableBehavior],
         Polymer.Element
     ) {
-        static get is() { return 'page-restore'; }
+        static get is() { return 'page-restore-ipfs'; }
         static get properties() { return {
+            path: {
+                type: String,
+                observer: '_path',
+            },
             animationConfig: {
             value: function() {
                 return {
@@ -111,7 +123,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     timing: {duration: 600},
                 },
                 'exit': {
-                    name: 'slide-right-animation',
+                    name: 'slide-left-animation',
                     node: this,
                     nodeDelay: 0,
                     timing: {duration: 600},
@@ -121,34 +133,22 @@ This code may only be used under the license found at https://github.com/swarmci
             },
         };
     }
+
     connectedCallback() {
         super.connectedCallback();
         this.$.a11y.target = document.querySelector('body');
     }
-    _btnKeyPressIpfs(event) {
-        if (event.keyCode === 32 || event.keyCode === 13) {
-            event.preventDefault();
-            this._btnClickIpfs();
-        }
-    }
-    _btnKeyPressFile(event) {
-        if (event.keyCode === 32 || event.keyCode === 13) {
-            event.preventDefault();
-            this._btnClickFile();
-        }
-    }
     _escClick() {
-        if(this.route.path == '/restore/') {
+        if(this.route.path == '/restore-ipfs/') {
             this.set('route.path', 'new/');
         }
     }
-    _btnIpfs() {
-        this.set('route.path', 'restore-ipfs/');
+    _path() {
+        if(this.path != null) {
+            this.set('route.path', this.path);
+        }
+        this.path = null;
     }
-    _btnFile() {
-        this.set('route.path', 'restore-file/');
-    }
-
-    } window.customElements.define(PageRestore.is, PageRestore);
+    } window.customElements.define(PageRestoreIpfs.is, PageRestoreIpfs);
 </script>
 </dom-module>
