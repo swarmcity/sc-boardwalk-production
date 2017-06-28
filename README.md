@@ -8,7 +8,7 @@
 Refactor of Boardwalk in Polymer 2.0
 
 ## Contributions 
-We activly welcome community contributions. Below are a set of instructions to get your dev environment setup. We have a living [Production Wiki](https://github.com/swarmcity/sc-boardwalk-production/wiki/Welcome-to-Swarm-City) detailing what, how and why we are developing this production release. Once setup head on over to the issues and see whats marked for contributions welcome.
+We actively welcome community contributions. Below are a set of instructions to get your dev environment setup. We have a living [Production Wiki](https://github.com/swarmcity/sc-boardwalk-production/wiki/Welcome-to-Swarm-City) detailing what, how and why we are developing this production release. Once setup head on over to the issues and see what's marked for contributions welcome.
 
 * Keep a lookout for weekend "Tidy-up" sprints, and issues labeled with "Contributions Welcome" these are a great way to meet the team and get started making contributions.
 
@@ -16,13 +16,13 @@ We activly welcome community contributions. Below are a set of instructions to g
 
 grab a copy of [Source Forge](https://sourceforge.net/) or [Gitkracken](https://www.gitkraken.com/) then clone the repo!
 
-## Install developement environment
+## Install development environment
 next install [Polymer CLI](https://github.com/Polymer/polymer-cli) using
 [npm](https://www.npmjs.com) (we assume you have pre-installed [node.js](https://nodejs.org)).
 
     npm install -g polymer-cli
 
-install [Bower](https://bower.io/) using [npm](https://www.npmjs.com)
+Install [Bower](https://bower.io/) using [npm](https://www.npmjs.com)
 
     npm install -g bower
 
