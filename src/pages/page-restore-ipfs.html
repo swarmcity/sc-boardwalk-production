@@ -8,10 +8,10 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/iron-a11y-keys/iron-a11y-keys.html">
-
 <!--
     Displays and shared styles only
 -->
+<link rel="import" href="../displays/display-restore-ipfs.html">
 <link rel="import" href="../shared-styles.html">
 <!--
     Animation pack, only load the animations you need for this page.
@@ -68,16 +68,9 @@ This code may only be used under the license found at https://github.com/swarmci
         word-spacing: 5px;
         font-size: 50px;
         font-weight: 800;
-        max-width: 350px;
+        max-width: 100%;
         line-height: 50px;
         color: var(--swarm-city-yellow)
-    }
-    .big-btn{
-        @apply --big-btn;
-        color:var(--swarm-city-blue)
-    }
-    .big-btn:active{
-        transform: scale(0.97,0.97);
     }
     .top-container div:nth-child(1) div a{
         @apply --grey-links;
@@ -91,16 +84,22 @@ This code may only be used under the license found at https://github.com/swarmci
     <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
     <div class="top-container" wide-layout$="{{wide}}">
         <div>
-        	<h1>Restore a backup from IPFS</h1>
-        	<p class="reg grey4 maxwidth">Enter your IPFS-hash joo</p>
-          	<paper-input class="" id="importipfshash" label="Your ipfs-hash" type="text" value="{{importipfshash}}" on-keypress="importipfshashuploadclicksubmit"></paper-input>
-            <div class="whitespace"></div>
-            <button type="button" autofocus class="big-btn" on-click="_btnClick" on-KeyPress="_btnKeyPress">restore</button>
+        	<h1 class="bold swarm-city-yellow">Restore a backup from IPFS</h1>
+        <div>
+            <display-restore-ipfs
+                class="big-btn"
+                path="{{path}}">
+            </display-restore-ipfs>
+        </div>
         </div>
         <div>
             <div on-click="_escClick" class="esc-btn"><span>ESC</span></div>
         </div>
     </div>
+        
+
+        
+    
 
 </template>
 <script>
