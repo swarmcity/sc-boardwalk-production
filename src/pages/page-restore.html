@@ -4,7 +4,6 @@ Copyright (c) 2017 Swarm City
 This code may only be used under the license found at https://github.com/swarmcity/license
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/iron-a11y-keys/iron-a11y-keys.html">
@@ -19,7 +18,8 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
 <link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
 <link rel="import" href="../../bower_components/neon-animation/animations/slide-from-right-animation.html">
-<link rel="import" href="../../bower_components/neon-animation/animations/slide-left-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/slide-right-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
 <dom-module id="page-restore">
@@ -32,14 +32,20 @@ This code may only be used under the license found at https://github.com/swarmci
         display: block;
     }
     .top-container{
-        padding: 100px 18px 100px 18px;
+        display:block;
         @apply --layout-horizontal;
+        @apply --layout-center-justified;
+        height:100vh;
+    }
+    .top-container div {
+        @apply --layout-horizontal;
+        @apply --layout-center;
         @apply --layout-wrap;
+        
     }
-    .top-container div:nth-child(1) {
-        @apply --layout-flex;
+    .centered{
+        width:300px;        
     }
-
     .esc-btn{
         display:block;
         font-size:20px;
@@ -63,22 +69,23 @@ This code may only be used under the license found at https://github.com/swarmci
     }
     .big-btn{
         @apply --big-btn;
-        color:var(--swarm-city-blue)
+        color:var(--swarm-city-blue);
+        width:100%;
+        margin-bottom:18px;
     }
     .big-btn:active{
         transform: scale(0.97,0.97);
     }
-    .top-container[wide-layout] {
-        padding:100px;
-    }
+
     </style>
     <app-location route="{{route}}"></app-location>
     <iron-a11y-keys id="a11y" keys="esc" on-keys-pressed="_escClick"></iron-a11y-keys>
-    <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
-    <div class="top-container" wide-layout$="{{wide}}">
+    <div class="top-container">
         <div>
-            <button type="button" autofocus class="big-btn" on-click="_btnClickIpfs" on-KeyPress="_btnKeyPressIpfs">Restore From IPFS</button>
-            <button type="button" autofocus class="big-btn" on-click="_btnClickFile" on-KeyPress="_btnKeyPressFile">Restore From backup file</button>
+            <div class="centered">
+                <button type="button" autofocus class="big-btn restore-ipfs" on-click="_btnIpfs" on-KeyPress="_btnIpfs" tabindex="0">Restore From IPFS</button>
+                <button type="button" autofocus class="big-btn restore-file" on-click="_btnFile" on-KeyPress="_btnFile" tabindex="1">Restore From backup file</button>
+            </div>
         </div>
         <div>
             <div on-click="_escClick" class="esc-btn"><span>ESC</span></div>
@@ -104,7 +111,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     timing: {duration: 600},
                 },
                 'exit': {
-                    name: 'slide-left-animation',
+                    name: 'slide-right-animation',
                     node: this,
                     nodeDelay: 0,
                     timing: {duration: 600},
@@ -114,7 +121,6 @@ This code may only be used under the license found at https://github.com/swarmci
             },
         };
     }
-
     connectedCallback() {
         super.connectedCallback();
         this.$.a11y.target = document.querySelector('body');
@@ -129,6 +135,7 @@ This code may only be used under the license found at https://github.com/swarmci
         if (event.keyCode === 32 || event.keyCode === 13) {
             event.preventDefault();
             this._btnClickFile();
+
         }
     }
     _escClick() {
@@ -136,10 +143,10 @@ This code may only be used under the license found at https://github.com/swarmci
             this.set('route.path', 'new/');
         }
     }
-    _btnClickIpfs() {
+    _btnIpfs() {
         this.set('route.path', 'restore-ipfs/');
     }
-    _btnClickFile() {
+    _btnFile() {
         this.set('route.path', 'restore-file/');
     }
 
