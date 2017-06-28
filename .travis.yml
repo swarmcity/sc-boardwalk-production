@@ -15,14 +15,6 @@ addons:
 node_js:
 - node
 - '6'
-require 'rubygems'
-require 'selenium-webdriver'
-caps = Selenium::WebDriver::Remote::Capabilities.new
-caps['browserstack.local'] = 'true'
-caps['browserstack.localIdentifier'] = ENV['BROWSERSTACK_LOCAL_IDENTIFIER']
-driver = Selenium::WebDriver.for(:remote,
-  :url => "http://will369:cNLBN3CYxPYQDZNXULLv@hub-cloud.browserstack.com/wd/hub",
-  :desired_capabilities => caps)
 install:
 - npm install
 - npm install -g polymer-cli
