@@ -12,6 +12,7 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="lazy-import" href="pages/page-welcome.html">
 <link rel="lazy-import" href="pages/page-new.html">
+<link rel="lazy-import" href="pages/page-restore.html">
 <link rel="lazy-import" href="pages/page-view404.html">
 
 <!--
@@ -56,14 +57,11 @@ Example:
         role="main">
       <page-welcome name="welcome"></page-welcome>
       <page-new name="new"></page-new>
+      <page-restore name="restore"></page-restore>
       <page-view404 name="view404"></page-view404>
     </neon-animated-pages>
   </template>
   <script>
-/**
-* @customElement
-* @polymer
-*/
     class SwarmCity extends Polymer.Element {
       static get is() { return 'swarm-city'; }
       static get properties() {
