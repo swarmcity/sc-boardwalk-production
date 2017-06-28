@@ -138,20 +138,10 @@ This code may only be used under the license found at https://github.com/swarmci
         super.connectedCallback();
         this.$.a11y.target = document.querySelector('body');
     }
-    _btnKeyPress(event) {
-        if (event.keyCode === 32 || event.keyCode === 13) {
-            event.preventDefault();
-            this._btnClick();
-        }
-    }
-
     _escClick() {
         if(this.route.path == '/restore-ipfs/') {
             this.set('route.path', 'new/');
         }
-    }
-    _btnClick() {
-        this.set('route.path', 'tokens/');
     }
     _path() {
         if(this.path != null) {
