@@ -24,3 +24,14 @@ before_script:
 script:
 - xvfb-run npm run test
 - xvfb-run npm run test:integration
+before_deploy:
+- polymer build
+deploy:
+  name: swarm_city_deploy_bot
+  local_dir: build/production
+  provider: pages
+  skip_cleanup: true
+  github_token: J3Or7PYCaMWzyvHHejeoezHiJqPkU51iTQ2oLN8gI+ZS3JF8mRwDCZtYfBmj7NoPhxKyylS5LIS/0tsmsIgI/zjPwz2t8c9P3pUI/O6a1kEtNea2O9Cpx6VpYXS3G1X6eE6rHbhc0WE6WDsv+SgvI//nAvQdDxFtXDXEAXG7fYV97sfPUBGyJ+PhAYQig0T8I9c5l7w/MOm5c2B1DAedTiMuGIhLbDTVnbk+BLqw/ecxZakYKPBCQcoAPkgQxUnmUQPXRthririZKnxyXfVHY5Lqp6ZFWo5jvPRlT8li2bUqTUak6rcFiBd1VGBJl8VsRP3kmEsl4tEGU5MfHPFo+QjCo8vMvoFTSaKKrMy9UAbcnHeq90bo8+COaO29bGsfU1ZmLmE7dJJXz0smtX4m+rID9Oj3R4ntUNUE/yGk9raZVbAqSSE9kRpTnRYY70V3JBfIf83tHPPHk6jT/7vjg1D3aUUt4uUf/8s9iwGgbCvMRgnng9zOZ4WI/Ldz3wuH8IJSofnlE3rz2JXZGk8N2Ww4LCp5cfRqJTj0vicuVj6Or4oPI1KuVX6qUDgDoWZWbrqpqrQe4jze9JdCNsOkGjG/q4j3On8HL/FXxu8VLMRzQ5FnqRPxsIQvmObFJatLCSBusx+i+eDtw1eEQ6GZTjrgNkQE46npSSZtsOXaMTc=
+  on:
+    branch: master
+after_deploy: Deployed to gh-pges!
