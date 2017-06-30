@@ -40,12 +40,11 @@ class DisplayInternationalization extends Polymer.Element {
     connectedCallback() {
         super.connectedCallback();
         this.$.localStorage.accountExists()
-        .then((acc) => {
-           const account = JSON.parse(acc);
-            if(!account.language){
+        .then((account) => {
+            if(!account.language) {
                 const str = navigator.language || navigator.userLanguage;
-                const res = str.split("-");
-                const language = res[0];                
+                const res = str.split('-');
+                const language = res[0];
                 return language;
             } else {
                 const language = account.language;
@@ -57,33 +56,34 @@ class DisplayInternationalization extends Polymer.Element {
         })
         .then((data) => {
             this.language = data.language;
-            this.$.localStorage.saveAccount({language:data.language});
+            this.$.localStorage.saveAccount({language: data.language});
         })
         .catch((err) => {
-            this.language = 'en'
+            this.language = 'en';
         });
     }
     _translationExists(language) {
         return new Promise((resolve, reject) => {
             const xobj = new XMLHttpRequest();
-            xobj.overrideMimeType("application/json");
-            xobj.open('GET', '../src/text-translations.json', true); 
-            xobj.onreadystatechange =  () => {
-                if (xobj.readyState == 4 && xobj.status == "200") {
+            xobj.overrideMimeType('application/json');
+            xobj.open('GET', '../src/text-translations.json', true);
+            xobj.onreadystatechange = () => {
+                if (xobj.readyState == 4 && xobj.status == '200') {
                     const json = JSON.parse(xobj.responseText);
                     const keys = Object.keys(json);
                     const arr = keys.indexOf(language);
-                    if(arr != -1){
-                        resolve({language: language, found: true})
+                    if(arr != -1) {
+                        resolve({language: language, found: true});
                     } else {
-                        resolve({language: language, found: false}) 
+                        resolve({language: language, found: false});
                     }
                 }
             };
-            xobj.send(null); 
-        }) 
+            xobj.send(null);
+        });
     }
 
-} window.customElements.define(DisplayInternationalization.is, DisplayInternationalization);
+} window.customElements.define(DisplayInternationalization.is,
+DisplayInternationalization);
 </script>
 </dom-module>

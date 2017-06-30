@@ -139,7 +139,7 @@ This code may only be used under the license found at https://github.com/swarmci
     connectedCallback() {
         super.connectedCallback();
         this.$.a11y.target = document.querySelector('body');
-        this.loadResources(this.resolveUrl("../text-translations.json"));
+        this.loadResources(this.resolveUrl('../text-translations.json'));
     }
     _escClick() {
         if(this.route.path == '/restore-ipfs/') {

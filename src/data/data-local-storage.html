@@ -87,7 +87,7 @@ this.$.storage.accountExists()
                         if(!account) {
                             resolve(false);
                         } else {
-                            resolve(account);
+                            resolve(JSON.parse(account));
                         }
                     } else {
                         reject(Error('This browser does not support local storage'));

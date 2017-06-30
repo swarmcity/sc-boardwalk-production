@@ -34,7 +34,7 @@ This code may only be used under the license found at https://github.com/swarmci
 </template>
 
 <script>
-    class PageRestore extends Polymer.mixinBehaviors([
+    class MyView404 extends Polymer.mixinBehaviors([
         Polymer.AppLocalizeBehavior,
         Polymer.NeonAnimationRunnerBehavior,
         Polymer.NeonAnimatableBehavior],
@@ -66,7 +66,7 @@ This code may only be used under the license found at https://github.com/swarmci
     
     connectedCallback() {
         super.connectedCallback();
-        this.loadResources(this.resolveUrl("../text-translations.json"));
+        this.loadResources(this.resolveUrl('../text-translations.json'));
     }
 
     } window.customElements.define(MyView404.is, MyView404);
