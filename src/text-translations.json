@@ -23,5 +23,23 @@
         "name": "Swarm City",
         "welcome": "Welkom in",
         "enter here": "kom binnen"
+        },
+    "ru": {
+        "language": "ru",
+        "name": "Swarm City",
+        "welcome": "Добро пожаловать",
+        "enter here": "регистрация здесь"
+        },
+    "de": {
+        "language": "de",
+        "name": "Swarm City",
+        "welcome": "Herzlich willkommen bei",
+        "enter here": "hier beitreten"
+        },
+    "es": {
+        "language": "es",
+        "name": "Swarm City",
+        "welcome": "Bienvenido a",
+        "enter here": "accede aquí"
         }
 }
