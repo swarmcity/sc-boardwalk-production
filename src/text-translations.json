@@ -17,11 +17,11 @@
         "name": "Swarm City",
         "welcome": "Bienvenue à",
         "enter here": "entrez ici"
-    },
+        },
     "nl": {
         "language": "nl",
         "name": "Swarm City",
         "welcome": "Welkom in",
         "enter here": "kom binnen"
-    }
+        }
 }
