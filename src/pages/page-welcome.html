@@ -12,6 +12,7 @@ This code may only be used under the license found at https://github.com/swarmci
     Displays and shared styles only
 -->
 <link rel="import" href="../displays/display-enter-button.html">
+<link rel="import" href="../displays/display-internationalization.html">
 <link rel="import" href="../shared-styles.html">
 <!--
     Animation pack, only load the animations you need for this page.
@@ -148,6 +149,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
     </style>
     <app-location route="{{route}}"></app-location>
+    <display-internationalization language="{{language}}"></display-internationalization>
     <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
     <div class="top-container" wide-layout$="{{wide}}">
         <div>
@@ -230,7 +232,6 @@ This code may only be used under the license found at https://github.com/swarmci
     connectedCallback() {
         super.connectedCallback();
         this.loadResources(this.resolveUrl("../text-translations.json"));
-        this.language = 'cn'
     }
     _path() {
         if(this.path != null) {

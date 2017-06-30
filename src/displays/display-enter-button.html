@@ -6,6 +6,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../data/data-local-storage.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="display-internationalization.html">
 <!--
 
 Example:
@@ -38,6 +39,7 @@ The following custom properties and mixins are available for styling:
             }
         </style>
         <data-local-storage id="localStorage"></data-local-storage>
+        <display-internationalization language="{{language}}"></display-internationalization>
         <button type="button" autofocus class="btn-enter" on-click="_btnClick" on-KeyPress="_btnKeyPress">{{localize('enter here')}}</button>
     </template>
     <script>
@@ -81,7 +83,6 @@ _btnKeyPress(event) {
     connectedCallback() {
         super.connectedCallback();
         this.loadResources(this.resolveUrl("../text-translations.json"));
-        this.language = 'cn'
     }
 
 } window.customElements.define(DisplayEnterButton.is, DisplayEnterButton);
