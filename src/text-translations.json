@@ -1,11 +1,13 @@
 {
     "en": {
+        "language": "en",
         "name": "Swarm City",
         "welcome": "Welcome to",
         "enter here": "enter here"
         },
         
     "cn": {
+        "language": "cn",
         "name": "一群市",
         "welcome": "欢迎来到",
         "enter here": "在这里输入"
