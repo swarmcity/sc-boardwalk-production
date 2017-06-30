@@ -5,6 +5,7 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../data/data-local-storage.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <!--
 
 Example:
@@ -37,10 +38,14 @@ The following custom properties and mixins are available for styling:
             }
         </style>
         <data-local-storage id="localStorage"></data-local-storage>
-        <button type="button" autofocus class="btn-enter" on-click="_btnClick" on-KeyPress="_btnKeyPress">enter here</button>
+        <button type="button" autofocus class="btn-enter" on-click="_btnClick" on-KeyPress="_btnKeyPress">{{localize('enter here')}}</button>
     </template>
     <script>
-    class DisplayEnterButton extends Polymer.Element {
+
+    class DisplayEnterButton extends Polymer.mixinBehaviors([
+        Polymer.AppLocalizeBehavior],
+        Polymer.Element
+    ) {
         static get is() { return 'display-enter-button';}
         static get properties() { return {
             path: {
@@ -73,6 +78,12 @@ _btnKeyPress(event) {
         this._btnClick();
     }
 }
+    connectedCallback() {
+        super.connectedCallback();
+        this.loadResources(this.resolveUrl("../text-translations.json"));
+        this.language = 'cn'
+    }
+
 } window.customElements.define(DisplayEnterButton.is, DisplayEnterButton);
 </script>
 </dom-module>

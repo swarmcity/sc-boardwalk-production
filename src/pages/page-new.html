@@ -8,7 +8,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/iron-a11y-keys/iron-a11y-keys.html">
-
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <!--
     Displays and shared styles only
 -->
@@ -105,6 +105,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
 <script>
     class PageNew extends Polymer.mixinBehaviors([
+        Polymer.AppLocalizeBehavior,
         Polymer.NeonAnimationRunnerBehavior,
         Polymer.NeonAnimatableBehavior],
         Polymer.Element
@@ -135,6 +136,7 @@ This code may only be used under the license found at https://github.com/swarmci
     connectedCallback() {
         super.connectedCallback();
         this.$.a11y.target = document.querySelector('body');
+        this.loadResources(this.resolveUrl("../text-translations.json"));
     }
     _btnKeyPress(event) {
         if (event.keyCode === 32 || event.keyCode === 13) {
