@@ -16,6 +16,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 
 <dom-module id="page-view404">
 <template>
@@ -33,7 +34,12 @@ This code may only be used under the license found at https://github.com/swarmci
 </template>
 
 <script>
-    class MyView404 extends Polymer.Element {
+    class MyView404 extends Polymer.mixinBehaviors([
+        Polymer.AppLocalizeBehavior,
+        Polymer.NeonAnimationRunnerBehavior,
+        Polymer.NeonAnimatableBehavior],
+        Polymer.Element
+    ) {
     static get is() { return 'page-view404'; }
     static get properties() { return {
         rootPath: String,
@@ -57,6 +63,12 @@ This code may only be used under the license found at https://github.com/swarmci
             },
         };
     }
+    
+    connectedCallback() {
+        super.connectedCallback();
+        this.loadResources(this.resolveUrl('../text-translations.json'));
+    }
+
     } window.customElements.define(MyView404.is, MyView404);
 </script>
 </dom-module>

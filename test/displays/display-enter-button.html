@@ -33,13 +33,6 @@ This code may only be used under the license found at https://github.com/swarmci
 // Name the suite the same as the type of tests
 suite('Query Selector Tests', function() {
     // Describe the test in plain english
-    test('Buttontext is correct', function() {
-        // Select the element to test
-        var btn = fixture('fixture-one').shadowRoot
-        .querySelector('.btn-enter');
-        // Test it
-        assert.equal(btn.textContent, 'enter here');
-    });
     test('On click function called', function() {
         // fixture() returns element inside the template
         // (testEl in this case)

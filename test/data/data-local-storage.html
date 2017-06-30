@@ -57,7 +57,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 return fixture('fixture-one').accountExists();
             })
             .then((res) => {
-                assert.equal(res, true);
+                assert.equal(res.test, 'testing');
                 return fixture('fixture-one').removeAccount();
             });
         });

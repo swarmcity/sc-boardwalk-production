@@ -7,10 +7,12 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <!--
     Displays and shared styles only
 -->
 <link rel="import" href="../displays/display-enter-button.html">
+<link rel="import" href="../displays/display-internationalization.html">
 <link rel="import" href="../shared-styles.html">
 <!--
     Animation pack, only load the animations you need for this page.
@@ -147,11 +149,12 @@ This code may only be used under the license found at https://github.com/swarmci
 
     </style>
     <app-location route="{{route}}"></app-location>
+    <display-internationalization language="{{language}}"></display-internationalization>
     <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
     <div class="top-container" wide-layout$="{{wide}}">
         <div>
             <div class="sc-logo"></div>
-            <h1>Welcome to<span> swarm. city{{pathz}}<span></h1>
+            <h1>{{localize('welcome')}}<span> {{localize('name')}}<span></h1>
         </div>
         <div>
             <display-enter-button 
@@ -195,6 +198,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
 <script>
     class PageWelcome extends Polymer.mixinBehaviors([
+        Polymer.AppLocalizeBehavior,
         Polymer.NeonAnimationRunnerBehavior,
         Polymer.NeonAnimatableBehavior],
         Polymer.Element
@@ -224,6 +228,10 @@ This code may only be used under the license found at https://github.com/swarmci
             },
             },
         };
+    }
+    connectedCallback() {
+        super.connectedCallback();
+        this.loadResources(this.resolveUrl('../text-translations.json'));
     }
     _path() {
         if(this.path != null) {
