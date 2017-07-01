@@ -11,5 +11,35 @@
         "name": "一群市",
         "welcome": "欢迎来到",
         "enter here": "在这里输入"
+        },
+    "fr": {
+        "language": "fr",
+        "name": "Swarm City",
+        "welcome": "Bienvenue à",
+        "enter here": "entrez ici"
+        },
+    "nl": {
+        "language": "nl",
+        "name": "Swarm City",
+        "welcome": "Welkom in",
+        "enter here": "kom binnen"
+        },
+    "ru": {
+        "language": "ru",
+        "name": "Swarm City",
+        "welcome": "Добро пожаловать",
+        "enter here": "регистрация здесь"
+        },
+    "de": {
+        "language": "de",
+        "name": "Swarm City",
+        "welcome": "Herzlich willkommen bei",
+        "enter here": "hier beitreten"
+        },
+    "es": {
+        "language": "es",
+        "name": "Swarm City",
+        "welcome": "Bienvenido a",
+        "enter here": "accede aquí"
         }
 }
