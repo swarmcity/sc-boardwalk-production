@@ -60,15 +60,15 @@ The following custom properties and mixins are available for styling:
 /**
 * If the user has an account change route on button click
 */
-_btnClick() { 
-    this.$.localStorage.accountExists() 
-    .then((account) => { 
-        if(!account.vault) { 
-            this.path = 'new/'; 
-        } else { 
-            this.path = 'login/'; 
-            } 
-        }); 
+_btnClick() {
+    this.$.localStorage.accountExists()
+    .then((account) => {
+        if(!account.vault) {
+            this.path = 'new/';
+        } else {
+            this.path = 'login/';
+            }
+        });
     }
 /**
 * Fired when the user presses a key when selecting the entr button
