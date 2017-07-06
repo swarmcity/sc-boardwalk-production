@@ -8,6 +8,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../redux-state.html">
 <!--
     Displays and shared styles only
 -->
@@ -197,12 +198,13 @@ This code may only be used under the license found at https://github.com/swarmci
 </template>
 
 <script>
-    class PageWelcome extends Polymer.mixinBehaviors([
+    
+    class PageWelcome extends new ReduxMixin(Polymer.mixinBehaviors([
         Polymer.AppLocalizeBehavior,
         Polymer.NeonAnimationRunnerBehavior,
         Polymer.NeonAnimatableBehavior],
         Polymer.Element
-        ) {
+        )) {
         static get is() { return 'page-welcome'; }
         static get properties() { return {
             path: {

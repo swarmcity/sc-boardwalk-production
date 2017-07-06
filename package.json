@@ -26,5 +26,8 @@
     "test:integration": "polymer build",
     "build": "polymer build",
     "deploy": "netlify deploy -p build/production"
+  },
+  "dependencies": {
+    "redux": "^3.7.1"
   }
 }

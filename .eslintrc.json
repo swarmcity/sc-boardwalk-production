@@ -18,6 +18,9 @@
         "linebreak-style": "off"
     },
     "globals": {
-        "Polymer": true
+        "Polymer": false,
+        "ReduxMixin": true,
+        "Redux": false,
+        "PolymerRedux": false
     }
 }
