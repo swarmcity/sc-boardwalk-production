@@ -6,17 +6,17 @@
         language: 'en',
     };
 
-    let reducer = function(state, action){
-        if(!state){ 
-            return initialState
-        };
-        switch(action.type){
+    let reducer = function(state, action) {
+        if(!state) {
+            return initialState;
+        }
+        switch(action.type) {
             case 'LANGUAGE':
                 let language = state.language;
-                language  = action.language;
-                return Object.assign({}, state, {language: language})
+                language = action.language;
+                return Object.assign({}, state, {language: language});
         }
-    }
+    };
     const store = Redux.createStore(reducer, /* preloadedState, */
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     );
