@@ -211,11 +211,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 type: String,
                 observer: '_path',
             },
-            language: {
-                type: String,
-                statePath: 'language',
-                observer: '_language'
-            },
             animationConfig: {
             value: function() {
                 return {
@@ -239,9 +234,6 @@ This code may only be used under the license found at https://github.com/swarmci
     connectedCallback() {
         super.connectedCallback();
         this.loadResources(this.resolveUrl('../text-translations.json'));
-    }
-    _language(){
-        console.log(this.language)
     }
     _path() {
         if(this.path != null) {
