@@ -6,6 +6,6 @@
         "assert": false,
         "fixture": false,
         "WCT": false,
-        "sinon": true
+        "sinon": false
     }
 }
