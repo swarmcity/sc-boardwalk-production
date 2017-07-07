@@ -99,19 +99,7 @@ _base64(file) {
         this.error = error;
     };
 }
-/**
-* Converts base 64 to an array buffer
-* @param {base64} base64 string representing
-* the image to be converted to an array buffer
-*/
-_buffer(base64) {
-    var len = base64.length;
-    var bytes = new Uint8Array( len );
-    for (var i = 0; i < len; i++) {
-        bytes[i] = base64.charCodeAt(i);
-    }
-    // console.log(bytes.buffer)
-}
+
 // _buffer(file){
 //     let reader = new window.FileReader()
 //     reader.onloadend = () => this._saveToIpfs(reader)
