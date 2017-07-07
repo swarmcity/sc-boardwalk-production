@@ -80,40 +80,38 @@ The following custom properties and mixins are available for styling:
 * @param {event} event The event from the on-change
 */
 _getFile(event) {
-    event.stopPropagation()
-    event.preventDefault()
-    const file = event.target.files[0]
-    this._base64(file)
+    event.stopPropagation();
+    event.preventDefault();
+    const file = event.target.files[0];
+    this._base64(file);
 }
 /**
 * Converts afile to base 64 for transport
 * @param {file} file is a file with type of file
 */
-_base64(file){
+_base64(file) {
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
         this._buffer(reader.result);
     };
     reader.onerror = (error) => {
-        this.error = error
+        this.error = error;
     };
 }
 /**
 * Converts base 64 to an array buffer
-* @param {base64} base 64 string representing the image to be converted to an array buffer
+* @param {base64} base64 string representing
+* the image to be converted to an array buffer
 */
 _buffer(base64) {
     var len = base64.length;
     var bytes = new Uint8Array( len );
-    for (var i = 0; i < len; i++)        {
+    for (var i = 0; i < len; i++) {
         bytes[i] = base64.charCodeAt(i);
     }
-    console.log(bytes.buffer)
+    // console.log(bytes.buffer)
 }
-
-
-
 // _buffer(file){
 //     let reader = new window.FileReader()
 //     reader.onloadend = () => this._saveToIpfs(reader)
@@ -125,7 +123,6 @@ _buffer(base64) {
 // _saveToIpfs(data){
 //     console.log(data.result)
 // }
-
 } window.customElements.define(DisplayUploadFile.is, DisplayUploadFile);
 </script>
 </dom-module>
