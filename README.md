@@ -44,6 +44,11 @@ npm install
 
     npm install
 
+## Docker install
+
+    docker build .
+    docker run -p 8081:8081 <container instanceId from previous command>
+
 ## Linting with eslint
 Ensuring the code base stays clean and standardized we need all merges to pass linting 
 
