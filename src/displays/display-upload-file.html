@@ -4,9 +4,9 @@ Copyright (c) 2017 Swarm City
 This code may only be used under the license found at https://github.com/swarmcity/license
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../data/data-local-storage.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="display-internationalization.html">
+<link rel="import" href="../data/data-ipfs.html">
 <!--
 
 Example:
@@ -51,8 +51,9 @@ The following custom properties and mixins are available for styling:
                 @apply --upload-file;
             }
         </style>
-        <data-local-storage id="localStorage"></data-local-storage>
         <display-internationalization language="{{language}}"></display-internationalization>
+        <data-ipfs id="ipfs"></data-ipfs>
+        
 
         <label class="cabinet"> 
             <input type="file" class="file" on-change="_getFile"/>
@@ -69,6 +70,7 @@ The following custom properties and mixins are available for styling:
         static get properties() { return {
             loading: {
                 type: Boolean,
+                value: false,
                 notify: true,
             },
         };
@@ -80,6 +82,7 @@ The following custom properties and mixins are available for styling:
 * @param {event} event The event from the on-change
 */
 _getFile(event) {
+    this.loading = true;
     event.stopPropagation();
     event.preventDefault();
     const file = event.target.files[0];
@@ -93,24 +96,21 @@ _base64(file) {
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-        this._buffer(reader.result);
+        this.$.ipfs.postFile(reader.result)
+        .then((ipfsHash) => {
+            this.loading = false;
+            // set the background image to be the ipfs hash
+        })
+        .catch((err) => {
+            this.loading = false;
+            // display a fail some place
+        });
     };
     reader.onerror = (error) => {
+        this.loading = false;
         this.error = error;
     };
 }
-
-// _buffer(file){
-//     let reader = new window.FileReader()
-//     reader.onloadend = () => this._saveToIpfs(reader)
-//     reader.onerror = (error) => {
-//         this.error = error
-//     };
-//     reader.readAsArrayBuffer(file)
-// }
-// _saveToIpfs(data){
-//     console.log(data.result)
-// }
 } window.customElements.define(DisplayUploadFile.is, DisplayUploadFile);
 </script>
 </dom-module>
