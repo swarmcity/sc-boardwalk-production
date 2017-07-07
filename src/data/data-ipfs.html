@@ -38,6 +38,23 @@ this.$.ipfs.postFile()
 */
     postFile(base64) {
         return new Promise((resolve, reject) => {
+            const file = base64
+            this._providers()
+            .then((providers) => {
+                return providers
+            })
+            .then((providers) => {
+                // check the health of the first provider if it passes return if not check the next
+                // convert base64 to array buffer
+                // send to ipfs
+            })
+           .then((providers) => {
+                // check the hash is the right length
+                // resolve the hash
+            })
+            .catch((err) => {
+                reject(Error(err));
+            });
         });
     }
 
