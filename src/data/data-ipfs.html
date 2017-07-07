@@ -1,0 +1,71 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+
+<!--
+An element that provides simple access to local storage. 
+An acocunt is a javscript object representing the users account.
+Within the account data we will save the encrypted vault.
+All functions return a promise.
+
+HTML Example:
+```
+<data-ipfs id="ipfs"></data-ipfs>
+```
+JS Example
+```
+this.$.ipfs.postFile()
+.then((ipfsHash) => {
+    console.log(ipfsHash) 
+})
+```
+
+-->
+
+<dom-module id="data-ipfs">
+    <script>
+        class DataIPFS extends Polymer.Element {
+            static get is() { return 'data-ipfs'; }
+
+/**
+* sends an image file to an IPFS provider
+* @param {base64} base64 of the object to send to an IPFS provider.
+* @return {ipfsHash} returns saved acocunt.
+*/
+    postFile(base64) {
+        return new Promise((resolve, reject) => {
+        });
+    }
+
+/**
+* returns
+* @return {object} returns an array of objcts containing providers.
+*/
+    _providers() {
+        const providers = [
+            {
+                id: 1,
+                api: 'https://ipfs.infura.io/ipfs/',
+                rpc: 'https://ipfs.infura.io:5001/api/v0/',
+            },
+            {
+                id: 1,
+                api: 'https://ipfs.io/ipfs/',
+                rpc: 'https://ipfs.io:5001/api/v0/',
+            },
+            {
+                id: 1,
+                api: 'https://ipfs.swarm.city/ipfs/',
+                rpc: 'https://ipfs.swarm.city:5001/api/v0',
+            },
+        ];
+        return providers;
+    }
+
+        } window.customElements.define(DataIPFS.is, DataIPFS);
+    </script>
+</dom-module>
