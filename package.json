@@ -16,8 +16,11 @@
     "eslint-config-google": "^0.7.0",
     "eslint-plugin-html": "^2.0.0",
     "istanbul": "^0.4.5",
+    "json-loader": "^0.5.4",
     "netlify-cli": "^1.2.2",
-    "polymer-cli": "^1.1.0"
+    "polymer-cli": "^1.1.0",
+    "truffle-contract": "^1.1.6",
+    "web3": "^0.18.2"
   },
   "scripts": {
     "lint": "npm run lint:javascript",
