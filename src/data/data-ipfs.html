@@ -24,10 +24,23 @@ this.$.ipfs.postFile()
 -->
 
 <dom-module id="data-ipfs">
+    <template>
+        <iron-ajax
+            id="ipfs"
+            method="POST"
+            url="https://ipfs.io/api/v0/add"
+            headers='{"Content-Type": "multipart/form-data"}' 
+            loading="{{loading}}"
+            handle-as="json"
+            body="{{postBody}}"
+            on-response="_handleResponse"
+            debounce-duration="300">
+        </iron-ajax>
+    </template>
+
     <script>
         class DataIPFS extends Polymer.Element {
             static get is() { return 'data-ipfs'; }
-
 /**
 * sends an image file to an IPFS provider
 * @param {base64} base64 of the object to send to an IPFS provider.
@@ -41,9 +54,12 @@ this.$.ipfs.postFile()
                 return Promise.all([this._healthCheck(providers), this._buffer(file)]);
             })
             .then((data) => {
-                const provider = data[0].rpc;
-                const buffer = data[1];
-                return this._sendFile(provider, buffer);
+                console.log('FIRE-A')
+                // const provider = data[0].rpc;
+                // console.log('FIRE-1')
+                // const buffer = data[1];
+                console.log('FIRE-2')
+                return this._sendFile();
             })
             .then((ipfsHash) => {
                 const len = encodeURI(ipfsHash).split(/%..|./).length - 1;
@@ -67,7 +83,9 @@ this.$.ipfs.postFile()
 */
 _sendFile(provider, buffer) {
     return new Promise((resolve, reject) => {
-        
+        console.log('FIRE-B')
+        this.getBody = buffer
+        this.$.ajax.generateRequest();
     });
 }
 
@@ -78,7 +96,7 @@ _sendFile(provider, buffer) {
 */
     _healthCheck(providers) {
         return new Promise((resolve, reject) => {
-        
+        resolve()
         });
     }
 /**
@@ -123,6 +141,11 @@ _sendFile(provider, buffer) {
         ];
         resolve(providers);
         });
+    }
+
+
+    _handleResponse(event){
+        console.log(event)
     }
 
         } window.customElements.define(DataIPFS.is, DataIPFS);
