@@ -35,16 +35,13 @@ This code may only be used under the license found at https://github.com/swarmci
         // Name ofthe function totest
         test('Image Exists', () => {
             // Call the function
-            return fixture('fixture-one').getHash('QmW2WQi7j6c7UgJTarActp7tDNikE4B2qXtFCfLPdsgaTQ/cat.jpg','img')
+            return fixture('fixture-one')
+.getHash('QmW2WQi7j6c7UgJTarActp7tDNikE4B2qXtFCfLPdsgaTQ/cat.jpg', 'img')
             .then((res) => {
                 // Test the response
                 assert.equal(res, 'https://ipfs.infura.io/ipfs/QmW2WQi7j6c7UgJTarActp7tDNikE4B2qXtFCfLPdsgaTQ/cat.jpg');
             });
         });
-
-
-
-
     });
     </script>
 </body>
