@@ -44,7 +44,7 @@
   },
   "scripts": {
     "lint": "npm run lint:javascript",
-    "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
+    "lint:javascript": "eslint . --ext js,html",
     "test": "polymer test",
     "test:integration": "polymer build",
     "build": "polymer build",
