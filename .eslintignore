@@ -3,6 +3,7 @@ truffle.js
 webpack.config.js
 bower_components/
 build/
+test/contracts/
 node_modules/
 .netlify
 firebase.json
