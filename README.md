@@ -81,6 +81,11 @@ netlify deploy, set the deploy directory to build/production
     npm install netlify-cli -g
     netlify deploy
 
+## Truffle compile/deploy/test
+
+    truffle migrate --reset --compile-all
+    truffle test ./test/contracts/arcTokenTest.js
+
 ## Browser Testing
 
 [![BrowserStack](http://i.imgur.com/Pg0utrk.png)](http://browserstack.com/)
