@@ -44,6 +44,20 @@ This code may only be used under the license found at https://github.com/swarmci
           navigator.serviceWorker.register(baseUrl + 'service-worker.js');
         });
       }
+
+      var touchStartY;
+      window.addEventListener('touchstart', (event) => {
+        touchStartY = event.touches[0].clientY;
+      }, false);
+
+      window.addEventListener('touchmove', (event) => {
+        var touchNowY = event.touches[0].clientY;
+        if (window.pageYOffset == 0
+        && touchNowY > touchStartY
+        || window.pageYOffset < 0) {
+          event.preventDefault();
+        }
+      }, false);
     </script>
     <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
     <style>
