@@ -7,6 +7,7 @@
     "app-layout": "PolymerElements/app-layout#2.0-preview",
     "app-route": "PolymerElements/app-route#2.0-preview",
     "neon-animation": "PolymerElements/neon-animation#2.0-preview",
+    "iron-ajax": "PolymerElements/iron-ajax#2.0-preview",
     "iron-selector": "PolymerElements/iron-selector#2.0-preview",
     "iron-pages": "PolymerElements/iron-pages#2.0-preview",
     "web-animations-js": "^2.2.5",
