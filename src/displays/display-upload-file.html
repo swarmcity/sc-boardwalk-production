@@ -22,7 +22,14 @@ The following custom properties and mixins are available for styling:
 
 | Custom property | Description | Default |
 | --- | --- | --- |
-| `--upload-file` | Mixin applied to the enter here button | `{}` |
+| `--display-upload-file-height | Mixin applied to the width of the componant | `135px` |
+| `--display-upload-file-width | Mixin applied to the enter here button | `135px` |
+| `--display-upload-file-button-right | Mixin applied to position the button | `-10px` |
+| `--display-upload-file-button-bottom | Mixin applied to position the button | `-10px` |
+| `--display-upload-file-button-height | Mixin applied to the height of the button | `45px` |
+| `--display-upload-file-button-width | Mixin applied to the width of the button | `45px` |
+| `--display-upload-file-button-border-color | Mixin applied to the border color of the button  | `#979797` |
+| `--display-upload-file-button-backgrond-color| Mixin applied to the buttons background color | `#59B2FC` |
 
 -->
 <dom-module id="display-upload-file">
@@ -31,38 +38,47 @@ The following custom properties and mixins are available for styling:
             :host {
                 display: block;
             }
-            .fileContainer {
-                overflow: hidden;
-                position: relative;
-                background: red;
-                border-radius: .5em;
-                padding: .5em;
+            input {
+                position:relative;
+                top: -200px;
+                left: -200px;
             }
-
-            .fileContainer input {
-                cursor: inherit;
-                display: block;
-                filter: alpha(opacity=0);
-                min-height: 100%;
-                min-width: 100%;
-                opacity: 0;
+            .container{
+                display:block;
+                height: var(--display-upload-file-height, 135px);	
+                width: var(--display-upload-file-width, 135px);
+                position:relative;
+            }
+            .button {
+                overflow: hidden;
                 position: absolute;
-                right: 0;
-                top: 0;
                 cursor: pointer;
+                right: var(--display-upload-file-button-right, -10px); 
+                bottom: var(--display-upload-file-button-bottom, -10px); 
+                height: var(--display-upload-file-button-height, 45px);	
+                width: var(--display-upload-file-button-width, 45px);
+                border-radius: 50%;	
+                border: 1px solid var(--display-upload-file-button-border-color, #979797);
+                background-color: var(--display-upload-file-button-backgrond-color, #59B2FC);
             }
             .preview{
-                max-width:120px;
-                max-height:120px;
+                height: var(--display-upload-file-height, 135px);	
+                width: var(--display-upload-file-width, 135px);
                 border-radius: 50%;
+                border: 1px solid var(--display-upload-file-button-border-color, #979797);;
+                background-color: #D8D8D8;
             }
         </style>
         <display-internationalization language="{{language}}"></display-internationalization>
         <data-ipfs id="ipfs"></data-ipfs>
-        <img src="{{preview}}" class="preview">  
-        <label class="fileContainer">
-            <input type="file" on-change="_getFile"/>
-        </label>
+        
+        <div class="container">
+            <img src="{{preview}}" class="preview">  
+            <label class="button">
+                <input type="file" on-change="_getFile"/>
+            </label>
+        </div>
+
         </template>
     <script>
 
@@ -72,10 +88,23 @@ The following custom properties and mixins are available for styling:
     ) {
         static get is() { return 'display-upload-file';}
         static get properties() { return {
+        /**
+        * Loading indicates if the componant is loading
+        *
+        * @type {Boolean}
+        */
             loading: {
                 type: Boolean,
                 value: false,
                 notify: true,
+            },
+        /**
+        * Preview is a src path for the default preview image
+        *
+        * @type {Boolean}
+        */
+            preview: {
+                type: String,
             },
         };
     }
