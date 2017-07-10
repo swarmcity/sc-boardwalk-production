@@ -34,17 +34,15 @@ This code may only be used under the license found at https://github.com/swarmci
 suite('Query Selector Tests', function() {
     // Describe the test in plain english
     test('Container Exists', function() {
-            var test = fixture('fixture-one').shadowRoot
-            .querySelector('.container');
-            assert.exists(test);
+        var test = fixture('fixture-one').shadowRoot
+        .querySelector('.container');
+        assert.exists(test);
     });
-
-        test('Perview button exist', function() {
-            var test = fixture('fixture-one').shadowRoot
-            .querySelector('.preview');
-            assert.exists(test);
+    test('Perview button exist', function() {
+        var test = fixture('fixture-one').shadowRoot
+        .querySelector('.preview');
+        assert.exists(test);
     });
-
 });
 </script>
 </body>
