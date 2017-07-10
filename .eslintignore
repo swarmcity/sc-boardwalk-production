@@ -1,0 +1,13 @@
+migrations/*.js
+truffle.js
+webpack.config.js
+bower_components/
+build/
+test/contracts/
+node_modules/
+.netlify
+firebase.json
+firebase-debug.log
+.firebaserc
+service-worker.js
+sw-precache-config.js
