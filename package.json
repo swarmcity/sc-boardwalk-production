@@ -48,7 +48,9 @@
     "test": "polymer test",
     "test:integration": "polymer build",
     "build": "polymer build",
-    "deploy": "netlify deploy -p build/production"
+    "deploy": "netlify deploy -p build/production",
+    "buildcontracts": "truffle migrate --reset --compile-all",
+    "testcontracts": "truffle test ./test/contracts/arcTokenTest.js"
   },
   "dependencies": {
     "redux": "^3.7.1"
