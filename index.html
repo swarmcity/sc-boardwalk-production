@@ -52,7 +52,8 @@ This code may only be used under the license found at https://github.com/swarmci
 
       window.addEventListener('touchmove', (event) => {
         var touchNowY = event.touches[0].clientY;
-        if (window.pageYOffset == 0 && touchNowY > touchStartY 
+        if (window.pageYOffset == 0
+        && touchNowY > touchStartY
         || window.pageYOffset < 0) {
           event.preventDefault();
         }
