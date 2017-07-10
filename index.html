@@ -45,14 +45,15 @@ This code may only be used under the license found at https://github.com/swarmci
         });
       }
 
-      var touchStartY
-      window.addEventListener("touchstart", (event) => {
+      var touchStartY;
+      window.addEventListener('touchstart', (event) => {
         touchStartY = event.touches[0].clientY;
-      }, false)
+      }, false);
 
-      window.addEventListener("touchmove", (event) => {
+      window.addEventListener('touchmove', (event) => {
         var touchNowY = event.touches[0].clientY;
-        if (window.pageYOffset == 0 && touchNowY > touchStartY || window.pageYOffset < 0) {
+        if (window.pageYOffset == 0 && touchNowY > touchStartY 
+        || window.pageYOffset < 0) {
           event.preventDefault();
         }
       }, false);
