@@ -1,0 +1,139 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="display-internationalization.html">
+<!--
+
+Example:
+```
+<display-upload-file></display-upload-file>
+```
+
+### Styling
+
+Style the button with CSS as you would a normal DOM element.
+
+The following custom properties and mixins are available for styling:
+
+| Custom property | Description | Default |
+| --- | --- | --- |
+| `--display-upload-file-height | Mixin applied to the width of the componant | `135px` |
+| `--display-upload-file-width | Mixin applied to the enter here button | `135px` |
+| `--display-upload-file-button-right | Mixin applied to position the button | `-10px` |
+| `--display-upload-file-button-bottom | Mixin applied to position the button | `-10px` |
+| `--display-upload-file-button-height | Mixin applied to the height of the button | `45px` |
+| `--display-upload-file-button-width | Mixin applied to the width of the button | `45px` |
+| `--display-upload-file-button-border-color | Mixin applied to the border color of the button  | `#979797` |
+| `--display-upload-file-button-backgrond-color| Mixin applied to the buttons background color | `#59B2FC` |
+
+-->
+<dom-module id="display-upload-file">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+            input {
+                position:relative;
+                top: -200px;
+                left: -200px;
+            }
+            .container{
+                display:block;
+                height: var(--display-upload-file-height, 135px);	
+                width: var(--display-upload-file-width, 135px);
+                position:relative;
+            }
+            .button {
+                overflow: hidden;
+                position: absolute;
+                cursor: pointer;
+                right: var(--display-upload-file-button-right, -10px); 
+                bottom: var(--display-upload-file-button-bottom, -10px); 
+                height: var(--display-upload-file-button-height, 45px);	
+                width: var(--display-upload-file-button-width, 45px);
+                border-radius: 50%;	
+                border: 1px solid var(--display-upload-file-button-border-color, #979797);
+                background-color: var(--display-upload-file-button-backgrond-color, #59B2FC);
+            }
+            .preview{
+                height: var(--display-upload-file-height, 135px);	
+                width: var(--display-upload-file-width, 135px);
+                border-radius: 50%;
+                border: 1px solid var(--display-upload-file-button-border-color, #979797);;
+                background-color: #D8D8D8;
+            }
+        </style>
+        <display-internationalization language="{{language}}"></display-internationalization>
+        
+        <div class="container">
+            <img src="{{preview}}" class="preview">  
+            <label class="button">
+                <input type="file" on-change="_getFile"/>
+            </label>
+        </div>
+
+        </template>
+    <script>
+
+    class DisplayUploadFile extends Polymer.mixinBehaviors([
+        Polymer.AppLocalizeBehavior],
+        Polymer.Element
+    ) {
+        static get is() { return 'display-upload-file';}
+        static get properties() { return {
+        /**
+        * Loading indicates if the componant is loading
+        *
+        * @type {Boolean}
+        */
+            loading: {
+                type: Boolean,
+                value: false,
+                notify: true,
+            },
+        /**
+        * Preview is a src path for the default preview image
+        *
+        * @type {Boolean}
+        */
+            preview: {
+                type: String,
+            },
+        };
+    }
+
+
+/**
+* Fired when the user selects a file
+* @param {event} event The event from the on-change
+*/
+_getFile(event) {
+    this.loading = true;
+    event.stopPropagation();
+    event.preventDefault();
+    const file = event.target.files[0];
+    this._base64(file);
+}
+/**
+* Converts afile to base 64 for transport
+* @param {file} file is a file with type of file
+*/
+_base64(file) {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+        this.preview = reader.result;
+    };
+    reader.onerror = (error) => {
+        this.loading = false;
+        this.error = error;
+    };
+}
+} window.customElements.define(DisplayUploadFile.is, DisplayUploadFile);
+</script>
+</dom-module>
