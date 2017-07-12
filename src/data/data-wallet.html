@@ -33,11 +33,12 @@ this.$.wallet.makeAccount()
 
 /**
 * Make a new account
+* @param {password} password used to make account
 * @return {Object} An oject that includes the public key and encrypted vault
 */
             makeAccount(password) {
                 return new Promise((resolve, reject) => {
-                    this._newAccount()
+                    this._newAccount();
                     // .then((keys) => {
                     //     return (_encryptAccount);
                     // })
@@ -53,8 +54,7 @@ this.$.wallet.makeAccount()
 // Please do not call the below Private functions from outside this file.
             _newAccount() {
                 return new Promise((resolve, reject) => {
-                    // returns a public and private key 
-                    console.log('XXXXXXXX')
+                    // returns a public and private key
                 });
             }
             _encryptAccount(privateKey, password) {
@@ -63,6 +63,6 @@ this.$.wallet.makeAccount()
                 });
             }
 
-        } window.customElements.define(DataWallet.is,DataWallet);
+        } window.customElements.define(DataWallet.is, DataWallet);
     </script>
 </dom-module>
