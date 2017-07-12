@@ -13,8 +13,10 @@ This code may only be used under the license found at https://github.com/swarmci
     Displays and shared styles only
 -->
 <link rel="import" href="../displays/display-enter-button.html">
-<link rel="import" href="../displays/display-internationalization.html">
+<link rel="import" href="../displays/display-language.html">
 <link rel="import" href="../shared-styles.html">
+
+<link rel="import" href="../data/data-wallet.html">
 <!--
     Animation pack, only load the animations you need for this page.
 -->
@@ -147,10 +149,20 @@ This code may only be used under the license found at https://github.com/swarmci
     .bottom-container[wide-layout] {
         padding:100px;
     }
+    display-language {
+        position: fixed;
+        top: 28px;
+        right: 28px;
+        text-transform: uppercase;
+        border-bottom: 1px solid black;
+        font-size: 11px;
+        font-weight: 700;
+        cursor:pointer;
+    }
 
     </style>
     <app-location route="{{route}}"></app-location>
-    <display-internationalization language="{{language}}"></display-internationalization>
+    <display-language language="{{language}}" selected path="{{path}}"></display-language>
     <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
     <div class="top-container" wide-layout$="{{wide}}">
         <div>
@@ -235,12 +247,14 @@ This code may only be used under the license found at https://github.com/swarmci
         super.connectedCallback();
         this.loadResources(this.resolveUrl('../text-translations.json'));
     }
+
     _path() {
         if(this.path != null) {
             this.set('route.path', this.path);
         }
         this.path = null;
     }
+
     } window.customElements.define(PageWelcome.is, PageWelcome);
 </script>
 </dom-module>

@@ -1,0 +1,68 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<script src="../scripts/swarm-city.min.js" async></script>
+
+<!--
+An element that provides simple access to local storage. 
+An acocunt is a javscript object representing the users account.
+Within the account data we will save the encrypted vault.
+All functions return a promise.
+
+HTML Example:
+```
+<data-wallet id="wallet"></data-wallet>
+```
+JS Example
+```
+this.$.wallet.makeAccount()
+.then((acocuntExists) => {
+    console.log(acocuntExists) // true/false
+})
+```
+
+-->
+
+<dom-module id="data-wallet">
+    <script>
+        class DataWallet extends Polymer.Element {
+            static get is() { return 'data-wallet'; }
+
+/**
+* Make a new account
+* @param {password} password used to make account
+* @return {Object} An oject that includes the public key and encrypted vault
+*/
+            makeAccount(password) {
+                return new Promise((resolve, reject) => {
+                    this._newAccount();
+                    // .then((keys) => {
+                    //     return (_encryptAccount);
+                    // })
+                    // .then((encAccount) => {
+                    //     resolve({});
+                    // })
+                    // .catch((err) => {
+                    //     reject(Error(err));
+                    // });
+                });
+            }
+
+// Please do not call the below Private functions from outside this file.
+            _newAccount() {
+                return new Promise((resolve, reject) => {
+                    // returns a public and private key
+                });
+            }
+            _encryptAccount(privateKey, password) {
+                return new Promise((resolve, reject) => {
+                    // returns an encrypted vault
+                });
+            }
+
+        } window.customElements.define(DataWallet.is, DataWallet);
+    </script>
+</dom-module>

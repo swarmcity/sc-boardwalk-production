@@ -9,36 +9,66 @@ This code may only be used under the license found at https://github.com/swarmci
 
 Example:
 ```
-<display-internationalization></display-internationalization>
+<display-language></display-language>
 ```
 
 -->
-<dom-module id="display-internationalization">
+<dom-module id="display-language">
     <template>
         <style>
             :host {
                 display: block;
             }
+            .big-btn{
+                @apply(--big-btn)
+            }
         </style>
         <data-local-storage id="localStorage"></data-local-storage>
+        <template is="dom-if" if="{{selected}}">
+            <div on-click="_routeLanguages">
+                {{language}}
+            </div>
+        </template>
+        <template is="dom-if" if="{{buttons}}">
+            <template is="dom-repeat" items="{{languages}}">
+                <div class="big-btn">
+                    {{item}}
+                </div>
+            </template> 
+        </template>
     </template>
     <script>
 
-class DisplayInternationalization extends Polymer.Element {
-        static get is() { return 'display-internationalization';}
+class DisplayLanguage extends Polymer.Element {
+        static get is() { return 'display-language';}
         static get properties() { return {
             language: {
                 type: String,
                 notify: true,
             },
-            select: {
-                type: String,
+            selected: {
+                type: Boolean,
                 value: false,
+            },
+            buttons: {
+                type: Boolean,
+                value: false,
+            },
+            path: {
+                type: String,
+                value: null,
+                notify: true,
             },
         };
     }
     connectedCallback() {
         super.connectedCallback();
+
+        this._allLanguages()
+        .then((languages) => {
+            this.languages = languages;
+        });
+
         this.$.localStorage.accountExists()
         .then((account) => {
             if(!account.language) {
@@ -62,6 +92,11 @@ class DisplayInternationalization extends Polymer.Element {
             this.language = 'en';
         });
     }
+
+    _routeLanguages() {
+        this.path = 'languages/';
+    }
+
     _translationExists(language) {
         return new Promise((resolve, reject) => {
             const xobj = new XMLHttpRequest();
@@ -70,6 +105,7 @@ class DisplayInternationalization extends Polymer.Element {
             xobj.onreadystatechange = () => {
                 if (xobj.readyState == 4 && xobj.status == '200') {
                     const json = JSON.parse(xobj.responseText);
+                    this.languages = json;
                     const keys = Object.keys(json);
                     const arr = keys.indexOf(language);
                     if(arr != -1) {
@@ -83,7 +119,28 @@ class DisplayInternationalization extends Polymer.Element {
         });
     }
 
-} window.customElements.define(DisplayInternationalization.is,
-DisplayInternationalization);
+        _allLanguages() {
+            return new Promise((resolve, reject) => {
+                const xobj = new XMLHttpRequest();
+                xobj.overrideMimeType('application/json');
+                xobj.open('GET', '../src/text-translations.json', true);
+                xobj.onreadystatechange = () => {
+                    if (xobj.readyState == 4 && xobj.status == '200') {
+                        const json = JSON.parse(xobj.responseText);
+                        let locales = [];
+                        for (var key in json) {
+                            if (!json.hasOwnProperty(key)) continue;
+                            var obj = json[key];
+                            locales.push(obj.locale);
+                        }
+                        resolve(locales);
+                    }
+                };
+            xobj.send(null);
+        });
+    }
+
+} window.customElements.define(DisplayLanguage.is,
+DisplayLanguage);
 </script>
 </dom-module>
