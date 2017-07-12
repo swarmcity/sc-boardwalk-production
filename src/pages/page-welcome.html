@@ -162,7 +162,6 @@ This code may only be used under the license found at https://github.com/swarmci
 
     </style>
     <app-location route="{{route}}"></app-location>
-    <data-wallet id="wallet"></data-wallet>
     <display-language language="{{language}}" selected path="{{path}}"></display-language>
     <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
     <div class="top-container" wide-layout$="{{wide}}">
@@ -247,7 +246,6 @@ This code may only be used under the license found at https://github.com/swarmci
     connectedCallback() {
         super.connectedCallback();
         this.loadResources(this.resolveUrl('../text-translations.json'));
-        this.$.wallet.makeAccount();
     }
 
     _path() {
