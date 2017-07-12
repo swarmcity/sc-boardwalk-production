@@ -4,7 +4,8 @@
         "locale": "English",
         "name": "Swarm City",
         "welcome": "Welcome to",
-        "enter here": "enter here"
+        "enter here": "enter here",
+        "Choose a language": "Choose a language"
         },
         
     "cn": {
@@ -12,41 +13,47 @@
         "locale": "中文",
         "name": "一群市",
         "welcome": "欢迎来到",
-        "enter here": "在这里输入"
+        "enter here": "在这里输入",
+        "Choose a language": "选择一种语言"
         },
     "fr": {
         "language": "fr",
         "locale": "Français",
         "name": "Swarm City",
         "welcome": "Bienvenue à",
-        "enter here": "entrez ici"
+        "enter here": "entrez ici",
+        "Choose a language": "Choisissez une langue"
         },
     "nl": {
         "language": "nl",
         "locale": "Nederlands",
         "name": "Swarm City",
         "welcome": "Welkom in",
-        "enter here": "kom binnen"
+        "enter here": "kom binnen",
+        "Choose a language": "Kies een taal"
         },
     "ru": {
         "language": "ru",
         "locale": "Pусский",
         "name": "Swarm City",
         "welcome": "Добро пожаловать",
-        "enter here": "регистрация здесь"
+        "enter here": "регистрация здесь",
+        "Choose a language": "Выберите язык"
         },
     "de": {
         "language": "de",
         "locale": "Deutsche",
         "name": "Swarm City",
         "welcome": "Herzlich willkommen bei",
-        "enter here": "hier beitreten"
+        "enter here": "hier beitreten",
+        "Choose a language": "Wähle eine Sprache"
         },
     "es": {
         "language": "es",
         "locale": "Español",
         "name": "Swarm City",
         "welcome": "Bienvenido a",
-        "enter here": "accede aquí"
+        "enter here": "accede aquí",
+        "Choose a language": "Elija un idioma"
         }
 }

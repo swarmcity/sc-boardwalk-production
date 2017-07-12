@@ -30,11 +30,11 @@ Example:
             </div>
         </template>
         <template is="dom-if" if="{{buttons}}">
-            <template is="dom-repeat" items="{{languages}}">
-                <div class="big-btn">
+            <template is="dom-repeat" items="{{locales}}">
+                <div class="big-btn" on-click="_selectLanguage">
                     {{item}}
                 </div>
-            </template> 
+            </template>   
         </template>
     </template>
     <script>
@@ -59,18 +59,19 @@ class DisplayLanguage extends Polymer.Element {
                 value: null,
                 notify: true,
             },
+            route: {
+                type: Object,
+                observer: '_routeChanged',
+            },
         };
     }
     connectedCallback() {
         super.connectedCallback();
 
-        this._allLanguages()
-        .then((languages) => {
-            this.languages = languages;
-        });
-
+        this._allLanguages();
         this.$.localStorage.accountExists()
         .then((account) => {
+            this.account = account;
             if(!account.language) {
                 const str = navigator.language || navigator.userLanguage;
                 const res = str.split('-');
@@ -93,8 +94,23 @@ class DisplayLanguage extends Polymer.Element {
         });
     }
 
+    _routeChanged() {
+        this.$.localStorage.accountExists()
+        .then((account) => {
+            this.language = account.language;
+        });
+    }
+
+    _selectLanguage(event) {
+        let account = this.account;
+        account.language = this.iso[event.model.__data.index];
+        this.$.localStorage.saveAccount(account);
+        this.language = this.iso[event.model.__data.index];
+        this.path = '/';
+    }
+
     _routeLanguages() {
-        this.path = 'languages/';
+        this.path = 'language/';
     }
 
     _translationExists(language) {
@@ -127,13 +143,15 @@ class DisplayLanguage extends Polymer.Element {
                 xobj.onreadystatechange = () => {
                     if (xobj.readyState == 4 && xobj.status == '200') {
                         const json = JSON.parse(xobj.responseText);
-                        let locales = [];
-                        for (var key in json) {
-                            if (!json.hasOwnProperty(key)) continue;
-                            var obj = json[key];
-                            locales.push(obj.locale);
+                        const count = (Object.keys(json).length);
+                        this.locales = [];
+                        this.iso = [];
+                        var i;
+                        for (i = 0; i < count; i++) {
+                        this.locales.push(json[Object.keys(json)[i]].locale);
+                        this.iso.push(json[Object.keys(json)[i]].language);
                         }
-                        resolve(locales);
+                        resolve(this.locales);
                     }
                 };
             xobj.send(null);
