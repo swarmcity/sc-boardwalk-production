@@ -12,11 +12,8 @@ This code may only be used under the license found at https://github.com/swarmci
 <!--
     Displays and shared styles only
 -->
-<link rel="import" href="../displays/display-enter-button.html">
 <link rel="import" href="../displays/display-language.html">
 <link rel="import" href="../shared-styles.html">
-
-<link rel="import" href="../data/data-wallet.html">
 <!--
     Animation pack, only load the animations you need for this page.
 -->
@@ -159,6 +156,12 @@ This code may only be used under the license found at https://github.com/swarmci
         font-weight: 700;
         cursor:pointer;
     }
+    .btn-enter{
+        @apply --big-btn;
+    }
+    .btn-enter:active{
+        transform: scale(0.97,0.97);
+    }
 
     </style>
     <app-location route="{{route}}"></app-location>
@@ -171,10 +174,7 @@ This code may only be used under the license found at https://github.com/swarmci
             <h1>{{localize('welcome')}}<span> {{localize('name')}}<span></h1>
         </div>
         <div>
-            <display-enter-button 
-                class="big-btn"
-                path="{{path}}">
-            </display-enter-button>
+            <button type="button" autofocus class="btn-enter" on-click="_btnClick" on-KeyPress="_btnKeyPress">{{localize('enter here')}}</button>
         </div>
     </div>
     <div class="middle-container">
