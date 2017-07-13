@@ -43,6 +43,7 @@
     "polymer-cli": "^1.1.0",
     "polymer-webpack-loader": "^1.0.0",
     "style-loader": "^0.13.1",
+    "truffle":"^3.4.4",
     "truffle-contract": "^1.1.6",
     "uglify-js": "github:mishoo/UglifyJS2#harmony",
     "web3": "^0.18.2",
