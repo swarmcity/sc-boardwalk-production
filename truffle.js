@@ -8,7 +8,7 @@ module.exports = {
       network_id: '*',
     },
     ropsten: {
-      host: "localhost",
+      host: "192.168.1.4",
       port: 8545,
       gas: 4710000,
       network_id: "*"
