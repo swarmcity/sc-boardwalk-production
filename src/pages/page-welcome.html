@@ -162,11 +162,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
     </style>
     <app-location route="{{route}}"></app-location>
-    <display-language 
-        selected 
-        language="{{language}}" 
-        path="{{path}}" 
-        route="[[route]]">
+    <display-language selected path="{{path}}">
     </display-language>
     <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
     <div class="top-container" wide-layout$="{{wide}}">
@@ -227,6 +223,10 @@ This code may only be used under the license found at https://github.com/swarmci
             path: {
                 type: String,
                 observer: '_path',
+            },
+            language: {
+                type: String,
+                statePath: 'language',
             },
             animationConfig: {
             value: function() {

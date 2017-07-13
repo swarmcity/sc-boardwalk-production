@@ -7,6 +7,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../data/data-local-storage.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="display-language.html">
+<link rel="import" href="../redux-state.html">
 <!--
 
 Example:
@@ -43,16 +44,19 @@ The following custom properties and mixins are available for styling:
         <button type="button" autofocus class="btn-enter" on-click="_btnClick" on-KeyPress="_btnKeyPress">{{localize('enter here')}}</button>
     </template>
     <script>
-
-    class DisplayEnterButton extends Polymer.mixinBehaviors([
+    class DisplayEnterButton extends new ReduxMixin(Polymer.mixinBehaviors([
         Polymer.AppLocalizeBehavior],
         Polymer.Element
-    ) {
+        )) {
         static get is() { return 'display-enter-button';}
         static get properties() { return {
             path: {
                 type: String,
                 notify: true,
+            },
+            language: {
+                type: String,
+                statePath: 'language',
             },
         };
     }
