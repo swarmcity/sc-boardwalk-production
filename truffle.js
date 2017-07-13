@@ -26,4 +26,5 @@ module.exports = {
       network_id: "4"
     },
   },
+  contracts_build_directory: "src/contracts/",
 };
