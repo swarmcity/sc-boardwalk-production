@@ -23,6 +23,12 @@ Example:
             .big-btn{
                 @apply(--big-btn)
             }
+            .big-btn:active{
+                transform: scale(0.97,0.97);
+            }
+            .big-btn:hover{
+                color: black;
+            }
         </style>
         <data-local-storage id="localStorage"></data-local-storage>
         <template is="dom-if" if="{{selected}}">
