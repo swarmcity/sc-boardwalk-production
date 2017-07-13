@@ -30,16 +30,6 @@ This code may only be used under the license found at https://github.com/swarmci
 </test-fixture>
 <script>
     suite('Query Selector Tests', function() {
-        test('does the custom component exist', function() {
-            var test = fixture('fixture-one').shadowRoot
-            .querySelector('.big-btn');
-            assert.exists(test, 'foo is neither `null` nor `undefined`');
-        });
-        test('does the custom component not exist', function() {
-            var test = fixture('fixture-one').shadowRoot
-            .querySelector('.DOES_NOT_EXIST');
-            assert.notExists(test);
-        });
         test('H2 font size is 30px', function() {
             var test = fixture('fixture-one')
             .shadowRoot.querySelector('h2');
