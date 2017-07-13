@@ -68,7 +68,7 @@ _btnClick() {
     this.$.localStorage.accountExists()
     .then((account) => {
         if(!account.vault) {
-            this.path = 'new/';
+            this.path = 'hashtag-list/';
         } else {
             this.path = 'login/';
             }
