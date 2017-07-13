@@ -50,17 +50,26 @@ The following custom properties and mixins are available for styling:
         )) {
         static get is() { return 'display-enter-button';}
         static get properties() { return {
+        /**
+        * Notifies the parent of the path to navigate to
+        *
+        * @type {String}
+        */
             path: {
                 type: String,
                 notify: true,
             },
+        /**
+        * Gets the path from redux
+        *
+        * @type {String}
+        */
             language: {
                 type: String,
                 statePath: 'language',
             },
         };
     }
-
 /**
 * If the user has an account change route on button click
 */
@@ -86,6 +95,7 @@ _btnKeyPress(event) {
 }
     connectedCallback() {
         super.connectedCallback();
+        // Load translation file
         this.loadResources(this.resolveUrl('../text-translations.json'));
     }
 

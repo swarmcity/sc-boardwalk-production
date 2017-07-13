@@ -80,6 +80,11 @@ this.$.storage.accountExists()
             }
 
 // Please do not call the below Private functions from outside this file.
+
+/**
+* Reads the acocunt from local storage
+* @return {account} account is either the acount object or false
+*/
             _read() {
                 return new Promise((resolve, reject) => {
                     if (typeof(Storage) !== 'undefined') {
@@ -94,6 +99,12 @@ this.$.storage.accountExists()
                     }
                 });
             }
+
+/**
+* Writes the acocunt to local storage
+* @return {account} account object
+* @param {data} data represents the account object
+*/
             _write(data) {
                 return new Promise((resolve, reject) => {
                     const json = JSON.stringify(data);
@@ -105,6 +116,10 @@ this.$.storage.accountExists()
                     }
                 });
             }
+/**
+* Deletes the acocunt to local storage
+* @return {boolean} boolean returns true when the delete suceeded
+*/
             _delete() {
                 return new Promise((resolve, reject) => {
                     if (typeof(Storage) !== 'undefined') {

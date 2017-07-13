@@ -78,7 +78,8 @@ Example:
 
     connectedCallback() {
         super.connectedCallback();
-
+        // Load translation file
+        this.loadResources(this.resolveUrl('../text-translations.json'));
         // Do we have an account inlocal storage?
         this.$.localStorage.accountExists()
         .then((account) => {

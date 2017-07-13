@@ -89,6 +89,7 @@ This code may only be used under the license found at https://github.com/swarmci
     
     connectedCallback() {
         super.connectedCallback();
+        // Load translations
         this.loadResources(this.resolveUrl('../text-translations.json'));
     }
     _path() {
