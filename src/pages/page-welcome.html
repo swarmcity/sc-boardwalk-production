@@ -162,7 +162,8 @@ This code may only be used under the license found at https://github.com/swarmci
 
     </style>
     <app-location route="{{route}}"></app-location>
-    <display-language language="{{language}}" selected path="{{path}}"></display-language>
+    <display-language selected path="{{path}}">
+    </display-language>
     <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
     <div class="top-container" wide-layout$="{{wide}}">
         <div>
@@ -177,33 +178,33 @@ This code may only be used under the license found at https://github.com/swarmci
         </div>
     </div>
     <div class="middle-container">
-        <h2>Swarm City is a decentralized commerce platform.</h2>
-        <a href="http://zly.mjo.mybluehost.me/thisis" target="_blank">tell me more</a>
+        <h2>{{localize('Swarm City is a decentralized commerce platform.')}}</h2>
+        <a href="http://zly.mjo.mybluehost.me/thisis" target="_blank">{{localize('tell me more')}}</a>
         <div>
-            <div><div class="image-one"></div>Enabled by the SWT token, running on the Ethereum blockchain</div>
-            <div><div class="image-two"></div> locally on your device, no central database</div>
-            <div><div class="image-three"></div>It's an open source project, so you can jump right in</div>
+            <div><div class="image-one"></div>{{localize('Enabled by the SWT token running on the Ethereum blockchain')}}</div>
+            <div><div class="image-two"></div>{{localize('Locally on your device no central database')}}</div>
+            <div><div class="image-three"></div>{{localize('Its an open source project so you can jump right in')}}</div>
         </div>
     </div>
     <div class="bottom-container" wide-layout$="{{wide}}">
         <div>
             <ul>
-                <li><a href="http://zly.mjo.mybluehost.me/thisis" target="_blank">This is Swarm City</a></li>
-                <li><a href="http://zly.mjo.mybluehost.me/forum" target="_blank">Support</a></li>
-                <li><a href="http://zly.mjo.mybluehost.me/forum/viewforum.php?f=3" target="_blank">FAQ</a></li>
-                <li><a href="http://advisors.swarm.city/" target="_blank">Advisors</a></li>
+                <li><a href="http://zly.mjo.mybluehost.me/thisis" target="_blank">{{localize('This is Swarm City')}}</a></li>
+                <li><a href="http://zly.mjo.mybluehost.me/forum" target="_blank">{{localize('Support')}}</a></li>
+                <li><a href="http://zly.mjo.mybluehost.me/forum/viewforum.php?f=3" target="_blank">{{localize('FAQ')}}</a></li>
+                <li><a href="http://advisors.swarm.city/" target="_blank">{{localize('Advisors')}}</a></li>
             </ul>
         </div>
         <div>
             <ul>
-                <li>Find Swarm City on</li>
-                <li><a href="https://swarm-slack-invite.herokuapp.com/" target="_blank">Slack</a></a></li>
-                <li><a href="https://medium.com/swarm-city-times" target="_blank">Medium</li>
-                <li><a href="https://github.com/swarmcity" target="_blank">Github</a></li>
-                <li><a href="https://twitter.com/swarmcitydapp" target="_blank">Twitter</a></li>
-                <li><a href="https://www.youtube.com/channel/UCsHBWn_ytZ3xdMbTyYe5Ifg" target="_blank">Youtube</a></li>
-                <li><a href="https://www.facebook.com/groups/SwarmCity/" target="_blank">Facebook</a></li>
-                <li><a href="https://www.reddit.com/r/SwarmCity/" target="_blank">Reddit</a></li>
+                <li>{{localize('Find Swarm City on')}}</li>
+                <li><a href="https://swarm-slack-invite.herokuapp.com/" target="_blank">{{localize('Slack')}}</a></a></li>
+                <li><a href="https://medium.com/swarm-city-times" target="_blank">{{localize('Medium')}}</li>
+                <li><a href="https://github.com/swarmcity" target="_blank">{{localize('Github')}}</a></li>
+                <li><a href="https://twitter.com/swarmcitydapp" target="_blank">{{localize('Twitter')}}</a></li>
+                <li><a href="https://www.youtube.com/channel/UCsHBWn_ytZ3xdMbTyYe5Ifg" target="_blank">{{localize('Youtube')}}</a></li>
+                <li><a href="https://www.facebook.com/groups/SwarmCity/" target="_blank">{{localize('Facebook')}}</a></li>
+                <li><a href="https://www.reddit.com/r/SwarmCity/" target="_blank">{{localize('Reddit')}}</a></li>
             </ul>
         </div>
     </div>
@@ -222,6 +223,10 @@ This code may only be used under the license found at https://github.com/swarmci
             path: {
                 type: String,
                 observer: '_path',
+            },
+            language: {
+                type: String,
+                statePath: 'language',
             },
             animationConfig: {
             value: function() {
@@ -245,9 +250,12 @@ This code may only be used under the license found at https://github.com/swarmci
     }
     connectedCallback() {
         super.connectedCallback();
+        // Load translations
         this.loadResources(this.resolveUrl('../text-translations.json'));
     }
-
+/**
+* Change the path when enter-button or language change property
+*/
     _path() {
         if(this.path != null) {
             this.set('route.path', this.path);
