@@ -4,7 +4,7 @@ Copyright (c) 2017 Swarm City
 This code may only be used under the license found at https://github.com/swarmcity/license
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<script src="../scripts/swarm-city.min.js" async></script>
+<script src="../swarm-city.min.js" async></script>
 
 <!--
 An element that provides simple access to web3 services
@@ -28,15 +28,37 @@ this.$.web3.hashtags()
             static get is() { return 'data-web3'; }
 
 /**
-* If we need to display buttons for the user to select languages,
-* get the languages we have translations for and supply the dom repeat
-* @return {locales} locales is the loacal name of the language
+* Returns an array with the hashtag name and 
+* @return {hashtags} hashtags is an array of objects
 */
     hashtags() {
         return new Promise((resolve, reject) => {
-
+            // WIP
+            // var contract = swarmCity.eb3.eth.contract(abiArray).at(contractAddress);
         });
     }
-        } window.customElements.define(DataWeb3.is, DataWeb3);
+
+/**
+* Returns the abi for the requests contract
+* @return {abi} abiu repreents the contracts abi
+*/
+    _loadAbi(contractName) {
+        return new Promise((resolve, reject) => {
+            // load JSON file with the same name as contractName and return the abi array
+        });
+    }
+
+/**
+* Returns the contract address
+* @return {abi} abiu repreents the contracts abi
+*/
+    _loadAddress(contractName) {
+        return new Promise((resolve, reject) => {
+            // Load a JSON file and get the contract address
+        });
+    }
+
+
+    } window.customElements.define(DataWeb3.is, DataWeb3);
     </script>
 </dom-module>
