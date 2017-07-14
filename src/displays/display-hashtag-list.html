@@ -33,14 +33,7 @@ The following custom properties and mixins are available for styling:
             }
 
             .hashtag {
-                height: 36px;
-                width: 206px;
-                color: #353435;
-                
-                font-size: xx-large;
-                font-weight: bold;
-                line-height: 36px;
-                line-height: 36px;
+                @apply --display-hashtag-list-hashtag;
             }
 
             .hashtag:hover {
@@ -48,14 +41,7 @@ The following custom properties and mixins are available for styling:
             }
 
             .deals {
-                height: 13px;
-                width: 250.08px;
-                color: #353435;
-                
-                font-size: 12px;
-                font-weight: 300;
-                line-height: 13px;
-                margin-bottom: 20px;
+                @apply --display-hashtag-list-deals;
             }
         </style>
         <display-language language="{{language}}"></display-language>
@@ -90,21 +76,24 @@ The following custom properties and mixins are available for styling:
                             return [
                                 {
                                     name: 'pioneer',
-                                    hashtagID: '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c9',
+                                    hashtagID:
+                                    '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c9',
                                     location: '9q8yfr43d4',
                                     deals: 8725,
-                                    description: 'pioneer is the first amazing hashtag'
+                                    description: 'pioneer is the first amazing hashtag',
                                 },
                                 {
                                     name: 'needaride',
-                                    hashtagID: '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c9',
+                                    hashtagID:
+                                    '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c9',
                                     location: '9q8yfr43d4',
                                     deals: 230,
-                                    description: 'needaride is the first ridesharing hashtag'
+                                    description:
+                                    'needaride is the first ridesharing hashtag',
                                 },
-                            ]
-                        }
-                    }
+                            ];
+                        },
+                    },
                 };
             }
         } window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);

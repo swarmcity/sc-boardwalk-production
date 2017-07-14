@@ -10,80 +10,104 @@ Page specific styles belong on the page not here.
 Colors are all lower case, There is a space after the :
 -->
 <dom-module id="shared-styles">
-<template>
-    <style>
-        :host {
-/* only list colors that are being used, keep to absolute minimum */
-            --swarm-city-white: #fafafa;
-            --swarm-city-blue: #24b1ff;
-            --swarm-city-yellow: #efd96f;
-            --grey-1: #f4f4f4;
-            --grey-3: #666666;
-            --grey-4: #333333;
-            --grey-5: #191919;
-            
-/* users can not select unless we explicity allow */
-            -webkit-user-select: none;  
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none; 
-            cursor: default;  
+    <template>
+        <style>
+             :host {
+                /* only list colors that are being used, keep to absolute minimum */
+                --swarm-city-white: #fafafa;
+                --swarm-city-blue: #24b1ff;
+                --swarm-city-yellow: #efd96f;
+                --grey-1: #f4f4f4;
+                --grey-3: #666666;
+                --grey-4: #333333;
+                --grey-5: #191919;
+                /* users can not select unless we explicity allow */
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                cursor: default;
 
-            --blue-links:{
-                color: var(--swarm-city-blue);
-                text-decoration: none;
-                border-bottom: 1px dotted var(--swarm-city-blue);
-                font-size: 12px;
-                font-weight: 400;
-                cursor: pointer;
+                --blue-links: {
+                    color: var(--swarm-city-blue);
+                    text-decoration: none;
+                    border-bottom: 1px dotted var(--swarm-city-blue);
+                    font-size: 12px;
+                    font-weight: 400;
+                    cursor: pointer;
+                }
+                --grey-links: {
+                    color: var(--grey-4);
+                    text-decoration: none;
+                    border-bottom: 1px dotted var(--grey-4);
+                    font-size: 12px;
+                    font-weight: 400;
+                    cursor: pointer;
+                }
+                --big-btn: {
+                    width: 276px;
+                    text-align: center;
+                    margin-bottom: 10px;
+                    display: block;
+                    border: none;
+                    outline: none;
+                    font-size: 15px;
+                    cursor: pointer;
+                    font-weight: 900;
+                    color: var(--grey-4);
+                    padding: 28px 42px 28px 42px;
+                    background-color: rgba(255, 255, 255, 0.1);
+                    box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                    -o-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                    -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                    -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                }
+                --display-my-info-balance: {
+                    font-weight: bold;
+                    font-size: 24px;
+                    color: #EFD96F;
+                }
+                --display-my-info-username: {
+                    line-height: 30px;
+                    min-width: 270px;
+                    font-weight: bold;
+                    color: #333333;
+                    font-size: 12px;
+                }
+                --display-my-info-avatar: {
+                    border-radius: 50%;
+                    height: 60px;
+                    width: 60px;
+                    background-color: grey;
+                }
+                --display-hashtag-list-hashtag: {
+                    height: 36px;
+                    width: 206px;
+                    color: #353435;
+                    font-size: xx-large;
+                    font-weight: bold;
+                    line-height: 36px;
+                    line-height: 36px;
+                }
+                --display-hashtag-list-deals: {
+                    height: 13px;
+                    width: 250.08px;
+                    color: #353435;
+                    font-size: 12px;
+                    font-weight: 300;
+                    line-height: 13px;
+                    margin-bottom: 20px;
+                }
+                --display-distance-slider-toggle: {
+                    height: 15px;
+                    color: rgba(153, 153, 153, 0.7);
+                    font-family: Montserrat;
+                    font-size: 12px;
+                    font-weight: 600;
+                    line-height: 15px;
+                    border-bottom: 2px solid rgba(51, 51, 51, 0.2);
+                }
             }
-            --grey-links:{
-                color: var(--grey-4);
-                text-decoration: none;
-                border-bottom: 1px dotted var(--grey-4);
-                font-size: 12px;
-                font-weight: 400;
-                cursor: pointer;
-            }
-            --big-btn:{
-                width: 276px;
-                text-align:center;
-                margin-bottom:10px;
-                display:block;
-                border: none;
-                outline: none;
-                font-size:15px;
-                cursor: pointer;
-                font-weight: 900;
-                color: var(--grey-4);
-                padding: 28px 42px 28px 42px;
-                background-color: rgba(255,255,255,0.1);
-                box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -o-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-            }
-            --display-my-info-balance:{
-                font-weight: bold;
-                font-size: 24px;
-                color: #EFD96F;
-            }
-            --display-my-info-username:{
-                line-height: 30px;
-                min-width:270px;
-                font-weight: bold;
-                color: #333333;
-                font-size: 12px;
-            }
-            --display-my-info-avatar:{
-                border-radius: 50%;
-                height: 60px;
-                width: 60px; 
-                background-color: grey;
-                
-            }
-        }
-
-    </style>
-</template>
+        </style>
+    </template>
 </dom-module>
