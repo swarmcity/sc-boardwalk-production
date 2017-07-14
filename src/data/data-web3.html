@@ -1,0 +1,42 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<script src="../scripts/swarm-city.min.js" async></script>
+
+<!--
+An element that provides simple access to web3 services
+
+HTML Example:
+```
+<data-web3 id="web3"></data-web3>
+```
+JS Example
+```
+this.$.web3.hashtags()
+.then((hashtags) => {
+    console.log(hashtags) 
+})
+```
+-->
+
+<dom-module id="data-web3">
+    <script>
+        class DataWeb3 extends Polymer.Element {
+            static get is() { return 'data-web3'; }
+
+/**
+* If we need to display buttons for the user to select languages,
+* get the languages we have translations for and supply the dom repeat
+* @return {locales} locales is the loacal name of the language
+*/
+    hashtags() {
+        return new Promise((resolve, reject) => {
+
+        });
+    }
+        } window.customElements.define(DataWeb3.is, DataWeb3);
+    </script>
+</dom-module>
