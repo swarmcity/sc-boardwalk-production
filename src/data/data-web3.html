@@ -28,33 +28,81 @@ this.$.web3.hashtags()
             static get is() { return 'data-web3'; }
 
 /**
-* Returns an array with the hashtag name and 
+* Returns an array with the hashtag name and
 * @return {hashtags} hashtags is an array of objects
 */
     hashtags() {
         return new Promise((resolve, reject) => {
-            // WIP
-            // var contract = swarmCity.eb3.eth.contract(abiArray).at(contractAddress);
+    const fakeResponse = [
+        {hashtag: 'pioneer',
+        id: '6e57d3c60a2fc3f1d586d2ca9d66b52f80a023d9',
+        deals: 8725},
+        {hashtag: 'needaride',
+        id: '4f57d3c60a2fc3f1d586d2ca9d66b52f80a023d9',
+        deals: 125},
+        {hashtag: 'swarmbnb',
+        id: '2v57d3c60a2fc3f1d586d2ca9d66b52f80a023d9',
+        deals: 5},
+        {hashtag: 'dev',
+        id: '1a57d3c60a2fc3f1d586d2ca9d66b52f80a023d9',
+        deals: 22},
+    ];
+            resolve(fakeResponse);
+// Promise.all([this._loadAbi(contractName), this._loadAddress(contractName)])
+// .then((data) => {
+//     const abiArray = data[0];
+//     const contractAddress = data[1];
+//     var contract = swarmCity.web3.eth.contract(abiArray).at(contractAddress);
+//     resolve(object);
+// })
+// .catch((err) => {
+//     reject(Error(err));
+// });
         });
     }
 
 /**
 * Returns the abi for the requests contract
+* @param {contractName} contractName is the name of the contract
 * @return {abi} abiu repreents the contracts abi
 */
     _loadAbi(contractName) {
         return new Promise((resolve, reject) => {
-            // load JSON file with the same name as contractName and return the abi array
+            const xobj = new XMLHttpRequest();
+            const path = '../src/contracts/'+contractName+'.json';
+            xobj.overrideMimeType('application/json');
+            xobj.open('GET', path, true);
+            xobj.onreadystatechange = () => {
+                if (xobj.readyState == 4 && xobj.status == '200') {
+                    const json = JSON.parse(xobj.responseText);
+                    resolve(json);
+                }
+            };
+            // Request the json
+            xobj.send(null);
         });
     }
 
 /**
 * Returns the contract address
-* @return {abi} abiu repreents the contracts abi
+* @param {contractName} contractName is the name of the contract
+* @return {contractAddress} contractAddress repreents the
+* contracts address on main-net
 */
     _loadAddress(contractName) {
         return new Promise((resolve, reject) => {
-            // Load a JSON file and get the contract address
+            const xobj = new XMLHttpRequest();
+            const path = '../src/contracts/index.json';
+            xobj.overrideMimeType('application/json');
+            xobj.open('GET', path, true);
+            xobj.onreadystatechange = () => {
+                if (xobj.readyState == 4 && xobj.status == '200') {
+                    const json = JSON.parse(xobj.responseText);
+                    resolve(json);
+                }
+            };
+            // Request the json
+            xobj.send(null);
         });
     }
 
