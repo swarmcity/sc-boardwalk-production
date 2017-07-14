@@ -6,6 +6,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="display-language.html">
+
 <!--
 
 Example:
@@ -23,13 +24,39 @@ The following custom properties and mixins are available for styling:
 -->
 <dom-module id="display-my-info">
     <template>
-        <style>
+        <style include="shared-styles">
             :host {
                 display: block;
             }
+            .container {
+                margin: 85px 0 0 61px;
+                max-width: 420px;
+                @apply --layout-horizontal;
+            }
+            .avatar {
+                @apply --display-my-info-avatar
+            }
+            .avatarcontainer {
+                padding-right:22px;
+            }
+            .username {
+                @apply --display-my-info-username
+                
+            }
+            .balance {
+                @apply --display-my-info-balance
+            }
+
         </style>
         <display-language language="{{language}}"></display-language>
         <div class="container">
+            <div class="avatarcontainer">
+                <img src="" alt="" class="avatar">
+            </div>
+            <div>
+                <div class="username">Tester X</div>
+                <div class="balance">44 SWT</div>
+            </div>
         </div>
         </template>
     <script>
