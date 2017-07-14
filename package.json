@@ -39,7 +39,6 @@
     "style-loader": "^0.13.1",
     "truffle":"^3.4.4",
     "truffle-contract": "^1.1.6",
-    "truffle": "^3.4.4",
     "web3": "^0.18.2",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
@@ -52,8 +51,8 @@
     "build": "polymer build",
     "deploy": "netlify deploy -p build/production",
     "compilecontracts": "truffle compile",
-    "buildcontracts": "truffle migrate --reset --network build",
-    "testcontracts": "truffle test ./test/contracts/arcTokenTest.js --network build",
+    "buildcontracts": "truffle migrate --reset --network development",
+    "testcontracts": "truffle test ./test/contracts/arcTokenTest.js --network development",
     "browserify": "browserify browserify.js --standalone swarmCity -t [ babelify --presets [ es2015 ] ] | uglifyjs > src/scripts/swarm-city.min.js"
   },
   "dependencies": {
