@@ -59,7 +59,7 @@
     "deploy": "netlify deploy -p build/production",
     "buildcontracts": "truffle migrate --reset --compile-all",
     "testcontracts": "truffle test ./test/contracts/arcTokenTest.js",
-    "browserify": "browserify browserify.js --standalone swarmCity -t [ babelify --presets [ es2015 ] ] | uglifyjs > src/scripts/swarm-city.min.js"
+    "browserify": "browserify browserify.js --standalone swarmCity -t [ babelify --presets [ es2015 ] ] | uglifyjs > src/swarm-city.min.js"
   },
   "dependencies": {
     "redux": "^3.7.1"

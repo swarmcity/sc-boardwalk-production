@@ -7,3 +7,4 @@ firebase-debug.log
 .firebaserc
 service-worker.js
 sw-precache-config.js
+src/contracts/
