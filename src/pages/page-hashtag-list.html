@@ -38,15 +38,29 @@ This code may only be used under the license found at https://github.com/swarmci
         @apply --layout-horizontal;
         @apply --layout-center-justified;
     }
-    .back {
-        background: url('../../../images/swarm-city-sprite.png') -140px 9px;
+    .back { 
+        width: 40px;
+        height: 40px;    
+        border-radius: 50%;       
+        margin-bottom: 50px;
+        background: url('../../../images/swarm-city-sprite.png') -45px 60px;
+    }
+    .flex-equal-justified {
+      @apply --layout-horizontal;
+      @apply --layout-justified;        
+    }
+    .middle {
+        max-width: 300px;
+        margin: 35px 0 0 55px;
     }
 </style>
 <app-location route="{{route}}"></app-location>
 <div class="container">
     <display-my-info></display-my-info>
-    <div class="back">sprite</div>
-    <display-distance-slider></display-distance-slider>
+    <div class="middle flex-equal-justified">
+        <div class="back"></div>
+        <display-distance-slider></display-distance-slider>
+    </div>
     <display-hashtag-list></display-hashtag-list>
 </div>
 </template>
