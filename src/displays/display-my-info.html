@@ -29,19 +29,28 @@ The following custom properties and mixins are available for styling:
                 display: block;
             }
             .container {
-                margin: 85px 0 0 61px;
+                margin: 85px 0 0 85px;
                 max-width: 420px;
+                
+                
+            }
+            
+            .flex-horizontal {
                 @apply --layout-horizontal;
+            }
+            .flexchild {
+                @apply --layout-flex;
             }
             .avatar {
                 @apply --display-my-info-avatar
             }
+            
             .avatarcontainer {
                 padding-right:22px;
             }
             .username {
                 @apply --display-my-info-username
-                
+
             }
             .balance {
                 @apply --display-my-info-balance
@@ -49,11 +58,11 @@ The following custom properties and mixins are available for styling:
 
         </style>
         <display-language language="{{language}}"></display-language>
-        <div class="container">
+        <div class="container flex-horizontal">
             <div class="avatarcontainer">
-                <img src="" alt="" class="avatar">
+                <img src="../../images/defaultavatar.png" alt="avatar" class="avatar" >
             </div>
-            <div>
+            <div class="flexchild">
                 <div class="username">Tester X</div>
                 <div class="balance">44 SWT</div>
             </div>
