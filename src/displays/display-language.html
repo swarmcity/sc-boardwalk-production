@@ -5,6 +5,7 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../data/data-local-storage.html">
+<link rel="import" href="../data/data-utility.html">
 <link rel="import" href="../redux-state.html">
 <!--
 
@@ -31,6 +32,7 @@ Example:
             }
         </style>
         <data-local-storage id="localStorage"></data-local-storage>
+        <data-utility id="utility"></data-utility>
         <template is="dom-if" if="{{selected}}">
             <div on-click="_navigateTo">
                 {{language}}
@@ -96,7 +98,7 @@ Example:
         })
         .then((language) => {
             // Check we have a translation for the language we want
-            return this._translationExists(language);
+            return this.$.utility.translationExists(language);
         })
         .then((data) => {
             if(data.found == false) {
@@ -113,69 +115,12 @@ Example:
 
 // If we need to show buttons, get all the languages we have translations for
         if(this.buttons) {
-            this._allLanguages();
+            this.$.utility.allLanguages()
+            .then((data) => {
+                this.locales = data.locales;
+                this.iso = data.iso;
+            })
         }
-    }
-
-/**
-* Checks if we have the translation for the language
-* @param {language} language to check
-* @return {boolean} true signals we do have a translation, false we dont.
-*/
-    _translationExists(language) {
-        return new Promise((resolve, reject) => {
-            // Load the translations.json file
-            const xobj = new XMLHttpRequest();
-            xobj.overrideMimeType('application/json');
-            xobj.open('GET', '../src/text-translations.json', true);
-            xobj.onreadystatechange = () => {
-                if (xobj.readyState == 4 && xobj.status == '200') {
-// The file loaded now check the index to determine if wehave a translation
-                    const json = JSON.parse(xobj.responseText);
-                    const keys = Object.keys(json);
-                    const arr = keys.indexOf(language);
-                    if(arr != -1) {
-                        resolve({language: language, found: true});
-                    } else {
-                        resolve({language: language, found: false});
-                    }
-                }
-            };
-            // Request the json
-            xobj.send(null);
-        });
-    }
-
-/**
-* If we need to display buttons for the user to select languages,
-* get the languages we have translations for and supply the dom repeat
-* @return {locales} locales is the loacal name of the language
-*/
-    _allLanguages() {
-        return new Promise((resolve, reject) => {
-            // Load the translations.json file
-            const xobj = new XMLHttpRequest();
-            xobj.overrideMimeType('application/json');
-            xobj.open('GET', '../src/text-translations.json', true);
-            xobj.onreadystatechange = () => {
-                if (xobj.readyState == 4 && xobj.status == '200') {
-                    // Parse the response
-                    const json = JSON.parse(xobj.responseText);
-                    const count = (Object.keys(json).length);
-                    // Setup the arrays t be used in the dom repeat
-                    this.locales = [];
-                    this.iso = [];
-                    // loop over the object and push the keys
-                    var i;
-                    for (i = 0; i < count; i++) {
-                    this.locales.push(json[Object.keys(json)[i]].locale);
-                    this.iso.push(json[Object.keys(json)[i]].language);
-                    }
-                    resolve(this.locales);
-                }
-            };
-            xobj.send(null);
-        });
     }
 
 /**
