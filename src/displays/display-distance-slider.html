@@ -27,9 +27,20 @@ The following custom properties and mixins are available for styling:
             :host {
                 display: block;
             }
+            .filter-list {
+                	height: 15px;	
+                    
+                    color: rgba(153,153,153,0.7);	
+                    font-family: Montserrat;	
+                    font-size: 12px;	
+                    font-weight: 600;	
+                    line-height: 15px;
+                    border-bottom: 2px solid rgba(51,51,51,0.2);
+            }
         </style>
         <display-language language="{{language}}"></display-language>
         <div class="container">
+            <p class="filter-list">filter list</p>
         </div>
         </template>
     <script>
