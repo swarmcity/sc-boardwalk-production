@@ -28,6 +28,53 @@ this.$.util.translationExists(language)
         class DataUtility extends Polymer.Element {
             static get is() { return 'data-utility'; }
 
+
+/**
+* Converts a latitude and longitude to a geohash
+* @param {latitude} latitude latitude
+* @param {longitude} longitude longitude
+* @return {geohash} geohash fir the given kat and lon.
+*/
+toGeohash(latitude, longitude) {
+    return new Promise((resolve, reject) => {
+        const ratio = [16, 8, 4, 2, 1];
+        const alphaNumeric = '0123456789bcdefghjkmnpqrstuvwxyz';
+        const geoFence = [];
+        let values = [longitude / 180 * 100, latitude / 90 * 100];
+        for (let i = 0; i < values.length; i++) {
+            geoFence[i] = [-100, 100];
+        }
+        let goeHash = '';
+        let number = 0;
+        let charector = 0;
+        let i = 0;
+
+        while (goeHash.length < 10) {
+            const iteration = i++ % values.length;
+            const distasnce = geoFence[iteration];
+            const value = values[iteration];
+            const mean = (distasnce[0] + distasnce[1]) / 2;
+
+            if (value > mean) {
+                charector |= ratio[number];
+                distasnce[0] = mean;
+            } else {
+                distasnce[1] = mean;
+            }
+
+            if (number < 4) {
+                number++;
+            }
+            else {
+                goeHash += alphaNumeric[charector];
+                number = 0;
+                charector = 0;
+            }
+        }
+        resolve(goeHash);
+    });
+}
+
 /**
 * Checks if we have the translation for the language
 * @param {language} language to check
