@@ -36,8 +36,15 @@ this.$.util.translationExists(language)
 */
     geoHashDistance(geoHashA, geoHashB) {
         return new Promise((resolve, reject) => {
-            // convert both to lat lon
-            // calc distance
+            Promise.all([this._toLatLon(geoHashA), this._toLatLon(geoHashB)])
+            .then((data) => {
+                const locationA = data[0];
+                const locationB = data[1];
+                // calc distance
+            })
+            .catch((err) => {
+                reject(Error(err));
+            });    
         });
     }
 
@@ -47,7 +54,7 @@ this.$.util.translationExists(language)
 * @param {longitude} longitude longitude
 * @return {geohash} geohash fir the given kat and lon.
 */
-toGeohash(latitude, longitude) {
+_toGeohash(latitude, longitude) {
     return new Promise((resolve, reject) => {
         const ratio = [16, 8, 4, 2, 1];
         const thirtyTwoBits = '0123456789bcdefghjkmnpqrstuvwxyz';
@@ -92,7 +99,7 @@ toGeohash(latitude, longitude) {
 * @param {geoHash} geoHash
 * @return {object} object contains te properties latitude and longitude
 */
-toLatLon(geoHash) {
+_toLatLon(geoHash) {
     return new Promise((resolve, reject) => {
         const ratio = [16, 8, 4, 2, 1];
         const thirtyTwoBits = '0123456789bcdefghjkmnpqrstuvwxyz';
