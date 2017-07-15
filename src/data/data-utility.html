@@ -28,7 +28,6 @@ this.$.util.translationExists(language)
         class DataUtility extends Polymer.Element {
             static get is() { return 'data-utility'; }
 
-
 /**
 * Converts a latitude and longitude to a geohash
 * @param {latitude} latitude latitude
@@ -38,7 +37,7 @@ this.$.util.translationExists(language)
 toGeohash(latitude, longitude) {
     return new Promise((resolve, reject) => {
         const ratio = [16, 8, 4, 2, 1];
-        const alphaNumeric = '0123456789bcdefghjkmnpqrstuvwxyz';
+        const thirtyTwoBits = '0123456789bcdefghjkmnpqrstuvwxyz';
         const geoFence = [];
         let values = [longitude / 180 * 100, latitude / 90 * 100];
         for (let i = 0; i < values.length; i++) {
@@ -66,12 +65,44 @@ toGeohash(latitude, longitude) {
                 number++;
             }
             else {
-                goeHash += alphaNumeric[charector];
+                goeHash += thirtyTwoBits[charector];
                 number = 0;
                 charector = 0;
             }
         }
         resolve(goeHash);
+    });
+}
+
+/**
+* Converts a geohash to longitude and latitude
+* @param {geoHash} geoHash
+* @return {object} object contains te properties latitude and longitude
+*/
+toLatLon(geoHash) {
+    return new Promise((resolve, reject) => {
+        const ratio = [16, 8, 4, 2, 1];
+        const thirtyTwoBits = '0123456789bcdefghjkmnpqrstuvwxyz';
+        const geoFence = [];
+
+        for (var i = 0; i < 2; i++) {
+            geoFence[i] = [-100, 100];
+        }
+        let iteration = 0;
+        
+        for (let i = 0; i < geoHash.length; i++) {
+            for (let x = 0; x < ratio.length; x++) {
+            var distance = geoFence[iteration++ % geoFence.length];
+            var side = thirtyTwoBits.indexOf(geoHash[i]) & ratio[x] ? 0 : 1;
+            distance[side] = (distance[0] + distance[1]) / 2;
+            }
+        }
+
+        const mean = [];
+        for (let i = 0; i < geoFence.length; i++) {
+            mean[i] = (geoFence[i][0] + geoFence[i][1]) / 2;
+        }
+        resolve({latitude: mean[1] / 100 * 90, longitude: mean[0] / 100 * 180});
     });
 }
 
