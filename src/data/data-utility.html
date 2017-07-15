@@ -166,6 +166,30 @@ toLatLon(geoHash) {
             xobj.send(null);
         });
     }
+
+
+/**
+* Converts from degrees to radians.
+* @param {degrees} degrees
+* @return {degrees} degrees
+*/
+    _radians(degrees) {
+        return new Promise((resolve, reject) => {
+            resolve(degrees * Math.PI / 180);
+        });
+    }
+
+/**
+* Converts from radians to degrees.
+* @param {radians} radians
+* @return {degrees} degrees
+*/
+    _degrees(radians) {
+        return new Promise((resolve, reject) => {
+        resolve(radians * 180 / Math.PI);
+        });
+    }
+
         } window.customElements.define(DataUtility.is, DataUtility);
     </script>
 </dom-module>
