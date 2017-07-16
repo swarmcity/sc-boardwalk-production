@@ -24,7 +24,7 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-hashtag-list">
     <template>
         <style>
-             :host {
+            :host {
                 display: block;
             }
 
@@ -72,7 +72,8 @@ The following custom properties and mixins are available for styling:
                     },
                     path: {
                         type: String,
-                        observer: '_path',
+                        value: null,
+                        notify: true,
                     },
                     hashtags: {
                         type: Array,
@@ -107,7 +108,7 @@ The following custom properties and mixins are available for styling:
                 this.path = null;
             }
             _toHashtag() {
-                this.set('route.path', 'welcome/');
+                this.path = 'welcome/';
             }
         } window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);
     </script>
