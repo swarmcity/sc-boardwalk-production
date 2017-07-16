@@ -23,6 +23,7 @@ this.$.util.translationExists(language)
 
 -->
 
+
 <dom-module id="data-utility">
     <script>
         class DataUtility extends Polymer.Element {
@@ -38,9 +39,11 @@ this.$.util.translationExists(language)
         return new Promise((resolve, reject) => {
             Promise.all([this._toLatLon(geoHashA), this._toLatLon(geoHashB)])
             .then((data) => {
-                // const locationA = data[0];
-                // const locationB = data[1];
-                // calc distance
+                const latA = data[0].latitude;
+                const lonA = data[0].longitude;
+                const latB = data[1].latitude;
+                const lonB = data[1].longitude;
+                resolve(this._distance(latA, lonA, latB, lonB));
             })
             .catch((err) => {
                 reject(Error(err));
@@ -187,7 +190,6 @@ _toLatLon(geoHash) {
         });
     }
 
-
 /**
 * Find distance between two lat and lon's
 * @param {latA} latA
@@ -206,7 +208,7 @@ _toLatLon(geoHash) {
             Math.cos(phi1) * Math.cos(phi2) * Math.sin(deltaLambda/2) *
             Math.sin(deltaLambda/2);
             let circ = 2 * Math.atan2(Math.sqrt(amp), Math.sqrt(1-amp));
-            resolve(circ * 6371000);
+            resolve(Math.round(circ * 6371000));
         });
     }
 
@@ -216,9 +218,7 @@ _toLatLon(geoHash) {
 * @return {degrees} degrees
 */
     _radians(degrees) {
-        return new Promise((resolve, reject) => {
-            resolve(degrees * Math.PI / 180);
-        });
+        return (degrees * Math.PI / 180);
     }
 
         } window.customElements.define(DataUtility.is, DataUtility);
