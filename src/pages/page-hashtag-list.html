@@ -65,7 +65,7 @@ This code may only be used under the license found at https://github.com/swarmci
         <div class="container">
             <display-my-info></display-my-info>
             <div class="middle flex-equal-justified">
-                <div class="back" on-click="_btnClick"></div>
+                <div class="back" on-click="_toWelcome"></div>
                 <display-distance-slider></display-distance-slider>
             </div>
             <display-hashtag-list distance="{{distance}}" allowed="{{allowed}}"></display-hashtag-list>
@@ -122,7 +122,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 }
                 this.path = null;
             }
-            _btnClick() {
+            _toWelcome() {
                 this.set('route.path', 'welcome/');
             }
 
