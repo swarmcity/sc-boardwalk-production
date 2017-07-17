@@ -22,9 +22,9 @@
         "Twitter": "Twitter",
         "Youtube": "Youtube",
         "Facebook": "Facebook",
-        "Reddit": "Reddit"
-        },
-        
+        "Reddit": "Reddit",
+        "Discord": "Discord"
+    },    
     "cn": {
         "language": "cn",
         "locale": "中文",
@@ -48,8 +48,9 @@
         "Twitter": "Awaiting Translation",
         "Youtube": "Awaiting Translation",
         "Facebook": "Awaiting Translation",
-        "Reddit": "Awaiting Translation"
-        },
+        "Reddit": "Awaiting Translation",
+        "Discord": "Awaiting Translation"    
+    },
     "fr": {
         "language": "fr",
         "locale": "Français",
@@ -73,7 +74,8 @@
         "Twitter": "Awaiting Translation",
         "Youtube": "Awaiting Translation",
         "Facebook": "Awaiting Translation",
-        "Reddit": "Awaiting Translation"
+        "Reddit": "Awaiting Translation",
+        "Discord": "Awaiting Translation"
         },
     "nl": {
         "language": "nl",
@@ -98,7 +100,8 @@
         "Twitter": "Awaiting Translation",
         "Youtube": "Awaiting Translation",
         "Facebook": "Awaiting Translation",
-        "Reddit": "Awaiting Translation"
+        "Reddit": "Awaiting Translation",
+        "Discord": "Awaiting Translation"
         },
     "ru": {
         "language": "ru",
@@ -123,7 +126,8 @@
         "Twitter": "Awaiting Translation",
         "Youtube": "Awaiting Translation",
         "Facebook": "Awaiting Translation",
-        "Reddit": "Awaiting Translation"
+        "Reddit": "Awaiting Translation",
+        "Discord": "Awaiting Translation"
         },
     "de": {
         "language": "de",
@@ -148,7 +152,8 @@
         "Twitter": "Awaiting Translation",
         "Youtube": "Awaiting Translation",
         "Facebook": "Awaiting Translation",
-        "Reddit": "Awaiting Translation"
+        "Reddit": "Awaiting Translation",
+        "Discord": "Awaiting Translation"
         },
     "es": {
         "language": "es",
@@ -173,6 +178,7 @@
         "Twitter": "Awaiting Translation",
         "Youtube": "Awaiting Translation",
         "Facebook": "Awaiting Translation",
-        "Reddit": "Awaiting Translation"
+        "Reddit": "Awaiting Translation",
+        "Discord": "Awaiting Translation"
         }
 }
