@@ -1,0 +1,154 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../data/data-local-storage.html">
+<link rel="import" href="../data/data-utility.html">
+<link rel="import" href="../redux-state.html">
+<!--
+
+Example:
+```
+<display-language></display-language>
+```
+
+-->
+<dom-module id="display-language">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+            .big-btn{
+                @apply(--big-btn)
+            }
+            .big-btn:active{
+                transform: scale(0.97,0.97);
+            }
+            .big-btn:hover{
+                color: black;
+            }
+        </style>
+        <data-local-storage id="localStorage"></data-local-storage>
+        <data-utility id="utility"></data-utility>
+        <template is="dom-if" if="{{selected}}">
+            <div on-click="_navigateTo">
+                {{language}}
+            </div>
+        </template>
+        <template is="dom-if" if="{{buttons}}">
+            <template is="dom-repeat" items="{{locales}}">
+                <div class="big-btn" on-click="_selectLanguage">
+                    {{item}}
+                </div>
+            </template>   
+        </template>
+    </template>
+    <script>
+
+    class DisplayLanguage extends new ReduxMixin(Polymer.Element) {
+        static get is() { return 'display-language';}
+        static get properties() { return {
+            language: {
+                type: String,
+                statePath: 'language',
+            },
+            selected: {
+                type: Boolean,
+                value: false,
+            },
+            buttons: {
+                type: Boolean,
+                value: false,
+            },
+            path: {
+                type: String,
+                value: null,
+                notify: true,
+            },
+        };
+    }
+    static get actions() {
+        return Object.assign({
+            LANGUAGE: function(language) {
+                return {type: 'LANGUAGE', language: language};
+            },
+        });
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+        // Do we have an account inlocal storage?
+        this.$.localStorage.accountExists()
+        .then((account) => {
+            this.account = account;
+            if(!account.language) {
+                // If we dont have an account get the browsers language
+                const str = navigator.language || navigator.userLanguage;
+                const res = str.split('-');
+                const language = res[0];
+                return language;
+            } else {
+                // IF we do have an acocunt, use the language we set previously
+                const language = account.language;
+                return language;
+            }
+        })
+        .then((language) => {
+            // Check we have a translation for the language we want
+            return this.$.utility.translationExists(language);
+        })
+        .then((data) => {
+            if(data.found == false) {
+                // If we dont have the translation use english
+                this.language = 'en';
+                this.dispatch('LANGUAGE', this.language);
+            } else {
+                // If we do have the translation use it
+                this.language = data.language;
+                this.dispatch('LANGUAGE', this.language);
+                this.$.localStorage.saveAccount({language: data.language});
+            }
+        });
+
+// If we need to show buttons, get all the languages we have translations for
+        if(this.buttons) {
+            this.$.utility.allLanguages()
+            .then((data) => {
+                this.locales = data.locales;
+                this.iso = data.iso;
+            });
+        }
+    }
+
+/**
+* The user has selected a diferent language, update local storage and redux
+* @param {event} event represents the button the user clicked
+*/
+    _selectLanguage(event) {
+        // get the account
+        let account = this.account;
+        // update account language
+        account.language = this.iso[event.model.__data.index];
+        // save the account
+        this.$.localStorage.saveAccount(account);
+        // Set the language based onthe selection
+        this.language = this.iso[event.model.__data.index];
+        // Update Redux
+        this.dispatch('LANGUAGE', this.language);
+        // Redirect the user to Welcome
+        this.path = '/';
+    }
+
+/**
+* take the user to the language page
+*/
+    _navigateTo() {
+        this.path = 'language/';
+    }
+
+    } window.customElements.define(DisplayLanguage.is, DisplayLanguage);
+</script>
+</dom-module>

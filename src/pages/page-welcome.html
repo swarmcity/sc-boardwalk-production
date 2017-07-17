@@ -12,8 +12,8 @@ This code may only be used under the license found at https://github.com/swarmci
 <!--
     Displays and shared styles only
 -->
-<link rel="import" href="../displays/display-enter-button.html">
-<link rel="import" href="../displays/display-internationalization.html">
+<link rel="import" href="../data/data-web3.html">
+<link rel="import" href="../displays/display-language.html">
 <link rel="import" href="../shared-styles.html">
 <!--
     Animation pack, only load the animations you need for this page.
@@ -147,10 +147,27 @@ This code may only be used under the license found at https://github.com/swarmci
     .bottom-container[wide-layout] {
         padding:100px;
     }
+    display-language {
+        position: fixed;
+        top: 28px;
+        right: 28px;
+        text-transform: uppercase;
+        border-bottom: 1px solid black;
+        font-size: 11px;
+        font-weight: 700;
+        cursor:pointer;
+    }
+    .btn-enter{
+        @apply --big-btn;
+    }
+    .btn-enter:active{
+        transform: scale(0.97,0.97);
+    }
 
     </style>
     <app-location route="{{route}}"></app-location>
-    <display-internationalization language="{{language}}"></display-internationalization>
+    <display-language selected path="{{path}}"></display-language>
+    <data-web3 id="web3"></data-web3>
     <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
     <div class="top-container" wide-layout$="{{wide}}">
         <div>
@@ -158,40 +175,38 @@ This code may only be used under the license found at https://github.com/swarmci
             <h1>{{localize('welcome')}}<span> {{localize('name')}}<span></h1>
         </div>
         <div>
-            <display-enter-button 
-                class="big-btn"
-                path="{{path}}">
-            </display-enter-button>
+            <button type="button" autofocus class="btn-enter" on-click="_btnClick" on-KeyPress="_btnKeyPress">{{localize('enter here')}}</button>
         </div>
     </div>
     <div class="middle-container">
-        <h2>Swarm City is a decentralized commerce platform.</h2>
-        <a href="http://zly.mjo.mybluehost.me/thisis" target="_blank">tell me more</a>
+        <h2>{{localize('Swarm City is a decentralized commerce platform.')}}</h2>
+        <a href="http://zly.mjo.mybluehost.me/thisis" target="_blank">{{localize('tell me more')}}</a>
         <div>
-            <div><div class="image-one"></div>Enabled by the SWT token, running on the Ethereum blockchain</div>
-            <div><div class="image-two"></div> locally on your device, no central database</div>
-            <div><div class="image-three"></div>It's an open source project, so you can jump right in</div>
+            <div><div class="image-one"></div>{{localize('Enabled by the SWT token running on the Ethereum blockchain')}}</div>
+            <div><div class="image-two"></div>{{localize('Locally on your device no central database')}}</div>
+            <div><div class="image-three"></div>{{localize('Its an open source project so you can jump right in')}}</div>
         </div>
     </div>
     <div class="bottom-container" wide-layout$="{{wide}}">
         <div>
             <ul>
-                <li><a href="http://zly.mjo.mybluehost.me/thisis" target="_blank">This is Swarm City</a></li>
-                <li><a href="http://zly.mjo.mybluehost.me/forum" target="_blank">Support</a></li>
-                <li><a href="http://zly.mjo.mybluehost.me/forum/viewforum.php?f=3" target="_blank">FAQ</a></li>
-                <li><a href="http://advisors.swarm.city/" target="_blank">Advisors</a></li>
+                <li><a href="https://thisis.swarm.city/" target="_blank">{{localize('This is Swarm City')}}</a></li>
+                <li><a href="http://swarmcitizens.org/" target="_blank">{{localize('Support')}}</a></li>
+                <li><a href="http://swarmcitizens.org/app.php/help/faq?sid=f4439589cebbcbfea36e2508ec12f155" target="_blank">{{localize('FAQ')}}</a></li>
+                <li><a href="https://advisors.swarm.city/" target="_blank">{{localize('Advisors')}}</a></li>
             </ul>
         </div>
         <div>
             <ul>
-                <li>Find Swarm City on</li>
-                <li><a href="https://swarm-slack-invite.herokuapp.com/" target="_blank">Slack</a></a></li>
-                <li><a href="https://medium.com/swarm-city-times" target="_blank">Medium</li>
-                <li><a href="https://github.com/swarmcity" target="_blank">Github</a></li>
-                <li><a href="https://twitter.com/swarmcitydapp" target="_blank">Twitter</a></li>
-                <li><a href="https://www.youtube.com/channel/UCsHBWn_ytZ3xdMbTyYe5Ifg" target="_blank">Youtube</a></li>
-                <li><a href="https://www.facebook.com/groups/SwarmCity/" target="_blank">Facebook</a></li>
-                <li><a href="https://www.reddit.com/r/SwarmCity/" target="_blank">Reddit</a></li>
+                <li>{{localize('Find Swarm City on')}}</li>
+                <li><a href="https://www.facebook.com/groups/SwarmCity/" target="_blank">{{localize('Facebook')}}</a></li>
+                <li><a href="https://discordapp.com/invite/6CsYT64" target="_blank">{{localize('Discord')}}</a></li>
+                <li><a href="https://swarm-slack-invite.herokuapp.com/" target="_blank">{{localize('Slack')}}</a></a></li>
+                <li><a href="https://medium.com/swarm-city-times" target="_blank">{{localize('Medium')}}</li>
+                <li><a href="https://github.com/swarmcity" target="_blank">{{localize('Github')}}</a></li>
+                <li><a href="https://twitter.com/swarmcitydapp" target="_blank">{{localize('Twitter')}}</a></li>
+                <li><a href="https://www.youtube.com/channel/UCsHBWn_ytZ3xdMbTyYe5Ifg" target="_blank">{{localize('Youtube')}}</a></li>
+                <li><a href="https://www.reddit.com/r/SwarmCity/" target="_blank">{{localize('Reddit')}}</a></li>
             </ul>
         </div>
     </div>
@@ -210,6 +225,10 @@ This code may only be used under the license found at https://github.com/swarmci
             path: {
                 type: String,
                 observer: '_path',
+            },
+            language: {
+                type: String,
+                statePath: 'language',
             },
             animationConfig: {
             value: function() {
@@ -233,14 +252,20 @@ This code may only be used under the license found at https://github.com/swarmci
     }
     connectedCallback() {
         super.connectedCallback();
+        // Load translations
         this.loadResources(this.resolveUrl('../text-translations.json'));
+        this.$.web3.hashtags();
     }
+/**
+* Change the path when enter-button or language change property
+*/
     _path() {
         if(this.path != null) {
             this.set('route.path', this.path);
         }
         this.path = null;
     }
+
     } window.customElements.define(PageWelcome.is, PageWelcome);
 </script>
 </dom-module>

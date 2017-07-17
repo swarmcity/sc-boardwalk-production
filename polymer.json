@@ -3,11 +3,8 @@
   "shell": "src/swarm-city.html",
     "fragments": [
     "src/pages/page-welcome.html",
-    "src/pages/page-new.html",
-    "src/pages/page-restore.html",
-    "src/pages/page-view404.html",
-    "src/pages/page-restore-ipfs.html",
-    "src/pages/page-restore-file.html"
+    "src/pages/page-language.html",
+    "src/pages/page-view404.html"
   ],
   "sources": [
     "src/**/*",
