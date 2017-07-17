@@ -34,18 +34,23 @@ this.$.web3.hashtags()
     hashtags() {
         return new Promise((resolve, reject) => {
     const fakeResponse = [
-        {hashtag: 'pioneer',
-        id: '6e57d3c60a2fc3f1d586d2ca9d66b52f80a023d9',
-        deals: 8725},
-        {hashtag: 'needaride',
-        id: '4f57d3c60a2fc3f1d586d2ca9d66b52f80a023d9',
-        deals: 125},
-        {hashtag: 'swarmbnb',
-        id: '2v57d3c60a2fc3f1d586d2ca9d66b52f80a023d9',
-        deals: 5},
-        {hashtag: 'dev',
-        id: '1a57d3c60a2fc3f1d586d2ca9d66b52f80a023d9',
-        deals: 22},
+        {
+            name: 'pioneer',
+            hashtagID:
+            '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c9',
+            location: '9q8yfr43d4',
+            deals: 8725,
+            description: 'pioneer is the first amazing hashtag',
+        },
+        {
+            name: 'needaride',
+            hashtagID:
+            '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c9',
+            location: '9q8yfr43d4',
+            deals: 230,
+            description:
+            'needaride is the first ridesharing hashtag',
+        },
     ];
             resolve(fakeResponse);
 // Promise.all([this._loadAbi(contractName), this._loadAddress(contractName)])
