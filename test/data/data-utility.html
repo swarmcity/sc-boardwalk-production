@@ -53,18 +53,14 @@ This code may only be used under the license found at https://github.com/swarmci
                 assert.equal(res.longitude, -4.329004883766174);
             });
         });
-
         test('Distance between two hashtags', () => {
-            return fixture('fixture-one').geoHashDistance('gbsuv7ztqz', 'gcmubts4mg')
+            return fixture('fixture-one')
+            .geoHashDistance('gbsuv7ztqz', 'gcmubts4mg')
             .then((res) => {
                 assert.equal(res, 477513);
             });
         });
-
     });
-
-
-
     </script>
 </body>
 </html>
