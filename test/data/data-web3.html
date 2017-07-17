@@ -1,0 +1,47 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<!--
+    Name the title the same as the component
+-->
+    <title>data-local-storage</title>
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../bower_components/web-component-tester/browser.js"></script>
+<!--
+    Load component to test
+-->
+    <link rel="import" href="../../src/data/data-web3.html">
+</head>
+<body>
+<!--
+    Add component to test fixure and give it an incrementing id
+-->
+<test-fixture id="fixture-one">
+    <template>
+        <data-web3 id="web3"></data-web3>
+    </template>
+</test-fixture>
+
+    <script>
+// Name the suite the same as the type of tests
+    suite('Public Method Tests', function() {
+        // Name ofthe function totest
+        test('Name is returned', () => {
+            // Call the function
+            return fixture('fixture-one').hashtags()
+            .then((res) => {
+                // Test the response
+                assert.equal(res[0].name, 'pioneer');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
