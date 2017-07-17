@@ -4,7 +4,7 @@ Copyright (c) 2017 Swarm City
 This code may only be used under the license found at https://github.com/swarmcity/license
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<script src="../scripts/swarm-city.min.js" async></script>
+<script src="../swarm-city.min.js" async></script>
 
 <!--
 An element that provides simple access to local storage. 
@@ -32,36 +32,42 @@ this.$.wallet.makeAccount()
             static get is() { return 'data-wallet'; }
 
 /**
-* Make a new account
-* @param {password} password used to make account
-* @return {Object} An oject that includes the public key and encrypted vault
+* Get provate key from keyObject
+* @param {password} password used to decrypt the key
+* @param {keyObject} keyObject
+* @return {privateKey} privateKey
 */
-            makeAccount(password) {
-                return new Promise((resolve, reject) => {
-                    this._newAccount();
-                    // .then((keys) => {
-                    //     return (_encryptAccount);
-                    // })
-                    // .then((encAccount) => {
-                    //     resolve({});
-                    // })
-                    // .catch((err) => {
-                    //     reject(Error(err));
-                    // });
-                });
-            }
+    recoverKey(password, keyObject) {
+        return new Promise((resolve, reject) => {
+            swarmCity.key.recover(password, keyObject, function (privateKey) {
+                resolve(privateKey);
+            });
+        });
+    }
 
-// Please do not call the below Private functions from outside this file.
-            _newAccount() {
-                return new Promise((resolve, reject) => {
-                    // returns a public and private key
-                });
-            }
-            _encryptAccount(privateKey, password) {
-                return new Promise((resolve, reject) => {
-                    // returns an encrypted vault
-                });
-            }
+/**
+* Get provate key from keyObject
+* @param {password} password used to decrypt the key
+* @return {keyObject} keyObject
+*/
+    createKey(password) {
+        return new Promise((resolve, reject) => {
+            var options = {
+                kdf: "pbkdf2",
+                cipher: "aes-128-ctr",
+                kdfparams: {
+                    c: 262144,
+                    dklen: 32,
+                    prf: "hmac-sha256"
+                }
+            };
+            const dk = swarmCity.key.create({keyBytes: 32, ivBytes: 16});
+            swarmCity.key.dump(password, dk.privateKey, dk.salt, dk.iv, options, function (keyObject) {
+                resolve(keyObject);
+            });
+            
+        });
+    }
 
         } window.customElements.define(DataWallet.is, DataWallet);
     </script>
