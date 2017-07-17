@@ -21,6 +21,7 @@
         "Polymer": false,
         "ReduxMixin": true,
         "Redux": false,
-        "PolymerRedux": false
+        "PolymerRedux": false,
+        "swarmCity": false
     }
 }
