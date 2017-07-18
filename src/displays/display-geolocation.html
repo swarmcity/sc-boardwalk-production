@@ -1,0 +1,101 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../data/data-utility.html">
+<link rel="import" href="../data/data-local-storage.html">
+<!--
+
+Example:
+```
+<display-geolocation></display-geolocation>
+```
+
+### Styling
+
+Style the button with CSS as you would a normal DOM element.
+
+The following custom properties and mixins are available for styling:
+
+| Custom property | Description | Default |
+| --- | --- | --- |
+| `--display-upload-file-height | Mixin applied to the width of the componant | `135px` |
+
+
+-->
+<dom-module id="display-geolocation">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+            .agree{
+                @apply(--agree-blue)
+            }
+        </style>
+        <div class="agree" on-click="_getLocation"></div>
+        <data-utility id="utility"></data-utility>
+        <data-local-storage id="storage"></data-local-storage>
+        </template>
+    <script>
+
+    class DisplayGeolocation extends Polymer.mixinBehaviors([
+        Polymer.AppLocalizeBehavior],
+        Polymer.Element
+    ) {
+        static get is() { return 'display-geolocation';}
+        static get properties() { return {
+        /**
+        * Loading indicates if the componant is loading
+        *
+        * @type {Boolean}
+        */
+            loading: {
+                type: Boolean,
+                value: false,
+                notify: true,
+            },
+        /**
+        * Preview is a src path for the default preview image
+        *
+        * @type {Boolean}
+        */
+            preview: {
+                type: String,
+            },
+            path: {
+                type: String,
+                value: null,
+                notify: true,
+            },
+        };
+    }
+
+_getLocation() {
+    let geoHash = '';
+    this.$.utility.getLocation()
+    .then((latlon) => {
+        return this.$.utility.toGeohash(latlon.latitude, latlon.longitude);
+    })
+    .then((data) => {
+        geoHash = data;
+        return this.$.storage.accountExists();
+    })
+    .then((account) => {
+        if(account == false) {
+            return this.$.storage.saveAccount({'location': geoHash});
+        } else {
+            account.location = geoHash;
+            return this.$.storage.saveAccount(account);
+        }
+    })
+    .then((account) => {
+        this.path = 'hashtag-list/';
+    });
+}
+} window.customElements.define(DisplayGeolocation.is, DisplayGeolocation);
+</script>
+</dom-module>
