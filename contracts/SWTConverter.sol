@@ -1,40 +1,17 @@
 pragma solidity ^0.4.6;
 
-/// @dev The token controller contract must implement these functions
-contract TokenController {
-    /// @notice Called when `_owner` sends ether to the MiniMe Token contract
-    /// @param _owner The address that sent the ether to create tokens
-    /// @return True if the ether is accepted, false if it throws
-    function proxyPayment(address _owner) payable returns(bool);
-
-    /// @notice Notifies the controller about a token transfer allowing the
-    ///  controller to react if desired
-    /// @param _from The origin of the transfer
-    /// @param _to The destination of the transfer
-    /// @param _amount The amount of the transfer
-    /// @return False if the controller does not authorize the transfer
-    function onTransfer(address _from, address _to, uint _amount) returns(bool);
-
-    /// @notice Notifies the controller about an approval allowing the
-    ///  controller to react if desired
-    /// @param _owner The address that calls `approve()`
-    /// @param _spender The spender in the `approve()` call
-    /// @param _amount The amount in the `approve()` call
-    /// @return False if the controller does not authorize the approval
-    function onApprove(address _owner, address _spender, uint _amount)
-    returns(bool);
-}
+import './TokenController.sol';
 
 contract SWTConverter is TokenController {
 
-    MiniMeToken public tokenContract;   // The new token
+    IMiniMeToken public tokenContract;   // The new token
     ERC20 public arcToken;              // The ARC token address
 
     function SWTConverter(
     address _tokenAddress,          // the new MiniMe token address
     address _arctokenaddress        // the original ARC token address
     ) {
-        tokenContract = MiniMeToken(_tokenAddress); // The Deployed Token Contract
+        tokenContract = IMiniMeToken(_tokenAddress); // The Deployed Token Contract
         arcToken = ERC20(_arctokenaddress);
     }
 
@@ -90,7 +67,7 @@ contract SWTConverter is TokenController {
  */
 
 // Minime interface
-contract MiniMeToken {
+contract IMiniMeToken {
     /// @notice Generates `_amount` tokens that are assigned to `_owner`
     /// @param _owner The address that will be assigned the new tokens
     /// @param _amount The quantity of tokens generated

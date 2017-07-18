@@ -1,0 +1,11 @@
+{
+  "package-name": "SwarmCity",
+  "version": "0.0.2",
+  "keywords": [
+    "swarmcity"
+  ],
+  "dependencies": {
+    "zeppelin": "^1.0.4"
+  },
+  "license": "ISC"
+}

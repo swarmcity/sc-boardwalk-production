@@ -1,5 +1,5 @@
 require('babel-register');
-
+require('babel-polyfill');
 module.exports = {
   networks: {
     development: {
@@ -8,10 +8,10 @@ module.exports = {
       network_id: '*',
     },
     ropsten: {
-      host: "192.168.1.4",
+      host: "localhost",
       port: 8545,
       gas: 4710000,
-      network_id: "*"
+      network_id: "3"
     },
     kovan: {
       host: "localhost",
