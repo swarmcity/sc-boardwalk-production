@@ -68,10 +68,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 <div class="back" on-click="_toWelcome"></div>
                 <display-distance-slider></display-distance-slider>
             </div>
-            <display-hashtag-list 
-                distance="{{distance}}" 
-                allowed="{{allowed}}"
-                path="{{path}}"></display-hashtag-list>
+            <display-hashtag-list distance="{{distance}}" allowed="{{allowed}}" path="{{path}}"></display-hashtag-list>
         </div>
     </template>
 
@@ -94,19 +91,19 @@ This code may only be used under the license found at https://github.com/swarmci
                         observer: '_path',
                     },
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: {duration: 300},
+                                    timing: { duration: 300 },
                                 },
                                 'exit': {
                                     name: 'fade-out-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: {duration: 300},
+                                    timing: { duration: 300 },
                                 },
                             };
                         },
@@ -130,6 +127,5 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
         } window.customElements.define(HashtagList.is, HashtagList);
-
     </script>
 </dom-module>
