@@ -1,0 +1,71 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<!--
+
+Example:
+```
+<display-geolocation></display-geolocation>
+```
+
+### Styling
+
+Style the button with CSS as you would a normal DOM element.
+
+The following custom properties and mixins are available for styling:
+
+| Custom property | Description | Default |
+| --- | --- | --- |
+| `--display-upload-file-height | Mixin applied to the width of the componant | `135px` |
+
+
+-->
+<dom-module id="display-geolocation">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+            .agree{
+                @apply(--agree-blue)
+            }
+        </style>
+        <div class="agree">
+        </div>
+        </template>
+    <script>
+
+    class DisplayGeolocation extends Polymer.mixinBehaviors([
+        Polymer.AppLocalizeBehavior],
+        Polymer.Element
+    ) {
+        static get is() { return 'display-geolocation';}
+        static get properties() { return {
+        /**
+        * Loading indicates if the componant is loading
+        *
+        * @type {Boolean}
+        */
+            loading: {
+                type: Boolean,
+                value: false,
+                notify: true,
+            },
+        /**
+        * Preview is a src path for the default preview image
+        *
+        * @type {Boolean}
+        */
+            preview: {
+                type: String,
+            },
+        };
+    }
+
+} window.customElements.define(DisplayGeolocation.is, DisplayGeolocation);
+</script>
+</dom-module>

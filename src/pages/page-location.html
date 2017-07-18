@@ -12,7 +12,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <!--
     Displays and shared styles only
 -->
-<link rel="import" href="../displays/display-language.html">
+<link rel="import" href="../displays/display-geolocation.html">
 <link rel="import" href="../shared-styles.html">
 <!--
     Aimation pack, only load the animations you need for this page.
@@ -57,11 +57,30 @@ This code may only be used under the license found at https://github.com/swarmci
         font-size: 12px;
         line-height: 15px;
     }
+    .blue-agree{
+        width:76px;
+        height:76px;
+    }
+    .disagree{
+        border-radius: 50%;
+        width:76px;
+        height:76px;
+        background: url('../../../images/swarm-city-sprite.png') -688px -63px;
+        cursor: pointer;
+    }
+    .buttons{
+        @apply --layout-horizontal;
+        @apply --layout-center-justified;
+    }
 </style>
 <app-location route="{{route}}"></app-location>
 <div class="container">
     <div class="title">Can we ask for your location?</div>
     <div class="subtitle">When accepting your browser will ask you to enable location services</div>
+    <div class="buttons">
+        <div class="disagree" on-click-"_back"></div>
+        <display-geolocation class="blue-agree"></display-geolocation>
+    </div>
 </div>
 </template>
 
@@ -107,6 +126,9 @@ This code may only be used under the license found at https://github.com/swarmci
         super.connectedCallback();
         // Load translations
         this.loadResources(this.resolveUrl('../text-translations.json'));
+    }
+    _back(){
+        this.path = 'hashtag-list/'
     }
     _path() {
         if(this.path != null) {
