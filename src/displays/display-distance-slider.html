@@ -6,6 +6,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="display-language.html">
+<link rel="import" href="../../bower_components/paper-slider/paper-slider.html">
 <!--
 
 Example:
@@ -24,41 +25,54 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-distance-slider">
     <template>
         <style>
-            :host {
+             :host {
                 display: block;
             }
+
             .toggle {
                 @apply --display-distance-slider-toggle;
             }
+
             .toggle:hover {
                 cursor: pointer;
+            }
+
+            paper-slider.red {
+                --paper-slider-knob-color: var(--paper-red-500);
+                --paper-slider-active-color: var(--paper-red-500);
+            }
+            .slider {
+                
             }
         </style>
         <display-language language="{{language}}"></display-language>
         <div class="container">
             <p class="toggle">filter list</p>
+            <div id="slider">
+            <paper-slider class="yellow" value="23" max="255"></paper-slider>
+            </div>
         </div>
-        </template>
+    </template>
     <script>
-
-    class DisplayDistanceSlider extends Polymer.mixinBehaviors([
-        Polymer.AppLocalizeBehavior],
-        Polymer.Element
-    ) {
-        static get is() { return 'display-distance-slider';}
-        static get properties() { return {
-        /**
-        * Loading indicates if the componant is loading
-        *
-        * @type {Boolean}
-        */
-            loading: {
-                type: Boolean,
-                value: false,
-                notify: true,
-            },
-        };
-    }
-} window.customElements.define(DisplayDistanceSlider.is, DisplayDistanceSlider);
-</script>
+        class DisplayDistanceSlider extends Polymer.mixinBehaviors([
+            Polymer.AppLocalizeBehavior],
+            Polymer.Element
+        ) {
+            static get is() { return 'display-distance-slider'; }
+            static get properties() {
+                return {
+                    /**
+                    * Loading indicates if the componant is loading
+                    *
+                    * @type {Boolean}
+                    */
+                    loading: {
+                        type: Boolean,
+                        value: false,
+                        notify: true,
+                    },
+                };
+            }
+        } window.customElements.define(DisplayDistanceSlider.is, DisplayDistanceSlider);
+    </script>
 </dom-module>
