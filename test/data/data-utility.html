@@ -35,7 +35,7 @@ This code may only be used under the license found at https://github.com/swarmci
         // Name ofthe function totest
         test('Convert lat lon to geohash', () => {
             // Call the function
-            return fixture('fixture-one')._toGeohash(48.669, -4.329)
+            return fixture('fixture-one').toGeohash(48.669, -4.329)
             .then((res) => {
                 // Test the response
                 assert.equal(res, 'gbsuv7ztqz');

@@ -105,11 +105,20 @@ Example:
                 // If we dont have the translation use english
                 this.language = 'en';
                 this.dispatch('LANGUAGE', this.language);
+                return;
             } else {
                 // If we do have the translation use it
                 this.language = data.language;
                 this.dispatch('LANGUAGE', this.language);
+                return;
+            }
+        })
+        .then((data) => {
+            if(this.account == false) {
                 this.$.localStorage.saveAccount({language: data.language});
+            } else {
+                this.account.language = this.language;
+                this.$.localStorage.saveAccount(this.account);
             }
         });
 
