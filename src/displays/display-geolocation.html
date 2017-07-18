@@ -5,6 +5,8 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../data/data-utility.html">
+<link rel="import" href="../data/data-local-storage.html">
 <!--
 
 Example:
@@ -34,8 +36,9 @@ The following custom properties and mixins are available for styling:
                 @apply(--agree-blue)
             }
         </style>
-        <div class="agree">
-        </div>
+        <div class="agree" on-click="_getLocation"></div>
+        <data-utility id="utility"></data-utility>
+        <data-local-storage id="storage"></data-local-storage>
         </template>
     <script>
 
@@ -63,9 +66,36 @@ The following custom properties and mixins are available for styling:
             preview: {
                 type: String,
             },
+            path: {
+                type: String,
+                value: null,
+                notify: true,
+            },
         };
     }
 
+_getLocation() {
+    let geoHash = '';
+    this.$.utility.getLocation()
+    .then((latlon) => {
+        return this.$.utility.toGeohash(latlon.latitude, latlon.longitude);
+    })
+    .then((data) => {
+        geoHash = data;
+        return this.$.storage.accountExists();
+    })
+    .then((account) => {
+        if(account == false) {
+            return this.$.storage.saveAccount({'location': geoHash});
+        } else {
+            account.location = geoHash;
+            return this.$.storage.saveAccount(account);
+        }
+    })
+    .then((account) => {
+        this.path = 'hashtag-list/';
+    });
+}
 } window.customElements.define(DisplayGeolocation.is, DisplayGeolocation);
 </script>
 </dom-module>

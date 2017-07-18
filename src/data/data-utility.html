@@ -43,8 +43,8 @@ this.$.util.translationExists(language)
                 };
                 navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    resolve({latitude: position.latitude,
-                    longitude: position.longitude});
+                    resolve({latitude: position.coords.latitude,
+                    longitude: position.coords.longitude});
                 },
                 (err) => {
                     resolve(Error(err));
@@ -83,7 +83,7 @@ this.$.util.translationExists(language)
 * @param {longitude} longitude longitude
 * @return {geohash} geohash fir the given kat and lon.
 */
-_toGeohash(latitude, longitude) {
+toGeohash(latitude, longitude) {
     return new Promise((resolve, reject) => {
         const ratio = [16, 8, 4, 2, 1];
         const thirtyTwoBits = '0123456789bcdefghjkmnpqrstuvwxyz';

@@ -79,7 +79,7 @@ This code may only be used under the license found at https://github.com/swarmci
     <div class="subtitle">When accepting your browser will ask you to enable location services</div>
     <div class="buttons">
         <div class="disagree" on-click-"_back"></div>
-        <display-geolocation class="blue-agree"></display-geolocation>
+        <display-geolocation class="blue-agree" path="{{path}}"></display-geolocation>
     </div>
 </div>
 </template>
@@ -127,8 +127,8 @@ This code may only be used under the license found at https://github.com/swarmci
         // Load translations
         this.loadResources(this.resolveUrl('../text-translations.json'));
     }
-    _back(){
-        this.path = 'hashtag-list/'
+    _back() {
+        this.path = 'hashtag-list/';
     }
     _path() {
         if(this.path != null) {
