@@ -25,6 +25,5 @@ module.exports = {
       gas: 4710000,
       network_id: "4"
     },
-  },
-  contracts_build_directory: "src/contracts/",
+  }
 };
