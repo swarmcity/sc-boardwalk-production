@@ -1,0 +1,66 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<!--
+    Name the title the same as the component
+-->
+    <title>data-local-storage</title>
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../bower_components/web-component-tester/browser.js"></script>
+<!--
+    Load component to test
+-->
+    <link rel="import" href="../../src/data/data-utility.html">
+</head>
+<body>
+<!--
+    Add component to test fixure and give it an incrementing id
+-->
+<test-fixture id="fixture-one">
+    <template>
+        <data-utility id="utility"></data-utility>
+    </template>
+</test-fixture>
+
+    <script>
+// Name the suite the same as the type of tests
+    suite('Public Method Tests', function() {
+        // Name ofthe function totest
+        test('Convert lat lon to geohash', () => {
+            // Call the function
+            return fixture('fixture-one')._toGeohash(48.669, -4.329)
+            .then((res) => {
+                // Test the response
+                assert.equal(res, 'gbsuv7ztqz');
+            });
+        });
+        test('Convert geohash to lat lon', () => {
+            return fixture('fixture-one')._toLatLon('gbsuv7ztqz')
+            .then((res) => {
+                assert.equal(res.latitude, 48.6690017580986);
+            });
+        });
+        test('Convert geohash to lat lon', () => {
+            return fixture('fixture-one')._toLatLon('gbsuv7ztqz')
+            .then((res) => {
+                assert.equal(res.longitude, -4.329004883766174);
+            });
+        });
+        test('Distance between two hashtags', () => {
+            return fixture('fixture-one')
+            .geoHashDistance('gbsuv7ztqz', 'gcmubts4mg')
+            .then((res) => {
+                assert.equal(res, 477513);
+            });
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+
+<!--
+An element that provides simple access to a number of utility functions
+
+HTML Example:
+```
+<data-utility id="util"></data-utility>
+```
+JS Example
+```
+this.$.util.translationExists(language)
+.then((found) => {
+    console.log(found) 
+})
+```
+
+-->
+
+
+<dom-module id="data-utility">
+    <script>
+        class DataUtility extends Polymer.Element {
+            static get is() { return 'data-utility'; }
+
+/**
+* Get location
+* @return {object} object represents an error or a location object
+*/
+    getLocation() {
+        return new Promise((resolve, reject) => {
+            if (navigator.geolocation) {
+                const options = {
+                enableHighAccuracy: false,
+                timeout: 5000,
+                maximumAge: 0,
+                };
+                navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    resolve({latitude: position.latitude,
+                    longitude: position.longitude});
+                },
+                (err) => {
+                    resolve(Error(err));
+                },
+                options);
+            }
+        });
+    }
+
+
+/**
+* Find distance between two geoHash's
+* @param {geoHashA} geoHashA
+* @param {geoHashB} geoHashB
+* @return {distance} distance
+*/
+    geoHashDistance(geoHashA, geoHashB) {
+        return new Promise((resolve, reject) => {
+            Promise.all([this._toLatLon(geoHashA), this._toLatLon(geoHashB)])
+            .then((data) => {
+                const latA = data[0].latitude;
+                const lonA = data[0].longitude;
+                const latB = data[1].latitude;
+                const lonB = data[1].longitude;
+                resolve(this._distance(latA, lonA, latB, lonB));
+            })
+            .catch((err) => {
+                reject(Error(err));
+            });
+        });
+    }
+
+/**
+* Converts a latitude and longitude to a geohash
+* @param {latitude} latitude latitude
+* @param {longitude} longitude longitude
+* @return {geohash} geohash fir the given kat and lon.
+*/
+_toGeohash(latitude, longitude) {
+    return new Promise((resolve, reject) => {
+        const ratio = [16, 8, 4, 2, 1];
+        const thirtyTwoBits = '0123456789bcdefghjkmnpqrstuvwxyz';
+        const geoFence = [];
+        let values = [longitude / 180 * 100, latitude / 90 * 100];
+        for (let i = 0; i < values.length; i++) {
+            geoFence[i] = [-100, 100];
+        }
+        let goeHash = '';
+        let number = 0;
+        let charector = 0;
+        let i = 0;
+
+        while (goeHash.length < 10) {
+            const iteration = i++ % values.length;
+            const distasnce = geoFence[iteration];
+            const value = values[iteration];
+            const mean = (distasnce[0] + distasnce[1]) / 2;
+
+            if (value > mean) {
+                charector |= ratio[number];
+                distasnce[0] = mean;
+            } else {
+                distasnce[1] = mean;
+            }
+
+            if (number < 4) {
+                number++;
+            }
+            else {
+                goeHash += thirtyTwoBits[charector];
+                number = 0;
+                charector = 0;
+            }
+        }
+        resolve(goeHash);
+    });
+}
+
+/**
+* Converts a geohash to longitude and latitude
+* @param {geoHash} geoHash
+* @return {object} object contains te properties latitude and longitude
+*/
+_toLatLon(geoHash) {
+    return new Promise((resolve, reject) => {
+        const ratio = [16, 8, 4, 2, 1];
+        const thirtyTwoBits = '0123456789bcdefghjkmnpqrstuvwxyz';
+        const geoFence = [];
+
+        for (var i = 0; i < 2; i++) {
+            geoFence[i] = [-100, 100];
+        }
+        let iteration = 0;
+        
+        for (let i = 0; i < geoHash.length; i++) {
+            for (let x = 0; x < ratio.length; x++) {
+            var distance = geoFence[iteration++ % geoFence.length];
+            var side = thirtyTwoBits.indexOf(geoHash[i]) & ratio[x] ? 0 : 1;
+            distance[side] = (distance[0] + distance[1]) / 2;
+            }
+        }
+
+        const mean = [];
+        for (let i = 0; i < geoFence.length; i++) {
+            mean[i] = (geoFence[i][0] + geoFence[i][1]) / 2;
+        }
+        resolve({latitude: mean[1] / 100 * 90, longitude: mean[0] / 100 * 180});
+    });
+}
+
+/**
+* Checks if we have the translation for the language
+* @param {language} language to check
+* @return {boolean} true signals we do have a translation, false we dont.
+*/
+    translationExists(language) {
+        return new Promise((resolve, reject) => {
+            // Load the translations.json file
+            const xobj = new XMLHttpRequest();
+            xobj.overrideMimeType('application/json');
+            xobj.open('GET', '../src/text-translations.json', true);
+            xobj.onreadystatechange = () => {
+                if (xobj.readyState == 4 && xobj.status == '200') {
+// The file loaded now check the index to determine if wehave a translation
+                    const json = JSON.parse(xobj.responseText);
+                    const keys = Object.keys(json);
+                    const arr = keys.indexOf(language);
+                    if(arr != -1) {
+                        resolve({language: language, found: true});
+                    } else {
+                        resolve({language: language, found: false});
+                    }
+                }
+            };
+            // Request the json
+            xobj.send(null);
+        });
+    }
+
+/**
+* If we need to display buttons for the user to select languages,
+* get the languages we have translations for and supply the dom repeat
+* @return {locales} locales is the loacal name of the language
+*/
+    allLanguages() {
+        return new Promise((resolve, reject) => {
+            // Load the translations.json file
+            const xobj = new XMLHttpRequest();
+            xobj.overrideMimeType('application/json');
+            xobj.open('GET', '../src/text-translations.json', true);
+            xobj.onreadystatechange = () => {
+                if (xobj.readyState == 4 && xobj.status == '200') {
+                    // Parse the response
+                    const json = JSON.parse(xobj.responseText);
+                    const count = (Object.keys(json).length);
+                    // Setup the arrays t be used in the dom repeat
+                    let locales = [];
+                    let iso = [];
+                    // loop over the object and push the keys
+                    var i;
+                    for (i = 0; i < count; i++) {
+                    locales.push(json[Object.keys(json)[i]].locale);
+                    iso.push(json[Object.keys(json)[i]].language);
+                    }
+                    resolve({locales: locales, iso: iso});
+                }
+            };
+            xobj.send(null);
+        });
+    }
+
+/**
+* Find distance between two lat and lon's
+* @param {latA} latA
+* @param {lonA} lonA
+* @param {latB} latB
+* @param {lonB} lonB
+* @return {distance} distance in meters
+*/
+    _distance(latA, lonA, latB, lonB) {
+        return new Promise((resolve, reject) => {
+            let phi1 = this._radians(latA);
+            let phi2 = this._radians(latB);
+            let deltaPhi = this._radians(latB-latA);
+            let deltaLambda = this._radians(lonB-lonA);
+            let amp = Math.sin(deltaPhi/2.0) * Math.sin(deltaPhi/2.0) +
+            Math.cos(phi1) * Math.cos(phi2) * Math.sin(deltaLambda/2) *
+            Math.sin(deltaLambda/2);
+            let circ = 2 * Math.atan2(Math.sqrt(amp), Math.sqrt(1-amp));
+            resolve(Math.round(circ * 6371000));
+        });
+    }
+
+/**
+* Converts from degrees to radians.
+* @param {degrees} degrees
+* @return {degrees} degrees
+*/
+    _radians(degrees) {
+        return (degrees * Math.PI / 180);
+    }
+
+        } window.customElements.define(DataUtility.is, DataUtility);
+    </script>
+</dom-module>

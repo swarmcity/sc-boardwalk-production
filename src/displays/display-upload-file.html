@@ -5,7 +5,7 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
-<link rel="import" href="display-internationalization.html">
+<link rel="import" href="display-language.html">
 <!--
 
 Example:
@@ -68,15 +68,13 @@ The following custom properties and mixins are available for styling:
                 background-color: #D8D8D8;
             }
         </style>
-        <display-internationalization language="{{language}}"></display-internationalization>
-        
+        <display-language language="{{language}}"></display-language>
         <div class="container">
             <img src="{{preview}}" class="preview">  
             <label class="button">
                 <input type="file" on-change="_getFile"/>
             </label>
         </div>
-
         </template>
     <script>
 

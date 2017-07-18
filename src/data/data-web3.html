@@ -1,0 +1,117 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<script src="../swarm-city.min.js" async></script>
+
+<!--
+An element that provides simple access to web3 services
+
+HTML Example:
+```
+<data-web3 id="web3"></data-web3>
+```
+JS Example
+```
+this.$.web3.hashtags()
+.then((hashtags) => {
+    console.log(hashtags) 
+})
+```
+-->
+
+<dom-module id="data-web3">
+    <script>
+        class DataWeb3 extends Polymer.Element {
+            static get is() { return 'data-web3'; }
+
+/**
+* Returns an array with the hashtag name and
+* @return {hashtags} hashtags is an array of objects
+*/
+    hashtags() {
+        return new Promise((resolve, reject) => {
+    const fakeResponse = [
+        {
+            name: 'pioneer',
+            hashtagID:
+            '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c9',
+            location: '9q8yfr43d4',
+            deals: 8725,
+            description: 'pioneer is the first amazing hashtag',
+        },
+        {
+            name: 'needaride',
+            hashtagID:
+            '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c9',
+            location: '9q8yfr43d4',
+            deals: 230,
+            description:
+            'needaride is the first ridesharing hashtag',
+        },
+    ];
+            resolve(fakeResponse);
+// Promise.all([this._loadAbi(contractName), this._loadAddress(contractName)])
+// .then((data) => {
+//     const abiArray = data[0];
+//     const contractAddress = data[1];
+//     var contract = swarmCity.web3.eth.contract(abiArray).at(contractAddress);
+//     resolve(object);
+// })
+// .catch((err) => {
+//     reject(Error(err));
+// });
+        });
+    }
+
+/**
+* Returns the abi for the requests contract
+* @param {contractName} contractName is the name of the contract
+* @return {abi} abiu repreents the contracts abi
+*/
+    _loadAbi(contractName) {
+        return new Promise((resolve, reject) => {
+            const xobj = new XMLHttpRequest();
+            const path = '../src/contracts/'+contractName+'.json';
+            xobj.overrideMimeType('application/json');
+            xobj.open('GET', path, true);
+            xobj.onreadystatechange = () => {
+                if (xobj.readyState == 4 && xobj.status == '200') {
+                    const json = JSON.parse(xobj.responseText);
+                    resolve(json);
+                }
+            };
+            // Request the json
+            xobj.send(null);
+        });
+    }
+
+/**
+* Returns the contract address
+* @param {contractName} contractName is the name of the contract
+* @return {contractAddress} contractAddress repreents the
+* contracts address on main-net
+*/
+    _loadAddress(contractName) {
+        return new Promise((resolve, reject) => {
+            const xobj = new XMLHttpRequest();
+            const path = '../src/contracts/index.json';
+            xobj.overrideMimeType('application/json');
+            xobj.open('GET', path, true);
+            xobj.onreadystatechange = () => {
+                if (xobj.readyState == 4 && xobj.status == '200') {
+                    const json = JSON.parse(xobj.responseText);
+                    resolve(json);
+                }
+            };
+            // Request the json
+            xobj.send(null);
+        });
+    }
+
+
+    } window.customElements.define(DataWeb3.is, DataWeb3);
+    </script>
+</dom-module>

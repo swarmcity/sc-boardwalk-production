@@ -11,3 +11,5 @@ firebase-debug.log
 .firebaserc
 service-worker.js
 sw-precache-config.js
+src/swarm-city.min.js
+browserify.js
