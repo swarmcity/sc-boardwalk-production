@@ -224,45 +224,45 @@ contract('HashtagDeal', function(accounts) {
             });
         });
 
-        it("should have the SimpleDeal approved by accounts[1]", function(done) {
-            dealContract.approve({
-                from: accounts[1]
-            }).then(function(instance) {
-                done();
-            });
-        });
+        // it("should have the SimpleDeal approved by accounts[1]", function(done) {
+        //     dealContract.approve({
+        //         from: accounts[1]
+        //     }).then(function(instance) {
+        //         done();
+        //     });
+        // });
 
-        it("should see a payout balance on accounts[2]", function(done) {
-            swtToken.balanceOf(accounts[2]).then(function(balance) {
-                assert.equal(balance.toNumber(), 102 + 100 - 33, "accounts[2] balance not correct after approve");
-                console.log('Balance of account=', balance.toNumber());
-                done();
-            });
-        });
+        // it("should see a payout balance on accounts[2]", function(done) {
+        //     swtToken.balanceOf(accounts[2]).then(function(balance) {
+        //         assert.equal(balance.toNumber(), 102 + 100 - 33, "accounts[2] balance not correct after approve");
+        //         console.log('Balance of account=', balance.toNumber());
+        //         done();
+        //     });
+        // });
 
-        it("should see a payout of the commission on accounts[0] ( hastag owner ) ", function(done) {
-            swtToken.balanceOf(accounts[0]).then(function(balance) {
-                assert.equal(balance.toNumber(), 33, "accounts[0] balance not correct after approve");
-                console.log('Balance of account=', balance.toNumber());
-                done();
-            });
-        });
+        // it("should see a payout of the commission on accounts[0] ( hastag owner ) ", function(done) {
+        //     swtToken.balanceOf(accounts[0]).then(function(balance) {
+        //         assert.equal(balance.toNumber(), 33, "accounts[0] balance not correct after approve");
+        //         console.log('Balance of account=', balance.toNumber());
+        //         done();
+        //     });
+        // });
 
-        it("should see REP on accounts[1]", function(done) {
-            hashtagRepToken.balanceOf(accounts[1]).then(function(balance) {
-                assert.equal(balance, 1, "accounts[1] REP balance not correct");
-                console.log('Balance of account=', balance.toNumber());
-                done();
-            });
-        });
+        // it("should see REP on accounts[1]", function(done) {
+        //     hashtagRepToken.balanceOf(accounts[1]).then(function(balance) {
+        //         assert.equal(balance, 1, "accounts[1] REP balance not correct");
+        //         console.log('Balance of account=', balance.toNumber());
+        //         done();
+        //     });
+        // });
 
-        it("should see REP on accounts[2]", function(done) {
-            hashtagRepToken.balanceOf(accounts[2]).then(function(balance) {
-                assert.equal(balance, 1, "accounts[2] REP balance not correct");
-                console.log('Balance of account=', balance.toNumber());
-                done();
-            });
-        });
+        // it("should see REP on accounts[2]", function(done) {
+        //     hashtagRepToken.balanceOf(accounts[2]).then(function(balance) {
+        //         assert.equal(balance, 1, "accounts[2] REP balance not correct");
+        //         console.log('Balance of account=', balance.toNumber());
+        //         done();
+        //     });
+        // });
     });
 
 });

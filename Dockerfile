@@ -1,4 +1,7 @@
 FROM node:7.10-wheezy
+RUN npm install -g ethereumjs-testrpc
+RUN npm install -g truffle
+
 RUN mkdir /app
 WORKDIR /app
 
@@ -21,13 +24,18 @@ COPY truffle.js ./
 COPY ethpm.json ./
 RUN npm run getcontractlibs
 
+# hack to allow importing swarmcity:0.0.1
+RUN mkdir -p contracts/ && cp -R installed_contracts/swarmcity/ contracts/swarmcity/
+RUN mkdir -p contracts/swarmcity/installed_contracts/zeppelin/contracts/ownership/ && \
+    cp installed_contracts/zeppelin/contracts/ownership/Ownable.sol \
+           contracts/swarmcity/installed_contracts/zeppelin/contracts/ownership/Ownable.sol
+
 COPY contracts ./contracts/
+RUN ls -l contracts
 RUN npm run compilecontracts
 
 COPY migrations ./migrations/
-#RUN npm run deploycontracts
-#RUN npm run publishcontracts
 
-RUN npm install -g truffle
-RUN truffle migrate --network ropsten
-#RUN npm run publishcontracts
+COPY test ./test/
+
+RUN testrpc > /dev/null & truffle migrate && truffle test ./test/contracts/*.js

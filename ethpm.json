@@ -1,5 +1,5 @@
 {
-  "package_name": "swarmcity",
+  "package_name": "swarmcity-boardwalk",
   "version": "0.0.1",
   "description": "Swarm City",
   "authors": [
@@ -17,6 +17,7 @@
     "SwarmCity"
   ],
   "dependencies": {
+    "swarmcity": "0.0.1",
     "zeppelin": "^1.0.4"
   },
   "license": "MIT"
