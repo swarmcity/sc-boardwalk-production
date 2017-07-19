@@ -8,6 +8,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="display-language.html">
 <link rel="import" href="../data/data-web3.html">
 <link rel="import" href="../data/data-local-storage.html">
+<link rel="import" href="../data/data-utility.html">
 <!--
 
 Example:
@@ -49,6 +50,7 @@ The following custom properties and mixins are available for styling:
         <display-language language="{{language}}"></display-language>
         <data-web3 id="web3"></data-web3>
         <data-local-storage id="storage"></data-local-storage>
+        <data-utility id="utility"></data-utility>
         <div class="container">
             <template is="dom-repeat" items="{{hashtags}}">
                 <div class="hashtag" on-click="_toHashtag">#[[item.name]]</div>
@@ -82,9 +84,6 @@ The following custom properties and mixins are available for styling:
                     hashtags: {
                         type: Array,
                     },
-                    location: {
-                        type: String,
-                    },
                 };
             }
             connectedCallback() {
@@ -92,10 +91,24 @@ The following custom properties and mixins are available for styling:
                 Promise.all([
                     this.$.storage.accountExists(),
                     this.$.web3.hashtags(),
-                    ])
+                ])
                     .then((data) => {
-                        this.location = data[0].location;
-                        this.hashtags = data[1];
+                        let location = data[0].location;
+                        let hashtags = data[1];
+
+                        for (let i = 0; i < hashtags.length; i++) {
+                            this.$.utility.geoHashDistance(hashtags[i].location, location)
+                                .then((distance) => {
+                                    hashtags[i].distance = distance;
+                                    
+                                })
+
+                        }
+                        return hashtags
+                    
+                    })
+                    .then((hashtags) => {
+
                     });
             }
             _path() {
