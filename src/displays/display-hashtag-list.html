@@ -106,6 +106,14 @@ The following custom properties and mixins are available for styling:
                         return hashtags;
                     })
                     .then((hashtags) => {
+                        function sortHash(a, b) {
+                                return a.distance - b.distance;
+                        }
+                        hashtags.sort(sortHash);
+                        // hashtags.sort((a, b) => a.distance - b.distance);
+                        /* this.hashtags = (function (hashtags) {
+                            return hashtags.sort((a, b) => a.distance - b.distance);
+                        })(); */
                         this.hashtags = hashtags;
                     });
             }
