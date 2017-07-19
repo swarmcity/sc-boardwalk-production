@@ -103,18 +103,18 @@ The following custom properties and mixins are available for styling:
             },
         };
     }
-    _toggle(){
+    _toggle() {
         this.showInfo = !this.showInfo;
     }
-    _getHashtag(){
-        if(this.routeData.page){
+    _getHashtag() {
+        if(this.routeData.page) {
             this.loading = true;
             this.$.web3.deals(this.routeData.page)
             .then((data) => {
                 this.hashtagName = data.name;
-                this.hashtag = data
+                this.hashtag = data;
                 this.loading = false;
-            })
+            });
         }
     }
 

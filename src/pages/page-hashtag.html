@@ -7,15 +7,17 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="../redux-state.html">
 <!--
     Displays and shared styles only
 -->
 <link rel="import" href="../shared-styles.html">
-<link rel="import" href="../displays/display-my-info.html">
-<link rel="import" href="../displays/display-distance-slider.html">
-<link rel="import" href="../displays/display-hashtag-deals.html">
+<!-- <link rel="import" href="../displays/display-my-info.html">-->
+<link rel="import" href="../displays/display-geohash.html"> 
+<link rel="import" href="../displays/display-hashtag-about.html"> 
+<!-- <link rel="import" href="../displays/display-hashtag-deals.html"> -->
 <!--
     Aimation pack, only load the animations you need for this page.
 -->
@@ -38,33 +40,42 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
             }
-
-            .back {
-                @apply --page-hashtag-list-back;
+            .container{
+                display: block;
+                width: 100%;
+                max-width: 420px;
             }
-
-            .back:hover {
-                cursor: pointer;
+            .back-btn{
+                width: 20px;
+                height: 20px;
+                background: url('../../../images/swarm-city-sprite.png') -705px -137px;
             }
-
-            .flex-equal-justified {
-                @apply --layout-horizontal;
-                @apply --layout-justified;
-            }
-
-            .middle {
-                max-width: 300px;
-                margin: 35px 0 0 55px;
+            .hash-tag{
+                color: var(--grey-5);
+                font-size: 30px;
+                line-height: 36px;
+                font-weight: 800;
+                margin-top: 20px;
             }
         </style>
         <app-location route="{{route}}"></app-location>
+        <app-route
+            route="{{route}}"
+            pattern="/hashtag/:page"
+            data="{{routeData}}"
+            tail="{{subroute}}"></app-route>
+        
+
         <div class="container">
-            <display-my-info></display-my-info>
-            <div class="middle flex-equal-justified">
-                <div class="back" on-click="_toWelcome"></div>
-                <display-distance-slider></display-distance-slider>
+            <div>
+                <div class="back-btn"></div>
             </div>
-            <display-hashtag-deals distance="{{distance}}" allowed="{{allowed}}" path="{{path}}"></display-hashtag-deals>
+            <div>
+                <display-geohash route-data="[[routeData]]" hashtag="{{hashtag}}"></display-geohash>
+            </div>
+            <div>
+                <display-hashtag-about hashtag="[[hashtag]]"></display-hashtag-about>
+            </div>
         </div>
     </template>
 
