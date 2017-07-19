@@ -19,5 +19,5 @@
   "dependencies": {
     "zeppelin": "^1.0.4"
   },
-  "license": "ISC"
+  "license": "MIT"
 }
