@@ -100,14 +100,15 @@ The following custom properties and mixins are available for styling:
                             this.$.utility.
                                 geoHashDistance(hashtags[i].location, location)
                                 .then((distance) => {
-                                    hashtags[i].distance = distance;
+                                    this.set('hashtags.{{i}}', {distance: 'distance'});
+                                    // hashtags[i].distance = distance;
                                 });
                         }
                         return hashtags;
                     })
                     .then((hashtags) => {
-                        hashtags.sort((a, b) => a.deals - b.deals);
-                        // console.log(hashtags);
+                        hashtags.sort((a, b) => a.distance - b.distance);
+                        console.log(hashtags);
                         this.hashtags = hashtags;
                     });
             }
