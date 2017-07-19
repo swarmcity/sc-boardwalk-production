@@ -55,6 +55,7 @@ The following custom properties and mixins are available for styling:
             <template is="dom-repeat" items="{{hashtags}}">
                 <div class="hashtag" on-click="_toHashtag">#[[item.name]]</div>
                 <div class="deals">[[item.deals]] deals done</div>
+                <div class="deals">[[item.distance]] deals done</div>
             </template>
         </div>
     </template>
@@ -94,16 +95,18 @@ The following custom properties and mixins are available for styling:
                 ])
                     .then((data) => {
                         let location = data[0].location;
-                        let hashtags = data[1];
+                        this.hashtags = data[1];
 
-                        for (let i = 0; i < hashtags.length; i++) {
+                        for (let i = 0; i < this.hashtags.length; i++) {
                             this.$.utility.
-                                geoHashDistance(hashtags[i].location, location)
+                                geoHashDistance(this.hashtags[i].location, location)
                                 .then((distance) => {
-                                    hashtags[i].distance = distance;
+                                    this.hashtags.distance = distance;
+                                    this.notifyPath('hashtags.distance');
+                                    //hashtags[i].distance = distance;
                                 });
                         }
-                        return hashtags;
+                        //return hashtags;
                     })
                     .then((hashtags) => {
                         hashtags.sort((a, b) => a.deals - b.deals);
