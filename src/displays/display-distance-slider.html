@@ -26,31 +26,69 @@ The following custom properties and mixins are available for styling:
     <template>
         <style>
              :host {
+                @apply --layout-vertical;
                 display: block;
+                width: 250px;
             }
 
             .toggle {
+                height: 15px;
+                color: rgba(153, 153, 153, 0.7);
+                font-family: Montserrat;
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 15px;
+                @apply --layout-horizontal;
+                @apply --layout-end-justified;
                 @apply --display-distance-slider-toggle;
+                text-decoration: underline;
             }
 
             .toggle:hover {
                 cursor: pointer;
             }
 
+            paper-slider {
+                width: 100%;
+            }
+
+            .slider {
+                overflow-y: hidden;
+                max-height: 150px;
+                /* approximate max height */
+                transition-property: all;
+                transition-duration: .5s;
+                transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+            }
+
+            .slider.closed {
+                max-height: 0px;
+            }
+
             paper-slider.red {
                 --paper-slider-knob-color: var(--paper-red-500);
                 --paper-slider-active-color: var(--paper-red-500);
             }
-            .slider {
-                
+
+            .show {
+                display: block !important;
+            }
+
+            .hide {
+                max-width: 200px;
+
+                display: none;
             }
         </style>
         <display-language language="{{language}}"></display-language>
-        <div class="container">
-            <p class="toggle">filter list</p>
-            <div id="slider">
-            <paper-slider class="yellow" value="23" max="255"></paper-slider>
-            </div>
+        <div>
+
+            <p class="toggle" on-click="toggleSlider">filter list</p>
+
+
+            <paper-slider class="hide" id="toggle" noink id="ratings" min="1" max="6" value="{{range}}"></paper-slider>
+
+
         </div>
     </template>
     <script>
@@ -71,7 +109,18 @@ The following custom properties and mixins are available for styling:
                         value: false,
                         notify: true,
                     },
+                    range: {
+                        type: Number,
+                    },
+                    showSlider: {
+                        type: Boolean,
+                        value: false,
+                    },
                 };
+            }
+            toggleSlider() {
+                this.show = !this.show;
+                this.toggleClass('show', this.show, this.$.toggle);
             }
         } window.customElements.define(DisplayDistanceSlider.is, DisplayDistanceSlider);
     </script>

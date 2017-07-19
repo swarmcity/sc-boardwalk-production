@@ -83,14 +83,11 @@ The following custom properties and mixins are available for styling:
                 };
             }
             connectedCallback() {
-                super.connectedCallback()
+                super.connectedCallback();
                 this.$.web3.hashtags()
                     .then((hashtagResponse) => {
                         this.hashtags = hashtagResponse;
-                    })
-
-
-            }
+                    });}
             _path() {
                 if (this.path != null) {
                     this.set('route.path', this.path);

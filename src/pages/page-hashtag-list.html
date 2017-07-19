@@ -34,6 +34,7 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
+                
                 display: block;
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
@@ -47,22 +48,18 @@ This code may only be used under the license found at https://github.com/swarmci
                 cursor: pointer;
             }
 
-            .flex-equal-justified {
-                @apply --layout-horizontal;
-                @apply --layout-justified;
-            }
-
             .middle {
-                max-width: 300px;
-                margin: 35px 0 0 55px;
+                
+                margin: 35px 0 0 65px;
+                @apply --layout-horizontal;
             }
         </style>
         <app-location route="{{route}}"></app-location>
         <div class="container">
             <display-my-info></display-my-info>
-            <div class="middle flex-equal-justified">
+            <div class="middle">
                 <div class="back" on-click="_toWelcome"></div>
-                <display-distance-slider></display-distance-slider>
+                <display-distance-slider distance={{distance}}></display-distance-slider>
             </div>
             <display-hashtag-list distance="{{distance}}" allowed="{{allowed}}" path="{{path}}"></display-hashtag-list>
         </div>
