@@ -97,15 +97,13 @@ The following custom properties and mixins are available for styling:
                         let hashtags = data[1];
 
                         for (let i = 0; i < hashtags.length; i++) {
-                            this.$.utility.geoHashDistance(hashtags[i].location, location)
+                            this.$.utility.
+                                geoHashDistance(hashtags[i].location, location)
                                 .then((distance) => {
                                     hashtags[i].distance = distance;
-                                    
-                                })
-
+                                });
                         }
-                        return hashtags
-                    
+                        return hashtags;
                     })
                     .then((hashtags) => {
 
