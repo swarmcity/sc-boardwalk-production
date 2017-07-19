@@ -102,7 +102,7 @@ The following custom properties and mixins are available for styling:
                     },
                     animationA: {
                         type: String,
-                        value: "scaleIn",
+                        value: 'scaleIn',
                     },
                     path: {
                         type: String,
@@ -115,12 +115,12 @@ The following custom properties and mixins are available for styling:
                 this.$.storage.accountExists()
                     .then((account) => {
                         if (!account.location) {
-                            //go to location page
+                            // go to location page
                             this.path = 'location/';
                         }
-                        //show slider
+                        // show slider
                         // TODO: Check how to add a property as html tag
-                    })
+                    });
             }
         } window.customElements.define(DisplayDistanceSlider.is, DisplayDistanceSlider);
     </script>

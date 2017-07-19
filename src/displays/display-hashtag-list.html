@@ -90,16 +90,13 @@ The following custom properties and mixins are available for styling:
             connectedCallback() {
                 super.connectedCallback();
                 Promise.all([
-                    this.$.storage.accountExists(), 
-                    this.$.web3.hashtags()
+                    this.$.storage.accountExists(),
+                    this.$.web3.hashtags(),
                     ])
                     .then((data) => {
                         this.location = data[0].location;
                         this.hashtags = data[1];
-                        console.log(this.location, this.hashtags);
-                    })
-
-
+                    });
             }
             _path() {
                 if (this.path != null) {
