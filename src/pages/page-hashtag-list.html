@@ -9,6 +9,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="../redux-state.html">
+
 <!--
     Displays and shared styles only
 -->
@@ -34,7 +35,7 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
-                
+
                 display: block;
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
@@ -49,7 +50,7 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .middle {
-                
+
                 margin: 35px 0 0 65px;
                 @apply --layout-horizontal;
             }
@@ -59,7 +60,7 @@ This code may only be used under the license found at https://github.com/swarmci
             <display-my-info></display-my-info>
             <div class="middle">
                 <div class="back" on-click="_toWelcome"></div>
-                <display-distance-slider distance={{distance}}></display-distance-slider>
+                <display-distance-slider distance={{distance}} path={{path}}></display-distance-slider>
             </div>
             <display-hashtag-list distance="{{distance}}" allowed="{{allowed}}" path="{{path}}"></display-hashtag-list>
         </div>
@@ -84,19 +85,19 @@ This code may only be used under the license found at https://github.com/swarmci
                         observer: '_path',
                     },
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: {duration: 300},
+                                    timing: { duration: 300 },
                                 },
                                 'exit': {
                                     name: 'fade-out-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: {duration: 300},
+                                    timing: { duration: 300 },
                                 },
                             };
                         },

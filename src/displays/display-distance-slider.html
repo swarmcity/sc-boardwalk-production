@@ -6,7 +6,9 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="display-language.html">
+<link rel="import" href="../data/data-local-storage.html">
 <link rel="import" href="../../bower_components/paper-slider/paper-slider.html">
+
 <!--
 
 Example:
@@ -36,12 +38,11 @@ The following custom properties and mixins are available for styling:
                 color: rgba(153, 153, 153, 0.7);
                 font-family: Montserrat;
                 font-size: 12px;
-                font-weight: 600;
+                font-weight: bold;
                 line-height: 15px;
-                @apply --layout-horizontal;
-                @apply --layout-end-justified;
                 @apply --display-distance-slider-toggle;
                 text-decoration: underline;
+                margin-left: 204px;
             }
 
             .toggle:hover {
@@ -49,20 +50,12 @@ The following custom properties and mixins are available for styling:
             }
 
             paper-slider {
-                width: 100%;
+                width: 220px;
             }
 
-            .slider {
-                overflow-y: hidden;
-                max-height: 150px;
-                /* approximate max height */
-                transition-property: all;
-                transition-duration: .5s;
-                transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-            }
-
-            .slider.closed {
-                max-height: 0px;
+            [scaleIn] {
+                animation-name: scaleIn;
+                animation: scaleIn 0.5s forwards;
             }
 
             paper-slider.red {
@@ -70,25 +63,20 @@ The following custom properties and mixins are available for styling:
                 --paper-slider-active-color: var(--paper-red-500);
             }
 
-            .show {
-                display: block !important;
-            }
-
-            .hide {
-                max-width: 200px;
-
-                display: none;
+            @keyframes scaleIn {
+                0% {
+                    transform: scale(0, 0);
+                }
+                100% {
+                    transform: scale(1, 1);
+                }
             }
         </style>
+        <data-local-storage id="storage"></data-local-storage>
         <display-language language="{{language}}"></display-language>
         <div>
-
-            <p class="toggle" on-click="toggleSlider">filter list</p>
-
-
-            <paper-slider class="hide" id="toggle" noink id="ratings" min="1" max="6" value="{{range}}"></paper-slider>
-
-
+            <p class="toggle" on-click="_toggleSlider">use location</p>
+            <paper-slider noink id="ratings" min="1" max="6" value="{{range}}"></paper-slider>
         </div>
     </template>
     <script>
@@ -112,15 +100,27 @@ The following custom properties and mixins are available for styling:
                     range: {
                         type: Number,
                     },
-                    showSlider: {
-                        type: Boolean,
-                        value: false,
+                    animationA: {
+                        type: String,
+                        value: "scaleIn",
+                    },
+                    path: {
+                        type: String,
+                        value: null,
+                        notify: true,
                     },
                 };
             }
-            toggleSlider() {
-                this.show = !this.show;
-                this.toggleClass('show', this.show, this.$.toggle);
+            _toggleSlider() {
+                this.$.storage.accountExists()
+                    .then((account) => {
+                        if (!account.location) {
+                            //go to location page
+                            this.path = 'location/';
+                        }
+                        //show slider
+                        // TODO: Check how to add a property as html tag
+                    })
             }
         } window.customElements.define(DisplayDistanceSlider.is, DisplayDistanceSlider);
     </script>
