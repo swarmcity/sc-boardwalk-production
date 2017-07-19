@@ -45,17 +45,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 width: 100%;
                 max-width: 420px;
             }
-            .back-btn{
+            .container div:nth-child(1){
+                margin-top: 20px;
                 width: 20px;
                 height: 20px;
                 background: url('../../../images/swarm-city-sprite.png') -705px -137px;
-            }
-            .hash-tag{
-                color: var(--grey-5);
-                font-size: 30px;
-                line-height: 36px;
-                font-weight: 800;
-                margin-top: 20px;
             }
         </style>
         <app-location route="{{route}}"></app-location>
@@ -67,15 +61,9 @@ This code may only be used under the license found at https://github.com/swarmci
         
 
         <div class="container">
-            <div>
-                <div class="back-btn"></div>
-            </div>
-            <div>
-                <display-geohash route-data="[[routeData]]" hashtag="{{hashtag}}"></display-geohash>
-            </div>
-            <div>
-                <display-hashtag-about hashtag="[[hashtag]]"></display-hashtag-about>
-            </div>
+            <div on-click="_back"></div>
+            <display-geohash route-data="[[routeData]]" hashtag="{{hashtag}}"></display-geohash>
+            <display-hashtag-about hashtag="[[hashtag]]"></display-hashtag-about>
         </div>
     </template>
 
@@ -122,6 +110,9 @@ This code may only be used under the license found at https://github.com/swarmci
                 super.connectedCallback();
                 // Load translations
                 this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
+            _back(){
+                this.path = 'hashtag-list/'
             }
             _path() {
                 if (this.path != null) {
