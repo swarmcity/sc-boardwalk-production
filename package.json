@@ -1,8 +1,8 @@
 {
   "name": "SwarmCity",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "author": "SwarmCity",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/swarmcity/sc-boardwalk-production/issues"
   },
@@ -49,6 +49,7 @@
     "style-loader": "^0.13.1",
     "truffle": "^3.4.4",
     "truffle-contract": "^1.1.6",
+    "truffle-hdwallet-provider": "^0.0.3",
     "uglify-js": "github:mishoo/UglifyJS2#harmony",
     "web3": "^0.18.2",
     "webpack": "^2.2.1",
@@ -64,7 +65,9 @@
     "deploy": "netlify deploy -p build/production",
     "getcontractlibs" : "truffle install",
     "compilecontracts": "truffle compile",
-    "deploycontracts": "truffle migrate --reset",
+    "deploycontracts": "truffle migrate",
+    "resetdeploycontracts": "truffle migrate --reset",
+    "publishcontracts": "truffle publish -n ropsten",
     "testcontracts": "truffle test ./test/contracts/*.js",
     "browserify": "browserify browserify.js --standalone swarmCity -t [ babelify --presets [ es2015 ] ] | uglifyjs > src/scripts/swarm-city.min.js"
   },

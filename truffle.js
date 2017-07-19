@@ -1,5 +1,10 @@
 require('babel-register');
 require('babel-polyfill');
+var HDWalletProvider = require("truffle-hdwallet-provider");
+
+var mnemonic = "";
+var provider = new HDWalletProvider(mnemonic, "http://192.168.1.4:8545/");
+
 module.exports = {
   networks: {
     development: {
@@ -8,22 +13,8 @@ module.exports = {
       network_id: '*',
     },
     ropsten: {
-      host: "localhost",
-      port: 8545,
-      gas: 4710000,
-      network_id: "3"
-    },
-    kovan: {
-      host: "localhost",
-      port: 8545,
-      gas: 2710000,
-      network_id: "*"
-    },
-    rinkeby: {
-      host: "localhost",
-      port: 8545,
-      gas: 4710000,
-      network_id: "4"
-    },
+        provider: provider,
+        network_id: 3 // official id of the ropsten network
+    }
   }
 };

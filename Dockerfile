@@ -25,7 +25,9 @@ COPY contracts ./contracts/
 RUN npm run compilecontracts
 
 COPY migrations ./migrations/
-RUN npm run deploycontracts
+#RUN npm run deploycontracts
+#RUN npm run publishcontracts
 
-COPY test ./test/
-RUN npm run testcontracts
+RUN npm install -g truffle
+RUN truffle migrate --network ropsten
+#RUN npm run publishcontracts
