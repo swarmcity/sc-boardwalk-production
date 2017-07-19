@@ -100,8 +100,11 @@ The following custom properties and mixins are available for styling:
                             this.$.utility.
                                 geoHashDistance(hashtags[i].location, location)
                                 .then((distance) => {
-                                    this.set('hashtags.{{i}}', {distance: 'distance'});
+                                    hashtags[i].distance = distance;
+                                    // this.set(hashtags[i], {distance: distance});
                                     // hashtags[i].distance = distance;
+                                    
+                                    
                                 });
                         }
                         return hashtags;
@@ -110,6 +113,7 @@ The following custom properties and mixins are available for styling:
                         hashtags.sort((a, b) => a.distance - b.distance);
                         console.log(hashtags);
                         this.hashtags = hashtags;
+                        console.log(hashtags);
                     });
             }
             _path() {
