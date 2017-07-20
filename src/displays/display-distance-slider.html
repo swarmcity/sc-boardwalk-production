@@ -115,33 +115,33 @@ The following custom properties and mixins are available for styling:
                     },
                     rangeDescription: {
                         type: String,
-                    }
+                    },
                 };
             }
             _calcRange() {
                 switch (this.immediateValue) {
                     case 1:
-                        this.rangeDescription = 'within 500 meter'; 
+                        this.rangeDescription = 'within 500 meter';
                         this.range = 500;
                         break;
                     case 2:
-                    this.rangeDescription = 'within 1 kilometer'; 
+                    this.rangeDescription = 'within 1 kilometer';
                         this.range = 1000;
                         break;
                     case 3:
-                    this.rangeDescription = 'within 10 kilometer'; 
+                    this.rangeDescription = 'within 10 kilometer';
                         this.range = 10000;
                         break;
                     case 4:
-                    this.rangeDescription = 'within 100 kilometer'; 
+                    this.rangeDescription = 'within 100 kilometer';
                         this.range = 100000;
                         break;
                     case 5:
-                    this.rangeDescription = 'within 1000 kilometer'; 
+                    this.rangeDescription = 'within 1000 kilometer';
                         this.range = 1000000;
                         break;
                     case 6:
-                    this.rangeDescription = 'worldwide'; 
+                    this.rangeDescription = 'worldwide';
                         this.range = 10000000000000000000;
                 }
             }

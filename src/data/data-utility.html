@@ -45,7 +45,7 @@ this.$.util.translationExists(language)
                             (position) => {
                                 resolve({
                                     latitude: position.coords.latitude,
-                                    longitude: position.coords.longitude
+                                    longitude: position.coords.longitude,
                                 });
                             },
                             (err) => {
@@ -66,7 +66,10 @@ this.$.util.translationExists(language)
             geoHashDistance(geoHashA, geoHashB) {
                 return new Promise((resolve, reject) => {
                     if (geoHashA && geoHashB) {
-                        Promise.all([this._toLatLon(geoHashA), this._toLatLon(geoHashB)])
+                        Promise.all([
+                            this._toLatLon(geoHashA),
+                            this._toLatLon(geoHashB),
+                            ])
                             .then((data) => {
                                 const latA = data[0].latitude;
                                 const lonA = data[0].longitude;
@@ -146,7 +149,8 @@ this.$.util.translationExists(language)
                     for (let i = 0; i < geoHash.length; i++) {
                         for (let x = 0; x < ratio.length; x++) {
                             var distance = geoFence[iteration++ % geoFence.length];
-                            var side = thirtyTwoBits.indexOf(geoHash[i]) & ratio[x] ? 0 : 1;
+                            var side = thirtyTwoBits
+                                .indexOf(geoHash[i]) & ratio[x] ? 0 : 1;
                             distance[side] = (distance[0] + distance[1]) / 2;
                         }
                     }
@@ -155,7 +159,9 @@ this.$.util.translationExists(language)
                     for (let i = 0; i < geoFence.length; i++) {
                         mean[i] = (geoFence[i][0] + geoFence[i][1]) / 2;
                     }
-                    resolve({ latitude: mean[1] / 100 * 90, longitude: mean[0] / 100 * 180 });
+                    resolve({
+                        latitude: mean[1] / 100 * 90, longitude: mean[0] / 100 * 180,
+                        });
                 });
             }
 
@@ -172,14 +178,15 @@ this.$.util.translationExists(language)
                     xobj.open('GET', '../src/text-translations.json', true);
                     xobj.onreadystatechange = () => {
                         if (xobj.readyState == 4 && xobj.status == '200') {
-                            // The file loaded now check the index to determine if wehave a translation
+                            // The file loaded
+                            // now check the index to determine if wehave a translation
                             const json = JSON.parse(xobj.responseText);
                             const keys = Object.keys(json);
                             const arr = keys.indexOf(language);
                             if (arr != -1) {
-                                resolve({ language: language, found: true });
+                                resolve({language: language, found: true});
                             } else {
-                                resolve({ language: language, found: false });
+                                resolve({language: language, found: false});
                             }
                         }
                     };
@@ -213,7 +220,7 @@ this.$.util.translationExists(language)
                                 locales.push(json[Object.keys(json)[i]].locale);
                                 iso.push(json[Object.keys(json)[i]].language);
                             }
-                            resolve({ locales: locales, iso: iso });
+                            resolve({locales: locales, iso: iso});
                         }
                     };
                     xobj.send(null);

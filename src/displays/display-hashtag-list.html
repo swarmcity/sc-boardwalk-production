@@ -108,7 +108,8 @@ The following custom properties and mixins are available for styling:
             }
             _getDistance(data) {
                 for (let i = 0; i < data[1].length; i++) {
-                    this.$.utility.geoHashDistance(data[1][i].location, data[0].location)
+                    this.$.utility
+                        .geoHashDistance(data[1][i].location, data[0].location)
                         .then((distance) => {
                             data[1][i].distance = distance;
                             this.push('hashtags', data[1][i]);
@@ -127,7 +128,7 @@ The following custom properties and mixins are available for styling:
                 }
                else {
                    return true;
-               } 
+               }
             }
             _toHashtag(selected) {
                 this.path = 'hashtag/' + selected.model.__data.item.hashtagID + '/';
