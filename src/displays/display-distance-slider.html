@@ -28,34 +28,26 @@ The following custom properties and mixins are available for styling:
     <template>
         <style>
             :host {
-                @apply --layout-vertical;
                 display: block;
-                width: 250px;
             }
-            .toggle {
-                height: 15px;
-                color: rgba(153, 153, 153, 0.7);
-                font-family: Montserrat;
+            .container {
+                @apply --layout-vertical;
+                width: 320px;
+            }
+            p {
                 font-size: 12px;
-                font-weight: bold;
-                line-height: 15px;
-                @apply --display-distance-slider-toggle;
+                font-weight: 800;
+                text-align: right;
                 text-decoration: underline;
-                margin-left: 189px;
-            }
-            .toggle:hover {
                 cursor: pointer;
+                color: var(--grey-3);
             }
             paper-slider {
-                width: 220px;
-            }
-            [scaleIn] {
+                --paper-slider-knob-color: var(--swarm-city-yellow);
+                --paper-slider-active-color: var(--swarm-city-yellow);
                 animation-name: scaleIn;
                 animation: scaleIn 0.5s forwards;
-            }
-            paper-slider.red {
-                --paper-slider-knob-color: var(--paper-red-500);
-                --paper-slider-active-color: var(--paper-red-500);
+                width: 100%;
             }
             @keyframes scaleIn {
                 0% {
@@ -68,9 +60,11 @@ The following custom properties and mixins are available for styling:
         </style>
         <data-local-storage id="storage"></data-local-storage>
         <display-language language="{{language}}"></display-language>
-        <div>
-            <p class="toggle" on-click="_toggleSlider">use location</p>
-            <paper-slider noink id="ratings" min="1" max="6" value="{{value}}"></paper-slider>
+        <div class="container">
+            <p on-click="_toggleSlider">use location</p>
+            <template is="dom-if" if="{{showSlider}}">
+                <paper-slider noink id="ratings" min="1" max="6" value="{{value}}"></paper-slider>
+            </template>
         </div>
     </template>
     <script>
@@ -109,6 +103,10 @@ The following custom properties and mixins are available for styling:
                         value: 6,
                         observer: '_calcRange',
                     },
+                    showSlider: {
+                        type: Boolean,
+                        value: false,
+                    }
                 };
             }
             _calcRange() {
@@ -136,10 +134,9 @@ The following custom properties and mixins are available for styling:
                 this.$.storage.accountExists()
                     .then((account) => {
                         if (!account.location) {
-                            // go to location page
                             this.path = 'location/';
                         } else {
-                            return;
+                            this.showSlider = !this.showSlider;
                         }
                     });
             }
