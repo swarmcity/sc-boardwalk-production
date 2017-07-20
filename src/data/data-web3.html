@@ -26,7 +26,17 @@ this.$.web3.hashtags()
     <script>
         class DataWeb3 extends Polymer.Element {
             static get is() { return 'data-web3'; }
-
+            /**
+            * Returns a balance fir thge given address and token pair
+            * @param {address} address
+            * @param {token} token such as 'SWT' or 'ARC'
+            * @return {amount} hashtags is an array of objects
+            */
+            getBalance(address, token) {
+                return new Promise((resolve, reject) => {
+                    resolve(24.349821);
+                });
+            }
             /**
             * Returns an array with the hashtag name and
             * @return {hashtags} hashtags is an array of objects
