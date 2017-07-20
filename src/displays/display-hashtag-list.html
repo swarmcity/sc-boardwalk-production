@@ -30,9 +30,6 @@ The following custom properties and mixins are available for styling:
             :host {
                 display: block;
             }
-            .container {
-                margin-left: 85px;
-            }
             .hashtag {
                 @apply --display-hashtag-list-hashtag;
                 cursor: pointer
@@ -46,7 +43,7 @@ The following custom properties and mixins are available for styling:
         <data-local-storage id="storage"></data-local-storage>
         <data-utility id="utility"></data-utility>
         <div class="container">
-            <template is="dom-repeat" items="{{hashtags}}" filter="_isWithinRange" id="domRepeat">
+            <template is="dom-repeat" items="{{hashtags}}" filter="_isWithinRange" sort="_sort" id="domRepeat">
                 <div class="hashtag" on-click="_toHashtag">#[[item.name]]</div>
                 <div class="deals">[[item.deals]] deals done</div>
             </template>
@@ -107,18 +104,16 @@ The following custom properties and mixins are available for styling:
     _rangeChanged() {
         this.$.domRepeat.render();
     }
+    _sort(a, b){
+        return a.deals < b.deals
+    }
     _isWithinRange(event) {
         return (this.range > event.distance);
     }
-    _path() {
-        if (this.path != null) {
-            this.set('route.path', this.path);
-        }
-        this.path = null;
+    _toHashtag(selected) {
+        this.path = 'hashtag/' + selected.model.__data.item.hashtagID;
     }
-    _toHashtag() {
-        this.path = 'welcome/';
-    }
-        } window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);
+
+    } window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);
     </script>
 </dom-module>
