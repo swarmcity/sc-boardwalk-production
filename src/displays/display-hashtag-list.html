@@ -27,13 +27,15 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-hashtag-list">
     <template>
         <style>
-            :host {
+             :host {
                 display: block;
             }
+
             .hashtag {
                 @apply --display-hashtag-list-hashtag;
                 cursor: pointer
             }
+
             .deals {
                 @apply --display-hashtag-list-deals;
             }
@@ -84,40 +86,53 @@ The following custom properties and mixins are available for styling:
                 };
             }
 
-    connectedCallback() {
-        super.connectedCallback();
-        this.loadResources(this.resolveUrl('../text-translations.json'));
-        this._getHashtags();
-    }
-    _getHashtags() {
-        this.hashtags = [];
-        Promise.all([
-            this.$.storage.accountExists(),
-            this.$.web3.hashtags(),
-        ])
-        .then((data) => {
-            for (let i = 0; i < data[1].length; i++) {
-                this.$.utility.geoHashDistance(data[1][i].location, data[0].location)
-                .then((distance) => {
-                    data[1][i].distance = distance;
-                    this.push('hashtags', data[1][i]);
-                });
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
+                this._getHashtags();
             }
-        });
-    }
-    _rangeChanged() {
-        this.$.domRepeat.render();
-    }
-    _sort(a, b) {
-        return a.deals < b.deals;
-    }
-    _isWithinRange(event) {
-        return (this.range > event.distance);
-    }
-    _toHashtag(selected) {
-        this.path = 'hashtag/' + selected.model.__data.item.hashtagID + '/';
-    }
+            _getHashtags() {
+                this.hashtags = [];
+                Promise.all([
+                    this.$.storage.accountExists(),
+                    this.$.web3.hashtags(),
+                ])
+                    .then((data) => {
+                        if (data[0].location) {
+                            this._getDistance(data);
+                        }
+                        else {
+                            this.hashtags = data[1];
+                        }
+                    });
+            }
+            _getDistance(data) {
+                for (let i = 0; i < data[1].length; i++) {
+                    this.$.utility.geoHashDistance(data[1][i].location, data[0].location)
+                        .then((distance) => {
+                            data[1][i].distance = distance;
+                            this.push('hashtags', data[1][i]);
+                        });
+                }
+            }
+            _rangeChanged() {
+                this.$.domRepeat.render();
+            }
+            _sort(a, b) {
+                return a.deals < b.deals;
+            }
+            _isWithinRange(event) {
+                if (event.distance) {
+                    return (this.range > event.distance);
+                }
+               else {
+                   return true;
+               } 
+            }
+            _toHashtag(selected) {
+                this.path = 'hashtag/' + selected.model.__data.item.hashtagID + '/';
+            }
 
-    } window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);
+        } window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);
     </script>
 </dom-module>
