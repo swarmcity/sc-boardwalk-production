@@ -52,10 +52,10 @@ The following custom properties and mixins are available for styling:
         <data-local-storage id="storage"></data-local-storage>
         <data-utility id="utility"></data-utility>
         <div class="container">
-            <template is="dom-repeat" items="{{hashtags}}">
+            <template is="dom-repeat" items="{{hashtags}}" filter="_isWithinDistance">
                 <div class="hashtag" on-click="_toHashtag">#[[item.name]]</div>
                 <div class="deals">[[item.deals]] deals done</div>
-                <div class="deals">[[item.distance]] deals done</div>
+                <div class="deals">distance: [[item.distance]] meter</div>
             </template>
         </div>
     </template>
@@ -89,33 +89,32 @@ The following custom properties and mixins are available for styling:
             }
             connectedCallback() {
                 super.connectedCallback();
-                this.arr = [];
+                this.hashtags = [];
                 Promise.all([
                     this.$.storage.accountExists(),
                     this.$.web3.hashtags(),
                 ])
                     .then((data) => {
                         let location = data[0].location;
-                        let hashtags = data[1];
+                        let hashtagsWeb3 = data[1];
 
-                        for (let i = 0; i < this.hashtags.length; i++) {
+                        for (let i = 0; i < hashtagsWeb3.length; i++) {
                             this.$.utility.
-                                geoHashDistance(this.hashtags[i].location, location)
+                                geoHashDistance(hashtagsWeb3[i].location, location)
                                 .then((distance) => {
-                                    hashtags[i].distance = distance;
-                                    this.push('arr', hashtags[i]);
-                                    // this.notifyPath('hashtags.distance');
-                                    //hashtags[i].distance = distance;
+                                    hashtagsWeb3[i].distance = distance;
+                                    this.push('hashtags', hashtagsWeb3[i]);
                                 });
                         }
-                        //return hashtags;
+                        /*  return this.hashtags; */
                     })
-                    .then((hashtags) => {
-                        hashtags.sort((a, b) => a.distance - b.distance);
-                        console.log(hashtags);
-                        this.hashtags = hashtags;
-                        console.log(hashtags);
-                    });
+                /*                     .then((hashtags) => {
+                                        this.hashtags.sort((a, b) => a.deals - b.deals);
+                                        this.hashtags = hashtags;
+                                    }); */
+            }
+            _isWithinDistance() {
+                
             }
             _path() {
                 if (this.path != null) {
