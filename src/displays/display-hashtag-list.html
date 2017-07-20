@@ -79,55 +79,46 @@ The following custom properties and mixins are available for styling:
                     },
                     range: {
                         type: Number,
-                        observer:'_rangeChanged'
+                        observer: '_rangeChanged',
                     },
                 };
             }
-            connectedCallback() {
-                super.connectedCallback();
-                this._getHashtags();
+            
+    connectedCallback() {
+        super.connectedCallback();
+        this._getHashtags();
+    }
+    _getHashtags() {
+        this.hashtags = [];
+        Promise.all([
+            this.$.storage.accountExists(),
+            this.$.web3.hashtags(),
+        ])
+        .then((data) => {
+            for (let i = 0; i < data[1].length; i++) {
+                this.$.utility.geoHashDistance(data[1][i].location, data[0].location)
+                .then((distance) => {
+                    data[1][i].distance = distance;
+                    this.push('hashtags', data[1][i]);
+                });
             }
-            _getHashtags() {
-                this.hashtags = [];
-                Promise.all([
-                    this.$.storage.accountExists(),
-                    this.$.web3.hashtags(),
-                ])
-                .then((data) => {
-                    let location = data[0].location;
-                    let hashtagsWeb3 = data[1];
-
-                    for (let i = 0; i < hashtagsWeb3.length; i++) {
-                        this.$.utility.
-                            geoHashDistance(hashtagsWeb3[i].location, location)
-                            .then((distance) => {
-                                hashtagsWeb3[i].distance = distance;
-                                this.push('hashtags', hashtagsWeb3[i]);
-                            });
-                    }
-                })
-            }
-            _rangeChanged(){
-                this.$.domRepeat.render();
-            }
-            _isWithinRange(event) {
-                
-                console.log(event.distance);
-                console.log(this.range);
-                //return true
-                if(this.range > event.distance){
-                    return true
-                }
-            }
-            _path() {
-                if (this.path != null) {
-                    this.set('route.path', this.path);
-                }
-                this.path = null;
-            }
-            _toHashtag() {
-                this.path = 'welcome/';
-            }
+        });
+    }
+    _rangeChanged() {
+        this.$.domRepeat.render();
+    }
+    _isWithinRange(event) {
+        return (this.range > event.distance);
+    }
+    _path() {
+        if (this.path != null) {
+            this.set('route.path', this.path);
+        }
+        this.path = null;
+    }
+    _toHashtag() {
+        this.path = 'welcome/';
+    }
         } window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);
     </script>
 </dom-module>
