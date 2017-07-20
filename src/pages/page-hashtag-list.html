@@ -44,12 +44,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 margin-top: 18px;
                 cursor: pointer;
             }
-
         </style>
         <app-location route="{{route}}"></app-location>
         <div class="container">
             <display-my-info></display-my-info>
-            <div class="back" on-click="_toWelcome"></div>
+            <div class="back" on-click="_back"></div>
             <display-distance-slider range="{{range}}" path="{{path}}"></display-distance-slider>
             <display-hashtag-list range="{{range}}" allowed="{{allowed}}" path="{{path}}"></display-hashtag-list>
         </div>
@@ -96,7 +95,6 @@ This code may only be used under the license found at https://github.com/swarmci
 
             connectedCallback() {
                 super.connectedCallback();
-                // Load translations
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             _path() {
@@ -105,7 +103,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 }
                 this.path = null;
             }
-            _toWelcome() {
+            _back() {
                 this.set('route.path', 'welcome/');
             }
 

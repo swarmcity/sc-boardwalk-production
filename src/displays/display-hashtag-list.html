@@ -5,10 +5,10 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
-<link rel="import" href="display-language.html">
 <link rel="import" href="../data/data-web3.html">
 <link rel="import" href="../data/data-local-storage.html">
 <link rel="import" href="../data/data-utility.html">
+<link rel="import" href="../redux-state.html">
 <!--
 
 Example:
@@ -38,25 +38,28 @@ The following custom properties and mixins are available for styling:
                 @apply --display-hashtag-list-deals;
             }
         </style>
-        <display-language language="{{language}}"></display-language>
         <data-web3 id="web3"></data-web3>
         <data-local-storage id="storage"></data-local-storage>
         <data-utility id="utility"></data-utility>
         <div class="container">
             <template is="dom-repeat" items="{{hashtags}}" filter="_isWithinRange" sort="_sort" id="domRepeat">
                 <div class="hashtag" on-click="_toHashtag">#[[item.name]]</div>
-                <div class="deals">[[item.deals]] deals done</div>
+                <div class="deals">[[item.deals]] {{localize('deals done')}}</div>
             </template>
         </div>
     </template>
     <script>
-        class DisplayHashtagList extends Polymer.mixinBehaviors([
+        class DisplayHashtagList extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior],
             Polymer.Element
-        ) {
+        )) {
             static get is() { return 'display-hashtag-list'; }
             static get properties() {
                 return {
+                    language: {
+                        type: String,
+                        statePath: 'language',
+                    },
                     /**
                     * Loading indicates if the componant is loading
                     * @type {Boolean}
@@ -83,6 +86,7 @@ The following custom properties and mixins are available for styling:
 
     connectedCallback() {
         super.connectedCallback();
+        this.loadResources(this.resolveUrl('../text-translations.json'));
         this._getHashtags();
     }
     _getHashtags() {
@@ -111,7 +115,7 @@ The following custom properties and mixins are available for styling:
         return (this.range > event.distance);
     }
     _toHashtag(selected) {
-        this.path = 'hashtag/' + selected.model.__data.item.hashtagID;
+        this.path = 'hashtag/' + selected.model.__data.item.hashtagID + '/';
     }
 
     } window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);
