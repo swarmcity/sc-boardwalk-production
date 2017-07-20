@@ -104,8 +104,8 @@ The following custom properties and mixins are available for styling:
     _rangeChanged() {
         this.$.domRepeat.render();
     }
-    _sort(a, b){
-        return a.deals < b.deals
+    _sort(a, b) {
+        return a.deals < b.deals;
     }
     _isWithinRange(event) {
         return (this.range > event.distance);
