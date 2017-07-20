@@ -34,24 +34,18 @@ This code may only be used under the license found at https://github.com/swarmci
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
 -->
         <style include="shared-styles">
-             :host {
-
+            :host {
                 display: block;
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
             }
-
             .back {
-                
                 @apply --page-hashtag-list-back;
             }
-
             .back:hover {
                 cursor: pointer;
             }
-
             .middle {
-
                 margin: 35px 0 0 65px;
                 @apply --layout-horizontal;
             }
@@ -61,9 +55,9 @@ This code may only be used under the license found at https://github.com/swarmci
             <display-my-info></display-my-info>
             <div class="middle">
                 <div class="back" on-click="_toWelcome"></div>
-                <display-distance-slider distance="{{distance}}" path="{{path}}"></display-distance-slider>
+                <display-distance-slider range="{{range}}" path="{{path}}"></display-distance-slider>
             </div>
-            <display-hashtag-list distance="{{distance}}" allowed="{{allowed}}" path="{{path}}"></display-hashtag-list>
+            <display-hashtag-list range="{{range}}" allowed="{{allowed}}" path="{{path}}"></display-hashtag-list>
         </div>
     </template>
 

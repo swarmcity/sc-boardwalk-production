@@ -27,12 +27,11 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-distance-slider">
     <template>
         <style>
-             :host {
+            :host {
                 @apply --layout-vertical;
                 display: block;
                 width: 250px;
             }
-
             .toggle {
                 height: 15px;
                 color: rgba(153, 153, 153, 0.7);
@@ -44,25 +43,20 @@ The following custom properties and mixins are available for styling:
                 text-decoration: underline;
                 margin-left: 189px;
             }
-
             .toggle:hover {
                 cursor: pointer;
             }
-
             paper-slider {
                 width: 220px;
             }
-
             [scaleIn] {
                 animation-name: scaleIn;
                 animation: scaleIn 0.5s forwards;
             }
-
             paper-slider.red {
                 --paper-slider-knob-color: var(--paper-red-500);
                 --paper-slider-active-color: var(--paper-red-500);
             }
-
             @keyframes scaleIn {
                 0% {
                     transform: scale(0, 0);
@@ -76,7 +70,7 @@ The following custom properties and mixins are available for styling:
         <display-language language="{{language}}"></display-language>
         <div>
             <p class="toggle" on-click="_toggleSlider">use location</p>
-            <paper-slider noink id="ratings" min="1" max="6" value="{{range}}"></paper-slider>
+            <paper-slider noink id="ratings" min="1" max="6" value="{{value}}"></paper-slider>
         </div>
     </template>
     <script>
@@ -99,6 +93,7 @@ The following custom properties and mixins are available for styling:
                     },
                     range: {
                         type: Number,
+                        notify: true,
                     },
                     animationA: {
                         type: String,
@@ -109,7 +104,33 @@ The following custom properties and mixins are available for styling:
                         value: null,
                         notify: true,
                     },
+                    value:{
+                        type: Number,
+                        value: 6,
+                        observer: '_calcRange'
+                    }
                 };
+            }
+            _calcRange() {
+                switch (this.value) {
+                    case 1:
+                        this.range = 500;
+                        break;
+                    case 2:
+                        this.range = 1000;
+                        break;
+                    case 3:
+                        this.range = 10000;
+                        break;
+                    case 4:
+                        this.range = 100000;
+                        break;
+                    case 5:
+                        this.range = 1000000;
+                        break;
+                    case 6:
+                        this.range = 10000000000000000000;
+                }
             }
             _toggleSlider() {
                 this.$.storage.accountExists()
@@ -117,9 +138,9 @@ The following custom properties and mixins are available for styling:
                         if (!account.location) {
                             // go to location page
                             this.path = 'location/';
+                        } else {
+                            return;
                         }
-                        // show slider
-                        // TODO: Check how to add a property as html tag
                     });
             }
         } window.customElements.define(DisplayDistanceSlider.is, DisplayDistanceSlider);
