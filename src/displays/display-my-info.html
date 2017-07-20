@@ -5,8 +5,6 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
-<link rel="import" href="display-language.html">
-
 <!--
 
 Example:
@@ -17,9 +15,7 @@ Example:
 ### Styling
 
 Style the button with CSS as you would a normal DOM element.
-
 The following custom properties and mixins are available for styling:
-
 
 -->
 <dom-module id="display-my-info">
@@ -29,37 +25,34 @@ The following custom properties and mixins are available for styling:
                 display: block;
             }
             .container {
+                @apply --layout-horizontal;
                 margin: 85px 0 0 85px;
                 max-width: 420px;
             }
-            .flex-horizontal {
-                @apply --layout-horizontal;
-            }
-            .textInfo {
-                @apply --layout-flex;
-            }
-            .avatar {
-                @apply --display-my-info-avatar
-            }
-            .avatarcontainer {
+            .container div:nth-child(1) {
                 padding-right:22px;
             }
-            .username {
+            .container div:nth-child(1) img {
+                @apply --display-my-info-avatar
+            }
+            .container div:nth-child(2) {
+                @apply --layout-flex;
+            }
+            .container div:nth-child(2) div:nth-child(1){
                 @apply --display-my-info-username
             }
-            .balance {
+            .container div:nth-child(2) div:nth-child(2) {
                 @apply --display-my-info-balance
             }
-
         </style>
-        <display-language language="{{language}}"></display-language>
-        <div class="container flex-horizontal">
-            <div class="avatarcontainer">
-                <img src="../../images/defaultavatar.png" alt="avatar" class="avatar" >
+
+        <div class="container">
+            <div>
+                <img src="../../images/defaultavatar.png" alt="avatar">
             </div>
-            <div class="textInfo">
-                <div class="username">Tester X</div>
-                <div class="balance">44 SWT</div>
+            <div>
+                <div>Tester X</div>
+                <div>44 SWT</div>
             </div>
         </div>
         </template>
@@ -83,6 +76,6 @@ The following custom properties and mixins are available for styling:
             },
         };
     }
-} window.customElements.define(DisplayMyInfo.is, DisplayMyInfo);
+    } window.customElements.define(DisplayMyInfo.is, DisplayMyInfo);
 </script>
 </dom-module>
