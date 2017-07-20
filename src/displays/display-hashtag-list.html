@@ -89,20 +89,22 @@ The following custom properties and mixins are available for styling:
             }
             connectedCallback() {
                 super.connectedCallback();
+                this.arr = [];
                 Promise.all([
                     this.$.storage.accountExists(),
                     this.$.web3.hashtags(),
                 ])
                     .then((data) => {
                         let location = data[0].location;
-                        this.hashtags = data[1];
+                        let hashtags = data[1];
 
                         for (let i = 0; i < this.hashtags.length; i++) {
                             this.$.utility.
                                 geoHashDistance(this.hashtags[i].location, location)
                                 .then((distance) => {
-                                    this.hashtags.distance = distance;
-                                    this.notifyPath('hashtags.distance');
+                                    hashtags[i].distance = distance;
+                                    this.push('arr', hashtags[i]);
+                                    // this.notifyPath('hashtags.distance');
                                     //hashtags[i].distance = distance;
                                 });
                         }
