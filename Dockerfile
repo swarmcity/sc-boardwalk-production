@@ -24,8 +24,12 @@ COPY truffle.js ./
 COPY ethpm.json ./
 RUN npm run getcontractlibs
 
-# hack to allow importing swarmcity:0.0.1
 RUN mkdir -p contracts/ && cp -R installed_contracts/swarmcity/ contracts/swarmcity/
+RUN mkdir -p contracts/zeppelin/contracts/ownership/ && \
+    cp installed_contracts/zeppelin/contracts/ownership/Ownable.sol \
+           contracts/zeppelin/contracts/ownership/Ownable.sol
+
+# hack to allow importing swarmcity:0.0.1
 RUN mkdir -p contracts/swarmcity/installed_contracts/zeppelin/contracts/ownership/ && \
     cp installed_contracts/zeppelin/contracts/ownership/Ownable.sol \
            contracts/swarmcity/installed_contracts/zeppelin/contracts/ownership/Ownable.sol
