@@ -21,26 +21,126 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-hashtag-deals">
     <template>
         <style include="shared-styles">
-            :host {
+             :host {
                 display: block;
             }
-            .container {
-                
 
+            .container {
+                @apply --layout-vertical;
+            }
+
+            .avatar {
+                border-radius: 50%;
+                height: 60px;
+                width: 60px;
+                background-color: grey;
+            }
+
+            .card {
+                border: 1px solid black;
+            }
+
+            .top {
+                @apply --layout-horizontal;
+                border: 2px solid red;
+            }
+
+            .bottom {
+                @apply --layout-horizontal;
+                border: 2px solid red;
+            }
+
+
+
+            .details {
+                margin-left: 15px;
+                width: 180px;
+                border: 1px solid black;
+                @apply --layout-flex;
+            }
+
+            .date {
+                font-size: 12px;
+                font-weight: 800;
+                cursor: pointer;
+                color: var(--grey-2);
+                border: 1px solid black;
+            }
+
+            .profile {
+                border: 1px solid black;
+            }
+
+            .name {
+                color: var(--swarm-city-blue);
+                text-decoration: none;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .deal {
+                border: 1px solid black;
+            }
+
+            .message {
+                color: var(--grey-4);
+                border: 1px solid black;
+            }
+
+            .price {
+                color: var(--swarm-city-yellow);
+                font-weight: bold;
+                text-align: right;
+                border: 1px solid black;
+            }
+            .price span {
+                font-size: 12px;
             }
         </style>
-            <div class="container">
-                <div class="card">
-                    <div class="top">
-                        <div class="avatar"></div>
-                        <div class="details"><span>Yesterday: 1821</span> Hank Moovy - 1 REP</div>
+        <div class="container">
+            <div class="card">
+                <div class="top">
+                    <div class="avatarcontainer">
+                        <img class="avatar" src="../../images/defaultavatar.png" alt="avatar">
                     </div>
-                    <div class="bottom">
-                        <div class="description">A place to stay in New york for a couple of nights</div>
-                        <div class="offer"><span>for</span> 5 SWT</div>
+                    <div class="details">
+                        <div class="date">
+                            <span>Yesterday: 1821</span>
+                        </div>
+                        <div class="profile">
+                            <span class="name">Hank Moovy - 1 REP</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="deal">
+                        <p class="message">A place to stay in New york for a couple of nights</p>
+                    </div>
+                    <div class="price">
+                        <p><span>for</span> 5&nbsp;SWT</p>
                     </div>
                 </div>
             </div>
+        </div>
+
+
+
+
+        <!--         <div class="container">
+            <div class="card">
+                <div class="top">
+                    <div class="avatarcontainer">
+                        <img class="avatar" src="../../images/defaultavatar.png" alt="avatar">
+                    </div>
+                    <div class="details"><span>Yesterday: 1821</span> Hank Moovy - 1 REP</div>
+                </div>
+                <div class="bottom">
+                    <div class="description">A place to stay in New york for a couple of nights</div>
+                    <div class="offer"><span>for</span> 5 SWT</div>
+                </div>
+            </div>
+        </div> -->
     </template>
     <script>
         class DisplayHashtagDeals extends Polymer.mixinBehaviors([
