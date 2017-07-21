@@ -1,0 +1,150 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../data/data-web3.html">
+<link rel="import" href="../data/data-ipfs.html">
+<link rel="import" href="../data/data-local-storage.html">
+<!--
+
+Example:
+```
+<display-my-info></display-my-info>
+```
+
+### Styling
+
+Style the button with CSS as you would a normal DOM element.
+The following custom properties and mixins are available for styling:
+
+-->
+<dom-module id="display-my-info">
+    <template>
+        <style include="shared-styles">
+             :host {
+                display: block;
+            }
+
+            .container {
+                @apply --layout-horizontal;
+                margin: 85px 0 0 85px;
+                max-width: 420px;
+            }
+
+            .container div:nth-child(1) {
+                padding-right: 22px;
+            }
+
+            .container div:nth-child(1) img {
+                @apply --display-my-info-avatar
+            }
+
+            .container div:nth-child(2) {
+                @apply --layout-flex;
+            }
+
+            .container div:nth-child(2) div:nth-child(1) {
+                @apply --display-my-info-username
+            }
+
+            .container div:nth-child(2) div:nth-child(2) {
+                @apply --display-my-info-balance
+            }
+        </style>
+
+        <data-web3 id="web3"></data-web3>
+        <data-ipfs id="ipfs"></data-ipfs>
+        <data-local-storage id="storage"></data-local-storage>
+
+        <template is="dom-if" if="{{completeAccount}}">
+            <div class="container">
+                <div>
+                    <img src="../../images/defaultavatar.png" alt="avatar">
+                </div>
+                <div>
+                    <div>{{username}}</div>
+                    <div>{{balance}} SWT</div>
+                </div>
+            </div>
+        </template>
+
+    </template>
+    <script>
+        class DisplayMyInfo extends Polymer.mixinBehaviors([
+            Polymer.AppLocalizeBehavior],
+            Polymer.Element
+        ) {
+            static get is() { return 'display-my-info'; }
+            static get properties() {
+                return {
+                    /**
+                    * Loading indicates if the componant is loading
+                    * @type {Boolean}
+                    */
+                    loading: {
+                        type: Boolean,
+                        value: false,
+                        notify: true,
+                    },
+                    /**
+                    * Username represents the users username
+                    * @type {String}
+                    */
+                    username: {
+                        type: String,
+                    },
+                    /**
+                    * Avatar represents the users IPFS to their avatar image
+                    * @type {String}
+                    */
+                    avatar: {
+                        type: String,
+                    },
+                    /**
+                    * Balance represents the users SWT balance
+                    * @type {Number}
+                    */
+                    balance: {
+                        type: Number,
+                    },
+                    /**
+                    * completeAccount represents true of the user
+                    * has a username, avatar and address
+                    * @type {Boolean}
+                    */
+                    completeAccount: {
+                        type: Boolean,
+                        value: false,
+                    },
+                };
+            }
+            connectedCallback() {
+                super.connectedCallback();
+                this._getUser();
+            }
+            _getUser() {
+                this.$.storage.accountExists()
+                    .then((account) => {
+                        if (account.username && account.address && account.avatar) {
+                            this.username = account.username;
+                            this.completeAccount = true;
+                            this._complete(account);
+                        }
+                    });
+            }
+            _complete(account) {
+                Promise.all([
+                    this.$.ipfs.getHash(account.avatar, 'img'),
+                    this.$.web3.getBalance(account.address, 'SWT'),
+                ])
+                    .then((data) => {
+                        this.avatar = data[0];
+                        this.balance = data[1];
+                    });
+            }
+        } window.customElements.define(DisplayMyInfo.is, DisplayMyInfo);
+    </script>
+</dom-module>

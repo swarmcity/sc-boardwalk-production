@@ -23,7 +23,8 @@
         "Youtube": "Youtube",
         "Facebook": "Facebook",
         "Reddit": "Reddit",
-        "Discord": "Discord"
+        "Discord": "Discord",
+        "deals done": "deals done"
     },    
     "cn": {
         "language": "cn",
@@ -49,7 +50,8 @@
         "Youtube": "Awaiting Translation",
         "Facebook": "Awaiting Translation",
         "Reddit": "Awaiting Translation",
-        "Discord": "Awaiting Translation"    
+        "Discord": "Awaiting Translation",
+        "deals done": "Awaiting Translation"  
     },
     "fr": {
         "language": "fr",
@@ -75,7 +77,8 @@
         "Youtube": "Awaiting Translation",
         "Facebook": "Awaiting Translation",
         "Reddit": "Awaiting Translation",
-        "Discord": "Awaiting Translation"
+        "Discord": "Awaiting Translation",
+        "deals done": "Awaiting Translation"  
         },
     "nl": {
         "language": "nl",
@@ -101,7 +104,8 @@
         "Youtube": "Awaiting Translation",
         "Facebook": "Awaiting Translation",
         "Reddit": "Awaiting Translation",
-        "Discord": "Awaiting Translation"
+        "Discord": "Awaiting Translation",
+        "deals done": "Awaiting Translation"  
         },
     "ru": {
         "language": "ru",
@@ -127,7 +131,8 @@
         "Youtube": "Awaiting Translation",
         "Facebook": "Awaiting Translation",
         "Reddit": "Awaiting Translation",
-        "Discord": "Awaiting Translation"
+        "Discord": "Awaiting Translation",
+        "deals done": "Awaiting Translation"  
         },
     "de": {
         "language": "de",
@@ -153,7 +158,8 @@
         "Youtube": "Awaiting Translation",
         "Facebook": "Awaiting Translation",
         "Reddit": "Awaiting Translation",
-        "Discord": "Awaiting Translation"
+        "Discord": "Awaiting Translation",
+        "deals done": "Awaiting Translation"  
         },
     "es": {
         "language": "es",
@@ -179,6 +185,7 @@
         "Youtube": "Awaiting Translation",
         "Facebook": "Awaiting Translation",
         "Reddit": "Awaiting Translation",
-        "Discord": "Awaiting Translation"
+        "Discord": "Awaiting Translation",
+        "deals done": "Awaiting Translation"  
         }
 }
