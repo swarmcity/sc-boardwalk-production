@@ -25,37 +25,32 @@ The following custom properties and mixins are available for styling:
                 display: block;
             }
 
-            .container {
-                @apply --layout-vertical;
-            }
+            .container {}
 
             .avatar {
                 border-radius: 50%;
                 height: 60px;
                 width: 60px;
-                background-color: grey;
             }
 
             .card {
-                border: 1px solid black;
+                padding: 15px;
+                background-color: var(--swarm-city-white);
             }
 
             .top {
                 @apply --layout-horizontal;
-                border: 2px solid red;
             }
 
             .bottom {
                 @apply --layout-horizontal;
-                border: 2px solid red;
             }
 
 
 
             .details {
-                margin-left: 15px;
+                margin: 15px 0 0 15px;
                 width: 180px;
-                border: 1px solid black;
                 @apply --layout-flex;
             }
 
@@ -64,12 +59,9 @@ The following custom properties and mixins are available for styling:
                 font-weight: 800;
                 cursor: pointer;
                 color: var(--grey-2);
-                border: 1px solid black;
             }
 
-            .profile {
-                border: 1px solid black;
-            }
+            .profile {}
 
             .name {
                 color: var(--swarm-city-blue);
@@ -79,21 +71,20 @@ The following custom properties and mixins are available for styling:
                 cursor: pointer;
             }
 
-            .deal {
-                border: 1px solid black;
-            }
+            .deal {}
 
             .message {
                 color: var(--grey-4);
-                border: 1px solid black;
+                width: 220px;
             }
 
             .price {
+                width: 80px;
                 color: var(--swarm-city-yellow);
                 font-weight: bold;
                 text-align: right;
-                border: 1px solid black;
             }
+
             .price span {
                 font-size: 12px;
             }
@@ -118,7 +109,7 @@ The following custom properties and mixins are available for styling:
                         <p class="message">A place to stay in New york for a couple of nights</p>
                     </div>
                     <div class="price">
-                        <p><span>for</span> 5&nbsp;SWT</p>
+                        <p><span>for</span> <br>5&nbsp;SWT</p>
                     </div>
                 </div>
             </div>
