@@ -26,6 +26,52 @@ this.$.web3.hashtags()
     <script>
         class DataWeb3 extends Polymer.Element {
             static get is() { return 'data-web3'; }
+/**
+* Returns an array with the deals for a hashtag
+* @return {hashtags} hashtags is an array of objects
+* @param {hashtagID} hashtagID for which to return deals for
+*/
+    deals(hashtagID) {
+        return new Promise((resolve, reject) => {
+            const fakeResponse = {
+                name: 'Pioneer',
+                id: '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c9',
+                location: '9q8yfr43d4',
+                deals: 230,
+                description: 'pioneer is the first amazing hashtag',
+                maintainer: 'pioneer is maintained by the hashtag commision',
+                contact: [
+                {name: 'twitter', link: 'http://www.twitter.com/@pioneer'},
+                {name: 'facebook', link: 'http://www.facebook.com/pioneer'},
+                ],
+                items: [
+                {
+                    DealID: '1317d4c60a2fc3f1d586d2ca9d66b52f80a013c9',
+                    location: '3q8yfr43d4',
+                    time: 1500063570,
+                    username: 'Arian Bronson',
+                    reputation: 12,
+                    avatar: 'QmVLDAhCY3X9P2uRudKAryuQFPM5zqA3Yij1dY8FpGbL7T',
+                    description: 'Ride from literton buss stop to protest',
+                    value: 5,
+                },
+                {
+                    DealID: '1317d4c60a2fc3f1d586d2ca9d66b52f80a013c9',
+                    location: '3q8yfr43d4',
+                    time: 1500063570,
+                    username: 'Arian Bronson',
+                    reputation: 12,
+                    avatar: 'QmVLDAhCY3X9P2uRudKAryuQFPM5zqA3Yij1dY8FpGbL7T',
+                    description: 'Ride from literton buss stop to protest',
+                    value: 5,
+                },
+                ],
+            };
+            resolve(fakeResponse);
+        });
+    }
+
+
             /**
             * Returns a balance fir thge given address and token pair
             * @param {string} address
