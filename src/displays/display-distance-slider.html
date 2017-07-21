@@ -117,7 +117,6 @@ The following custom properties and mixins are available for styling:
                     },
                     rangeDescription: {
                         type: String,
-                        value: 'worldwide'
                     },
                 };
             }
@@ -125,7 +124,7 @@ The following custom properties and mixins are available for styling:
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
-            _setDesc(){
+            _setDesc() {
                 this.rangeDescription = this.localize('world wide');
                 this.value = 1;
             }

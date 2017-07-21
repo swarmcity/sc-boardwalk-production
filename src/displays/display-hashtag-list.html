@@ -101,7 +101,7 @@ The following custom properties and mixins are available for styling:
                 ])
                     .then((data) => {
                         if (data[0].location) {
-                            this.location = data[0].location
+                            this.location = data[0].location;
                             this._getDistance(data);
                         }
                         else {
@@ -134,10 +134,10 @@ The following custom properties and mixins are available for styling:
                 }
             }
             _toHashtag(selected) {
-                if( this.location){
+                if( this.location) {
                     this.path = 'hashtag/' + selected.model.__data.item.hashtagID + '/';
                 } else {
-                    this.path = 'location/'
+                    this.path = 'location/';
                 }
             }
 
