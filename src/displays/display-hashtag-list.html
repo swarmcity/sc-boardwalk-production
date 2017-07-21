@@ -27,8 +27,10 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-hashtag-list">
     <template>
         <style>
-             :host {
+            :host {
                 display: block;
+                margin-left:10px;
+                margin-top:10px;
             }
 
             .hashtag {
@@ -99,6 +101,7 @@ The following custom properties and mixins are available for styling:
                 ])
                     .then((data) => {
                         if (data[0].location) {
+                            this.location = data[0].location
                             this._getDistance(data);
                         }
                         else {
@@ -126,12 +129,16 @@ The following custom properties and mixins are available for styling:
                 if (event.distance) {
                     return (this.range > event.distance);
                 }
-               else {
-                   return true;
-               }
+                else {
+                    return true;
+                }
             }
             _toHashtag(selected) {
-                this.path = 'hashtag/' + selected.model.__data.item.hashtagID + '/';
+                if( this.location){
+                    this.path = 'hashtag/' + selected.model.__data.item.hashtagID + '/';
+                } else {
+                    this.path = 'location/'
+                }
             }
 
         } window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);

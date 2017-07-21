@@ -1,0 +1,82 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../data/data-local-storage.html">
+<!--
+
+Example:
+```
+<display-deal-btn></display-deal-btn>
+```
+
+### Styling
+
+Style the button with CSS as you would a normal DOM element.
+The following custom properties and mixins are available for styling:
+
+-->
+<dom-module id="display-deal-btn">
+    <template>
+        <style include="shared-styles">
+            :host {
+                display: block;
+            }
+
+            .container {
+                display: block;
+                margin-top: 20px;
+                width: 76px;
+                height: 76px;
+                background: url('../../../images/swarm-city-sprite.png') -772px -110px;
+                cursor: pointer;
+            }
+        </style>
+
+        <data-local-storage id="storage"></data-local-storage>
+
+ 
+            <div class="container">
+
+            </div>
+
+
+    </template>
+    <script>
+        class DisplayDealBtn extends Polymer.mixinBehaviors([
+            Polymer.AppLocalizeBehavior],
+            Polymer.Element
+        ) {
+            static get is() { return 'display-deal-btn'; }
+            static get properties() {
+                return {
+                    /**
+                    * Loading indicates if the componant is loading
+                    * @type {Boolean}
+                    */
+                    loading: {
+                        type: Boolean,
+                        value: false,
+                        notify: true,
+                    },
+                };
+            }
+            connectedCallback() {
+                super.connectedCallback();
+                this._getUser();
+            }
+            _getUser() {
+                this.$.storage.accountExists()
+                    .then((account) => {
+                        if (account.username && account.address && account.avatar) {
+                            this.username = account.username;
+                            this.completeAccount = true;
+                        }
+                    });
+            }
+        } window.customElements.define(DisplayDealBtn.is, DisplayDealBtn);
+    </script>
+</dom-module>

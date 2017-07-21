@@ -24,7 +24,14 @@
         "Facebook": "Facebook",
         "Reddit": "Reddit",
         "Discord": "Discord",
-        "deals done": "deals done"
+        "deals done": "deals done",
+        "filter list": "filter list",
+        "world wide": "world wide",
+        "within 1000km": "within 1000km",
+        "within 100km": "within 100km",
+        "within 10km": "within 10km",
+        "within 1km": "within 1km",
+        "within 0.5km": "within 0.5km"
     },    
     "cn": {
         "language": "cn",
@@ -51,7 +58,14 @@
         "Facebook": "Awaiting Translation",
         "Reddit": "Awaiting Translation",
         "Discord": "Awaiting Translation",
-        "deals done": "Awaiting Translation"  
+        "deals done": "Awaiting Translation",
+        "filter list": "Awaiting Translation",
+        "world wide": "Awaiting Translation",
+        "within 1000km": "Awaiting Translation",
+        "within 100km": "Awaiting Translation",
+        "within 10km": "Awaiting Translation",
+        "within 1km": "Awaiting Translation",
+        "within 0.5km": "Awaiting Translation"
     },
     "fr": {
         "language": "fr",
@@ -78,7 +92,14 @@
         "Facebook": "Awaiting Translation",
         "Reddit": "Awaiting Translation",
         "Discord": "Awaiting Translation",
-        "deals done": "Awaiting Translation"  
+        "deals done": "Awaiting Translation",
+        "filter list": "Awaiting Translation",
+        "world wide": "Awaiting Translation",
+        "within 1000km": "Awaiting Translation",
+        "within 100km": "Awaiting Translation",
+        "within 10km": "Awaiting Translation",
+        "within 1km": "Awaiting Translation",
+        "within 05km": "Awaiting Translation"
         },
     "nl": {
         "language": "nl",
@@ -105,7 +126,14 @@
         "Facebook": "Awaiting Translation",
         "Reddit": "Awaiting Translation",
         "Discord": "Awaiting Translation",
-        "deals done": "Awaiting Translation"  
+        "deals done": "Awaiting Translation",
+        "filter list": "Awaiting Translation",
+        "world wide": "Awaiting Translation",
+        "within 1000km": "Awaiting Translation",
+        "within 100km": "Awaiting Translation",
+        "within 10km": "Awaiting Translation",
+        "within 1km": "Awaiting Translation",
+        "within 05km": "Awaiting Translation"
         },
     "ru": {
         "language": "ru",
@@ -132,7 +160,14 @@
         "Facebook": "Awaiting Translation",
         "Reddit": "Awaiting Translation",
         "Discord": "Awaiting Translation",
-        "deals done": "Awaiting Translation"  
+        "deals done": "Awaiting Translation",
+        "filter list": "Awaiting Translation",
+        "world wide": "Awaiting Translation",
+        "within 1000km": "Awaiting Translation",
+        "within 100km": "Awaiting Translation",
+        "within 10km": "Awaiting Translation",
+        "within 1km": "Awaiting Translation",
+        "within 05km": "Awaiting Translation"
         },
     "de": {
         "language": "de",
@@ -159,7 +194,14 @@
         "Facebook": "Awaiting Translation",
         "Reddit": "Awaiting Translation",
         "Discord": "Awaiting Translation",
-        "deals done": "Awaiting Translation"  
+        "deals done": "Awaiting Translation",
+        "filter list": "Awaiting Translation",
+        "world wide": "Awaiting Translation",
+        "within 1000km": "Awaiting Translation",
+        "within 100km": "Awaiting Translation",
+        "within 10km": "Awaiting Translation",
+        "within 1km": "Awaiting Translation",
+        "within 05km": "Awaiting Translation"
         },
     "es": {
         "language": "es",
@@ -186,6 +228,13 @@
         "Facebook": "Awaiting Translation",
         "Reddit": "Awaiting Translation",
         "Discord": "Awaiting Translation",
-        "deals done": "Awaiting Translation"  
+        "deals done": "Awaiting Translation",
+        "filter list": "Awaiting Translation",
+        "world wide": "Awaiting Translation",
+        "within 1000km": "Awaiting Translation",
+        "within 100km": "Awaiting Translation",
+        "within 10km": "Awaiting Translation",
+        "within 1km": "Awaiting Translation",
+        "within 05km": "Awaiting Translation"
         }
 }

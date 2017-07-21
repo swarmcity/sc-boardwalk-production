@@ -8,7 +8,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="display-language.html">
 <link rel="import" href="../data/data-local-storage.html">
 <link rel="import" href="../../bower_components/paper-slider/paper-slider.html">
-
+<link rel="import" href="../redux-state.html">
 <!--
 
 Example:
@@ -27,37 +27,34 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-distance-slider">
     <template>
         <style>
-             :host {
+            :host {
                 display: block;
             }
-
             .container {
                 @apply --layout-vertical;
                 width: 280px;
             }
-
             #toggle {
                 font-size: 12px;
                 font-weight: 800;
                 text-align: right;
                 text-decoration: underline;
                 cursor: pointer;
-                color: var(--grey-3);
+                color: var(--grey-2);
             }
-
             paper-slider {
                 --paper-slider-knob-color: var(--swarm-city-yellow);
                 --paper-slider-active-color: var(--swarm-city-yellow);
                 animation-name: scaleIn;
                 animation: scaleIn 0.5s forwards;
                 width: 100%;
+                cursor: pointer;
             }
             #rangeDescription {
                 font-size: 12px;
                 font-weight: 400;
-                margin: 0 0 0 30px;
+                margin: 0 0 0 10px;
             }
-
             @keyframes scaleIn {
                 0% {
                     transform: scale(0, 0);
@@ -70,24 +67,28 @@ The following custom properties and mixins are available for styling:
         <data-local-storage id="storage"></data-local-storage>
         <display-language language="{{language}}"></display-language>
         <div class="container">
-            <p id="toggle" on-click="_toggleSlider">use location</p>
+            <p id="toggle" on-click="_toggleSlider">{{localize('filter list')}}</p>
             <template is="dom-if" if="{{showSlider}}">
                 <p id="rangeDescription">{{rangeDescription}}</p>
-                <paper-slider id="ratings" min="1" max="6" step="0.1" value="{{immediateValue}}" immediate-value="{{immediateValue}}"></paper-slider>
+                <paper-slider id="ratings" min="1" max="6"  value="{{value}}" on-immediate-value-change="_calcRange" expand></paper-slider>
             </template>
         </div>
     </template>
     <script>
-        class DisplayDistanceSlider extends Polymer.mixinBehaviors([
+        class DisplayDistanceSlider extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior],
             Polymer.Element
-        ) {
+        )) {
             static get is() { return 'display-distance-slider'; }
             static get properties() {
                 return {
+                    language: {
+                        type: String,
+                        statePath: 'language',
+                        observer: '_calcRange',
+                    },
                     /**
                     * Loading indicates if the componant is loading
-                    *
                     * @type {Boolean}
                     */
                     loading: {
@@ -104,45 +105,56 @@ The following custom properties and mixins are available for styling:
                         value: null,
                         notify: true,
                     },
-                    immediateValue: {
+                    value: {
                         type: Number,
-                        value: 2,
+                        value: 0,
                         observer: '_calcRange',
                     },
                     showSlider: {
                         type: Boolean,
                         value: false,
+                        observer: '_setDesc',
                     },
                     rangeDescription: {
                         type: String,
+                        value: 'worldwide'
                     },
                 };
             }
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
+            _setDesc(){
+                this.rangeDescription = this.localize('world wide');
+                this.value = 1;
+            }
             _calcRange() {
-                switch (this.immediateValue) {
-                    case 1:
-                        this.rangeDescription = 'within 500 meter';
-                        this.range = 500;
+                const x = this.value;
+                switch (true) {
+                    case (x < 2):
+                        this.rangeDescription = this.localize('world wide');
+                        this.range = 10000000000000000000;
                         break;
-                    case 2:
-                    this.rangeDescription = 'within 1 kilometer';
-                        this.range = 1000;
-                        break;
-                    case 3:
-                    this.rangeDescription = 'within 10 kilometer';
-                        this.range = 10000;
-                        break;
-                    case 4:
-                    this.rangeDescription = 'within 100 kilometer';
-                        this.range = 100000;
-                        break;
-                    case 5:
-                    this.rangeDescription = 'within 1000 kilometer';
+                    case (x < 3):
+                        this.rangeDescription = this.localize('within 1000km');
                         this.range = 1000000;
                         break;
-                    case 6:
-                    this.rangeDescription = 'worldwide';
-                        this.range = 10000000000000000000;
+                    case (x < 4):
+                        this.rangeDescription = this.localize('within 100km');
+                        this.range = 100000;
+                        break;
+                    case (x < 5):
+                        this.rangeDescription = this.localize('within 10km');
+                        this.range = 10000;
+                        break;
+                    case (x < 6):
+                    this.rangeDescription = this.localize('within 1km');
+                        this.range = 1000;
+                        break;
+                    case (x < 7):
+                        this.rangeDescription = this.localize('within 05km');
+                        this.range = 500;
                 }
             }
             _toggleSlider() {
