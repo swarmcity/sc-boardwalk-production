@@ -27,10 +27,11 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-hashtag-about">
     <template>
         <style>
-            :host {
+                 :host {
                 display: block;
             }
-            .about{
+
+            .about {
                 color: var(--swarm-city-blue);
                 font-size: 12px;
                 line-height: 15px;
@@ -39,85 +40,98 @@ The following custom properties and mixins are available for styling:
                 text-transform: lowercase;
                 cursor: pointer;
             }
-            .display-container{
+
+            .display-container {
+                position: relative;
+                z-index: -1;
+                animation: slideDown 0.1s forwards;
                 background-color: rgb(235, 235, 235);
                 padding: 20px;
             }
-            .display-container div:nth-child(1){
+
+            .display-container div:nth-child(1) {
                 color: #797979;
                 font-size: 13px;
             }
-            .display-container div:nth-child(2){
+
+            .display-container div:nth-child(2) {
                 color: #CACACA;
                 padding: 20px 0 10px 0;
             }
-            .display-container div a{
+
+            .display-container div a {
                 @apply --blue-links;
             }
 
-            
-</style>
+            @keyframes slideDown {
+                0% {
+                    transform: translate(0, -100px);
+                }
+                100% {
+                    transform: translate(0, 0);
+                }
+        </style>
         <div class="about" on-click="_toggle">about {{hashtag.name}}</div>
         <template is="dom-if" if="{{showInfo}}">
             <div class="display-container">
-                <div>{{hashtag.name}} is maintained by {{hashtag.maintainer}}</div>
+                <div>{{hashtag.name}} {{hashtag.maintainer}}</div>
                 <div>Contact</div>
                 <template is="dom-repeat" items="{{hashtag.contact}}">
                     <div><a href="{{item.link}}">{{item.name}}</a></div>
-                </template> 
+                </template>
             </div>
-        </template> 
-
         </template>
+
+    </template>
     <script>
+        class DisplayHashtagAbout extends Polymer.mixinBehaviors([
+            Polymer.AppLocalizeBehavior],
+            Polymer.Element
+        ) {
+            static get is() { return 'display-hashtag-about'; }
+            static get properties() {
+                return {
+                    /**
+                    * Loading indicates if the componant is loading
+                    * @type {Boolean}
+                    */
+                    loading: {
+                        type: Boolean,
+                        value: false,
+                        notify: true,
+                    },
+                    /**
+                    * showInfo indicates if the display panel is open or not
+                    * @type {Boolean}
+                    */
+                    showInfo: {
+                        type: Boolean,
+                        value: false,
+                    },
+                    /**
+                    * hashtag represents the hashtag data
+                    * @type {Object}
+                    */
+                    hashtag: {
+                        type: Object,
+                    },
+                };
+            }
+            _toggle() {
+                this.showInfo = !this.showInfo;
+            }
+            _getHashtag() {
+                if (this.routeData.page) {
+                    this.loading = true;
+                    this.$.web3.deals(this.routeData.page)
+                        .then((data) => {
+                            this.hashtagName = data.name;
+                            this.hashtag = data;
+                            this.loading = false;
+                        });
+                }
+            }
 
-    class DisplayHashtagAbout extends Polymer.mixinBehaviors([
-        Polymer.AppLocalizeBehavior],
-        Polymer.Element
-    ) {
-        static get is() { return 'display-hashtag-about';}
-        static get properties() { return {
-        /**
-        * Loading indicates if the componant is loading
-        * @type {Boolean}
-        */
-            loading: {
-                type: Boolean,
-                value: false,
-                notify: true,
-            },
-        /**
-        * showInfo indicates if the display panel is open or not
-        * @type {Boolean}
-        */
-            showInfo: {
-                type: Boolean,
-                value: false,
-            },
-        /**
-        * hashtag represents the hashtag data
-        * @type {Object}
-        */
-            hashtag: {
-                type: Object,
-            },
-        };
-    }
-    _toggle() {
-        this.showInfo = !this.showInfo;
-    }
-    _getHashtag() {
-        if(this.routeData.page) {
-            this.loading = true;
-            this.$.web3.deals(this.routeData.page)
-            .then((data) => {
-                this.hashtagName = data.name;
-                this.hashtag = data;
-                this.loading = false;
-            });
-        }
-    }
-
-} window.customElements.define(DisplayHashtagAbout.is, DisplayHashtagAbout);
-</script>
+        } window.customElements.define(DisplayHashtagAbout.is, DisplayHashtagAbout);
+    </script>
 </dom-module>

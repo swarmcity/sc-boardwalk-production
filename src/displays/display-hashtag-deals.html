@@ -23,9 +23,10 @@ The following custom properties and mixins are available for styling:
         <style include="shared-styles">
              :host {
                 display: block;
+                @apply --layout-vertical;
+                @apply --layout-center-justified;
+                animation: scaleIn 0.5s forwards;
             }
-
-            .container {}
 
             .avatar {
                 border-radius: 50%;
@@ -46,8 +47,6 @@ The following custom properties and mixins are available for styling:
                 @apply --layout-horizontal;
             }
 
-
-
             .details {
                 margin: 15px 0 0 15px;
                 width: 180px;
@@ -57,21 +56,15 @@ The following custom properties and mixins are available for styling:
             .date {
                 font-size: 12px;
                 font-weight: 800;
-                cursor: pointer;
                 color: var(--grey-2);
             }
-
-            .profile {}
 
             .name {
                 color: var(--swarm-city-blue);
                 text-decoration: none;
                 font-size: 16px;
                 font-weight: bold;
-                cursor: pointer;
             }
-
-            .deal {}
 
             .message {
                 color: var(--grey-4);
@@ -87,6 +80,15 @@ The following custom properties and mixins are available for styling:
 
             .price span {
                 font-size: 12px;
+            }
+
+            @keyframes scaleIn {
+                0% {
+                    transform: scale(0, 0);
+                }
+                100% {
+                    transform: scale(1, 1);
+                }
             }
         </style>
         <div class="container">
