@@ -59,9 +59,9 @@ this.$.util.translationExists(language)
 
             /**
             * Find distance between two geoHash's
-            * @param {geoHashA} geoHashA
-            * @param {geoHashB} geoHashB
-            * @return {distance} distance
+            * @param {string} geoHashA
+            * @param {string} geoHashB
+            * @return {number} distance
             */
             geoHashDistance(geoHashA, geoHashB) {
                 return new Promise((resolve, reject) => {
@@ -86,9 +86,9 @@ this.$.util.translationExists(language)
 
             /**
             * Converts a latitude and longitude to a geohash
-            * @param {latitude} latitude latitude
-            * @param {longitude} longitude longitude
-            * @return {geohash} geohash fir the given kat and lon.
+            * @param {float} latitude latitude
+            * @param {float} longitude longitude
+            * @return {string} geohash fir the given kat and lon.
             */
             toGeohash(latitude, longitude) {
                 return new Promise((resolve, reject) => {
@@ -132,7 +132,7 @@ this.$.util.translationExists(language)
 
             /**
             * Converts a geohash to longitude and latitude
-            * @param {geoHash} geoHash
+            * @param {string} geoHash
             * @return {object} object contains te properties latitude and longitude
             */
             _toLatLon(geoHash) {
@@ -167,7 +167,7 @@ this.$.util.translationExists(language)
 
             /**
             * Checks if we have the translation for the language
-            * @param {language} language to check
+            * @param {string} language to check
             * @return {boolean} true signals we do have a translation, false we dont.
             */
             translationExists(language) {
@@ -198,7 +198,7 @@ this.$.util.translationExists(language)
             /**
             * If we need to display buttons for the user to select languages,
             * get the languages we have translations for and supply the dom repeat
-            * @return {locales} locales is the loacal name of the language
+            * @return {string} locales is the loacal name of the language
             */
             allLanguages() {
                 return new Promise((resolve, reject) => {
@@ -229,11 +229,11 @@ this.$.util.translationExists(language)
 
             /**
             * Find distance between two lat and lon's
-            * @param {latA} latA
-            * @param {lonA} lonA
-            * @param {latB} latB
-            * @param {lonB} lonB
-            * @return {distance} distance in meters
+            * @param {string} latA
+            * @param {string} lonA
+            * @param {string} latB
+            * @param {string} lonB
+            * @return {number} distance in meters
             */
             _distance(latA, lonA, latB, lonB) {
                 return new Promise((resolve, reject) => {

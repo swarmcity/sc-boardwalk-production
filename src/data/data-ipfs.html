@@ -33,9 +33,9 @@ this.$.ipfs.getHash()
 
 /**
 * Checks if an acocunt exists
-* @param {ipfsHash} ipfsHash to retrieve
-* @param {fileType} fileType to retrieve
-* @return {Object}
+* @param {string} ipfsHash to retrieve
+* @param {string} fileType to retrieve, img, json or txt
+* @return {Object} that was requested
 */
     getHash(ipfsHash, fileType) {
         return new Promise((resolve, reject) => {
@@ -53,9 +53,9 @@ this.$.ipfs.getHash()
     }
 
 /**
-* @param {providers} providers to retrieve
-* @param {ipfsHash} ipfsHash to retrieve
-* @param {fileType} fileType to retrieve
+* @param {array} providers array of providers to retrieve
+* @param {string} ipfsHash to retrieve
+* @param {string} fileType to retrieve
 * @return {object} an oject represented bythe IPFShash
 */
     _requestHash(providers, ipfsHash, fileType) {

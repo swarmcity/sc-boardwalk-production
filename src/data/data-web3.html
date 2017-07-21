@@ -28,9 +28,9 @@ this.$.web3.hashtags()
             static get is() { return 'data-web3'; }
             /**
             * Returns a balance fir thge given address and token pair
-            * @param {address} address
-            * @param {token} token such as 'SWT' or 'ARC'
-            * @return {amount} hashtags is an array of objects
+            * @param {string} address
+            * @param {string} token such as 'SWT' or 'ARC'
+            * @return {number} hashtags is an array of objects
             */
             getBalance(address, token) {
                 return new Promise((resolve, reject) => {
@@ -116,7 +116,7 @@ this.$.web3.hashtags()
 
             /**
             * Returns the abi for the requests contract
-            * @param {contractName} contractName is the name of the contract
+            * @param {string} contractName is the name of the contract
             * @return {abi} abiu repreents the contracts abi
             */
             _loadAbi(contractName) {
@@ -138,8 +138,8 @@ this.$.web3.hashtags()
 
             /**
             * Returns the contract address
-            * @param {contractName} contractName is the name of the contract
-            * @return {contractAddress} contractAddress repreents the
+            * @param {string} contractName is the name of the contract
+            * @return {string} contractAddress repreents the
             * contracts address on main-net
             */
             _loadAddress(contractName) {
