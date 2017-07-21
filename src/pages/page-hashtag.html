@@ -17,8 +17,9 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../displays/display-my-info.html">
 <link rel="import" href="../displays/display-geohash.html"> 
 <link rel="import" href="../displays/display-hashtag-about.html"> 
-<!-- <link rel="import" href="../displays/display-hashtag-deals.html"> -->
+ <link rel="import" href="../displays/display-hashtag-deals.html"> 
 <link rel="import" href="../displays/display-deal-btn.html"> 
+<link rel="import" href="../displays/display-distance-slider.html"> 
 <!--
     Aimation pack, only load the animations you need for this page.
 -->
@@ -55,12 +56,11 @@ This code may only be used under the license found at https://github.com/swarmci
             }
             display-deal-btn{
                 position: fixed;
-                bottom: 18px;
-                right: 18px;
-                width: 76px;
-                height: 76px;
+                bottom: 28px;
+                right: 28px;
+                width: 80px;
+                height: 80px;
                 border-radius: 50%;
-                overflow: hidden;
             }
         </style>
         <app-location route="{{route}}"></app-location>
@@ -76,9 +76,9 @@ This code may only be used under the license found at https://github.com/swarmci
             <display-my-info></display-my-info>
             <display-geohash route-data="[[routeData]]" hashtag="{{hashtag}}"></display-geohash>
             <display-hashtag-about hashtag="[[hashtag]]"></display-hashtag-about>
-            <!-- <display-hashtag-deals hashtag="[[hashtag]]"></display-hashtag-deals> -->
-            <p>sdfsf</p>
-            <display-deal-btn>HERE</display-deal-btn>
+            <display-distance-slider></display-distance-slider>
+            <display-hashtag-deals hashtag="[[hashtag]]"></display-hashtag-deals> 
+            <display-deal-btn></display-deal-btn>
         </div>
     </template>
 

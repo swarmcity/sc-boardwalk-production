@@ -28,22 +28,15 @@ The following custom properties and mixins are available for styling:
 
             .container {
                 display: block;
-                margin-top: 20px;
-                width: 76px;
-                height: 76px;
-                background: url('../../../images/swarm-city-sprite.png') -772px -110px;
+                width: 80px;
+                height: 80px;
+                background: url('../../../images/swarm-city-sprite.png') -770px -89px;
                 cursor: pointer;
             }
         </style>
 
         <data-local-storage id="storage"></data-local-storage>
-
- 
-            <div class="container">
-
-            </div>
-
-
+            <div class="container" on-click="_next"></div>
     </template>
     <script>
         class DisplayDealBtn extends Polymer.mixinBehaviors([
@@ -76,6 +69,9 @@ The following custom properties and mixins are available for styling:
                             this.completeAccount = true;
                         }
                     });
+            }
+            _next() {
+                alert('Congratulations! Entry Section Completed. The "New Account" section is being developed now. Please post any comments or ideas to make this better to github as an issue.')
             }
         } window.customElements.define(DisplayDealBtn.is, DisplayDealBtn);
     </script>
