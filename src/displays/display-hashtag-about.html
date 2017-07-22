@@ -74,7 +74,7 @@ The following custom properties and mixins are available for styling:
         <div class="about" on-click="_toggle">about {{hashtag.name}}</div>
         <template is="dom-if" if="{{showInfo}}">
             <div class="display-container">
-                <div>{{hashtag.name}} {{hashtag.maintainer}}</div>
+                <div>{{hashtag.maintainer}}</div>
                 <div>Contact</div>
                 <template is="dom-repeat" items="{{hashtag.contact}}">
                     <div><a href="{{item.link}}">{{item.name}}</a></div>
