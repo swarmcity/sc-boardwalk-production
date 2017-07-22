@@ -32,11 +32,12 @@ This code may only be used under the license found at https://github.com/swarmci
     <style include="shared-styles">
     :host {
         display: block;
+        
     }
     .top-container{
         background-color: var(--swarm-city-yellow);
         padding: 100px 18px 100px 18px;
-        @apply --layout-horizontal;
+        @apply --layout-vertical;
         @apply --layout-wrap;
     }
 
@@ -50,18 +51,22 @@ This code may only be used under the license found at https://github.com/swarmci
         zoom: .5;
     }
     .top-container div:nth-child(2) {
+        max-width: 240px;
+        width:100%;
+        display: block;
         @apply --layout-self-end;
     }
     .top-container div:nth-child(1) h1 span{
         font-size: 75px;
         font-weight: 800;
     }
-    h1{
+    h1 {
+        display: block;
         font-size: 50px;
         font-weight: 100;
         max-width: 260px;
         line-height: 60px;
-        color: var(--grey-4)
+        color: var(--grey-4);
     }
     .middle-container{
         background-color: var(--swarm-city-white);
