@@ -3,7 +3,7 @@ require('babel-polyfill');
 var HDWalletProvider = require("truffle-hdwallet-provider");
 
 var mnemonic = "";
-var provider = new HDWalletProvider(mnemonic, "http://192.168.1.4:8545/");
+var provider = new HDWalletProvider(mnemonic, "https://ropsten.infura.io/");
 
 module.exports = {
   networks: {
