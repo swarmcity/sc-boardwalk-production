@@ -5,6 +5,10 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../data/data-web3.html">
+<link rel="import" href="../data/data-ipfs.html">
+<link rel="import" href="../data/data-utility.html">
+<link rel="import" href="../data/data-local-storage.html">
 <!--
 
 Example:
@@ -21,67 +25,65 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-hashtag-deals">
     <template>
         <style include="shared-styles">
-             :host {
+            :host {
                 display: block;
                 @apply --layout-vertical;
                 @apply --layout-center-justified;
                 animation: scaleIn 0.5s forwards;
             }
-
             .avatar {
                 border-radius: 50%;
-                height: 60px;
-                width: 60px;
+                height: 30px;
+                width: 30px;
             }
-
             .card {
+                margin-bottom:2px;
                 padding: 15px;
                 background-color: var(--swarm-city-white);
+                cursor: pointer;
             }
-
             .top {
                 @apply --layout-horizontal;
             }
-
             .bottom {
                 @apply --layout-horizontal;
             }
-
             .details {
-                margin: 15px 0 0 15px;
+                margin: 0 0 0 15px;
                 width: 180px;
                 @apply --layout-flex;
             }
-
             .date {
-                font-size: 12px;
-                font-weight: 800;
+                font-size: 10px;
+                font-weight: 400;
+                text-transform:lowercase;
                 color: var(--grey-2);
             }
-
             .name {
                 color: var(--swarm-city-blue);
                 text-decoration: none;
-                font-size: 16px;
+                font-size: 12px;
                 font-weight: bold;
             }
-
             .message {
                 color: var(--grey-4);
                 width: 220px;
+                font-size: 16px;
+                margin-bottom:0px;
             }
-
             .price {
                 width: 80px;
                 color: var(--swarm-city-yellow);
                 font-weight: bold;
                 text-align: right;
+                font-size: 14px;
+                padding-top: 24px;
             }
-
             .price span {
-                font-size: 12px;
+                font-size: 10px;
+                width:100%;
+                display: block;
             }
-
             @keyframes scaleIn {
                 0% {
                     transform: scale(0, 0);
@@ -90,32 +92,38 @@ The following custom properties and mixins are available for styling:
                     transform: scale(1, 1);
                 }
             }
-        </style>
-        <div class="container">
+</style>
+        <data-web3 id="web3"></data-web3>
+        <data-ipfs id="ipfs"></data-ipfs>
+        <data-utility id="utility"></data-utility>
+        <data-local-storage id="storage"></data-local-storage>
+
+        <template is="dom-repeat" items="{{deals}}" filter="_isWithinRange" id="domRepeat">
             <div class="card">
                 <div class="top">
                     <div class="avatarcontainer">
-                        <img class="avatar" src="../../images/defaultavatar.png" alt="avatar">
+                        <img class="avatar" src$="{{item.avatar}}" alt="avatar">
                     </div>
                     <div class="details">
                         <div class="date">
-                            <span>Yesterday: 1821</span>
+                            <span>{{item.time}}</span>
                         </div>
                         <div class="profile">
-                            <span class="name">Hank Moovy - 1 REP</span>
+                            <span class="name">{{item.username}} - {{item.reputation}} REP</span>
                         </div>
                     </div>
                 </div>
                 <div class="bottom">
                     <div class="deal">
-                        <p class="message">A place to stay in New york for a couple of nights</p>
+                        <p class="message">{{item.description}} </p>
                     </div>
                     <div class="price">
-                        <p><span>for</span> <br>5&nbsp;SWT</p>
+                        <span>for</span> {{item.value}}&nbsp;SWT
                     </div>
                 </div>
             </div>
-        </div>
+        </template>
+
     </template>
     <script>
         class DisplayHashtagDeals extends Polymer.mixinBehaviors([
@@ -134,8 +142,62 @@ The following custom properties and mixins are available for styling:
                         value: false,
                         notify: true,
                     },
+                    range: {
+                        type: Number,
+                        observer: '_rangeChanged',
+                    },
                 };
             }
+
+        connectedCallback() {
+            super.connectedCallback();
+            this.loadResources(this.resolveUrl('../text-translations.json'));
+            this._getDeals();
+        }
+
+        _getDeals() {
+            this.deals = [];
+            Promise.all([
+                this.$.storage.accountExists(),
+                this.$.web3.deals(),
+            ])
+            .then((data) => {
+                if (data[0].location) {
+                    this.location = data[0].location;
+                    this._getDetails(data);
+                }
+                else {
+                    this.deals = data[1];
+                }
+            });
+        }
+    _getDetails(data) {
+        for (let i = 0; i < data[1].items.length; i++) {
+            Promise.all([
+                this.$.utility.geoHashDistance(data[0].location,
+                data[1].items[i].location),
+                this.$.utility.convertTime(data[1].items[i].time),
+                this.$.ipfs.getHash(data[1].items[i].avatar),
+            ])
+            .then((details) => {
+                data[1].items[i].distance = details[0];
+                data[1].items[i].time = details[1];
+                data[1].items[i].avatar = details[2];
+                this.push('deals', data[1].items[i]);
+            });
+        }
+    }
+        _rangeChanged() {
+            this.$.domRepeat.render();
+        }
+        _isWithinRange(event) {
+            if (event.distance) {
+                return (this.range > event.distance);
+            }
+            else {
+                return true;
+            }
+        }
 
         } window.customElements.define(DisplayHashtagDeals.is, DisplayHashtagDeals);
     </script>
