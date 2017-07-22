@@ -62,6 +62,13 @@ This code may only be used under the license found at https://github.com/swarmci
                 height: 80px;
                 border-radius: 50%;
             }
+            .hash-tag{
+                color: var(--grey-5);
+                font-size: 30px;
+                line-height: 36px;
+                font-weight: 800;
+                margin-top: 20px;
+            }
         </style>
         <app-location route="{{route}}"></app-location>
         <app-route
@@ -74,10 +81,10 @@ This code may only be used under the license found at https://github.com/swarmci
         <div class="container">
             <div on-click="_back"></div>
             <display-my-info></display-my-info>
-            <display-geohash route-data="[[routeData]]" hashtag="{{hashtag}}"></display-geohash>
+            <div class="hash-tag">#{{hashtag.name}}</div>
             <display-hashtag-about hashtag="[[hashtag]]"></display-hashtag-about>
             <display-distance-slider range="{{range}}" path="{{path}}"></display-distance-slider>
-            <display-hashtag-deals range="{{range}}" hashtag="[[hashtag]]"></display-hashtag-deals> 
+            <display-hashtag-deals range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]"></display-hashtag-deals> 
             <display-deal-btn></display-deal-btn>
         </div>
     </template>

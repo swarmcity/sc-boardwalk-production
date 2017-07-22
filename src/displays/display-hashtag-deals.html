@@ -146,6 +146,14 @@ The following custom properties and mixins are available for styling:
                         type: Number,
                         observer: '_rangeChanged',
                     },
+                    routeData: {
+                        type: String,
+                        observer: '_getHashtag',
+                    },
+                    hashtag: {
+                        type: String,
+                        notify: true,
+                    },
                 };
             }
 
@@ -155,6 +163,16 @@ The following custom properties and mixins are available for styling:
             this._getDeals();
         }
 
+    _getHashtag() {
+        if(this.routeData.page) {
+            this.loading = true;
+            this.$.web3.deals(this.routeData.page)
+            .then((data) => {
+                this.hashtag = data;
+                this.loading = false;
+            });
+        }
+    }
         _getDeals() {
             this.deals = [];
             Promise.all([
