@@ -113,9 +113,9 @@ Example:
                 return;
             }
         })
-        .then((data) => {
-            if(this.account == false) {
-                this.$.localStorage.saveAccount({language: data.language});
+        .then((result) => {
+            if(this.account == false && this.language) {
+                this.$.localStorage.saveAccount({language: this.language});
             } else {
                 this.account.language = this.language;
                 this.$.localStorage.saveAccount(this.account);
