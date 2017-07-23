@@ -86,6 +86,7 @@ this.$.ipfs.getHash()
                         };
                         img.onerror = () => {
                             providers.shift();
+                            alert('img error');
                             tryAgain();
                         };
                         img.src = providers[0]+ipfsHash;
@@ -102,7 +103,7 @@ this.$.ipfs.getHash()
     */
     _providers() {
         return new Promise((resolve, reject) => {
-        const providers = ['https://ipfs.infura.io/ipfs/', 'https://ipfs.io/ipfs/', 'https://ipfs.swarm.city/ipfs/'];
+        const providers = ['https://ipfs.swarm.city/ipfs/','https://ipfs.infura.io/ipfs/', 'https://ipfs.io/ipfs/'];
         resolve(providers);
         });
     }

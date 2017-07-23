@@ -37,7 +37,9 @@ this.$.util.translationExists(language)
     */
     convertTime(epoch) {
         return new Promise((resolve, reject) => {
-            if(swarmCity.time()) {
+            if(!swarmCity) {
+                this.convertTime(epoch);
+            } else {
             resolve(swarmCity.time().subtract(
                 swarmCity.time().unix() - swarmCity.time(epoch),
                 'seconds').calendar());

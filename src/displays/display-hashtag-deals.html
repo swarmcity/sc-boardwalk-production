@@ -42,9 +42,11 @@ The following custom properties and mixins are available for styling:
                 animation: scaleIn 0.5s forwards;
                 @apply --layout-vertical;
                 @apply --layout-center-justified;
-                @apply --display-hashtag-deals-container
+                @apply --display-hashtag-deals-container;
             }
-            .container .top,
+            .container .top {
+                @apply --layout-horizontal;
+            }
             .container .bottom {
                 @apply --layout-horizontal;
             }
@@ -87,7 +89,7 @@ The following custom properties and mixins are available for styling:
             <div class="container">
                 
                 <div class="top">
-                    <img src$="{{item.avatar}}">
+                    <template is="dom-if" if="{{item.avatar}}"><img src$="{{item.avatar}}"></template>
                     <div>
                         <div>{{item.time}}</div>
                         <div>{{item.username}} - {{item.reputation}} REP</div>
