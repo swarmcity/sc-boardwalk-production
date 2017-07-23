@@ -7,17 +7,18 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/app-route/app-location.html">
-<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="../redux-state.html">
 <!--
     Displays and shared styles only
 -->
 <link rel="import" href="../shared-styles.html">
-<!-- <link rel="import" href="../displays/display-my-info.html">-->
-<link rel="import" href="../displays/display-geohash.html"> 
+<link rel="import" href="../displays/display-my-info.html">
 <link rel="import" href="../displays/display-hashtag-about.html"> 
-<!-- <link rel="import" href="../displays/display-hashtag-deals.html"> -->
+<link rel="import" href="../displays/display-hashtag-deals.html"> 
+<link rel="import" href="../displays/display-deal-btn.html"> 
+<link rel="import" href="../displays/display-distance-slider.html"> 
 <!--
     Aimation pack, only load the animations you need for this page.
 -->
@@ -43,7 +44,7 @@ This code may only be used under the license found at https://github.com/swarmci
             .container{
                 display: block;
                 width: 100%;
-                max-width: 420px;
+                max-width: 320px;
             }
             .container div:nth-child(1){
                 margin-top: 20px;
@@ -51,6 +52,21 @@ This code may only be used under the license found at https://github.com/swarmci
                 height: 20px;
                 background: url('../../../images/swarm-city-sprite.png') -705px -137px;
                 cursor: pointer;
+            }
+            display-deal-btn{
+                position: fixed;
+                bottom: 28px;
+                right: 28px;
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+            .hash-tag{
+                color: var(--grey-5);
+                font-size: 30px;
+                line-height: 36px;
+                font-weight: 800;
+                margin-top: 20px;
             }
         </style>
         <app-location route="{{route}}"></app-location>
@@ -63,8 +79,12 @@ This code may only be used under the license found at https://github.com/swarmci
 
         <div class="container">
             <div on-click="_back"></div>
-            <display-geohash route-data="[[routeData]]" hashtag="{{hashtag}}"></display-geohash>
+            <display-my-info></display-my-info>
+            <div class="hash-tag">#{{hashtag.name}}</div>
             <display-hashtag-about hashtag="[[hashtag]]"></display-hashtag-about>
+            <display-distance-slider range="{{range}}" path="{{path}}"></display-distance-slider>
+            <display-hashtag-deals range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]"></display-hashtag-deals> 
+            <display-deal-btn></display-deal-btn>
         </div>
     </template>
 
@@ -78,14 +98,17 @@ This code may only be used under the license found at https://github.com/swarmci
             static get is() { return 'page-hashtag'; }
             static get properties() {
                 return {
-                    language: {
-                        type: String,
-                        statePath: 'language',
-                    },
+                    /**
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
                     path: {
                         type: String,
                         observer: '_path',
                     },
+                    /**
+                    * Entry and exit animation
+                    */
                     animationConfig: {
                         value: function() {
                             return {
@@ -107,24 +130,35 @@ This code may only be used under the license found at https://github.com/swarmci
                 };
             }
 
-            connectedCallback() {
-                super.connectedCallback();
-                // Load translations
-                this.loadResources(this.resolveUrl('../text-translations.json'));
-            }
-            _back() {
-                this.path = 'hashtag-list/';
-            }
-            _path() {
-                if (this.path != null) {
-                    this.set('route.path', this.path);
-                }
-                this.path = null;
-            }
-            _toWelcome() {
-                this.set('route.path', 'welcome/');
-            }
+    connectedCallback() {
+        super.connectedCallback();
+        this.loadResources(this.resolveUrl('../text-translations.json'));
+    }
 
-        } window.customElements.define(NewHashtag.is, NewHashtag);
-    </script>
+    /**
+    * changes the current path
+    */
+    _path() {
+        if (this.path != null) {
+            this.set('route.path', this.path);
+        }
+        this.path = null;
+    }
+
+    /**
+    * takes the user to the hashtag list page
+    */
+    _back() {
+        this.path = 'hashtag-list/';
+    }
+
+    /**
+    * takes the user to the welcome page
+    */
+    _toWelcome() {
+        this.set('route.path', 'welcome/');
+    }
+
+} window.customElements.define(NewHashtag.is, NewHashtag);
+</script>
 </dom-module>

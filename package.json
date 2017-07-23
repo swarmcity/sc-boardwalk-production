@@ -40,6 +40,7 @@
     "istanbul": "^0.4.5",
     "json-loader": "^0.5.4",
     "keythereum": "^1.0.1",
+    "moment": "^2.18.1",
     "netlify-cli": "^1.2.2",
     "polymer-cli": "^1.3.1",
     "polymer-webpack-loader": "^1.0.0",
@@ -62,7 +63,7 @@
     "compilecontracts": "truffle compile",
     "buildcontracts": "truffle migrate --reset --network development",
     "testcontracts": "truffle test ./test/contracts/arcTokenTest.js --network development",
-    "browserify": "browserify browserify.js --standalone swarmCity -t [ babelify --presets [ es2015 ] ] | uglifyjs > src/scripts/swarm-city.min.js"
+    "browserify": "browserify browserify.js --standalone swarmCity -t [ babelify --presets [ es2015 ] ] | uglifyjs > src/swarm-city.min.js"
   },
   "dependencies": {
     "redux": "^3.7.1"

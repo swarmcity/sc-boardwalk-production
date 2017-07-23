@@ -36,10 +36,10 @@ This code may only be used under the license found at https://github.com/swarmci
         test('Image Exists', () => {
             // Call the function
             return fixture('fixture-one')
-.getHash('QmW2WQi7j6c7UgJTarActp7tDNikE4B2qXtFCfLPdsgaTQ/cat.jpg', 'img')
+.getHash('QmTWh9FwdByJ15TiqVrgrHchaxrtT3WKRHGpnXe8GXzM7o', 'img')
             .then((res) => {
                 // Test the response
-                assert.equal(res, 'https://ipfs.infura.io/ipfs/QmW2WQi7j6c7UgJTarActp7tDNikE4B2qXtFCfLPdsgaTQ/cat.jpg');
+                assert.equal(res, 'https://ipfs.io/ipfs/QmTWh9FwdByJ15TiqVrgrHchaxrtT3WKRHGpnXe8GXzM7o/');
             });
         });
     });

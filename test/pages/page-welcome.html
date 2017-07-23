@@ -30,11 +30,11 @@ This code may only be used under the license found at https://github.com/swarmci
 </test-fixture>
 <script>
     suite('Query Selector Tests', function() {
-        test('H2 font size is 30px', function() {
+        test('H2 font size is 11px', function() {
             var test = fixture('fixture-one')
             .shadowRoot.querySelector('h2');
             assert.equal(window.getComputedStyle(test, null)
-                .getPropertyValue('font-size'), '30px');
+                .getPropertyValue('font-size'), '11px');
         });
         test('H2 font size is not 31px', function() {
             var test = fixture('fixture-one')

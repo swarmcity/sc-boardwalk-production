@@ -4,7 +4,6 @@ Copyright (c) 2017 Swarm City
 This code may only be used under the license found at https://github.com/swarmcity/license
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
@@ -12,7 +11,6 @@ This code may only be used under the license found at https://github.com/swarmci
 <!--
     Displays and shared styles only
 -->
-<link rel="import" href="../data/data-web3.html">
 <link rel="import" href="../displays/display-language.html">
 <link rel="import" href="../shared-styles.html">
 <!--
@@ -35,33 +33,41 @@ This code may only be used under the license found at https://github.com/swarmci
     }
     .top-container{
         background-color: var(--swarm-city-yellow);
-        padding: 100px 18px 100px 18px;
-        @apply --layout-horizontal;
-        @apply --layout-wrap;
+        padding: 145px 18px 66px 18px;
+        @apply --layout-vertical;
+        @apply --layout-center;
     }
-
-    .top-container div:nth-child(1) {
-        @apply --layout-flex;
-    }
-    .top-container div:nth-child(1) .sc-logo{
+    .top-container div{
         width: 146px;
         height: 55px;
         background-image: url('../../../images/swarm-city-sprite.png');
         zoom: .5;
+        margin-bottom: 35px;
     }
-    .top-container div:nth-child(2) {
-        @apply --layout-self-end;
-    }
-    .top-container div:nth-child(1) h1 span{
-        font-size: 75px;
+    .top-container h1 span{
+        width:100%;
+        margin-top: 10px;
+        display: block;
+        font-size: 35px;
+        line-height: 18px;
         font-weight: 800;
     }
-    h1{
-        font-size: 50px;
+    h1 {
+        text-align: center;
+        max-width:280px;
+        display: block;
+        font-size: 22px;
         font-weight: 100;
-        max-width: 260px;
-        line-height: 60px;
-        color: var(--grey-4)
+        line-height: 31px;
+        color: var(--grey-4);
+    }
+    h2 {
+        color: #4A4A4A;
+        margin-top: 0px;
+        font-size: 11px;
+        font-weight: 400;
+        margin-bottom: 85px;
+        opacity: 0.53;
     }
     .middle-container{
         background-color: var(--swarm-city-white);
@@ -141,12 +147,6 @@ This code may only be used under the license found at https://github.com/swarmci
     li{
         padding-top:5px;
     }
-    .top-container[wide-layout] {
-        padding:100px;
-    }
-    .bottom-container[wide-layout] {
-        padding:100px;
-    }
     display-language {
         position: fixed;
         top: 28px;
@@ -157,27 +157,25 @@ This code may only be used under the license found at https://github.com/swarmci
         font-weight: 700;
         cursor:pointer;
     }
-    .btn-enter{
+    .top-container button {
         @apply --big-btn;
     }
-    .btn-enter:active{
+    .top-container button:active{
         transform: scale(0.97,0.97);
     }
 
     </style>
+    
     <app-location route="{{route}}"></app-location>
     <display-language selected path="{{path}}"></display-language>
-    <data-web3 id="web3"></data-web3>
-    <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
-    <div class="top-container" wide-layout$="{{wide}}">
-        <div>
-            <div class="sc-logo"></div>
+    
+    <div class="top-container">
+            <div></div>
             <h1>{{localize('welcome')}}<span> {{localize('name')}}<span></h1>
-        </div>
-        <div>
+            <h2>{{localize('boardwalk')}} V 2.0</h2>
             <button type="button" autofocus class="btn-enter" on-click="_btnClick" on-KeyPress="_btnKeyPress">{{localize('enter here')}}</button>
-        </div>
     </div>
+    
     <div class="middle-container">
         <h2>{{localize('Swarm City is a decentralized commerce platform.')}}</h2>
         <a href="http://zly.mjo.mybluehost.me/thisis" target="_blank">{{localize('tell me more')}}</a>
@@ -187,7 +185,8 @@ This code may only be used under the license found at https://github.com/swarmci
             <div><div class="image-three"></div>{{localize('Its an open source project so you can jump right in')}}</div>
         </div>
     </div>
-    <div class="bottom-container" wide-layout$="{{wide}}">
+    
+    <div class="bottom-container">
         <div>
             <ul>
                 <li><a href="https://thisis.swarm.city/" target="_blank">{{localize('This is Swarm City')}}</a></li>
@@ -210,6 +209,7 @@ This code may only be used under the license found at https://github.com/swarmci
             </ul>
         </div>
     </div>
+
 </template>
 
 <script>
@@ -222,43 +222,49 @@ This code may only be used under the license found at https://github.com/swarmci
         )) {
         static get is() { return 'page-welcome'; }
         static get properties() { return {
-            path: {
-                type: String,
-                observer: '_path',
-            },
             language: {
                 type: String,
                 statePath: 'language',
             },
-            animationConfig: {
-            value: function() {
-                return {
-                'entry': {
-                    name: 'fade-in-animation',
-                    node: this,
-                    nodeDelay: 300,
-                    timing: {duration: 300},
-                },
-                'exit': {
-                    name: 'fade-out-animation',
-                    node: this,
-                    nodeDelay: 300,
-                    timing: {duration: 300},
-                },
-                };
+            /**
+            * Path is the current or requested path
+            * @type {String}
+            */
+            path: {
+                type: String,
+                observer: '_path',
             },
+            /**
+            * Entry and exit animation
+            */
+            animationConfig: {
+                value: function() {
+                        return {
+                        'entry': {
+                            name: 'fade-in-animation',
+                            node: this,
+                            nodeDelay: 300,
+                            timing: {duration: 300},
+                        },
+                        'exit': {
+                            name: 'fade-out-animation',
+                            node: this,
+                            nodeDelay: 300,
+                            timing: {duration: 300},
+                        },
+                    };
+                },
             },
         };
     }
     connectedCallback() {
         super.connectedCallback();
-        // Load translations
         this.loadResources(this.resolveUrl('../text-translations.json'));
-        this.$.web3.hashtags();
     }
-/**
-* Change the path when enter-button or language change property
-*/
+
+    /**
+    * changes the current path
+    */
     _path() {
         if(this.path != null) {
             this.set('route.path', this.path);
@@ -266,10 +272,13 @@ This code may only be used under the license found at https://github.com/swarmci
         this.path = null;
     }
 
+    /**
+    * takes the user to the hashtag list page
+    */
     _btnClick() {
         this.set('route.path', 'hashtag-list/');
     }
 
-    } window.customElements.define(PageWelcome.is, PageWelcome);
+} window.customElements.define(PageWelcome.is, PageWelcome);
 </script>
 </dom-module>

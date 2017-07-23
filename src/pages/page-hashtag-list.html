@@ -45,13 +45,16 @@ This code may only be used under the license found at https://github.com/swarmci
                 cursor: pointer;
             }
         </style>
+        
         <app-location route="{{route}}"></app-location>
+        
         <div class="container">
             <display-my-info></display-my-info>
             <div class="back" on-click="_back"></div>
             <display-distance-slider range="{{range}}" path="{{path}}"></display-distance-slider>
-            <display-hashtag-list range="{{range}}" allowed="{{allowed}}" path="{{path}}"></display-hashtag-list>
+            <display-hashtag-list range="[[range]]" path="{{path}}"></display-hashtag-list>
         </div>
+
     </template>
 
     <script>
@@ -64,14 +67,17 @@ This code may only be used under the license found at https://github.com/swarmci
             static get is() { return 'page-hashtag-list'; }
             static get properties() {
                 return {
-                    language: {
-                        type: String,
-                        statePath: 'language',
-                    },
+                    /**
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
                     path: {
                         type: String,
                         observer: '_path',
                     },
+                    /**
+                    * Entry and exit animation
+                    */
                     animationConfig: {
                         value: function() {
                             return {
@@ -93,20 +99,28 @@ This code may only be used under the license found at https://github.com/swarmci
                 };
             }
 
-            connectedCallback() {
-                super.connectedCallback();
-                this.loadResources(this.resolveUrl('../text-translations.json'));
-            }
-            _path() {
-                if (this.path != null) {
-                    this.set('route.path', this.path);
-                }
-                this.path = null;
-            }
-            _back() {
-                this.set('route.path', 'welcome/');
-            }
+    connectedCallback() {
+        super.connectedCallback();
+        this.loadResources(this.resolveUrl('../text-translations.json'));
+    }
 
-        } window.customElements.define(HashtagList.is, HashtagList);
-    </script>
+    /**
+    * changes the current path
+    */
+    _path() {
+        if (this.path != null) {
+            this.set('route.path', this.path);
+        }
+        this.path = null;
+    }
+
+    /**
+    * takes the user to the welcome page
+    */
+    _back() {
+        this.set('route.path', 'welcome/');
+    }
+
+} window.customElements.define(HashtagList.is, HashtagList);
+</script>
 </dom-module>

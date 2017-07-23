@@ -58,14 +58,17 @@ This code may only be used under the license found at https://github.com/swarmci
     )) {
     static get is() { return 'page-language'; }
     static get properties() { return {
-            language: {
-                type: String,
-                statePath: 'language',
-            },
+            /**
+            * Path is the current or requested path
+            * @type {String}
+            */
             path: {
                 type: String,
                 observer: '_path',
             },
+            /**
+            * Entry and exit animation
+            */
             animationConfig: {
             value: function() {
                 return {
@@ -89,9 +92,12 @@ This code may only be used under the license found at https://github.com/swarmci
     
     connectedCallback() {
         super.connectedCallback();
-        // Load translations
         this.loadResources(this.resolveUrl('../text-translations.json'));
     }
+
+    /**
+    * changes the current path
+    */
     _path() {
         if(this.path != null) {
             this.set('route.path', this.path);
@@ -99,6 +105,6 @@ This code may only be used under the license found at https://github.com/swarmci
         this.path = null;
     }
 
-    } window.customElements.define(MyLanguage.is, MyLanguage);
+} window.customElements.define(MyLanguage.is, MyLanguage);
 </script>
 </dom-module>

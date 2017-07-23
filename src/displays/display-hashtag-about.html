@@ -20,8 +20,10 @@ The following custom properties and mixins are available for styling:
 
 | Custom property | Description | Default |
 | --- | --- | --- |
-| `--display-upload-file-height | Mixin applied to the width of the componant | `135px` |
-
+| `--display-hashtag-about-toggle` | Mixin applied to the toggle text | `{}` |
+| `--display-hashtag-about-box` | Mixin applied to the box | `{}` |
+| `--display-hashtag-about-maintained` | Mixin applied to the maintained text | `{}` |
+| `--display-hashtag-about-contact` | Mixin applied to the contact details | `{}` |
 
 -->
 <dom-module id="display-hashtag-about">
@@ -30,91 +32,106 @@ The following custom properties and mixins are available for styling:
             :host {
                 display: block;
             }
-            .about{
-                color: var(--swarm-city-blue);
-                font-size: 12px;
-                line-height: 15px;
-                font-weight: 800;
-                margin: 5px 0px 10px 0px;
-                text-transform: lowercase;
-                cursor: pointer;
+            .container div:nth-child(1) {
+                @apply --display-hashtag-about-toggle;
+            } 
+            .container div:nth-child(2) {
+                animation: slideDown 0.3s ease-out forwards;
+                @apply --display-hashtag-about-box;
             }
-            .display-container{
-                background-color: var(--grey-2);
-                padding: 20px;
+            .container div:nth-child(2) div:nth-child(1) {
+                @apply --display-hashtag-about-maintained;
             }
-            .display-container div:nth-child(1){
-                color: #797979;
-                font-size: 13px;
+            .container div:nth-child(2) div:nth-child(2) {
+                @apply --display-hashtag-about-contact;
             }
-            .display-container div:nth-child(2){
-                color: #CACACA;
-                padding: 20px 0 10px 0;
-            }
-            .display-container div a{
+            .container div:nth-child(2) div a {
                 @apply --blue-links;
             }
+            @keyframes slideDown {
+                    0% {
+                        transform: translate(0, -100px);
+                    }
+                    100% {
+                        transform: translate(0, 0);
+                    }
+                }
+        </style>
 
-            
-</style>
-        <div class="about" on-click="_toggle">about {{hashtag.name}}</div>
-        <template is="dom-if" if="{{showInfo}}">
-            <div class="display-container">
-                <div>{{hashtag.name}} is maintained by {{hashtag.maintainer}}</div>
-                <div>Contact</div>
-                <template is="dom-repeat" items="{{hashtag.contact}}">
-                    <div><a href="{{item.link}}">{{item.name}}</a></div>
-                </template> 
-            </div>
-        </template> 
+        <div class="container"> 
+            <div on-click="_toggle">about {{hashtag.name}}</div>
+            <template is="dom-if" if="{{showInfo}}">
+                <div>
+                    <div>{{hashtag.maintainer}}</div>
+                    <div>Contact</div>
 
-        </template>
+                    <template is="dom-repeat" items="{{hashtag.contact}}">
+                        <div>
+                            <a href="{{item.link}}">
+                                {{item.name}}
+                            </a>
+                        </div>
+                    </template>
+
+                </div>
+            </template>
+        </div>
+
+    </template>
     <script>
+        class DisplayHashtagAbout extends Polymer.mixinBehaviors([
+            Polymer.AppLocalizeBehavior],
+            Polymer.Element
+        ) {
+            static get is() { return 'display-hashtag-about'; }
+            static get properties() {
+                return {
+                    /**
+                    * Loading indicates if the componant is loading
+                    * @type {Boolean}
+                    */
+                    loading: {
+                        type: Boolean,
+                        value: false,
+                        notify: true,
+                    },
+                    /**
+                    * showInfo indicates if the display panel is open or not
+                    * @type {Boolean}
+                    */
+                    showInfo: {
+                        type: Boolean,
+                        value: false,
+                    },
+                    /**
+                    * hashtag represents the hashtag data
+                    * @type {Object}
+                    */
+                    hashtag: {
+                        type: Object,
+                    },
+                };
+            }
 
-    class DisplayHashtagAbout extends Polymer.mixinBehaviors([
-        Polymer.AppLocalizeBehavior],
-        Polymer.Element
-    ) {
-        static get is() { return 'display-hashtag-about';}
-        static get properties() { return {
-        /**
-        * Loading indicates if the componant is loading
-        * @type {Boolean}
-        */
-            loading: {
-                type: Boolean,
-                value: false,
-                notify: true,
-            },
-        /**
-        * showInfo indicates if the display panel is open or not
-        * @type {Boolean}
-        */
-            showInfo: {
-                type: Boolean,
-                value: false,
-            },
-        /**
-        * hashtag represents the hashtag data
-        * @type {Object}
-        */
-            hashtag: {
-                type: Object,
-            },
-        };
-    }
+    /**
+    * Togles if the information is shown or hidden
+    */
     _toggle() {
         this.showInfo = !this.showInfo;
     }
+
+    /**
+    * TGet the hashtags
+    */
     _getHashtag() {
-        if(this.routeData.page) {
+        if (this.routeData.page) {
             this.loading = true;
             this.$.web3.deals(this.routeData.page)
-            .then((data) => {
-                this.hashtagName = data.name;
-                this.hashtag = data;
-                this.loading = false;
-            });
+                .then((data) => {
+                    this.hashtagName = data.name;
+                    this.hashtag = data;
+                    this.loading = false;
+                });
         }
     }
 

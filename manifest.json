@@ -1,6 +1,6 @@
 {
   "name": "Swarm City",
-  "lang": "en-US",
+  "default_locale": "en",
   "short_name": "Swarm City",
   "description": "Swarm City",
   "start_url": "/",
