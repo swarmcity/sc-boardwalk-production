@@ -152,7 +152,6 @@ The following custom properties and mixins are available for styling:
     connectedCallback() {
         super.connectedCallback();
         this.loadResources(this.resolveUrl('../text-translations.json'));
-        this._getDeals();
     }
 
     /**
@@ -165,6 +164,7 @@ The following custom properties and mixins are available for styling:
             .then((data) => {
                 this.hashtag = data;
                 this.loading = false;
+                this._getDeals();
             });
         }
     }
@@ -176,7 +176,7 @@ The following custom properties and mixins are available for styling:
         this.deals = [];
         Promise.all([
             this.$.storage.accountExists(),
-            this.$.web3.deals(),
+            this.$.web3.deals(this.hashtag.id),
         ])
         .then((data) => {
             if (data[0].location) {
@@ -186,6 +186,8 @@ The following custom properties and mixins are available for styling:
             else {
                 this.deals = data[1].items;
             }
+        })
+        .catch((err) => {
         });
     }
 
