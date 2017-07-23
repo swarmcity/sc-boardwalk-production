@@ -18,38 +18,32 @@ Example:
 ### Styling
 
 Style the button with CSS as you would a normal DOM element.
+
 The following custom properties and mixins are available for styling:
+
+| Custom property | Description | Default |
+| --- | --- | --- |
+| `--display-my-info-container` | Mixin applied to the container | `{}` |
+| `--display-my-info-avatar` | Mixin applied to the avatar | `{}` |
+| `--display-my-info-username` | Mixin applied to the username | `{}` |
+| `--display-my-info-balance` | Mixin applied to the balance | `{}` |
 
 -->
 <dom-module id="display-my-info">
     <template>
         <style include="shared-styles">
-             :host {
+            :host {
                 display: block;
             }
-
             .container {
-                @apply --layout-horizontal;
-                margin: 85px 0 0 85px;
-                max-width: 420px;
+                @apply --display-my-info-container;
             }
-
-            .container div:nth-child(1) {
-                padding-right: 22px;
-            }
-
             .container div:nth-child(1) img {
                 @apply --display-my-info-avatar
             }
-
-            .container div:nth-child(2) {
-                @apply --layout-flex;
-            }
-
             .container div:nth-child(2) div:nth-child(1) {
                 @apply --display-my-info-username
             }
-
             .container div:nth-child(2) div:nth-child(2) {
                 @apply --display-my-info-balance
             }
@@ -62,7 +56,7 @@ The following custom properties and mixins are available for styling:
         <template is="dom-if" if="{{completeAccount}}">
             <div class="container">
                 <div>
-                    <img src="../../images/defaultavatar.png" alt="avatar">
+                    <img src="../../images/defaultavatar.png">
                 </div>
                 <div>
                     <div>{{username}}</div>
@@ -121,30 +115,44 @@ The following custom properties and mixins are available for styling:
                     },
                 };
             }
-            connectedCallback() {
-                super.connectedCallback();
-                this._getUser();
-            }
-            _getUser() {
-                this.$.storage.accountExists()
-                    .then((account) => {
-                        if (account.username && account.address && account.avatar) {
-                            this.username = account.username;
-                            this.completeAccount = true;
-                            this._complete(account);
-                        }
-                    });
-            }
-            _complete(account) {
-                Promise.all([
-                    this.$.ipfs.getHash(account.avatar, 'img'),
-                    this.$.web3.getBalance(account.address, 'SWT'),
-                ])
-                    .then((data) => {
-                        this.avatar = data[0];
-                        this.balance = data[1];
-                    });
-            }
-        } window.customElements.define(DisplayMyInfo.is, DisplayMyInfo);
-    </script>
+
+    /**
+    * Fired when the component first loads
+    */
+    connectedCallback() {
+        super.connectedCallback();
+        this._getUser();
+    }
+
+    /**
+    * Gets the users details from local storage
+    */
+    _getUser() {
+        this.$.storage.accountExists()
+            .then((account) => {
+                if (account.username && account.address && account.avatar) {
+                    this.username = account.username;
+                    this.completeAccount = true;
+                    this._complete(account);
+                }
+            });
+    }
+
+    /**
+    * Gets the users balance and avatar
+    * @param {object} account of the user
+    */
+    _complete(account) {
+        Promise.all([
+            this.$.ipfs.getHash(account.avatar, 'img'),
+            this.$.web3.getBalance(account.address, 'SWT'),
+        ])
+            .then((data) => {
+                this.avatar = data[0];
+                this.balance = data[1];
+            });
+    }
+
+} window.customElements.define(DisplayMyInfo.is, DisplayMyInfo);
+</script>
 </dom-module>

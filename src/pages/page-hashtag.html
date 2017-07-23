@@ -98,14 +98,17 @@ This code may only be used under the license found at https://github.com/swarmci
             static get is() { return 'page-hashtag'; }
             static get properties() {
                 return {
-                    language: {
-                        type: String,
-                        statePath: 'language',
-                    },
+                    /**
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
                     path: {
                         type: String,
                         observer: '_path',
                     },
+                    /**
+                    * Entry and exit animation
+                    */
                     animationConfig: {
                         value: function() {
                             return {
@@ -127,23 +130,35 @@ This code may only be used under the license found at https://github.com/swarmci
                 };
             }
 
-            connectedCallback() {
-                super.connectedCallback();
-                this.loadResources(this.resolveUrl('../text-translations.json'));
-            }
-            _back() {
-                this.path = 'hashtag-list/';
-            }
-            _path() {
-                if (this.path != null) {
-                    this.set('route.path', this.path);
-                }
-                this.path = null;
-            }
-            _toWelcome() {
-                this.set('route.path', 'welcome/');
-            }
+    connectedCallback() {
+        super.connectedCallback();
+        this.loadResources(this.resolveUrl('../text-translations.json'));
+    }
 
-        } window.customElements.define(NewHashtag.is, NewHashtag);
-    </script>
+    /**
+    * changes the current path
+    */
+    _path() {
+        if (this.path != null) {
+            this.set('route.path', this.path);
+        }
+        this.path = null;
+    }
+
+    /**
+    * takes the user to the hashtag list page
+    */
+    _back() {
+        this.path = 'hashtag-list/';
+    }
+
+    /**
+    * takes the user to the welcome page
+    */
+    _toWelcome() {
+        this.set('route.path', 'welcome/');
+    }
+
+} window.customElements.define(NewHashtag.is, NewHashtag);
+</script>
 </dom-module>

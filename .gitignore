@@ -8,3 +8,4 @@ firebase-debug.log
 service-worker.js
 sw-precache-config.js
 src/contracts/
+npm-debug.log

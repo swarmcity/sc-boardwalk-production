@@ -73,14 +73,16 @@ This code may only be used under the license found at https://github.com/swarmci
     }
 </style>
 <app-location route="{{route}}"></app-location>
-<div class="container">
-    <div class="title">Can we ask for your location?</div>
-    <div class="subtitle">When accepting your browser will ask you to enable location services</div>
-    <div class="buttons">
-        <div class="disagree" on-click="_btnClick"></div>
-        <display-geolocation class="blue-agree" path="{{path}}"></display-geolocation>
+
+    <div class="container">
+        <div class="title">Can we ask for your location?</div>
+        <div class="subtitle">When accepting your browser will ask you to enable location services</div>
+        <div class="buttons">
+            <div class="disagree" on-click="_btnClick"></div>
+            <display-geolocation class="blue-agree" path="{{path}}"></display-geolocation>
+        </div>
     </div>
-</div>
+
 </template>
 
 <script>
@@ -92,14 +94,17 @@ This code may only be used under the license found at https://github.com/swarmci
     )) {
     static get is() { return 'page-location'; }
     static get properties() { return {
-            language: {
-                type: String,
-                statePath: 'language',
-            },
+            /**
+            * Path is the current or requested path
+            * @type {String}
+            */
             path: {
                 type: String,
                 observer: '_path',
             },
+            /**
+            * Entry and exit animation
+            */
             animationConfig: {
             value: function() {
                 return {
@@ -125,9 +130,17 @@ This code may only be used under the license found at https://github.com/swarmci
         super.connectedCallback();
         this.loadResources(this.resolveUrl('../text-translations.json'));
     }
+    
+    /**
+    * takes the user to the hashtag list page
+    */
     _btnClick() {
         this.path = 'hashtag-list/';
     }
+
+    /**
+    * changes the current path
+    */
     _path() {
         if(this.path != null) {
             this.set('route.path', this.path);
@@ -135,6 +148,6 @@ This code may only be used under the license found at https://github.com/swarmci
         this.path = null;
     }
 
-    } window.customElements.define(MyLocation.is, MyLocation);
+} window.customElements.define(MyLocation.is, MyLocation);
 </script>
 </dom-module>

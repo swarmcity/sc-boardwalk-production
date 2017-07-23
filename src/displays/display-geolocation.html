@@ -22,7 +22,7 @@ The following custom properties and mixins are available for styling:
 
 | Custom property | Description | Default |
 | --- | --- | --- |
-| `--display-upload-file-height | Mixin applied to the width of the componant | `135px` |
+| `--agree-blue` | Mixin applied to the agree button | `{}}` |
 
 
 -->
@@ -36,9 +36,11 @@ The following custom properties and mixins are available for styling:
                 @apply --agree-blue;
             }
         </style>
-        <div class="agree" on-click="_getLocation"></div>
-        <data-utility id="utility"></data-utility>
-        <data-local-storage id="storage"></data-local-storage>
+
+            <div class="agree" on-click="_getLocation"></div>
+            <data-utility id="utility"></data-utility>
+            <data-local-storage id="storage"></data-local-storage>
+
         </template>
     <script>
 
@@ -48,24 +50,26 @@ The following custom properties and mixins are available for styling:
     ) {
         static get is() { return 'display-geolocation';}
         static get properties() { return {
-        /**
-        * Loading indicates if the componant is loading
-        *
-        * @type {Boolean}
-        */
+            /**
+            * Loading indicates if the componant is loading
+            * @type {Boolean}
+            */
             loading: {
                 type: Boolean,
                 value: false,
                 notify: true,
             },
-        /**
-        * Preview is a src path for the default preview image
-        *
-        * @type {Boolean}
-        */
+            /**
+            * Preview is a src path for the default preview image
+            * @type {Boolean}
+            */
             preview: {
                 type: String,
             },
+            /**
+            * Path signlas to the parent to change the path
+            * @type {String}
+            */
             path: {
                 type: String,
                 value: null,
@@ -74,28 +78,33 @@ The following custom properties and mixins are available for styling:
         };
     }
 
-_getLocation() {
-    let geoHash = '';
-    this.$.utility.getLocation()
-    .then((latlon) => {
-        return this.$.utility.toGeohash(latlon.latitude, latlon.longitude);
-    })
-    .then((data) => {
-        geoHash = data;
-        return this.$.storage.accountExists();
-    })
-    .then((account) => {
-        if(account == false) {
-            return this.$.storage.saveAccount({'location': geoHash});
-        } else {
-            account.location = geoHash;
-            return this.$.storage.saveAccount(account);
-        }
-    })
-    .then((account) => {
-        this.path = 'hashtag-list/';
-    });
-}
+    /**
+    * Get s the users location cinverts it tio a geo hash
+    * and saves it to local storage
+    */
+    _getLocation() {
+        let geoHash = '';
+        this.$.utility.getLocation()
+        .then((latlon) => {
+            return this.$.utility.toGeohash(latlon.latitude, latlon.longitude);
+        })
+        .then((data) => {
+            geoHash = data;
+            return this.$.storage.accountExists();
+        })
+        .then((account) => {
+            if(account == false) {
+                return this.$.storage.saveAccount({'location': geoHash});
+            } else {
+                account.location = geoHash;
+                return this.$.storage.saveAccount(account);
+            }
+        })
+        .then((account) => {
+            this.path = 'hashtag-list/';
+        });
+    }
+
 } window.customElements.define(DisplayGeolocation.is, DisplayGeolocation);
 </script>
 </dom-module>

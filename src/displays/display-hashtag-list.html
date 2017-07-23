@@ -22,35 +22,40 @@ Style the button with CSS as you would a normal DOM element.
 
 The following custom properties and mixins are available for styling:
 
-
+| Custom property | Description | Default |
+| --- | --- | --- |
+| `--display-hashtag-list-container` | Mixin applied to the container | `{}` |
+| `--display-hashtag-list-hashtag` | Mixin applied to the hashtag | `{}` |
+| `--display-hashtag-list-deals` | Mixin applied to the deals | `{}` |
 -->
 <dom-module id="display-hashtag-list">
     <template>
         <style>
             :host {
                 display: block;
-                margin-left:10px;
-                margin-top:10px;
             }
-
+            .container{
+                @apply --display-hashtag-list-container;
+            }
             .hashtag {
                 @apply --display-hashtag-list-hashtag;
-                cursor: pointer
             }
-
             .deals {
                 @apply --display-hashtag-list-deals;
             }
         </style>
+
         <data-web3 id="web3"></data-web3>
         <data-local-storage id="storage"></data-local-storage>
         <data-utility id="utility"></data-utility>
+        
         <div class="container">
             <template is="dom-repeat" items="{{hashtags}}" filter="_isWithinRange" sort="_sort" id="domRepeat">
                 <div class="hashtag" on-click="_toHashtag">#[[item.name]]</div>
                 <div class="deals">[[item.deals]] {{localize('deals done')}}</div>
             </template>
         </div>
+
     </template>
     <script>
         class DisplayHashtagList extends new ReduxMixin(Polymer.mixinBehaviors([
@@ -60,6 +65,10 @@ The following custom properties and mixins are available for styling:
             static get is() { return 'display-hashtag-list'; }
             static get properties() {
                 return {
+                    /**
+                    * Language is the users selected or determined language
+                    * @type {String}
+                    */
                     language: {
                         type: String,
                         statePath: 'language',
@@ -73,14 +82,26 @@ The following custom properties and mixins are available for styling:
                         value: false,
                         notify: true,
                     },
+                    /**
+                    * Path signlas to the parent to change the path
+                    * @type {String}
+                    */
                     path: {
                         type: String,
                         value: null,
                         notify: true,
                     },
+                    /**
+                    * Hashtags represents the array of hashtags to display
+                    * @type {Array}
+                    */
                     hashtags: {
                         type: Array,
                     },
+                    /**
+                    * range is the range the usert selected in slider
+                    * @type {Number}
+                    */
                     range: {
                         type: Number,
                         observer: '_rangeChanged',
@@ -93,6 +114,10 @@ The following custom properties and mixins are available for styling:
                 this.loadResources(this.resolveUrl('../text-translations.json'));
                 this._getHashtags();
             }
+
+            /**
+            * Gets the hashtags and checks if the user has a location
+            */
             _getHashtags() {
                 this.hashtags = [];
                 Promise.all([
@@ -109,6 +134,11 @@ The following custom properties and mixins are available for styling:
                     }
                 });
             }
+
+            /**
+            * Get the distance between the user and the hashtag
+            * @param {data} data is an array of the users acocunt and the hashtags
+            */
             _getDistance(data) {
                 for (let i = 0; i < data[1].length; i++) {
                     this.$.utility
@@ -119,12 +149,29 @@ The following custom properties and mixins are available for styling:
                         });
                 }
             }
+
+            /**
+            * re renders the dom repeat when the users changes the range
+            */
             _rangeChanged() {
                 this.$.domRepeat.render();
             }
+
+            /**
+            * sorts the list of hashtags by the number of deals
+            * @param {object} a represents the curent iteration of the dom repeat
+            * @param {object} b represents the next iteration of the dom repeat
+            * @return {boolean} if a should be ordered before b
+            */
             _sort(a, b) {
                 return a.deals < b.deals;
             }
+
+            /**
+            * filters the list acording to the selected range
+            * @param {object} event  represents the curent iteration of the dom repeat
+            * @return {boolean} if a should be ordered before b
+            */
             _isWithinRange(event) {
                 if (event.distance) {
                     return (this.range > event.distance);
@@ -133,10 +180,15 @@ The following custom properties and mixins are available for styling:
                     return true;
                 }
             }
+
+            /**
+            * @param {object} selected represents the selected hashtag
+            * When a hashtag is selected change the route to include the hashtag id.
+            */
             _toHashtag(selected) {
                 this.path = 'hashtag/' + selected.model.__data.item.hashtagID + '/';
             }
 
-        } window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);
-    </script>
+} window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);
+</script>
 </dom-module>
