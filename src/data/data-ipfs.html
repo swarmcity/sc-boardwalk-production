@@ -89,7 +89,7 @@ this.$.ipfs.getHash()
                             alert('img error');
                             tryAgain();
                         };
-                        img.src = providers[0]+ipfsHash;
+                        img.src = providers[0]+ipfsHash+'/';
                     }
                 }
             }
@@ -103,7 +103,7 @@ this.$.ipfs.getHash()
     */
     _providers() {
         return new Promise((resolve, reject) => {
-        const providers = ['https://ipfs.swarm.city/ipfs/','https://ipfs.infura.io/ipfs/', 'https://ipfs.io/ipfs/'];
+        const providers = ['https://ipfs.io/ipfs/', 'https://ipfs.swarm.city/ipfs/', 'https://ipfs.infura.io/ipfs/'];
         resolve(providers);
         });
     }
