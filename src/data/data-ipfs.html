@@ -33,9 +33,9 @@ this.$.ipfs.getHash()
 
 /**
 * Checks if an acocunt exists
-* @param {ipfsHash} ipfsHash to retrieve
-* @param {fileType} fileType to retrieve
-* @return {Object}
+* @param {string} ipfsHash to retrieve
+* @param {string} fileType to retrieve, img, json or txt
+* @return {Object} that was requested
 */
     getHash(ipfsHash, fileType) {
         return new Promise((resolve, reject) => {
@@ -53,9 +53,9 @@ this.$.ipfs.getHash()
     }
 
 /**
-* @param {providers} providers to retrieve
-* @param {ipfsHash} ipfsHash to retrieve
-* @param {fileType} fileType to retrieve
+* @param {array} providers array of providers to retrieve
+* @param {string} ipfsHash to retrieve
+* @param {string} fileType to retrieve
 * @return {object} an oject represented bythe IPFShash
 */
     _requestHash(providers, ipfsHash, fileType) {
@@ -86,9 +86,10 @@ this.$.ipfs.getHash()
                         };
                         img.onerror = () => {
                             providers.shift();
+                            alert('img error');
                             tryAgain();
                         };
-                        img.src = providers[0]+ipfsHash;
+                        img.src = providers[0]+ipfsHash+'/';
                     }
                 }
             }
@@ -102,7 +103,7 @@ this.$.ipfs.getHash()
     */
     _providers() {
         return new Promise((resolve, reject) => {
-        const providers = ['https://ipfs.infura.io/ipfs/', 'https://ipfs.io/ipfs/', 'https://ipfs.swarm.city/ipfs/'];
+        const providers = ['https://ipfs.io/ipfs/', 'https://ipfs.swarm.city/ipfs/', 'https://ipfs.infura.io/ipfs/'];
         resolve(providers);
         });
     }

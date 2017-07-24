@@ -10,69 +10,267 @@ Page specific styles belong on the page not here.
 Colors are all lower case, There is a space after the :
 -->
 <dom-module id="shared-styles">
-<template>
-    <style>
-        :host {
-/* only list colors that are being used, keep to absolute minimum */
-            --swarm-city-white: #fafafa;
-            --swarm-city-blue: #24b1ff;
-            --swarm-city-yellow: #efd96f;
-            --grey-1: #f4f4f4;
-            --grey-3: #666666;
-            --grey-4: #333333;
-            --grey-5: #191919;
-            
-/* users can not select unless we explicity allow */
-            -webkit-user-select: none;  
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none; 
-            cursor: default;  
+    <template>
+        <style>
+            :host {
+                /* only list colors that are being used, keep to absolute minimum */
+                --swarm-city-white: #fafafa;
+                --swarm-city-blue: #24b1ff;
+                --swarm-city-yellow: #efd96f;
+                --grey-1: #f4f4f4;
+                --grey-2: #B3B3B3;
+                --grey-3: #666666;
+                --grey-4: #333333;
+                --grey-5: #191919;
+                /* users can not select unless we explicity allow */
+                -webkit-tap-highlight-color: transparent;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                cursor: default;
 
-            --blue-links:{
-                color: var(--swarm-city-blue);
-                text-decoration: none;
-                border-bottom: 1px dotted var(--swarm-city-blue);
-                font-size: 12px;
-                font-weight: 400;
-                cursor: pointer;
+                --blue-links: {
+                    color: var(--swarm-city-blue);
+                    text-decoration: none;
+                    border-bottom: 1px dotted var(--swarm-city-blue);
+                    font-size: 12px;
+                    font-weight: 400;
+                    cursor: pointer;
+                }
+                --grey-links: {
+                    color: var(--grey-4);
+                    text-decoration: none;
+                    border-bottom: 1px dotted var(--grey-4);
+                    font-size: 12px;
+                    font-weight: 400;
+                    cursor: pointer;
+                }
+                --big-btn: {
+                    width: 276px;
+                    text-align: center;
+                    margin-bottom: 10px;
+                    display: block;
+                    border: none;
+                    outline: none;
+                    font-size: 15px;
+                    cursor: pointer;
+                    font-weight: 900;
+                    color: var(--grey-4);
+                    padding: 28px 42px 28px 42px;
+                    background-color: rgba(255, 255, 255, 0.1);
+                    box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                    -o-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                    -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                    -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                }
+                --big-btn-hover: {
+                    color: black;
+                }
+                --agree-blue: {
+                    display: block;
+                    border-radius: 50%;
+                    width: 76px;
+                    height: 76px;
+                    background: url('../images/swarm-city-sprite.png') -770px -5px;
+                    cursor: pointer;
+                }
+                --display-my-info-balance: {
+                    font-weight: 800;
+                    font-size: 24px;
+                    color: #EFD96F;
+                }
+                --display-my-info-username: {
+                    line-height: 20px;
+                    min-width: 270px;
+                    font-weight: 800;
+                    color: #333333;
+                    font-size: 12px;
+                }
+                --display-my-info-avatar: {
+                    border-radius: 50%;
+                    height: 60px;
+                    width: 60px;
+                    background-color: grey;
+                    padding-right: 22px;
+                }
+                --display-my-info-container: {
+                    @apply --layout-horizontal;
+                    margin: 85px 0 0 85px;
+                    max-width: 420px;
+                }
+                --display-hashtag-list-container: {
+                    margin-left:10px;
+                    margin-top:10px;
+                }
+                --display-hashtag-list-hashtag: {
+                    height: 36px;
+                    width: 206px;
+                    color: #353435;
+                    font-size: 30px;
+                    font-weight: 800;
+                    line-height: 36px;
+                    line-height: 36px;
+                    cursor: pointer
+                }
+                --display-hashtag-list-deals: {
+                    height: 13px;
+                    width: 250.08px;
+                    color: #353435;
+                    font-size: 10px;
+                    font-weight: 300;
+                    line-height: 20px;
+                    margin-bottom: 20px;
+                }
+                --page-hashtag-list-back: {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    margin-bottom: 10px;
+                    background: url('../../../images/swarm-city-sprite.png') -45px 60px;
+                }
+                --display-deal-btn:{
+                    display: block;
+                    width: 80px;
+                    height: 80px;
+                    background: url('../../../images/swarm-city-sprite.png') -770px -89px;
+                    cursor: pointer;
+                }
+                --distance-slider-container:{
+                    width:100%;
+                    min-width: 280px;
+                    @apply --layout-vertical;
+                }
+                --distance-slider-filter-list:{
+                    font-size: 12px;
+                    font-weight: 800;
+                    text-align: right;
+                    text-decoration: underline;
+                    cursor: pointer;
+                    color: var(--grey-2);
+                }
+                --distance-slider:{
+                    --paper-slider-knob-color: var(--swarm-city-yellow);
+                    --paper-slider-active-color: var(--swarm-city-yellow);
+                    width: 100%;
+                    cursor: pointer;
+                    margin-bottom:18px;
+                }
+                --distance-slider-description:{
+                    font-size: 11px;
+                    font-weight: 400;
+                    margin: 0 0 0 10px;
+                }
+                --display-hashtag-about-toggle:{
+                    color: var(--swarm-city-blue);
+                    font-size: 12px;
+                    line-height: 15px;
+                    font-weight: 800;
+                    margin: 5px 0px 10px 0px;
+                    text-transform: lowercase;
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+                --display-hashtag-about-box:{
+                    position: relative;
+                    z-index: -1;
+                    background-color: rgb(235, 235, 235);
+                    padding: 20px;
+                }
+                --display-hashtag-about-maintained:{
+                    color: #797979;
+                    font-weight: 400;
+                    font-size: 13px;
+                }
+                --display-hashtag-about-contact:{
+                    color: #CACACA;
+                    padding: 20px 0 10px 0;
+                    font-size: 13px;
+                }
+                --display-hashtag-deals-container:{
+                    margin-bottom:2px;
+                    padding: 15px;
+                    background-color: var(--swarm-city-white);
+                    cursor: pointer;
+                }
+                --display-hashtag-deals-avatar:{
+                    border-radius: 50%;
+                    height: 30px;
+                    width: 30px;
+                }
+                --display-hashtag-deals-top-container:{
+                    margin-left: 8px;
+                    width: 180px;
+                    display: block;
+                    @apply --layout-horizontal;
+                    @apply --layout-wrap;
+                }
+                --display-hashtag-deals-time:{
+                    width: 100%;
+                    display: block;
+                    font-size: 10px;
+                    font-weight: 400;
+                    text-transform:lowercase;
+                    color: var(--grey-2);
+                }
+                --display-hashtag-deals-name:{
+                    width: 100%;
+                    display: block;
+                    color: var(--swarm-city-blue);
+                    text-decoration: none;
+                    font-size: 12px;
+                    font-weight: bold;
+                }
+                --display-hashtag-deals-description:{
+                    color: var(--grey-4);
+                    width: 220px;
+                    font-size: 14px;
+                    margin-top:10px;
+                }
+                --display-hashtag-deals-for:{
+                    font-size: 10px;
+                    width: 100%;
+                    display: block;
+                }
+                --display-hashtag-deals-amount:{
+                    width: 80px;
+                    color: var(--swarm-city-yellow);
+                    font-weight: bold;
+                    font-size: 14px;
+                    padding-top: 24px;
+                    text-align: right;
+                }
+                --display-upload-container:{
+                    display:block;
+                    height: var(--display-upload-file-height, 135px);	
+                    width: var(--display-upload-file-width, 135px);
+                    position:relative;
+                }
+                --display-upload-button:{
+                    overflow: hidden;
+                    position: absolute;
+                    cursor: pointer;
+                    right: var(--display-upload-file-button-right, -10px); 
+                    bottom: var(--display-upload-file-button-bottom, -10px); 
+                    height: var(--display-upload-file-button-height, 45px);	
+                    width: var(--display-upload-file-button-width, 45px);
+                    border-radius: 50%;	
+                    border: 1px solid var(--display-upload-file-button-border-color, #979797);
+                    background-color: var(--display-upload-file-button-backgrond-color, #59B2FC);
+                }
+                --display-upload-preview:{
+                    height: 135px;	
+                    width: 135px;
+                    border-radius: 50%;
+                    border: 1px solid #979797;
+                    background-color: #D8D8D8;
+                }
+                --display-upload-input:{
+                    position:relative;
+                    top: -200px;
+                    left: -200px;
+                }
             }
-            --grey-links:{
-                color: var(--grey-4);
-                text-decoration: none;
-                border-bottom: 1px dotted var(--grey-4);
-                font-size: 12px;
-                font-weight: 400;
-                cursor: pointer;
-            }
-            --big-btn:{
-                width: 276px;
-                text-align:center;
-                margin-bottom:10px;
-                display:block;
-                border: none;
-                outline: none;
-                font-size:15px;
-                cursor: pointer;
-                font-weight: 900;
-                color: var(--grey-4);
-                padding: 28px 42px 28px 42px;
-                background-color: rgba(255,255,255,0.1);
-                box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -o-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-            }
-            --agree-blue:{
-                display:block;
-                border-radius: 50%;
-                width:76px;
-                height:76px;
-                background: url('../images/swarm-city-sprite.png') -770px -5px;
-                cursor: pointer;
-            }
-        }
-
-    </style>
-</template>
+        </style>
+    </template>
 </dom-module>

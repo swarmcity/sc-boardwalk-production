@@ -1,0 +1,195 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<script src="../swarm-city.min.js"></script> 
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../data/data-web3.html">
+<link rel="import" href="../data/data-local-storage.html">
+<link rel="import" href="../data/data-utility.html">
+<link rel="import" href="../redux-state.html">
+<!--
+
+Example:
+```
+<display-hashtag-list></display-hashtag-list>
+```
+
+### Styling
+
+Style the button with CSS as you would a normal DOM element.
+
+The following custom properties and mixins are available for styling:
+
+| Custom property | Description | Default |
+| --- | --- | --- |
+| `--display-hashtag-list-container` | Mixin applied to the container | `{}` |
+| `--display-hashtag-list-hashtag` | Mixin applied to the hashtag | `{}` |
+| `--display-hashtag-list-deals` | Mixin applied to the deals | `{}` |
+-->
+<dom-module id="display-hashtag-list">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+            .container{
+                @apply --display-hashtag-list-container;
+            }
+            .hashtag {
+                @apply --display-hashtag-list-hashtag;
+            }
+            .deals {
+                @apply --display-hashtag-list-deals;
+            }
+        </style>
+
+        <data-web3 id="web3"></data-web3>
+        <data-local-storage id="storage"></data-local-storage>
+        <data-utility id="utility"></data-utility>
+        
+        <div class="container">
+            <template is="dom-repeat" items="{{hashtags}}" filter="_isWithinRange" sort="_sort" id="domRepeat">
+                <div class="hashtag" on-click="_toHashtag">#[[item.name]]</div>
+                <div class="deals">[[item.deals]] {{localize('deals done')}}</div>
+            </template>
+        </div>
+
+    </template>
+    <script>
+        class DisplayHashtagList extends new ReduxMixin(Polymer.mixinBehaviors([
+            Polymer.AppLocalizeBehavior],
+            Polymer.Element
+        )) {
+            static get is() { return 'display-hashtag-list'; }
+            static get properties() {
+                return {
+                    /**
+                    * Language is the users selected or determined language
+                    * @type {String}
+                    */
+                    language: {
+                        type: String,
+                        statePath: 'language',
+                    },
+                    /**
+                    * Loading indicates if the componant is loading
+                    * @type {Boolean}
+                    */
+                    loading: {
+                        type: Boolean,
+                        value: false,
+                        notify: true,
+                    },
+                    /**
+                    * Path signlas to the parent to change the path
+                    * @type {String}
+                    */
+                    path: {
+                        type: String,
+                        value: null,
+                        notify: true,
+                    },
+                    /**
+                    * Hashtags represents the array of hashtags to display
+                    * @type {Array}
+                    */
+                    hashtags: {
+                        type: Array,
+                    },
+                    /**
+                    * range is the range the usert selected in slider
+                    * @type {Number}
+                    */
+                    range: {
+                        type: Number,
+                        observer: '_rangeChanged',
+                    },
+                };
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
+                this._getHashtags();
+            }
+
+            /**
+            * Gets the hashtags and checks if the user has a location
+            */
+            _getHashtags() {
+                this.hashtags = [];
+                Promise.all([
+                    this.$.storage.accountExists(),
+                    this.$.web3.hashtags(),
+                ])
+                .then((data) => {
+                    if (data[0].location) {
+                        this.location = data[0].location;
+                        this._getDistance(data);
+                    }
+                    else {
+                        this.hashtags = data[1];
+                    }
+                });
+            }
+
+            /**
+            * Get the distance between the user and the hashtag
+            * @param {data} data is an array of the users acocunt and the hashtags
+            */
+            _getDistance(data) {
+                for (let i = 0; i < data[1].length; i++) {
+                    this.$.utility
+                        .geoHashDistance(data[1][i].location, data[0].location)
+                        .then((distance) => {
+                            data[1][i].distance = distance;
+                            this.push('hashtags', data[1][i]);
+                        });
+                }
+            }
+
+            /**
+            * re renders the dom repeat when the users changes the range
+            */
+            _rangeChanged() {
+                this.$.domRepeat.render();
+            }
+
+            /**
+            * sorts the list of hashtags by the number of deals
+            * @param {object} a represents the curent iteration of the dom repeat
+            * @param {object} b represents the next iteration of the dom repeat
+            * @return {boolean} if a should be ordered before b
+            */
+            _sort(a, b) {
+                return a.deals < b.deals;
+            }
+
+            /**
+            * filters the list acording to the selected range
+            * @param {object} event  represents the curent iteration of the dom repeat
+            * @return {boolean} if a should be ordered before b
+            */
+            _isWithinRange(event) {
+                if (event.distance) {
+                    return (this.range > event.distance);
+                }
+                else {
+                    return true;
+                }
+            }
+
+            /**
+            * @param {object} selected represents the selected hashtag
+            * When a hashtag is selected change the route to include the hashtag id.
+            */
+            _toHashtag(selected) {
+                this.path = 'hashtag/' + selected.model.__data.item.hashtagID + '/';
+            }
+
+} window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);
+</script>
+</dom-module>

@@ -14,7 +14,8 @@
     "iron-flex-layout": "PolymerElements/iron-flex-layout#2.0-preview",
     "iron-a11y-keys": "PolymerElements/iron-a11y-keys#2.0-preview",
     "app-localize-behavior": "PolymerElements/app-localize-behavior#2.0-preview",
-    "polymer-redux": "^1.0.1"
+    "polymer-redux": "^1.0.1",
+    "paper-slider": "PolymerElements/paper-slider#2.0-preview"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
