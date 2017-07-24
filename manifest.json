@@ -2,6 +2,7 @@
   "name": "Swarm City",
   "default_locale": "en",
   "short_name": "Swarm City",
+  "package_name": "swarmcity",
   "description": "Swarm City",
   "start_url": "/",
   "display": "standalone",

@@ -5,6 +5,7 @@ var SWTConverter = artifacts.require("SWTConverter");
 var SampleController = artifacts.require("SampleController");
 var Hashtag = artifacts.require("Hashtag");
 var DealForTwoFactory = artifacts.require("DealForTwoFactory");
+var SimpleDealFactory = artifacts.require("SimpleDealFactory");
 
 module.exports = function(deployer, network, accounts) {
     var multisig 	= accounts[0];
@@ -69,6 +70,9 @@ module.exports = function(deployer, network, accounts) {
     }).then(function(hashtag) {
         testHashtag = hashtag;
         return deployer.deploy(DealForTwoFactory, testHashtag.address);
+    }).then(function(dealFactory) {
+        return deployer.deploy(SimpleDealFactory);
+    }).then(function(simpleDealFactory) {
     }).catch(function(e) {
         console.log(e);
         return;
