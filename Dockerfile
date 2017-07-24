@@ -35,11 +35,10 @@ RUN mkdir -p contracts/swarmcity/installed_contracts/zeppelin/contracts/ownershi
            contracts/swarmcity/installed_contracts/zeppelin/contracts/ownership/Ownable.sol
 
 COPY contracts ./contracts/
-RUN ls -l contracts
 RUN npm run compilecontracts
 
 COPY migrations ./migrations/
 
 COPY test ./test/
 
-RUN testrpc > /dev/null & truffle migrate && truffle test ./test/contracts/*.js
+RUN testrpc > /app/testrpc.log & truffle migrate && truffle test ./test/contracts/*.js
