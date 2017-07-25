@@ -36,7 +36,9 @@
         "You must bee new here": "You must bee new here",
         "No account was found": "No account was found. When you restore or create a new account, it's stored locally on your device.",
         "create account": "create account",
-        "restore account": "restore account"
+        "restore account": "restore account",
+        "Can we ask for your location": "Can we ask for your location?",
+        "When accepting your browser will ask you": "When accepting your browser will ask you to enable location services"
     },    
     "cn": {
         "language": "cn",
@@ -75,7 +77,9 @@
         "You must bee new here": "你一定是新来的",
         "No account was found": "没有找到帐户。恢复或创建新帐户时，将其存储在本地设备上。",
         "create account": "创建帐号",
-        "restore account": "还原帐户"
+        "restore account": "还原帐户",
+        "Can we ask for your location": "我们可以要求您的位置吗",
+        "When accepting your browser will ask you": "接受浏览器时会要求您启用位置服务"
     },
     "fr": {
         "language": "fr",
@@ -114,7 +118,9 @@
         "You must bee new here": "Awaiting Translation",
         "No account was found": "Awaiting Translation",
         "create account": "Awaiting Translation",
-        "restore account": "Awaiting Translation"
+        "restore account": "Awaiting Translation",
+        "Can we ask for your location": "Awaiting Translation",
+        "When accepting your browser will ask you": "Awaiting Translation"
         },
     "nl": {
         "language": "nl",
@@ -153,7 +159,9 @@
         "You must bee new here": "Awaiting Translation",
         "No account was found": "Awaiting Translation",
         "create account": "Awaiting Translation",
-        "restore account": "Awaiting Translation"
+        "restore account": "Awaiting Translation",
+        "Can we ask for your location": "Awaiting Translation",
+        "When accepting your browser will ask you": "Awaiting Translation"
         },
     "ru": {
         "language": "ru",
@@ -192,7 +200,9 @@
         "You must bee new here": "Awaiting Translation",
         "No account was found": "Awaiting Translation",
         "create account": "Awaiting Translation",
-        "restore account": "Awaiting Translation"
+        "restore account": "Awaiting Translation",
+        "Can we ask for your location": "Awaiting Translation",
+        "When accepting your browser will ask you": "Awaiting Translation"
         },
     "de": {
         "language": "de",
@@ -231,7 +241,9 @@
         "You must bee new here": "Awaiting Translation",
         "No account was found": "Awaiting Translation",
         "create account": "Awaiting Translation",
-        "restore account": "Awaiting Translation"
+        "restore account": "Awaiting Translation",
+        "Can we ask for your location": "Awaiting Translation",
+        "When accepting your browser will ask you": "Awaiting Translation"
         },
     "es": {
         "language": "es",
@@ -270,6 +282,8 @@
         "You must bee new here": "Awaiting Translation",
         "No account was found": "Awaiting Translation",
         "create account": "Awaiting Translation",
-        "restore account": "Awaiting Translation"
+        "restore account": "Awaiting Translation",
+        "Can we ask for your location": "Awaiting Translation",
+        "When accepting your browser will ask you": "Awaiting Translation"
         }
 }
