@@ -159,6 +159,7 @@ This code may only be used under the license found at https://github.com/swarmci
     }
     .top-container button {
         @apply --big-btn;
+        height:80px;
     }
     .top-container button:active{
         transform: scale(0.97,0.97);
@@ -173,7 +174,7 @@ This code may only be used under the license found at https://github.com/swarmci
             <div></div>
             <h1>{{localize('welcome')}}<span> {{localize('name')}}<span></h1>
             <h2>{{localize('boardwalk')}} V 2.0</h2>
-            <button type="button" autofocus class="btn-enter" on-click="_btnClick" on-KeyPress="_btnKeyPress">{{localize('enter here')}}</button>
+            <button type="button" autofocus on-click="_btnClick" on-KeyPress="_btnKeyPress">{{localize('enter here')}}</button>
     </div>
     
     <div class="middle-container">
