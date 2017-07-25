@@ -1,0 +1,28 @@
+FROM node:7.10-wheezy
+RUN npm install -g polymer-cli
+RUN npm install -g bower
+
+RUN mkdir /app
+WORKDIR /app
+
+COPY browserify.js ./
+COPY polymer.json ./
+COPY wct.conf.json ./
+COPY webpack.config.js ./
+COPY manifest.json ./
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install
+COPY bower.json ./
+RUN echo '{ "allow_root": true }' > /root/.bowerrc && bower install
+
+COPY truffle.js ./
+COPY ethpm.json ./
+
+COPY index.html ./
+COPY images ./images/
+COPY src ./src/
+
+RUN npm run browserify
+RUN npm build
+CMD polymer serve -H 0.0.0.0
