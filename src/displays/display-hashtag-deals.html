@@ -181,10 +181,10 @@ The following custom properties and mixins are available for styling:
         .then((data) => {
             if (data[0].location) {
                 this.location = data[0].location;
-                this._getDetails(data);
+                this._getDistanceTimeImage(data);
             }
             else {
-                this.deals = data[1].items;
+                this._getTimeImage(data);
             }
         })
         .catch((err) => {
@@ -192,10 +192,10 @@ The following custom properties and mixins are available for styling:
     }
 
     /**
-    * Gets more information about the deals
+    * Gets the distance time and image for a deal
     * @param {array} data data is an array of the users acocunt and the deals
     */
-    _getDetails(data) {
+    _getDistanceTimeImage(data) {
         for (let i = 0; i < data[1].items.length; i++) {
             Promise.all([
                 this.$.utility.geoHashDistance(data[0].location,
@@ -207,6 +207,24 @@ The following custom properties and mixins are available for styling:
                 data[1].items[i].distance = details[0];
                 data[1].items[i].time = details[1];
                 data[1].items[i].avatar = details[2];
+                this.push('deals', data[1].items[i]);
+            });
+        }
+    }
+
+    /**
+    * Gets the time and image for a deal
+    * @param {array} data data is an array of the users acocunt and the deals
+    */
+    _getTimeImage(data) {
+        for (let i = 0; i < data[1].items.length; i++) {
+            Promise.all([
+                this.$.utility.convertTime(data[1].items[i].time),
+                this.$.ipfs.getHash(data[1].items[i].avatar),
+            ])
+            .then((details) => {
+                data[1].items[i].time = details[0];
+                data[1].items[i].avatar = details[1];
                 this.push('deals', data[1].items[i]);
             });
         }
