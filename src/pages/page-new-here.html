@@ -35,6 +35,7 @@ This code may only be used under the license found at https://github.com/swarmci
         display: block;
         @apply --layout-horizontal;
         @apply --layout-center-justified;
+        
     }
     .container{
         max-width:400px;
@@ -56,12 +57,13 @@ This code may only be used under the license found at https://github.com/swarmci
         line-height: 15px;
     }
     .buttons{
-        @apply --layout-vertical;
-        @apply --layout-center-justified;
+        text-align:center:
     }
     .buttons div{
         @apply --big-btn;
         color: var(--swarm-city-white);
+        margin: 0 auto;
+        margin-top:12px;
     }
 </style>
 <app-location route="{{route}}"></app-location>
