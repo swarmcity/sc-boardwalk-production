@@ -32,7 +32,11 @@
         "within 100km": "within 100km",
         "within 10km": "within 10km",
         "within 1km": "within 1km",
-        "within 0.5km": "within 0.5km"
+        "within 0.5km": "within 0.5km",
+        "You must bee new here": "You must bee new here",
+        "No account was found": "No account was found. When you restore or create a new account, it's stored locally on your device.",
+        "create account": "create account",
+        "restore account": "restore account"
     },    
     "cn": {
         "language": "cn",
@@ -67,7 +71,11 @@
         "within 100km": "在100公里以内",
         "within 10km": "在10公里以内",
         "within 1km": "在1公里以内",
-        "within 0.5km": "在0.5公里以内"
+        "within 0.5km": "在0.5公里以内",
+        "You must bee new here": "Awaiting Translation",
+        "No account was found": "Awaiting Translation",
+        "create account": "Awaiting Translation",
+        "restore account": "Awaiting Translation"
     },
     "fr": {
         "language": "fr",
@@ -102,7 +110,11 @@
         "within 100km": "Awaiting Translation",
         "within 10km": "Awaiting Translation",
         "within 1km": "Awaiting Translation",
-        "within 05km": "Awaiting Translation"
+        "within 05km": "Awaiting Translation",
+        "You must bee new here": "Awaiting Translation",
+        "No account was found": "Awaiting Translation",
+        "create account": "Awaiting Translation",
+        "restore account": "Awaiting Translation"
         },
     "nl": {
         "language": "nl",
@@ -137,7 +149,11 @@
         "within 100km": "Awaiting Translation",
         "within 10km": "Awaiting Translation",
         "within 1km": "Awaiting Translation",
-        "within 05km": "Awaiting Translation"
+        "within 05km": "Awaiting Translation",
+        "You must bee new here": "Awaiting Translation",
+        "No account was found": "Awaiting Translation",
+        "create account": "Awaiting Translation",
+        "restore account": "Awaiting Translation"
         },
     "ru": {
         "language": "ru",
@@ -172,7 +188,11 @@
         "within 100km": "Awaiting Translation",
         "within 10km": "Awaiting Translation",
         "within 1km": "Awaiting Translation",
-        "within 05km": "Awaiting Translation"
+        "within 05km": "Awaiting Translation",
+        "You must bee new here": "Awaiting Translation",
+        "No account was found": "Awaiting Translation",
+        "create account": "Awaiting Translation",
+        "restore account": "Awaiting Translation"
         },
     "de": {
         "language": "de",
@@ -207,7 +227,11 @@
         "within 100km": "Awaiting Translation",
         "within 10km": "Awaiting Translation",
         "within 1km": "Awaiting Translation",
-        "within 05km": "Awaiting Translation"
+        "within 05km": "Awaiting Translation",
+        "You must bee new here": "Awaiting Translation",
+        "No account was found": "Awaiting Translation",
+        "create account": "Awaiting Translation",
+        "restore account": "Awaiting Translation"
         },
     "es": {
         "language": "es",
@@ -242,6 +266,10 @@
         "within 100km": "Awaiting Translation",
         "within 10km": "Awaiting Translation",
         "within 1km": "Awaiting Translation",
-        "within 05km": "Awaiting Translation"
+        "within 05km": "Awaiting Translation",
+        "You must bee new here": "Awaiting Translation",
+        "No account was found": "Awaiting Translation",
+        "create account": "Awaiting Translation",
+        "restore account": "Awaiting Translation"
         }
 }
