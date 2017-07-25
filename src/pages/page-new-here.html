@@ -94,6 +94,10 @@ This code may only be used under the license found at https://github.com/swarmci
     )) {
     static get is() { return 'page-new-here'; }
     static get properties() { return {
+            language: {
+                type: String,
+                statePath: 'language',
+            },
             /**
             * Path is the current or requested path
             * @type {String}

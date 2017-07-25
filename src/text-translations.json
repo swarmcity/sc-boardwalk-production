@@ -72,10 +72,10 @@
         "within 10km": "在10公里以内",
         "within 1km": "在1公里以内",
         "within 0.5km": "在0.5公里以内",
-        "You must bee new here": "Awaiting Translation",
-        "No account was found": "Awaiting Translation",
-        "create account": "Awaiting Translation",
-        "restore account": "Awaiting Translation"
+        "You must bee new here": "你一定是新来的",
+        "No account was found": "没有找到帐户。恢复或创建新帐户时，将其存储在本地设备上。",
+        "create account": "创建帐号",
+        "restore account": "还原帐户"
     },
     "fr": {
         "language": "fr",
