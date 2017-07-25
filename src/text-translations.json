@@ -38,7 +38,10 @@
         "create account": "create account",
         "restore account": "restore account",
         "Can we ask for your location": "Can we ask for your location?",
-        "When accepting your browser will ask you": "When accepting your browser will ask you to enable location services"
+        "When accepting your browser will ask you": "When accepting your browser will ask you to enable location services",
+        "How do you want to restore your account": "How do you want to restore your account?",
+        "With a private key": "With a private key",
+        "upload an account file": "upload an account file"
     },    
     "cn": {
         "language": "cn",
@@ -79,7 +82,10 @@
         "create account": "创建帐号",
         "restore account": "还原帐户",
         "Can we ask for your location": "我们可以要求您的位置吗",
-        "When accepting your browser will ask you": "接受浏览器时会要求您启用位置服务"
+        "When accepting your browser will ask you": "接受浏览器时会要求您启用位置服务",
+        "How do you want to restore your account": "Awaiting Translation",
+        "With a private key": "Awaiting Translation",
+        "upload an account file": "Awaiting Translation"
     },
     "fr": {
         "language": "fr",
@@ -120,7 +126,10 @@
         "create account": "Awaiting Translation",
         "restore account": "Awaiting Translation",
         "Can we ask for your location": "Awaiting Translation",
-        "When accepting your browser will ask you": "Awaiting Translation"
+        "When accepting your browser will ask you": "Awaiting Translation",
+        "How do you want to restore your account": "Awaiting Translation",
+        "With a private key": "Awaiting Translation",
+        "upload an account file": "Awaiting Translation"
         },
     "nl": {
         "language": "nl",
@@ -161,7 +170,10 @@
         "create account": "Awaiting Translation",
         "restore account": "Awaiting Translation",
         "Can we ask for your location": "Awaiting Translation",
-        "When accepting your browser will ask you": "Awaiting Translation"
+        "When accepting your browser will ask you": "Awaiting Translation",
+        "How do you want to restore your account": "Awaiting Translation",
+        "With a private key": "Awaiting Translation",
+        "upload an account file": "Awaiting Translation"
         },
     "ru": {
         "language": "ru",
@@ -202,7 +214,10 @@
         "create account": "Awaiting Translation",
         "restore account": "Awaiting Translation",
         "Can we ask for your location": "Awaiting Translation",
-        "When accepting your browser will ask you": "Awaiting Translation"
+        "When accepting your browser will ask you": "Awaiting Translation",
+        "How do you want to restore your account": "Awaiting Translation",
+        "With a private key": "Awaiting Translation",
+        "upload an account file": "Awaiting Translation"
         },
     "de": {
         "language": "de",
@@ -243,7 +258,10 @@
         "create account": "Awaiting Translation",
         "restore account": "Awaiting Translation",
         "Can we ask for your location": "Awaiting Translation",
-        "When accepting your browser will ask you": "Awaiting Translation"
+        "When accepting your browser will ask you": "Awaiting Translation",
+        "How do you want to restore your account": "Awaiting Translation",
+        "With a private key": "Awaiting Translation",
+        "upload an account file": "Awaiting Translation"
         },
     "es": {
         "language": "es",
@@ -284,6 +302,9 @@
         "create account": "Awaiting Translation",
         "restore account": "Awaiting Translation",
         "Can we ask for your location": "Awaiting Translation",
-        "When accepting your browser will ask you": "Awaiting Translation"
+        "When accepting your browser will ask you": "Awaiting Translation",
+        "How do you want to restore your account": "Awaiting Translation",
+        "With a private key": "Awaiting Translation",
+        "upload an account file": "Awaiting Translation"
         }
 }
