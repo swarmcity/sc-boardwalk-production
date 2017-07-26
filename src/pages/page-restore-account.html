@@ -39,27 +39,19 @@ This code may only be used under the license found at https://github.com/swarmci
         max-width:400px;
     }
     .container div:nth-child(1){
-        color: var(--swarm-city-white);
-        text-align: center;
-        font-weight:800;
-        padding:175px 50px 20px 50px;
-        font-size: 35px;
-        line-height: 36px;
-    }
-    .container div:nth-child(2){
-        color: var(--swarm-city-white);
-        padding: 0px 50px 161px 50px;
+        color: var(--grey-4);
+        padding: 221px 50px 168px 50px;
         text-align: center;
         font-weight:200;
-        font-size: 12px;
+        font-size: 16px;
         line-height: 15px;
     }
-    .container div:nth-child(3){
+    .container div:nth-child(2){
         text-align:center:
     }
-    .container div:nth-child(3) div{
+    .container div:nth-child(2) div{
         @apply --big-btn;
-        color: var(--swarm-city-white);
+        color: var(--swarm-city-blue);
         margin: 0 auto;
         margin-top:12px;
     }
@@ -73,8 +65,8 @@ This code may only be used under the license found at https://github.com/swarmci
     <div class="container">
         <div class="subtitle">{{localize('How do you want to restore your account')}}</div>
         <div class="buttons">
-                <div on-click="_create">{{localize('With a private key')}}</div>
-                <div on-click="_restore">{{localize('upload an account file')}}</div>
+                <div on-click="_privateKey">{{localize('With a private key')}}</div>
+                <div on-click="_jsonFile">{{localize('upload an account file')}}</div>
         </div>
             
     </div>
@@ -134,14 +126,14 @@ This code may only be used under the license found at https://github.com/swarmci
     /**
     * takes the user to the hashtag list page
     */
-    _create() {
-        this.path = 'choose-avatar/';
+    _privateKey() {
+        this.path = 'private-key/';
     }
     /**
     * takes the user to the hashtag list page
     */
-    _restore() {
-        this.path = 'restore-account/';
+    _jsonFile() {
+        this.path = 'json-file/';
     }
 
     /**
