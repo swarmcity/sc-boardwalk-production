@@ -33,23 +33,8 @@ This code may only be used under the license found at https://github.com/swarmci
         display: block;
         @apply --layout-horizontal;
         @apply --layout-center-justified;
-        
     }
-    .container{
-        max-width:400px;
-    }
-    .container div:nth-child(1){
-        color: var(--grey-4);
-        padding: 221px 50px 168px 50px;
-        text-align: center;
-        font-weight:200;
-        font-size: 16px;
-        line-height: 15px;
-    }
-    .container div:nth-child(2){
-        text-align:center:
-    }
-    .close{
+    .close {
         position: fixed;
         top: 18px;
         right: 18px;
@@ -58,22 +43,41 @@ This code may only be used under the license found at https://github.com/swarmci
         background: url('../../../images/swarm-city-sprite.png') -60px -84px;
         cursor: pointer;
     }
+    .container{
+        max-width:400px;
+    }
+    .title{
+        color: var(--grey-4);
+        padding: 221px 50px 168px 50px;
+        text-align: center;
+        font-weight:200;
+        font-size: 16px;
+        line-height: 15px;
+    }
+    .btn{
+        @apply --layout-horizontal;
+        @apply --layout-center-justified;
+    }
+
+    .btn .agree {
+        @apply --agree-blue;
+
+    }
 </style>
 <app-location route="{{route}}"></app-location>
 
     <div class="close" on-click="_close"></div>
     <div class="container">
-        <div class="subtitle">{{localize('Paste your private key')}}</div>
-        <div class="buttons">
-
+        <div class="title">{{localize('Paste your private key')}}</div>
+        <div class="btn">
+            <div class="agree"></div>
         </div>
-            
     </div>
 
 </template>
 
 <script>
-    class MyRestoreAccount extends new ReduxMixin(Polymer.mixinBehaviors([
+    class MyPrivateKey extends new ReduxMixin(Polymer.mixinBehaviors([
         Polymer.AppLocalizeBehavior,
         Polymer.NeonAnimationRunnerBehavior,
         Polymer.NeonAnimatableBehavior],
@@ -147,6 +151,6 @@ This code may only be used under the license found at https://github.com/swarmci
         this.path = null;
     }
 
-} window.customElements.define(MyRestoreAccount.is, MyRestoreAccount);
+} window.customElements.define(MyPrivateKey.is, MyPrivateKey);
 </script>
 </dom-module>
