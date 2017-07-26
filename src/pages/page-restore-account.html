@@ -59,9 +59,19 @@ This code may only be used under the license found at https://github.com/swarmci
     .container div:nth-child(3) div:active{
         transform: scale(0.97,0.97);
     }
+    .close{
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        width: 20px;
+        height: 20px;
+        background: url('../../../images/swarm-city-sprite.png') -60px -84px;
+        cursor: pointer;
+    }
 </style>
 <app-location route="{{route}}"></app-location>
 
+    <div class="close" on-click="_close"></div>
     <div class="container">
         <div class="subtitle">{{localize('How do you want to restore your account')}}</div>
         <div class="buttons">
@@ -122,7 +132,9 @@ This code may only be used under the license found at https://github.com/swarmci
         super.connectedCallback();
         this.loadResources(this.resolveUrl('../text-translations.json'));
     }
-    
+    _close(){
+        this.path = 'new-here/';
+    }
     /**
     * takes the user to the hashtag list page
     */
