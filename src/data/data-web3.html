@@ -247,6 +247,7 @@ this.$.web3.hashtags()
                             description: 'a test hashtag for the devs',
                         },
                     ];
+                    this._getHashTagIpfsTag();
                     resolve(fakeResponse);
                     // Promise.all([this._loadAbi(contractName),
                     // this._loadAddress(contractName)])
@@ -262,6 +263,29 @@ this.$.web3.hashtags()
                     // });
                 });
             }
+
+            /**
+             * Returns an ipfsAddress given a HashtagAddress
+             * @return {ipfsAddress} ipfsAddress is a string
+             */
+            _getHashTagIpfsTag() {
+                var contractName = "HashtagList";
+                return new Promise((resolve, reject) => {
+
+                    Promise.all([this._loadAbi(contractName), this._loadAddress(contractName)])
+                        .then((data) => {
+                            const abiArray = data[0];
+                            const contractAddress = data[1];
+                            //                        var contract = swarmCity.web3.contract(abiArray).at(contractAddress);
+                            var contract = web3.eth.contract(abiArray).at(contractAddress);
+                            resolve(contract.getMap.call("0x2e17d4c60a2fc3f1d586d2ca9d66b52f80a043c0"));
+                        })
+                        .catch((err) => {
+                            reject(Error(err));
+                        });
+                });
+            }
+
 
             /**
             * Returns the abi for the requests contract
