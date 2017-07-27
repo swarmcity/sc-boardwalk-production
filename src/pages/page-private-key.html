@@ -9,6 +9,8 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="../redux-state.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+
 <!--
     Displays and shared styles only
 -->
@@ -48,7 +50,7 @@ This code may only be used under the license found at https://github.com/swarmci
     }
     .title{
         color: var(--grey-4);
-        padding: 221px 50px 168px 50px;
+        padding: 221px 50px 50px 50px;
         text-align: center;
         font-weight:200;
         font-size: 16px;
@@ -57,6 +59,11 @@ This code may only be used under the license found at https://github.com/swarmci
     .btn{
         @apply --layout-horizontal;
         @apply --layout-center-justified;
+    }
+    paper-input{
+        padding: 0 0 50px 0;
+        --paper-input-container-color: var(--swarm-city-blue);
+        --paper-input-container-focus-color: var(--swarm-city-blue);
     }
 
     .btn .agree {
@@ -69,8 +76,9 @@ This code may only be used under the license found at https://github.com/swarmci
     <div class="close" on-click="_close"></div>
     <div class="container">
         <div class="title">{{localize('Paste your private key')}}</div>
+        <paper-input label="{{localize('Private key')}}"></paper-input>
         <div class="btn">
-            <div class="agree"></div>
+            <div class="agree" on-click="_agree"></div>
         </div>
     </div>
 
@@ -126,21 +134,14 @@ This code may only be used under the license found at https://github.com/swarmci
         this.loadResources(this.resolveUrl('../text-translations.json'));
     }
     _close() {
-        this.path = 'new-here/';
+        this.path = 'restore-account//';
     }
     /**
     * takes the user to the hashtag list page
     */
-    _privateKey() {
-        this.path = 'private-key/';
+    _agree() {
+        this.path = 'choose-username/';
     }
-    /**
-    * takes the user to the hashtag list page
-    */
-    _jsonFile() {
-        this.path = 'json-file/';
-    }
-
     /**
     * changes the current path
     */
