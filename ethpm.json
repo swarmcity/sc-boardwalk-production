@@ -17,7 +17,7 @@
     "SwarmCity"
   ],
   "dependencies": {
-    "swarmcity": "0.0.1",
+    "swarmcity": "0.0.3",
     "zeppelin": "^1.0.4"
   },
   "license": "MIT"
