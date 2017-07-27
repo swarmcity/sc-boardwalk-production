@@ -55,6 +55,15 @@ The following custom properties and mixins are available for styling:
                         value: false,
                         notify: true,
                     },
+                    /**
+                    * Path signlas to the parent to change the path
+                    * @type {Boolean}
+                    */
+                    path: {
+                        type: String,
+                        value: null,
+                        notify: true,
+                    },
                 };
             }
 
@@ -68,12 +77,24 @@ The following custom properties and mixins are available for styling:
     */
     _getUser() {
         this.$.storage.accountExists()
-            .then((account) => {
-                if (account.username && account.address && account.avatar) {
-                    this.username = account.username;
-                    this.completeAccount = true;
-                }
-            });
+        .then((account) => {
+            if (account.username && account.address && account.avatar) {
+                this.username = account.username;
+                this.completeAccount = true;
+            }
+        });
+    }
+
+    /**
+    * Eithe rgo to the new here or new deal page depending if the user has a
+    * complete acocunt.
+    */
+    _next() {
+        if(!this.completeAccount) {
+            this.path = 'new-here/';
+        } else {
+            this.path = 'new-deal/';
+        }
     }
 
 } window.customElements.define(DisplayDealBtn.is, DisplayDealBtn);

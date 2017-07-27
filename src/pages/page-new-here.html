@@ -12,7 +12,6 @@ This code may only be used under the license found at https://github.com/swarmci
 <!--
     Displays and shared styles only
 -->
-<link rel="import" href="../displays/display-geolocation.html">
 <link rel="import" href="../shared-styles.html">
 <!--
     Aimation pack, only load the animations you need for this page.
@@ -24,7 +23,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
-<dom-module id="page-location">
+<dom-module id="page-new-here">
 <template>
 <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
@@ -36,11 +35,12 @@ This code may only be used under the license found at https://github.com/swarmci
         display: block;
         @apply --layout-horizontal;
         @apply --layout-center-justified;
+        
     }
     .container{
         max-width:400px;
     }
-    .title{
+    .container div:nth-child(1){
         color: var(--swarm-city-white);
         text-align: center;
         font-weight:800;
@@ -48,7 +48,7 @@ This code may only be used under the license found at https://github.com/swarmci
         font-size: 35px;
         line-height: 36px;
     }
-    .subtitle{
+    .container div:nth-child(2){
         color: var(--swarm-city-white);
         padding: 0px 50px 161px 50px;
         text-align: center;
@@ -56,43 +56,43 @@ This code may only be used under the license found at https://github.com/swarmci
         font-size: 12px;
         line-height: 15px;
     }
-    .blue-agree{
-        width:76px;
-        height:76px;
+    .container div:nth-child(3){
+        text-align:center:
     }
-    .disagree{
-        border-radius: 50%;
-        width:76px;
-        height:76px;
-        background: url('../../../images/swarm-city-sprite.png') -688px -63px;
-        cursor: pointer;
+    .container div:nth-child(3) div{
+        @apply --big-btn;
+        color: var(--swarm-city-white);
+        margin: 0 auto;
+        margin-top:12px;
     }
-    .buttons{
-        @apply --layout-horizontal;
-        @apply --layout-center-justified;
+
+    .container div:nth-child(3) div:active{
+        transform: scale(0.97,0.97);
     }
 </style>
 <app-location route="{{route}}"></app-location>
 
     <div class="container">
-        <div class="title">{{localize('Can we ask for your location')}}</div>
-        <div class="subtitle">{{localize('When accepting your browser will ask you')}}</div>
+
+        <div class="title">{{localize('You must bee new here')}}</div>
+        <div class="subtitle">{{localize('No account was found')}}</div>
         <div class="buttons">
-            <div class="disagree" on-click="_btnClick"></div>
-            <display-geolocation class="blue-agree" path="{{path}}"></display-geolocation>
+                <div on-click="_create">{{localize('create account')}}</div>
+                <div on-click="_restore">{{localize('restore account')}}</div>
         </div>
+            
     </div>
 
 </template>
 
 <script>
-    class MyLocation extends new ReduxMixin(Polymer.mixinBehaviors([
+    class MyNewHere extends new ReduxMixin(Polymer.mixinBehaviors([
         Polymer.AppLocalizeBehavior,
         Polymer.NeonAnimationRunnerBehavior,
         Polymer.NeonAnimatableBehavior],
         Polymer.Element
     )) {
-    static get is() { return 'page-location'; }
+    static get is() { return 'page-new-here'; }
     static get properties() { return {
             language: {
                 type: String,
@@ -138,8 +138,14 @@ This code may only be used under the license found at https://github.com/swarmci
     /**
     * takes the user to the hashtag list page
     */
-    _btnClick() {
-        this.path = 'hashtag-list/';
+    _create() {
+        this.path = 'choose-avatar/';
+    }
+    /**
+    * takes the user to the hashtag list page
+    */
+    _restore() {
+        this.path = 'restore-account/';
     }
 
     /**
@@ -152,6 +158,6 @@ This code may only be used under the license found at https://github.com/swarmci
         this.path = null;
     }
 
-} window.customElements.define(MyLocation.is, MyLocation);
+} window.customElements.define(MyNewHere.is, MyNewHere);
 </script>
 </dom-module>

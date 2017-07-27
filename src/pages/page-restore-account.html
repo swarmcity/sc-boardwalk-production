@@ -12,7 +12,6 @@ This code may only be used under the license found at https://github.com/swarmci
 <!--
     Displays and shared styles only
 -->
-<link rel="import" href="../displays/display-geolocation.html">
 <link rel="import" href="../shared-styles.html">
 <!--
     Aimation pack, only load the animations you need for this page.
@@ -24,75 +23,74 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
-<dom-module id="page-location">
+<dom-module id="page-restore-account">
 <template>
 <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
 -->
 <style include="shared-styles">
     :host {
-        background-color: var(--swarm-city-blue);
-        height: 100vh;
         display: block;
         @apply --layout-horizontal;
         @apply --layout-center-justified;
+        
     }
     .container{
         max-width:400px;
     }
-    .title{
-        color: var(--swarm-city-white);
-        text-align: center;
-        font-weight:800;
-        padding:175px 50px 20px 50px;
-        font-size: 35px;
-        line-height: 36px;
-    }
-    .subtitle{
-        color: var(--swarm-city-white);
-        padding: 0px 50px 161px 50px;
+    .container div:nth-child(1){
+        color: var(--grey-4);
+        padding: 221px 50px 168px 50px;
         text-align: center;
         font-weight:200;
-        font-size: 12px;
+        font-size: 16px;
         line-height: 15px;
     }
-    .blue-agree{
-        width:76px;
-        height:76px;
+    .container div:nth-child(2){
+        text-align:center:
     }
-    .disagree{
-        border-radius: 50%;
-        width:76px;
-        height:76px;
-        background: url('../../../images/swarm-city-sprite.png') -688px -63px;
+    .container div:nth-child(2) div{
+        @apply --big-btn;
+        color: var(--swarm-city-blue);
+        margin: 0 auto;
+        margin-top:12px;
+    }
+
+    .container div:nth-child(3) div:active{
+        transform: scale(0.97,0.97);
+    }
+    .close{
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        width: 20px;
+        height: 20px;
+        background: url('../../../images/swarm-city-sprite.png') -60px -84px;
         cursor: pointer;
-    }
-    .buttons{
-        @apply --layout-horizontal;
-        @apply --layout-center-justified;
     }
 </style>
 <app-location route="{{route}}"></app-location>
 
+    <div class="close" on-click="_close"></div>
     <div class="container">
-        <div class="title">{{localize('Can we ask for your location')}}</div>
-        <div class="subtitle">{{localize('When accepting your browser will ask you')}}</div>
+        <div class="subtitle">{{localize('How do you want to restore your account')}}</div>
         <div class="buttons">
-            <div class="disagree" on-click="_btnClick"></div>
-            <display-geolocation class="blue-agree" path="{{path}}"></display-geolocation>
+                <div on-click="_privateKey">{{localize('With a private key')}}</div>
+                <div on-click="_jsonFile">{{localize('upload an account file')}}</div>
         </div>
+            
     </div>
 
 </template>
 
 <script>
-    class MyLocation extends new ReduxMixin(Polymer.mixinBehaviors([
+    class MyRestoreAccount extends new ReduxMixin(Polymer.mixinBehaviors([
         Polymer.AppLocalizeBehavior,
         Polymer.NeonAnimationRunnerBehavior,
         Polymer.NeonAnimatableBehavior],
         Polymer.Element
     )) {
-    static get is() { return 'page-location'; }
+    static get is() { return 'page-restore-account'; }
     static get properties() { return {
             language: {
                 type: String,
@@ -134,12 +132,20 @@ This code may only be used under the license found at https://github.com/swarmci
         super.connectedCallback();
         this.loadResources(this.resolveUrl('../text-translations.json'));
     }
-    
+    _close() {
+        this.path = 'new-here/';
+    }
     /**
     * takes the user to the hashtag list page
     */
-    _btnClick() {
-        this.path = 'hashtag-list/';
+    _privateKey() {
+        this.path = 'private-key/';
+    }
+    /**
+    * takes the user to the hashtag list page
+    */
+    _jsonFile() {
+        this.path = 'json-file/';
     }
 
     /**
@@ -152,6 +158,6 @@ This code may only be used under the license found at https://github.com/swarmci
         this.path = null;
     }
 
-} window.customElements.define(MyLocation.is, MyLocation);
+} window.customElements.define(MyRestoreAccount.is, MyRestoreAccount);
 </script>
 </dom-module>

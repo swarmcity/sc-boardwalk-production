@@ -6,6 +6,7 @@
     "src/pages/page-language.html",
     "src/pages/page-location.html",
     "src/pages/page-hashtag.html",
+    "src/pages/page-new-here.html",
     "src/pages/page-hashtag-list.html",
     "src/pages/page-view404.html"
   ],
