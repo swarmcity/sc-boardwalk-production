@@ -4,6 +4,7 @@ Copyright (c) 2017 Swarm City
 This code may only be used under the license found at https://github.com/swarmcity/license
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="./Web3.html">
 <script src="../swarm-city.min.js" async></script>
 
 <!--
@@ -25,7 +26,20 @@ this.$.web3.hashtags()
 <dom-module id="data-web3">
     <script>
         class DataWeb3 extends Polymer.Element {
-            static get is() { return 'data-web3'; }
+            static get is() {return 'data-web3';}
+//            static get properties() {
+//                return {
+//                /**
+//                 * Path is the current or requested path
+//                 * @type {String}
+//                 */
+//                web3: {
+//                    type: Object,
+//                    observer: '_web3',
+//                },
+//                };
+//            }
+
 /**
 * Returns an array with the deals for a hashtag
 * @return {hashtags} hashtags is an array of objects
@@ -181,16 +195,16 @@ this.$.web3.hashtags()
                 ],
             };
 
-            if(hashtagID == '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c1') {
+            if (hashtagID == '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c1') {
                 resolve(fakeResponse1);
             }
-            if(hashtagID == '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c2') {
+            if (hashtagID == '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c2') {
                 resolve(fakeResponse2);
             }
-            if(hashtagID == '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c3') {
+            if (hashtagID == '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c3') {
                 resolve(fakeResponse3);
             }
-            if(hashtagID == '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c4') {
+            if (hashtagID == '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c4') {
                 resolve(fakeResponse4);
             }
         });
@@ -247,7 +261,8 @@ this.$.web3.hashtags()
                             description: 'a test hashtag for the devs',
                         },
                     ];
-                    this._getHashTagIpfsTag("HashtagList", "0x2e17d4c60a2fc3f1d586d2ca9d66b52f80a043c0");
+                    this._getHashTagIpfsTag('HashtagList',
+                        '0x2e17d4c60a2fc3f1d586d2ca9d66b52f80a043c0');
                     resolve(fakeResponse);
                     // Promise.all([this._loadAbi(contractName),
                     // this._loadAddress(contractName)])
@@ -267,32 +282,33 @@ this.$.web3.hashtags()
             /**
              * Returns an ipfsAddress given a HashtagAddress
              * @param {string} contractName The contract where the lookup is queried
-             * @param {string} lookupHashtag the address of the hashtag to get the metadata ipfs address for
+             * @param {string} lookupHashtag the address of the hashtag to get the
+             * metadata ipfs address for
              * @return {ipfsAddress} ipfsAddress is a string
              */
             _getHashTagIpfsTag(contractName, lookupHashtag) {
                 return new Promise((resolve, reject) => {
-
-                    Promise.all([this._loadAbi(contractName), this._loadAddress(contractName)])
-                        .then((data) => {
-                            // constructing contract from abi/address should happen globally, not per request
-                            const abiArray = data[0].abi;
-                            const contractAddress = data[1][contractName];
-                            var web3 = new Web3();
-                            web3.setProvider(new web3.providers.HttpProvider("https://ropsten.infura.io/"));
-
-                            let contract = web3.eth.contract(abiArray).at(contractAddress);
-                            let response = contract.getMap(lookupHashtag, function(error, response) {
-                                if (error) {
-                                    reject(err);
-                                } else {
-                                    resolve(response);
-                                }
-                            });
-                        })
-                        .catch((err) => {
-                            reject(err);
+                    Promise.all(
+                        [this._loadAbi(contractName), this._loadAddress(contractName)]
+                    ).then((data) => {
+                        // constructing contract from abi/address should happen globally
+                        const abiArray = data[0].abi;
+                        const contractAddress = data[1][contractName];
+                        var web3 = new Web3();
+                        web3.setProvider(new web3.providers.HttpProvider('https://ropsten.infura.io/'));
+                        let contract = web3.eth.contract(abiArray)
+                            .at(contractAddress);
+                        contract.getMap(lookupHashtag, function(error, response) {
+                            if (error) {
+                                reject(error);
+                            } else {
+                                resolve(response);
+                            }
                         });
+                    })
+                    .catch((err) => {
+                        reject(err);
+                    });
                 });
             }
 
@@ -342,7 +358,17 @@ this.$.web3.hashtags()
                 });
             }
 
-
-        } window.customElements.define(DataWeb3.is, DataWeb3);
+//            /**
+//             * changes the current path
+//             */
+//            _web3() {
+//                if (typeof this.web3 !== 'undefined') {
+//                    this.web3 = new Web3(this.web3.currentProvider);
+//                } else {
+//                    // set the provider you want from Web3.providers
+//                    this.web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/'));
+//                }
+//            }
+} window.customElements.define(DataWeb3.is, DataWeb3);
     </script>
 </dom-module>
