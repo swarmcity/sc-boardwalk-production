@@ -278,6 +278,9 @@ this.$.web3.hashtags()
                             // constructing contract from abi/address should happen globally, not per request
                             const abiArray = data[0].abi;
                             const contractAddress = data[1][contractName];
+                            var web3 = new Web3();
+                            web3.setProvider(new web3.providers.HttpProvider("https://ropsten.infura.io/"));
+
                             let contract = web3.eth.contract(abiArray).at(contractAddress);
                             let response = contract.getMap(lookupHashtag, function(error, response) {
                                 if (error) {
