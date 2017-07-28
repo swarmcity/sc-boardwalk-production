@@ -1,7 +1,5 @@
 pragma solidity ^0.4.11;
 
-contract IHashtag {
-
 import './swarmcity/contracts/IHashtag.sol';
 import './zeppelin/contracts/ownership/Ownable.sol';
 
