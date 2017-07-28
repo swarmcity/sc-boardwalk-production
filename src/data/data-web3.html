@@ -4,7 +4,6 @@ Copyright (c) 2017 Swarm City
 This code may only be used under the license found at https://github.com/swarmcity/license
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="./Web3.html">
 <script src="../swarm-city.min.js" async></script>
 
 <!--
@@ -27,18 +26,6 @@ this.$.web3.hashtags()
     <script>
         class DataWeb3 extends Polymer.Element {
             static get is() {return 'data-web3';}
-//            static get properties() {
-//                return {
-//                /**
-//                 * Path is the current or requested path
-//                 * @type {String}
-//                 */
-//                web3: {
-//                    type: Object,
-//                    observer: '_web3',
-//                },
-//                };
-//            }
 
 /**
 * Returns an array with the deals for a hashtag
@@ -294,7 +281,7 @@ this.$.web3.hashtags()
                         // constructing contract from abi/address should happen globally
                         const abiArray = data[0].abi;
                         const contractAddress = data[1][contractName];
-                        var web3 = new Web3();
+                        let web3 = new swarmCity.Web3();
                         web3.setProvider(new web3.providers.HttpProvider('https://ropsten.infura.io/'));
                         let contract = web3.eth.contract(abiArray)
                             .at(contractAddress);
@@ -358,17 +345,6 @@ this.$.web3.hashtags()
                 });
             }
 
-//            /**
-//             * changes the current path
-//             */
-//            _web3() {
-//                if (typeof this.web3 !== 'undefined') {
-//                    this.web3 = new Web3(this.web3.currentProvider);
-//                } else {
-//                    // set the provider you want from Web3.providers
-//                    this.web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/'));
-//                }
-//            }
 } window.customElements.define(DataWeb3.is, DataWeb3);
     </script>
 </dom-module>
