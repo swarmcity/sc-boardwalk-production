@@ -1,0 +1,16 @@
+version: '2'
+services:
+  polymer:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.customelement
+    ports:
+      - "8081:8081"
+  contracts:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.contracts
+  link:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.lint
