@@ -10,7 +10,7 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile.contracts
-  link:
+  lint:
     build:
       context: .
       dockerfile: docker/Dockerfile.lint

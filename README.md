@@ -46,10 +46,10 @@ npm install
 
 ## Docker install
 
-    docker-compose build polymer
-    docker-compose build contracts
-
-    docker-compose up polymer
+    alias dc='docker-compose'
+    dc build polymer && dc up polymer
+    dc build contracts
+    dc build lint
 
 
 ## Linting with eslint
