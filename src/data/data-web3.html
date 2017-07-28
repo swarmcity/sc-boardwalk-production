@@ -276,13 +276,16 @@ this.$.web3.hashtags()
             _getHashTagIpfsTag(contractName, lookupHashtag) {
                 return new Promise((resolve, reject) => {
                     Promise.all(
-                        [this._loadAbi(contractName), this._loadAddress(contractName)]
+                        [this._loadAbi(contractName),
+                            this._loadAddress(contractName),
+                            this._loadProviders()]
                     ).then((data) => {
                         // constructing contract from abi/address should happen globally
                         const abiArray = data[0].abi;
                         const contractAddress = data[1][contractName];
+                        const providers = data[2]['ropsten'];
                         let web3 = new swarmCity.Web3();
-                        web3.setProvider(new web3.providers.HttpProvider('https://ropsten.infura.io/'));
+                        web3.setProvider(new web3.providers.HttpProvider(providers[1]));
                         let contract = web3.eth.contract(abiArray)
                             .at(contractAddress);
                         contract.getMap(lookupHashtag, function(error, response) {
@@ -345,6 +348,27 @@ this.$.web3.hashtags()
                 });
             }
 
-} window.customElements.define(DataWeb3.is, DataWeb3);
+            /**
+             * Returns the web3 providers
+             * @param {string} network limit to a network
+             * @return {array} providers
+             */
+            _loadProviders() {
+                return new Promise((resolve, reject) => {
+                    const xobj = new XMLHttpRequest();
+                    const path = '../src/contracts/providers.json';
+                    xobj.overrideMimeType('application/json');
+                    xobj.open('GET', path, true);
+                    xobj.onreadystatechange = () => {
+                        if (xobj.readyState == 4 && xobj.status == '200') {
+                            const json = JSON.parse(xobj.responseText);
+                            resolve(json['web3']);
+                        }
+                    };
+                    // Request the json
+                    xobj.send(null);
+                });
+            }
+        } window.customElements.define(DataWeb3.is, DataWeb3);
     </script>
 </dom-module>
