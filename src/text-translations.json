@@ -41,7 +41,9 @@
         "When accepting your browser will ask you": "When accepting your browser will ask you to enable location services",
         "How do you want to restore your account": "How do you want to restore your account?",
         "With a private key": "with a private key",
-        "upload an account file": "upload an account file"
+        "upload an account file": "upload an account file",
+        "Paste your private key": "Paste your private key",
+        "Private key": "private key?"
     },    
     "cn": {
         "language": "cn",
@@ -85,7 +87,9 @@
         "When accepting your browser will ask you": "接受浏览器时会要求您启用位置服务",
         "How do you want to restore your account": "Awaiting Translation",
         "With a private key": "Awaiting Translation",
-        "upload an account file": "Awaiting Translation"
+        "upload an account file": "Awaiting Translation",
+        "Paste your private key": "Awaiting Translation",
+        "Private key": "Awaiting Translation"
     },
     "fr": {
         "language": "fr",
@@ -129,7 +133,9 @@
         "When accepting your browser will ask you": "Awaiting Translation",
         "How do you want to restore your account": "Awaiting Translation",
         "With a private key": "Awaiting Translation",
-        "upload an account file": "Awaiting Translation"
+        "upload an account file": "Awaiting Translation",
+        "Paste your private key": "Awaiting Translation",
+        "Private key": "Awaiting Translation"
         },
     "nl": {
         "language": "nl",
@@ -173,7 +179,9 @@
         "When accepting your browser will ask you": "Awaiting Translation",
         "How do you want to restore your account": "Awaiting Translation",
         "With a private key": "Awaiting Translation",
-        "upload an account file": "Awaiting Translation"
+        "upload an account file": "Awaiting Translation",
+        "Paste your private key": "Awaiting Translation",
+        "Private key": "Awaiting Translation"
         },
     "ru": {
         "language": "ru",
@@ -217,7 +225,9 @@
         "When accepting your browser will ask you": "Awaiting Translation",
         "How do you want to restore your account": "Awaiting Translation",
         "With a private key": "Awaiting Translation",
-        "upload an account file": "Awaiting Translation"
+        "upload an account file": "Awaiting Translation",
+        "Paste your private key": "Awaiting Translation",
+        "Private key": "Awaiting Translation"
         },
     "de": {
         "language": "de",
@@ -261,7 +271,9 @@
         "When accepting your browser will ask you": "Awaiting Translation",
         "How do you want to restore your account": "Awaiting Translation",
         "With a private key": "Awaiting Translation",
-        "upload an account file": "Awaiting Translation"
+        "upload an account file": "Awaiting Translation",
+        "Paste your private key": "Awaiting Translation",
+        "Private key": "Awaiting Translation"
         },
     "es": {
         "language": "es",
@@ -305,6 +317,8 @@
         "When accepting your browser will ask you": "Awaiting Translation",
         "How do you want to restore your account": "Awaiting Translation",
         "With a private key": "Awaiting Translation",
-        "upload an account file": "Awaiting Translation"
+        "upload an account file": "Awaiting Translation",
+        "Paste your private key": "Awaiting Translation",
+        "Private key": "Awaiting Translation"
         }
 }

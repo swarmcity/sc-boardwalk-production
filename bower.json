@@ -15,6 +15,7 @@
     "iron-a11y-keys": "PolymerElements/iron-a11y-keys#2.0-preview",
     "app-localize-behavior": "PolymerElements/app-localize-behavior#2.0-preview",
     "polymer-redux": "^1.0.1",
+    "paper-input": "PolymerElements/paper-input#2.0-preview",
     "paper-slider": "PolymerElements/paper-slider#2.0-preview"
   },
   "devDependencies": {
