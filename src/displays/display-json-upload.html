@@ -5,6 +5,7 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../shared-styles.html">
 <!--
 
 Example:
@@ -27,18 +28,41 @@ The following custom properties and mixins are available for styling:
 -->
 <dom-module id="display-json-upload">
     <template>
-        <style>
+        <style include="shared-styles">
             :host {
                 display: block;
             }
             input {
-                @apply --display-upload-input
+                position:relative;
+                top: -200px;
+                left: -200px;
             }
             .container{
-                @apply --display-upload-container;
+                display:block;
+                height: 135px;	
+                width: 135px;
+                position:relative;
             }
             .container label {
-                @apply --big-btn
+                width: 276px;
+                height: 30px;
+                line-height:30px;
+                text-align: center;
+                margin-bottom: 10px;
+                display: block;
+                border: none;
+                outline: none;
+                font-size: 15px;
+                cursor: pointer;
+                font-weight: 900;
+                color: var(--grey-4);
+                padding: 28px 42px 28px 42px;
+                background-color: rgba(255, 255, 255, 0.1);
+                box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                -o-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                overflow: hidden;
             }
             .title{
                 color: var(--swarm-city-blue)
