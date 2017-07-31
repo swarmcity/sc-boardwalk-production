@@ -43,7 +43,6 @@ The following custom properties and mixins are available for styling:
             .title{
                 color: var(--swarm-city-blue)
             }
- 
         </style>
         
 
@@ -91,18 +90,21 @@ The following custom properties and mixins are available for styling:
         event.stopPropagation();
         event.preventDefault();
         const file = event.target.files[0];
-        this._base64(file);
+        this._json(file);
     }
 
     /**
     * Converts afile to base 64 for transport
     * @param {file} file is a file with type of file
     */
-    _base64(file) {
+    
+    _json(file) {
         let reader = new FileReader();
-        reader.readAsDataURL(file);
+        reader.readAsText(file);
         reader.onload = () => {
-            this.preview = reader.result;
+            this.json = JSON.parse(JSON.parse(reader.result));
+            // TODO: This will need to be sent to a data component to
+            // determine the type of file before storing in local storage
         };
         reader.onerror = (error) => {
             this.loading = false;
