@@ -56,6 +56,9 @@ This code may only be used under the license found at https://github.com/swarmci
         width:260px;
     }
     .btn{
+        color: var(--swarm-city-blue);
+        cursor: pointer;
+        padding-top: 100px;
         @apply --layout-horizontal;
         @apply --layout-center-justified;
     }
@@ -76,7 +79,7 @@ This code may only be used under the license found at https://github.com/swarmci
     <div class="container">
         <div class="title">{{localize('Profile picture')}}</div>
         <display-image-upload type="{{type}}"></display-image-upload>
-        <div class="btn">{{localize('skip for now')}}</div>
+        <div class="btn" on-click="_skip">{{localize('skip for now')}}</div>
 
 
     </div>
@@ -136,20 +139,10 @@ This code may only be used under the license found at https://github.com/swarmci
         this.path = 'stop-signup/';
     }
     /**
-    * takes the user to the hashtag list page
+    * changes the current path on skip
     */
-    _agree() {
-        switch (this.type) {
-            case 'standard':
-                this.path = 'choose-username/';
-                break;
-            case 'arc':
-                this.path = 'hashtag-list/';
-                break;
-            case 'swarm':
-                this.path = 'hashtag-list/';
-                break;
-        }
+    _skip(){
+        this.path = 'password-warning/';
     }
     /**
     * changes the current path
@@ -160,6 +153,7 @@ This code may only be used under the license found at https://github.com/swarmci
         }
         this.path = null;
     }
+
 
 } window.customElements.define(MyChooseAvatar.is, MyChooseAvatar);
 </script>
