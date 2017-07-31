@@ -5,12 +5,11 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
-<link rel="import" href="display-language.html">
 <!--
 
 Example:
 ```
-<display-upload-file></display-upload-file>
+<display-image-upload></display-image-upload>
 ```
 
 ### Styling
@@ -26,7 +25,7 @@ The following custom properties and mixins are available for styling:
 | `--display-upload-button` | Mixin applied to the button | `{}` |
 | `--display-upload-preview` | Mixin applied to the preview image | `{}` |
 -->
-<dom-module id="display-upload-file">
+<dom-module id="display-image-upload">
     <template>
         <style>
             :host {
@@ -39,28 +38,29 @@ The following custom properties and mixins are available for styling:
                 @apply --display-upload-container;
             }
             .container label {
-                @apply --display-upload-button;
+                @apply --big-btn
             }
-            .container img{
-                @apply --display-upload-preview;
+            .title{
+                color: var(--swarm-city-blue)
             }
         </style>
         
-        <display-language language="{{language}}"></display-language>
-        
+
         <div class="container">
-            <img src="{{preview}}">  
-            <label><input type="file" on-change="_getFile"/></label>
+            <label>
+                <div class="title">choose an image file</div>
+                <input type="file" on-change="_getFile"/>
+            </label>
         </div>
 
         </template>
     <script>
 
-    class DisplayUploadFile extends Polymer.mixinBehaviors([
+    class DisplayImageUpload extends Polymer.mixinBehaviors([
         Polymer.AppLocalizeBehavior],
         Polymer.Element
     ) {
-        static get is() { return 'display-upload-file';}
+        static get is() { return 'display-image-upload';}
         static get properties() { return {
             /**
             * Loading indicates if the componant is loading
@@ -109,6 +109,6 @@ The following custom properties and mixins are available for styling:
         };
     }
 
-} window.customElements.define(DisplayUploadFile.is, DisplayUploadFile);
+} window.customElements.define(DisplayImageUpload.is, DisplayImageUpload);
 </script>
 </dom-module>
