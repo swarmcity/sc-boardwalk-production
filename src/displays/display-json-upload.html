@@ -38,17 +38,20 @@ The following custom properties and mixins are available for styling:
                 @apply --display-upload-container;
             }
             .container label {
-                @apply --display-upload-button;
+                @apply --big-btn
             }
-            .container img{
-                @apply --display-upload-preview;
+            .title{
+                color: var(--swarm-city-blue)
             }
+ 
         </style>
         
 
         <div class="container">
-            <img src="{{preview}}">  
-            <label><input type="file" on-change="_getFile"/></label>
+            <label>
+                <div class="title">select your account file</div>
+                <input type="file" on-change="_getFile"/>
+            </label>
         </div>
 
         </template>
