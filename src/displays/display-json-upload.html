@@ -94,10 +94,9 @@ The following custom properties and mixins are available for styling:
     }
 
     /**
-    * Converts afile to base 64 for transport
+    * Converts afile to JSON for transport
     * @param {file} file is a file with type of file
     */
-    
     _json(file) {
         let reader = new FileReader();
         reader.readAsText(file);
