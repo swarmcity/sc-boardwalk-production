@@ -73,8 +73,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 --paper-input-container-focus-color: var(--swarm-city-blue);
             }
 
-
-
             .disagree {
                 border-radius: 50%;
                 width: 76px;
@@ -135,19 +133,19 @@ This code may only be used under the license found at https://github.com/swarmci
                     * Entry and exit animation
                     */
                     animationConfig: {
-                        value: function () {
+                        value: function() {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: { duration: 300 },
+                                    timing: {duration: 300},
                                 },
                                 'exit': {
                                     name: 'fade-out-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: { duration: 300 },
+                                    timing: {duration: 300},
                                 },
                             };
                         },
