@@ -1,0 +1,162 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../redux-state.html">
+<!--
+    Displays and shared styles only
+-->
+<link rel="import" href="../shared-styles.html">
+<!--
+    Aimation pack, only load the animations you need for this page.
+-->
+
+<link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/web-animations.html">
+
+<dom-module id="page-stop-signup">
+<template>
+<!--
+    Page specific styles, if the style is used on more than one page, moveit to shared styles.
+-->
+<style include="shared-styles">
+    :host {
+        background-color: var(--swarm-city-blue);
+        height: 100vh;
+        display: block;
+        @apply --layout-horizontal;
+        @apply --layout-center-justified;
+        
+    }
+    .container{
+        max-width:400px;
+    }
+    .container div:nth-child(1){
+        color: var(--swarm-city-white);
+        text-align: center;
+        font-weight:800;
+        padding:175px 50px 20px 50px;
+        font-size: 35px;
+        line-height: 36px;
+    }
+    .container div:nth-child(2){
+        color: var(--swarm-city-white);
+        padding: 0px 50px 161px 50px;
+        text-align: center;
+        font-weight:200;
+        font-size: 12px;
+        line-height: 15px;
+    }
+    .container div:nth-child(3){
+        text-align:center;
+    }
+    .container div:nth-child(3) div{
+        @apply --big-btn;
+        color: var(--swarm-city-white);
+        margin: 0 auto;
+        margin-top:12px;
+    }
+
+    .container div:nth-child(3) div:active{
+        transform: scale(0.97,0.97);
+    }
+</style>
+<app-location route="{{route}}"></app-location>
+
+    <div class="container">
+
+        <div class="title">{{localize('Do you want to stop creating your account?')}}</div>
+        <div class="subtitle">{{localize('This can not be undone. All progress will be lost')}}</div>
+        <div class="buttons">
+
+        </div>
+            
+    </div>
+
+</template>
+
+<script>
+    class StopSignup extends new ReduxMixin(Polymer.mixinBehaviors([
+        Polymer.AppLocalizeBehavior,
+        Polymer.NeonAnimationRunnerBehavior,
+        Polymer.NeonAnimatableBehavior],
+        Polymer.Element
+    )) {
+    static get is() { return 'page-stop-signup'; }
+    static get properties() { return {
+            language: {
+                type: String,
+                statePath: 'language',
+            },
+            /**
+            * Path is the current or requested path
+            * @type {String}
+            */
+            path: {
+                type: String,
+                observer: '_path',
+            },
+            /**
+            * Entry and exit animation
+            */
+            animationConfig: {
+            value: function() {
+                return {
+                'entry': {
+                    name: 'fade-in-animation',
+                    node: this,
+                    nodeDelay: 300,
+                    timing: {duration: 300},
+                },
+                'exit': {
+                    name: 'fade-out-animation',
+                    node: this,
+                    nodeDelay: 300,
+                    timing: {duration: 300},
+                },
+                };
+            },
+            },
+        };
+    }
+    
+    connectedCallback() {
+        super.connectedCallback();
+        this.loadResources(this.resolveUrl('../text-translations.json'));
+    }
+    
+    /**
+    * takes the user to the hashtag list page
+    */
+    _create() {
+        this.path = 'choose-username/';
+    }
+    /**
+    * takes the user to the hashtag list page
+    */
+    _restore() {
+        this.path = 'restore-account/';
+    }
+
+    /**
+    * changes the current path
+    */
+    _path() {
+        if(this.path != null) {
+            this.set('route.path', this.path);
+        }
+        this.path = null;
+    }
+
+} window.customElements.define(StopSignup.is, StopSignup);
+</script>
+</dom-module>
