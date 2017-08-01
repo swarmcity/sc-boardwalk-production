@@ -49,8 +49,10 @@
         "Profile picture": "Profile picture",
         "choose an image file": "choose an image file",
         "skip for now": "skip for now",
-        "Choose a username": "Choose a username"
-    },    
+        "Choose a username": "Choose a username",
+        "Do you want to stop creating your account?": "Do you want to stop creating your account?",
+        "This can not be undone. All progress will be lost": "This can not be undone. All progress will be lost"
+    },
     "cn": {
         "language": "cn",
         "locale": "中文",
@@ -101,7 +103,9 @@
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
         "skip for now": "Awaiting Translation",
-        "Choose a username": "Awaiting Translation"
+        "Choose a username": "Awaiting Translation",
+        "Do you want to stop creating your account?": "Awaiting Translation",
+        "This can not be undone. All progress will be lost": "Awaiting Translation"
     },
     "fr": {
         "language": "fr",
@@ -153,8 +157,10 @@
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
         "skip for now": "Awaiting Translation",
-        "Choose a username": "Awaiting Translation"
-        },
+        "Choose a username": "Awaiting Translation",
+        "Do you want to stop creating your account?": "Awaiting Translation",
+        "This can not be undone. All progress will be lost": "Awaiting Translation"
+    },
     "nl": {
         "language": "nl",
         "locale": "Nederlands",
@@ -205,8 +211,10 @@
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
         "skip for now": "Awaiting Translation",
-        "Choose a username": "Awaiting Translation"
-        },
+        "Choose a username": "Awaiting Translation",
+        "Do you want to stop creating your account?": "Awaiting Translation",
+        "This can not be undone. All progress will be lost": "Awaiting Translation"
+    },
     "ru": {
         "language": "ru",
         "locale": "Pусский",
@@ -257,8 +265,10 @@
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
         "skip for now": "Awaiting Translation",
-        "Choose a username": "Awaiting Translation"
-        },
+        "Choose a username": "Awaiting Translation",
+        "Do you want to stop creating your account?": "Awaiting Translation",
+        "This can not be undone. All progress will be lost": "Awaiting Translation"
+    },
     "de": {
         "language": "de",
         "locale": "Deutsche",
@@ -309,8 +319,10 @@
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
         "skip for now": "Awaiting Translation",
-        "Choose a username": "Awaiting Translation"
-        },
+        "Choose a username": "Awaiting Translation",
+        "Do you want to stop creating your account?": "Awaiting Translation",
+        "This can not be undone. All progress will be lost": "Awaiting Translation"
+    },
     "es": {
         "language": "es",
         "locale": "Español",
@@ -361,6 +373,8 @@
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
         "skip for now": "Awaiting Translation",
-        "Choose a username": "Awaiting Translation"
-        }
+        "Choose a username": "Awaiting Translation",
+        "Do you want to stop creating your account?": "Awaiting Translation",
+        "This can not be undone. All progress will be lost": "Awaiting Translation"
+    }
 }
