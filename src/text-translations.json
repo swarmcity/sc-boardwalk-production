@@ -49,6 +49,7 @@
         "Profile picture": "Profile picture",
         "choose an image file": "choose an image file",
         "skip for now": "skip for now"
+        "Choose a username": "Choose a username"
     },    
     "cn": {
         "language": "cn",
@@ -100,6 +101,7 @@
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
         "skip for now": "Awaiting Translation"
+        "Choose a username": "Awaiting Translation"
     },
     "fr": {
         "language": "fr",
@@ -151,6 +153,7 @@
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
         "skip for now": "Awaiting Translation"
+        "Choose a username": "Awaiting Translation"
         },
     "nl": {
         "language": "nl",
@@ -202,6 +205,7 @@
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
         "skip for now": "Awaiting Translation"
+        "Choose a username": "Awaiting Translation"
         },
     "ru": {
         "language": "ru",
@@ -253,6 +257,7 @@
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
         "skip for now": "Awaiting Translation"
+        "Choose a username": "Awaiting Translation"
         },
     "de": {
         "language": "de",
@@ -304,6 +309,7 @@
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
         "skip for now": "Awaiting Translation"
+        "Choose a username": "Awaiting Translation"
         },
     "es": {
         "language": "es",
@@ -355,5 +361,6 @@
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
         "skip for now": "Awaiting Translation"
+        "Choose a username": "Awaiting Translation"
         }
 }
