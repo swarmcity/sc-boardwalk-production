@@ -48,7 +48,7 @@
         "Select your account file": "Select your account file",
         "Profile picture": "Profile picture",
         "choose an image file": "choose an image file",
-        "skip for now": "skip for now"
+        "skip for now": "skip for now",
         "Choose a username": "Choose a username"
     },    
     "cn": {
@@ -100,7 +100,7 @@
         "Select your account file": "Awaiting Translation",
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
-        "skip for now": "Awaiting Translation"
+        "skip for now": "Awaiting Translation",
         "Choose a username": "Awaiting Translation"
     },
     "fr": {
@@ -152,7 +152,7 @@
         "Select your account file": "Awaiting Translation",
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
-        "skip for now": "Awaiting Translation"
+        "skip for now": "Awaiting Translation",
         "Choose a username": "Awaiting Translation"
         },
     "nl": {
@@ -204,7 +204,7 @@
         "Select your account file": "Awaiting Translation",
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
-        "skip for now": "Awaiting Translation"
+        "skip for now": "Awaiting Translation",
         "Choose a username": "Awaiting Translation"
         },
     "ru": {
@@ -256,7 +256,7 @@
         "Select your account file": "Awaiting Translation",
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
-        "skip for now": "Awaiting Translation"
+        "skip for now": "Awaiting Translation",
         "Choose a username": "Awaiting Translation"
         },
     "de": {
@@ -308,7 +308,7 @@
         "Select your account file": "Awaiting Translation",
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
-        "skip for now": "Awaiting Translation"
+        "skip for now": "Awaiting Translation",
         "Choose a username": "Awaiting Translation"
         },
     "es": {
@@ -360,7 +360,7 @@
         "Select your account file": "Awaiting Translation",
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
-        "skip for now": "Awaiting Translation"
+        "skip for now": "Awaiting Translation",
         "Choose a username": "Awaiting Translation"
         }
 }
