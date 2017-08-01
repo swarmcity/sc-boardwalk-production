@@ -9,6 +9,8 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="../redux-state.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+
 <!--
     Displays and shared styles only
 -->
@@ -23,76 +25,73 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
-<dom-module id="page-new-here">
+<dom-module id="page-choose-username">
 <template>
 <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
 -->
 <style include="shared-styles">
     :host {
-        background-color: var(--swarm-city-blue);
-        height: 100vh;
         display: block;
         @apply --layout-horizontal;
         @apply --layout-center-justified;
-        
+    }
+    .close {
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        width: 20px;
+        height: 20px;
+        background: url('../../../images/swarm-city-sprite.png') -60px -84px;
+        cursor: pointer;
     }
     .container{
         max-width:400px;
     }
-    .container div:nth-child(1){
-        color: var(--swarm-city-white);
-        text-align: center;
-        font-weight:800;
-        padding:175px 50px 20px 50px;
-        font-size: 35px;
-        line-height: 36px;
-    }
-    .container div:nth-child(2){
-        color: var(--swarm-city-white);
-        padding: 0px 50px 161px 50px;
+    .title{
+        color: var(--grey-4);
+        padding: 221px 50px 50px 50px;
         text-align: center;
         font-weight:200;
-        font-size: 12px;
+        font-size: 16px;
         line-height: 15px;
     }
-    .container div:nth-child(3){
-        text-align:center:
+    .btn{
+        @apply --layout-horizontal;
+        @apply --layout-center-justified;
     }
-    .container div:nth-child(3) div{
-        @apply --big-btn;
-        color: var(--swarm-city-white);
-        margin: 0 auto;
-        margin-top:12px;
+    paper-input{
+        padding: 0 0 50px 0;
+        --paper-input-container-color: var(--swarm-city-blue);
+        --paper-input-container-focus-color: var(--swarm-city-blue);
     }
 
-    .container div:nth-child(3) div:active{
-        transform: scale(0.97,0.97);
+    .btn .agree {
+        @apply --agree-blue;
+
     }
 </style>
 <app-location route="{{route}}"></app-location>
 
+    <div class="close" on-click="_close"></div>
     <div class="container">
-
-        <div class="title">{{localize('You must bee new here')}}</div>
-        <div class="subtitle">{{localize('No account was found')}}</div>
-        <div class="buttons">
-                <div on-click="_create">{{localize('create account')}}</div>
-                <div on-click="_restore">{{localize('restore account')}}</div>
+        <div class="title">{{localize('Choose a username')}}</div>
+        <paper-input label=""></paper-input>
+        <div class="btn">
+            <div class="agree" on-click="_agree"></div>
         </div>
-            
     </div>
 
 </template>
 
 <script>
-    class MyNewHere extends new ReduxMixin(Polymer.mixinBehaviors([
+    class MyChooseUsername extends new ReduxMixin(Polymer.mixinBehaviors([
         Polymer.AppLocalizeBehavior,
         Polymer.NeonAnimationRunnerBehavior,
         Polymer.NeonAnimatableBehavior],
         Polymer.Element
     )) {
-    static get is() { return 'page-new-here'; }
+    static get is() { return 'page-choose-username'; }
     static get properties() { return {
             language: {
                 type: String,
@@ -134,20 +133,15 @@ This code may only be used under the license found at https://github.com/swarmci
         super.connectedCallback();
         this.loadResources(this.resolveUrl('../text-translations.json'));
     }
-    
-    /**
-    * takes the user to the hashtag list page
-    */
-    _create() {
-        this.path = 'choose-username/';
+    _close() {
+        this.path = 'restore-account//';
     }
     /**
     * takes the user to the hashtag list page
     */
-    _restore() {
-        this.path = 'restore-account/';
+    _agree() {
+        this.path = 'choose-avatar/';
     }
-
     /**
     * changes the current path
     */
@@ -158,6 +152,6 @@ This code may only be used under the license found at https://github.com/swarmci
         this.path = null;
     }
 
-} window.customElements.define(MyNewHere.is, MyNewHere);
+} window.customElements.define(MyChooseUsername.is, MyChooseUsername);
 </script>
 </dom-module>

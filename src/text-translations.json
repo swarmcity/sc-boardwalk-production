@@ -45,7 +45,8 @@
         "Paste your private key": "Paste your private key",
         "Private key": "private key?",
         "Restore your account file": "Restore your account file",
-        "Select your account file": "Select your account file"
+        "Select your account file": "Select your account file",
+        "Choose a username": "Choose a username"
     },    
     "cn": {
         "language": "cn",
@@ -93,7 +94,8 @@
         "Paste your private key": "Awaiting Translation",
         "Private key": "Awaiting Translation",
         "Restore your account file": "Awaiting Translation",
-        "Select your account file": "Awaiting Translation"
+        "Select your account file": "Awaiting Translation",
+        "Choose a username": "Awaiting Translation"
     },
     "fr": {
         "language": "fr",
@@ -141,7 +143,8 @@
         "Paste your private key": "Awaiting Translation",
         "Private key": "Awaiting Translation",
         "Restore your account file": "Awaiting Translation",
-        "Select your account file": "Awaiting Translation"
+        "Select your account file": "Awaiting Translation",
+        "Choose a username": "Awaiting Translation"
         },
     "nl": {
         "language": "nl",
@@ -189,7 +192,8 @@
         "Paste your private key": "Awaiting Translation",
         "Private key": "Awaiting Translation",
         "Restore your account file": "Awaiting Translation",
-        "Select your account file": "Awaiting Translation"
+        "Select your account file": "Awaiting Translation",
+        "Choose a username": "Awaiting Translation"
         },
     "ru": {
         "language": "ru",
@@ -237,7 +241,8 @@
         "Paste your private key": "Awaiting Translation",
         "Private key": "Awaiting Translation",
         "Restore your account file": "Awaiting Translation",
-        "Select your account file": "Awaiting Translation"
+        "Select your account file": "Awaiting Translation",
+        "Choose a username": "Awaiting Translation"
         },
     "de": {
         "language": "de",
@@ -285,7 +290,8 @@
         "Paste your private key": "Awaiting Translation",
         "Private key": "Awaiting Translation",
         "Restore your account file": "Awaiting Translation",
-        "Select your account file": "Awaiting Translation"
+        "Select your account file": "Awaiting Translation",
+        "Choose a username": "Awaiting Translation"
         },
     "es": {
         "language": "es",
@@ -333,6 +339,7 @@
         "Paste your private key": "Awaiting Translation",
         "Private key": "Awaiting Translation",
         "Restore your account file": "Awaiting Translation",
-        "Select your account file": "Awaiting Translation"
+        "Select your account file": "Awaiting Translation",
+        "Choose a username": "Awaiting Translation"
         }
 }
