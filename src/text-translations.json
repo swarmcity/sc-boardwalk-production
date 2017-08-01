@@ -46,6 +46,9 @@
         "Private key": "private key?",
         "Restore your account file": "Restore your account file",
         "Select your account file": "Select your account file",
+        "Profile picture": "Profile picture",
+        "choose an image file": "choose an image file",
+        "skip for now": "skip for now"
         "Choose a username": "Choose a username"
     },    
     "cn": {
@@ -95,6 +98,9 @@
         "Private key": "Awaiting Translation",
         "Restore your account file": "Awaiting Translation",
         "Select your account file": "Awaiting Translation",
+        "Profile picture": "Awaiting Translation",
+        "choose an image file": "Awaiting Translation",
+        "skip for now": "Awaiting Translation"
         "Choose a username": "Awaiting Translation"
     },
     "fr": {
@@ -144,6 +150,9 @@
         "Private key": "Awaiting Translation",
         "Restore your account file": "Awaiting Translation",
         "Select your account file": "Awaiting Translation",
+        "Profile picture": "Awaiting Translation",
+        "choose an image file": "Awaiting Translation",
+        "skip for now": "Awaiting Translation"
         "Choose a username": "Awaiting Translation"
         },
     "nl": {
@@ -193,6 +202,9 @@
         "Private key": "Awaiting Translation",
         "Restore your account file": "Awaiting Translation",
         "Select your account file": "Awaiting Translation",
+        "Profile picture": "Awaiting Translation",
+        "choose an image file": "Awaiting Translation",
+        "skip for now": "Awaiting Translation"
         "Choose a username": "Awaiting Translation"
         },
     "ru": {
@@ -242,6 +254,9 @@
         "Private key": "Awaiting Translation",
         "Restore your account file": "Awaiting Translation",
         "Select your account file": "Awaiting Translation",
+        "Profile picture": "Awaiting Translation",
+        "choose an image file": "Awaiting Translation",
+        "skip for now": "Awaiting Translation"
         "Choose a username": "Awaiting Translation"
         },
     "de": {
@@ -291,6 +306,9 @@
         "Private key": "Awaiting Translation",
         "Restore your account file": "Awaiting Translation",
         "Select your account file": "Awaiting Translation",
+        "Profile picture": "Awaiting Translation",
+        "choose an image file": "Awaiting Translation",
+        "skip for now": "Awaiting Translation"
         "Choose a username": "Awaiting Translation"
         },
     "es": {
@@ -340,6 +358,9 @@
         "Private key": "Awaiting Translation",
         "Restore your account file": "Awaiting Translation",
         "Select your account file": "Awaiting Translation",
+        "Profile picture": "Awaiting Translation",
+        "choose an image file": "Awaiting Translation",
+        "skip for now": "Awaiting Translation"
         "Choose a username": "Awaiting Translation"
         }
 }
