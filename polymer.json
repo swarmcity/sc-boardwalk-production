@@ -33,7 +33,7 @@
     "name": "production",
     "js": {"minify": true, "compile": true},
     "css": {"minify": true},
-    "html": {"minify": true},
+    "html": {"minify": false},
     "bundle": true,
     "addServiceWorker": true,
     "addPushManifest": true,
