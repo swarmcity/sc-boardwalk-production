@@ -51,7 +51,9 @@
         "skip for now": "skip for now",
         "Choose a username": "Choose a username",
         "Do you want to stop creating your account?": "Do you want to stop creating your account?",
-        "This can not be undone. All progress will be lost": "This can not be undone. All progress will be lost"
+        "This can not be undone. All progress will be lost": "This can not be undone. All progress will be lost",
+        "Choose another image file": "Choose another image file",
+        "Scroll to zoom - drag to move": "Scroll to zoom - drag to move"
     },
     "cn": {
         "language": "cn",
@@ -159,7 +161,9 @@
         "skip for now": "Awaiting Translation",
         "Choose a username": "Awaiting Translation",
         "Do you want to stop creating your account?": "Awaiting Translation",
-        "This can not be undone. All progress will be lost": "Awaiting Translation"
+        "This can not be undone. All progress will be lost": "Awaiting Translation",
+        "Choose another image file": "Awaiting Translation",
+        "Scroll to zoom - drag to move": "Awaiting Translation"
     },
     "nl": {
         "language": "nl",
@@ -213,7 +217,9 @@
         "skip for now": "Awaiting Translation",
         "Choose a username": "Awaiting Translation",
         "Do you want to stop creating your account?": "Awaiting Translation",
-        "This can not be undone. All progress will be lost": "Awaiting Translation"
+        "This can not be undone. All progress will be lost": "Awaiting Translation",
+        "Choose another image file": "Awaiting Translation",
+        "Scroll to zoom - drag to move": "Awaiting Translation"
     },
     "ru": {
         "language": "ru",
@@ -267,7 +273,9 @@
         "skip for now": "Awaiting Translation",
         "Choose a username": "Awaiting Translation",
         "Do you want to stop creating your account?": "Awaiting Translation",
-        "This can not be undone. All progress will be lost": "Awaiting Translation"
+        "This can not be undone. All progress will be lost": "Awaiting Translation",
+        "Choose another image file": "Awaiting Translation",
+        "Scroll to zoom - drag to move": "Awaiting Translation"
     },
     "de": {
         "language": "de",
@@ -321,7 +329,9 @@
         "skip for now": "Awaiting Translation",
         "Choose a username": "Awaiting Translation",
         "Do you want to stop creating your account?": "Awaiting Translation",
-        "This can not be undone. All progress will be lost": "Awaiting Translation"
+        "This can not be undone. All progress will be lost": "Awaiting Translation",
+        "Choose another image file": "Awaiting Translation",
+        "Scroll to zoom - drag to move": "Awaiting Translation"
     },
     "es": {
         "language": "es",
@@ -375,6 +385,8 @@
         "skip for now": "Awaiting Translation",
         "Choose a username": "Awaiting Translation",
         "Do you want to stop creating your account?": "Awaiting Translation",
-        "This can not be undone. All progress will be lost": "Awaiting Translation"
+        "This can not be undone. All progress will be lost": "Awaiting Translation",
+        "Choose another image file": "Awaiting Translation",
+        "Scroll to zoom - drag to move": "Awaiting Translation"
     }
 }
