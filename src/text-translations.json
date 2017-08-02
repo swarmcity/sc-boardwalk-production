@@ -53,7 +53,8 @@
         "Do you want to stop creating your account?": "Do you want to stop creating your account?",
         "This can not be undone. All progress will be lost": "This can not be undone. All progress will be lost",
         "Choose another image file": "Choose another image file",
-        "Scroll to zoom - drag to move": "Scroll to zoom - drag to move"
+        "Scroll to zoom - drag to move": "Scroll to zoom - drag to move",
+        "The next step is choosing a password. Choose a password with care." : "The next step is choosing a password. Choose a password with care."
     },
     "cn": {
         "language": "cn",
@@ -107,7 +108,8 @@
         "skip for now": "Awaiting Translation",
         "Choose a username": "Awaiting Translation",
         "Do you want to stop creating your account?": "Awaiting Translation",
-        "This can not be undone. All progress will be lost": "Awaiting Translation"
+        "This can not be undone. All progress will be lost": "Awaiting Translation",
+        "The next step is choosing a password. Choose a password with care." : "Awaiting Translation"
     },
     "fr": {
         "No account was found": "Aucun compte trouvé. Lorsque vous restaurez ou créez un nouveau compte, il est stocké localement sur votre machine.",
@@ -159,7 +161,8 @@
         "Find Swarm City on": "Retrouver Swarm City sur",
         "tell me more": "M'en dire plus",
         "world wide": "le monde entier",
-        "restore account": "Restaurer son compte"
+        "restore account": "Restaurer son compte",
+        "The next step is choosing a password. Choose a password with care." : "Awaiting Translation"
     },
     "nl": {
         "No account was found": "Er werd geen account gevonden. Maak een nieuw account aan of laadt een bestaand account op. Het wordt dan lokaal opgeslagen op uw toestel.",
@@ -211,7 +214,8 @@
         "Find Swarm City on": "Vind Swarm City op",
         "tell me more": "meer weten",
         "world wide": "wereldwijd",
-        "restore account": "herstel account"
+        "restore account": "herstel account",
+        "The next step is choosing a password. Choose a password with care." : "Awaiting Translation"
     },
     "ru": {
         "language": "ru",
@@ -267,7 +271,8 @@
         "Do you want to stop creating your account?": "Awaiting Translation",
         "This can not be undone. All progress will be lost": "Awaiting Translation",
         "Choose another image file": "Awaiting Translation",
-        "Scroll to zoom - drag to move": "Awaiting Translation"
+        "Scroll to zoom - drag to move": "Awaiting Translation",
+        "The next step is choosing a password. Choose a password with care." : "Awaiting Translation"
     },
     "de": {
         "No account was found": "Es wurde kein Konto gefunden. Wenn ein neues Konto erstellt oder ein bestehendes Konto wiederhergestellt wird, werden die Informationen auf deinem Gerät gespeichert. ",
@@ -319,7 +324,8 @@
         "Find Swarm City on": "Finde Swarm City auf",
         "tell me more": "Erzähl mir mehr",
         "world wide": "weltweit",
-        "restore account": "Kontowiederherstellung"
+        "restore account": "Kontowiederherstellung",
+        "The next step is choosing a password. Choose a password with care." : "Awaiting Translation"
     },
     "es": {
         "language": "es",
@@ -375,7 +381,8 @@
         "Do you want to stop creating your account?": "Awaiting Translation",
         "This can not be undone. All progress will be lost": "Awaiting Translation",
         "Choose another image file": "Awaiting Translation",
-        "Scroll to zoom - drag to move": "Awaiting Translation"
+        "Scroll to zoom - drag to move": "Awaiting Translation",
+        "The next step is choosing a password. Choose a password with care." : "Awaiting Translation"
     },
     "pl": {
         "No account was found": "Nie znaleziono konta. Kiedy przywracasz istniejące lub tworzysz nowe konto, jest ono zapisywane lokalnie na Twoim urządzeniu.",
@@ -427,7 +434,8 @@
         "Find Swarm City on": "Znajdziesz nas na",
         "tell me more": "Więcej",
         "world wide": "cały świat",
-        "restore account": "Przywróć konto"
+        "restore account": "Przywróć konto",
+        "The next step is choosing a password. Choose a password with care." : "Awaiting Translation"
     },
     "tr": {
         "No account was found": "Hesap bulunamadı. Eski hesabınız geri yüklediğinizde veya yeni bir hesap oluşturduğunuzda, hesap cihazınızda lokal olarak saklanır.",
@@ -479,6 +487,7 @@
         "Find Swarm City on": "Swarm City' e ulaşın ",
         "tell me more": "daha fazlasını anlat ",
         "world wide": "Dünya geneli",
-        "restore account": "Hesap geri yükle"
+        "restore account": "Hesap geri yükle",
+        "The next step is choosing a password. Choose a password with care." : "Awaiting Translation"
     }
 }
