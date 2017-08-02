@@ -26,9 +26,10 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-deal-btn">
     <template>
         <style include="shared-styles">
-            :host {
+             :host {
                 display: block;
             }
+
             .container {
                 @apply --display-deal-btn;
             }
@@ -56,6 +57,13 @@ The following custom properties and mixins are available for styling:
                         notify: true,
                     },
                     /**
+                    * route data represents the curent route
+                    * @type {String}
+                    */
+                    routeData: {
+                        type: String,
+                    },
+                    /**
                     * Path signlas to the parent to change the path
                     * @type {Boolean}
                     */
@@ -67,36 +75,38 @@ The following custom properties and mixins are available for styling:
                 };
             }
 
-    connectedCallback() {
-        super.connectedCallback();
-        this._getUser();
-    }
-
-    /**
-    * Get the user
-    */
-    _getUser() {
-        this.$.storage.accountExists()
-        .then((account) => {
-            if (account.username && account.address && account.avatar) {
-                this.username = account.username;
-                this.completeAccount = true;
+            connectedCallback() {
+                super.connectedCallback();
+                this._getUser();
             }
-        });
-    }
 
-    /**
-    * Eithe rgo to the new here or new deal page depending if the user has a
-    * complete acocunt.
-    */
-    _next() {
-        if(!this.completeAccount) {
-            this.path = 'new-here/';
-        } else {
-            this.path = 'new-deal/';
-        }
-    }
+            /**
+            * Get the user
+            */
+            _getUser() {
+                this.$.storage.accountExists()
+                    .then((account) => {
+                        if (account.username && account.address && account.avatar) {
+                            this.username = account.username;
+                            this.completeAccount = true;
+                        }
+                    });
+            }
 
-} window.customElements.define(DisplayDealBtn.is, DisplayDealBtn);
-</script>
+            /**
+            * Eithe rgo to the new here or new deal page depending if the user has a
+            * complete acocunt.
+            */
+            _next() {
+                if (!this.completeAccount) {
+                    sessionStorage.setItem('hashtagID', this.routeData.page);
+                    this.path = 'new-here/';
+                } else {
+                    this.path = 'new-deal/';
+                }
+            }
+
+        } window.customElements.define(DisplayDealBtn.is, DisplayDealBtn);
+
+    </script>
 </dom-module>
