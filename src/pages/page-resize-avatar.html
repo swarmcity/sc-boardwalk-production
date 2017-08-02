@@ -82,6 +82,7 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .buttons {
+                margin-top: 55px;
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
             }
@@ -89,20 +90,45 @@ This code may only be used under the license found at https://github.com/swarmci
             .agree {
                 @apply --agree-blue;
             }
+
+            .avatarcontainer {
+                margin-top: 87px;
+                height: 235px;
+                width: 235px;
+                background-color: #333333;
+            }
+
+            .blacktext {
+                color: #333333;
+                font-size: 12px;
+                font-weight: bold;
+                line-height: 22px;
+                text-align: center;
+            }
+
+            .bluetext {
+                margin-top: 98px;
+                color: #24B1FF;
+                font-size: 12px;
+                font-weight: bold;
+                line-height: 22px;
+                text-align: center;
+                cursor: pointer;
+                text-decoration: underline;
+                text-decoration-style: dotted;
+            }
         </style>
         <app-location route="{{route}}"></app-location>
 
         <div class="close" on-click="_close"></div>
         <div class="container">
+            <div class="avatarcontainer"></div>
             <div class="blacktext">{{localize('Scroll to zoom - drag to move')}}</div>
             <div class="buttons">
                 <div class="disagree" on-click="_btnClickDisagree"></div>
                 <div class="agree" on-click="_btnClickAgree"></div>
             </div>
-
-            <div class="bluetext">{{localize('Choose another image file')}}</div>
-
-
+            <div class="bluetext" on-click="_previous">{{localize('Choose another image file')}}</div>
         </div>
 
     </template>
@@ -161,10 +187,22 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = 'stop-signup/';
             }
             /**
-            * changes the current path on skip
-            */
-            _skip() {
-                this.path = 'resize-avatar/';
+            *changes the current path to choose avatar
+            **/
+            _btnClickDisagree() {
+                this.path = 'choose-avatar/';
+            }
+            /**
+            *changes the current path to password warning
+            **/
+            _btnClickAgree() {
+                this.path = 'password-warning/';
+            }
+            /**
+            *changes the current path to previous
+            **/
+            _previous() {
+                window.history.back();
             }
             /**
             * changes the current path
@@ -176,8 +214,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
 
-
         } window.customElements.define(MyResizeAvatar.is, MyResizeAvatar);
-
     </script>
 </dom-module>
