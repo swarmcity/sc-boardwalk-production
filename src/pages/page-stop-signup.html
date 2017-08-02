@@ -23,7 +23,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
-<dom-module id="page-new-here">
+<dom-module id="page-stop-signup">
     <template>
         <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
@@ -41,7 +41,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 max-width: 400px;
             }
 
-            .container div:nth-child(1) {
+            .title {
                 color: var(--swarm-city-white);
                 text-align: center;
                 font-weight: 800;
@@ -50,63 +50,53 @@ This code may only be used under the license found at https://github.com/swarmci
                 line-height: 36px;
             }
 
-            .container div:nth-child(2) {
+            .subtitle {
                 color: var(--swarm-city-white);
                 padding: 0px 50px 161px 50px;
                 text-align: center;
                 font-weight: 200;
-                font-size: 12px;
+                font-size: 13px;
                 line-height: 15px;
             }
 
-            .container div:nth-child(3) {
-                text-align: center;
-            }
-
-            .container div:nth-child(3) div {
-                @apply --big-btn;
-                color: var(--swarm-city-white);
-                margin: 0 auto;
-                margin-top: 12px;
-            }
-
-            .container div:nth-child(3) div:active {
-                transform: scale(0.97, 0.97);
-            }
-
-            .close {
-                position: fixed;
-                top: 18px;
-                right: 18px;
-                width: 20px;
-                height: 20px;
-                background: url('../../../images/swarm-city-sprite.png') -60px -84px;
+            .disagree {
+                border-radius: 50%;
+                width: 76px;
+                height: 76px;
+                background: url('../../../images/swarm-city-sprite.png') -688px -63px;
                 cursor: pointer;
+            }
+
+            .buttons {
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+            }
+
+            .agree {
+                @apply --agree-blue;
             }
         </style>
         <app-location route="{{route}}"></app-location>
 
         <div class="container">
 
-            <div class="title">{{localize('You must be new here')}}</div>
-            <div class="subtitle">{{localize('No account was found')}}</div>
+            <div class="title">{{localize('Do you want to stop creating your account?')}}</div>
+            <div class="subtitle">{{localize('This can not be undone. All progress will be lost')}}</div>
             <div class="buttons">
-                <div on-click="_create">{{localize('create account')}}</div>
-                <div on-click="_restore">{{localize('restore account')}}</div>
+                <div class="disagree" on-click="_btnClickDisagree"></div>
+                <div class="agree" on-click="_btnClickAgree"></div>
             </div>
-            <div class="close" on-click="_close"></div>
-        </div>
 
     </template>
 
     <script>
-        class MyNewHere extends new ReduxMixin(Polymer.mixinBehaviors([
+        class StopSignup extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
             Polymer.NeonAnimationRunnerBehavior,
             Polymer.NeonAnimatableBehavior],
             Polymer.Element
         )) {
-            static get is() { return 'page-new-here'; }
+            static get is() { return 'page-stop-signup'; }
             static get properties() {
                 return {
                     language: {
@@ -151,22 +141,18 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             /**
-            * takes the user to the hashtag list page
-            */
-            _create() {
-                this.path = 'choose-username/';
-            }
-            /**
             * takes the user to the previous page
             */
-            _close() {
-                this.path = 'stop-signup/';
+            _btnClickDisagree() {
+                window.history.back();
             }
+
             /**
             * takes the user to the hashtag list page
             */
-            _restore() {
-                this.path = 'restore-account/';
+            _btnClickAgree() {
+                this.path = 'hashtag/' + sessionStorage.getItem('hashtagID');
+                sessionStorage.clear();
             }
 
             /**
@@ -179,6 +165,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
 
-        } window.customElements.define(MyNewHere.is, MyNewHere);
+        } window.customElements.define(StopSignup.is, StopSignup);
     </script>
 </dom-module>
