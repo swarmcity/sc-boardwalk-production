@@ -151,7 +151,8 @@ This code may only be used under the license found at https://github.com/swarmci
             * takes the user to the hashtag list page
             */
             _btnClickAgree() {
-                this.path = 'hashtag-list/';
+                this.path = 'hashtag/' + sessionStorage.getItem('hashtagID');
+                sessionStorage.clear();
             }
 
             /**
