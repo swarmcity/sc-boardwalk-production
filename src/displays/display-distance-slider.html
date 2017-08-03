@@ -200,7 +200,7 @@ The following custom properties and mixins are available for styling:
             }
 
             /**
-            * Show and hode the slider or redirect to location
+            * Show and hide the slider or redirect to location
             */
             _toggleSlider() {
                 this.$.storage.accountExists()
@@ -212,7 +212,10 @@ The following custom properties and mixins are available for styling:
                         }
                     });
             }
-            _routeChanger() {
+            /**
+            * See if location has been added on route change
+            */
+            _routeChanged() {
                 if (this.route.path == '/hashtag-list/') {
                     this.$.storage.accountExists()
                     .then((account) => {
