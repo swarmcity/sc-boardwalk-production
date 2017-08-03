@@ -119,6 +119,14 @@ The following custom properties and mixins are available for styling:
                         notify: true,
                     },
                     /**
+                    * Route represents the current route
+                    * @type {Object}
+                    */
+                    route :{
+                        type: Object,
+                        observer: '_routeChanger',
+                    },
+                    /**
                     * Value is the value of the slider
                     * @type {Number}
                     */
@@ -149,12 +157,6 @@ The following custom properties and mixins are available for styling:
             connectedCallback() {
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
-                this.$.storage.accountExists()
-                    .then((account) => {
-                        if (account.location) {
-                            this.showSlider = !this.showSlider;
-                        }
-                    });
             }
 
             /**
@@ -210,7 +212,17 @@ The following custom properties and mixins are available for styling:
                         }
                     });
             }
-
+            _routeChanger() {
+                console.log(this.route);
+                if (this.route.path == '/hashtag-list/') {
+                    this.$.storage.accountExists()
+                    .then((account) => {
+                        if (account.location) {
+                            this.showSlider = !this.showSlider;
+                        }
+                    });
+                }
+            }
         } window.customElements.define(DisplayDistanceSlider.is, DisplayDistanceSlider);
 
     </script>
