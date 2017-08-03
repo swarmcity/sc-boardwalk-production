@@ -122,7 +122,7 @@ The following custom properties and mixins are available for styling:
                     * Route represents the current route
                     * @type {Object}
                     */
-                    route :{
+                    route: {
                         type: Object,
                         observer: '_routeChanger',
                     },
@@ -213,7 +213,6 @@ The following custom properties and mixins are available for styling:
                     });
             }
             _routeChanger() {
-                console.log(this.route);
                 if (this.route.path == '/hashtag-list/') {
                     this.$.storage.accountExists()
                     .then((account) => {
@@ -224,6 +223,5 @@ The following custom properties and mixins are available for styling:
                 }
             }
         } window.customElements.define(DisplayDistanceSlider.is, DisplayDistanceSlider);
-
     </script>
 </dom-module>
