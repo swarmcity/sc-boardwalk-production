@@ -133,11 +133,14 @@ This code may only be used under the license found at https://github.com/swarmci
         super.connectedCallback();
         this.loadResources(this.resolveUrl('../text-translations.json'));
     }
+    /**
+    * takes the user to page-stop-signup
+    */
     _close() {
         this.path = 'stop-signup/';
     }
     /**
-    * takes the user to the hashtag list page
+    * takes the user to the next page in user creation
     */
     _agree() {
         this.path = 'choose-avatar/';
