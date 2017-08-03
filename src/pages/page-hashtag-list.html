@@ -45,13 +45,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 cursor: pointer;
             }
         </style>
-        
-        <app-location route="{{route}}"></app-location>
-        
+        <app-location route="{{route}}"></app-location>      
         <div class="container">
             <display-my-info></display-my-info>
             <div class="back" on-click="_back"></div>
-            <display-distance-slider range="{{range}}" path="{{path}}"></display-distance-slider>
+            <display-distance-slider range="{{range}}" route="{{route}}" path="{{path}}"></display-distance-slider>
             <display-hashtag-list range="[[range]]" path="{{path}}"></display-hashtag-list>
         </div>
 
