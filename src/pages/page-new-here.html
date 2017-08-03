@@ -24,140 +24,161 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
 <dom-module id="page-new-here">
-<template>
-<!--
+    <template>
+        <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
 -->
-<style include="shared-styles">
-    :host {
-        background-color: var(--swarm-city-blue);
-        height: 100vh;
-        display: block;
-        @apply --layout-horizontal;
-        @apply --layout-center-justified;
-        
-    }
-    .container{
-        max-width:400px;
-    }
-    .container div:nth-child(1){
-        color: var(--swarm-city-white);
-        text-align: center;
-        font-weight:800;
-        padding:175px 50px 20px 50px;
-        font-size: 35px;
-        line-height: 36px;
-    }
-    .container div:nth-child(2){
-        color: var(--swarm-city-white);
-        padding: 0px 50px 161px 50px;
-        text-align: center;
-        font-weight:200;
-        font-size: 12px;
-        line-height: 15px;
-    }
-    .container div:nth-child(3){
-        text-align:center:
-    }
-    .container div:nth-child(3) div{
-        @apply --big-btn;
-        color: var(--swarm-city-white);
-        margin: 0 auto;
-        margin-top:12px;
-    }
+        <style include="shared-styles">
+             :host {
+                background-color: var(--swarm-city-blue);
+                height: 100vh;
+                display: block;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+            }
 
-    .container div:nth-child(3) div:active{
-        transform: scale(0.97,0.97);
-    }
-</style>
-<app-location route="{{route}}"></app-location>
+            .container {
+                max-width: 400px;
+            }
 
-    <div class="container">
+            .container div:nth-child(1) {
+                color: var(--swarm-city-white);
+                text-align: center;
+                font-weight: 800;
+                padding: 175px 50px 20px 50px;
+                font-size: 35px;
+                line-height: 36px;
+            }
 
-        <div class="title">{{localize('You must bee new here')}}</div>
-        <div class="subtitle">{{localize('No account was found')}}</div>
-        <div class="buttons">
+            .container div:nth-child(2) {
+                color: var(--swarm-city-white);
+                padding: 0px 50px 161px 50px;
+                text-align: center;
+                font-weight: 200;
+                font-size: 12px;
+                line-height: 15px;
+            }
+
+            .container div:nth-child(3) {
+                text-align: center;
+            }
+
+            .container div:nth-child(3) div {
+                @apply --big-btn;
+                color: var(--swarm-city-white);
+                margin: 0 auto;
+                margin-top: 12px;
+            }
+
+            .container div:nth-child(3) div:active {
+                transform: scale(0.97, 0.97);
+            }
+
+            .close {
+                position: fixed;
+                top: 18px;
+                right: 18px;
+                width: 20px;
+                height: 20px;
+                background: url('../../../images/swarm-city-sprite.png') -60px -84px;
+                cursor: pointer;
+            }
+        </style>
+        <app-location route="{{route}}"></app-location>
+
+        <div class="container">
+
+            <div class="title">{{localize('You must be new here')}}</div>
+            <div class="subtitle">{{localize('No account was found')}}</div>
+            <div class="buttons">
                 <div on-click="_create">{{localize('create account')}}</div>
                 <div on-click="_restore">{{localize('restore account')}}</div>
+            </div>
+            <div class="close" on-click="_close"></div>
         </div>
-            
-    </div>
 
-</template>
+    </template>
 
-<script>
-    class MyNewHere extends new ReduxMixin(Polymer.mixinBehaviors([
-        Polymer.AppLocalizeBehavior,
-        Polymer.NeonAnimationRunnerBehavior,
-        Polymer.NeonAnimatableBehavior],
-        Polymer.Element
-    )) {
-    static get is() { return 'page-new-here'; }
-    static get properties() { return {
-            language: {
-                type: String,
-                statePath: 'language',
-            },
-            /**
-            * Path is the current or requested path
-            * @type {String}
-            */
-            path: {
-                type: String,
-                observer: '_path',
-            },
-            /**
-            * Entry and exit animation
-            */
-            animationConfig: {
-            value: function() {
+    <script>
+        class MyNewHere extends new ReduxMixin(Polymer.mixinBehaviors([
+            Polymer.AppLocalizeBehavior,
+            Polymer.NeonAnimationRunnerBehavior,
+            Polymer.NeonAnimatableBehavior],
+            Polymer.Element
+        )) {
+            static get is() { return 'page-new-here'; }
+            static get properties() {
                 return {
-                'entry': {
-                    name: 'fade-in-animation',
-                    node: this,
-                    nodeDelay: 300,
-                    timing: {duration: 300},
-                },
-                'exit': {
-                    name: 'fade-out-animation',
-                    node: this,
-                    nodeDelay: 300,
-                    timing: {duration: 300},
-                },
+                    language: {
+                        type: String,
+                        statePath: 'language',
+                    },
+                    /**
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
+                    path: {
+                        type: String,
+                        observer: '_path',
+                    },
+                    /**
+                    * Entry and exit animation
+                    */
+                    animationConfig: {
+                        value: function() {
+                            return {
+                                'entry': {
+                                    name: 'fade-in-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {duration: 300},
+                                },
+                                'exit': {
+                                    name: 'fade-out-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {duration: 300},
+                                },
+                            };
+                        },
+                    },
                 };
-            },
-            },
-        };
-    }
-    
-    connectedCallback() {
-        super.connectedCallback();
-        this.loadResources(this.resolveUrl('../text-translations.json'));
-    }
-    
-    /**
-    * takes the user to the next page in user creation
-    */
-    _create() {
-        this.path = 'choose-username/';
-    }
-    /**
-    * takes the user to the hashtag list page
-    */
-    _restore() {
-        this.path = 'restore-account/';
-    }
+            }
 
-    /**
-    * changes the current path
-    */
-    _path() {
-        if(this.path != null) {
-            this.set('route.path', this.path);
-        }
-        this.path = null;
-    }
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
 
-} window.customElements.define(MyNewHere.is, MyNewHere);
-</script>
+            /**
+            * takes the user to the next page in user creation
+            */
+            _create() {
+                this.path = 'choose-username/';
+            }
+            /**
+            * takes the user to the previous page
+            */
+            _close() {
+                this.path = 'stop-signup/';
+            }
+            /**
+            * takes the user to the hashtag list page
+            */
+            _restore() {
+                this.path = 'restore-account/';
+            }
+
+            /**
+            * changes the current path
+            */
+            _path() {
+                if (this.path != null) {
+                    this.set('route.path', this.path);
+                }
+                this.path = null;
+            }
+
+        } window.customElements.define(MyNewHere.is, MyNewHere);
+    </script>
 </dom-module>
