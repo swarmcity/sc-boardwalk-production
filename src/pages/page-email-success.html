@@ -70,7 +70,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 text-align: center;
                 display: block;
                 border: none;
-                font-size: 15px;
+                
                 cursor: pointer;
                 box-sizing: border-box;
                 padding: 20px;
@@ -85,9 +85,10 @@ This code may only be used under the license found at https://github.com/swarmci
                 margin: 180px auto 0;
                 color: #000000;
                 font-size: 18px;
-                font-weight: bold;
+
                 text-align: center;
             }
+
             .title {
                 margin-top: 148px;
                 color: #24B1FF;
@@ -95,12 +96,17 @@ This code may only be used under the license found at https://github.com/swarmci
                 font-weight: bold;
                 text-align: center;
             }
+
             .link {
                 color: var(--swarm-city-blue);
                 margin-top: 20px;
                 font-weight: bold;
                 text-align: center;
                 cursor: pointer;
+            }
+
+            .bold {
+                font-weight: bold;
             }
         </style>
 
@@ -109,7 +115,7 @@ This code may only be used under the license found at https://github.com/swarmci
         <div class="container">
             <div class="title">{{localize('Success!')}}</div>
             <div class="greytext">{{localize('Your account file combined with your password will always give you access to your SWT balance.')}}</div>
-            <div class="btn" on-click="_enter">{{localize('enter swarm.city')}}</div>
+            <div class="btn" on-click="_enter">{{localize('enter')}} <span class="bold">swarm.city</span></div>
             <div class="link">{{localize('convert my ARC')}}</div>
         </div>
 
@@ -144,7 +150,7 @@ This code may only be used under the license found at https://github.com/swarmci
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
