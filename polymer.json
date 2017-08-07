@@ -20,7 +20,7 @@
     "src/pages/page-account-complete.html",
     "src/pages/page-make-backup.html",
     "src/pages/page-my-keys.html",
-    "src/pages/page-show-private-key.html"
+    "src/pages/page-email-success.html"
   ],
   "sources": [
     "src/**/*",
