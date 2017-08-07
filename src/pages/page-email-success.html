@@ -55,8 +55,8 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .greytext {
-                width: 230px;
-                margin: 136px auto 75px;
+                width: 280px;
+                margin: 16px auto 50px;
                 color: #333333;
                 font-size: 16px;
                 font-weight: 300;
@@ -82,18 +82,24 @@ This code may only be used under the license found at https://github.com/swarmci
                 -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
                 overflow: hidden;
                 color: var(--swarm-city-black);
-                margin: 40px auto;
+                margin: 180px auto 0;
                 color: #000000;
                 font-size: 18px;
                 font-weight: bold;
                 text-align: center;
             }
-
-            .link {
-                color: var(--swarm-city-blue);
+            .title {
+                margin-top: 148px;
+                color: #24B1FF;
+                font-size: 35px;
                 font-weight: bold;
                 text-align: center;
-                margin: 67px;
+            }
+            .link {
+                color: var(--swarm-city-blue);
+                margin-top: 20px;
+                font-weight: bold;
+                text-align: center;
                 cursor: pointer;
             }
         </style>
@@ -101,10 +107,10 @@ This code may only be used under the license found at https://github.com/swarmci
         <app-location route="{{route}}"></app-location>
         <div class="close" on-click="_close"></div>
         <div class="container">
-            <div class="greytext">{{localize('Email the account file to yourself or choose the download option to start a direct download.')}}</div>
-            <div class="btn" on-click="_mail">{{localize('email my account file')}}</div>
-            <div class="btn" on-click="_download">{{localize('download my account file')}}</div>
-            <div class="link" on-click="_toKeys">{{localize('show my keys')}}</div>
+            <div class="title">{{localize('Success!')}}</div>
+            <div class="greytext">{{localize('Your account file combined with your password will always give you access to your SWT balance.')}}</div>
+            <div class="btn" on-click="_enter">{{localize('enter swarm.city')}}</div>
+            <div class="link">{{localize('convert my ARC')}}</div>
         </div>
 
     </template>
