@@ -1,0 +1,170 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../redux-state.html">
+<!--
+    Displays and shared styles only
+-->
+<link rel="import" href="../shared-styles.html">
+<!--
+    Aimation pack, only load the animations you need for this page.
+-->
+
+<link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/web-animations.html">
+
+<dom-module id="page-stop-signup">
+    <template>
+        <!--
+    Page specific styles, if the style is used on more than one page, moveit to shared styles.
+-->
+        <style include="shared-styles">
+             :host {
+                background-color: var(--swarm-city-blue);
+                height: 100vh;
+                display: block;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+            }
+
+            .container {
+                max-width: 400px;
+            }
+
+            .title {
+                color: var(--swarm-city-white);
+                text-align: center;
+                font-weight: 800;
+                padding: 175px 50px 20px 50px;
+                font-size: 35px;
+                line-height: 36px;
+            }
+
+            .subtitle {
+                color: var(--swarm-city-white);
+                padding: 0px 50px 161px 50px;
+                text-align: center;
+                font-weight: 200;
+                font-size: 13px;
+                line-height: 15px;
+            }
+
+            .disagree {
+                border-radius: 50%;
+                width: 76px;
+                height: 76px;
+                background: url('../../../images/swarm-city-sprite.png') -688px -63px;
+                cursor: pointer;
+            }
+
+            .buttons {
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+            }
+
+            .agree {
+                @apply --agree-blue;
+            }
+        </style>
+        <app-location route="{{route}}"></app-location>
+
+        <div class="container">
+
+            <div class="title">{{localize('Do you want to stop creating your account?')}}</div>
+            <div class="subtitle">{{localize('This can not be undone. All progress will be lost')}}</div>
+            <div class="buttons">
+                <div class="disagree" on-click="_btnClickDisagree"></div>
+                <div class="agree" on-click="_btnClickAgree"></div>
+            </div>
+
+    </template>
+
+    <script>
+        class StopSignup extends new ReduxMixin(Polymer.mixinBehaviors([
+            Polymer.AppLocalizeBehavior,
+            Polymer.NeonAnimationRunnerBehavior,
+            Polymer.NeonAnimatableBehavior],
+            Polymer.Element
+        )) {
+            static get is() { return 'page-stop-signup'; }
+            static get properties() {
+                return {
+                    language: {
+                        type: String,
+                        statePath: 'language',
+                    },
+                    /**
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
+                    path: {
+                        type: String,
+                        observer: '_path',
+                    },
+                    /**
+                    * Entry and exit animation
+                    */
+                    animationConfig: {
+                        value: function() {
+                            return {
+                                'entry': {
+                                    name: 'fade-in-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {duration: 300},
+                                },
+                                'exit': {
+                                    name: 'fade-out-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {duration: 300},
+                                },
+                            };
+                        },
+                    },
+                };
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
+
+            /**
+            * takes the user to the previous page
+            */
+            _btnClickDisagree() {
+                window.history.back();
+            }
+
+            /**
+            * takes the user to the hashtag list page
+            */
+            _btnClickAgree() {
+                this.path = 'hashtag/' + sessionStorage.getItem('hashtagID');
+                sessionStorage.clear();
+            }
+
+            /**
+            * changes the current path
+            */
+            _path() {
+                if (this.path != null) {
+                    this.set('route.path', this.path);
+                }
+                this.path = null;
+            }
+
+        } window.customElements.define(StopSignup.is, StopSignup);
+    </script>
+</dom-module>
