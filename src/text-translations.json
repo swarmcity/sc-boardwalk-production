@@ -79,7 +79,8 @@
         "Success!": "Success!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Your account file combined with your password will always give you access to your SWT balance.",
         "enter": "enter",
-        "convert my ARC": "convert my ARC"
+        "convert my ARC": "convert my ARC",
+        "Youve downloaded your account file.": "You've downloaded your account file."
     },
     "cn": {
         "language": "cn",
@@ -159,7 +160,8 @@
         "Success!": "Awaiting Translation!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
         "enter": "Awaiting Translation",
-        "convert my ARC": "Awaiting Translation"
+        "convert my ARC": "Awaiting Translation",
+        "Youve downloaded your account file.": "Awaiting Translation"
     },
     "fr": {
         "No account was found": "Aucun compte trouvé. Lorsque vous restaurez ou créez un nouveau compte, il est stocké localement sur votre machine.",
@@ -236,7 +238,8 @@
         "Success!": "Awaiting Translation!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
         "enter": "Awaiting Translation",
-        "convert my ARC": "Awaiting Translation"
+        "convert my ARC": "Awaiting Translation",
+        "Youve downloaded your account file.": "Awaiting Translation"
     },
     "nl": {
         "No account was found": "Er werd geen account gevonden. Maak een nieuw account aan of laadt een bestaand account op. Het wordt dan lokaal opgeslagen op uw toestel.",
@@ -313,7 +316,8 @@
         "Success!": "Awaiting Translation!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
         "enter": "Awaiting Translation",
-        "convert my ARC": "Awaiting Translation"
+        "convert my ARC": "Awaiting Translation",
+        "Youve downloaded your account file.": "Awaiting Translation"
     },
     "ru": {
         "language": "ru",
@@ -394,7 +398,8 @@
         "Success!": "Awaiting Translation!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
         "enter": "Awaiting Translation",
-        "convert my ARC": "Awaiting Translation"
+        "convert my ARC": "Awaiting Translation",
+        "Youve downloaded your account file.": "Awaiting Translation"
     },
     "de": {
         "No account was found": "Es wurde kein Konto gefunden. Wenn ein neues Konto erstellt oder ein bestehendes Konto wiederhergestellt wird, werden die Informationen auf deinem Gerät gespeichert. ",
@@ -471,7 +476,8 @@
         "Success!": "Awaiting Translation!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
         "enter": "Awaiting Translation",
-        "convert my ARC": "Awaiting Translation"
+        "convert my ARC": "Awaiting Translation",
+        "Youve downloaded your account file.": "Awaiting Translation"
     },
     "es": {
         "language": "es",
@@ -552,7 +558,8 @@
         "Success!": "Awaiting Translation!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
         "enter": "Awaiting Translation",
-        "convert my ARC": "Awaiting Translation"
+        "convert my ARC": "Awaiting Translation",
+        "Youve downloaded your account file.": "Awaiting Translation"
     },
     "pl": {
         "No account was found": "Nie znaleziono konta. Kiedy przywracasz istniejące lub tworzysz nowe konto, jest ono zapisywane lokalnie na Twoim urządzeniu.",
@@ -629,7 +636,8 @@
         "Success!": "Awaiting Translation!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
         "enter": "Awaiting Translation",
-        "convert my ARC": "Awaiting Translation"
+        "convert my ARC": "Awaiting Translation",
+        "Youve downloaded your account file.": "Awaiting Translation"
     },
     "tr": {
         "No account was found": "Hesap bulunamadı. Eski hesabınız geri yüklediğinizde veya yeni bir hesap oluşturduğunuzda, hesap cihazınızda lokal olarak saklanır.",
@@ -706,6 +714,7 @@
         "Success!": "Awaiting Translation!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
         "enter": "Awaiting Translation",
-        "convert my ARC": "Awaiting Translation"
+        "convert my ARC": "Awaiting Translation",
+        "Youve downloaded your account file.": "Awaiting Translation"
     }
 }
