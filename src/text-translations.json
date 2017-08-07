@@ -55,7 +55,11 @@
         "Choose another image file": "Choose another image file",
         "Scroll to zoom - drag to move": "Scroll to zoom - drag to move",
         "The next step is choosing a password. Choose a password with care." : "The next step is choosing a password. Choose a password with care.",
-        "There is no password recovery available in Swarm City." : "There is no password recovery available in Swarm City."
+        "There is no password recovery available in Swarm City." : "There is no password recovery available in Swarm City.",
+        "Choose a password" : "Choose a password",
+        "password mismatch?" : "password mismatch?",
+        "password?": "password?",
+        "Confirm password": "Confirm password"
     },
     "cn": {
         "language": "cn",
@@ -111,7 +115,11 @@
         "Do you want to stop creating your account?": "Awaiting Translation",
         "This can not be undone. All progress will be lost": "Awaiting Translation",
         "The next step is choosing a password. Choose a password with care." : "Awaiting Translation",
-        "There is no password recovery available in Swarm City." : "Awaiting Translation"
+        "There is no password recovery available in Swarm City." : "Awaiting Translation",
+        "Choose a password" : "Awaiting Translation",
+        "password mismatch?" : "Awaiting Translation",
+        "password?": "Awaiting Translation",
+        "Confirm password": "Awaiting Translation"
     },
     "fr": {
         "No account was found": "Aucun compte trouvé. Lorsque vous restaurez ou créez un nouveau compte, il est stocké localement sur votre machine.",
@@ -165,7 +173,11 @@
         "world wide": "le monde entier",
         "restore account": "Restaurer son compte",
         "The next step is choosing a password. Choose a password with care." : "Awaiting Translation",
-        "There is no password recovery available in Swarm City." : "Awaiting Translation"
+        "There is no password recovery available in Swarm City." : "Awaiting Translation",
+        "Choose a password" : "Awaiting Translation",
+        "password mismatch?" : "Awaiting Translation",
+        "password?": "Awaiting Translation",
+        "Confirm password": "Awaiting Translation"
     },
     "nl": {
         "No account was found": "Er werd geen account gevonden. Maak een nieuw account aan of laadt een bestaand account op. Het wordt dan lokaal opgeslagen op uw toestel.",
@@ -219,7 +231,11 @@
         "world wide": "wereldwijd",
         "restore account": "herstel account",
         "The next step is choosing a password. Choose a password with care." : "Awaiting Translation",
-        "There is no password recovery available in Swarm City." : "Awaiting Translation"
+        "There is no password recovery available in Swarm City." : "Awaiting Translation",
+        "Choose a password" : "Awaiting Translation",
+        "password mismatch?" : "Awaiting Translation",
+        "password?": "Awaiting Translation",
+        "Confirm password": "Awaiting Translation"
     },
     "ru": {
         "language": "ru",
@@ -277,7 +293,11 @@
         "Choose another image file": "Awaiting Translation",
         "Scroll to zoom - drag to move": "Awaiting Translation",
         "The next step is choosing a password. Choose a password with care." : "Awaiting Translation",
-        "There is no password recovery available in Swarm City." : "Awaiting Translation"
+        "There is no password recovery available in Swarm City." : "Awaiting Translation",
+        "Choose a password" : "Awaiting Translation",
+        "password mismatch?" : "Awaiting Translation",
+        "password?": "Awaiting Translation",
+        "Confirm password": "Awaiting Translation"
     },
     "de": {
         "No account was found": "Es wurde kein Konto gefunden. Wenn ein neues Konto erstellt oder ein bestehendes Konto wiederhergestellt wird, werden die Informationen auf deinem Gerät gespeichert. ",
@@ -331,7 +351,11 @@
         "world wide": "weltweit",
         "restore account": "Kontowiederherstellung",
         "The next step is choosing a password. Choose a password with care." : "Awaiting Translation",
-        "There is no password recovery available in Swarm City." : "Awaiting Translation"
+        "There is no password recovery available in Swarm City." : "Awaiting Translation",
+        "Choose a password" : "Awaiting Translation",
+        "password mismatch?" : "Awaiting Translation",
+        "password?": "Awaiting Translation",
+        "Confirm password": "Awaiting Translation"
     },
     "es": {
         "language": "es",
@@ -389,7 +413,11 @@
         "Choose another image file": "Awaiting Translation",
         "Scroll to zoom - drag to move": "Awaiting Translation",
         "The next step is choosing a password. Choose a password with care." : "Awaiting Translation",
-        "There is no password recovery available in Swarm City." : "Awaiting Translation"
+        "There is no password recovery available in Swarm City." : "Awaiting Translation",
+        "Choose a password" : "Awaiting Translation",
+        "password mismatch?" : "Awaiting Translation",
+        "password?": "Awaiting Translation",
+        "Confirm password": "Awaiting Translation"
     },
     "pl": {
         "No account was found": "Nie znaleziono konta. Kiedy przywracasz istniejące lub tworzysz nowe konto, jest ono zapisywane lokalnie na Twoim urządzeniu.",
@@ -443,7 +471,11 @@
         "world wide": "cały świat",
         "restore account": "Przywróć konto",
         "The next step is choosing a password. Choose a password with care." : "Awaiting Translation",
-        "There is no password recovery available in Swarm City." : "Awaiting Translation"
+        "There is no password recovery available in Swarm City." : "Awaiting Translation",
+        "Choose a password" : "Awaiting Translation",
+        "password mismatch?" : "Awaiting Translation",
+        "password?": "Awaiting Translation",
+        "Confirm password": "Awaiting Translation"
     },
     "tr": {
         "No account was found": "Hesap bulunamadı. Eski hesabınız geri yüklediğinizde veya yeni bir hesap oluşturduğunuzda, hesap cihazınızda lokal olarak saklanır.",
@@ -497,6 +529,10 @@
         "world wide": "Dünya geneli",
         "restore account": "Hesap geri yükle",
         "The next step is choosing a password. Choose a password with care." : "Awaiting Translation",
-        "There is no password recovery available in Swarm City." : "Awaiting Translation"
+        "There is no password recovery available in Swarm City." : "Awaiting Translation",
+        "Choose a password" : "Awaiting Translation",
+        "password mismatch?" : "Awaiting Translation",
+        "password?": "Awaiting Translation",
+        "Confirm password": "Awaiting Translation"
     }
 }
