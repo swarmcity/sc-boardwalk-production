@@ -175,7 +175,9 @@ This code may only be used under the license found at https://github.com/swarmci
             /**
              * opens mailto with account info, after success routs to email-success
              */
-            _mail() {}
+            _mail() {
+                this.path = 'page-email-success/';
+            }
 
             /**
              * downloads account info, after success routs to download-success
