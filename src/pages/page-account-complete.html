@@ -24,7 +24,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
 <dom-module id="page-account-complete">
     <template>
-    <!--
+        <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
     -->
         <style include="shared-styles">
@@ -53,16 +53,80 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
             }
+
+            .title {
+                margin-top: 128px;
+                color: #24B1FF;
+                font-size: 35px;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .greytext {
+                width: 230px;  
+                margin: 16px auto 0;
+                color: #333333;
+                font-size: 16px;
+                font-weight: 300;
+                text-align: center;
+            }
+
+            .box {
+                @apply --layout-center-justified;
+                box-sizing: border-box;
+                padding: 25px 22px 22px;
+                margin: 40px auto 0;
+                background-color: #FFFFFF;
+                width: 265px;
+            }
+
+            .box>p {
+
+                text-align: center;
+                color: #333333;
+                font-size: 16px;
+                font-weight: bold;
+                line-height: 19px;
+                text-align: center;
+            }
+
+            .btn {
+                width: 275px;
+                height: 72px;
+                line-height: 30px;
+                text-align: center;
+                display: block;
+                border: none;
+                font-size: 15px;
+                cursor: pointer;
+                box-sizing: border-box;
+                padding: 20px; 
+                color: var(--grey-4);
+                background-color: rgba(255, 255, 255, 0.1);
+                box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                -o-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                overflow: hidden;
+                color: var(--swarm-city-black);
+                margin: 30px auto 0;
+                color: #000000;
+                font-size: 18px;
+                font-weight: bold;
+                text-align: center;
+            }
         </style>
 
         <app-location route="{{route}}"></app-location>
         <div class="close" on-click="_close"></div>
         <div class="container">
-            <div>{{localize('Great!')}}</div>
-            <div>{{localize('You now have a Swarm City account')}}</div>
-            <div>{{localize('There are no central servers on which accounts are stored.')}}</div>
-            <div>{{localize('This means you are responsible for your own account at all times.')}}</div>
-            <div>{{localize('Your backup is encrypted with your password.')}}</div>
+            <div class="title">{{localize('Great!')}}</div>
+            <div class="greytext">{{localize('You now have a Swarm City account')}}</div>
+            <div class="box">
+                <p>{{localize('There are no central servers on which accounts are stored.')}}</p>
+                <p>{{localize('This means you are responsible for your own account at all times.')}}</p>
+                <p>{{localize('Your backup is encrypted with your password.')}}</p>
+            </div>
             <div class="btn">
                 <div>{{localize('backup my account')}}</div>
             </div>
