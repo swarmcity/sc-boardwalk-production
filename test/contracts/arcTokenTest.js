@@ -16,13 +16,5 @@ contract('ARCToken', function(accounts) {
             });
         });
     });
-    it("should have reward addresses defined.", function(done) {
-        ARCToken.deployed().then(function(instance) {
-            return instance.rewardAddressesSet.call(accounts[0]).then(function(addressesSet) {
-                assert.equal(addressesSet.valueOf(), true, "reward addresses should be set");
-                done();
-            });
-        });
-    });
 
 });

@@ -1,9 +1,16 @@
 version: '2'
 services:
-  polymer:
+services:
+  prplserver:
     build:
       context: .
-      dockerfile: docker/Dockerfile.prpl_server
+      dockerfile: docker/Dockerfile.prplserver
+    ports:
+      - "8080:8080"
+  customelement:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.customelement
     ports:
       - "8080:8080"
   contracts:
