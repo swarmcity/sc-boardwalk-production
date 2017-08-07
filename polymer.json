@@ -16,7 +16,9 @@
     "src/pages/page-view404.html",
     "src/pages/page-stop-signup.html",
     "src/pages/page-password-warning.html",
-    "src/pages/page-choose-password.html"
+    "src/pages/page-choose-password.html",
+    "src/pages/page-account-complete.html",
+    "src/pages/page-make-backup.html"
   ],
   "sources": [
     "src/**/*",
