@@ -15,7 +15,8 @@
     "src/pages/page-json-file.html",
     "src/pages/page-view404.html",
     "src/pages/page-stop-signup.html",
-    "src/pages/page-password-warning.html"
+    "src/pages/page-password-warning.html",
+    "src/pages/page-choose-password.html"
   ],
   "sources": [
     "src/**/*",
