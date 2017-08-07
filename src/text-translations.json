@@ -74,7 +74,8 @@
         "Your public key": "Your public key",
         "Your private key": "Your private key",
         "copy public key": "copy public key",
-        "show private key": "show private key"
+        "show private key": "show private key",
+        "copy private key": "copy private key"
     },
     "cn": {
         "language": "cn",
@@ -149,7 +150,8 @@
         "Your public key": "Awaiting Translation",
         "Your private key": "Awaiting Translation",
         "copy public key": "copy public key",
-        "show private key": "show private key"
+        "show private key": "show private key",
+        "copy private key": "Awaiting Translation"
     },
     "fr": {
         "No account was found": "Aucun compte trouvé. Lorsque vous restaurez ou créez un nouveau compte, il est stocké localement sur votre machine.",
@@ -221,7 +223,8 @@
         "Your public key": "Awaiting Translation",
         "Your private key": "Awaiting Translation",
         "copy public key": "copy public key",
-        "show private key": "show private key"
+        "show private key": "show private key",
+        "copy private key": "Awaiting Translation"
     },
     "nl": {
         "No account was found": "Er werd geen account gevonden. Maak een nieuw account aan of laadt een bestaand account op. Het wordt dan lokaal opgeslagen op uw toestel.",
@@ -293,7 +296,8 @@
         "Your public key": "Awaiting Translation",
         "Your private key": "Awaiting Translation",
         "copy public key": "copy public key",
-        "show private key": "show private key"
+        "show private key": "show private key",
+        "copy private key": "Awaiting Translation"
     },
     "ru": {
         "language": "ru",
@@ -369,7 +373,8 @@
         "Your public key": "Awaiting Translation",
         "Your private key": "Awaiting Translation",
         "copy public key": "copy public key",
-        "show private key": "show private key"
+        "show private key": "show private key",
+        "copy private key": "Awaiting Translation"
     },
     "de": {
         "No account was found": "Es wurde kein Konto gefunden. Wenn ein neues Konto erstellt oder ein bestehendes Konto wiederhergestellt wird, werden die Informationen auf deinem Gerät gespeichert. ",
@@ -441,7 +446,8 @@
         "Your public key": "Awaiting Translation",
         "Your private key": "Awaiting Translation",
         "copy public key": "copy public key",
-        "show private key": "show private key"
+        "show private key": "show private key",
+        "copy private key": "Awaiting Translation"
     },
     "es": {
         "language": "es",
@@ -517,7 +523,8 @@
         "Your public key": "Awaiting Translation",
         "Your private key": "Awaiting Translation",
         "copy public key": "copy public key",
-        "show private key": "show private key"
+        "show private key": "show private key",
+        "copy private key": "Awaiting Translation"
     },
     "pl": {
         "No account was found": "Nie znaleziono konta. Kiedy przywracasz istniejące lub tworzysz nowe konto, jest ono zapisywane lokalnie na Twoim urządzeniu.",
@@ -589,7 +596,8 @@
         "Your public key": "Awaiting Translation",
         "Your private key": "Awaiting Translation",
         "copy public key": "copy public key",
-        "show private key": "show private key"
+        "show private key": "show private key",
+        "copy private key": "Awaiting Translation"
     },
     "tr": {
         "No account was found": "Hesap bulunamadı. Eski hesabınız geri yüklediğinizde veya yeni bir hesap oluşturduğunuzda, hesap cihazınızda lokal olarak saklanır.",
@@ -660,7 +668,8 @@
         "Be careful in displaying your private key. Its the only thing needed to steal your funds.": "Awaiting Translation",
         "Your public key": "Awaiting Translation",
         "Your private key": "Awaiting Translation",
-        "copy public key": "copy public key",
-        "show private key": "show private key"
+        "copy public key": "Awaiting Translation",
+        "show private key": "Awaiting Translation",
+        "copy private key": "Awaiting Translation"
     }
 }
