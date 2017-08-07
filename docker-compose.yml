@@ -1,0 +1,16 @@
+version: '2'
+services:
+  polymer:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.prpl_server
+    ports:
+      - "8080:8080"
+  contracts:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.contracts
+  lint:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.lint
