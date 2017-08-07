@@ -75,7 +75,11 @@
         "Your private key": "Your private key",
         "copy public key": "copy public key",
         "show private key": "show private key",
-        "copy private key": "copy private key"
+        "copy private key": "copy private key",
+        "Success!": "Success!",
+        "Your account file combined with your password will always give you access to your SWT balance.": "Your account file combined with your password will always give you access to your SWT balance.",
+        "enter Swarm City": "enter Swarm City",
+        "convert my ARC": "convert my ARC"
     },
     "cn": {
         "language": "cn",
@@ -149,9 +153,13 @@
         "Be careful in displaying your private key. Its the only thing needed to steal your funds.": "Awaiting Translation",
         "Your public key": "Awaiting Translation",
         "Your private key": "Awaiting Translation",
-        "copy public key": "copy public key",
-        "show private key": "show private key",
-        "copy private key": "Awaiting Translation"
+        "copy public key": "Awaiting Translation",
+        "show private key": "Awaiting Translation",
+        "copy private key": "Awaiting Translation",
+        "Success!": "Awaiting Translation!",
+        "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
+        "enter Swarm City": "Awaiting Translation",
+        "convert my ARC": "Awaiting Translation"
     },
     "fr": {
         "No account was found": "Aucun compte trouvé. Lorsque vous restaurez ou créez un nouveau compte, il est stocké localement sur votre machine.",
@@ -222,9 +230,13 @@
         "Be careful in displaying your private key. Its the only thing needed to steal your funds.": "Awaiting Translation",
         "Your public key": "Awaiting Translation",
         "Your private key": "Awaiting Translation",
-        "copy public key": "copy public key",
-        "show private key": "show private key",
-        "copy private key": "Awaiting Translation"
+        "copy public key": "Awaiting Translation",
+        "show private key": "Awaiting Translation",
+        "copy private key": "Awaiting Translation",
+        "Success!": "Awaiting Translation!",
+        "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
+        "enter Swarm City": "Awaiting Translation",
+        "convert my ARC": "Awaiting Translation"
     },
     "nl": {
         "No account was found": "Er werd geen account gevonden. Maak een nieuw account aan of laadt een bestaand account op. Het wordt dan lokaal opgeslagen op uw toestel.",
@@ -295,9 +307,13 @@
         "Be careful in displaying your private key. Its the only thing needed to steal your funds.": "Awaiting Translation",
         "Your public key": "Awaiting Translation",
         "Your private key": "Awaiting Translation",
-        "copy public key": "copy public key",
-        "show private key": "show private key",
-        "copy private key": "Awaiting Translation"
+        "copy public key": "Awaiting Translation",
+        "show private key": "Awaiting Translation",
+        "copy private key": "Awaiting Translation",
+        "Success!": "Awaiting Translation!",
+        "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
+        "enter Swarm City": "Awaiting Translation",
+        "convert my ARC": "Awaiting Translation"
     },
     "ru": {
         "language": "ru",
@@ -372,9 +388,13 @@
         "Be careful in displaying your private key. Its the only thing needed to steal your funds.": "Awaiting Translation",
         "Your public key": "Awaiting Translation",
         "Your private key": "Awaiting Translation",
-        "copy public key": "copy public key",
-        "show private key": "show private key",
-        "copy private key": "Awaiting Translation"
+        "copy public key": "Awaiting Translation",
+        "show private key": "Awaiting Translation",
+        "copy private key": "Awaiting Translation",
+        "Success!": "Awaiting Translation!",
+        "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
+        "enter Swarm City": "Awaiting Translation",
+        "convert my ARC": "Awaiting Translation"
     },
     "de": {
         "No account was found": "Es wurde kein Konto gefunden. Wenn ein neues Konto erstellt oder ein bestehendes Konto wiederhergestellt wird, werden die Informationen auf deinem Gerät gespeichert. ",
@@ -445,9 +465,13 @@
         "Be careful in displaying your private key. Its the only thing needed to steal your funds.": "Awaiting Translation",
         "Your public key": "Awaiting Translation",
         "Your private key": "Awaiting Translation",
-        "copy public key": "copy public key",
-        "show private key": "show private key",
-        "copy private key": "Awaiting Translation"
+        "copy public key": "Awaiting Translation",
+        "show private key": "Awaiting Translation",
+        "copy private key": "Awaiting Translation",
+        "Success!": "Awaiting Translation!",
+        "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
+        "enter Swarm City": "Awaiting Translation",
+        "convert my ARC": "Awaiting Translation"
     },
     "es": {
         "language": "es",
@@ -522,9 +546,13 @@
         "Be careful in displaying your private key. Its the only thing needed to steal your funds.": "Awaiting Translation",
         "Your public key": "Awaiting Translation",
         "Your private key": "Awaiting Translation",
-        "copy public key": "copy public key",
-        "show private key": "show private key",
-        "copy private key": "Awaiting Translation"
+        "copy public key": "Awaiting Translation",
+        "show private key": "Awaiting Translation",
+        "copy private key": "Awaiting Translation",
+        "Success!": "Awaiting Translation!",
+        "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
+        "enter Swarm City": "Awaiting Translation",
+        "convert my ARC": "Awaiting Translation"
     },
     "pl": {
         "No account was found": "Nie znaleziono konta. Kiedy przywracasz istniejące lub tworzysz nowe konto, jest ono zapisywane lokalnie na Twoim urządzeniu.",
@@ -595,9 +623,13 @@
         "Be careful in displaying your private key. Its the only thing needed to steal your funds.": "Awaiting Translation",
         "Your public key": "Awaiting Translation",
         "Your private key": "Awaiting Translation",
-        "copy public key": "copy public key",
-        "show private key": "show private key",
-        "copy private key": "Awaiting Translation"
+        "copy public key": "Awaiting Translation",
+        "show private key": "Awaiting Translation",
+        "copy private key": "Awaiting Translation",
+        "Success!": "Awaiting Translation!",
+        "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
+        "enter Swarm City": "Awaiting Translation",
+        "convert my ARC": "Awaiting Translation"
     },
     "tr": {
         "No account was found": "Hesap bulunamadı. Eski hesabınız geri yüklediğinizde veya yeni bir hesap oluşturduğunuzda, hesap cihazınızda lokal olarak saklanır.",
@@ -670,6 +702,10 @@
         "Your private key": "Awaiting Translation",
         "copy public key": "Awaiting Translation",
         "show private key": "Awaiting Translation",
-        "copy private key": "Awaiting Translation"
+        "copy private key": "Awaiting Translation",
+        "Success!": "Awaiting Translation!",
+        "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
+        "enter Swarm City": "Awaiting Translation",
+        "convert my ARC": "Awaiting Translation"
     }
 }
