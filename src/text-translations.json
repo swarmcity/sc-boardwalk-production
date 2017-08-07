@@ -78,7 +78,7 @@
         "copy private key": "copy private key",
         "Success!": "Success!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Your account file combined with your password will always give you access to your SWT balance.",
-        "enter Swarm City": "enter Swarm City",
+        "enter swarm.city": "enter swarm.city",
         "convert my ARC": "convert my ARC"
     },
     "cn": {
@@ -158,7 +158,7 @@
         "copy private key": "Awaiting Translation",
         "Success!": "Awaiting Translation!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
-        "enter Swarm City": "Awaiting Translation",
+        "enter swarm.city": "Awaiting Translation",
         "convert my ARC": "Awaiting Translation"
     },
     "fr": {
@@ -235,7 +235,7 @@
         "copy private key": "Awaiting Translation",
         "Success!": "Awaiting Translation!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
-        "enter Swarm City": "Awaiting Translation",
+        "enter swarm.city": "Awaiting Translation",
         "convert my ARC": "Awaiting Translation"
     },
     "nl": {
@@ -312,7 +312,7 @@
         "copy private key": "Awaiting Translation",
         "Success!": "Awaiting Translation!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
-        "enter Swarm City": "Awaiting Translation",
+        "enter swarm.city": "Awaiting Translation",
         "convert my ARC": "Awaiting Translation"
     },
     "ru": {
@@ -393,7 +393,7 @@
         "copy private key": "Awaiting Translation",
         "Success!": "Awaiting Translation!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
-        "enter Swarm City": "Awaiting Translation",
+        "enter swarm.city": "Awaiting Translation",
         "convert my ARC": "Awaiting Translation"
     },
     "de": {
@@ -470,7 +470,7 @@
         "copy private key": "Awaiting Translation",
         "Success!": "Awaiting Translation!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
-        "enter Swarm City": "Awaiting Translation",
+        "enter swarm.city": "Awaiting Translation",
         "convert my ARC": "Awaiting Translation"
     },
     "es": {
@@ -551,7 +551,7 @@
         "copy private key": "Awaiting Translation",
         "Success!": "Awaiting Translation!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
-        "enter Swarm City": "Awaiting Translation",
+        "enter swarm.city": "Awaiting Translation",
         "convert my ARC": "Awaiting Translation"
     },
     "pl": {
@@ -628,7 +628,7 @@
         "copy private key": "Awaiting Translation",
         "Success!": "Awaiting Translation!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
-        "enter Swarm City": "Awaiting Translation",
+        "enter swarm.city": "Awaiting Translation",
         "convert my ARC": "Awaiting Translation"
     },
     "tr": {
@@ -705,7 +705,7 @@
         "copy private key": "Awaiting Translation",
         "Success!": "Awaiting Translation!",
         "Your account file combined with your password will always give you access to your SWT balance.": "Awaiting Translation",
-        "enter Swarm City": "Awaiting Translation",
+        "enter swarm.city": "Awaiting Translation",
         "convert my ARC": "Awaiting Translation"
     }
 }
