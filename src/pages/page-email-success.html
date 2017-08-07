@@ -70,7 +70,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 text-align: center;
                 display: block;
                 border: none;
-                
+
                 cursor: pointer;
                 box-sizing: border-box;
                 padding: 20px;
@@ -185,21 +185,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = 'stop-signup/';
             }
             /**
-             * opens mailto with account info, after success routs to email-success
+             * takes the user to the initiating hashtag page
              */
-            _mail() {
-                this.path = 'page-email-success/';
-            }
-
-            /**
-             * downloads account info, after success routs to download-success
-             */
-            _download() {}
-            /**
-             * changes the current path to my-keys
-             */
-            _toKeys() {
-                this.path = 'my-keys/';
+            _enter() {
+                this.path = 'hashtag/' + sessionStorage.getItem('hashtagID');
+                sessionStorage.clear();
             }
             /**
              * changes the current path
