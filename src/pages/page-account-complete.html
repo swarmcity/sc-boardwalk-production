@@ -128,7 +128,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 <p>{{localize('Your backup is encrypted with your password.')}}</p>
             </div>
             <div class="btn">
-                <div>{{localize('backup my account')}}</div>
+                <div on-click="_next">{{localize('backup my account')}}</div>
             </div>
         </div>
 
@@ -189,6 +189,12 @@ This code may only be used under the license found at https://github.com/swarmci
             */
             _close() {
                 this.path = 'stop-signup/';
+            }
+            /**
+            * routes to next page
+            */
+            _next() {
+                this.path = 'make-backup/';
             }
             /**
             * changes the current path
