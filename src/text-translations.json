@@ -59,7 +59,13 @@
         "Choose a password" : "Choose a password",
         "password mismatch?" : "password mismatch?",
         "password?": "password?",
-        "Confirm password": "Confirm password"
+        "Confirm password": "Confirm password",
+        "Great!": "Great!",
+        "You now have a Swarm City account": "You now have a Swarm City account",
+        "There are no central servers on which accounts are stored.": "There are no central servers on which accounts are stored.",
+        "This means you are responsible for your own account at all times.": "This means you are responsible for your own account at all times.",
+        "Your backup is encrypted with your password.": "Your backup is encrypted with your password.",
+        "backup my account": "backup my account"
     },
     "cn": {
         "language": "cn",
@@ -119,7 +125,13 @@
         "Choose a password" : "Awaiting Translation",
         "password mismatch?" : "Awaiting Translation",
         "password?": "Awaiting Translation",
-        "Confirm password": "Awaiting Translation"
+        "Confirm password": "Awaiting Translation",
+        "Great!": "Awaiting Translation",
+        "You now have a Swarm City account": "Awaiting Translation",
+        "There are no central servers on which accounts are stored.": "Awaiting Translation",
+        "This means you are responsible for your own account at all times.": "Awaiting Translation",
+        "Your backup is encrypted with your password.": "Awaiting Translation",
+        "backup my account": "Awaiting Translation"
     },
     "fr": {
         "No account was found": "Aucun compte trouvé. Lorsque vous restaurez ou créez un nouveau compte, il est stocké localement sur votre machine.",
@@ -167,7 +179,7 @@
         "Twitter": "Twitter",
         "Advisors": "Conseillers",
         "Select your account file": "Sélectionner votre compte",
-        "You must bee new here": "Vous devez être nouveau ici",
+        "You must be new here": "Vous devez être nouveau ici",
         "Find Swarm City on": "Retrouver Swarm City sur",
         "tell me more": "M'en dire plus",
         "world wide": "le monde entier",
@@ -177,7 +189,13 @@
         "Choose a password" : "Awaiting Translation",
         "password mismatch?" : "Awaiting Translation",
         "password?": "Awaiting Translation",
-        "Confirm password": "Awaiting Translation"
+        "Confirm password": "Awaiting Translation",
+        "Great!": "Awaiting Translation",
+        "You now have a Swarm City account": "Awaiting Translation",
+        "There are no central servers on which accounts are stored.": "Awaiting Translation",
+        "This means you are responsible for your own account at all times.": "Awaiting Translation",
+        "Your backup is encrypted with your password.": "Awaiting Translation",
+        "backup my account": "Awaiting Translation"
     },
     "nl": {
         "No account was found": "Er werd geen account gevonden. Maak een nieuw account aan of laadt een bestaand account op. Het wordt dan lokaal opgeslagen op uw toestel.",
@@ -225,7 +243,7 @@
         "Twitter": "Twitter",
         "Advisors": "Advisors",
         "Select your account file": "Selecteer uw account file",
-        "You must bee new here": "Je bent hier nieuw",
+        "You must be new here": "Je bent hier nieuw",
         "Find Swarm City on": "Vind Swarm City op",
         "tell me more": "meer weten",
         "world wide": "wereldwijd",
@@ -235,7 +253,13 @@
         "Choose a password" : "Awaiting Translation",
         "password mismatch?" : "Awaiting Translation",
         "password?": "Awaiting Translation",
-        "Confirm password": "Awaiting Translation"
+        "Confirm password": "Awaiting Translation",
+        "Great!": "Awaiting Translation",
+        "You now have a Swarm City account": "Awaiting Translation",
+        "There are no central servers on which accounts are stored.": "Awaiting Translation",
+        "This means you are responsible for your own account at all times.": "Awaiting Translation",
+        "Your backup is encrypted with your password.": "Awaiting Translation",
+        "backup my account": "Awaiting Translation"
     },
     "ru": {
         "language": "ru",
@@ -297,7 +321,13 @@
         "Choose a password" : "Awaiting Translation",
         "password mismatch?" : "Awaiting Translation",
         "password?": "Awaiting Translation",
-        "Confirm password": "Awaiting Translation"
+        "Confirm password": "Awaiting Translation",
+        "Great!": "Awaiting Translation",
+        "You now have a Swarm City account": "Awaiting Translation",
+        "There are no central servers on which accounts are stored.": "Awaiting Translation",
+        "This means you are responsible for your own account at all times.": "Awaiting Translation",
+        "Your backup is encrypted with your password.": "Awaiting Translation",
+        "backup my account": "Awaiting Translation"
     },
     "de": {
         "No account was found": "Es wurde kein Konto gefunden. Wenn ein neues Konto erstellt oder ein bestehendes Konto wiederhergestellt wird, werden die Informationen auf deinem Gerät gespeichert. ",
@@ -345,7 +375,7 @@
         "Twitter": "Twitter",
         "Advisors": "Berater",
         "Select your account file": "Wähle deine Kontodatei",
-        "You must bee new here": "Du musst neu hier sein",
+        "You must be new here": "Du musst neu hier sein",
         "Find Swarm City on": "Finde Swarm City auf",
         "tell me more": "Erzähl mir mehr",
         "world wide": "weltweit",
@@ -355,7 +385,13 @@
         "Choose a password" : "Awaiting Translation",
         "password mismatch?" : "Awaiting Translation",
         "password?": "Awaiting Translation",
-        "Confirm password": "Awaiting Translation"
+        "Confirm password": "Awaiting Translation",
+        "Great!": "Awaiting Translation",
+        "You now have a Swarm City account": "Awaiting Translation",
+        "There are no central servers on which accounts are stored.": "Awaiting Translation",
+        "This means you are responsible for your own account at all times.": "Awaiting Translation",
+        "Your backup is encrypted with your password.": "Awaiting Translation",
+        "backup my account": "Awaiting Translation"
     },
     "es": {
         "language": "es",
@@ -417,7 +453,13 @@
         "Choose a password" : "Awaiting Translation",
         "password mismatch?" : "Awaiting Translation",
         "password?": "Awaiting Translation",
-        "Confirm password": "Awaiting Translation"
+        "Confirm password": "Awaiting Translation",
+        "Great!": "Awaiting Translation",
+        "You now have a Swarm City account": "Awaiting Translation",
+        "There are no central servers on which accounts are stored.": "Awaiting Translation",
+        "This means you are responsible for your own account at all times.": "Awaiting Translation",
+        "Your backup is encrypted with your password.": "Awaiting Translation",
+        "backup my account": "Awaiting Translation"
     },
     "pl": {
         "No account was found": "Nie znaleziono konta. Kiedy przywracasz istniejące lub tworzysz nowe konto, jest ono zapisywane lokalnie na Twoim urządzeniu.",
@@ -465,7 +507,7 @@
         "Twitter": "Twitter",
         "Advisors": "Doradcy",
         "Select your account file": "Wybierz plik kopi zapasowej",
-        "You must bee new here": "Musisz być tutaj nowy",
+        "You must be new here": "Musisz być tutaj nowy",
         "Find Swarm City on": "Znajdziesz nas na",
         "tell me more": "Więcej",
         "world wide": "cały świat",
@@ -475,7 +517,13 @@
         "Choose a password" : "Awaiting Translation",
         "password mismatch?" : "Awaiting Translation",
         "password?": "Awaiting Translation",
-        "Confirm password": "Awaiting Translation"
+        "Confirm password": "Awaiting Translation",
+        "Great!": "Awaiting Translation",
+        "You now have a Swarm City account": "Awaiting Translation",
+        "There are no central servers on which accounts are stored.": "Awaiting Translation",
+        "This means you are responsible for your own account at all times.": "Awaiting Translation",
+        "Your backup is encrypted with your password.": "Awaiting Translation",
+        "backup my account": "Awaiting Translation"
     },
     "tr": {
         "No account was found": "Hesap bulunamadı. Eski hesabınız geri yüklediğinizde veya yeni bir hesap oluşturduğunuzda, hesap cihazınızda lokal olarak saklanır.",
@@ -523,7 +571,7 @@
         "Twitter": "Twitter",
         "Advisors": "Danışmanlar",
         "Select your account file": "Hesap dosyanızı seçin",
-        "You must bee new here": "Burada yeni olmalısın",
+        "You must be new here": "Burada yeni olmalısın",
         "Find Swarm City on": "Swarm City' e ulaşın ",
         "tell me more": "daha fazlasını anlat ",
         "world wide": "Dünya geneli",
@@ -533,6 +581,12 @@
         "Choose a password" : "Awaiting Translation",
         "password mismatch?" : "Awaiting Translation",
         "password?": "Awaiting Translation",
-        "Confirm password": "Awaiting Translation"
+        "Confirm password": "Awaiting Translation",
+        "Great!": "Awaiting Translation",
+        "You now have a Swarm City account": "Awaiting Translation",
+        "There are no central servers on which accounts are stored.": "Awaiting Translation",
+        "This means you are responsible for your own account at all times.": "Awaiting Translation",
+        "Your backup is encrypted with your password.": "Awaiting Translation",
+        "backup my account": "Awaiting Translation"
     }
 }
