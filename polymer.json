@@ -18,7 +18,8 @@
     "src/pages/page-password-warning.html",
     "src/pages/page-choose-password.html",
     "src/pages/page-account-complete.html",
-    "src/pages/page-make-backup.html"
+    "src/pages/page-make-backup.html",
+    "src/pages/page-my-keys.html"
   ],
   "sources": [
     "src/**/*",

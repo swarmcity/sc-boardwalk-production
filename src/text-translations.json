@@ -69,7 +69,12 @@
         "Email the account file to yourself or choose the download option to start a direct download.": "Email the account file to yourself or choose the download option to start a direct download.",
         "email my account file": "email my account file",
         "download my account file": "download my account file",
-        "show my keys": "show my keys"
+        "show my keys": "show my keys",
+        "Be careful in displaying your private key. Its the only thing needed to steal your funds.": "Be careful in displaying your private key. It's the only thing needed to steal your funds.",
+        "Your public key": "Your public key",
+        "Your private key": "Your private key",
+        "copy public key": "copy public key",
+        "show private key": "show private key"
     },
     "cn": {
         "language": "cn",
@@ -139,7 +144,12 @@
         "Email the account file to yourself or choose the download option to start a direct download.": "Awaiting Translation",
         "email my account file": "Awaiting Translation",
         "download my account file": "Awaiting Translation",
-        "show my keys": "Awaiting Translation"
+        "show my keys": "Awaiting Translation",
+        "Be careful in displaying your private key. Its the only thing needed to steal your funds.": "Awaiting Translation",
+        "Your public key": "Awaiting Translation",
+        "Your private key": "Awaiting Translation",
+        "copy public key": "copy public key",
+        "show private key": "show private key"
     },
     "fr": {
         "No account was found": "Aucun compte trouvé. Lorsque vous restaurez ou créez un nouveau compte, il est stocké localement sur votre machine.",
@@ -207,7 +217,11 @@
         "Email the account file to yourself or choose the download option to start a direct download.": "Awaiting Translation",
         "email my account file": "Awaiting Translation",
         "download my account file": "Awaiting Translation",
-        "show my keys": "Awaiting Translation"
+        "Be careful in displaying your private key. Its the only thing needed to steal your funds.": "Awaiting Translation",
+        "Your public key": "Awaiting Translation",
+        "Your private key": "Awaiting Translation",
+        "copy public key": "copy public key",
+        "show private key": "show private key"
     },
     "nl": {
         "No account was found": "Er werd geen account gevonden. Maak een nieuw account aan of laadt een bestaand account op. Het wordt dan lokaal opgeslagen op uw toestel.",
@@ -275,7 +289,11 @@
         "Email the account file to yourself or choose the download option to start a direct download.": "Awaiting Translation",
         "email my account file": "Awaiting Translation",
         "download my account file": "Awaiting Translation",
-        "show my keys": "Awaiting Translation"
+        "Be careful in displaying your private key. Its the only thing needed to steal your funds.": "Awaiting Translation",
+        "Your public key": "Awaiting Translation",
+        "Your private key": "Awaiting Translation",
+        "copy public key": "copy public key",
+        "show private key": "show private key"
     },
     "ru": {
         "language": "ru",
@@ -347,7 +365,11 @@
         "Email the account file to yourself or choose the download option to start a direct download.": "Awaiting Translation",
         "email my account file": "Awaiting Translation",
         "download my account file": "Awaiting Translation",
-        "show my keys": "Awaiting Translation"
+        "Be careful in displaying your private key. Its the only thing needed to steal your funds.": "Awaiting Translation",
+        "Your public key": "Awaiting Translation",
+        "Your private key": "Awaiting Translation",
+        "copy public key": "copy public key",
+        "show private key": "show private key"
     },
     "de": {
         "No account was found": "Es wurde kein Konto gefunden. Wenn ein neues Konto erstellt oder ein bestehendes Konto wiederhergestellt wird, werden die Informationen auf deinem Gerät gespeichert. ",
@@ -415,7 +437,11 @@
         "Email the account file to yourself or choose the download option to start a direct download.": "Awaiting Translation",
         "email my account file": "Awaiting Translation",
         "download my account file": "Awaiting Translation",
-        "show my keys": "Awaiting Translation"
+        "Be careful in displaying your private key. Its the only thing needed to steal your funds.": "Awaiting Translation",
+        "Your public key": "Awaiting Translation",
+        "Your private key": "Awaiting Translation",
+        "copy public key": "copy public key",
+        "show private key": "show private key"
     },
     "es": {
         "language": "es",
@@ -487,7 +513,11 @@
         "Email the account file to yourself or choose the download option to start a direct download.": "Awaiting Translation",
         "email my account file": "Awaiting Translation",
         "download my account file": "Awaiting Translation",
-        "show my keys": "Awaiting Translation"
+        "Be careful in displaying your private key. Its the only thing needed to steal your funds.": "Awaiting Translation",
+        "Your public key": "Awaiting Translation",
+        "Your private key": "Awaiting Translation",
+        "copy public key": "copy public key",
+        "show private key": "show private key"
     },
     "pl": {
         "No account was found": "Nie znaleziono konta. Kiedy przywracasz istniejące lub tworzysz nowe konto, jest ono zapisywane lokalnie na Twoim urządzeniu.",
@@ -555,7 +585,11 @@
         "Email the account file to yourself or choose the download option to start a direct download.": "Awaiting Translation",
         "email my account file": "Awaiting Translation",
         "download my account file": "Awaiting Translation",
-        "show my keys": "Awaiting Translation"
+        "Be careful in displaying your private key. Its the only thing needed to steal your funds.": "Awaiting Translation",
+        "Your public key": "Awaiting Translation",
+        "Your private key": "Awaiting Translation",
+        "copy public key": "copy public key",
+        "show private key": "show private key"
     },
     "tr": {
         "No account was found": "Hesap bulunamadı. Eski hesabınız geri yüklediğinizde veya yeni bir hesap oluşturduğunuzda, hesap cihazınızda lokal olarak saklanır.",
@@ -623,6 +657,10 @@
         "Email the account file to yourself or choose the download option to start a direct download.": "Awaiting Translation",
         "email my account file": "Awaiting Translation",
         "download my account file": "Awaiting Translation",
-        "show my keys": "Awaiting Translation"
+        "Be careful in displaying your private key. Its the only thing needed to steal your funds.": "Awaiting Translation",
+        "Your public key": "Awaiting Translation",
+        "Your private key": "Awaiting Translation",
+        "copy public key": "copy public key",
+        "show private key": "show private key"
     }
 }
