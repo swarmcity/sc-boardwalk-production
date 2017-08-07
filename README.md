@@ -51,7 +51,6 @@ npm install
     dc build contracts
     dc build lint
 
-
 ## Linting with eslint
 Ensuring the code base stays clean and standardized we need all merges to pass linting 
 
