@@ -22,7 +22,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
-<dom-module id="page-make-backup">
+<dom-module id="page-my-keys">
     <template>
         <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
@@ -45,72 +45,68 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container {
+                margin-top: 100px;
                 max-width: 400px;
             }
 
-            .btn {
-                margin-top: 25px;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
-            }
 
             .greytext {
                 width: 230px;
-                margin: 136px auto 75px;
+                margin: 10px auto 0;
                 color: #333333;
                 font-size: 16px;
                 font-weight: 300;
                 text-align: center;
             }
 
-            .btn {
-                width: 275px;
-                height: 72px;
-                line-height: 30px;
+            .smallgrey {
                 text-align: center;
-                display: block;
-                border: none;
-                font-size: 15px;
-                cursor: pointer;
-                box-sizing: border-box;
-                padding: 20px;
-                color: var(--grey-4);
-                background-color: rgba(255, 255, 255, 0.1);
-                box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -o-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                overflow: hidden;
-                color: var(--swarm-city-black);
-                margin: 40px auto;
-                color: #000000;
-                font-size: 18px;
-                font-weight: bold;
-                text-align: center;
+                color: #B3B3B3;
+                font-size: 12px;
+                margin: 0 auto 0;
             }
 
-            .link {
+            .bluelink {
                 color: var(--swarm-city-blue);
                 font-weight: bold;
                 text-align: center;
-                margin: 67px;
+                margin: 30px auto 0;
                 cursor: pointer;
             }
+
+            .key {
+                width: 230px;
+                margin: 10px auto 0;
+                color: #666666;
+                text-align: center;
+               
+            }
+
+            .qrcode {
+                width: 70px;
+                height: 70px;
+                background-color: grey;
+                margin: 30px auto 90px;
+            }
+
         </style>
 
         <app-location route="{{route}}"></app-location>
         <div class="close" on-click="_close"></div>
         <div class="container">
-            <div class="greytext">{{localize('Email the account file to yourself or choose the download option to start a direct download.')}}</div>
-            <div class="btn" on-click="_mail">{{localize('email my account file')}}</div>
-            <div class="btn" on-click="_download">{{localize('download my account file')}}</div>
-            <div class="link" on-click="_toKeys">{{localize('show my keys')}}</div>
+            <div class="smallgrey">{{localize('Your public key')}}</div>
+            <div class="key">0x369D787F4EdF4a0e57cDfCFB3 Dd92134e1982e06</div>
+            <div class="bluelink">{{localize('copy public key')}}</div>
+            <div class="qrcode"></div>          
+            <div class="smallgrey">{{localize('Your private key')}}</div>
+            <div class="greytext">{{localize('Be careful in displaying your private key. Its the only thing needed to steal your funds.')}}</div>
+            <div class="bluelink" on-click="_showPrivKey">{{localize('show private key')}}</div>
         </div>
 
     </template>
 
     <script>
-        class MyMakeBackup extends new ReduxMixin(Polymer.mixinBehaviors([
+        class MyKeys extends new ReduxMixin(Polymer.mixinBehaviors([
                 Polymer.AppLocalizeBehavior,
                 Polymer.NeonAnimationRunnerBehavior,
                 Polymer.NeonAnimatableBehavior,
@@ -118,7 +114,7 @@ This code may only be used under the license found at https://github.com/swarmci
             Polymer.Element
         )) {
             static get is() {
-                return 'page-make-backup';
+                return 'page-my-keys';
             }
             static get properties() {
                 return {
@@ -173,23 +169,10 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = 'stop-signup/';
             }
             /**
-             * opens mailto with account info, after success routs to email-success
+             * changes the current path to page-show-private-key
              */
-            _mail() {
-                this.path = 'email-success/';
-            }
-
-            /**
-             * downloads account info, after success routs to download-success
-             */
-            _download() {
-                this.path = 'download-success/';
-            }
-            /**
-             * changes the current path to my-keys
-             */
-            _toKeys() {
-                this.path = 'my-keys/';
+            _showPrivKey() {
+                this.path = 'show-private-key/';
             }
             /**
              * changes the current path
@@ -202,6 +185,6 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
         }
-        window.customElements.define(MyMakeBackup.is, MyMakeBackup);
+        window.customElements.define(MyKeys.is, MyKeys);
     </script>
 </dom-module>

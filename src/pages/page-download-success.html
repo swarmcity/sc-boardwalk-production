@@ -22,7 +22,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
-<dom-module id="page-make-backup">
+<dom-module id="page-download-success">
     <template>
         <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
@@ -55,8 +55,17 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .greytext {
-                width: 230px;
-                margin: 136px auto 75px;
+                width: 280px;
+                margin: 16px auto 50px;
+                color: #333333;
+                font-size: 16px;
+                font-weight: 300;
+                text-align: center;
+            }
+
+            .greytext2 {
+                width: 200px;
+                margin: 16px auto;
                 color: #333333;
                 font-size: 16px;
                 font-weight: 300;
@@ -70,7 +79,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 text-align: center;
                 display: block;
                 border: none;
-                font-size: 15px;
+
                 cursor: pointer;
                 box-sizing: border-box;
                 padding: 20px;
@@ -82,35 +91,47 @@ This code may only be used under the license found at https://github.com/swarmci
                 -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
                 overflow: hidden;
                 color: var(--swarm-city-black);
-                margin: 40px auto;
+                margin: 180px auto 0;
                 color: #000000;
                 font-size: 18px;
+
+                text-align: center;
+            }
+
+            .title {
+                margin-top: 148px;
+                color: #24B1FF;
+                font-size: 35px;
                 font-weight: bold;
                 text-align: center;
             }
 
             .link {
                 color: var(--swarm-city-blue);
+                margin-top: 20px;
                 font-weight: bold;
                 text-align: center;
-                margin: 67px;
                 cursor: pointer;
+            }
+
+            .bold {
+                font-weight: bold;
             }
         </style>
 
         <app-location route="{{route}}"></app-location>
-        <div class="close" on-click="_close"></div>
         <div class="container">
-            <div class="greytext">{{localize('Email the account file to yourself or choose the download option to start a direct download.')}}</div>
-            <div class="btn" on-click="_mail">{{localize('email my account file')}}</div>
-            <div class="btn" on-click="_download">{{localize('download my account file')}}</div>
-            <div class="link" on-click="_toKeys">{{localize('show my keys')}}</div>
+            <div class="title">{{localize('Success!')}}</div>
+            <div class="greytext2">{{localize('Youve downloaded your account file.')}}</div>
+            <div class="greytext">{{localize('Your account file combined with your password will always give you access to your SWT balance.')}}</div>
+            <div class="btn" on-click="_enter">{{localize('enter')}} <span class="bold">swarm.city</span></div>
+            <div class="link">{{localize('convert my ARC')}}</div>
         </div>
 
     </template>
 
     <script>
-        class MyMakeBackup extends new ReduxMixin(Polymer.mixinBehaviors([
+        class MyDownloadSuccess extends new ReduxMixin(Polymer.mixinBehaviors([
                 Polymer.AppLocalizeBehavior,
                 Polymer.NeonAnimationRunnerBehavior,
                 Polymer.NeonAnimatableBehavior,
@@ -118,7 +139,7 @@ This code may only be used under the license found at https://github.com/swarmci
             Polymer.Element
         )) {
             static get is() {
-                return 'page-make-backup';
+                return 'page-download-success';
             }
             static get properties() {
                 return {
@@ -173,23 +194,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = 'stop-signup/';
             }
             /**
-             * opens mailto with account info, after success routs to email-success
+             * takes the user to the initiating hashtag page
              */
-            _mail() {
-                this.path = 'email-success/';
-            }
-
-            /**
-             * downloads account info, after success routs to download-success
-             */
-            _download() {
-                this.path = 'download-success/';
-            }
-            /**
-             * changes the current path to my-keys
-             */
-            _toKeys() {
-                this.path = 'my-keys/';
+            _enter() {
+                this.path = 'hashtag/' + sessionStorage.getItem('hashtagID');
+                sessionStorage.clear();
             }
             /**
              * changes the current path
@@ -202,6 +211,6 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
         }
-        window.customElements.define(MyMakeBackup.is, MyMakeBackup);
+        window.customElements.define(MyDownloadSuccess.is, MyDownloadSuccess);
     </script>
 </dom-module>
