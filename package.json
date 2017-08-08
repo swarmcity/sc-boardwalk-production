@@ -75,6 +75,10 @@
     "browserify": "browserify browserify.js --standalone swarmCity -t [ babelify --presets [ es2015 ] ] | uglifyjs > src/swarm-city.min.js"
   },
   "dependencies": {
+    "bower": "^1.8.0",
+    "express": "^4.15.3",
+    "helmet": "^3.8.1",
+    "prpl-server": "^0.7.0",
     "redux": "^3.7.1"
   }
 }

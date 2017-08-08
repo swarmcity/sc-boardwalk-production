@@ -46,8 +46,8 @@ RUN npm build
 
 RUN polymer build
 COPY pm2.json ./
+COPY server.js ./
 
 EXPOSE 8080
-#CMD [ "pm2-docker", "start", "pm2.json" ]
-CMD pm2-docker start pm2.json
-#CMD polymer serve -H 0.0.0.0
+
+CMD [ "pm2-docker", "start", "pm2.json" ]
