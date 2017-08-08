@@ -1,12 +1,6 @@
 version: '2'
 services:
 services:
-  prplserver:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile.prplserver
-    ports:
-      - "8080:8080"
   customelement:
     build:
       context: .
