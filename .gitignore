@@ -9,3 +9,5 @@ service-worker.js
 sw-precache-config.js
 src/contracts/
 npm-debug.log
+.com.google.Chrome.*/
+.org.chromium.Chromium.*/
