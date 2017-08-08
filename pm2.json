@@ -1,0 +1,9 @@
+{
+  "apps": [{
+    "name": "swarmcity-boardwalk-production",
+    "script": "server.js",
+    "env": {
+      "production": true
+    }
+  }]
+}
