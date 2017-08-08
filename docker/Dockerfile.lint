@@ -45,4 +45,5 @@ RUN npm build
 
 COPY .eslintrc.json .eslintrc.json
 COPY .eslintignore .eslintignore
+
 RUN npm run lint

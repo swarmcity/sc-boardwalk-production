@@ -1,6 +1,7 @@
 FROM node:7.10-wheezy
 RUN npm install -g polymer-cli
 RUN npm install -g bower
+RUN npm install -g pm2
 
 RUN mkdir /app
 WORKDIR /app
@@ -43,4 +44,10 @@ COPY src ./src/
 RUN npm run browserify
 RUN npm build
 
-CMD polymer serve -H 0.0.0.0
+RUN polymer build
+COPY pm2.json ./
+COPY server.js ./
+
+EXPOSE 8080
+
+CMD [ "pm2-docker", "start", "pm2.json" ]

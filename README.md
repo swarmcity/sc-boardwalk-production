@@ -47,10 +47,9 @@ npm install
 ## Docker install
 
     alias dc='docker-compose'
-    dc build polymer && dc up polymer
+    dc build prplserver && dc up prplserver
     dc build contracts
     dc build lint
-
 
 ## Linting with eslint
 Ensuring the code base stays clean and standardized we need all merges to pass linting 
