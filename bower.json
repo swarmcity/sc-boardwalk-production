@@ -16,7 +16,8 @@
     "app-localize-behavior": "PolymerElements/app-localize-behavior#2.0-preview",
     "polymer-redux": "^1.0.1",
     "paper-input": "PolymerElements/paper-input#2.0-preview",
-    "paper-slider": "PolymerElements/paper-slider#2.0-preview"
+    "paper-slider": "PolymerElements/paper-slider#2.0-preview",
+    "web3": "^0.19.0"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",

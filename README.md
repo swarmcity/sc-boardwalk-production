@@ -46,8 +46,10 @@ npm install
 
 ## Docker install
 
-    docker build .
-    docker run -p 8081:8081 <container instanceId from previous command>
+    alias dc='docker-compose'
+    dc build prplserver && dc up prplserver
+    dc build contracts
+    dc build lint
 
 ## Linting with eslint
 Ensuring the code base stays clean and standardized we need all merges to pass linting 

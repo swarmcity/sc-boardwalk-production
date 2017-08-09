@@ -63,7 +63,7 @@
     "lint:javascript": "eslint . --ext js,html",
     "test": "polymer test",
     "test:integration": "polymer build",
-    "copy": "cpx \"build/contracts/*.json\" src/contracts/",
+    "copy": "cpx \"build/contracts/*.json\" src/contracts/ && cpx \"contracts/*.json\" src/contracts/",
     "build": "polymer build",
     "deploy": "netlify deploy -p build/production",
     "getcontractlibs": "truffle install",
@@ -75,6 +75,10 @@
     "browserify": "browserify browserify.js --standalone swarmCity -t [ babelify --presets [ es2015 ] ] | uglifyjs > src/swarm-city.min.js"
   },
   "dependencies": {
+    "bower": "^1.8.0",
+    "express": "^4.15.3",
+    "helmet": "^3.8.1",
+    "prpl-server": "^0.7.0",
     "redux": "^3.7.1"
   }
 }

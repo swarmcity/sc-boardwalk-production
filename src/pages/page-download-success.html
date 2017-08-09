@@ -22,9 +22,9 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
-<dom-module id="page-password-warning">
+<dom-module id="page-download-success">
     <template>
-    <!--
+        <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
     -->
         <style include="shared-styles">
@@ -48,70 +48,99 @@ This code may only be used under the license found at https://github.com/swarmci
                 max-width: 400px;
             }
 
-            .greytext {
-
-                margin: 50% 0 0 12px;
-                height: 66px;
-                max-width: 250px;
-                color: #333333;
-                font-size: 16px;
-                font-weight: 300;
-                line-height: 22px;
-                text-align: center;
-            }
-
-            .box {
-                padding: 25px;
-                box-sizing: border-box;
-                background-color: #FFFFFF;
-                margin-top: 55px;
-                max-width: 275px;
-                height: 140px;
-            }
-
-            .blacktext {
-                margin: 25px 25px 0 25px;
-                color: #333333;
-                max-width: 175px;
-                font-size: 16px;
-                font-weight: bold;
-                line-height: 19px;
-                text-align: center;
-            }
-
             .btn {
                 margin-top: 25px;
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
             }
 
-            .btn .agree {
-                @apply --agree-blue;
+            .greytext {
+                width: 280px;
+                margin: 16px auto 50px;
+                color: #333333;
+                font-size: 16px;
+                font-weight: 300;
+                text-align: center;
+            }
+
+            .greytext2 {
+                width: 200px;
+                margin: 16px auto;
+                color: #333333;
+                font-size: 16px;
+                font-weight: 300;
+                text-align: center;
+            }
+
+            .btn {
+                width: 275px;
+                height: 72px;
+                line-height: 30px;
+                text-align: center;
+                display: block;
+                border: none;
+
+                cursor: pointer;
+                box-sizing: border-box;
+                padding: 20px;
+                color: var(--grey-4);
+                background-color: rgba(255, 255, 255, 0.1);
+                box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                -o-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                overflow: hidden;
+                color: var(--swarm-city-black);
+                margin: 180px auto 0;
+                color: #000000;
+                font-size: 18px;
+
+                text-align: center;
+            }
+
+            .title {
+                margin-top: 148px;
+                color: #24B1FF;
+                font-size: 35px;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .link {
+                color: var(--swarm-city-blue);
+                margin-top: 20px;
+                font-weight: bold;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .bold {
+                font-weight: bold;
             }
         </style>
 
         <app-location route="{{route}}"></app-location>
-        <div class="close" on-click="_close"></div>
         <div class="container">
-            <div class="greytext">{{localize('The next step is choosing a password. Choose a password with care.')}}</div>
-            <div class="box">
-                <div class="blacktext">{{localize('There is no password recovery available in Swarm City.')}}</div>
-            </div>
-            <div class="btn">
-                <div class="agree" on-click="_agree"></div>
-            </div>
+            <div class="title">{{localize('Success!')}}</div>
+            <div class="greytext2">{{localize('Youve downloaded your account file.')}}</div>
+            <div class="greytext">{{localize('Your account file combined with your password will always give you access to your SWT balance.')}}</div>
+            <div class="btn" on-click="_enter">{{localize('enter')}} <span class="bold">swarm.city</span></div>
+            <div class="link">{{localize('convert my ARC')}}</div>
         </div>
 
     </template>
 
     <script>
-        class MyPasswordWarning extends new ReduxMixin(Polymer.mixinBehaviors([
-            Polymer.AppLocalizeBehavior,
-            Polymer.NeonAnimationRunnerBehavior,
-            Polymer.NeonAnimatableBehavior],
+        class MyDownloadSuccess extends new ReduxMixin(Polymer.mixinBehaviors([
+                Polymer.AppLocalizeBehavior,
+                Polymer.NeonAnimationRunnerBehavior,
+                Polymer.NeonAnimatableBehavior,
+            ],
             Polymer.Element
         )) {
-            static get is() { return 'page-password-warning'; }
+            static get is() {
+                return 'page-download-success';
+            }
             static get properties() {
                 return {
                     language: {
@@ -119,16 +148,16 @@ This code may only be used under the license found at https://github.com/swarmci
                         statePath: 'language',
                     },
                     /**
-                    * Path is the current or requested path
-                    * @type {String}
-                    */
+                     * Path is the current or requested path
+                     * @type {String}
+                     */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                    * Entry and exit animation
-                    */
+                     * Entry and exit animation
+                     */
                     animationConfig: {
                         value: function() {
                             return {
@@ -136,13 +165,17 @@ This code may only be used under the license found at https://github.com/swarmci
                                     name: 'fade-in-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: {duration: 300},
+                                    timing: {
+                                        duration: 300,
+                                    },
                                 },
                                 'exit': {
                                     name: 'fade-out-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: {duration: 300},
+                                    timing: {
+                                        duration: 300,
+                                    },
                                 },
                             };
                         },
@@ -155,20 +188,21 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             /**
-            * takes the user to page-stop-signup
-            */
+             * takes the user to page-stop-signup
+             */
             _close() {
                 this.path = 'stop-signup/';
             }
             /**
-            * takes the user to the next page in user creation
-            */
-            _agree() {
-                this.path = 'choose-password/';
+             * takes the user to the initiating hashtag page
+             */
+            _enter() {
+                this.path = 'hashtag/' + sessionStorage.getItem('hashtagID');
+                sessionStorage.clear();
             }
             /**
-            * changes the current path
-            */
+             * changes the current path
+             */
             _path() {
                 if (this.path != null) {
                     this.set('route.path', this.path);
@@ -176,6 +210,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
 
-        } window.customElements.define(MyPasswordWarning.is, MyPasswordWarning);
+        }
+        window.customElements.define(MyDownloadSuccess.is, MyDownloadSuccess);
     </script>
 </dom-module>

@@ -1,7 +1,7 @@
 var HashtagList = artifacts.require("HashtagList");
 var Hashtag = artifacts.require("Hashtag");
 
-contract('HashtagRegistry', function(accounts) {
+contract('HashtagList', function(accounts) {
     it("Should be able to add and read back ipfs hash", function() {
 
         var ipfs = "QmYpW8LW7QmV8fUuiRGiXfXQTGGJ9mbpmkxt2Dhfcdt2DG";

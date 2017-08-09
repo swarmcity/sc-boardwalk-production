@@ -22,9 +22,9 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
-<dom-module id="page-password-warning">
+<dom-module id="page-my-keys">
     <template>
-    <!--
+        <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
     -->
         <style include="shared-styles">
@@ -45,73 +45,77 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container {
+                margin-top: 100px;
                 max-width: 400px;
             }
 
-            .greytext {
 
-                margin: 50% 0 0 12px;
-                height: 66px;
-                max-width: 250px;
+            .greytext {
+                width: 230px;
+                margin: 10px auto 0;
                 color: #333333;
                 font-size: 16px;
                 font-weight: 300;
-                line-height: 22px;
                 text-align: center;
             }
 
-            .box {
-                padding: 25px;
-                box-sizing: border-box;
-                background-color: #FFFFFF;
-                margin-top: 55px;
-                max-width: 275px;
-                height: 140px;
+            .smallgrey {
+                text-align: center;
+                color: #B3B3B3;
+                font-size: 12px;
+                margin: 0 auto 0;
             }
 
-            .blacktext {
-                margin: 25px 25px 0 25px;
-                color: #333333;
-                max-width: 175px;
-                font-size: 16px;
+            .bluelink {
+                color: var(--swarm-city-blue);
                 font-weight: bold;
-                line-height: 19px;
                 text-align: center;
+                margin: 30px auto 0;
+                cursor: pointer;
             }
 
-            .btn {
-                margin-top: 25px;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
+            .key {
+                width: 230px;
+                margin: 10px auto 0;
+                color: #666666;
+                text-align: center;
+               
             }
 
-            .btn .agree {
-                @apply --agree-blue;
+            .qrcode {
+                width: 70px;
+                height: 70px;
+                background-color: grey;
+                margin: 30px auto 90px;
             }
+
         </style>
 
         <app-location route="{{route}}"></app-location>
         <div class="close" on-click="_close"></div>
         <div class="container">
-            <div class="greytext">{{localize('The next step is choosing a password. Choose a password with care.')}}</div>
-            <div class="box">
-                <div class="blacktext">{{localize('There is no password recovery available in Swarm City.')}}</div>
-            </div>
-            <div class="btn">
-                <div class="agree" on-click="_agree"></div>
-            </div>
+            <div class="smallgrey">{{localize('Your public key')}}</div>
+            <div class="key">0x369D787F4EdF4a0e57cDfCFB3 Dd92134e1982e06</div>
+            <div class="bluelink">{{localize('copy public key')}}</div>
+            <div class="qrcode"></div>          
+            <div class="smallgrey">{{localize('Your private key')}}</div>
+            <div class="greytext">{{localize('Be careful in displaying your private key. Its the only thing needed to steal your funds.')}}</div>
+            <div class="bluelink" on-click="_showPrivKey">{{localize('show private key')}}</div>
         </div>
 
     </template>
 
     <script>
-        class MyPasswordWarning extends new ReduxMixin(Polymer.mixinBehaviors([
-            Polymer.AppLocalizeBehavior,
-            Polymer.NeonAnimationRunnerBehavior,
-            Polymer.NeonAnimatableBehavior],
+        class MyKeys extends new ReduxMixin(Polymer.mixinBehaviors([
+                Polymer.AppLocalizeBehavior,
+                Polymer.NeonAnimationRunnerBehavior,
+                Polymer.NeonAnimatableBehavior,
+            ],
             Polymer.Element
         )) {
-            static get is() { return 'page-password-warning'; }
+            static get is() {
+                return 'page-my-keys';
+            }
             static get properties() {
                 return {
                     language: {
@@ -119,16 +123,16 @@ This code may only be used under the license found at https://github.com/swarmci
                         statePath: 'language',
                     },
                     /**
-                    * Path is the current or requested path
-                    * @type {String}
-                    */
+                     * Path is the current or requested path
+                     * @type {String}
+                     */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                    * Entry and exit animation
-                    */
+                     * Entry and exit animation
+                     */
                     animationConfig: {
                         value: function() {
                             return {
@@ -136,13 +140,17 @@ This code may only be used under the license found at https://github.com/swarmci
                                     name: 'fade-in-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: {duration: 300},
+                                    timing: {
+                                        duration: 300,
+                                    },
                                 },
                                 'exit': {
                                     name: 'fade-out-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: {duration: 300},
+                                    timing: {
+                                        duration: 300,
+                                    },
                                 },
                             };
                         },
@@ -155,20 +163,20 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             /**
-            * takes the user to page-stop-signup
-            */
+             * takes the user to page-stop-signup
+             */
             _close() {
                 this.path = 'stop-signup/';
             }
             /**
-            * takes the user to the next page in user creation
-            */
-            _agree() {
-                this.path = 'choose-password/';
+             * changes the current path to page-show-private-key
+             */
+            _showPrivKey() {
+                this.path = 'show-private-key/';
             }
             /**
-            * changes the current path
-            */
+             * changes the current path
+             */
             _path() {
                 if (this.path != null) {
                     this.set('route.path', this.path);
@@ -176,6 +184,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
 
-        } window.customElements.define(MyPasswordWarning.is, MyPasswordWarning);
+        }
+        window.customElements.define(MyKeys.is, MyKeys);
     </script>
 </dom-module>

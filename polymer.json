@@ -16,7 +16,12 @@
     "src/pages/page-view404.html",
     "src/pages/page-stop-signup.html",
     "src/pages/page-password-warning.html",
-    "src/pages/page-choose-password.html"
+    "src/pages/page-choose-password.html",
+    "src/pages/page-account-complete.html",
+    "src/pages/page-make-backup.html",
+    "src/pages/page-my-keys.html",
+    "src/pages/page-email-success.html",
+    "src/pages/page-download-success.html"
   ],
   "sources": [
     "src/**/*",
@@ -32,17 +37,22 @@
     "src/swarm-city.min.js"
   ],
   "builds": [
-  {
-    "name": "production",
-    "js": {"minify": true, "compile": true},
-    "css": {"minify": true},
-    "html": {"minify": false},
-    "bundle": true,
-    "addServiceWorker": true,
-    "addPushManifest": true,
-    "insertPrefetchLinks": true
-  }
-],
+    {
+      "preset": "es5-bundled",
+      "basePath": true,
+      "bundle": {"excludes": ["swarm-city.min.js"]}
+    },
+    {
+      "preset": "es6-bundled",
+      "basePath": true,
+      "bundle": {"excludes": ["swarm-city.min.js"]}
+    },
+    {
+      "preset": "es6-unbundled",
+      "basePath": true,
+      "bundle": {"excludes": ["swarm-city.min.js"]}
+    }
+  ],
   "lint": {
     "rules": [
       "polymer-2"
