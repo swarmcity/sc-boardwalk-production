@@ -110,13 +110,46 @@ Colors are all lower case, There is a space after the :
                 --retina: {
                     background-image: url('../../images/SwarmCity-Sprite-doublesize.png');
                 }
-                --vmark-blue-normal: {
-                    width: 54px;
-                    height: 54px;
+                --sprite: {
                     background-image: url('../../images/SwarmCity-Sprite-normal.png');
                     background-repeat: no-repeat;
                     background-size: 288px 270px;
+                }
+                --icon-normal: {
+                    @apply --sprite;
+                    width: 54px;
+                    height: 54px;
+                }
+                --icon-small: {
+                    @apply --sprite;
+                    width: 36px;
+                    height: 36px;
+                }
+                --icon-mini: {
+                    @apply --sprite;
+                    width: 18px;
+                    height: 18px;
+                }
+                --vmark-grey4-normal: {
+                    @apply --icon-normal;
+                    background-position: -0px 0px;
+                }
+                --vmark-blue-normal: {
+                    @apply --icon-normal;
                     background-position: -0px -54px;
+                }
+                --vmark-green-normal: {
+                    @apply --icon-normal;
+                    background-position: -0px -108px;
+                }
+                --vmark-red-normal: {
+                    @apply --icon-normal;
+                    background-position: -0px -162px;
+                }
+
+                --vmark-white-normal: {
+                    @apply --icon-normal;
+                    background-position: -0px -216px;
                 }
                 /* users can not select unless we explicity allow */
                 -webkit-tap-highlight-color: transparent;
