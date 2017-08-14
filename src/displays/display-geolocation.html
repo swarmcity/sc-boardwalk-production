@@ -59,7 +59,7 @@ The following custom properties and mixins are available for styling:
     </template>
     <script>
         class DisplayGeolocation extends Polymer.mixinBehaviors([
-                Polymer.AppLocalizeBehavior
+                Polymer.AppLocalizeBehavior,
             ],
             Polymer.Element
         ) {
@@ -104,7 +104,8 @@ The following custom properties and mixins are available for styling:
                 let geoHash = '';
                 this.$.utility.getLocation()
                     .then((latlon) => {
-                        return this.$.utility.toGeohash(latlon.latitude, latlon.longitude);
+                        return this.$.utility
+                            .toGeohash(latlon.latitude, latlon.longitude);
                     })
                     .then((data) => {
                         geoHash = data;
@@ -113,7 +114,7 @@ The following custom properties and mixins are available for styling:
                     .then((account) => {
                         if (account == false) {
                             return this.$.storage.saveAccount({
-                                'location': geoHash
+                                'location': geoHash,
                             });
                         } else {
                             account.location = geoHash;

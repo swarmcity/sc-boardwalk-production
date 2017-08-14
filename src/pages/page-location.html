@@ -108,7 +108,7 @@ This code may only be used under the license found at https://github.com/swarmci
         class MyLocation extends new ReduxMixin(Polymer.mixinBehaviors([
                 Polymer.AppLocalizeBehavior,
                 Polymer.NeonAnimationRunnerBehavior,
-                Polymer.NeonAnimatableBehavior
+                Polymer.NeonAnimatableBehavior,
             ],
             Polymer.Element
         )) {
@@ -133,14 +133,14 @@ This code may only be used under the license found at https://github.com/swarmci
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function () {
+                        value: function() {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
                                     node: this,
                                     nodeDelay: 300,
                                     timing: {
-                                        duration: 300
+                                        duration: 300,
                                     },
                                 },
                                 'exit': {
@@ -148,7 +148,7 @@ This code may only be used under the license found at https://github.com/swarmci
                                     node: this,
                                     nodeDelay: 300,
                                     timing: {
-                                        duration: 300
+                                        duration: 300,
                                     },
                                 },
                             };
