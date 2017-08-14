@@ -46,9 +46,9 @@ This code may only be used under the license found at https://github.com/swarmci
             .upper {
                 height: 70%;
                 @apply --layout-vertical;
-                @apply --layout-end-justified;
+                @apply --layout-center-justified;
                 box-sizing: border-box;
-                padding: 0 0 10vh;
+                padding: 0 14vw;
             }
 
             .bottom {
@@ -58,31 +58,25 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .title {
                 @apply --main-title1;
-                margin: 0 10vw;
                 color: var(--sc-white);
                 text-align: center;
             }
 
             .subtitle {
                 @apply --small-light;
-                margin: 20px 10vw 0;
+                margin: 20px 0 0;
                 color: var(--sc-white);
                 text-align: center;
             }
 
             .disagree {
-
-                border-radius: 50%;
-                width: 76px;
-                height: 76px;
-                background: url('../../../images/swarm-city-sprite.png') -688px -63px;
-                cursor: pointer;
+                margin-right: 20px;
+                @apply --xmark-grey4-normal;
             }
 
             .buttons {
-
                 @apply --layout-horizontal;
-                @apply --layout-center-justified;
+                @apply --layout-center-center;
             }
 
             .iconbutton {
