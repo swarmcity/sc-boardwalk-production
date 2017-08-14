@@ -29,82 +29,98 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-geolocation">
     <template>
         <style>
-            :host {
+             :host {
                 display: block;
             }
-            .agree{
-                @apply --agree-blue;
+            .vmark {
+                @apply --vmark-blue-normal;
+            }
+            .iconbutton {
+                @apply --icon-button-big;
+            }
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .retina {
+                    @apply --retina;
+                }
             }
         </style>
-
-            <div class="agree" on-click="_getLocation"></div>
-            <data-utility id="utility"></data-utility>
-            <data-local-storage id="storage"></data-local-storage>
-
-        </template>
+        <data-utility id="utility"></data-utility>
+        <data-local-storage id="storage"></data-local-storage>
+        <div class="iconbutton" on-click="_getLocation">
+            <div class="vmark retina" on-click="_getLocation"></div>
+        </div>
+    </template>
     <script>
-
-    class DisplayGeolocation extends Polymer.mixinBehaviors([
-        Polymer.AppLocalizeBehavior],
-        Polymer.Element
-    ) {
-        static get is() { return 'display-geolocation';}
-        static get properties() { return {
-            /**
-            * Loading indicates if the componant is loading
-            * @type {Boolean}
-            */
-            loading: {
-                type: Boolean,
-                value: false,
-                notify: true,
-            },
-            /**
-            * Preview is a src path for the default preview image
-            * @type {Boolean}
-            */
-            preview: {
-                type: String,
-            },
-            /**
-            * Path signlas to the parent to change the path
-            * @type {String}
-            */
-            path: {
-                type: String,
-                value: null,
-                notify: true,
-            },
-        };
-    }
-
-    /**
-    * Get s the users location cinverts it tio a geo hash
-    * and saves it to local storage
-    */
-    _getLocation() {
-        let geoHash = '';
-        this.$.utility.getLocation()
-        .then((latlon) => {
-            return this.$.utility.toGeohash(latlon.latitude, latlon.longitude);
-        })
-        .then((data) => {
-            geoHash = data;
-            return this.$.storage.accountExists();
-        })
-        .then((account) => {
-            if(account == false) {
-                return this.$.storage.saveAccount({'location': geoHash});
-            } else {
-                account.location = geoHash;
-                return this.$.storage.saveAccount(account);
+        class DisplayGeolocation extends Polymer.mixinBehaviors([
+                Polymer.AppLocalizeBehavior
+            ],
+            Polymer.Element
+        ) {
+            static get is() {
+                return 'display-geolocation';
             }
-        })
-        .then((account) => {
-            this.path = 'hashtag-list/';
-        });
-    }
+            static get properties() {
+                return {
+                    /**
+                     * Loading indicates if the componant is loading
+                     * @type {Boolean}
+                     */
+                    loading: {
+                        type: Boolean,
+                        value: false,
+                        notify: true,
+                    },
+                    /**
+                     * Preview is a src path for the default preview image
+                     * @type {Boolean}
+                     */
+                    preview: {
+                        type: String,
+                    },
+                    /**
+                     * Path signlas to the parent to change the path
+                     * @type {String}
+                     */
+                    path: {
+                        type: String,
+                        value: null,
+                        notify: true,
+                    },
+                };
+            }
 
-} window.customElements.define(DisplayGeolocation.is, DisplayGeolocation);
-</script>
+            /**
+             * Get s the users location cinverts it tio a geo hash
+             * and saves it to local storage
+             */
+            _getLocation() {
+                let geoHash = '';
+                this.$.utility.getLocation()
+                    .then((latlon) => {
+                        return this.$.utility.toGeohash(latlon.latitude, latlon.longitude);
+                    })
+                    .then((data) => {
+                        geoHash = data;
+                        return this.$.storage.accountExists();
+                    })
+                    .then((account) => {
+                        if (account == false) {
+                            return this.$.storage.saveAccount({
+                                'location': geoHash
+                            });
+                        } else {
+                            account.location = geoHash;
+                            return this.$.storage.saveAccount(account);
+                        }
+                    })
+                    .then((account) => {
+                        this.path = 'hashtag-list/';
+                    });
+            }
+
+        }
+        window.customElements.define(DisplayGeolocation.is, DisplayGeolocation);
+    </script>
 </dom-module>
