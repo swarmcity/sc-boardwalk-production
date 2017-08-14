@@ -99,15 +99,15 @@ This code may only be used under the license found at https://github.com/swarmci
         <app-location route="{{route}}"></app-location>
 
         <div class="container">
-            <div class="upper">
-                <div class="title">{{localize('Do you want to stop creating your account?')}}</div>
-                <div class="subtitle">{{localize('This can not be undone. All progress will be lost')}}</div>
+            <div>
+                <div>{{localize('Do you want to stop creating your account?')}}</div>
+                <div>{{localize('This can not be undone. All progress will be lost')}}</div>
             </div>
-            <div class="bottom">
-                <div class="buttons">
-                    <div class="disagree retina" on-click="_btnClickDisagree"></div>
-                    <div class="iconbutton" on-click="_btnClickAgree">
-                        <div class="vmark retina"></div>
+            <div>
+                <div>
+                    <div class="retina" on-click="_btnClickDisagree"></div>
+                    <div on-click="_btnClickAgree">
+                        <div class="retina"></div>
                     </div>
                 </div>
             </div>
