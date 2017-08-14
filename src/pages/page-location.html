@@ -44,7 +44,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-vertical;
             }
 
-            .upper {
+            .container>div:nth-child(1) {
                 height: 70%;
                 @apply --layout-vertical;
                 @apply --layout-center-justified;
@@ -52,49 +52,53 @@ This code may only be used under the license found at https://github.com/swarmci
                 padding: 0 14vw;
             }
 
-            .bottom {
-                height: 30%;
-            }
-
-            .title {
+            .container>div:nth-child(1)>div:nth-child(1) {
                 @apply --main-title1;
                 color: var(--sc-white);
                 text-align: center;
             }
 
-            .subtitle {
+            .container>div:nth-child(1)>div:nth-child(2) {
                 @apply --small-light;
                 margin: 20px 0 0;
                 color: var(--sc-white);
                 text-align: center;
             }
 
-            .agree {
-                margin-right: 20px;
+            .container>div:nth-child(2) {
+                height: 30%;
             }
 
-            .disagree {
+            .container>div:nth-child(2)>div:nth-child(1) {
+                @apply --layout-horizontal;
+                @apply --layout-center-center;
+            }
+
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
                 @apply --xmark-grey4-normal;
                 cursor: pointer;
                 margin-right: 20px;
             }
 
-            .buttons {
-                @apply --layout-horizontal;
-                @apply --layout-center-center;
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .retina {
+                    @apply --retina;
+                }
             }
         </style>
         <app-location route="{{route}}"></app-location>
 
         <div class="container">
-            <div class="upper">
-                <div class="title">{{localize('Can we ask for your location')}}</div>
-                <div class="subtitle">{{localize('When accepting your browser will ask you')}}</div>
+            <div>
+                <div>{{localize('Can we ask for your location')}}</div>
+                <div>{{localize('When accepting your browser will ask you')}}</div>
             </div>
-            <div class="bottom">
-                <div class="buttons">
-                    <div class="disagree" on-click="_btnClick"></div>
-                    <display-geolocation class="agree" path="{{path}}"></display-geolocation>
+            <div>
+                <div>
+                    <div class="retina" on-click="_btnClick"></div>
+                    <display-geolocation path="{{path}}"></display-geolocation>
                 </div>
             </div>
         </div>

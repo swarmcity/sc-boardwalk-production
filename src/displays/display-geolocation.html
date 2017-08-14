@@ -32,12 +32,15 @@ The following custom properties and mixins are available for styling:
              :host {
                 display: block;
             }
-            .vmark {
-                @apply --vmark-blue-normal;
-            }
-            .iconbutton {
+
+            .container>div:nth-child(1) {
                 @apply --icon-button-big;
             }
+
+            .container>div:nth-child(1)>div:nth-child(1) {
+                @apply --vmark-blue-normal;
+            }
+
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
@@ -48,8 +51,10 @@ The following custom properties and mixins are available for styling:
         </style>
         <data-utility id="utility"></data-utility>
         <data-local-storage id="storage"></data-local-storage>
-        <div class="iconbutton" on-click="_getLocation">
-            <div class="vmark retina" on-click="_getLocation"></div>
+        <div class="container">
+            <div on-click="_getLocation">
+                <div class="retina" on-click="_getLocation"></div>
+            </div>
         </div>
     </template>
     <script>
