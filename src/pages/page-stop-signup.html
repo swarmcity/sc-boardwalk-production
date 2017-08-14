@@ -43,7 +43,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-vertical;
             }
 
-            .upper {
+            .container>div:nth-child(1) {
                 height: 70%;
                 @apply --layout-vertical;
                 @apply --layout-center-justified;
@@ -51,39 +51,40 @@ This code may only be used under the license found at https://github.com/swarmci
                 padding: 0 14vw;
             }
 
-            .bottom {
-                height: 30%;
-            }
-
-            .title {
+            .container>div:nth-child(1)>div:nth-child(1) {
                 @apply --main-title1;
                 color: var(--sc-white);
                 text-align: center;
             }
 
-            .subtitle {
+            .container>div:nth-child(1)>div:nth-child(2) {
                 @apply --small-light;
                 margin: 20px 0 0;
                 color: var(--sc-white);
                 text-align: center;
             }
 
-            .disagree {                
+            .container>div:nth-child(2) {
+                height: 30%;
+            }
+
+            .container>div:nth-child(2)>div:nth-child(1) {
+                @apply --layout-horizontal;
+                @apply --layout-center-center;
+            }
+
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
+
                 @apply --xmark-grey4-normal;
                 cursor: pointer;
                 margin-right: 20px;
             }
 
-            .buttons {
-                @apply --layout-horizontal;
-                @apply --layout-center-center;
-            }
-
-            .iconbutton {
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
                 @apply --icon-button-big;
             }
 
-            .vmark {
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
                 @apply --vmark-blue-normal;
             }
 
@@ -142,7 +143,7 @@ This code may only be used under the license found at https://github.com/swarmci
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
