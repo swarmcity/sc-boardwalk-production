@@ -75,14 +75,17 @@ This code may only be used under the license found at https://github.com/swarmci
 <app-location route="{{route}}"></app-location>
 
     <div class="container">
+            <div class="upper">
         <div class="title">{{localize('Can we ask for your location')}}</div>
         <div class="subtitle">{{localize('When accepting your browser will ask you')}}</div>
+    </div>
+    <div class="bottom">
         <div class="buttons">
             <div class="disagree" on-click="_btnClick"></div>
             <display-geolocation class="blue-agree" path="{{path}}"></display-geolocation>
         </div>
     </div>
-
+</div>
 </template>
 
 <script>
