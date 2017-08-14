@@ -34,7 +34,7 @@ Colors are all lower case, There is a space after the :
                     font-weight: 700;
                     font-size: 35px;
                     letter-spacing: 0;
-                    line-heig`ht: 36px;
+                    line-height: 36px;
                 }
                 --main-title2: {
                     font-family: Montserrat, sans-serif;
@@ -106,6 +106,18 @@ Colors are all lower case, There is a space after the :
                     letter-spacing: 0;
                     line-height: 13px;
                 }
+                /*----------ICONS----------*/
+                --retina: {
+                    background-image: url('../../images/SwarmCity-Sprite-doublesize.png');
+                }
+                --vmark-blue-normal: {
+                    width: 54px;
+                    height: 54px;
+                    background-image: url('../../images/SwarmCity-Sprite-normal.png');
+                    background-repeat: no-repeat;
+                    background-size: 288px 270px;
+                    background-position: -0px -54px;
+                }
                 /* users can not select unless we explicity allow */
                 -webkit-tap-highlight-color: transparent;
                 -webkit-user-select: none;
@@ -154,14 +166,18 @@ Colors are all lower case, There is a space after the :
                 --big-btn-hover: {
                     color: black;
                 }
-                --agree-blue: {
-                    display: block;
+
+
+                --icon-button-big: {
+                    width: 72px;
+                    height: 72px;
                     border-radius: 50%;
-                    width: 76px;
-                    height: 76px;
-                    background: url('../images/swarm-city-sprite.png') -770px -5px;
                     cursor: pointer;
+                    background-color: var(--sc-white);
+                    @apply --layout-horizontal;
+                    @apply --layout-center-center;
                 }
+
                 --display-my-info-balance: {
                     font-weight: 800;
                     font-size: 24px;
@@ -309,9 +325,9 @@ Colors are all lower case, There is a space after the :
                     font-weight: bold;
                 }
                 --display-hashtag-deals-description: {
+                    @apply --body-default;
                     color: var(--grey-4);
                     width: 220px;
-                    font-size: 14px;
                     margin-top: 10px;
                 }
                 --display-hashtag-deals-for: {
