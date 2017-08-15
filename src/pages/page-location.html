@@ -83,7 +83,7 @@ This code may only be used under the license found at https://github.com/swarmci
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
-                .retina {
+                .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1){
                     @apply --retina;
                 }
             }
@@ -97,7 +97,7 @@ This code may only be used under the license found at https://github.com/swarmci
             </div>
             <div>
                 <div>
-                    <div class="retina" on-click="_btnClick"></div>
+                    <div on-click="_btnClick"></div>
                     <display-geolocation path="{{path}}"></display-geolocation>
                 </div>
             </div>
