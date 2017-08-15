@@ -13,7 +13,14 @@ Colors are all lower case, There is a space after the :
     <template>
         <style>
              :host {
-                 
+                /* users can not select unless we explicity allow */
+                -webkit-tap-highlight-color: transparent;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                cursor: default;
+
                 /*----------COLORS----------*/
                 /* Primary tone */
                 --sc-yellow: #EFD96F;
@@ -258,14 +265,6 @@ Colors are all lower case, There is a space after the :
                     height: 72px;
                     background-position: -108px -162px;
                 }
-
-                /* users can not select unless we explicity allow */
-                -webkit-tap-highlight-color: transparent;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-                cursor: default;
 
                 --blue-links: {
                     color: var(--swarm-city-blue);
