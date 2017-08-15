@@ -91,7 +91,8 @@ This code may only be used under the license found at https://github.com/swarmci
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
-                .retina {
+                .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1),
+                .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
                     @apply --retina;
                 }
             }
