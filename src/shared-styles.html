@@ -265,7 +265,72 @@ Colors are all lower case, There is a space after the :
                     background-position: -108px -162px;
                 }
 
-                /*----------MISC----------*/
+                /*----------CUSTOM ELEMENTS----------*/
+                --icon-button-big: {
+                    width: 72px;
+                    height: 72px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    background-color: var(--sc-white);
+                    @apply --layout-horizontal;
+                    @apply --layout-center-center;
+                }
+
+                /*----------PAGE STRUCTURE----------*/
+                /* BLUE CHOICE 
+                    - stop-signup
+                    - location
+                */
+                --blue-choice-host: {
+                    background-color: var(--sc-blue);
+                    height: 100vh;
+                    width: 100vw;
+                    display: block;
+                }
+                --blue-choice-container: {
+                    background-color: var(--sc-blue);
+                    height: 100%;
+                    width: 100%;
+                    @apply --layout-vertical;
+                }
+                --blue-choice-upper: {
+                    height: 70%;
+                    @apply --layout-vertical;
+                    @apply --layout-center-justified;
+                    box-sizing: border-box;
+                    padding: 0 14vw;
+                }
+                --blue-choice-title: {
+                    @apply --main-title1;
+                    color: var(--sc-white);
+                    text-align: center;
+                }
+                --blue-choice-subtitle: {
+                    @apply --small-light;
+                    margin: 20px 0 0;
+                    color: var(--sc-white);
+                    text-align: center;
+                }
+                --blue-choice-bottom: {
+                    height: 30%;
+                }
+                --blue-choice-buttons: {
+                    @apply --layout-horizontal;
+                    @apply --layout-center-center;
+                }
+                --blue-choice-xmark: {
+                    @apply --xmark-grey4-normal;
+                    cursor: pointer;
+                    margin-right: 20px;
+                }
+                --blue-choice-icon-button-big: {
+                    @apply --icon-button-big;
+                }
+
+                --blue-choice-vmark: {
+                    @apply --vmark-blue-normal;
+                }
+
                 --blue-links: {
                     color: var(--swarm-city-blue);
                     text-decoration: none;

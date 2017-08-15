@@ -31,53 +31,35 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
-                background-color: var(--sc-blue);
-                height: 100vh;
-                width: 100vw;
-                display: block;
+                @apply --blue-choice-host;
             }
 
             .container {
-                background-color: var(--sc-blue);
-                height: 100%;
-                width: 100%;
-                @apply --layout-vertical;
+                @apply --blue-choice-container;
             }
 
             .container>div:nth-child(1) {
-                height: 70%;
-                @apply --layout-vertical;
-                @apply --layout-center-justified;
-                box-sizing: border-box;
-                padding: 0 14vw;
+                @apply --blue-choice-upper;
             }
 
             .container>div:nth-child(1)>div:nth-child(1) {
-                @apply --main-title1;
-                color: var(--sc-white);
-                text-align: center;
+                @apply --blue-choice-title;
             }
 
             .container>div:nth-child(1)>div:nth-child(2) {
-                @apply --small-light;
-                margin: 20px 0 0;
-                color: var(--sc-white);
-                text-align: center;
+                @apply --blue-choice-subtitle;
             }
 
             .container>div:nth-child(2) {
-                height: 30%;
+                @apply --blue-choice-bottom;
             }
 
             .container>div:nth-child(2)>div:nth-child(1) {
-                @apply --layout-horizontal;
-                @apply --layout-center-center;
+                @apply --blue-choice-buttons;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
-                @apply --xmark-grey4-normal;
-                cursor: pointer;
-                margin-right: 20px;
+                @apply --blue-choice-xmark
             }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
