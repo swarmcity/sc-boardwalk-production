@@ -32,7 +32,7 @@ This code may only be used under the license found at https://github.com/swarmci
         display: block;
     }
     .top-container{
-        background-color: var(--swarm-city-yellow);
+        background-color: var(--sc-yellow);
         padding: 145px 18px 66px 18px;
         @apply --layout-vertical;
         @apply --layout-center;
@@ -158,8 +158,11 @@ This code may only be used under the license found at https://github.com/swarmci
         cursor:pointer;
     }
     .top-container button {
-        @apply --big-btn;
-        height:80px;
+        @apply --text-button-big;
+        box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                    -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                    -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                    -o-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
     }
     .top-container button:active{
         transform: scale(0.97,0.97);
