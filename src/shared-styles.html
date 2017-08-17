@@ -87,6 +87,13 @@ Colors are all lower case, There is a space after the :
                     letter-spacing: 0;
                     line-height: 24px;
                 }
+                --body-button: {
+                    font-family: Montserrat, sans-serif;
+                    font-weight: 700;
+                    font-size: 18px;
+                    letter-spacing: 0;
+                    line-height: 22px;
+                }
                 --small-light: {
                     font-family: Montserrat, sans-serif;
                     font-weight: 300;
@@ -275,6 +282,16 @@ Colors are all lower case, There is a space after the :
                     @apply --layout-horizontal;
                     @apply --layout-center-center;
                 }
+                --text-button-big: {
+                    @apply --body-button;
+                    @apply --base-shadow;
+                    outline: none;
+                    border: 0;
+                    padding: 30px 42px;
+                    border-radius: 2px;
+                    background-color: rgba(255, 255, 255, 0.2);
+                }
+
 
                 /*----------PAGE STRUCTURE----------*/
                 /* BLUE CHOICE 
@@ -371,8 +388,6 @@ Colors are all lower case, There is a space after the :
                 --big-btn-hover: {
                     color: black;
                 }
-
-
                 --icon-button-big: {
                     width: 72px;
                     height: 72px;
@@ -382,7 +397,6 @@ Colors are all lower case, There is a space after the :
                     @apply --layout-horizontal;
                     @apply --layout-center-center;
                 }
-
                 --display-my-info-balance: {
                     font-weight: 800;
                     font-size: 24px;
