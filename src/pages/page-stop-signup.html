@@ -8,6 +8,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../../bower_components/iron-media-query.html">
 <link rel="import" href="../redux-state.html">
 <!--
     Displays and shared styles only
@@ -85,10 +86,27 @@ This code may only be used under the license found at https://github.com/swarmci
                     @apply --retina;
                 }
             }
+
+            .container[wide-layout]>div:nth-child(1) {
+                @apply --blue-choice-upper-wide;
+            }
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(1) {
+                @apply --blue-choice-title-wide;
+            }
+
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(2) {
+                @apply --blue-choice-subtitle-wide;
+            }
+
+
+            .container[wide-layout]>div:nth-child(2) {
+                @apply --blue-choice-bottom-wide;
+            }
         </style>
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
 
-        <div class="container">
+        <div class="container" wide-layout$="{{wide}}">
             <div>
                 <div>{{localize('Do you want to stop creating your account?')}}</div>
                 <div>{{localize('This can not be undone. All progress will be lost')}}</div>

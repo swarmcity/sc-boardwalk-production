@@ -45,6 +45,11 @@ Colors are all lower case, There is a space after the :
                     letter-spacing: 0;
                     line-height: 36px;
                 }
+                --main-title1-wide: {
+                    @apply --main-title1;
+                    font-size: 55px;
+                    line-height: 55px;
+                }
                 --main-title2: {
                     font-family: Montserrat, sans-serif;
                     font-weight: 700;
@@ -100,6 +105,11 @@ Colors are all lower case, There is a space after the :
                     font-size: 12px;
                     letter-spacing: 0;
                     line-height: 15px;
+                }
+                --small-light-wide: {
+                    @apply --small-light;
+                    font-size: 16px;
+                    line-height: 19px;
                 }
                 --small-bold: {
                     font-family: Montserrat, sans-serif;
@@ -302,7 +312,7 @@ Colors are all lower case, There is a space after the :
                 }
 
                 --button-active: {
-                    transform: scale(0.97,0.97);
+                    transform: scale(0.97, 0.97);
                 }
 
 
@@ -326,14 +336,22 @@ Colors are all lower case, There is a space after the :
                 --blue-choice-upper: {
                     height: 70%;
                     @apply --layout-vertical;
+                    @apply --layout-center;
                     @apply --layout-center-justified;
                     box-sizing: border-box;
                     padding: 0 14vw;
+                }
+                --blue-choice-upper-wide: {
+                    @apply --layout-start;
                 }
                 --blue-choice-title: {
                     @apply --main-title1;
                     color: var(--sc-white);
                     text-align: center;
+                }
+                --blue-choice-title-wide: {
+                    @apply --main-title1-wide;
+                    text-align: left;
                 }
                 --blue-choice-subtitle: {
                     @apply --small-light;
@@ -341,8 +359,20 @@ Colors are all lower case, There is a space after the :
                     color: var(--sc-white);
                     text-align: center;
                 }
+                --blue-choice-subtitle-wide: {
+                    @apply --small-light-wide;
+                    text-align: left;
+                }
                 --blue-choice-bottom: {
+                    box-sizing: border-box;
+                    padding: 0 14vw;
+                    @apply --layout-vertical;
+                    @apply --layout-center;
+                    @apply --layout-start-justified;
                     height: 30%;
+                }
+                --blue-choice-bottom-wide: {
+                    @apply --layout-start;
                 }
                 --blue-choice-buttons: {
                     @apply --layout-horizontal;
