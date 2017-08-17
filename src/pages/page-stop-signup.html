@@ -58,11 +58,19 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
-                @apply --blue-choice-xmark
+                @apply --blue-choice-xmark;
+            }
+
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1):active {
+                @apply --blue-choice-xmark-active;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
                 @apply --blue-choice-icon-button-big;
+            }
+
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2):active {
+                @apply --blue-choice-icon-button-big-active;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
@@ -125,7 +133,7 @@ This code may only be used under the license found at https://github.com/swarmci
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
