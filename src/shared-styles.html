@@ -284,24 +284,22 @@ Colors are all lower case, There is a space after the :
 
                 /*----------CUSTOM ELEMENTS----------*/
                 --base-shadow: {
-
+                    box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                    -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                    -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+                    -o-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
                 }
                 --icon-button-big: {
-
+                    @apply --layout-horizontal;
+                    @apply --layout-center-center;
+                    @apply --base-shadow;
+                    background-color: var(--sc-red);
                     width: 72px;
                     height: 72px;
                     border-radius: 50%;
                     cursor: pointer;
-                    background-color: var(--sc-white);
-                    @apply --layout-horizontal;
-                    @apply --layout-center-center;
-                    box-shadow: 20px 20px 20px -20px rgba(1, 1, 1, 1);
-                    -webkit-box-shadow: 20px 20px 20px -20px rgba(1, 1, 1, 1);
-                    -moz-box-shadow: 20px 20px 20px -20px rgba(1, 1, 1, 1);
-                    -o-box-shadow: 20px 20px 20px -20px rgba(1, 1, 1, 1);
                 }
                 --text-button-big: {
-
                     @apply --body-button;
                     @apply --base-shadow;
                     outline: none;
@@ -400,6 +398,7 @@ Colors are all lower case, There is a space after the :
                 --stop-signup-icon-button-big: {
                     @apply --icon-button-big;
                 }
+
                 --stop-signup-icon-button-big-active: {
                     @apply --button-active;
                 }
@@ -481,12 +480,10 @@ Colors are all lower case, There is a space after the :
                 }
                 --location-icon-button-big: {
                     @apply --icon-button-big;
-
                 }
                 --location-icon-button-big-active: {
                     @apply --button-active;
                 }
-
                 --location-vmark: {
                     @apply --vmark-blue-normal;
                 }
@@ -534,15 +531,7 @@ Colors are all lower case, There is a space after the :
                 --big-btn-hover: {
                     color: black;
                 }
-                --icon-button-big: {
-                    width: 72px;
-                    height: 72px;
-                    border-radius: 50%;
-                    cursor: pointer;
-                    background-color: var(--sc-white);
-                    @apply --layout-horizontal;
-                    @apply --layout-center-center;
-                }
+
                 --display-my-info-balance: {
                     font-weight: 800;
                     font-size: 24px;
