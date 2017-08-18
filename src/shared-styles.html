@@ -302,9 +302,10 @@ Colors are all lower case, There is a space after the :
                 --text-button-big: {
                     @apply --body-button;
                     @apply --base-shadow;
+                    text-align: center;
                     outline: none;
                     border: 0;
-                    padding: 30px 42px;
+                    padding: 25px 42px;
                     border-radius: 2px;
                     background-color: rgba(255, 255, 255, 0.2);
                     cursor: pointer;
@@ -322,6 +323,13 @@ Colors are all lower case, There is a space after the :
 
                 --button-active: {
                     transform: scale(0.97, 0.97);
+                }
+
+                --close: {
+                    position: fixed;
+                    top: 18px;
+                    right: 18px;
+                    cursor: pointer;
                 }
 
 
@@ -488,6 +496,84 @@ Colors are all lower case, There is a space after the :
                     @apply --vmark-blue-normal;
                 }
 
+                /* LOCATION */
+                --new-here-host: {
+                    background-color: var(--sc-blue);
+                    height: 100vh;
+                    width: 100vw;
+                    display: block;
+                }
+                --new-here-container: {
+                    background-color: var(--sc-blue);
+                    height: 100%;
+                    width: 100%;
+                    @apply --layout-vertical;
+                }
+                --new-here-upper: {
+                    height: 60%;
+                    @apply --layout-vertical;
+                    @apply --layout-center;
+                    @apply --layout-center-justified;
+                    box-sizing: border-box;
+                    padding: 0 14vw;
+                }
+                --new-here-upper-wide: {
+                    height: 55%;
+                    padding: 0 12vw 7vh;
+                    @apply --layout-start;
+                    @apply --layout-end-justified;
+                }
+                --new-here-title: {
+                    @apply --main-title1;
+                    color: var(--sc-white);
+                    text-align: center;
+                }
+                --new-here-title-wide: {
+                    @apply --main-title1-wide;
+                    text-align: left;
+                }
+                --new-here-subtitle: {
+                    @apply --small-light;
+                    margin: 20px 0 0;
+                    color: var(--sc-white);
+                    text-align: center;
+                }
+                --new-here-subtitle-wide: {
+                    @apply --small-light-wide;
+                    text-align: left;
+                }
+                --new-here-bottom: {
+                    box-sizing: border-box;
+                    padding: 0 14vw;
+                    @apply --layout-vertical;
+                    @apply --layout-center;
+                    @apply --layout-start-justified;
+                    height: 40%;
+                }
+                --new-here-bottom-wide: {
+                    height: 45%;
+                    padding: 0 12vw;
+                    @apply --layout-start;
+                }
+                --new-here-buttons: {
+                    @apply --layout-vertical;
+                    @apply --layout-center-center;
+                    width: 100%;
+                }
+                --new-here-text-button-big: {
+                    @apply --text-button-big;
+                    color: var(--sc-white);                    
+                    box-sizing: border-box;
+                    width: 100%;                 
+                    margin: 7px 0;
+                }
+                --new-here-text-button-big-active: {
+                    @apply --button-active;
+                }
+                --new-here-close: {
+                    @apply --xmark-white-normal;
+                    @apply --close;
+                }
 
 
                 /***********************************/
