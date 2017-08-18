@@ -112,8 +112,8 @@ This code may only be used under the license found at https://github.com/swarmci
             </div>
             <div>
                 <div>
-                    <div on-click="_btnClickDisagree"></div>
-                    <div on-click="_btnClickAgree">
+                    <div on-click="_agree"></div>
+                    <div on-click="_disagree">
                         <div></div>
                     </div>
                 </div>
@@ -182,14 +182,14 @@ This code may only be used under the license found at https://github.com/swarmci
             /**
              * takes the user to the previous page
              */
-            _btnClickDisagree() {
+             _disagree() {
                 window.history.back();
             }
 
             /**
              * takes the user to the initiating hashtag page
              */
-            _btnClickAgree() {
+             _agree() {
                 this.path = 'hashtag/' + sessionStorage.getItem('hashtagID');
                 sessionStorage.clear();
             }
