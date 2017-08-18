@@ -5,6 +5,10 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../redux-state.html">
+<!--
+    Displays and shared styles only
+-->
 <link rel="import" href="../shared-styles.html">
 <!--
 
@@ -76,23 +80,27 @@ The following custom properties and mixins are available for styling:
 
         <div class="container">
             <label>
-                <div class="title">select your account file</div>
+                <div class="title">{{localize('select your account file')}}</div>
                 <input type="file" on-change="_getFile"/>
             </label>
         </div>
 
     </template>
     <script>
-        class DisplayJSONUpload extends Polymer.mixinBehaviors([
+        class DisplayJSONUpload extends new ReduxMixin(Polymer.mixinBehaviors([
                 Polymer.AppLocalizeBehavior,
             ],
             Polymer.Element
-        ) {
+        )) {
             static get is() {
                 return 'display-json-upload';
             }
             static get properties() {
                 return {
+                    language: {
+                        type: String,
+                        statePath: 'language',
+                    },
                     /**
                      * Loading indicates if the componant is loading
                      * @type {Boolean}
@@ -110,6 +118,11 @@ The following custom properties and mixins are available for styling:
                         type: String,
                     },
                 };
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
             }
 
             /**
