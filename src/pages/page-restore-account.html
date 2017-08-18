@@ -74,17 +74,19 @@ This code may only be used under the license found at https://github.com/swarmci
             }
         </style>
         <app-location route="{{route}}"></app-location>
-
-        <div class="close" on-click="_close"></div>
-        <div class="container">
-            <div class="subtitle">{{localize('How do you want to restore your account')}}</div>
-            <div class="buttons">
-                <div on-click="_privateKey">{{localize('With a private key')}}</div>
-                <div on-click="_jsonFile">{{localize('upload an account file')}}</div>
+        <div class="container" wide-layout$="{{wide}}">
+                <div>
+                    <div>{{localize('How do you want to restore your account')}}</div>
+                </div>
+                <div>
+                    <div>
+                        <div on-click="_btnClickDisagree">{{localize('With a private key')}}</div>
+    
+                        <div on-click="_btnClickAgree">{{localize('upload an account file')}}</div>
+                    </div>
+                </div>
+                <div on-click="_close"></div>
             </div>
-
-        </div>
-
     </template>
 
     <script>
