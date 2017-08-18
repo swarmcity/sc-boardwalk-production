@@ -78,6 +78,11 @@ Colors are all lower case, There is a space after the :
                     letter-spacing: 0;
                     line-height: 19px;
                 }
+                --body-default-wide: {
+                    @apply --body-default;
+                    font-size: 25px;
+                    line-height: 25px;
+                }
                 --body-bold: {
                     font-family: Montserrat, sans-serif;
                     font-weight: 700;
@@ -563,15 +568,18 @@ Colors are all lower case, There is a space after the :
                 --new-here-buttons-wide: {
                     @apply --layout-horizontal;
                     @apply --layout-start-justified;
-                    
                 }
                 --new-here-text-button-big: {
+                    @apply --layout-vertical;
+                    @apply --layout-center-center;
                     @apply --text-button-big;
-                    color: var(--sc-white);                    
+                    color: var(--sc-white);
                     box-sizing: border-box;
-                    width: 100%;                 
-                    margin: 14px 14px 0 0;
+                    width: 100%;
+                    height: 15vh;
+                    margin: 0 14px 14px 0;
                     max-width: 276px;
+                    max-height: 75px;
                 }
                 --new-here-text-button-big-active: {
                     @apply --button-active;
@@ -612,7 +620,9 @@ Colors are all lower case, There is a space after the :
                     @apply --body-default;
                     text-align: center;
                 }
-
+                --restore-account-text-wide: {
+                    @apply --body-default-wide;
+                }
 
                 --restore-account-bottom: {
                     box-sizing: border-box;
@@ -635,17 +645,19 @@ Colors are all lower case, There is a space after the :
                 --restore-account-buttons-wide: {
                     @apply --layout-horizontal;
                     @apply --layout-start-justified;
-                    
                 }
                 --restore-account-text-button-big: {
+                    @apply --layout-vertical;
+                    @apply --layout-center-center;
                     @apply --text-button-big;
-                    color: var(--sc-blue);                    
+                    background-color: var(--sc-grey1);
+                    color: var(--sc-blue);
                     box-sizing: border-box;
-                    width: 100%;                 
-                    margin: 14px 14px 0 0;
+                    width: 100%;
+                    height: 15vh;
+                    margin: 0 14px 14px 0;
                     max-width: 276px;
-                    
-                    
+                    max-height: 75px;
                 }
                 --restore-account-text-button-big-active: {
                     @apply --button-active;
