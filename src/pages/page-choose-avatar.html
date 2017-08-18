@@ -24,135 +24,146 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
 <dom-module id="page-choose-avatar">
-<template>
-<!--
+    <template>
+        <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
 -->
-<style include="shared-styles">
-    :host {
-        display: block;
-        @apply --layout-horizontal;
-        @apply --layout-center-justified;
-    }
-    .close {
-        position: fixed;
-        top: 18px;
-        right: 18px;
-        width: 20px;
-        height: 20px;
-        background: url('../../../images/swarm-city-sprite.png') -60px -84px;
-        cursor: pointer;
-    }
-    .container{
-        max-width:400px;
-    }
-    .title{
-        color: var(--grey-4);
-        padding: 221px 50px 50px 50px;
-        text-align: center;
-        font-weight:200;
-        font-size: 16px;
-        line-height: 15px;
-        width:260px;
-    }
-    .btn{
-        color: var(--swarm-city-blue);
-        cursor: pointer;
-        padding-top: 100px;
-        @apply --layout-horizontal;
-        @apply --layout-center-justified;
-    }
-    paper-input{
-        padding: 0 0 50px 0;
-        --paper-input-container-color: var(--swarm-city-blue);
-        --paper-input-container-focus-color: var(--swarm-city-blue);
-    }
+        <style include="shared-styles">
+             :host {
+                display: block;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+            }
 
-    .btn .agree {
-        @apply --agree-blue;
+            .close {
+                position: fixed;
+                top: 18px;
+                right: 18px;
+                width: 20px;
+                height: 20px;
+                background: url('../../../images/swarm-city-sprite.png') -60px -84px;
+                cursor: pointer;
+            }
 
-    }
-</style>
-<app-location route="{{route}}"></app-location>
+            .container {
+                max-width: 400px;
+            }
 
-    <div class="close" on-click="_close"></div>
-    <div class="container">
-        <div class="title">{{localize('Profile picture')}}</div>
-        <display-image-upload path="{{path}}"></display-image-upload>
-        <div class="btn" on-click="_skip">{{localize('skip for now')}}</div>
-    </div>
+            .title {
+                color: var(--grey-4);
+                padding: 221px 50px 50px 50px;
+                text-align: center;
+                font-weight: 200;
+                font-size: 16px;
+                line-height: 15px;
+                width: 260px;
+            }
 
-</template>
+            .btn {
+                color: var(--swarm-city-blue);
+                cursor: pointer;
+                padding-top: 100px;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+            }
 
-<script>
-    class MyChooseAvatar extends new ReduxMixin(Polymer.mixinBehaviors([
-        Polymer.AppLocalizeBehavior,
-        Polymer.NeonAnimationRunnerBehavior,
-        Polymer.NeonAnimatableBehavior],
-        Polymer.Element
-    )) {
-    static get is() { return 'page-choose-avatar'; }
-    static get properties() { return {
-            language: {
-                type: String,
-                statePath: 'language',
-            },
-            /**
-            * Path is the current or requested path
-            * @type {String}
-            */
-            path: {
-                type: String,
-                observer: '_path',
-            },
-            /**
-            * Entry and exit animation
-            */
-            animationConfig: {
-            value: function() {
+            paper-input {
+                padding: 0 0 50px 0;
+                --paper-input-container-color: var(--swarm-city-blue);
+                --paper-input-container-focus-color: var(--swarm-city-blue);
+            }
+
+            .btn .agree {
+                @apply --agree-blue;
+            }
+        </style>
+        <app-location route="{{route}}"></app-location>
+
+        <div class="close" on-click="_close"></div>
+        <div class="container">
+            <div class="title">{{localize('Profile picture')}}</div>
+            <display-image-upload path="{{path}}"></display-image-upload>
+            <div class="btn" on-click="_skip">{{localize('skip for now')}}</div>
+        </div>
+
+    </template>
+
+    <script>
+        class MyChooseAvatar extends new ReduxMixin(Polymer.mixinBehaviors([
+                Polymer.AppLocalizeBehavior,
+                Polymer.NeonAnimationRunnerBehavior,
+                Polymer.NeonAnimatableBehavior,
+            ],
+            Polymer.Element
+        )) {
+            static get is() {
+                return 'page-choose-avatar';
+            }
+            static get properties() {
                 return {
-                'entry': {
-                    name: 'fade-in-animation',
-                    node: this,
-                    nodeDelay: 300,
-                    timing: {duration: 300},
-                },
-                'exit': {
-                    name: 'fade-out-animation',
-                    node: this,
-                    nodeDelay: 300,
-                    timing: {duration: 300},
-                },
+                    language: {
+                        type: String,
+                        statePath: 'language',
+                    },
+                    /**
+                     * Path is the current or requested path
+                     * @type {String}
+                     */
+                    path: {
+                        type: String,
+                        observer: '_path',
+                    },
+                    /**
+                     * Entry and exit animation
+                     */
+                    animationConfig: {
+                        value: function() {
+                            return {
+                                'entry': {
+                                    name: 'fade-in-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {
+                                        duration: 300,
+                                    },
+                                },
+                                'exit': {
+                                    name: 'fade-out-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {
+                                        duration: 300,
+                                    },
+                                },
+                            };
+                        },
+                    },
                 };
-            },
-            },
-        };
-    }
-    
-    connectedCallback() {
-        super.connectedCallback();
-        this.loadResources(this.resolveUrl('../text-translations.json'));
-    }
-    _close() {
-        this.path = 'stop-signup/';
-    }
-    /**
-    * changes the current path on skip
-    */
-    _skip() {
-        this.path = 'resize-avatar/';
-    }
-    /**
-    * changes the current path
-    */
-    _path() {
-        if(this.path != null) {
-            this.set('route.path', this.path);
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
+            _close() {
+                this.path = 'stop-signup/';
+            }
+            /**
+             * changes the current path on skip
+             */
+            _skip() {
+                this.path = 'resize-avatar/';
+            }
+            /**
+             * changes the current path
+             */
+            _path() {
+                if (this.path != null) {
+                    this.set('route.path', this.path);
+                }
+                this.path = null;
+            }
         }
-        this.path = null;
-    }
-
-
-} window.customElements.define(MyChooseAvatar.is, MyChooseAvatar);
-</script>
+        window.customElements.define(MyChooseAvatar.is, MyChooseAvatar);
+    </script>
 </dom-module>

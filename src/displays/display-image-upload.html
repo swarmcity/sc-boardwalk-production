@@ -29,24 +29,27 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-image-upload">
     <template>
         <style include="shared-styles">
-            :host {
+             :host {
                 display: block;
             }
+
             input {
-                position:relative;
+                position: relative;
                 top: -200px;
                 left: -200px;
             }
-            .container{
-                display:block;
-                height: 135px;	
+
+            .container {
+                display: block;
+                height: 135px;
                 width: 135px;
-                position:relative;
+                position: relative;
             }
+
             .container label {
                 width: 276px;
                 height: 30px;
-                line-height:30px;
+                line-height: 30px;
                 text-align: center;
                 margin-bottom: 10px;
                 display: block;
@@ -64,11 +67,12 @@ The following custom properties and mixins are available for styling:
                 -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
                 overflow: hidden;
             }
-            .title{
+
+            .title {
                 color: var(--swarm-city-blue)
             }
         </style>
-        
+
 
         <div class="container">
             <label>
@@ -77,62 +81,65 @@ The following custom properties and mixins are available for styling:
             </label>
         </div>
 
-        </template>
+    </template>
     <script>
+        class DisplayImageUpload extends Polymer.mixinBehaviors([
+                Polymer.AppLocalizeBehavior,
+            ],
+            Polymer.Element
+        ) {
+            static get is() {
+                return 'display-image-upload';
+            }
+            static get properties() {
+                return {
+                    /**
+                     * Loading indicates if the componant is loading
+                     * @type {Boolean}
+                     */
+                    loading: {
+                        type: Boolean,
+                        value: false,
+                        notify: true,
+                    },
+                    /**
+                     * Preview is a src path for the default preview image
+                     * @type {String}
+                     */
+                    preview: {
+                        type: String,
+                    },
+                };
+            }
 
-    class DisplayImageUpload extends Polymer.mixinBehaviors([
-        Polymer.AppLocalizeBehavior],
-        Polymer.Element
-    ) {
-        static get is() { return 'display-image-upload';}
-        static get properties() { return {
             /**
-            * Loading indicates if the componant is loading
-            * @type {Boolean}
-            */
-            loading: {
-                type: Boolean,
-                value: false,
-                notify: true,
-            },
+             * Fired when the user selects a file
+             * @param {event} event The event from the on-change
+             */
+            _getFile(event) {
+                this.loading = true;
+                event.stopPropagation();
+                event.preventDefault();
+                const file = event.target.files[0];
+                this._base64(file);
+            }
+
             /**
-            * Preview is a src path for the default preview image
-            * @type {String}
-            */
-            preview: {
-                type: String,
-            },
-        };
-    }
-
-    /**
-    * Fired when the user selects a file
-    * @param {event} event The event from the on-change
-    */
-    _getFile(event) {
-        this.loading = true;
-        event.stopPropagation();
-        event.preventDefault();
-        const file = event.target.files[0];
-        this._base64(file);
-    }
-
-    /**
-    * Converts afile to base 64 for transport
-    * @param {file} file is a file with type of file
-    */
-    _base64(file) {
-        let reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => {
-            this.preview = reader.result;
-        };
-        reader.onerror = (error) => {
-            this.loading = false;
-            this.error = error;
-        };
-    }
-
-} window.customElements.define(DisplayImageUpload.is, DisplayImageUpload);
-</script>
+             * Converts afile to base 64 for transport
+             * @param {file} file is a file with type of file
+             */
+            _base64(file) {
+                let reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => {
+                    this.preview = reader.result;
+                };
+                reader.onerror = (error) => {
+                    this.loading = false;
+                    this.error = error;
+                };
+            }
+        }
+        window.customElements.define(DisplayImageUpload.is, DisplayImageUpload);
+    </script>
 </dom-module>

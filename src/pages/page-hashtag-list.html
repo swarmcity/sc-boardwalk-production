@@ -34,18 +34,19 @@ This code may only be used under the license found at https://github.com/swarmci
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
 -->
         <style include="shared-styles">
-            :host {
+             :host {
                 display: block;
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
             }
+
             .back {
                 @apply --page-hashtag-list-back;
                 margin-top: 18px;
                 cursor: pointer;
             }
         </style>
-        <app-location route="{{route}}"></app-location>      
+        <app-location route="{{route}}"></app-location>
         <div class="container">
             <display-my-info></display-my-info>
             <div class="back" on-click="_back"></div>
@@ -57,25 +58,28 @@ This code may only be used under the license found at https://github.com/swarmci
 
     <script>
         class HashtagList extends new ReduxMixin(Polymer.mixinBehaviors([
-            Polymer.AppLocalizeBehavior,
-            Polymer.NeonAnimationRunnerBehavior,
-            Polymer.NeonAnimatableBehavior],
+                Polymer.AppLocalizeBehavior,
+                Polymer.NeonAnimationRunnerBehavior,
+                Polymer.NeonAnimatableBehavior,
+            ],
             Polymer.Element
         )) {
-            static get is() { return 'page-hashtag-list'; }
+            static get is() {
+                return 'page-hashtag-list';
+            }
             static get properties() {
                 return {
                     /**
-                    * Path is the current or requested path
-                    * @type {String}
-                    */
+                     * Path is the current or requested path
+                     * @type {String}
+                     */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                    * Entry and exit animation
-                    */
+                     * Entry and exit animation
+                     */
                     animationConfig: {
                         value: function() {
                             return {
@@ -83,13 +87,17 @@ This code may only be used under the license found at https://github.com/swarmci
                                     name: 'fade-in-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: {duration: 300},
+                                    timing: {
+                                        duration: 300,
+                                    },
                                 },
                                 'exit': {
                                     name: 'fade-out-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: {duration: 300},
+                                    timing: {
+                                        duration: 300,
+                                    },
                                 },
                             };
                         },
@@ -97,28 +105,28 @@ This code may only be used under the license found at https://github.com/swarmci
                 };
             }
 
-    connectedCallback() {
-        super.connectedCallback();
-        this.loadResources(this.resolveUrl('../text-translations.json'));
-    }
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
 
-    /**
-    * changes the current path
-    */
-    _path() {
-        if (this.path != null) {
-            this.set('route.path', this.path);
+            /**
+             * changes the current path
+             */
+            _path() {
+                if (this.path != null) {
+                    this.set('route.path', this.path);
+                }
+                this.path = null;
+            }
+
+            /**
+             * takes the user to the welcome page
+             */
+            _back() {
+                this.set('route.path', 'welcome/');
+            }
         }
-        this.path = null;
-    }
-
-    /**
-    * takes the user to the welcome page
-    */
-    _back() {
-        this.set('route.path', 'welcome/');
-    }
-
-} window.customElements.define(HashtagList.is, HashtagList);
-</script>
+        window.customElements.define(HashtagList.is, HashtagList);
+    </script>
 </dom-module>

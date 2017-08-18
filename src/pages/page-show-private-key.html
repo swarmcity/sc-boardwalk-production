@@ -79,7 +79,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 margin: 10px auto 0;
                 color: #666666;
                 text-align: center;
-               
             }
 
             .qrcode {
@@ -88,7 +87,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 background-color: grey;
                 margin: 30px auto 90px;
             }
-
         </style>
 
         <app-location route="{{route}}"></app-location>
@@ -97,7 +95,7 @@ This code may only be used under the license found at https://github.com/swarmci
             <div class="smallgrey">{{localize('Your public key')}}</div>
             <div class="key">0x369D787F4EdF4a0e57cDfCFB3 Dd92134e1982e06</div>
             <div class="bluelink">{{localize('copy public key')}}</div>
-            <div class="qrcode"></div>          
+            <div class="qrcode"></div>
             <div class="smallgrey">{{localize('Your private key')}}</div>
             <div class="key">0x369D787F4EdF4a0e57cDfCFB3 Dd92134e1982e06</div>
             <div class="bluelink">{{localize('copy private key')}}</div>
@@ -177,7 +175,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 }
                 this.path = null;
             }
-
         }
         window.customElements.define(MyShowPrivateKey.is, MyShowPrivateKey);
     </script>

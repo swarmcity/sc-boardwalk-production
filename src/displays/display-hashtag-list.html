@@ -63,7 +63,7 @@ The following custom properties and mixins are available for styling:
             Polymer.AppLocalizeBehavior],
             Polymer.Element
         )) {
-            static get is() { return 'display-hashtag-list'; }
+            static get is() {return 'display-hashtag-list';}
             static get properties() {
                 return {
                     /**
@@ -189,7 +189,6 @@ The following custom properties and mixins are available for styling:
             _toHashtag(selected) {
                 this.path = 'hashtag/' + selected.model.__data.item.hashtagID + '/';
             }
-
 } window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);
 </script>
 </dom-module>

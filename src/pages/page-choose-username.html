@@ -45,7 +45,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 height: 36px;
                 background-image: url('../../images/SwarmCity-Sprite-normal.png');
                 background-repeat: no-repeat;
-                background-size:288px 270px; 
+                background-size: 288px 270px;
                 background-position: -216px -234px;
                 cursor: pointer;
             }
@@ -54,7 +54,7 @@ This code may only be used under the license found at https://github.com/swarmci
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
                 .retina {
-                    background-image: url('../../images/SwarmCity-Sprite-doublesize.png'); 
+                    background-image: url('../../images/SwarmCity-Sprite-doublesize.png');
                 }
             }
 
@@ -106,12 +106,15 @@ This code may only be used under the license found at https://github.com/swarmci
 
     <script>
         class MyChooseUsername extends new ReduxMixin(Polymer.mixinBehaviors([
-            Polymer.AppLocalizeBehavior,
-            Polymer.NeonAnimationRunnerBehavior,
-            Polymer.NeonAnimatableBehavior],
+                Polymer.AppLocalizeBehavior,
+                Polymer.NeonAnimationRunnerBehavior,
+                Polymer.NeonAnimatableBehavior,
+            ],
             Polymer.Element
         )) {
-            static get is() { return 'page-choose-username'; }
+            static get is() {
+                return 'page-choose-username';
+            }
             static get properties() {
                 return {
                     language: {
@@ -119,16 +122,16 @@ This code may only be used under the license found at https://github.com/swarmci
                         statePath: 'language',
                     },
                     /**
-                    * Path is the current or requested path
-                    * @type {String}
-                    */
+                     * Path is the current or requested path
+                     * @type {String}
+                     */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                    * Entry and exit animation
-                    */
+                     * Entry and exit animation
+                     */
                     animationConfig: {
                         value: function() {
                             return {
@@ -136,13 +139,17 @@ This code may only be used under the license found at https://github.com/swarmci
                                     name: 'fade-in-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: {duration: 300},
+                                    timing: {
+                                        duration: 300,
+                                    },
                                 },
                                 'exit': {
                                     name: 'fade-out-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: {duration: 300},
+                                    timing: {
+                                        duration: 300,
+                                    },
                                 },
                             };
                         },
@@ -155,27 +162,27 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             /**
-            * takes the user to page-stop-signup
-            */
+             * takes the user to page-stop-signup
+             */
             _close() {
                 this.path = 'stop-signup/';
             }
             /**
-            * takes the user to the next page in user creation
-            */
+             * takes the user to the next page in user creation
+             */
             _agree() {
                 this.path = 'choose-avatar/';
             }
             /**
-            * changes the current path
-            */
+             * changes the current path
+             */
             _path() {
                 if (this.path != null) {
                     this.set('route.path', this.path);
                 }
                 this.path = null;
             }
-
-        } window.customElements.define(MyChooseUsername.is, MyChooseUsername);
+        }
+        window.customElements.define(MyChooseUsername.is, MyChooseUsername);
     </script>
 </dom-module>
