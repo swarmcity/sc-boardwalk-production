@@ -59,11 +59,20 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --json-file-icon-button-big;
             }
 
+            .container>div:nth-child(2)>div:nth-child(1) :active {
+                @apply --json-file-icon-button-big-active;
+            }
+
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
                 @apply --json-file-vmark;
             }
+
             .container>div:nth-child(3) {
                 @apply --json-file-close;
+            }
+
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(1)>div:nth-child(1) {
+                @apply --json-file-text-wide;
             }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
@@ -74,18 +83,19 @@ This code may only be used under the license found at https://github.com/swarmci
                     @apply --retina;
                 }
             }
-
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
         <div class="container" wide-layout$="{{wide}}">
             <div>
-                <div>{{localize('Restore your account file')}}</div>
-                <display-json-upload type="{{type}}"></display-json-upload>
+                <div>
+                    <div>{{localize('Restore your account file')}}</div>
+                    <display-json-upload type="{{type}}"></display-json-upload>
+                </div>
             </div>
             <div>
-               <!--  <template is="dom-if" if="{{type}}"> -->
-                    <template is="dom-if" if="true">
+                <!--  <template is="dom-if" if="{{type}}"> -->
+                <template is="dom-if" if="true">
                     <div on-click="_agree">
                         <div></div>
                     </div>
@@ -124,7 +134,7 @@ This code may only be used under the license found at https://github.com/swarmci
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function () {
+                        value: function() {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',

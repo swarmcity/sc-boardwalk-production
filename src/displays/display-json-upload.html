@@ -38,51 +38,20 @@ The following custom properties and mixins are available for styling:
             }
 
             input {
-                position: relative;
-                top: -200px;
-                left: -200px;
+                display: none;
             }
 
             .container {
-                display: block;
-                height: 135px;
-                width: 135px;
-                position: relative;
+                @apply --json-file-text-button-big;
             }
 
-            .container label {
-                width: 276px;
-                height: 30px;
-                line-height: 30px;
-                text-align: center;
-                margin-bottom: 10px;
-                display: block;
-                border: none;
-                outline: none;
-                font-size: 15px;
-                cursor: pointer;
-                font-weight: 900;
-                color: var(--grey-4);
-                padding: 28px 42px 28px 42px;
-                background-color: rgba(255, 255, 255, 0.1);
-                box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -o-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                overflow: hidden;
-            }
-
-            .title {
-                color: var(--swarm-city-blue)
+            .container:active {
+                @apply --json-file-text-button-big-active;
             }
         </style>
-
-
         <div class="container">
-            <label>
-                <div class="title">{{localize('select your account file')}}</div>
-                <input type="file" on-change="_getFile"/>
-            </label>
+            <div>{{localize('select your account file')}}</div>
+            <input type="file" on-change="_getFile" />
         </div>
 
     </template>
