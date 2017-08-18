@@ -560,12 +560,18 @@ Colors are all lower case, There is a space after the :
                     @apply --layout-center-center;
                     width: 100%;
                 }
+                --new-here-buttons-wide: {
+                    @apply --layout-horizontal;
+                    @apply --layout-start-justified;
+                    
+                }
                 --new-here-text-button-big: {
                     @apply --text-button-big;
                     color: var(--sc-white);                    
                     box-sizing: border-box;
                     width: 100%;                 
-                    margin: 7px 0;
+                    margin: 14px 14px 0 0;
+                    max-width: 276px;
                 }
                 --new-here-text-button-big-active: {
                     @apply --button-active;

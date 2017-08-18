@@ -56,6 +56,7 @@ This code may only be used under the license found at https://github.com/swarmci
             .container>div:nth-child(2)>div:nth-child(1) {
                 @apply --new-here-buttons;
             }
+
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
                 @apply --new-here-text-button-big;
             }
@@ -72,9 +73,35 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --new-here-text-button-big-active;
             }
 
-
-            .close {
+            .container>div:nth-child(3) {
                 @apply --new-here-close;
+            }
+
+            .container[wide-layout]>div:nth-child(1) {
+                @apply --new-here-upper-wide;
+            }
+
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(1) {
+                @apply --new-here-title-wide;
+            }
+
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(2) {
+                @apply --new-here-subtitle-wide;
+            }
+
+            .container[wide-layout]>div:nth-child(2) {
+                @apply --new-here-bottom-wide;
+            }
+            .container[wide-layout]>div:nth-child(2)>div:nth-child(1) {
+                @apply --new-here-buttons-wide;
+            }
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .container>div:nth-child(3){
+                    @apply --retina;
+                }
             }
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
@@ -87,7 +114,7 @@ This code may only be used under the license found at https://github.com/swarmci
             <div>
                 <div>
                     <div on-click="_btnClickDisagree">{{localize('create account')}}</div>
-                    
+
                     <div on-click="_btnClickAgree">{{localize('restore account')}}</div>
                 </div>
             </div>
