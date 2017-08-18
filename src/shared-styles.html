@@ -496,7 +496,7 @@ Colors are all lower case, There is a space after the :
                     @apply --vmark-blue-normal;
                 }
 
-                /* LOCATION */
+                /* NEW-HERE */
                 --new-here-host: {
                     background-color: var(--sc-blue);
                     height: 100vh;
@@ -578,6 +578,80 @@ Colors are all lower case, There is a space after the :
                 }
                 --new-here-close: {
                     @apply --xmark-white-normal;
+                    @apply --close;
+                }
+
+                /* RESTORE-ACCOUNT */
+                --restore-account-host: {
+                    background-color: var(--sc-white);
+                    height: 100vh;
+                    width: 100vw;
+                    display: block;
+                }
+                --restore-account-container: {
+                    background-color: var(--sc-white);
+                    height: 100%;
+                    width: 100%;
+                    @apply --layout-vertical;
+                }
+                --restore-account-upper: {
+                    height: 60%;
+                    @apply --layout-vertical;
+                    @apply --layout-center;
+                    @apply --layout-center-justified;
+                    box-sizing: border-box;
+                    padding: 0 14vw;
+                }
+                --restore-account-upper-wide: {
+                    height: 55%;
+                    padding: 0 12vw 7vh;
+                    @apply --layout-start;
+                    @apply --layout-end-justified;
+                }
+                --restore-account-text: {
+                    @apply --body-default;
+                    text-align: center;
+                }
+
+
+                --restore-account-bottom: {
+                    box-sizing: border-box;
+                    padding: 0 14vw;
+                    @apply --layout-vertical;
+                    @apply --layout-center;
+                    @apply --layout-start-justified;
+                    height: 40%;
+                }
+                --restore-account-bottom-wide: {
+                    height: 45%;
+                    padding: 0 12vw;
+                    @apply --layout-start;
+                }
+                --restore-account-buttons: {
+                    @apply --layout-vertical;
+                    @apply --layout-center-center;
+                    width: 100%;
+                }
+                --restore-account-buttons-wide: {
+                    @apply --layout-horizontal;
+                    @apply --layout-start-justified;
+                    
+                }
+                --restore-account-text-button-big: {
+                    @apply --text-button-big;
+                    color: var(--sc-blue);                    
+                    box-sizing: border-box;
+                    width: 100%;                 
+                    margin: 14px 14px 0 0;
+                    max-width: 276px;
+                    
+                    
+                }
+                --restore-account-text-button-big-active: {
+                    @apply --button-active;
+                }
+                --restore-account-close: {
+                    @apply --xmark-grey4-normal;
                     @apply --close;
                 }
 
