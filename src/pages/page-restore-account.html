@@ -30,63 +30,85 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
-                display: block;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
+                @apply --restore-account-host;
             }
 
             .container {
-                max-width: 400px;
+                @apply --restore-account-container;
             }
 
-            .container div:nth-child(1) {
-                color: var(--grey-4);
-                padding: 221px 50px 168px 50px;
-                text-align: center;
-                font-weight: 200;
-                font-size: 16px;
-                line-height: 15px;
+            .container>div:nth-child(1) {
+                @apply --restore-account-upper;
             }
 
-            .container div:nth-child(2) {
-                text-align: center;
+            .container>div:nth-child(1)>div:nth-child(1) {
+                @apply --restore-account-text;
             }
 
-            .container div:nth-child(2) div {
-                @apply --big-btn;
-                color: var(--swarm-city-blue);
-                margin: 0 auto;
-                margin-top: 12px;
+            .container>div:nth-child(1)>div:nth-child(2) {
+                @apply --restore-account-subtitle;
             }
 
-            .container div:nth-child(3) div:active {
-                transform: scale(0.97, 0.97);
+            .container>div:nth-child(2) {
+                @apply --restore-account-bottom;
             }
 
-            .close {
-                position: fixed;
-                top: 18px;
-                right: 18px;
-                width: 20px;
-                height: 20px;
-                background: url('../../../images/swarm-city-sprite.png') -60px -84px;
-                cursor: pointer;
+            .container>div:nth-child(2)>div:nth-child(1) {
+                @apply --restore-account-buttons;
+            }
+
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1),
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
+                @apply --restore-account-text-button-big;
+            }
+
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1):active,
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2):active {
+                @apply --restore-account-text-button-big-active;
+            }
+
+            .container>div:nth-child(3) {
+                @apply --restore-account-close;
+            }
+
+            .container[wide-layout]>div:nth-child(1) {
+                @apply --restore-account-upper-wide;
+            }
+
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(1) {
+                @apply --restore-account-text-wide;
+            }
+
+            .container[wide-layout]>div:nth-child(2) {
+                @apply --restore-account-bottom-wide;
+            }
+
+            .container[wide-layout]>div:nth-child(2)>div:nth-child(1) {
+                @apply --restore-account-buttons-wide;
+            }
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .container>div:nth-child(3) {
+                    @apply --retina;
+                }
             }
         </style>
         <app-location route="{{route}}"></app-location>
         <div class="container" wide-layout$="{{wide}}">
-                <div>
-                    <div>{{localize('How do you want to restore your account')}}</div>
-                </div>
-                <div>
-                    <div>
-                        <div on-click="_btnClickDisagree">{{localize('With a private key')}}</div>
-    
-                        <div on-click="_btnClickAgree">{{localize('upload an account file')}}</div>
-                    </div>
-                </div>
-                <div on-click="_close"></div>
+            <div>
+                <div>{{localize('How do you want to restore your account')}}</div>
             </div>
+            <div>
+                <div>
+                    <div on-click="_btnClickDisagree">{{localize('With a private key')}}</div>
+
+                    <div on-click="_btnClickAgree">{{localize('upload an account file')}}</div>
+                </div>
+            </div>
+            <div on-click="_close"></div>
+        </div>
     </template>
 
     <script>
