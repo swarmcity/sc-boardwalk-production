@@ -58,11 +58,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --restore-account-text-button-big;
             }
 
-            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1):active,
-            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2):active {
-                @apply --restore-account-text-button-big-active;
-            }
-
             .container>div:nth-child(3) {
                 @apply --restore-account-close;
             }
@@ -81,6 +76,12 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .container[wide-layout]>div:nth-child(2)>div:nth-child(1) {
                 @apply --restore-account-buttons-wide;
+            }
+
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1):active,
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2):active,
+            .container>div:nth-child(3):active {
+                @apply --button-active;
             }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),

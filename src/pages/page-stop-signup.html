@@ -61,16 +61,8 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --stop-signup-xmark;
             }
 
-            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1):active {
-                @apply --stop-signup-xmark-active;
-            }
-
-            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
+                        .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
                 @apply --stop-signup-icon-button-big;
-            }
-
-            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2):active {
-                @apply --stop-signup-icon-button-big-active;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
@@ -91,6 +83,11 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .container[wide-layout]>div:nth-child(2) {
                 @apply --stop-signup-bottom-wide;
+            }
+
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1):active,
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2):active {
+                @apply --button-active;
             }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
