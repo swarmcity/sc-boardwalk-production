@@ -135,12 +135,15 @@ This code may only be used under the license found at https://github.com/swarmci
 
     <script>
         class MyResizeAvatar extends new ReduxMixin(Polymer.mixinBehaviors([
-            Polymer.AppLocalizeBehavior,
-            Polymer.NeonAnimationRunnerBehavior,
-            Polymer.NeonAnimatableBehavior],
+                Polymer.AppLocalizeBehavior,
+                Polymer.NeonAnimationRunnerBehavior,
+                Polymer.NeonAnimatableBehavior,
+            ],
             Polymer.Element
         )) {
-            static get is() { return 'page-resize-avatar'; }
+            static get is() {
+                return 'page-resize-avatar';
+            }
             static get properties() {
                 return {
                     language: {
@@ -148,16 +151,16 @@ This code may only be used under the license found at https://github.com/swarmci
                         statePath: 'language',
                     },
                     /**
-                    * Path is the current or requested path
-                    * @type {String}
-                    */
+                     * Path is the current or requested path
+                     * @type {String}
+                     */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                    * Entry and exit animation
-                    */
+                     * Entry and exit animation
+                     */
                     animationConfig: {
                         value: function() {
                             return {
@@ -165,13 +168,17 @@ This code may only be used under the license found at https://github.com/swarmci
                                     name: 'fade-in-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: {duration: 300},
+                                    timing: {
+                                        duration: 300,
+                                    },
                                 },
                                 'exit': {
                                     name: 'fade-out-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: {duration: 300},
+                                    timing: {
+                                        duration: 300,
+                                    },
                                 },
                             };
                         },
@@ -187,33 +194,33 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = 'stop-signup/';
             }
             /**
-            *changes the current path to choose avatar
-            **/
+             *changes the current path to choose avatar
+             **/
             _btnClickDisagree() {
                 this.path = 'choose-avatar/';
             }
             /**
-            *changes the current path to password warning
-            **/
+             *changes the current path to password warning
+             **/
             _btnClickAgree() {
                 this.path = 'password-warning/';
             }
             /**
-            *changes the current path to previous
-            **/
+             *changes the current path to previous
+             **/
             _previous() {
                 window.history.back();
             }
             /**
-            * changes the current path
-            */
+             * changes the current path
+             */
             _path() {
                 if (this.path != null) {
                     this.set('route.path', this.path);
                 }
                 this.path = null;
             }
-
-        } window.customElements.define(MyResizeAvatar.is, MyResizeAvatar);
+        }
+        window.customElements.define(MyResizeAvatar.is, MyResizeAvatar);
     </script>
 </dom-module>

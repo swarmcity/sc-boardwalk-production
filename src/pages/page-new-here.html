@@ -108,9 +108,9 @@ This code may only be used under the license found at https://github.com/swarmci
             </div>
             <div>
                 <div>
-                    <div on-click="_btnClickDisagree">{{localize('create account')}}</div>
+                    <div on-click="_create">{{localize('create account')}}</div>
 
-                    <div on-click="_btnClickAgree">{{localize('restore account')}}</div>
+                    <div on-click="_restore">{{localize('restore account')}}</div>
                 </div>
             </div>
             <div on-click="_close"></div>
@@ -204,7 +204,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 }
                 this.path = null;
             }
-
         }
         window.customElements.define(MyNewHere.is, MyNewHere);
     </script>

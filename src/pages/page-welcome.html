@@ -193,7 +193,6 @@ This code may only be used under the license found at https://github.com/swarmci
             .top-container button:active {
                 @apply --button-active;
             }
-            
         </style>
 
         <app-location route="{{route}}"></app-location>
@@ -245,13 +244,14 @@ This code may only be used under the license found at https://github.com/swarmci
 <script>
     
     class PageWelcome extends new ReduxMixin(Polymer.mixinBehaviors([
-        Polymer.AppLocalizeBehavior,
-        Polymer.NeonAnimationRunnerBehavior,
-        Polymer.NeonAnimatableBehavior],
-        Polymer.Element
+                Polymer.AppLocalizeBehavior,
+                Polymer.NeonAnimationRunnerBehavior,
+                Polymer.NeonAnimatableBehavior,
+            ],
+            Polymer.Element
         )) {
-        static get is() { return 'page-welcome'; }
-        static get properties() { return {
+        static get is() {return 'page-welcome';}
+        static get properties() {return {
             language: {
                 type: String,
                 statePath: 'language',
@@ -296,7 +296,7 @@ This code may only be used under the license found at https://github.com/swarmci
     * changes the current path
     */
     _path() {
-        if(this.path != null) {
+        if (this.path != null) {
             this.set('route.path', this.path);
         }
         this.path = null;
@@ -308,7 +308,6 @@ This code may only be used under the license found at https://github.com/swarmci
     _btnClick() {
         this.set('route.path', 'hashtag-list/');
     }
-
 } window.customElements.define(PageWelcome.is, PageWelcome);
 </script>
 </dom-module>
