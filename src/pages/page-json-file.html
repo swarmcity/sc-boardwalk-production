@@ -32,64 +32,78 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
-                display: block;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
-            }
-
-            .close {
-                position: fixed;
-                top: 18px;
-                right: 18px;
-                width: 20px;
-                height: 20px;
-                background: url('../../../images/swarm-city-sprite.png') -60px -84px;
-                cursor: pointer;
+                @apply --json-file-host;
             }
 
             .container {
-                max-width: 400px;
+                @apply --json-file-container;
             }
 
-            .title {
-                color: var(--grey-4);
-                padding: 221px 50px 50px 50px;
-                text-align: center;
-                font-weight: 200;
-                font-size: 16px;
-                line-height: 15px;
-                width: 260px;
+            .container>div:nth-child(1) {
+                @apply --json-file-upper;
             }
 
-            .btn {
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
+            .container>div:nth-child(1)>div:nth-child(1) {
+                @apply --json-file-group;
             }
 
-            paper-input {
-                padding: 0 0 50px 0;
-                --paper-input-container-color: var(--swarm-city-blue);
-                --paper-input-container-focus-color: var(--swarm-city-blue);
+            .container>div:nth-child(1)>div:nth-child(1)>div:nth-child(1) {
+                @apply --json-file-text;
             }
 
-            .btn .agree {
-                @apply --agree-blue;
+            .container>div:nth-child(2) {
+                @apply --json-file-bottom;
+            }
+
+            .container>div:nth-child(2)>div:nth-child(1) {
+                @apply --json-file-icon-button-big;
+            }
+
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
+                @apply --json-file-vmark;
+            }
+
+            .container>div:nth-child(3) {
+                @apply --json-file-close;
+            }
+
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(1)>div:nth-child(1) {
+                @apply --json-file-text-wide;
+            }
+
+            .container>div:nth-child(3):active,
+            .container>div:nth-child(2)>div:nth-child(1) :active {
+                @apply --button-active;
+            }
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1),
+                .container>div:nth-child(3) {
+                    @apply --retina;
+                }
             }
         </style>
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
-
-        <div class="close" on-click="_close"></div>
-        <div class="container">
-            <div class="title">{{localize('Restore your account file')}}</div>
-            <display-json-upload type="{{type}}"></display-json-upload>
-            <template is="dom-if" if="{{type}}">
-                <div class="btn">
-                    <div class="agree" on-click="_agree"></div>
+        <div class="container" wide-layout$="{{wide}}">
+            <div>
+                <div>
+                    <div>{{localize('Restore your account file')}}</div>
+                    <display-json-upload type="{{type}}"></display-json-upload>
                 </div>
-            </template>
-
+            </div>
+            <div>
+                <!--  <template is="dom-if" if="{{type}}"> -->
+                <template is="dom-if" if="true">
+                    <div on-click="_agree">
+                        <div></div>
+                    </div>
+                </template>
+            </div>
+            <div on-click="_close"></div>
         </div>
-
     </template>
 
     <script>

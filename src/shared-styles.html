@@ -597,16 +597,16 @@ Colors are all lower case, There is a space after the :
                     display: block;
                 }
                 --restore-account-container: {
+                    @apply --layout-vertical;
                     background-color: var(--sc-white);
                     height: 100%;
                     width: 100%;
-                    @apply --layout-vertical;
                 }
                 --restore-account-upper: {
-                    height: 60%;
                     @apply --layout-vertical;
                     @apply --layout-center;
                     @apply --layout-center-justified;
+                    height: 60%;
                     box-sizing: border-box;
                     padding: 0 14vw;
                 }
@@ -633,9 +633,9 @@ Colors are all lower case, There is a space after the :
                     height: 40%;
                 }
                 --restore-account-bottom-wide: {
+                    @apply --layout-start;
                     height: 45%;
                     padding: 0 12vw;
-                    @apply --layout-start;
                 }
                 --restore-account-buttons: {
                     @apply --layout-vertical;
@@ -663,6 +663,93 @@ Colors are all lower case, There is a space after the :
                     @apply --button-active;
                 }
                 --restore-account-close: {
+                    @apply --xmark-grey4-normal;
+                    @apply --close;
+                }
+
+                /* JSON-FILE */
+                --json-file-host: {
+                    background-color: var(--sc-white);
+                    height: 100vh;
+                    width: 100vw;
+                    display: block;
+                }
+                --json-file-container: {
+                    @apply --layout-vertical;
+                    background-color: var(--sc-white);
+                    height: 100%;
+                    width: 100%;
+                }
+                --json-file-upper: {
+                    @apply --layout-vertical;
+                    @apply --layout-center;
+                    @apply --layout-center-justified;
+                    height: 60%;
+                    box-sizing: border-box;
+                    padding: 0 14vw;
+                }
+                --json-file-upper-wide: {
+                    @apply --layout-start;
+                    @apply --layout-end-justified;
+                    height: 55%;
+                    padding: 0 12vw 7vh;
+                }
+                --json-file-group: {
+                    @apply --layout-vertical;
+                    @apply --layout-center;
+                    @apply --layout-center-justified;
+                    width: 100%;
+                    margin: 20vh 0 0 0;
+                }
+
+                --json-file-text: {
+                    @apply --body-default;
+                    text-align: center;
+                }
+                --json-file-text-wide: {
+                    @apply --body-default-wide;
+                }
+
+                --json-file-text-button-big: {
+                    @apply --layout-vertical;
+                    @apply --layout-center-center;
+                    @apply --text-button-big;
+                    background-color: var(--sc-grey1);
+                    color: var(--sc-blue);
+                    box-sizing: border-box;
+                    width: 100%;
+                    max-width: 326px;
+                    max-height: 75px;
+                    margin: 20px 0 0;
+                }
+                --json-file-text-button-big-active: {
+                    @apply --button-active;
+                }
+
+                --json-file-bottom: {
+                    box-sizing: border-box;
+                    padding: 0 14vw;
+                    @apply --layout-vertical;
+                    @apply --layout-center;
+                    @apply --layout-start-justified;
+                    height: 40%;
+                }
+                --json-file-bottom-wide: {
+                    @apply --layout-start;
+                    height: 45%;
+                    padding: 0 12vw;
+                }
+
+                --json-file-icon-button-big: {
+                    @apply --icon-button-big;
+                }
+                --json-file-icon-button-big-active: {
+                    @apply --button-active;
+                }
+                --json-file-vmark: {
+                    @apply --vmark-blue-normal;
+                }
+                --json-file-close: {
                     @apply --xmark-grey4-normal;
                     @apply --close;
                 }

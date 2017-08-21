@@ -62,11 +62,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --new-here-text-button-big;
             }
 
-            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1):active,
-            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2):active {
-                @apply --new-here-text-button-big-active;
-            }
-
             .container>div:nth-child(3) {
                 @apply --new-here-close;
             }
@@ -90,6 +85,13 @@ This code may only be used under the license found at https://github.com/swarmci
             .container[wide-layout]>div:nth-child(2)>div:nth-child(1) {
                 @apply --new-here-buttons-wide;
             }
+
+            .container>div:nth-child(3):active,
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1):active,
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2):active {
+                @apply --button-active;
+            }
+
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
