@@ -1,0 +1,226 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../redux-state.html">
+<!--
+    Displays and shared styles only
+-->
+<link rel="import" href="../shared-styles.html">
+<link rel="import" href="../displays/display-image-upload.html">
+<!--
+    Aimation pack, only load the animations you need for this page.
+-->
+<link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/web-animations.html">
+
+<dom-module id="page-resize-avatar">
+    <template>
+        <!--
+    Page specific styles, if the style is used on more than one page, moveit to shared styles.
+-->
+        <style include="shared-styles">
+             :host {
+                display: block;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+            }
+
+            .close {
+                position: fixed;
+                top: 18px;
+                right: 18px;
+                width: 20px;
+                height: 20px;
+                background: url('../../../images/swarm-city-sprite.png') -60px -84px;
+                cursor: pointer;
+            }
+
+            .container {
+                max-width: 400px;
+            }
+
+            .title {
+                color: var(--grey-4);
+                padding: 221px 50px 50px 50px;
+                text-align: center;
+                font-weight: 200;
+                font-size: 16px;
+                line-height: 15px;
+                width: 260px;
+            }
+
+            .btn {
+                color: var(--swarm-city-blue);
+                cursor: pointer;
+                padding-top: 100px;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+            }
+
+            paper-input {
+                padding: 0 0 50px 0;
+                --paper-input-container-color: var(--swarm-city-blue);
+                --paper-input-container-focus-color: var(--swarm-city-blue);
+            }
+
+            .disagree {
+                border-radius: 50%;
+                width: 76px;
+                height: 76px;
+                background: url('../../../images/swarm-city-sprite.png') -688px -63px;
+                cursor: pointer;
+            }
+
+            .buttons {
+                margin-top: 55px;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+            }
+
+            .agree {
+                @apply --agree-blue;
+            }
+
+            .avatarcontainer {
+                margin-top: 87px;
+                height: 235px;
+                width: 235px;
+                background-color: #333333;
+            }
+
+            .blacktext {
+                color: #333333;
+                font-size: 12px;
+                font-weight: bold;
+                line-height: 22px;
+                text-align: center;
+            }
+
+            .bluetext {
+                margin-top: 98px;
+                color: #24B1FF;
+                font-size: 12px;
+                font-weight: bold;
+                line-height: 22px;
+                text-align: center;
+                cursor: pointer;
+                text-decoration: underline;
+                text-decoration-style: dotted;
+            }
+        </style>
+        <app-location route="{{route}}"></app-location>
+
+        <div class="close" on-click="_close"></div>
+        <div class="container">
+            <div class="avatarcontainer"></div>
+            <div class="blacktext">{{localize('Scroll to zoom - drag to move')}}</div>
+            <div class="buttons">
+                <div class="disagree" on-click="_btnClickDisagree"></div>
+                <div class="agree" on-click="_btnClickAgree"></div>
+            </div>
+            <div class="bluetext" on-click="_previous">{{localize('Choose another image file')}}</div>
+        </div>
+
+    </template>
+
+    <script>
+        class MyResizeAvatar extends new ReduxMixin(Polymer.mixinBehaviors([
+                Polymer.AppLocalizeBehavior,
+                Polymer.NeonAnimationRunnerBehavior,
+                Polymer.NeonAnimatableBehavior,
+            ],
+            Polymer.Element
+        )) {
+            static get is() {
+                return 'page-resize-avatar';
+            }
+            static get properties() {
+                return {
+                    language: {
+                        type: String,
+                        statePath: 'language',
+                    },
+                    /**
+                     * Path is the current or requested path
+                     * @type {String}
+                     */
+                    path: {
+                        type: String,
+                        observer: '_path',
+                    },
+                    /**
+                     * Entry and exit animation
+                     */
+                    animationConfig: {
+                        value: function() {
+                            return {
+                                'entry': {
+                                    name: 'fade-in-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {
+                                        duration: 300,
+                                    },
+                                },
+                                'exit': {
+                                    name: 'fade-out-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {
+                                        duration: 300,
+                                    },
+                                },
+                            };
+                        },
+                    },
+                };
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
+            _close() {
+                this.path = 'stop-signup/';
+            }
+            /**
+             *changes the current path to choose avatar
+             **/
+            _btnClickDisagree() {
+                this.path = 'choose-avatar/';
+            }
+            /**
+             *changes the current path to password warning
+             **/
+            _btnClickAgree() {
+                this.path = 'password-warning/';
+            }
+            /**
+             *changes the current path to previous
+             **/
+            _previous() {
+                window.history.back();
+            }
+            /**
+             * changes the current path
+             */
+            _path() {
+                if (this.path != null) {
+                    this.set('route.path', this.path);
+                }
+                this.path = null;
+            }
+        }
+        window.customElements.define(MyResizeAvatar.is, MyResizeAvatar);
+    </script>
+</dom-module>

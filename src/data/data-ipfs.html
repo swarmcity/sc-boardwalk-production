@@ -1,0 +1,118 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+
+<!--
+An element that provides simple access to local storage. 
+An acocunt is a javscript object representing the users account.
+Within the account data we will save the encrypted vault.
+All functions return a promise.
+
+HTML Example:
+```
+<data-ipfs id="ipfs"></data-ipfs>
+```
+JS Example
+```
+this.$.ipfs.getHash()
+.then((hashObject) => {
+    console.log(hashObject) 
+})
+```
+
+-->
+
+<dom-module id="data-ipfs">
+    <script>
+        class DataIPFS extends Polymer.Element {
+            static get is() {
+                return 'data-ipfs';
+            }
+
+            /**
+             * Checks if an acocunt exists
+             * @param {string} ipfsHash to retrieve
+             * @param {string} fileType to retrieve, img, json or txt
+             * @return {Object} that was requested
+             */
+            getHash(ipfsHash, fileType) {
+                return new Promise((resolve, reject) => {
+                    this._providers()
+                        .then((providers) => {
+                            return this._requestHash(providers, ipfsHash, fileType);
+                        })
+                        .then((object) => {
+                            resolve(object);
+                        })
+                        .catch((err) => {
+                            reject(Error(err));
+                        });
+                });
+            }
+
+            /**
+             * @param {array} providers array of providers to retrieve
+             * @param {string} ipfsHash to retrieve
+             * @param {string} fileType to retrieve
+             * @return {object} an oject represented bythe IPFShash
+             */
+            _requestHash(providers, ipfsHash, fileType) {
+                return new Promise((resolve, reject) => {
+                    function tryAgain() {
+                        if (providers.length > 0) {
+                            if (fileType != 'img' &&
+                                fileType == 'json' ||
+                                fileType == 'text') {
+                                var xhr = new XMLHttpRequest();
+                                xhr.open('GET', providers[0] + ipfsHash);
+                                xhr.onload = () => {
+                                    if (xhr.status === 200) {
+                                        if (fileType == 'text') {
+                                            resolve(xhr.responseText);
+                                        } else {
+                                            resolve(JSON.parse(xhr.responseText));
+                                        }
+                                    } else {
+                                        providers.shift();
+                                        tryAgain();
+                                    }
+                                };
+                                xhr.send();
+                            } else {
+                                var img = new Image;
+                                img.onload = () => {
+                                    resolve(img.src);
+                                };
+                                img.onerror = () => {
+                                    providers.shift();
+                                    alert('img error');
+                                    tryAgain();
+                                };
+                                img.src = providers[0] + ipfsHash + '/';
+                            }
+                        }
+                    }
+                    tryAgain();
+                });
+            }
+
+            /**
+             * returns a list of providers
+             * @return {object} returns an array of objcts containing providers.
+             */
+            _providers() {
+                return new Promise((resolve, reject) => {
+                    const providers = ['https://ipfs.io/ipfs/', 'https://ipfs.swarm.city/ipfs/',
+                        'https://ipfs.infura.io/ipfs/',
+                    ];
+                    resolve(providers);
+                });
+            }
+        }
+        window.customElements.define(DataIPFS.is, DataIPFS);
+    </script>
+</dom-module>

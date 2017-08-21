@@ -1,0 +1,290 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../data/data-web3.html">
+<link rel="import" href="../data/data-ipfs.html">
+<link rel="import" href="../data/data-utility.html">
+<link rel="import" href="../data/data-local-storage.html">
+<!--
+
+Example:
+```
+<display-hashtag-deals></display-hashtag-deals>
+```
+
+### Styling
+
+Style the button with CSS as you would a normal DOM element.
+
+The following custom properties and mixins are available for styling:
+
+| Custom property | Description | Default |
+| --- | --- | --- |
+| `--display-hashtag-deals-avatar` | Mixin applied to the avatar | `{}` |
+| `--display-hashtag-deals-top-container` | Mixin applied to the container | `{}` |
+| `--display-hashtag-deals-time` | Mixin applied to the time | `{}` |
+| `--display-hashtag-deals-name` | Mixin applied to the name | `{}` |
+| `--display-hashtag-deals-description` | Mixin applied to the description | `{}` |
+| `--display-hashtag-deals-for` | Mixin applied to the word for | `{}` |
+| `--display-hashtag-deals-amount` | Mixin applied to the amount | `{}` |
+-->
+<dom-module id="display-hashtag-deals">
+    <template>
+        <style include="shared-styles">
+             :host {
+                display: block;
+            }
+
+            .container {
+                animation: scaleIn 0.5s forwards;
+                @apply --layout-vertical;
+                @apply --layout-center-justified;
+                @apply --display-hashtag-deals-container;
+            }
+
+            .container .top {
+                @apply --layout-horizontal;
+            }
+
+            .container .bottom {
+                @apply --layout-horizontal;
+            }
+
+            .container .top img {
+                @apply --display-hashtag-deals-avatar;
+            }
+
+            .container .top div {
+                @apply --display-hashtag-deals-top-container;
+            }
+
+            .container .top div div:nth-child(1) {
+                @apply --display-hashtag-deals-time;
+            }
+
+            .container .top div div:nth-child(2) {
+                @apply --display-hashtag-deals-name;
+            }
+
+            .container .bottom div:nth-child(1) {
+                @apply --display-hashtag-deals-description;
+            }
+
+            .container .bottom div:nth-child(2) span {
+                @apply --display-hashtag-deals-for;
+            }
+
+            .container .bottom div:nth-child(2) {
+                @apply --display-hashtag-deals-amount;
+            }
+
+            @keyframes scaleIn {
+                0% {
+                    transform: scale(0, 0);
+                }
+                100% {
+                    transform: scale(1, 1);
+                }
+            }
+        </style>
+        <data-web3 id="web3"></data-web3>
+        <data-ipfs id="ipfs"></data-ipfs>
+        <data-utility id="utility"></data-utility>
+        <data-local-storage id="storage"></data-local-storage>
+
+        <template is="dom-repeat" items="{{deals}}" filter="_isWithinRange" id="domRepeat">
+            <div class="container" on-click="_next">
+
+                <div class="top">
+                    <template is="dom-if" if="{{item.avatar}}"><img src$="{{item.avatar}}"></template>
+                    <div>
+                        <div>{{item.time}}</div>
+                        <div>{{item.username}} - {{item.reputation}} REP</div>
+                    </div>
+                </div>
+
+                <div class="bottom">
+                    <div>{{item.description}}</div>
+                    <div><span>for</span>{{item.value}} SWT</div>
+                </div>
+
+            </div>
+        </template>
+
+    </template>
+    <script>
+        class DisplayHashtagDeals extends Polymer.mixinBehaviors([
+                Polymer.AppLocalizeBehavior,
+            ],
+            Polymer.Element
+        ) {
+            static get is() {
+                return 'display-hashtag-deals';
+            }
+            static get properties() {
+                return {
+                    /**
+                     * Loading indicates if the componant is loading
+                     * @type {Boolean}
+                     */
+                    loading: {
+                        type: Boolean,
+                        value: false,
+                        notify: true,
+                    },
+                    /**
+                     * range is the range the usert selected in slider
+                     * @type {Number}
+                     */
+                    range: {
+                        type: Number,
+                        observer: '_rangeChanged',
+                    },
+                    /**
+                     * route data represents the curent route
+                     * @type {String}
+                     */
+                    routeData: {
+                        type: String,
+                        observer: '_getHashtag',
+                    },
+                    /**
+                     * Hashtag represents the selected hashtag
+                     * @type {String}
+                     */
+                    hashtag: {
+                        type: String,
+                        notify: true,
+                    },
+                    /**
+                     * Path signlas to the parent to change the path
+                     * @type {Boolean}
+                     */
+                    path: {
+                        type: String,
+                        value: null,
+                        notify: true,
+                    },
+                };
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
+
+            /**
+             * Gets the selected hashtag
+             */
+            _getHashtag() {
+                if (this.routeData.page) {
+                    this.loading = true;
+                    this.$.web3.deals(this.routeData.page)
+                        .then((data) => {
+                            this.hashtag = data;
+                            this.loading = false;
+                            this._getDeals();
+                        });
+                }
+            }
+
+            /**
+             * Gets the deals for the selected hashtag
+             */
+            _getDeals() {
+                this.deals = [];
+                Promise.all([
+                        this.$.storage.accountExists(),
+                        this.$.web3.deals(this.hashtag.id),
+                    ])
+                    .then((data) => {
+                        if (data[0].username && data[0].address && data[0].avatar) {
+                            this.completeAccount = true;
+                        }
+
+                        if (data[0].location) {
+                            this.location = data[0].location;
+                            this._getDistanceTimeImage(data);
+                        } else {
+                            this._getTimeImage(data);
+                        }
+                    })
+                    .catch((err) => {});
+            }
+
+            /**
+             * Gets the distance time and image for a deal
+             * @param {array} data data is an array of the users acocunt and the deals
+             */
+            _getDistanceTimeImage(data) {
+                for (let i = 0; i < data[1].items.length; i++) {
+                    Promise.all([
+                            this.$.utility.geoHashDistance(data[0].location,
+                                data[1].items[i].location),
+                            this.$.utility.convertTime(data[1].items[i].time),
+                            this.$.ipfs.getHash(data[1].items[i].avatar),
+                        ])
+                        .then((details) => {
+                            data[1].items[i].distance = details[0];
+                            data[1].items[i].time = details[1];
+                            data[1].items[i].avatar = details[2];
+                            this.push('deals', data[1].items[i]);
+                        });
+                }
+            }
+
+            /**
+             * Gets the time and image for a deal
+             * @param {array} data data is an array of the users acocunt and the deals
+             */
+            _getTimeImage(data) {
+                for (let i = 0; i < data[1].items.length; i++) {
+                    Promise.all([
+                            this.$.utility.convertTime(data[1].items[i].time),
+                            this.$.ipfs.getHash(data[1].items[i].avatar),
+                        ])
+                        .then((details) => {
+                            data[1].items[i].time = details[0];
+                            data[1].items[i].avatar = details[1];
+                            this.push('deals', data[1].items[i]);
+                        });
+                }
+            }
+
+            /**
+             * re renders the dom repeat when the users changes the range
+             */
+            _rangeChanged() {
+                this.$.domRepeat.render();
+            }
+
+            /**
+             * filters the list according to the selected range
+             * @param {object} event is curent iteration in the dom repeat
+             * @return {boolean} true if there is no distance
+             */
+            _isWithinRange(event) {
+                if (event.distance) {
+                    return (this.range > event.distance);
+                } else {
+                    return true;
+                }
+            }
+
+            _next() {
+                if (!this.completeAccount) {
+                    // stores the current hashtag choice in session
+                    sessionStorage.setItem('hashtagID', this.routeData.page);
+                    this.path = 'new-here/';
+                } else {
+                    this.path = 'new-deal/';
+                }
+            }
+        }
+        window.customElements.define(DisplayHashtagDeals.is, DisplayHashtagDeals);
+    </script>
+</dom-module>

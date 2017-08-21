@@ -1,11 +1,27 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/my-app.html",
+  "shell": "src/swarm-city.html",
   "fragments": [
-    "src/my-view1.html",
-    "src/my-view2.html",
-    "src/my-view3.html",
-    "src/my-view404.html"
+    "src/pages/page-welcome.html",
+    "src/pages/page-language.html",
+    "src/pages/page-location.html",
+    "src/pages/page-hashtag.html",
+    "src/pages/page-new-here.html",
+    "src/pages/page-hashtag-list.html",
+    "src/pages/page-choose-username.html",
+    "src/pages/page-private-key.html",
+    "src/pages/page-choose-avatar.html",
+    "src/pages/page-resize-avatar.html",
+    "src/pages/page-json-file.html",
+    "src/pages/page-view404.html",
+    "src/pages/page-stop-signup.html",
+    "src/pages/page-password-warning.html",
+    "src/pages/page-choose-password.html",
+    "src/pages/page-account-complete.html",
+    "src/pages/page-make-backup.html",
+    "src/pages/page-my-keys.html",
+    "src/pages/page-email-success.html",
+    "src/pages/page-download-success.html"
   ],
   "sources": [
     "src/**/*",
@@ -14,20 +30,15 @@
   ],
   "extraDependencies": [
     "manifest.json",
-    "bower_components/webcomponentsjs/*.js"
+    "bower_components/webcomponentsjs/*.js",
+    "redux.min.js"
   ],
   "lint": {
     "rules": ["polymer-2"]
   },
   "builds": [
     {
-      "preset": "es5-bundled"
-    },
-    {
       "preset": "es6-bundled"
-    },
-    {
-      "preset": "es6-unbundled"
     }
   ]
 }

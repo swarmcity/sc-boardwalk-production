@@ -1,0 +1,132 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../redux-state.html">
+
+<!--
+    Displays and shared styles only
+-->
+<link rel="import" href="../shared-styles.html">
+<link rel="import" href="../displays/display-my-info.html">
+<link rel="import" href="../displays/display-distance-slider.html">
+<link rel="import" href="../displays/display-hashtag-list.html">
+<!--
+    Aimation pack, only load the animations you need for this page.
+-->
+
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
+
+<dom-module id="page-hashtag-list">
+    <template>
+        <!--
+    Page specific styles, if the style is used on more than one page, moveit to shared styles.
+-->
+        <style include="shared-styles">
+             :host {
+                display: block;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+            }
+
+            .back {
+                @apply --page-hashtag-list-back;
+                margin-top: 18px;
+                cursor: pointer;
+            }
+        </style>
+        <app-location route="{{route}}"></app-location>
+        <div class="container">
+            <display-my-info></display-my-info>
+            <div class="back" on-click="_back"></div>
+            <display-distance-slider range="{{range}}" route="{{route}}" path="{{path}}"></display-distance-slider>
+            <display-hashtag-list range="[[range]]" path="{{path}}"></display-hashtag-list>
+        </div>
+
+    </template>
+
+    <script>
+        class HashtagList extends new ReduxMixin(Polymer.mixinBehaviors([
+                Polymer.AppLocalizeBehavior,
+                Polymer.NeonAnimationRunnerBehavior,
+                Polymer.NeonAnimatableBehavior,
+            ],
+            Polymer.Element
+        )) {
+            static get is() {
+                return 'page-hashtag-list';
+            }
+            static get properties() {
+                return {
+                    /**
+                     * Path is the current or requested path
+                     * @type {String}
+                     */
+                    path: {
+                        type: String,
+                        observer: '_path',
+                    },
+                    /**
+                     * Entry and exit animation
+                     */
+                    animationConfig: {
+                        value: function() {
+                            return {
+                                'entry': {
+                                    name: 'fade-in-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {
+                                        duration: 300,
+                                    },
+                                },
+                                'exit': {
+                                    name: 'fade-out-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {
+                                        duration: 300,
+                                    },
+                                },
+                            };
+                        },
+                    },
+                };
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
+
+            /**
+             * changes the current path
+             */
+            _path() {
+                if (this.path != null) {
+                    this.set('route.path', this.path);
+                }
+                this.path = null;
+            }
+
+            /**
+             * takes the user to the welcome page
+             */
+            _back() {
+                this.set('route.path', 'welcome/');
+            }
+        }
+        window.customElements.define(HashtagList.is, HashtagList);
+    </script>
+</dom-module>
