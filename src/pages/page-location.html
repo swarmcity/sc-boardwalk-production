@@ -25,133 +25,163 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
 <dom-module id="page-location">
-<template>
-<!--
+    <template>
+        <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
 -->
-<style include="shared-styles">
-    :host {
-        background-color: var(--swarm-city-blue);
-        height: 100vh;
-        display: block;
-        @apply --layout-horizontal;
-        @apply --layout-center-justified;
-    }
-    .container{
-        max-width:400px;
-    }
-    .title{
-        color: var(--swarm-city-white);
-        text-align: center;
-        font-weight:800;
-        padding:175px 50px 20px 50px;
-        font-size: 35px;
-        line-height: 36px;
-    }
-    .subtitle{
-        color: var(--swarm-city-white);
-        padding: 0px 50px 161px 50px;
-        text-align: center;
-        font-weight:200;
-        font-size: 12px;
-        line-height: 15px;
-    }
-    .blue-agree{
-        width:76px;
-        height:76px;
-    }
-    .disagree{
-        border-radius: 50%;
-        width:76px;
-        height:76px;
-        background: url('../../../images/swarm-city-sprite.png') -688px -63px;
-        cursor: pointer;
-    }
-    .buttons{
-        @apply --layout-horizontal;
-        @apply --layout-center-justified;
-    }
-</style>
-<app-location route="{{route}}"></app-location>
+        <style include="shared-styles">
+             :host {
+                @apply --location-host;
+            }
 
-    <div class="container">
-        <div class="title">{{localize('Can we ask for your location')}}</div>
-        <div class="subtitle">{{localize('When accepting your browser will ask you')}}</div>
-        <div class="buttons">
-            <div class="disagree" on-click="_btnClick"></div>
-            <display-geolocation class="blue-agree" path="{{path}}"></display-geolocation>
+            .container {
+                @apply --location-container;
+            }
+
+            .container>div:nth-child(1) {
+                @apply --location-upper;
+            }
+
+            .container>div:nth-child(1)>div:nth-child(1) {
+                @apply --location-title;
+            }
+
+            .container>div:nth-child(1)>div:nth-child(2) {
+                @apply --location-subtitle;
+            }
+
+            .container>div:nth-child(2) {
+                @apply --location-bottom;
+            }
+
+            .container>div:nth-child(2)>div:nth-child(1) {
+                @apply --location-buttons;
+            }
+
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
+                @apply --location-xmark
+            }
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1):active {
+                @apply --location-xmark-active;
+            }
+
+            .container[wide-layout]>div:nth-child(1) {
+                @apply --location-upper-wide;
+            }
+
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(1) {
+                @apply --location-title-wide;
+            }
+
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(2) {
+                @apply --location-subtitle-wide;
+            }
+
+            .container[wide-layout]>div:nth-child(2) {
+                @apply --location-bottom-wide;
+            }
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
+                    @apply --retina;
+                }
+            }
+        </style>
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+        <app-location route="{{route}}"></app-location>
+
+        <div class="container" wide-layout$="{{wide}}">
+            <div>
+                <div>{{localize('Can we ask for your location')}}</div>
+                <div>{{localize('When accepting your browser will ask you')}}</div>
+            </div>
+            <div>
+                <div>
+                    <div on-click="_btnClick"></div>
+                    <display-geolocation path="{{path}}"></display-geolocation>
+                </div>
+            </div>
         </div>
-    </div>
+    </template>
 
-</template>
-
-<script>
-    class MyLocation extends new ReduxMixin(Polymer.mixinBehaviors([
-        Polymer.AppLocalizeBehavior,
-        Polymer.NeonAnimationRunnerBehavior,
-        Polymer.NeonAnimatableBehavior],
-        Polymer.Element
-    )) {
-    static get is() { return 'page-location'; }
-    static get properties() { return {
-            language: {
-                type: String,
-                statePath: 'language',
-            },
-            /**
-            * Path is the current or requested path
-            * @type {String}
-            */
-            path: {
-                type: String,
-                observer: '_path',
-            },
-            /**
-            * Entry and exit animation
-            */
-            animationConfig: {
-            value: function() {
+    <script>
+        class MyLocation extends new ReduxMixin(Polymer.mixinBehaviors([
+                Polymer.AppLocalizeBehavior,
+                Polymer.NeonAnimationRunnerBehavior,
+                Polymer.NeonAnimatableBehavior,
+            ],
+            Polymer.Element
+        )) {
+            static get is() {
+                return 'page-location';
+            }
+            static get properties() {
                 return {
-                'entry': {
-                    name: 'fade-in-animation',
-                    node: this,
-                    nodeDelay: 300,
-                    timing: {duration: 300},
-                },
-                'exit': {
-                    name: 'fade-out-animation',
-                    node: this,
-                    nodeDelay: 300,
-                    timing: {duration: 300},
-                },
+                    language: {
+                        type: String,
+                        statePath: 'language',
+                    },
+                    /**
+                     * Path is the current or requested path
+                     * @type {String}
+                     */
+                    path: {
+                        type: String,
+                        observer: '_path',
+                    },
+                    /**
+                     * Entry and exit animation
+                     */
+                    animationConfig: {
+                        value: function() {
+                            return {
+                                'entry': {
+                                    name: 'fade-in-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {
+                                        duration: 300,
+                                    },
+                                },
+                                'exit': {
+                                    name: 'fade-out-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {
+                                        duration: 300,
+                                    },
+                                },
+                            };
+                        },
+                    },
                 };
-            },
-            },
-        };
-    }
-    
-    connectedCallback() {
-        super.connectedCallback();
-        this.loadResources(this.resolveUrl('../text-translations.json'));
-    }
-    
-    /**
-    * takes the user to the hashtag list page
-    */
-    _btnClick() {
-        this.path = 'hashtag-list/';
-    }
+            }
 
-    /**
-    * changes the current path
-    */
-    _path() {
-        if(this.path != null) {
-            this.set('route.path', this.path);
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
+
+            /**
+             * takes the user to the hashtag list page
+             */
+            _btnClick() {
+                this.path = 'hashtag-list/';
+            }
+
+            /**
+             * changes the current path
+             */
+            _path() {
+                if (this.path != null) {
+                    this.set('route.path', this.path);
+                }
+                this.path = null;
+            }
+
         }
-        this.path = null;
-    }
-
-} window.customElements.define(MyLocation.is, MyLocation);
-</script>
+        window.customElements.define(MyLocation.is, MyLocation);
+    </script>
 </dom-module>

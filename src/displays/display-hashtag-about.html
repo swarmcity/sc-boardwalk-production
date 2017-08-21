@@ -29,36 +29,42 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-hashtag-about">
     <template>
         <style>
-            :host {
+             :host {
                 display: block;
             }
+
             .container div:nth-child(1) {
                 @apply --display-hashtag-about-toggle;
-            } 
+            }
+
             .container div:nth-child(2) {
                 animation: slideDown 0.3s ease-out forwards;
                 @apply --display-hashtag-about-box;
             }
+
             .container div:nth-child(2) div:nth-child(1) {
                 @apply --display-hashtag-about-maintained;
             }
+
             .container div:nth-child(2) div:nth-child(2) {
                 @apply --display-hashtag-about-contact;
             }
+
             .container div:nth-child(2) div a {
                 @apply --blue-links;
             }
+
             @keyframes slideDown {
-                    0% {
-                        transform: translate(0, -100px);
-                    }
-                    100% {
-                        transform: translate(0, 0);
-                    }
+                0% {
+                    transform: translate(0, -100px);
                 }
+                100% {
+                    transform: translate(0, 0);
+                }
+            }
         </style>
 
-        <div class="container"> 
+        <div class="container">
             <div on-click="_toggle">about {{hashtag.name}}</div>
             <template is="dom-if" if="{{showInfo}}">
                 <div>
@@ -80,61 +86,65 @@ The following custom properties and mixins are available for styling:
     </template>
     <script>
         class DisplayHashtagAbout extends Polymer.mixinBehaviors([
-            Polymer.AppLocalizeBehavior],
+                Polymer.AppLocalizeBehavior,
+            ],
             Polymer.Element
         ) {
-            static get is() { return 'display-hashtag-about'; }
+            static get is() {
+                return 'display-hashtag-about';
+            }
             static get properties() {
                 return {
                     /**
-                    * Loading indicates if the componant is loading
-                    * @type {Boolean}
-                    */
+                     * Loading indicates if the componant is loading
+                     * @type {Boolean}
+                     */
                     loading: {
                         type: Boolean,
                         value: false,
                         notify: true,
                     },
                     /**
-                    * showInfo indicates if the display panel is open or not
-                    * @type {Boolean}
-                    */
+                     * showInfo indicates if the display panel is open or not
+                     * @type {Boolean}
+                     */
                     showInfo: {
                         type: Boolean,
                         value: false,
                     },
                     /**
-                    * hashtag represents the hashtag data
-                    * @type {Object}
-                    */
+                     * hashtag represents the hashtag data
+                     * @type {Object}
+                     */
                     hashtag: {
                         type: Object,
                     },
                 };
             }
 
-    /**
-    * Togles if the information is shown or hidden
-    */
-    _toggle() {
-        this.showInfo = !this.showInfo;
-    }
+            /**
+             * Togles if the information is shown or hidden
+             */
+            _toggle() {
+                this.showInfo = !this.showInfo;
+            }
 
-    /**
-    * TGet the hashtags
-    */
-    _getHashtag() {
-        if (this.routeData.page) {
-            this.loading = true;
-            this.$.web3.deals(this.routeData.page)
-                .then((data) => {
-                    this.hashtagName = data.name;
-                    this.hashtag = data;
-                    this.loading = false;
-                });
+            /**
+             * TGet the hashtags
+             */
+            _getHashtag() {
+                if (this.routeData.page) {
+                    this.loading = true;
+                    this.$.web3.deals(this.routeData.page)
+                        .then((data) => {
+                            this.hashtagName = data.name;
+                            this.hashtag = data;
+                            this.loading = false;
+                        });
+                }
+            }
+
         }
-    }
-
-} window.customElements.define(DisplayHashtagAbout.is, DisplayHashtagAbout);
-</script>
+        window.customElements.define(DisplayHashtagAbout.is, DisplayHashtagAbout);
+    </script>
 </dom-module>

@@ -30,83 +30,105 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
-                background-color: var(--swarm-city-blue);
-                height: 100vh;
-                display: block;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
+                @apply --new-here-host;
             }
 
             .container {
-                max-width: 400px;
+                @apply --new-here-container;
             }
 
-            .container div:nth-child(1) {
-                color: var(--swarm-city-white);
-                text-align: center;
-                font-weight: 800;
-                padding: 175px 50px 20px 50px;
-                font-size: 35px;
-                line-height: 36px;
+            .container>div:nth-child(1) {
+                @apply --new-here-upper;
             }
 
-            .container div:nth-child(2) {
-                color: var(--swarm-city-white);
-                padding: 0px 50px 161px 50px;
-                text-align: center;
-                font-weight: 200;
-                font-size: 12px;
-                line-height: 15px;
+            .container>div:nth-child(1)>div:nth-child(1) {
+                @apply --new-here-title;
             }
 
-            .container div:nth-child(3) {
-                text-align: center;
+            .container>div:nth-child(1)>div:nth-child(2) {
+                @apply --new-here-subtitle;
             }
 
-            .container div:nth-child(3) div {
-                @apply --big-btn;
-                color: var(--swarm-city-white);
-                margin: 0 auto;
-                margin-top: 12px;
+            .container>div:nth-child(2) {
+                @apply --new-here-bottom;
             }
 
-            .container div:nth-child(3) div:active {
-                transform: scale(0.97, 0.97);
+            .container>div:nth-child(2)>div:nth-child(1) {
+                @apply --new-here-buttons;
             }
 
-            .close {
-                position: fixed;
-                top: 18px;
-                right: 18px;
-                width: 20px;
-                height: 20px;
-                background: url('../../../images/swarm-city-sprite.png') -60px -84px;
-                cursor: pointer;
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1),
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
+                @apply --new-here-text-button-big;
+            }
+
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1):active,
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2):active {
+                @apply --new-here-text-button-big-active;
+            }
+
+            .container>div:nth-child(3) {
+                @apply --new-here-close;
+            }
+
+            .container[wide-layout]>div:nth-child(1) {
+                @apply --new-here-upper-wide;
+            }
+
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(1) {
+                @apply --new-here-title-wide;
+            }
+
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(2) {
+                @apply --new-here-subtitle-wide;
+            }
+
+            .container[wide-layout]>div:nth-child(2) {
+                @apply --new-here-bottom-wide;
+            }
+
+            .container[wide-layout]>div:nth-child(2)>div:nth-child(1) {
+                @apply --new-here-buttons-wide;
+            }
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .container>div:nth-child(3) {
+                    @apply --retina;
+                }
             }
         </style>
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
-
-        <div class="container">
-
-            <div class="title">{{localize('You must be new here')}}</div>
-            <div class="subtitle">{{localize('No account was found')}}</div>
-            <div class="buttons">
-                <div on-click="_create">{{localize('create account')}}</div>
-                <div on-click="_restore">{{localize('restore account')}}</div>
+        <div class="container" wide-layout$="{{wide}}">
+            <div>
+                <div>{{localize('You must be new here')}}</div>
+                <div>{{localize('No account was found')}}</div>
             </div>
-            <div class="close" on-click="_close"></div>
+            <div>
+                <div>
+                    <div on-click="_btnClickDisagree">{{localize('create account')}}</div>
+
+                    <div on-click="_btnClickAgree">{{localize('restore account')}}</div>
+                </div>
+            </div>
+            <div on-click="_close"></div>
         </div>
 
     </template>
 
     <script>
         class MyNewHere extends new ReduxMixin(Polymer.mixinBehaviors([
-            Polymer.AppLocalizeBehavior,
-            Polymer.NeonAnimationRunnerBehavior,
-            Polymer.NeonAnimatableBehavior],
+                Polymer.AppLocalizeBehavior,
+                Polymer.NeonAnimationRunnerBehavior,
+                Polymer.NeonAnimatableBehavior,
+            ],
             Polymer.Element
         )) {
-            static get is() { return 'page-new-here'; }
+            static get is() {
+                return 'page-new-here';
+            }
             static get properties() {
                 return {
                     language: {
@@ -114,16 +136,16 @@ This code may only be used under the license found at https://github.com/swarmci
                         statePath: 'language',
                     },
                     /**
-                    * Path is the current or requested path
-                    * @type {String}
-                    */
+                     * Path is the current or requested path
+                     * @type {String}
+                     */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                    * Entry and exit animation
-                    */
+                     * Entry and exit animation
+                     */
                     animationConfig: {
                         value: function() {
                             return {
@@ -131,13 +153,17 @@ This code may only be used under the license found at https://github.com/swarmci
                                     name: 'fade-in-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: {duration: 300},
+                                    timing: {
+                                        duration: 300,
+                                    },
                                 },
                                 'exit': {
                                     name: 'fade-out-animation',
                                     node: this,
                                     nodeDelay: 300,
-                                    timing: {duration: 300},
+                                    timing: {
+                                        duration: 300,
+                                    },
                                 },
                             };
                         },
@@ -151,27 +177,27 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             /**
-            * takes the user to the next page in user creation
-            */
+             * takes the user to the next page in user creation
+             */
             _create() {
                 this.path = 'choose-username/';
             }
             /**
-            * takes the user to the previous page
-            */
+             * takes the user to the previous page
+             */
             _close() {
                 this.path = 'stop-signup/';
             }
             /**
-            * takes the user to the hashtag list page
-            */
+             * takes the user to the hashtag list page
+             */
             _restore() {
                 this.path = 'restore-account/';
             }
 
             /**
-            * changes the current path
-            */
+             * changes the current path
+             */
             _path() {
                 if (this.path != null) {
                     this.set('route.path', this.path);
@@ -179,6 +205,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
 
-        } window.customElements.define(MyNewHere.is, MyNewHere);
+        }
+        window.customElements.define(MyNewHere.is, MyNewHere);
     </script>
 </dom-module>
