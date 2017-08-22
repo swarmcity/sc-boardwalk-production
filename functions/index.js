@@ -1,10 +1,12 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+const uuidv4 = require('uuid/v4');
 admin.initializeApp(functions.config().firebase);
 
-// https://us-central1-swarmcity-23c70.cloudfunctions.net/addHashtag?hashtag_name=pioneer&hashtag_id=1&location=ew234e&deals=0&description=This is a description&maintainer=theKing&name=twitter&link=http://www.twitter.com
+// https://us-central1-swarmcity-23c70.cloudfunctions.net/addHashtag?hashtag_name=pioneer&location=gbsuv&deals=0&description=This is a description&maintainer=this hash tag is maintained by Swarm City&name=twitter&link=http://www.twitter.com
 exports.addHashtag = functions.https.onRequest((req, res) => { 
-    let ipfs_hash = '';
+    const hashtag_id = uuidv4();
+    let ipfs_hash = 'awaiting hash';
     const data = {
         contacts: {
             name: req.query.name,
@@ -12,9 +14,9 @@ exports.addHashtag = functions.https.onRequest((req, res) => {
         },
         deals: req.query.deals,
         description: req.query.description,
-        hashtag_id: req.query.hashtag_id,
+        hashtag_id: hashtag_id,
         hashtag_name: req.query.hashtag_name,
-        ipfs_hash:0,
+        ipfs_hash: ipfs_hash,
         location: req.query.location,
         maintainer: req.query.maintainer,
     }
@@ -24,12 +26,13 @@ exports.addHashtag = functions.https.onRequest((req, res) => {
         return snapshot.ref.toString().split("/")[4]; 
     })
     .then(data1 => {
-        admin.database().ref('/hashtags/'+data1).update({ipfs_hash:ipfs_hash})
+        admin.database().ref('/hashtags/'+data1).update({ipfs_hash:ipfs_hash});
+        res.status(200).send('OK');
     });
 });
 
 
 function data2Hash(data) {
     // GET IPFS HASH FOR DATA HERE
-    return 'aaaaa1aaaa'
+    return 'QmV8G4EzLq9AMvrw7f9kdjzdPsGefyjrCp6hnP7urWa8ED'
 };
