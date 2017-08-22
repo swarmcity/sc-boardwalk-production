@@ -81,6 +81,22 @@ This code may only be used under the license found at https://github.com/swarmci
             .button {
                 @apply --welcome-button;
             }
+            .middle-list {
+                margin-top: 40px;
+                
+            }
+
+            .middle-list li{
+                list-style-type: none;
+                padding-bottom: 16px;
+            }
+
+            .middle-list > li > a{
+                @apply --small-bold;
+                color: var(--sc-blue);
+                text-decoration: none;
+                border-bottom: 2px dotted var(--sc-blue);
+            }
 
             .container[wide-layout] .top {
                 @apply --welcome-top-wide;
@@ -125,6 +141,23 @@ This code may only be used under the license found at https://github.com/swarmci
             .container[extrawide-layout] .title {
                 @apply --welcome-title-extrawide;
             }
+            .container[extrawide-layout] .middle-list {
+                padding: 0 0 0 10vw;
+            }
+
+            .container[extrawide-layout] .middle-list li{
+                display: inline;
+                list-style-type: none;
+                padding-right: 20px;
+            }
+
+            .container[extrawide-layout] .middle-list > li > a{
+                @apply --small-bold;
+                color: var(--sc-blue);
+                text-decoration: none;
+                border-bottom: 2px dotted var(--sc-blue);
+            }
+
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <iron-media-query query="(min-width: 1025px)" query-matches="{{extrawide}}"></iron-media-query>
@@ -150,6 +183,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 </div>
             </div>
             <div class="middle"></div>
+            <ul class="middle-list">
+                <li><a href="https://thisis.swarm.city/" target="_blank">{{localize('This is Swarm City')}}</a></li>
+                <li><a href="http://swarmcitizens.org/" target="_blank">{{localize('Support')}}</a></li>
+                <li><a href="http://swarmcitizens.org/app.php/help/faq?sid=f4439589cebbcbfea36e2508ec12f155" target="_blank">{{localize('FAQ')}}</a></li>
+                <li><a href="https://advisors.swarm.city/" target="_blank">{{localize('Advisors')}}</a></li>
+            </ul>
             <div class="bottom"></div>
         </div>
     </template>
@@ -183,7 +222,7 @@ This code may only be used under the license found at https://github.com/swarmci
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
