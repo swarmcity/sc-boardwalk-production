@@ -4,6 +4,7 @@ Copyright (c) 2017 Swarm City
 This code may only be used under the license found at https://github.com/swarmcity/license
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
@@ -47,11 +48,14 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .switchcontainer {
+                @apply --layout-vertical;
+                @apply --center-center;
                 height: 100%;
+                width: 100%;
             }
 
             .banner {
-                
+                background-color: red;  
                 @apply --layout-vertical;
                 @apply --layout-center-center;
                 height: 70%;
@@ -67,11 +71,21 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .subtitle {}
 
-            .button {}
+            .button {
+                height: 30%;
+                background-color: green;
+            }
 
             .middle {}
 
             .button {}
+
+            .container[wide-layout] .switchcontainer {
+                @apply --layout-horizontal;
+                @apply --center-center;
+            }
+
+
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
