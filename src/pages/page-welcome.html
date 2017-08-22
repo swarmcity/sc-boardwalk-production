@@ -35,14 +35,11 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container {
-                width: 100%;
+                @apply --welcome-container;
             }
 
             .top {
-                @apply --layout-vertical;
-                @apply --layout-center-center;
-                height: 80vh;
-                background-color: var(--sc-yellow);
+                @apply --welcome-top;
             }
 
             display-language {
@@ -51,34 +48,18 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .language {
-
-                @apply --layout-horizontal;
-                @apply --layout-end-justified;
-                box-sizing: border-box;
-                padding: 30px 30px 0 0;
-
-                width: 100%;
+                @apply --welcome-language;
             }
 
             .switchcontainer {
-                @apply --layout-vertical;
-                @apply --center-center;
-                @apply --layout-flex;
-
-                width: 100%;
+                @apply --welcome-switchcontainer;
             }
 
             .banner {
-
-                @apply --layout-vertical;
-                @apply --layout-center;
-                @apply --layout-end-justified;
-                box-sizing: border-box;
-                padding: 0 0 8vh 0;
-                height: 60%;
+                @apply --welcome-banner;
             }
 
-            .icon {
+            .logo {
                 @apply --welcome-logo;
             }
 
@@ -91,13 +72,11 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .version {
-                @apply --smallest-light;
+                @apply --welcome-version;
             }
 
             .buttoncontainer {
-                @apply --layout-vertical;
-                @apply --layout-center-center;
-                height: 40%;
+                @apply --welcome-buttoncontainer;
             }
 
             .button {
@@ -105,24 +84,15 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container[wide-layout] .top {
-                height: 90vh;
+                @apply --welcome-top-wide;
             }
 
-
             .container[wide-layout] .switchcontainer {
-                @apply --layout-horizontal;
-                @apply --layout-center-center;
-                height: 82vh;
+                @apply --welcome-switchcontainer-wide;
             }
 
             .container[wide-layout] .banner {
-                @apply --layout-start;
-                @apply --layout-end-justified;
-                @apply --layout-flex;
-                box-sizing: border-box;
-                padding: 0 0 0 10vw;
-
-                height: 100%;
+                @apply --welcome-banner-wide;
             }
 
             .container[wide-layout] .uppertitle {
@@ -130,35 +100,47 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container[wide-layout] .title {
-                font-size: 78px;
-                line-height: 68px;
-                /*                 max-width: 320px;
-                word-break: break-all; */
+                @apply --welcome-title-wide;
+            }
+
+            .container[wide-layout] .logo {
+                @apply --welcome-logo-wide;
             }
 
             .container[wide-layout] .buttoncontainer {
-                @apply --layout-vertical;
-                @apply --layout-end;
-                @apply --layout-end-justified;
+                @apply --welcome-buttoncontainer-wide;
+            }
 
-                box-sizing: border-box;
+            .container[wide-layout] .button {
+                @apply --welcome-button-wide;
+            }
 
-                padding: 0 10vw 0 0;
-                height: 100%;
+            .container[extrawide-layout] .logo {
+                @apply --welcome-logo-extrawide;
+            }
+
+            .container[extrawide-layout] .uppertitle {
+                @apply --welcome-uppertitle-extrawide;
+            }
+
+            .container[extrawide-layout] .title {
+                @apply --welcome-title-extrawide;
             }
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+        <iron-media-query query="(min-width: 1025px)" query-matches="{{extrawide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
-        <div class="container" wide-layout$="{{wide}}">
+        <div class="container" wide-layout$="{{wide}}" extrawide-layout$="{{extrawide}}">
             <div class="top">
                 <div class="language">
                     <display-language selected path="{{path}}"></display-language>
                 </div>
                 <div class="switchcontainer">
                     <div class="banner">
-                        <div class="icon"></div>
+                        <div class="logo"></div>
                         <div class="uppertitle">welcome to</div>
-                        <div class="title">swarm.<template is="dom-if" if="{{wide}}"><br></template>city</div>
+                        <div class="title">swarm.
+                            <template is="dom-if" if="{{wide}}"><br></template>city</div>
                     </div>
                     <div class="buttoncontainer">
                         <div class="button">
