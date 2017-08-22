@@ -3,7 +3,7 @@ const admin = require('firebase-admin');
 const uuidv4 = require('uuid/v4');
 admin.initializeApp(functions.config().firebase);
 
-// https://us-central1-swarmcity-23c70.cloudfunctions.net/addHashtag?hashtag_name=pioneer&location=gbsuv&deals=0&description=This is a description&maintainer=this hash tag is maintained by Swarm City&name=twitter&link=http://www.twitter.com
+// https://us-central1-swarmcity-23c70.cloudfunctions.net/addHashtag?hashtag_name=pioneer&last_deal=1503397878&deals=0&description=This is a description&maintainer=this hash tag is maintained by Swarm City&name=twitter&link=http://www.twitter.com
 exports.addHashtag = functions.https.onRequest((req, res) => { 
     const hashtag_id = uuidv4();
     let ipfs_hash = 'awaiting hash';
@@ -17,7 +17,7 @@ exports.addHashtag = functions.https.onRequest((req, res) => {
         hashtag_id: hashtag_id,
         hashtag_name: req.query.hashtag_name,
         ipfs_hash: ipfs_hash,
-        location: req.query.location,
+        last_deal: req.query.last_deal,
         maintainer: req.query.maintainer,
     }
     admin.database().ref('/hashtags').push(data)
