@@ -81,13 +81,10 @@ This code may only be used under the license found at https://github.com/swarmci
             .button {
                 @apply --welcome-button;
             }
-            .middle {
-                background-color: var(--sc-white);
-            }
 
-            .middle-list {
-                margin-top: 40px;
-                margin-bottom: 40px;
+            .middle {
+                background-color:var(--sc-white);
+                padding: 40px 0;
             }
 
             .middle-list li {
@@ -104,7 +101,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .bottom {
                 box-sizing: border-box;
-                padding:  50px 0 0 10vw;
+                padding: 50px 0 50px 10vw;
                 background-color: #e6e6e6;
             }
 
@@ -116,6 +113,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .bottom-list li:first-child {
                 @apply --small-bold;
+                margin-bottom: 15px;
             }
 
             .bottom-list li {
@@ -127,6 +125,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --small-light;
                 color: var(--sc-grey4);
                 text-decoration: none;
+                border-bottom: 1px dotted var(--sc-grey2);
             }
 
             .container[wide-layout] .top {
@@ -213,13 +212,14 @@ This code may only be used under the license found at https://github.com/swarmci
                     </div>
                 </div>
             </div>
-            <div class="middle"></div>
-            <ul class="middle-list">
-                <li><a href="https://thisis.swarm.city/" target="_blank">{{localize('This is Swarm City')}}</a></li>
-                <li><a href="http://swarmcitizens.org/" target="_blank">{{localize('Support')}}</a></li>
-                <li><a href="http://swarmcitizens.org/app.php/help/faq?sid=f4439589cebbcbfea36e2508ec12f155" target="_blank">{{localize('FAQ')}}</a></li>
-                <li><a href="https://advisors.swarm.city/" target="_blank">{{localize('Advisors')}}</a></li>
-            </ul>
+            <div class="middle">
+                <ul class="middle-list">
+                    <li><a href="https://thisis.swarm.city/" target="_blank">{{localize('This is Swarm City')}}</a></li>
+                    <li><a href="http://swarmcitizens.org/" target="_blank">{{localize('Support')}}</a></li>
+                    <li><a href="http://swarmcitizens.org/app.php/help/faq?sid=f4439589cebbcbfea36e2508ec12f155" target="_blank">{{localize('FAQ')}}</a></li>
+                    <li><a href="https://advisors.swarm.city/" target="_blank">{{localize('Advisors')}}</a></li>
+                </ul>
+            </div>
             <div class="bottom">
                 <ul class="bottom-list">
                     <li>{{localize('Find Swarm City on')}}</li>
