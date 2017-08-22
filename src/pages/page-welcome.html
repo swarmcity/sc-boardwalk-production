@@ -55,37 +55,59 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .banner {
-                background-color: red;  
+
                 @apply --layout-vertical;
                 @apply --layout-center-center;
                 height: 70%;
+                width: 100%;
             }
 
             .icon {
                 @apply --welcome-logo;
             }
 
-            .uppertitle {}
-
-            .title {}
-
-            .subtitle {}
-
-            .button {
-                height: 30%;
-                background-color: green;
+            .uppertitle {
+                @apply --welcome-uppertitle;
             }
 
-            .middle {}
+            .title {
+                @apply --welcome-title;
+            }
 
-            .button {}
+            
+
+            .buttoncontainer {
+                @apply --layout-vertical;
+                @apply --layout-center-center;
+                height: 30%;
+                width: 100%;
+            }
+            .button {
+                @apply --welcome-button;
+            }
+            
 
             .container[wide-layout] .switchcontainer {
                 @apply --layout-horizontal;
-                @apply --center-center;
+                @apply --layout-center-center;
             }
 
+            .container[wide-layout] .buttoncontainer {
+                @apply --layout-vertical;
+                @apply --layout-end;
+                @apply --layout-end-justified;
+                width: 30%;
+                height: 100%;
+            }
 
+            .container[wide-layout] .banner {
+                @apply --layout-start;
+                @apply --layout-end-justified;
+
+
+                width: 70%;
+                height: 100%;
+            }
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
@@ -98,7 +120,12 @@ This code may only be used under the license found at https://github.com/swarmci
                         <div class="uppertitle">welcome to</div>
                         <div class="title">swarm.city</div>
                     </div>
-                    <div class="button"></div>
+                    <div class="buttoncontainer">
+                        <div class="button">
+                            <div class="buttontext">enter here</div>
+                            <div class="version">Boardwalk v2.0</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="middle"></div>
@@ -109,7 +136,7 @@ This code may only be used under the license found at https://github.com/swarmci
             <div></div>
             <h1>{{localize('welcome')}}<span> {{localize('name')}}<span></h1>
             <h2>{{localize('boardwalk')}} V 2.0</h2>
-            <button type="button" autofocus on-click="_btnClick" on-KeyPress="_btnKeyPress">{{localize('enter here')}}</button>
+            <buttoncontainer type="buttoncontainer" autofocus on-click="_btnClick" on-KeyPress="_btnKeyPress">{{localize('enter here')}}</buttoncontainer>
     </div>
     
     
