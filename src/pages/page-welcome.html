@@ -39,26 +39,38 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .top {
-                height: 90vh;
+                height: 80vh;
                 background-color: var(--sc-yellow);
             }
 
+            display-language {
+                cursor: pointer;
+                @apply --small-bold;
+            }
+
             .language {
-                background-color: green;
+                height: 8vh;
+                @apply --layout-horizontal;
+                @apply --layout-end-justified;
+                box-sizing: border-box;
+                padding: 30px 30px 0 0;
             }
 
             .switchcontainer {
                 @apply --layout-vertical;
                 @apply --center-center;
-                height: 100%;
+                height: 72vh;
                 width: 100%;
             }
 
             .banner {
 
                 @apply --layout-vertical;
-                @apply --layout-center-center;
-                height: 70%;
+                @apply --layout-center;
+                @apply --layout-end-justified;
+                box-sizing: border-box;
+                padding: 0 0 8vh 0;
+                height: 60%;
                 width: 100%;
             }
 
@@ -74,22 +86,33 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --welcome-title;
             }
 
-            
+            .version {
+                @apply --smallest-light;
+            }
 
             .buttoncontainer {
                 @apply --layout-vertical;
                 @apply --layout-center-center;
-                height: 30%;
+                height: 40%;
                 width: 100%;
             }
+
             .button {
                 @apply --welcome-button;
             }
-            
+
+            .container[wide-layout] .top {
+                height: 90vh;
+            }
+
+            .container[wide-layout] .language {
+                height: 6vh;
+            }
 
             .container[wide-layout] .switchcontainer {
                 @apply --layout-horizontal;
                 @apply --layout-center-center;
+                height: 84vh;
             }
 
             .container[wide-layout] .buttoncontainer {
@@ -113,7 +136,9 @@ This code may only be used under the license found at https://github.com/swarmci
         <app-location route="{{route}}"></app-location>
         <div class="container" wide-layout$="{{wide}}">
             <div class="top">
-                <div class="language"></div>
+                <div class="language">
+                    <display-language selected path="{{path}}"></display-language>
+                </div>
                 <div class="switchcontainer">
                     <div class="banner">
                         <div class="icon"></div>

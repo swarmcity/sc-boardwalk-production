@@ -7,7 +7,7 @@ Colors are all lower case, There is a space after the :
 <dom-module id="shared-styles">
     <template>
         <style>
-            :host {
+             :host {
                 /* users can not select unless we explicity allow */
                 -webkit-tap-highlight-color: transparent;
                 -webkit-user-select: none;
@@ -305,6 +305,7 @@ Colors are all lower case, There is a space after the :
                     text-align: center;
                     outline: none;
                     border: 0;
+                    box-sizing: border-box;
                     padding: 25px 42px;
                     border-radius: 2px;
                     background-color: rgba(255, 255, 255, 0.2);
@@ -762,6 +763,9 @@ Colors are all lower case, There is a space after the :
                     @apply --main-title1;
                 }
                 --welcome-button: {
+                    width: 75vw;
+                    min-width: 200px;
+                    max-width: 300px;
                     border: 1px solid black;
                     @apply --text-button-big;
                     background-color: rgba(250, 250, 250, 0.12);
