@@ -29,164 +29,67 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
+                width: 100vw;
                 display: block;
             }
 
-            .top-container {
-                background-color: var(--sc-yellow);
-                padding: 145px 18px 66px 18px;
-                @apply --layout-vertical;
-                @apply --layout-center;
-            }
-
-            .top-container div {
-                width: 146px;
-                height: 55px;
-                background-image: url('../../../images/swarm-city-sprite.png');
-                zoom: .5;
-                margin-bottom: 35px;
-            }
-
-            .top-container h1 span {
+            .container {
                 width: 100%;
-                margin-top: 10px;
-                display: block;
-                font-size: 35px;
-                line-height: 18px;
-                font-weight: 800;
             }
 
-            h1 {
-                text-align: center;
-                max-width: 280px;
-                display: block;
-                font-size: 22px;
-                font-weight: 100;
-                line-height: 31px;
-                color: var(--grey-4);
+            .top {
+                height: 90vh;
+                background-color: var(--sc-yellow);
             }
 
-            h2 {
-                color: #4A4A4A;
-                margin-top: 0px;
-                font-size: 11px;
-                font-weight: 400;
-                margin-bottom: 85px;
-                opacity: 0.53;
+            .language {
+                background-color: green;
             }
 
-            .middle-container {
-                background-color: var(--swarm-city-white);
-                padding: 75px 18px 75px;
+            .switchcontainer {
+                height: 100%;
+            }
+
+            .banner {
+                
                 @apply --layout-vertical;
-                @apply --layout-center;
+                @apply --layout-center-center;
+                height: 70%;
             }
 
-            .middle-container a {
-                @apply --blue-links;
+            .icon {
+                @apply --welcome-logo;
             }
 
-            .middle-container h2 {
-                text-align: center;
-                letter-spacing: 2.1px;
-                max-width: 560px;
-                font-size: 30px;
-                font-weight: 200;
-                line-height: 30px;
-                color: var(--grey-3)
-            }
+            .uppertitle {}
 
-            .middle-container div:nth-child(3) {
-                padding: 18px;
-                font-size: 12px;
-                color: var(--grey-5);
-                font-weight: 500;
-                @apply --layout-horizontal;
-                @apply --layout-wrap;
-                @apply --layout-center-justified;
-            }
+            .title {}
 
-            .middle-container div:nth-child(3) div {
-                text-align: center;
-                width: 175px;
-                padding: 10px;
-                @apply --layout-center-justified;
-            }
+            .subtitle {}
 
-            .image-one,
-            .image-two,
-            .image-three {
-                width: 175px;
-                height: 175px;
-                zoom: .5;
-                border-radius: 50%;
-                overflow: hidden;
-                margin: 0 auto;
-                margin-bottom: 50px;
-            }
+            .button {}
 
+            .middle {}
 
-            .bottom-container {
-                color: var(--grey-4);
-                font-size: 13px;
-                font-weight: 700;
-                padding: 50px 18px;
-                @apply --layout-horizontal;
-                @apply --layout-wrap;
-            }
-
-            .bottom-container div:nth-child(1) {
-                @apply --layout-flex;
-            }
-
-            .bottom-container div:nth-child(1) ul li a {
-                @apply --blue-links;
-            }
-
-            .bottom-container div:nth-child(2) {
-                text-align: right;
-            }
-
-            .bottom-container div:nth-child(2) ul li a {
-                @apply --grey-links;
-            }
-
-            ul {
-                list-style: none;
-                padding: 0;
-            }
-
-            li {
-                padding-top: 5px;
-            }
-
-            display-language {
-                position: fixed;
-                top: 28px;
-                right: 28px;
-                text-transform: uppercase;
-                border-bottom: 1px solid black;
-                font-size: 11px;
-                font-weight: 700;
-                cursor: pointer;
-            }
-
-            .top-container button {
-                @apply --text-button-big;
-                box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -o-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-            }
-
-            .top-container button:active {
-                @apply --button-active;
-            }
+            .button {}
         </style>
-
         <app-location route="{{route}}"></app-location>
-        <display-language selected path="{{path}}"></display-language>
-
+        <div class="container">
+            <div class="top">
+                <div class="language"></div>
+                <div class="switchcontainer">
+                    <div class="banner">
+                        <div class="icon"></div>
+                        <div class="uppertitle">welcome to</div>
+                        <div class="title">swarm.city</div>
+                    </div>
+                    <div class="button"></div>
+                </div>
+            </div>
+            <div class="middle"></div>
+            <div class="bottom"></div>
+        </div>
+        <!-- 
         <div class="top-container">
             <div></div>
             <h1>{{localize('welcome')}}<span> {{localize('name')}}<span></h1>
@@ -217,77 +120,84 @@ This code may only be used under the license found at https://github.com/swarmci
                 <li><a href="https://www.reddit.com/r/SwarmCity/" target="_blank">{{localize('Reddit')}}</a></li>
             </ul>
         </div>
-    </div>
+    </div> -->
 
-</template>
+    </template>
 
-<script>
-    
-    class PageWelcome extends new ReduxMixin(Polymer.mixinBehaviors([
+    <script>
+        class PageWelcome extends new ReduxMixin(Polymer.mixinBehaviors([
                 Polymer.AppLocalizeBehavior,
                 Polymer.NeonAnimationRunnerBehavior,
                 Polymer.NeonAnimatableBehavior,
             ],
             Polymer.Element
         )) {
-        static get is() {return 'page-welcome';}
-        static get properties() {return {
-            language: {
-                type: String,
-                statePath: 'language',
-            },
-            /**
-            * Path is the current or requested path
-            * @type {String}
-            */
-            path: {
-                type: String,
-                observer: '_path',
-            },
-            /**
-            * Entry and exit animation
-            */
-            animationConfig: {
-                value: function() {
-                        return {
-                        'entry': {
-                            name: 'fade-in-animation',
-                            node: this,
-                            nodeDelay: 300,
-                            timing: {duration: 300},
+            static get is() {
+                return 'page-welcome';
+            }
+            static get properties() {
+                return {
+                    language: {
+                        type: String,
+                        statePath: 'language',
+                    },
+                    /**
+                     * Path is the current or requested path
+                     * @type {String}
+                     */
+                    path: {
+                        type: String,
+                        observer: '_path',
+                    },
+                    /**
+                     * Entry and exit animation
+                     */
+                    animationConfig: {
+                        value: function () {
+                            return {
+                                'entry': {
+                                    name: 'fade-in-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {
+                                        duration: 300
+                                    },
+                                },
+                                'exit': {
+                                    name: 'fade-out-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {
+                                        duration: 300
+                                    },
+                                },
+                            };
                         },
-                        'exit': {
-                            name: 'fade-out-animation',
-                            node: this,
-                            nodeDelay: 300,
-                            timing: {duration: 300},
-                        },
-                    };
-                },
-            },
-        };
-    }
-    connectedCallback() {
-        super.connectedCallback();
-        this.loadResources(this.resolveUrl('../text-translations.json'));
-    }
+                    },
+                };
+            }
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
 
-    /**
-    * changes the current path
-    */
-    _path() {
-        if (this.path != null) {
-            this.set('route.path', this.path);
+            /**
+             * changes the current path
+             */
+            _path() {
+                if (this.path != null) {
+                    this.set('route.path', this.path);
+                }
+                this.path = null;
+            }
+
+            /**
+             * takes the user to the hashtag list page
+             */
+            _btnClick() {
+                this.set('route.path', 'hashtag-list/');
+            }
         }
-        this.path = null;
-    }
-
-    /**
-    * takes the user to the hashtag list page
-    */
-    _btnClick() {
-        this.set('route.path', 'hashtag-list/');
-    }
-} window.customElements.define(PageWelcome.is, PageWelcome);
-</script>
+        window.customElements.define(PageWelcome.is, PageWelcome);
+    </script>
 </dom-module>
