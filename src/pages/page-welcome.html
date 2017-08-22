@@ -81,21 +81,52 @@ This code may only be used under the license found at https://github.com/swarmci
             .button {
                 @apply --welcome-button;
             }
-            .middle-list {
-                margin-top: 40px;
-                
+            .middle {
+                background-color: var(--sc-white);
             }
 
-            .middle-list li{
+            .middle-list {
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+
+            .middle-list li {
                 list-style-type: none;
                 padding-bottom: 16px;
             }
 
-            .middle-list > li > a{
+            .middle-list li a {
                 @apply --small-bold;
                 color: var(--sc-blue);
                 text-decoration: none;
                 border-bottom: 2px dotted var(--sc-blue);
+            }
+
+            .bottom {
+                box-sizing: border-box;
+                padding:  50px 0 0 10vw;
+                background-color: #e6e6e6;
+            }
+
+            .bottom-list {
+                margin: 0;
+                padding: 0;
+                text-decoration: none;
+            }
+
+            .bottom-list li:first-child {
+                @apply --small-bold;
+            }
+
+            .bottom-list li {
+                list-style-type: none;
+                padding-bottom: 8px;
+            }
+
+            .bottom-list li a {
+                @apply --small-light;
+                color: var(--sc-grey4);
+                text-decoration: none;
             }
 
             .container[wide-layout] .top {
@@ -141,23 +172,23 @@ This code may only be used under the license found at https://github.com/swarmci
             .container[extrawide-layout] .title {
                 @apply --welcome-title-extrawide;
             }
+
             .container[wide-layout] .middle-list {
                 padding: 0 0 0 10vw;
             }
 
-            .container[wide-layout] .middle-list li{
+            .container[wide-layout] .middle-list li {
                 display: inline;
                 list-style-type: none;
                 padding-right: 20px;
             }
 
-            .container[ide-layout] .middle-list > li > a{
+            .container[wide-layout] .middle-list>li>a {
                 @apply --small-bold;
                 color: var(--sc-blue);
                 text-decoration: none;
                 border-bottom: 2px dotted var(--sc-blue);
             }
-
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <iron-media-query query="(min-width: 1281px)" query-matches="{{extrawide}}"></iron-media-query>
@@ -170,7 +201,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 <div class="switchcontainer">
                     <div class="banner">
                         <div class="logo"></div>
-                        <div class="uppertitle">welcome to</div>
+                        <div class="uppertitle">Welcome to</div>
                         <div class="title">swarm.
                             <template is="dom-if" if="{{wide}}"><br></template>city</div>
                     </div>
@@ -189,7 +220,20 @@ This code may only be used under the license found at https://github.com/swarmci
                 <li><a href="http://swarmcitizens.org/app.php/help/faq?sid=f4439589cebbcbfea36e2508ec12f155" target="_blank">{{localize('FAQ')}}</a></li>
                 <li><a href="https://advisors.swarm.city/" target="_blank">{{localize('Advisors')}}</a></li>
             </ul>
-            <div class="bottom"></div>
+            <div class="bottom">
+                <ul class="bottom-list">
+                    <li>{{localize('Find Swarm City on')}}</li>
+                    <li><a href="https://www.facebook.com/groups/SwarmCity/" target="_blank">{{localize('Facebook')}}</a></li>
+                    <li><a href="https://discordapp.com/invite/6CsYT64" target="_blank">{{localize('Discord')}}</a></li>
+                    <li><a href="https://swarm-slack-invite.herokuapp.com/" target="_blank">{{localize('Slack')}}</a></a>
+                    </li>
+                    <li><a href="https://medium.com/swarm-city-times" target="_blank">{{localize('Medium')}}</li>
+                    <li><a href="https://github.com/swarmcity" target="_blank">{{localize('Github')}}</a></li>
+                    <li><a href="https://twitter.com/swarmcitydapp" target="_blank">{{localize('Twitter')}}</a></li>
+                    <li><a href="https://www.youtube.com/channel/UCsHBWn_ytZ3xdMbTyYe5Ifg" target="_blank">{{localize('Youtube')}}</a></li>
+                    <li><a href="https://www.reddit.com/r/SwarmCity/" target="_blank">{{localize('Reddit')}}</a></li>
+                </ul>
+            </div>
         </div>
     </template>
 
