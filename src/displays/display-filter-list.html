@@ -13,7 +13,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
 Example:
 ```
-<display-distance-slider></display-distance-slider>
+<display-filter-list></display-filter-list>
 ```
 
 ### Styling
@@ -24,11 +24,11 @@ The following custom properties and mixins are available for styling:
 
 | Custom property | Description | Default |
 | --- | --- | --- |
-| `--distance-slider-filter-list` | Mixin applied to the container | `{}` |
-| `--distance-slider` | Mixin applied to the hashtag | `{}` |
-| `--distance-slider-description` | Mixin applied to the deals | `{}` |
+| `--filter-list-filter-list` | Mixin applied to the container | `{}` |
+| `--filter-list` | Mixin applied to the hashtag | `{}` |
+| `--filter-list-description` | Mixin applied to the deals | `{}` |
 -->
-<dom-module id="display-distance-slider">
+<dom-module id="display-filter-list">
     <template>
         <style>
              :host {
@@ -36,21 +36,19 @@ The following custom properties and mixins are available for styling:
             }
 
             .container {
-                @apply --distance-slider-container;
+                
             }
 
-            .container p:nth-child(1) {
-                @apply --distance-slider-filter-list;
-            }
-
-            .range-description {
-                @apply --distance-slider-description;
+            .toggle {
+                @apply --small-bold;
+                color: var(--sc-grey3);
+                border-bottom: 2px dotted var(--sc-grey3);
             }
 
             paper-slider {
                 animation-name: scaleIn;
                 animation: scaleIn 0.5s forwards;
-                @apply --distance-slider;
+                @apply --filter-list;
             }
 
             @keyframes scaleIn {
@@ -67,7 +65,7 @@ The following custom properties and mixins are available for styling:
         <display-language language="{{language}}"></display-language>
 
         <div class="container">
-            <p on-click="_toggleSlider">{{localize('filter list')}}</p>
+            <p class="toggle" on-click="_toggleSlider">{{localize('filter list')}}</p>
             <template is="dom-if" if="{{showSlider}}">
                 <p class="range-description">{{rangeDescription}}</p>
                 <paper-slider id="ratings" min="1" max="6" value="{{value}}" on-immediate-value-change="_calcRange" expand></paper-slider>
@@ -76,13 +74,13 @@ The following custom properties and mixins are available for styling:
 
     </template>
     <script>
-        class DisplayDistanceSlider extends new ReduxMixin(Polymer.mixinBehaviors([
+        class MyFilterList extends new ReduxMixin(Polymer.mixinBehaviors([
                 Polymer.AppLocalizeBehavior,
             ],
             Polymer.Element
         )) {
             static get is() {
-                return 'display-distance-slider';
+                return 'display-filter-list';
             }
             static get properties() {
                 return {
@@ -229,6 +227,6 @@ The following custom properties and mixins are available for styling:
                 }
             }
         }
-        window.customElements.define(DisplayDistanceSlider.is, DisplayDistanceSlider);
+        window.customElements.define(MyFilterList.is, MyFilterList);
     </script>
 </dom-module>
