@@ -1,6 +1,6 @@
 {
     "en": {
-        "language": "en",
+        "language": "EN",
         "locale": "English",
         "name": "swarm.city",
         "welcome": "welcome to",
@@ -83,7 +83,7 @@
         "Youve downloaded your account file.": "You've downloaded your account file."
     },
     "cn": {
-        "language": "cn",
+        "language": "CN",
         "locale": "中文",
         "name": "一群市",
         "welcome": "欢迎来到",
@@ -146,7 +146,7 @@
         "Swarm City is a decentralized commerce platform.": "Swarm City est une plate-forme de commerce décentralisée",
         "welcome": "Bienvenue à",
         "Youtube": "Youtube",
-        "language": "fr",
+        "language": "FR",
         "Profile picture": "Image du profil",
         "Medium": "Medium",
         "Private key": "Clé privée ?",
@@ -198,7 +198,7 @@
         "Swarm City is a decentralized commerce platform.": "Swarm City is een decentraal handelsplatform",
         "welcome": "welkom in",
         "Youtube": "Youtube",
-        "language": "nl",
+        "language": "NL",
         "Profile picture": "Profielfoto",
         "Medium": "Medium",
         "Private key": "private key?",
@@ -220,7 +220,7 @@
         "restore account": "herstel account"
     },
     "ru": {
-        "language": "ru",
+        "language": "RU",
         "locale": "Pусский",
         "name": "Swarm City",
         "welcome": "Добро пожаловать",
@@ -259,7 +259,7 @@
         "Swarm City is a decentralized commerce platform.": "Swarm City ist eine dezentralisierte Handelsplattform",
         "welcome": "Willkommen zu",
         "Youtube": "Youtube",
-        "language": "de",
+        "language": "DE",
         "Profile picture": "Profilbild",
         "Medium": "Medium",
         "Private key": "Privater Schlüssel?",
@@ -281,7 +281,7 @@
         "restore account": "Kontowiederherstellung"
     },
     "es": {
-        "language": "es",
+        "language": "ES",
         "locale": "Español",
         "name": "Swarm City",
         "welcome": "Bienvenido a",
@@ -320,7 +320,7 @@
         "Swarm City is a decentralized commerce platform.": "Swarm City jest zdecentralizowaną platformą sprzedażową.",
         "welcome": "Witamy w ",
         "Youtube": "Youtube",
-        "language": "pl",
+        "language": "PL",
         "Profile picture": "Zdjęcie profilowe",
         "Medium": "Średni",
         "Private key": "klucz prywatny?",
@@ -372,7 +372,7 @@
         "Swarm City is a decentralized commerce platform.": "Swarm City merkezi olmayan ticaret platformudur.",
         "welcome": "Hoşgeldiniz",
         "Youtube": "Youtube",
-        "language": "tr",
+        "language": "TR",
         "Profile picture": "Profil resmi",
         "Medium": "Medium",
         "Private key": "özel anahtar?",
