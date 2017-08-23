@@ -7,7 +7,7 @@ Colors are all lower case, There is a space after the :
 <dom-module id="shared-styles">
     <template>
         <style>
-            :host {
+             :host {
                 /* users can not select unless we explicity allow */
                 -webkit-tap-highlight-color: transparent;
                 -webkit-user-select: none;
@@ -135,7 +135,7 @@ Colors are all lower case, There is a space after the :
 
                 /*----------ICONS----------*/
                 --retina: {
-                    background-image: url('../../images/SwarmCity-Sprite-doublesize-green.png');
+                    background-image: url('../../images/SwarmCity-Sprite-doublesize.png');
                 }
                 --sprite: {
                     background-image: url('../../images/SwarmCity-Sprite-normal.png');
@@ -217,8 +217,8 @@ Colors are all lower case, There is a space after the :
                     @apply --icon-normal;
                     background-position: -54px -216px;
                 }
-                --logout-grey3-mini: {
-                    @apply --icon-mini;
+                --logout-grey3-small: {
+                    @apply --icon-small;
                     background-position: -216px -198px;
                 }
                 --reply-blue-normal: {
@@ -305,6 +305,7 @@ Colors are all lower case, There is a space after the :
                     text-align: center;
                     outline: none;
                     border: 0;
+                    box-sizing: border-box;
                     padding: 25px 42px;
                     border-radius: 2px;
                     background-color: rgba(255, 255, 255, 0.2);
@@ -749,6 +750,122 @@ Colors are all lower case, There is a space after the :
                     @apply --close;
                 }
 
+                /* WELCOME */
+                --welcome-host: {
+                    width: 100vw;
+                    display: block;
+                }
+                --welcome-container: {
+                    width: 100%;
+                }
+                --welcome-top: {
+                    @apply --layout-vertical;
+                    @apply --layout-center-center;
+                    height: 80vh;
+                    background-color: var(--sc-yellow);
+                }
+                --welcome-top-wide: {
+                    height: 80vh;
+                }
+                --welcome-language: {
+                    @apply --layout-horizontal;
+                    @apply --layout-end-justified;
+                    box-sizing: border-box;
+                    padding: 30px 30px 0 0;
+                    width: 100%;
+                }
+                --welcome-switchcontainer: {
+                    @apply --layout-vertical;
+                    @apply --center-center;
+                    @apply --layout-flex;
+                    width: 100%;
+                }
+                --welcome-switchcontainer-wide: {
+                    @apply --layout-horizontal;
+                    @apply --layout-center-center;
+                }
+                --welcome-banner: {
+                    @apply --layout-vertical;
+                    @apply --layout-center;
+                    @apply --layout-end-justified;
+                    box-sizing: border-box;
+                    padding: 0 0 8vh 0;
+                    height: 60%;
+                }
+                --welcome-banner-wide: {
+                    @apply --layout-start;
+                    @apply --layout-end-justified;
+                    @apply --layout-flex;
+                    box-sizing: border-box;
+                    padding: 0 0 18vh 10vw;
+                    height: 100%;
+                }
+                --welcome-logo: {
+                    @apply --swlogo-grey4;
+                    margin-bottom: 20px;
+                }
+                --welcome-logo-wide: {
+                    margin-bottom: 30px;
+                }
+
+                --welcome-logo-extrawide: {
+                    margin-bottom: 40px;
+                }
+
+                --welcome-uppertitle: {
+                    @apply --body-detail;
+                    font-size: 22px;
+                    font-weight: 100;
+                }
+                --welcome-uppertitle-wide: {
+                    font-size: 34px;
+                    
+                }
+
+                --welcome-uppertitle-extrawide: {
+                    font-size: 34px;
+                }
+                --welcome-title: {
+                    @apply --main-title1;
+                }
+                --welcome-title-wide: {
+                    font-size: 78px;
+                    line-height: 68px;
+                }
+                --welcome-title-extrawide: {
+                    font-size: 98px;
+                    line-height: 82px;
+                }
+
+                --welcome-version: {
+                    @apply --smallest-light;
+                }
+                --welcome-buttoncontainer: {
+                    @apply --layout-vertical;
+                    @apply --layout-center-center;
+                    height: 40%;
+                }
+                --welcome-buttoncontainer-wide: {
+                    @apply --layout-vertical;
+                    @apply --layout-end;
+                    @apply --layout-end-justified;
+                    box-sizing: border-box;
+                    padding: 0 10vw 18vh 0;
+                    height: 100%;
+                }
+                --welcome-button: {
+                    width: 75vw;
+                    min-width: 200px;
+                    max-width: 300px;
+                    border: 1px solid black;
+                    @apply --text-button-big;
+                    background-color: rgba(250, 250, 250, 0.09);
+                }
+                --welcome-button-wide: {
+                    padding: 36px 42px;
+                    max-width: 220px;
+                }
+
 
                 /***********************************/
                 --blue-links: {
@@ -853,31 +970,8 @@ Colors are all lower case, There is a space after the :
                     background: url('../../../images/swarm-city-sprite.png') -770px -89px;
                     cursor: pointer;
                 }
-                --distance-slider-container: {
-                    width: 100%;
-                    min-width: 280px;
-                    @apply --layout-vertical;
-                }
-                --distance-slider-filter-list: {
-                    font-size: 12px;
-                    font-weight: 800;
-                    text-align: right;
-                    text-decoration: underline;
-                    cursor: pointer;
-                    color: var(--grey-2);
-                }
-                --distance-slider: {
-                    --paper-slider-knob-color: var(--swarm-city-yellow);
-                    --paper-slider-active-color: var(--swarm-city-yellow);
-                    width: 100%;
-                    cursor: pointer;
-                    margin-bottom: 18px;
-                }
-                --distance-slider-description: {
-                    font-size: 11px;
-                    font-weight: 400;
-                    margin: 0 0 0 10px;
-                }
+
+
                 --display-hashtag-about-toggle: {
                     color: var(--swarm-city-blue);
                     font-size: 12px;

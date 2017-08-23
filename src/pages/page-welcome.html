@@ -4,6 +4,7 @@ Copyright (c) 2017 Swarm City
 This code may only be used under the license found at https://github.com/swarmcity/license
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
@@ -29,265 +30,296 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
-                display: block;
+                @apply --welcome-host;
             }
 
-            .top-container {
-                background-color: var(--sc-yellow);
-                padding: 145px 18px 66px 18px;
-                @apply --layout-vertical;
-                @apply --layout-center;
+            .container {
+                @apply --welcome-container;
             }
 
-            .top-container div {
-                width: 146px;
-                height: 55px;
-                background-image: url('../../../images/swarm-city-sprite.png');
-                zoom: .5;
-                margin-bottom: 35px;
-            }
-
-            .top-container h1 span {
-                width: 100%;
-                margin-top: 10px;
-                display: block;
-                font-size: 35px;
-                line-height: 18px;
-                font-weight: 800;
-            }
-
-            h1 {
-                text-align: center;
-                max-width: 280px;
-                display: block;
-                font-size: 22px;
-                font-weight: 100;
-                line-height: 31px;
-                color: var(--grey-4);
-            }
-
-            h2 {
-                color: #4A4A4A;
-                margin-top: 0px;
-                font-size: 11px;
-                font-weight: 400;
-                margin-bottom: 85px;
-                opacity: 0.53;
-            }
-
-            .middle-container {
-                background-color: var(--swarm-city-white);
-                padding: 75px 18px 75px;
-                @apply --layout-vertical;
-                @apply --layout-center;
-            }
-
-            .middle-container a {
-                @apply --blue-links;
-            }
-
-            .middle-container h2 {
-                text-align: center;
-                letter-spacing: 2.1px;
-                max-width: 560px;
-                font-size: 30px;
-                font-weight: 200;
-                line-height: 30px;
-                color: var(--grey-3)
-            }
-
-            .middle-container div:nth-child(3) {
-                padding: 18px;
-                font-size: 12px;
-                color: var(--grey-5);
-                font-weight: 500;
-                @apply --layout-horizontal;
-                @apply --layout-wrap;
-                @apply --layout-center-justified;
-            }
-
-            .middle-container div:nth-child(3) div {
-                text-align: center;
-                width: 175px;
-                padding: 10px;
-                @apply --layout-center-justified;
-            }
-
-            .image-one,
-            .image-two,
-            .image-three {
-                width: 175px;
-                height: 175px;
-                zoom: .5;
-                border-radius: 50%;
-                overflow: hidden;
-                margin: 0 auto;
-                margin-bottom: 50px;
-            }
-
-
-            .bottom-container {
-                color: var(--grey-4);
-                font-size: 13px;
-                font-weight: 700;
-                padding: 50px 18px;
-                @apply --layout-horizontal;
-                @apply --layout-wrap;
-            }
-
-            .bottom-container div:nth-child(1) {
-                @apply --layout-flex;
-            }
-
-            .bottom-container div:nth-child(1) ul li a {
-                @apply --blue-links;
-            }
-
-            .bottom-container div:nth-child(2) {
-                text-align: right;
-            }
-
-            .bottom-container div:nth-child(2) ul li a {
-                @apply --grey-links;
-            }
-
-            ul {
-                list-style: none;
-                padding: 0;
-            }
-
-            li {
-                padding-top: 5px;
+            .top {
+                @apply --welcome-top;
             }
 
             display-language {
-                position: fixed;
-                top: 28px;
-                right: 28px;
-                text-transform: uppercase;
-                border-bottom: 1px solid black;
-                font-size: 11px;
-                font-weight: 700;
                 cursor: pointer;
+                @apply --small-bold;
             }
 
-            .top-container button {
-                @apply --text-button-big;
-                box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -o-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+            .language {
+                @apply --welcome-language;
             }
 
-            .top-container button:active {
-                @apply --button-active;
+            .switchcontainer {
+                @apply --welcome-switchcontainer;
+            }
+
+            .banner {
+                @apply --welcome-banner;
+            }
+
+            .logo {
+                @apply --welcome-logo;
+            }
+
+            .uppertitle {
+                @apply --welcome-uppertitle;
+            }
+
+            .title {
+                @apply --welcome-title;
+            }
+
+            .version {
+                @apply --welcome-version;
+            }
+
+            .buttoncontainer {
+                @apply --welcome-buttoncontainer;
+            }
+
+            .button {
+                @apply --welcome-button;
+            }
+
+            .middle {
+                background-color: var(--sc-white);
+                padding: 40px 0;
+            }
+
+            .middle-list li {
+                list-style-type: none;
+                padding-bottom: 16px;
+            }
+
+            .middle-list li a {
+                @apply --small-bold;
+                color: var(--sc-blue);
+                text-decoration: none;
+                border-bottom: 2px dotted var(--sc-blue);
+            }
+
+            .bottom {
+                box-sizing: border-box;
+                padding: 50px 0 50px 10vw;
+                background-color: #e6e6e6;
+            }
+
+            .bottom-list {
+                margin: 0;
+                padding: 0;
+                text-decoration: none;
+            }
+
+            .links {
+                @apply --small-bold;
+                margin-bottom: 10px;
+            }
+
+            .bottom-list li {
+                list-style-type: none;
+                padding-bottom: 8px;
+            }
+
+            .container[wide-layout] .bottom-list li {
+                display: inline;
+                padding-right: 20px;
+            }
+
+            .bottom-list li a {
+                @apply --small-light;
+                color: var(--sc-grey4);
+                text-decoration: none;
+                border-bottom: 1px dotted var(--sc-grey2);
+            }
+
+            .container[wide-layout] .top {
+                @apply --welcome-top-wide;
+            }
+
+            .container[wide-layout] .switchcontainer {
+                @apply --welcome-switchcontainer-wide;
+            }
+
+            .container[wide-layout] .banner {
+                @apply --welcome-banner-wide;
+            }
+
+            .container[wide-layout] .uppertitle {
+                @apply --welcome-uppertitle-wide;
+            }
+
+            .container[wide-layout] .title {
+                @apply --welcome-title-wide;
+            }
+
+            .container[wide-layout] .logo {
+                @apply --welcome-logo-wide;
+            }
+
+            .container[wide-layout] .buttoncontainer {
+                @apply --welcome-buttoncontainer-wide;
+            }
+
+            .container[wide-layout] .button {
+                @apply --welcome-button-wide;
+            }
+
+            .container[wide-layout] .middle-list {
+                padding: 0 0 0 10vw;
+            }
+
+            .container[wide-layout] .middle-list li {
+                display: inline;
+                list-style-type: none;
+                padding-right: 20px;
+            }
+
+            .container[wide-layout] .middle-list>li>a {
+                @apply --small-bold;
+                color: var(--sc-blue);
+                text-decoration: none;
+                border-bottom: 2px dotted var(--sc-blue);
+            }
+
+            .container[wide-layout] .bottom-list li {
+                display: inline;
+                padding-right: 20px;
+            }
+
+            .container[extrawide-layout] .logo {
+                @apply --welcome-logo-extrawide;
+            }
+
+            .container[extrawide-layout] .uppertitle {
+                @apply --welcome-uppertitle-extrawide;
+            }
+
+            .container[extrawide-layout] .title {
+                @apply --welcome-title-extrawide;
             }
         </style>
-
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+        <iron-media-query query="(min-width: 1281px)" query-matches="{{extrawide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
-        <display-language selected path="{{path}}"></display-language>
-
-        <div class="top-container">
-            <div></div>
-            <h1>{{localize('welcome')}}<span> {{localize('name')}}<span></h1>
-            <h2>{{localize('boardwalk')}} V 2.0</h2>
-            <button type="button" autofocus on-click="_btnClick" on-KeyPress="_btnKeyPress">{{localize('enter here')}}</button>
-    </div>
-    
-    
-    <div class="bottom-container">
-        <div>
-            <ul>
-                <li><a href="https://thisis.swarm.city/" target="_blank">{{localize('This is Swarm City')}}</a></li>
-                <li><a href="http://swarmcitizens.org/" target="_blank">{{localize('Support')}}</a></li>
-                <li><a href="http://swarmcitizens.org/app.php/help/faq?sid=f4439589cebbcbfea36e2508ec12f155" target="_blank">{{localize('FAQ')}}</a></li>
-                <li><a href="https://advisors.swarm.city/" target="_blank">{{localize('Advisors')}}</a></li>
-            </ul>
+        <div class="container" wide-layout$="{{wide}}" extrawide-layout$="{{extrawide}}">
+            <div class="top">
+                <div class="language">
+                    <display-language selected path="{{path}}"></display-language>
+                </div>
+                <div class="switchcontainer">
+                    <div class="banner">
+                        <div class="logo"></div>
+                        <div class="uppertitle">Welcome to</div>
+                        <div class="title">swarm.
+                            <template is="dom-if" if="{{wide}}"><br></template>city</div>
+                    </div>
+                    <div class="buttoncontainer">
+                        <div class="button" autofocus on-click="_btnClick" on-KeyPress="_btnKeyPress">
+                            <div class="buttontext">enter here</div>
+                            <div class="version">Boardwalk v2.0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="middle">
+                <ul class="middle-list">
+                    <li><a href="https://thisis.swarm.city/" target="_blank">{{localize('This is Swarm City')}}</a></li>
+                    <li><a href="http://swarmcitizens.org/" target="_blank">{{localize('Support')}}</a></li>
+                    <li><a href="http://swarmcitizens.org/app.php/help/faq?sid=f4439589cebbcbfea36e2508ec12f155" target="_blank">{{localize('FAQ')}}</a></li>
+                    <li><a href="https://advisors.swarm.city/" target="_blank">{{localize('Advisors')}}</a></li>
+                </ul>
+            </div>
+            <div class="bottom">
+                <div class="links">{{localize('Find Swarm City on')}}</div>
+                <ul class="bottom-list">
+                    <li><a href="https://www.facebook.com/groups/SwarmCity/" target="_blank">{{localize('Facebook')}}</a></li>
+                    <li><a href="https://discordapp.com/invite/6CsYT64" target="_blank">{{localize('Discord')}}</a></li>
+                    <li><a href="https://swarm-slack-invite.herokuapp.com/" target="_blank">{{localize('Slack')}}</a></li>
+                    <li><a href="https://medium.com/swarm-city-times" target="_blank">{{localize('Medium')}}</a></li>
+                    <li><a href="https://github.com/swarmcity" target="_blank">{{localize('Github')}}</a></li>
+                    <li><a href="https://twitter.com/swarmcitydapp" target="_blank">{{localize('Twitter')}}</a></li>
+                    <li><a href="https://www.youtube.com/channel/UCsHBWn_ytZ3xdMbTyYe5Ifg" target="_blank">{{localize('Youtube')}}</a></li>
+                    <li><a href="https://www.reddit.com/r/SwarmCity/" target="_blank">{{localize('Reddit')}}</a></li>
+                </ul>
+            </div>
         </div>
-        <div>
-            <ul>
-                <li>{{localize('Find Swarm City on')}}</li>
-                <li><a href="https://www.facebook.com/groups/SwarmCity/" target="_blank">{{localize('Facebook')}}</a></li>
-                <li><a href="https://discordapp.com/invite/6CsYT64" target="_blank">{{localize('Discord')}}</a></li>
-                <li><a href="https://swarm-slack-invite.herokuapp.com/" target="_blank">{{localize('Slack')}}</a></a></li>
-                <li><a href="https://medium.com/swarm-city-times" target="_blank">{{localize('Medium')}}</li>
-                <li><a href="https://github.com/swarmcity" target="_blank">{{localize('Github')}}</a></li>
-                <li><a href="https://twitter.com/swarmcitydapp" target="_blank">{{localize('Twitter')}}</a></li>
-                <li><a href="https://www.youtube.com/channel/UCsHBWn_ytZ3xdMbTyYe5Ifg" target="_blank">{{localize('Youtube')}}</a></li>
-                <li><a href="https://www.reddit.com/r/SwarmCity/" target="_blank">{{localize('Reddit')}}</a></li>
-            </ul>
-        </div>
-    </div>
+    </template>
 
-</template>
-
-<script>
-    
-    class PageWelcome extends new ReduxMixin(Polymer.mixinBehaviors([
+    <script>
+        class PageWelcome extends new ReduxMixin(Polymer.mixinBehaviors([
                 Polymer.AppLocalizeBehavior,
                 Polymer.NeonAnimationRunnerBehavior,
                 Polymer.NeonAnimatableBehavior,
             ],
             Polymer.Element
         )) {
-        static get is() {return 'page-welcome';}
-        static get properties() {return {
-            language: {
-                type: String,
-                statePath: 'language',
-            },
-            /**
-            * Path is the current or requested path
-            * @type {String}
-            */
-            path: {
-                type: String,
-                observer: '_path',
-            },
-            /**
-            * Entry and exit animation
-            */
-            animationConfig: {
-                value: function() {
-                        return {
-                        'entry': {
-                            name: 'fade-in-animation',
-                            node: this,
-                            nodeDelay: 300,
-                            timing: {duration: 300},
+            static get is() {
+                return 'page-welcome';
+            }
+            static get properties() {
+                return {
+                    language: {
+                        type: String,
+                        statePath: 'language',
+                    },
+                    /**
+                     * Path is the current or requested path
+                     * @type {String}
+                     */
+                    path: {
+                        type: String,
+                        observer: '_path',
+                    },
+                    /**
+                     * Entry and exit animation
+                     */
+                    animationConfig: {
+                        value: function () {
+                            return {
+                                'entry': {
+                                    name: 'fade-in-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {
+                                        duration: 300
+                                    },
+                                },
+                                'exit': {
+                                    name: 'fade-out-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {
+                                        duration: 300
+                                    },
+                                },
+                            };
                         },
-                        'exit': {
-                            name: 'fade-out-animation',
-                            node: this,
-                            nodeDelay: 300,
-                            timing: {duration: 300},
-                        },
-                    };
-                },
-            },
-        };
-    }
-    connectedCallback() {
-        super.connectedCallback();
-        this.loadResources(this.resolveUrl('../text-translations.json'));
-    }
+                    },
+                };
+            }
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
 
-    /**
-    * changes the current path
-    */
-    _path() {
-        if (this.path != null) {
-            this.set('route.path', this.path);
+            /**
+             * changes the current path
+             */
+            _path() {
+                if (this.path != null) {
+                    this.set('route.path', this.path);
+                }
+                this.path = null;
+            }
+
+            /**
+             * takes the user to the hashtag list page
+             */
+            _btnClick() {
+                this.set('route.path', 'hashtag-list/');
+            }
         }
-        this.path = null;
-    }
-
-    /**
-    * takes the user to the hashtag list page
-    */
-    _btnClick() {
-        this.set('route.path', 'hashtag-list/');
-    }
-} window.customElements.define(PageWelcome.is, PageWelcome);
-</script>
+        window.customElements.define(PageWelcome.is, PageWelcome);
+    </script>
 </dom-module>

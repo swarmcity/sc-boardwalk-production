@@ -145,7 +145,7 @@ Example:
                     .then((data) => {
                         if (data.found == false) {
                             // If we dont have the translation use english
-                            this.language = 'en';
+                            this.language = 'EN';
                             this.dispatch('LANGUAGE', this.language);
                             return;
                         } else {

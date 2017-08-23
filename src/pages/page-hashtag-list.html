@@ -15,7 +15,7 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../shared-styles.html">
 <link rel="import" href="../displays/display-my-info.html">
-<link rel="import" href="../displays/display-distance-slider.html">
+<link rel="import" href="../displays/display-filter-list.html">
 <link rel="import" href="../displays/display-hashtag-list.html">
 <!--
     Aimation pack, only load the animations you need for this page.
@@ -35,24 +35,74 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
+                width: 100vw;
                 display: block;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
+                background-color: #f4f3f4;
             }
 
-            .back {
-                @apply --page-hashtag-list-back;
-                margin-top: 18px;
+            .container {
+                width: 100%;
+            }
+
+            .header {
+                background-color: #f4f3f4;
+                @apply --layout-horizontal;
+                box-sizing: border-box;
+                padding: 40px 40px 0 40px;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                height: 100px;
+                @apply --layout-end-justified;
+            }
+
+
+            .topleft {
+                @apply --layout-vertical;
+                @apply --layout-start;
+                @apply --layout-start-justified;
+                @apply --layout-flex;
+            }
+
+            .account {
+                width: 150px;
+                height: 52px;
+                background-color: green;
+            }
+
+            .topright {
+                @apply --logout-grey3-small;
+            }
+
+            display-filter-list {
+                --paper-slider-knob-color: var(--swarm-city-yellow);
+                --paper-slider-active-color: var(--swarm-city-yellow);
                 cursor: pointer;
+            }
+
+            display-hashtag-list {
+                margin-left: 10vw;
+                margin-top: 150px;
             }
         </style>
         <app-location route="{{route}}"></app-location>
         <div class="container">
-            <display-my-info></display-my-info>
-            <div class="back" on-click="_back"></div>
-            <display-distance-slider range="{{range}}" route="{{route}}" path="{{path}}"></display-distance-slider>
+            <div class="header">
+                <div class="topleft">
+                    <div class="account">account</div>
+                    <display-filter-list range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
+                </div>
+                <div class="topright"></div>
+            </div>
+
             <display-hashtag-list range="[[range]]" path="{{path}}"></display-hashtag-list>
         </div>
+        <!--         <div class="container">
+            <display-my-info></display-my-info>
+            <div class="back" on-click="_back"></div>
+            <display-filter-list range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
+            <display-hashtag-list range="[[range]]" path="{{path}}"></display-hashtag-list>
+        </div> -->
 
     </template>
 
@@ -81,7 +131,7 @@ This code may only be used under the license found at https://github.com/swarmci
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
