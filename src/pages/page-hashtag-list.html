@@ -31,8 +31,8 @@ This code may only be used under the license found at https://github.com/swarmci
 <dom-module id="page-hashtag-list">
     <template>
         <!--
-    Page specific styles, if the style is used on more than one page, moveit to shared styles.
--->
+        Page specific styles, if the style is used on more than one page, moveit to shared styles.
+        -->
         <style include="shared-styles">
              :host {
                 width: 100vw;
@@ -52,7 +52,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 position: fixed;
                 top: 0;
                 width: 100%;
-                height: 100px;
+                height: 300px;
                 @apply --layout-end-justified;
             }
 
@@ -64,11 +64,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-flex;
             }
 
-            .account {
-                width: 150px;
-                height: 52px;
-                background-color: green;
-            }
+            display-my-info {}
 
             .topright {
                 @apply --logout-grey3-small;
@@ -82,28 +78,30 @@ This code may only be used under the license found at https://github.com/swarmci
 
             display-hashtag-list {
                 margin-left: 10vw;
-                margin-top: 150px;
+                margin-top: 300px;
+            }
+
+            .pushdown {
+                width: 50px;
+                height: 50px;
+                margin-top: 500px;
+                background-color: green;
             }
         </style>
         <app-location route="{{route}}"></app-location>
         <div class="container">
             <div class="header">
                 <div class="topleft">
-                    <div class="account">account</div>
+                    <display-my-info completeAccount="{{completeAccount}}"></display-my-info>
                     <display-filter-list range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
                 </div>
                 <div class="topright"></div>
             </div>
-
+            <template is="dom-if" if="{{completeAccount}}">
+                <div class="pushdown"></div>
+            </template>
             <display-hashtag-list range="[[range]]" path="{{path}}"></display-hashtag-list>
         </div>
-        <!--         <div class="container">
-            <display-my-info></display-my-info>
-            <div class="back" on-click="_back"></div>
-            <display-filter-list range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
-            <display-hashtag-list range="[[range]]" path="{{path}}"></display-hashtag-list>
-        </div> -->
-
     </template>
 
     <script>
@@ -126,6 +124,9 @@ This code may only be used under the license found at https://github.com/swarmci
                     path: {
                         type: String,
                         observer: '_path',
+                    },
+                    completeAccount: {
+                        type: Boolean,
                     },
                     /**
                      * Entry and exit animation

@@ -754,6 +754,7 @@ Colors are all lower case, There is a space after the :
                 --welcome-host: {
                     width: 100vw;
                     display: block;
+                    background-color: red;
                 }
                 --welcome-container: {
                     width: 100%;
@@ -865,17 +866,22 @@ Colors are all lower case, There is a space after the :
                     max-width: 220px;
                 }
                 --welcome-middle: {
+                    box-sizing: border-box;
                     background-color: var(--sc-white);
                     padding: 40px 0;
+                    
                 }
                 --welcome-middle-list-wide: {
+                    box-sizing: border-box;
                     padding: 0 0 0 10vw;
                 }
                 --welcome-middle-list-li: {
+                    box-sizing: border-box;
                     list-style-type: none;
                     padding-bottom: 16px
                 }
                 --welcome-middle-list-li-wide: {
+                    box-sizing: border-box;
                     display: inline;
                     list-style-type: none;
                     padding-right: 20px;
@@ -900,6 +906,7 @@ Colors are all lower case, There is a space after the :
                 }
 
                 --welcome-bottom-list: {
+                    box-sizing: border-box;
                     margin: 0;
                     padding: 0;
                     text-decoration: none;
@@ -909,10 +916,12 @@ Colors are all lower case, There is a space after the :
                     margin-bottom: 10px;
                 }
                 --welcome-bottom-list-li: {
+                    box-sizing: border-box;
                     list-style-type: none;
                     padding-bottom: 8px;
                 }
                 --welcome-bottom-list-li-wide: {
+                    box-sizing: border-box;
                     display: inline;
                     padding-right: 20px;
                 }
@@ -973,22 +982,16 @@ Colors are all lower case, There is a space after the :
                 }
                 --display-my-info-username: {
                     line-height: 20px;
-                    min-width: 270px;
                     font-weight: 800;
                     color: #333333;
                     font-size: 12px;
                 }
                 --display-my-info-avatar: {
-                    border-radius: 50%;
-                    height: 60px;
-                    width: 60px;
-                    background-color: grey;
-                    padding-right: 22px;
+                    @apply --defaultavatar-grey4;
+                    margin-right: 22px;
                 }
                 --display-my-info-container: {
                     @apply --layout-horizontal;
-                    margin: 85px 0 0 85px;
-                    max-width: 420px;
                 }
                 --display-hashtag-list-container: {
                     margin-left: 10px;
