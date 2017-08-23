@@ -37,8 +37,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --welcome-container;
             }
 
-            .top {
+            .container>div:nth-child(1) {
                 @apply --welcome-top;
+            }
+
+            .container>div:nth-child(1)>div:nth-child(1) {
+                @apply --welcome-language;
             }
 
             display-language {
@@ -46,138 +50,134 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --small-bold;
             }
 
-            .language {
-                @apply --welcome-language;
-            }
-
-            .switchcontainer {
+            .container>div:nth-child(1)>div:nth-child(2) {
                 @apply --welcome-switchcontainer;
             }
 
-            .banner {
+            .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
                 @apply --welcome-banner;
             }
 
-            .logo {
+            .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
                 @apply --welcome-logo;
             }
 
-            .uppertitle {
+            .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
                 @apply --welcome-uppertitle;
             }
 
-            .title {
+            .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(3)  {
                 @apply --welcome-title;
             }
 
-            .version {
-                @apply --welcome-version;
-            }
-
-            .buttoncontainer {
+            .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(2) {
                 @apply --welcome-buttoncontainer;
             }
 
-            .button {
+            .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(1) {
                 @apply --welcome-button;
             }
 
-            .middle {
+            .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
+                @apply --welcome-version;
+            }
+
+            .container>div:nth-child(2) {
                 @apply --welcome-middle;
             }
 
-            .middle-list li {
+            .container>div:nth-child(2) ul li {
                 @apply --welcome-middle-list-li;
             }
 
-            .middle-list li a {
+            .container>div:nth-child(2) ul li a {
                 @apply --welcome-middle-list-li-a;
             }
 
-            .bottom {
+            .container>div:nth-child(3) {
                 @apply --welcome-bottom;
             }
 
-            .bottom-list {
-                @apply --welcome-bottom-list;
-            }
-
-            .footertitle {
+            .container>div:nth-child(3)>div:nth-child(1)  {
                 @apply --welcome-footertitle;
             }
 
-            .bottom-list li {
+            .container>div:nth-child(3) ul {
+                @apply --welcome-bottom-list;
+            }
+
+            .container>div:nth-child(3) ul li {
                 @apply --welcome-bottom-list-li;
             }
 
-            .bottom-list li a {
+            .container>div:nth-child(3) ul li a {
                 @apply --welcome-bottom-list-li-a;
             }
 
-            .container[wide-layout] .top {
+            .container[wide-layout]>div:nth-child(1) {
                 @apply --welcome-top-wide;
             }
 
-            .container[wide-layout] .switchcontainer {
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(2) {
                 @apply --welcome-switchcontainer-wide;
             }
 
-            .container[wide-layout] .banner {
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
                 @apply --welcome-banner-wide;
             }
 
-            .container[wide-layout] .uppertitle {
+            .container[wide-layout] >div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(2){
                 @apply --welcome-uppertitle-wide;
             }
 
-            .container[wide-layout] .title {
+            .container[wide-layout] >div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(3){
                 @apply --welcome-title-wide;
             }
 
-            .container[wide-layout] .logo {
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
                 @apply --welcome-logo-wide;
             }
 
-            .container[wide-layout] .buttoncontainer {
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(2) {
                 @apply --welcome-buttoncontainer-wide;
             }
 
-            .container[wide-layout] .button {
+            .container[wide-layout] >div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(1) {
                 @apply --welcome-button-wide;
             }
 
-            .container[wide-layout] .middle-list {
+            .container[wide-layout] >div:nth-child(2) ul{
                 @apply --welcome-middle-list-wide;
             }
 
-            .container[wide-layout] .middle-list li {
+            .container[wide-layout] >div:nth-child(2) ul li {
                 @apply --welcome-middle-list-li-wide;
             }
 
-            .container[wide-layout] .middle-list li a {
+            .container[wide-layout] >div:nth-child(2) ul li a {
                 @apply --welcome-middle-list-li-a-wide;
             }
 
-            .container[wide-layout] .bottom-list li {
+            .container[wide-layout] >div:nth-child(3) ul li {
                 @apply --welcome-bottom-list-li-wide;
             }
 
-            .container[extrawide-layout] .logo {
+            .container[extrawide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
                 @apply --welcome-logo-extrawide;
             }
 
-            .container[extrawide-layout] .uppertitle {
+            .container[extrawide-layout] >div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
                 @apply --welcome-uppertitle-extrawide;
             }
 
-            .container[extrawide-layout] .title {
+            .container[extrawide-layout] >div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(3) {
                 @apply --welcome-title-extrawide;
             }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
-                .logo {
+                .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
                     @apply --retina;
                 }
             }
@@ -199,7 +199,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     </div>
                     <div class="buttoncontainer">
                         <div class="button" autofocus on-click="_btnClick" on-KeyPress="_btnKeyPress">
-                            <div class="buttontext">enter here</div>
+                            <div>enter here</div>
                             <div class="version">Boardwalk v2.0</div>
                         </div>
                     </div>
