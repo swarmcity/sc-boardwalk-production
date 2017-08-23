@@ -819,7 +819,6 @@ Colors are all lower case, There is a space after the :
                 }
                 --welcome-uppertitle-wide: {
                     font-size: 34px;
-                    
                 }
 
                 --welcome-uppertitle-extrawide: {
@@ -864,6 +863,64 @@ Colors are all lower case, There is a space after the :
                 --welcome-button-wide: {
                     padding: 36px 42px;
                     max-width: 220px;
+                }
+                --welcome-middle: {
+                    background-color: var(--sc-white);
+                    padding: 40px 0;
+                }
+                --welcome-middle-list-wide: {
+                    padding: 0 0 0 10vw;
+                }
+                --welcome-middle-list-li: {
+                    list-style-type: none;
+                    padding-bottom: 16px
+                }
+                --welcome-middle-list-li-wide: {
+                    display: inline;
+                    list-style-type: none;
+                    padding-right: 20px;
+                }
+                --welcome-middle-list-li-a: {
+                    @apply --small-bold;
+                    color: var(--sc-blue);
+                    text-decoration: none;
+                    border-bottom: 2px dotted var(--sc-blue);
+                }
+                --welcome-middle-list-li-a-wide: {
+                    @apply --small-bold;
+                    color: var(--sc-blue);
+                    text-decoration: none;
+                    border-bottom: 2px dotted var(--sc-blue);
+                }
+
+                --welcome-bottom: {
+                    box-sizing: border-box;
+                    padding: 50px 0 50px 10vw;
+                    background-color: #e6e6e6;
+                }
+
+                --welcome-bottom-list: {
+                    margin: 0;
+                    padding: 0;
+                    text-decoration: none;
+                }
+                --welcome-footertitle: {
+                    @apply --small-bold;
+                    margin-bottom: 10px;
+                }
+                --welcome-bottom-list-li: {
+                    list-style-type: none;
+                    padding-bottom: 8px;
+                }
+                --welcome-bottom-list-li-wide: {
+                    display: inline;
+                    padding-right: 20px;
+                }
+                --welcome-bottom-list-li-a: {
+                    @apply --small-light;
+                    color: var(--sc-grey4);
+                    text-decoration: none;
+                    border-bottom: 1px dotted var(--sc-grey2);
                 }
 
 
