@@ -51,7 +51,7 @@ This code may only be used under the license found at https://github.com/swarmci
             .header {
                 @apply --layout-vertical;
                 background-color: var(--sc-grey1);
-                
+
                 box-sizing: border-box;
                 padding: 40px 40px 0 40px;
                 position: fixed;
@@ -86,7 +86,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .hashtag {
                 @apply --main-title2;
-                color: var(--sc-grey4);              
+                color: var(--sc-grey4);
             }
 
             .back {
@@ -120,16 +120,22 @@ This code may only be used under the license found at https://github.com/swarmci
             display-filter-deals {
                 margin-top: 40px;
             }
-            display-hashtag-deals {
-                margin: 176px 10vw 0 10vw;
-                
-            }
+
             .pushdown {
+                height: 10px;
+            }
+
+            display-hashtag-deals {
+                margin: 166px 10vw 0 10vw;
+            }
+
+            .container[wide-layout] .pushdown {
                 height: 40px;
             }
-            .container[wide-layout] display-hashtag-deals { 
+
+            .container[wide-layout] display-hashtag-deals {
                 margin-top: 176px;
-            } 
+            }
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
@@ -157,7 +163,7 @@ This code may only be used under the license found at https://github.com/swarmci
             <display-hashtag-deals range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}"></display-hashtag-deals>
         </div>
 
-        
+
         <!-- <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn> -->
     </template>
 
