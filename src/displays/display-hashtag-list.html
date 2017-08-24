@@ -4,6 +4,7 @@ Copyright (c) 2017 Swarm City
 This code may only be used under the license found at https://github.com/swarmcity/license
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="../data/data-web3.html">
 <link rel="import" href="../data/data-local-storage.html">
@@ -37,7 +38,7 @@ The following custom properties and mixins are available for styling:
 
             .container {
                 width: 100%;
-                
+
 
                 margin-top: 10px;
             }
@@ -48,7 +49,7 @@ The following custom properties and mixins are available for styling:
             }
 
             .box {
-                
+
                 @apply --layout-horizontal;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.05);
                 padding: 15px 40px 20px 40px;
@@ -63,12 +64,13 @@ The following custom properties and mixins are available for styling:
                 @apply --next-grey4-small;
                 cursor: pointer;
             }
+
             .cursor {
                 @apply --main-title2;
                 cursor: pointer;
             }
         </style>
-
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <data-web3 id="web3"></data-web3>
         <data-local-storage id="storage"></data-local-storage>
         <data-utility id="utility"></data-utility>
