@@ -43,30 +43,19 @@ The following custom properties and mixins are available for styling:
             }
 
             .hashtag {
-
-
-
-                color: #353435;
-                font-size: 30px;
-                font-weight: 800;
-                line-height: 36px;
-                line-height: 36px;
+                @apply --main-title2;
                 cursor: pointer
             }
 
             .deals {
-
-
-                color: #353435;
-                font-size: 10px;
-                font-weight: 300;
-                line-height: 20px;
-                margin-bottom: 20px;
+                @apply --small-light;
+                color: var(--sc-grey3);
             }
 
             .box {
                 @apply --layout-horizontal;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                padding: 15px 40px 20px 40px;
             }
 
             .flex {
