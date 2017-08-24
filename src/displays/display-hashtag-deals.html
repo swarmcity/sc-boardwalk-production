@@ -40,62 +40,36 @@ The following custom properties and mixins are available for styling:
             }
 
             .container {
-                animation: scaleIn 0.5s forwards;
                 @apply --layout-vertical;
-                @apply --layout-center-justified;
-                @apply --display-hashtag-deals-container;
             }
 
-            .container .top {
-                @apply --layout-horizontal;
-            }
-
-            .container .bottom {
-                @apply --layout-horizontal;
-            }
-
-            .container .top img {
-                @apply --display-hashtag-deals-avatar;
-            }
-
-            .container .top div {
-                @apply --display-hashtag-deals-top-container;
-            }
-
-            .container .top div div:nth-child(1) {
-                @apply --display-hashtag-deals-time;
-            }
-
-            .container .top div div:nth-child(2) {
-                @apply --display-hashtag-deals-name;
-            }
-
-            .container .bottom div:nth-child(1) {
-                @apply --display-hashtag-deals-description;
-            }
-
-            .container .bottom div:nth-child(2) span {
-                @apply --display-hashtag-deals-for;
-            }
-
-            .container .bottom div:nth-child(2) {
-                @apply --display-hashtag-deals-amount;
-            }
-
-            @keyframes scaleIn {
-                0% {
-                    transform: scale(0, 0);
-                }
-                100% {
-                    transform: scale(1, 1);
-                }
-            }
         </style>
-        <data-web3 id="web3"></data-web3>
+    <div class="container">   
+        <div class="top">
+            <div class="topleft">
+                <div class="avatar"></div>
+                <div class="meta">
+                    <div class="date"></div>
+                    <div class="user"></div>
+                </div>
+            </div>
+            <div class="topright">
+                <div class="replycount"></div>
+                <div class="replyicon"></div>
+            </div>
+        </div>
+
+        <div class="bottom">
+            <div class="description"></div>
+            <div class="price"></div>
+        </div>
+    </div>
+
+<!--         <data-web3 id="web3"></data-web3>
         <data-ipfs id="ipfs"></data-ipfs>
         <data-utility id="utility"></data-utility>
-        <data-local-storage id="storage"></data-local-storage>
-        
+        <data-local-storage id="storage"></data-local-storage> -->
+
 <!--         <template is="dom-repeat" items="{{deals}}" filter="_isWithinRange" id="domRepeat">
             <div class="container" on-click="_next">
                 <div class="top">
