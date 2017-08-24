@@ -35,10 +35,6 @@ The following custom properties and mixins are available for styling:
                 display: block;
             }
 
-            .container {
-                
-            }
-
             .toggle {
                 @apply --small-bold;
                 color: var(--sc-grey3);
@@ -66,10 +62,10 @@ The following custom properties and mixins are available for styling:
 
         <div class="container">
             <span class="toggle" on-click="_toggleSlider">{{localize('filter list')}}</span>
-            <template is="dom-if" if="{{showSlider}}">
+<!--             <template is="dom-if" if="{{showSlider}}">
                 <p class="range-description">{{rangeDescription}}</p>
                 <paper-slider id="ratings" min="1" max="6" value="{{value}}" on-immediate-value-change="_calcRange" expand></paper-slider>
-            </template>
+            </template> -->
         </div>
 
     </template>
