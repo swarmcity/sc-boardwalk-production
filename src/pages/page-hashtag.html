@@ -72,9 +72,10 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --arrowleft-grey3-small;
             }
         </style>
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
         <app-route route="{{route}}" pattern="/hashtag/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-        <div class="container">
+        <div class="container" wide-layout$="{{wide}}">
             <div class="header">
                 <div class="left">
                     <display-my-info></display-my-info>
