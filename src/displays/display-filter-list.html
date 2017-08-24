@@ -65,7 +65,7 @@ The following custom properties and mixins are available for styling:
         <display-language language="{{language}}"></display-language>
 
         <div class="container">
-            <p class="toggle" on-click="_toggleSlider">{{localize('filter list')}}</p>
+            <span class="toggle" on-click="_toggleSlider">{{localize('filter list')}}</span>
             <template is="dom-if" if="{{showSlider}}">
                 <p class="range-description">{{rangeDescription}}</p>
                 <paper-slider id="ratings" min="1" max="6" value="{{value}}" on-immediate-value-change="_calcRange" expand></paper-slider>

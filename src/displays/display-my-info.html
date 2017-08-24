@@ -37,20 +37,28 @@ The following custom properties and mixins are available for styling:
             }
 
             .container {
-                @apply --display-my-info-container;
+                @apply --layout-horizontal;
             }
 
-            .container div:nth-child(1) > img:nth-child(1) {
-                
-                @apply --display-my-info-avatar
+            .container div:nth-child(1) img {
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+                border-radius: 50%;
+                margin-right: 10px;
+                background-image: url("../../images/defaultavatar.png");
+                background-size: 40px;
             }
 
-            .container div:nth-child(2) > div:nth-child(1) {
-                @apply --display-my-info-username
+            .container div:nth-child(2)>div:nth-child(1) {
+                @apply --small-bold;
+                cursor: pointer;
             }
 
-            .container div:nth-child(2) > div:nth-child(2) {
-                @apply --display-my-info-balance
+            .container div:nth-child(2)>div:nth-child(2) {
+               @apply --main-title4;
+               color: var(--sc-yellow);          
+               cursor: pointer;
             }
         </style>
 
