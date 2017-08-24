@@ -65,9 +65,9 @@ The following custom properties and mixins are available for styling:
         <data-web3 id="web3"></data-web3>
         <data-ipfs id="ipfs"></data-ipfs>
         <data-local-storage id="storage"></data-local-storage>
-
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <template is="dom-if" if="{{completeAccount}}">
-            <div class="container">
+            <div class="container" wide-layout$="{{wide}}">
                 <div>
                     <img>
                 </div>
