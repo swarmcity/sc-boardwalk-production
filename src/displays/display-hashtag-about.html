@@ -34,24 +34,43 @@ The following custom properties and mixins are available for styling:
             }
 
             .container div:nth-child(1) {
-                @apply --display-hashtag-about-toggle;
+                color: var(--swarm-city-blue);
+                    font-size: 12px;
+                    line-height: 15px;
+                    font-weight: 800;
+                    margin: 5px 0px 10px 0px;
+                    text-transform: lowercase;
+                    cursor: pointer;
+                    text-decoration: underline;
             }
 
             .container div:nth-child(2) {
                 animation: slideDown 0.3s ease-out forwards;
-                @apply --display-hashtag-about-box;
+                position: relative;
+                    z-index: -1;
+                    background-color: rgb(235, 235, 235);
+                    padding: 20px;
             }
 
             .container div:nth-child(2) div:nth-child(1) {
-                @apply --display-hashtag-about-maintained;
+                color: #797979;
+                    font-weight: 400;
+                    font-size: 13px;
             }
 
             .container div:nth-child(2) div:nth-child(2) {
-                @apply --display-hashtag-about-contact;
+                color: #CACACA;
+                    padding: 20px 0 10px 0;
+                    font-size: 13px;
             }
 
             .container div:nth-child(2) div a {
-                @apply --blue-links;
+                color: var(--swarm-city-blue);
+                    text-decoration: none;
+                    border-bottom: 1px dotted var(--swarm-city-blue);
+                    font-size: 12px;
+                    font-weight: 400;
+                    cursor: pointer;
             }
 
             @keyframes slideDown {
@@ -65,7 +84,7 @@ The following custom properties and mixins are available for styling:
         </style>
 
         <div class="container">
-            <div on-click="_toggle">about {{hashtag.name}}</div>
+            <div on-click="_toggle">i</div>
             <template is="dom-if" if="{{showInfo}}">
                 <div>
                     <div>{{hashtag.maintainer}}</div>

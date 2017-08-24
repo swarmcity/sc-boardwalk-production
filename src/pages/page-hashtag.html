@@ -18,7 +18,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../displays/display-hashtag-about.html">
 <link rel="import" href="../displays/display-hashtag-deals.html">
 <link rel="import" href="../displays/display-deal-btn.html">
-<link rel="import" href="../displays/display-distance-slider.html">
+<link rel="import" href="../displays/display-filter-deals.html">
 <!--
     Aimation pack, only load the animations you need for this page.
 -->
@@ -37,55 +37,60 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
+                width: 100vw;
                 display: block;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
+                background-color: #f4f3f4;
             }
 
             .container {
-                display: block;
                 width: 100%;
-                max-width: 320px;
             }
 
-            .container div:nth-child(1) {
-                margin-top: 20px;
-                width: 20px;
-                height: 20px;
-                background: url('../../../images/swarm-city-sprite.png') -705px -137px;
-                cursor: pointer;
-            }
-
-            display-deal-btn {
+            .header {
+                @apply --layout-horizontal;
+                background-color: #f4f3f4;
+                box-sizing: border-box;
+                padding: 40px 40px 0 40px;
                 position: fixed;
-                bottom: 28px;
-                right: 28px;
-                width: 80px;
-                height: 80px;
-                border-radius: 50%;
+                top: 0;
+                width: 100%;
+            }
+            .left {
+                @apply --layout-flex;
+            }
+            .leftbottom {
+                @apply --layout-horizontal;
             }
 
-            .hash-tag {
+            .hashtag {
                 color: var(--grey-5);
                 font-size: 30px;
                 line-height: 36px;
                 font-weight: 800;
-                margin-top: 20px;
+            }
+            .back {
+                @apply --arrowleft-grey3-small;
             }
         </style>
         <app-location route="{{route}}"></app-location>
         <app-route route="{{route}}" pattern="/hashtag/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-
-
         <div class="container">
-            <div on-click="_back"></div>
-            <display-my-info></display-my-info>
-            <div class="hash-tag">#{{hashtag.name}}</div>
-            <display-hashtag-about hashtag="[[hashtag]]"></display-hashtag-about>
-            <display-distance-slider range="{{range}}" path="{{path}}"></display-distance-slider>
-            <display-hashtag-deals range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}"></display-hashtag-deals>
-            <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn>
+            <div class="header">
+                <div class="left">
+                    <display-my-info></display-my-info>
+                    <div class="leftbottom">
+                        <div class="hashtag">#{{hashtag.name}}</div>
+                        <display-hashtag-about hashtag="[[hashtag]]"></display-hashtag-about>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="back" on-click="_back"></div>
+                    <display-filter-deals range="{{range}}" path="{{path}}"></display-filter-deals>
+                </div>
+            </div>
         </div>
+        <display-hashtag-deals range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}"></display-hashtag-deals>
+        <!-- <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn> -->
     </template>
 
     <script>
@@ -113,7 +118,7 @@ This code may only be used under the license found at https://github.com/swarmci
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
