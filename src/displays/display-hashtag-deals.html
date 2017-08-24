@@ -46,6 +46,7 @@ The following custom properties and mixins are available for styling:
                 box-sizing: border-box;
                 padding: 15px;
                 margin-bottom: 5px;
+                cursor: pointer;
             }
 
             .top {
@@ -83,13 +84,16 @@ The following custom properties and mixins are available for styling:
                 margin-top: 1px;
                 color: var(--sc-grey3);
             }
+
             .user {
                 @apply --small-bold;
                 color: var(--sc-blue);
             }
+
             .replyicon {
                 @apply --reply-grey4-mini;
             }
+
             .description {
                 @apply --layout-flex;
                 @apply --body-default;
@@ -98,16 +102,18 @@ The following custom properties and mixins are available for styling:
                 color: var(--sc-grey4);
                 padding-right: 10px;
             }
+
             .pricebox {
                 @apply --layout-vertical;
             }
+
             .price {
                 @apply --layout-horizontal;
                 @apply --layout-end-justified;
                 @apply --body-bold;
                 color: var(--sc-yellow);
-
             }
+
             .for {
                 @apply --layout-horizontal;
                 @apply --layout-end-justified;
@@ -120,7 +126,7 @@ The following custom properties and mixins are available for styling:
         <data-ipfs id="ipfs"></data-ipfs>
         <data-utility id="utility"></data-utility>
         <data-local-storage id="storage"></data-local-storage>
-        <div class="container">
+        <div class="container" on-click="_next">
             <div class="top">
                 <div class="avatar"></div>
                 <div class="meta">
@@ -138,7 +144,25 @@ The following custom properties and mixins are available for styling:
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" on-click="_next">
+            <div class="top">
+                <div class="avatar"></div>
+                <div class="meta">
+                    <div class="date">Yesterday, 18:21</div>
+                    <div class="user">Sally Singer · 1 SWR</div>
+                </div>
+                <div class="replycount">5</div>
+                <div class="replyicon"></div>
+            </div>
+            <div class="bottom" on-click="_next">
+                <div class="description">Looking for a ride to the airport</div>
+                <div class="pricebox">
+                    <div class="for">for</div>
+                    <div class="price">5 SWT</div>
+                </div>
+            </div>
+        </div>
+        <div class="container" on-click="_next">
             <div class="top">
                 <div class="avatar"></div>
                 <div class="meta">
@@ -156,7 +180,7 @@ The following custom properties and mixins are available for styling:
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" on-click="_next">
             <div class="top">
                 <div class="avatar"></div>
                 <div class="meta">
@@ -174,7 +198,7 @@ The following custom properties and mixins are available for styling:
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" on-click="_next">
             <div class="top">
                 <div class="avatar"></div>
                 <div class="meta">
@@ -192,7 +216,7 @@ The following custom properties and mixins are available for styling:
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" on-click="_next">
             <div class="top">
                 <div class="avatar"></div>
                 <div class="meta">
@@ -210,7 +234,7 @@ The following custom properties and mixins are available for styling:
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" on-click="_next">
             <div class="top">
                 <div class="avatar"></div>
                 <div class="meta">
@@ -228,25 +252,7 @@ The following custom properties and mixins are available for styling:
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="top">
-                <div class="avatar"></div>
-                <div class="meta">
-                    <div class="date">Yesterday, 18:21</div>
-                    <div class="user">Sally Singer · 1 SWR</div>
-                </div>
-                <div class="replycount">5</div>
-                <div class="replyicon"></div>
-            </div>
-            <div class="bottom">
-                <div class="description">Looking for a ride to the airport</div>
-                <div class="pricebox">
-                    <div class="for">for</div>
-                    <div class="price">5 SWT</div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
+        <div class="container" on-click="_next">
             <div class="top">
                 <div class="avatar"></div>
                 <div class="meta">
@@ -425,13 +431,14 @@ The following custom properties and mixins are available for styling:
             }
 
             _next() {
-                if (!this.completeAccount) {
-                    // stores the current hashtag choice in session
-                    sessionStorage.setItem('hashtagID', this.routeData.page);
-                    this.path = 'new-here/';
-                } else {
-                    this.path = 'new-deal/';
-                }
+                this.path = 'new-here/';
+                /*                 if (!this.completeAccount) {
+                                    // stores the current hashtag choice in session
+                                    sessionStorage.setItem('hashtagID', this.routeData.page);
+                                    this.path = 'new-here/';
+                                } else {
+                                    this.path = 'new-deal/';
+                                } */
             }
         }
         window.customElements.define(DisplayHashtagDeals.is, DisplayHashtagDeals);
