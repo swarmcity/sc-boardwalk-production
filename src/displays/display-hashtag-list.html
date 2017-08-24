@@ -48,16 +48,33 @@ The following custom properties and mixins are available for styling:
                 color: var(--sc-grey3);
             }
 
-            .box {
+            .container[wide-layout] .deals {
+                @apply --body-default;
+                font-size: 14px;
+                margin: 0 0 4px 20px;
+            }
 
+            .box {
+                cursor: pointer;
+                background-color: none;
+                transition: background-color 0.5s ease;
                 @apply --layout-horizontal;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.05);
                 padding: 15px 40px 20px 40px;
             }
+            .box:hover {
+                background-color: var(--sc-white);
+                
+            }
 
+            .container[wide-layout] .flex {
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-end;
+            }
 
             .container[wide-layout] .box {
-                padding: 15px 10vw 20px;
+                padding: 25px 10vw 25px;
             }
 
             .flex {
@@ -67,13 +84,14 @@ The following custom properties and mixins are available for styling:
             .right {
                 @apply --layout-end-justified;
                 @apply --next-grey4-small;
-                cursor: pointer;
+                
             }
 
             .cursor {
                 @apply --main-title2;
                 cursor: pointer;
             }
+
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <data-web3 id="web3"></data-web3>
