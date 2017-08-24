@@ -140,6 +140,12 @@ This code may only be used under the license found at https://github.com/swarmci
             .container[wide-layout] display-hashtag-deals {
                 margin-top: 176px;
             }
+            display-deal-btn {
+                position: fixed;
+                bottom: 50px;
+                right: 20px;
+            }
+
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
@@ -168,7 +174,7 @@ This code may only be used under the license found at https://github.com/swarmci
         </div>
 
 
-        <!-- <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn> -->
+        <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn>
     </template>
 
     <script>
