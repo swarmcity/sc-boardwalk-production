@@ -66,6 +66,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .topright {
                 @apply --logout-grey3-small;
+                cursor: pointer;
             }
             .container[wide-layout] .topright {
                 @apply --logout-grey3-normal;
@@ -112,7 +113,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     <display-my-info complete-account="{{completeAccount}}"></display-my-info>
                     <display-filter-list range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
                 </div>
-                <div class="topright"></div>
+                <div class="topright" on-click="_back"></div>
             </div>
             <template is="dom-if" if="{{completeAccount}}">
                 <div class="pushdown"></div>
