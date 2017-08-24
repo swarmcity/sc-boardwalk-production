@@ -102,15 +102,13 @@ The following custom properties and mixins are available for styling:
             <template is="dom-repeat" items="{{hashtags}}" filter="_isWithinRange" sort="_sort" id="domRepeat">
                 <div class="box">
                     <div class="flex">
-                        <div class="hashtag">
+                        <div class="hashtag" on-click="_toHashtag">
                             <span class="cursor">#[[item.name]]</span>
                         </div>
                         <div class="deals">[[item.deals]] {{localize('deals done')}}</div>
                     </div>
                     <div class="right"></div>
                 </div>
-                <!-- <div class="hashtag" on-click="_toHashtag">#[[item.name]]</div>
-                <div class="deals">[[item.deals]] {{localize('deals done')}}</div> -->
             </template>
         </div>
 
