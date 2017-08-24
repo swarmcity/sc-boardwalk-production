@@ -38,6 +38,8 @@ The following custom properties and mixins are available for styling:
 
             .container {
                 @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-center;
             }
 
             .container div:nth-child(1) img {
@@ -48,6 +50,14 @@ The following custom properties and mixins are available for styling:
                 margin-right: 10px;
                 background-image: url("../../images/defaultavatar.png");
                 background-size: 40px;
+            }
+
+            .container[wide-layout] div:nth-child(1) img {
+                width: 60px;
+                height: 60px;
+                margin-right: 20px;
+                background-image: url("../../images/defaultavatar.png");
+                background-size: 60px;
             }
 
             .container div:nth-child(2)>div:nth-child(1) {
