@@ -124,6 +124,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 margin: 176px 10vw 0 10vw;
                 
             }
+            .pushdown {
+                height: 40px;
+            }
+            .container[wide-layout] display-hashtag-deals { 
+                margin-top: 176px;
+            } 
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
@@ -131,7 +137,7 @@ This code may only be used under the license found at https://github.com/swarmci
         <div class="container" wide-layout$="{{wide}}">
             <div class="header">
                 <div class="top">
-                    <display-my-info></display-my-info>
+                    <display-my-info complete-account="{{completeAccount}}"></display-my-info>
                     <div class="back" on-click="_back"></div>
 
                 </div>
@@ -145,6 +151,9 @@ This code may only be used under the license found at https://github.com/swarmci
                     <!-- <display-filter-deals range="{{range}}" path="{{path}}"></display-filter-deals> -->
                 </div>
             </div>
+            <template is="dom-if" if="{{completeAccount}}">
+                <div class="pushdown"></div>
+            </template>
             <display-hashtag-deals range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}"></display-hashtag-deals>
         </div>
 
