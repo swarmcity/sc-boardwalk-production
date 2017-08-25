@@ -249,6 +249,10 @@ Colors are all lower case, There is a space after the :
                     @apply --icon-small;
                     background-position: -252px -198px;
                 }
+                --next-grey4-small: {
+                    @apply --icon-small;
+                    background-position: -252px -234px;
+                }
                 --rotate-blue-normal: {
                     @apply --icon-normal;
                     background-position: -216px -54px;
@@ -754,6 +758,7 @@ Colors are all lower case, There is a space after the :
                 --welcome-host: {
                     width: 100vw;
                     display: block;
+                    background-color: red;
                 }
                 --welcome-container: {
                     width: 100%;
@@ -819,7 +824,6 @@ Colors are all lower case, There is a space after the :
                 }
                 --welcome-uppertitle-wide: {
                     font-size: 34px;
-                    
                 }
 
                 --welcome-uppertitle-extrawide: {
@@ -864,6 +868,72 @@ Colors are all lower case, There is a space after the :
                 --welcome-button-wide: {
                     padding: 36px 42px;
                     max-width: 220px;
+                }
+                --welcome-middle: {
+                    box-sizing: border-box;
+                    background-color: var(--sc-white);
+                    padding: 40px 0 40px 0;
+                    
+                }
+                --welcome-middle-list-wide: {
+                    box-sizing: border-box;
+                    padding: 0 0 0 10vw;
+                }
+                --welcome-middle-list-li: {
+                    box-sizing: border-box;
+                    list-style-type: none;
+                    padding-bottom: 16px
+                }
+                --welcome-middle-list-li-wide: {
+                    box-sizing: border-box;
+                    display: inline;
+                    list-style-type: none;
+                    padding-right: 20px;
+                }
+                --welcome-middle-list-li-a: {
+                    @apply --small-bold;
+                    color: var(--sc-blue);
+                    text-decoration: none;
+                    border-bottom: 2px dotted var(--sc-blue);
+                }
+                --welcome-middle-list-li-a-wide: {
+                    @apply --small-bold;
+                    color: var(--sc-blue);
+                    text-decoration: none;
+                    border-bottom: 2px dotted var(--sc-blue);
+                }
+
+                --welcome-bottom: {
+                    box-sizing: border-box;
+                    padding: 50px 0 50px 10vw;
+                    background-color: #e6e6e6;
+                }
+
+                --welcome-bottom-list: {
+                    box-sizing: border-box;
+                    margin: 0;
+                    padding: 0;
+                    text-decoration: none;
+                }
+                --welcome-footertitle: {
+                    @apply --small-bold;
+                    margin-bottom: 10px;
+                }
+                --welcome-bottom-list-li: {
+                    box-sizing: border-box;
+                    list-style-type: none;
+                    padding-bottom: 8px;
+                }
+                --welcome-bottom-list-li-wide: {
+                    box-sizing: border-box;
+                    display: inline;
+                    padding-right: 20px;
+                }
+                --welcome-bottom-list-li-a: {
+                    @apply --small-light;
+                    color: var(--sc-grey4);
+                    text-decoration: none;
+                    border-bottom: 1px dotted var(--sc-grey2);
                 }
 
 
@@ -910,51 +980,25 @@ Colors are all lower case, There is a space after the :
                 }
 
                 --display-my-info-balance: {
-                    font-weight: 800;
-                    font-size: 24px;
-                    color: #EFD96F;
+
                 }
                 --display-my-info-username: {
-                    line-height: 20px;
-                    min-width: 270px;
-                    font-weight: 800;
-                    color: #333333;
-                    font-size: 12px;
+
                 }
                 --display-my-info-avatar: {
-                    border-radius: 50%;
-                    height: 60px;
-                    width: 60px;
-                    background-color: grey;
-                    padding-right: 22px;
+                    
                 }
                 --display-my-info-container: {
-                    @apply --layout-horizontal;
-                    margin: 85px 0 0 85px;
-                    max-width: 420px;
+                    
                 }
                 --display-hashtag-list-container: {
-                    margin-left: 10px;
-                    margin-top: 10px;
+                    
                 }
                 --display-hashtag-list-hashtag: {
-                    height: 36px;
-                    width: 206px;
-                    color: #353435;
-                    font-size: 30px;
-                    font-weight: 800;
-                    line-height: 36px;
-                    line-height: 36px;
-                    cursor: pointer
+                    
                 }
                 --display-hashtag-list-deals: {
-                    height: 13px;
-                    width: 250.08px;
-                    color: #353435;
-                    font-size: 10px;
-                    font-weight: 300;
-                    line-height: 20px;
-                    margin-bottom: 20px;
+                    
                 }
                 --page-hashtag-list-back: {
                     width: 40px;
@@ -964,92 +1008,45 @@ Colors are all lower case, There is a space after the :
                     background: url('../../../images/swarm-city-sprite.png') -45px 60px;
                 }
                 --display-deal-btn: {
-                    display: block;
-                    width: 80px;
-                    height: 80px;
-                    background: url('../../../images/swarm-city-sprite.png') -770px -89px;
-                    cursor: pointer;
+
                 }
 
 
                 --display-hashtag-about-toggle: {
-                    color: var(--swarm-city-blue);
-                    font-size: 12px;
-                    line-height: 15px;
-                    font-weight: 800;
-                    margin: 5px 0px 10px 0px;
-                    text-transform: lowercase;
-                    cursor: pointer;
-                    text-decoration: underline;
+
                 }
                 --display-hashtag-about-box: {
-                    position: relative;
-                    z-index: -1;
-                    background-color: rgb(235, 235, 235);
-                    padding: 20px;
+
                 }
                 --display-hashtag-about-maintained: {
-                    color: #797979;
-                    font-weight: 400;
-                    font-size: 13px;
+
                 }
                 --display-hashtag-about-contact: {
-                    color: #CACACA;
-                    padding: 20px 0 10px 0;
-                    font-size: 13px;
+
                 }
                 --display-hashtag-deals-container: {
-                    margin-bottom: 2px;
-                    padding: 15px;
-                    background-color: var(--swarm-city-white);
-                    cursor: pointer;
+                    
                 }
                 --display-hashtag-deals-avatar: {
-                    border-radius: 50%;
-                    height: 30px;
-                    width: 30px;
+     
                 }
                 --display-hashtag-deals-top-container: {
-                    margin-left: 8px;
-                    width: 180px;
-                    display: block;
-                    @apply --layout-horizontal;
-                    @apply --layout-wrap;
+  
                 }
                 --display-hashtag-deals-time: {
-                    width: 100%;
-                    display: block;
-                    font-size: 10px;
-                    font-weight: 400;
-                    text-transform: lowercase;
-                    color: var(--grey-2);
+
                 }
                 --display-hashtag-deals-name: {
-                    width: 100%;
-                    display: block;
-                    color: var(--swarm-city-blue);
-                    text-decoration: none;
-                    font-size: 12px;
-                    font-weight: bold;
+              
                 }
                 --display-hashtag-deals-description: {
-                    @apply --body-default;
-                    color: var(--grey-4);
-                    width: 220px;
-                    margin-top: 10px;
+               
                 }
                 --display-hashtag-deals-for: {
-                    font-size: 10px;
-                    width: 100%;
-                    display: block;
+       
                 }
                 --display-hashtag-deals-amount: {
-                    width: 80px;
-                    color: var(--swarm-city-yellow);
-                    font-weight: bold;
-                    font-size: 14px;
-                    padding-top: 24px;
-                    text-align: right;
+                   
                 }
                 --display-upload-container: {
                     display: block;

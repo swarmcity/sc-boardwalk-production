@@ -13,7 +13,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
 Example:
 ```
-<display-filter-list></display-filter-list>
+<display-filter-deals></display-filter-deals>
 ```
 
 ### Styling
@@ -28,7 +28,7 @@ The following custom properties and mixins are available for styling:
 | `--filter-list` | Mixin applied to the hashtag | `{}` |
 | `--filter-list-description` | Mixin applied to the deals | `{}` |
 -->
-<dom-module id="display-filter-list">
+<dom-module id="display-filter-deals">
     <template>
         <style>
              :host {
@@ -39,6 +39,7 @@ The following custom properties and mixins are available for styling:
                 @apply --small-bold;
                 color: var(--sc-grey3);
                 border-bottom: 2px dotted var(--sc-grey3);
+                cursor: pointer;
             }
 
             paper-slider {
@@ -61,7 +62,7 @@ The following custom properties and mixins are available for styling:
         <display-language language="{{language}}"></display-language>
 
         <div class="container">
-            <span class="toggle" on-click="_toggleSlider">{{localize('filter list')}}</span>
+            <span class="toggle" on-click="_toggleSlider">filter deals</span>
 <!--             <template is="dom-if" if="{{showSlider}}">
                 <p class="range-description">{{rangeDescription}}</p>
                 <paper-slider id="ratings" min="1" max="6" value="{{value}}" on-immediate-value-change="_calcRange" expand></paper-slider>
@@ -70,13 +71,13 @@ The following custom properties and mixins are available for styling:
 
     </template>
     <script>
-        class MyFilterList extends new ReduxMixin(Polymer.mixinBehaviors([
+        class MyFilterDeals extends new ReduxMixin(Polymer.mixinBehaviors([
                 Polymer.AppLocalizeBehavior,
             ],
             Polymer.Element
         )) {
             static get is() {
-                return 'display-filter-list';
+                return 'display-filter-deals';
             }
             static get properties() {
                 return {
@@ -223,6 +224,6 @@ The following custom properties and mixins are available for styling:
                 }
             }
         }
-        window.customElements.define(MyFilterList.is, MyFilterList);
+        window.customElements.define(MyFilterDeals.is, MyFilterDeals);
     </script>
 </dom-module>

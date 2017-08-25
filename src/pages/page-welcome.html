@@ -29,6 +29,8 @@ This code may only be used under the license found at https://github.com/swarmci
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
 -->
         <style include="shared-styles">
+
+
              :host {
                 @apply --welcome-host;
             }
@@ -37,8 +39,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --welcome-container;
             }
 
-            .top {
+            .container>div:nth-child(1) {
                 @apply --welcome-top;
+            }
+
+            .container>div:nth-child(1)>div:nth-child(1) {
+                @apply --welcome-language;
             }
 
             display-language {
@@ -46,193 +52,172 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --small-bold;
             }
 
-            .language {
-                @apply --welcome-language;
-            }
-
-            .switchcontainer {
+            .container>div:nth-child(1)>div:nth-child(2) {
                 @apply --welcome-switchcontainer;
             }
 
-            .banner {
+            .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
                 @apply --welcome-banner;
             }
 
-            .logo {
+            .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
                 @apply --welcome-logo;
             }
 
-            .uppertitle {
+            .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
                 @apply --welcome-uppertitle;
             }
 
-            .title {
+            .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(3) {
                 @apply --welcome-title;
             }
 
-            .version {
-                @apply --welcome-version;
-            }
-
-            .buttoncontainer {
+            .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(2) {
                 @apply --welcome-buttoncontainer;
             }
 
-            .button {
+            .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(1) {
                 @apply --welcome-button;
             }
 
-            .middle {
-                background-color: var(--sc-white);
-                padding: 40px 0;
+            .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
+                @apply --welcome-version;
             }
 
-            .middle-list li {
-                list-style-type: none;
-                padding-bottom: 16px;
+            .container>div:nth-child(2) {
+                @apply --welcome-middle;
             }
 
-            .middle-list li a {
-                @apply --small-bold;
-                color: var(--sc-blue);
-                text-decoration: none;
-                border-bottom: 2px dotted var(--sc-blue);
+            .container>div:nth-child(2) ul li {
+                @apply --welcome-middle-list-li;
             }
 
-            .bottom {
-                box-sizing: border-box;
-                padding: 50px 0 50px 10vw;
-                background-color: #e6e6e6;
+            .container>div:nth-child(2) ul li a {
+                @apply --welcome-middle-list-li-a;
             }
 
-            .bottom-list {
-                margin: 0;
-                padding: 0;
-                text-decoration: none;
+            .container>div:nth-child(3) {
+                @apply --welcome-bottom;
             }
 
-            .links {
-                @apply --small-bold;
-                margin-bottom: 10px;
+            .container>div:nth-child(3)>div:nth-child(1) {
+                @apply --welcome-footertitle;
             }
 
-            .bottom-list li {
-                list-style-type: none;
-                padding-bottom: 8px;
+            .container>div:nth-child(3) ul {
+                @apply --welcome-bottom-list;
             }
 
-            .container[wide-layout] .bottom-list li {
-                display: inline;
-                padding-right: 20px;
+            .container>div:nth-child(3) ul li {
+                @apply --welcome-bottom-list-li;
             }
 
-            .bottom-list li a {
-                @apply --small-light;
-                color: var(--sc-grey4);
-                text-decoration: none;
-                border-bottom: 1px dotted var(--sc-grey2);
+            .container>div:nth-child(3) ul li a {
+                @apply --welcome-bottom-list-li-a;
             }
 
-            .container[wide-layout] .top {
+            .container[wide-layout]>div:nth-child(1) {
                 @apply --welcome-top-wide;
             }
 
-            .container[wide-layout] .switchcontainer {
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(2) {
                 @apply --welcome-switchcontainer-wide;
             }
 
-            .container[wide-layout] .banner {
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
                 @apply --welcome-banner-wide;
             }
 
-            .container[wide-layout] .uppertitle {
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
                 @apply --welcome-uppertitle-wide;
             }
 
-            .container[wide-layout] .title {
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(3) {
                 @apply --welcome-title-wide;
             }
 
-            .container[wide-layout] .logo {
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
                 @apply --welcome-logo-wide;
             }
 
-            .container[wide-layout] .buttoncontainer {
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(2) {
                 @apply --welcome-buttoncontainer-wide;
             }
 
-            .container[wide-layout] .button {
+            .container[wide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(1) {
                 @apply --welcome-button-wide;
             }
 
-            .container[wide-layout] .middle-list {
-                padding: 0 0 0 10vw;
+            .container[wide-layout]>div:nth-child(2) ul {
+                @apply --welcome-middle-list-wide;
             }
 
-            .container[wide-layout] .middle-list li {
-                display: inline;
-                list-style-type: none;
-                padding-right: 20px;
+            .container[wide-layout]>div:nth-child(2) ul li {
+                @apply --welcome-middle-list-li-wide;
             }
 
-            .container[wide-layout] .middle-list>li>a {
-                @apply --small-bold;
-                color: var(--sc-blue);
-                text-decoration: none;
-                border-bottom: 2px dotted var(--sc-blue);
+            .container[wide-layout]>div:nth-child(2) ul li a {
+                @apply --welcome-middle-list-li-a-wide;
             }
 
-            .container[wide-layout] .bottom-list li {
-                display: inline;
-                padding-right: 20px;
+            .container[wide-layout]>div:nth-child(3) ul li {
+                @apply --welcome-bottom-list-li-wide;
             }
 
-            .container[extrawide-layout] .logo {
+            .container[extrawide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
                 @apply --welcome-logo-extrawide;
             }
 
-            .container[extrawide-layout] .uppertitle {
+            .container[extrawide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
                 @apply --welcome-uppertitle-extrawide;
             }
 
-            .container[extrawide-layout] .title {
+            .container[extrawide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(3) {
                 @apply --welcome-title-extrawide;
+            }
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
+                    @apply --retina;
+                }
             }
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <iron-media-query query="(min-width: 1281px)" query-matches="{{extrawide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
         <div class="container" wide-layout$="{{wide}}" extrawide-layout$="{{extrawide}}">
-            <div class="top">
-                <div class="language">
+            <div>
+                <div>
                     <display-language selected path="{{path}}"></display-language>
                 </div>
-                <div class="switchcontainer">
-                    <div class="banner">
-                        <div class="logo"></div>
-                        <div class="uppertitle">Welcome to</div>
-                        <div class="title">swarm.
+                <div>
+                    <div>
+                        <div></div>
+                        <div>{{localize('welcome')}}</div>
+                        <div>swarm.
                             <template is="dom-if" if="{{wide}}"><br></template>city</div>
                     </div>
-                    <div class="buttoncontainer">
-                        <div class="button" autofocus on-click="_btnClick" on-KeyPress="_btnKeyPress">
-                            <div class="buttontext">enter here</div>
-                            <div class="version">Boardwalk v2.0</div>
+                    <div>
+                        <div autofocus on-click="_btnClick" on-KeyPress="_btnKeyPress">
+                            <div>{{localize('enter here')}}</div>
+                            <div>{{localize('boardwalk')}} v2.0</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="middle">
-                <ul class="middle-list">
+            <div>
+                <ul>
                     <li><a href="https://thisis.swarm.city/" target="_blank">{{localize('This is Swarm City')}}</a></li>
                     <li><a href="http://swarmcitizens.org/" target="_blank">{{localize('Support')}}</a></li>
                     <li><a href="http://swarmcitizens.org/app.php/help/faq?sid=f4439589cebbcbfea36e2508ec12f155" target="_blank">{{localize('FAQ')}}</a></li>
                     <li><a href="https://advisors.swarm.city/" target="_blank">{{localize('Advisors')}}</a></li>
                 </ul>
             </div>
-            <div class="bottom">
-                <div class="links">{{localize('Find Swarm City on')}}</div>
-                <ul class="bottom-list">
+            <div>
+                <div>{{localize('Find Swarm City on')}}</div>
+                <ul>
                     <li><a href="https://www.facebook.com/groups/SwarmCity/" target="_blank">{{localize('Facebook')}}</a></li>
                     <li><a href="https://discordapp.com/invite/6CsYT64" target="_blank">{{localize('Discord')}}</a></li>
                     <li><a href="https://swarm-slack-invite.herokuapp.com/" target="_blank">{{localize('Slack')}}</a></li>

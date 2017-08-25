@@ -61,7 +61,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --stop-signup-xmark;
             }
 
-                        .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
                 @apply --stop-signup-icon-button-big;
             }
 
@@ -147,7 +147,7 @@ This code may only be used under the license found at https://github.com/swarmci
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
@@ -179,14 +179,14 @@ This code may only be used under the license found at https://github.com/swarmci
             /**
              * takes the user to the previous page
              */
-             _disagree() {
+            _disagree() {
                 window.history.back();
             }
 
             /**
              * takes the user to the initiating hashtag page
              */
-             _agree() {
+            _agree() {
                 this.path = 'hashtag/' + sessionStorage.getItem('hashtagID');
                 sessionStorage.clear();
             }

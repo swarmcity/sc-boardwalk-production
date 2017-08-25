@@ -40,81 +40,236 @@ The following custom properties and mixins are available for styling:
             }
 
             .container {
-                animation: scaleIn 0.5s forwards;
+                background-color: var(--sc-white);
                 @apply --layout-vertical;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 15px;
+                margin-bottom: 5px;
+                cursor: pointer;
+            }
+
+            .top {
+                @apply --layout-horizontal;
+            }
+
+            .meta {
                 @apply --layout-center-justified;
-                @apply --display-hashtag-deals-container;
+                @apply --layout-vertical;
+                @apply --layout-flex;
             }
 
-            .container .top {
+            .bottom {
+                margin-top: 5px;
                 @apply --layout-horizontal;
             }
 
-            .container .bottom {
+            .avatar {
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+                border-radius: 50%;
+                margin-right: 10px;
+                background-image: url("../../images/defaultavatar.png");
+                background-size: 40px;
+            }
+
+            .date {
+                @apply --smallest-light;
+                color: var(--sc-grey3);
+            }
+
+            .replycount {
+                @apply --small-bold;
+                margin-top: 1px;
+                color: var(--sc-grey3);
+            }
+
+            .user {
+                @apply --small-bold;
+                color: var(--sc-blue);
+            }
+
+            .replyicon {
+                @apply --reply-grey4-mini;
+            }
+
+            .description {
+                @apply --layout-flex;
+                @apply --body-default;
+                @apply --layout-vertical;
+                @apply --layout-end-justified;
+                color: var(--sc-grey4);
+                padding-right: 10px;
+            }
+
+            .pricebox {
+                @apply --layout-vertical;
+            }
+
+            .price {
                 @apply --layout-horizontal;
+                @apply --layout-end-justified;
+                @apply --body-bold;
+                color: var(--sc-yellow);
             }
 
-            .container .top img {
-                @apply --display-hashtag-deals-avatar;
-            }
-
-            .container .top div {
-                @apply --display-hashtag-deals-top-container;
-            }
-
-            .container .top div div:nth-child(1) {
-                @apply --display-hashtag-deals-time;
-            }
-
-            .container .top div div:nth-child(2) {
-                @apply --display-hashtag-deals-name;
-            }
-
-            .container .bottom div:nth-child(1) {
-                @apply --display-hashtag-deals-description;
-            }
-
-            .container .bottom div:nth-child(2) span {
-                @apply --display-hashtag-deals-for;
-            }
-
-            .container .bottom div:nth-child(2) {
-                @apply --display-hashtag-deals-amount;
-            }
-
-            @keyframes scaleIn {
-                0% {
-                    transform: scale(0, 0);
-                }
-                100% {
-                    transform: scale(1, 1);
-                }
+            .for {
+                @apply --layout-horizontal;
+                @apply --layout-end-justified;
+                @apply --body-bold;
+                color: var(--sc-yellow);
+                font-size: 8px;
             }
         </style>
         <data-web3 id="web3"></data-web3>
         <data-ipfs id="ipfs"></data-ipfs>
         <data-utility id="utility"></data-utility>
         <data-local-storage id="storage"></data-local-storage>
-
-        <template is="dom-repeat" items="{{deals}}" filter="_isWithinRange" id="domRepeat">
-            <div class="container" on-click="_next">
-
-                <div class="top">
-                    <template is="dom-if" if="{{item.avatar}}"><img src$="{{item.avatar}}"></template>
-                    <div>
-                        <div>{{item.time}}</div>
-                        <div>{{item.username}} - {{item.reputation}} REP</div>
-                    </div>
+        <div class="container" on-click="_next">
+            <div class="top">
+                <div class="avatar"></div>
+                <div class="meta">
+                    <div class="date">Yesterday, 18:21</div>
+                    <div class="user">Sally Singer · 1 SWR</div>
                 </div>
-
-                <div class="bottom">
-                    <div>{{item.description}}</div>
-                    <div><span>for</span>{{item.value}} SWT</div>
-                </div>
-
+                <div class="replycount">5</div>
+                <div class="replyicon"></div>
             </div>
-        </template>
-
+            <div class="bottom">
+                <div class="description">Looking for a ride to the airport</div>
+                <div class="pricebox">
+                    <div class="for">for</div>
+                    <div class="price">5 SWT</div>
+                </div>
+            </div>
+        </div>
+        <div class="container" on-click="_next">
+            <div class="top">
+                <div class="avatar"></div>
+                <div class="meta">
+                    <div class="date">Yesterday, 18:21</div>
+                    <div class="user">Sally Singer · 1 SWR</div>
+                </div>
+                <div class="replycount">5</div>
+                <div class="replyicon"></div>
+            </div>
+            <div class="bottom" on-click="_next">
+                <div class="description">Looking for a ride to the airport</div>
+                <div class="pricebox">
+                    <div class="for">for</div>
+                    <div class="price">5 SWT</div>
+                </div>
+            </div>
+        </div>
+        <div class="container" on-click="_next">
+            <div class="top">
+                <div class="avatar"></div>
+                <div class="meta">
+                    <div class="date">Yesterday, 18:21</div>
+                    <div class="user">Sally Singer · 1 SWR</div>
+                </div>
+                <div class="replycount">5</div>
+                <div class="replyicon"></div>
+            </div>
+            <div class="bottom">
+                <div class="description">Looking for a ride to the airport</div>
+                <div class="pricebox">
+                    <div class="for">for</div>
+                    <div class="price">5 SWT</div>
+                </div>
+            </div>
+        </div>
+        <div class="container" on-click="_next">
+            <div class="top">
+                <div class="avatar"></div>
+                <div class="meta">
+                    <div class="date">Yesterday, 18:21</div>
+                    <div class="user">Sally Singer · 1 SWR</div>
+                </div>
+                <div class="replycount">5</div>
+                <div class="replyicon"></div>
+            </div>
+            <div class="bottom">
+                <div class="description">Looking for a ride to the airport</div>
+                <div class="pricebox">
+                    <div class="for">for</div>
+                    <div class="price">5 SWT</div>
+                </div>
+            </div>
+        </div>
+        <div class="container" on-click="_next">
+            <div class="top">
+                <div class="avatar"></div>
+                <div class="meta">
+                    <div class="date">Yesterday, 18:21</div>
+                    <div class="user">Sally Singer · 1 SWR</div>
+                </div>
+                <div class="replycount">5</div>
+                <div class="replyicon"></div>
+            </div>
+            <div class="bottom">
+                <div class="description">Looking for a ride to the airport</div>
+                <div class="pricebox">
+                    <div class="for">for</div>
+                    <div class="price">5 SWT</div>
+                </div>
+            </div>
+        </div>
+        <div class="container" on-click="_next">
+            <div class="top">
+                <div class="avatar"></div>
+                <div class="meta">
+                    <div class="date">Yesterday, 18:21</div>
+                    <div class="user">Sally Singer · 1 SWR</div>
+                </div>
+                <div class="replycount">5</div>
+                <div class="replyicon"></div>
+            </div>
+            <div class="bottom">
+                <div class="description">Looking for a ride to the airport</div>
+                <div class="pricebox">
+                    <div class="for">for</div>
+                    <div class="price">5 SWT</div>
+                </div>
+            </div>
+        </div>
+        <div class="container" on-click="_next">
+            <div class="top">
+                <div class="avatar"></div>
+                <div class="meta">
+                    <div class="date">Yesterday, 18:21</div>
+                    <div class="user">Sally Singer · 1 SWR</div>
+                </div>
+                <div class="replycount">5</div>
+                <div class="replyicon"></div>
+            </div>
+            <div class="bottom">
+                <div class="description">Looking for a ride to the airport</div>
+                <div class="pricebox">
+                    <div class="for">for</div>
+                    <div class="price">5 SWT</div>
+                </div>
+            </div>
+        </div>
+        <div class="container" on-click="_next">
+            <div class="top">
+                <div class="avatar"></div>
+                <div class="meta">
+                    <div class="date">Yesterday, 18:21</div>
+                    <div class="user">Sally Singer · 1 SWR</div>
+                </div>
+                <div class="replycount">5</div>
+                <div class="replyicon"></div>
+            </div>
+            <div class="bottom">
+                <div class="description">Looking for a ride to the airport</div>
+                <div class="pricebox">
+                    <div class="for">for</div>
+                    <div class="price">5 SWT</div>
+                </div>
+            </div>
+        </div>
     </template>
     <script>
         class DisplayHashtagDeals extends Polymer.mixinBehaviors([
@@ -276,13 +431,14 @@ The following custom properties and mixins are available for styling:
             }
 
             _next() {
-                if (!this.completeAccount) {
-                    // stores the current hashtag choice in session
-                    sessionStorage.setItem('hashtagID', this.routeData.page);
-                    this.path = 'new-here/';
-                } else {
-                    this.path = 'new-deal/';
-                }
+                this.path = 'new-here/';
+                /*                 if (!this.completeAccount) {
+                                    // stores the current hashtag choice in session
+                                    sessionStorage.setItem('hashtagID', this.routeData.page);
+                                    this.path = 'new-here/';
+                                } else {
+                                    this.path = 'new-deal/';
+                                } */
             }
         }
         window.customElements.define(DisplayHashtagDeals.is, DisplayHashtagDeals);

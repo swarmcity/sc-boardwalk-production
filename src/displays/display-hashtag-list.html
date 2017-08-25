@@ -4,6 +4,7 @@ Copyright (c) 2017 Swarm City
 This code may only be used under the license found at https://github.com/swarmcity/license
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="../data/data-web3.html">
 <link rel="import" href="../data/data-local-storage.html">
@@ -31,77 +32,135 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-hashtag-list">
     <template>
         <style>
-            :host {
+             :host {
                 display: block;
             }
-            .container{
-                @apply --display-hashtag-list-container;
-            }
-            .hashtag {
-                @apply --display-hashtag-list-hashtag;
-            }
-            .deals {
-                @apply --display-hashtag-list-deals;
-            }
-        </style>
 
+            .container {
+                width: 100%;
+
+
+                margin-top: 10px;
+            }
+
+            .deals {
+                @apply --small-light;
+                color: var(--sc-grey3);
+            }
+
+            .container[wide-layout] .deals {
+                @apply --body-default;
+                font-size: 14px;
+                margin: 0 0 4px 20px;
+            }
+
+            .box {
+                cursor: pointer;
+                background-color: none;
+                transition: background-color 0.5s ease;
+                @apply --layout-horizontal;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                padding: 15px 40px 20px 40px;
+            }
+            .box:hover {
+                background-color: var(--sc-white);
+                
+            }
+
+            .container[wide-layout] .flex {
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-end;
+            }
+
+            .container[wide-layout] .box {
+                padding: 25px 10vw 25px;
+            }
+
+            .flex {
+                @apply --layout-flex;
+            }
+
+            .right {
+                @apply --layout-end-justified;
+                @apply --next-grey4-small;
+                
+            }
+
+            .cursor {
+                @apply --main-title2;
+                cursor: pointer;
+            }
+
+        </style>
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <data-web3 id="web3"></data-web3>
         <data-local-storage id="storage"></data-local-storage>
         <data-utility id="utility"></data-utility>
-        
-        <div class="container">
+
+        <div class="container" wide-layout$="{{wide}}">
             <template is="dom-repeat" items="{{hashtags}}" filter="_isWithinRange" sort="_sort" id="domRepeat">
-                <div class="hashtag" on-click="_toHashtag">#[[item.name]]</div>
-                <div class="deals">[[item.deals]] {{localize('deals done')}}</div>
+                <div class="box"  on-click="_toHashtag">
+                    <div class="flex">
+                        <div class="hashtag">
+                            <span class="cursor">#[[item.name]]</span>
+                        </div>
+                        <div class="deals">[[item.deals]] {{localize('deals done')}}</div>
+                    </div>
+                    <div class="right"></div>
+                </div>
             </template>
         </div>
 
     </template>
     <script>
         class DisplayHashtagList extends new ReduxMixin(Polymer.mixinBehaviors([
-            Polymer.AppLocalizeBehavior],
+                Polymer.AppLocalizeBehavior
+            ],
             Polymer.Element
         )) {
-            static get is() {return 'display-hashtag-list';}
+            static get is() {
+                return 'display-hashtag-list';
+            }
             static get properties() {
                 return {
                     /**
-                    * Language is the users selected or determined language
-                    * @type {String}
-                    */
+                     * Language is the users selected or determined language
+                     * @type {String}
+                     */
                     language: {
                         type: String,
                         statePath: 'language',
                     },
                     /**
-                    * Loading indicates if the componant is loading
-                    * @type {Boolean}
-                    */
+                     * Loading indicates if the componant is loading
+                     * @type {Boolean}
+                     */
                     loading: {
                         type: Boolean,
                         value: false,
                         notify: true,
                     },
                     /**
-                    * Path signlas to the parent to change the path
-                    * @type {String}
-                    */
+                     * Path signlas to the parent to change the path
+                     * @type {String}
+                     */
                     path: {
                         type: String,
                         value: null,
                         notify: true,
                     },
                     /**
-                    * Hashtags represents the array of hashtags to display
-                    * @type {Array}
-                    */
+                     * Hashtags represents the array of hashtags to display
+                     * @type {Array}
+                     */
                     hashtags: {
                         type: Array,
                     },
                     /**
-                    * range is the range the usert selected in slider
-                    * @type {Number}
-                    */
+                     * range is the range the usert selected in slider
+                     * @type {Number}
+                     */
                     range: {
                         type: Number,
                         observer: '_rangeChanged',
@@ -116,29 +175,28 @@ The following custom properties and mixins are available for styling:
             }
 
             /**
-            * Gets the hashtags and checks if the user has a location
-            */
+             * Gets the hashtags and checks if the user has a location
+             */
             _getHashtags() {
                 this.hashtags = [];
                 Promise.all([
-                    this.$.storage.accountExists(),
-                    this.$.web3.hashtags(),
-                ])
-                .then((data) => {
-                    if (data[0].location) {
-                        this.location = data[0].location;
-                        this._getDistance(data);
-                    }
-                    else {
-                        this.hashtags = data[1];
-                    }
-                });
+                        this.$.storage.accountExists(),
+                        this.$.web3.hashtags(),
+                    ])
+                    .then((data) => {
+                        if (data[0].location) {
+                            this.location = data[0].location;
+                            this._getDistance(data);
+                        } else {
+                            this.hashtags = data[1];
+                        }
+                    });
             }
 
             /**
-            * Get the distance between the user and the hashtag
-            * @param {data} data is an array of the users acocunt and the hashtags
-            */
+             * Get the distance between the user and the hashtag
+             * @param {data} data is an array of the users acocunt and the hashtags
+             */
             _getDistance(data) {
                 for (let i = 0; i < data[1].length; i++) {
                     this.$.utility
@@ -151,43 +209,43 @@ The following custom properties and mixins are available for styling:
             }
 
             /**
-            * re renders the dom repeat when the users changes the range
-            */
+             * re renders the dom repeat when the users changes the range
+             */
             _rangeChanged() {
                 this.$.domRepeat.render();
             }
 
             /**
-            * sorts the list of hashtags by the number of deals
-            * @param {object} a represents the curent iteration of the dom repeat
-            * @param {object} b represents the next iteration of the dom repeat
-            * @return {boolean} if a should be ordered before b
-            */
+             * sorts the list of hashtags by the number of deals
+             * @param {object} a represents the curent iteration of the dom repeat
+             * @param {object} b represents the next iteration of the dom repeat
+             * @return {boolean} if a should be ordered before b
+             */
             _sort(a, b) {
                 return a.deals < b.deals;
             }
 
             /**
-            * filters the list acording to the selected range
-            * @param {object} event  represents the curent iteration of the dom repeat
-            * @return {boolean} if a should be ordered before b
-            */
+             * filters the list acording to the selected range
+             * @param {object} event  represents the curent iteration of the dom repeat
+             * @return {boolean} if a should be ordered before b
+             */
             _isWithinRange(event) {
                 if (event.distance) {
                     return (this.range > event.distance);
-                }
-                else {
+                } else {
                     return true;
                 }
             }
 
             /**
-            * @param {object} selected represents the selected hashtag
-            * When a hashtag is selected change the route to include the hashtag id.
-            */
+             * @param {object} selected represents the selected hashtag
+             * When a hashtag is selected change the route to include the hashtag id.
+             */
             _toHashtag(selected) {
                 this.path = 'hashtag/' + selected.model.__data.item.hashtagID + '/';
             }
-} window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);
-</script>
+        }
+        window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);
+    </script>
 </dom-module>

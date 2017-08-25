@@ -37,34 +37,53 @@ The following custom properties and mixins are available for styling:
             }
 
             .container {
-                @apply --display-my-info-container;
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-center;
             }
 
             .container div:nth-child(1) img {
-                @apply --display-my-info-avatar
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+                border-radius: 50%;
+                margin-right: 10px;
+                background-image: url("../../images/defaultavatar.png");
+                background-size: 40px;
             }
 
-            .container div:nth-child(2) div:nth-child(1) {
-                @apply --display-my-info-username
+            .container[wide-layout] div:nth-child(1) img {
+                width: 60px;
+                height: 60px;
+                margin-right: 20px;
+                background-image: url("../../images/defaultavatar.png");
+                background-size: 60px;
             }
 
-            .container div:nth-child(2) div:nth-child(2) {
-                @apply --display-my-info-balance
+            .container div:nth-child(2)>div:nth-child(1) {
+                @apply --small-bold;
+                cursor: pointer;
+            }
+
+            .container div:nth-child(2)>div:nth-child(2) {
+               @apply --main-title4;
+               color: var(--sc-yellow);          
+               cursor: pointer;
             }
         </style>
 
         <data-web3 id="web3"></data-web3>
         <data-ipfs id="ipfs"></data-ipfs>
         <data-local-storage id="storage"></data-local-storage>
-
-        <template is="dom-if" if="true">
-            <div class="container">
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+        <template is="dom-if" if="{{completeAccount}}">
+            <div class="container" wide-layout$="{{wide}}">
                 <div>
-                    <img src="../../images/defaultavatar.png">
+                    <img>
                 </div>
                 <div>
-                    <div>{{username}}</div>
-                    <div>{{balance}} SWT</div>
+                    <div>Xavier Hendrickx</div>
+                    <div>25 SWT</div>
                 </div>
             </div>
         </template>
@@ -118,7 +137,8 @@ The following custom properties and mixins are available for styling:
                      */
                     completeAccount: {
                         type: Boolean,
-                        value: false,
+                        notify: true,
+                        value: true,
                     },
                 };
             }

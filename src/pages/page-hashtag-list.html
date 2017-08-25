@@ -31,8 +31,8 @@ This code may only be used under the license found at https://github.com/swarmci
 <dom-module id="page-hashtag-list">
     <template>
         <!--
-    Page specific styles, if the style is used on more than one page, moveit to shared styles.
--->
+        Page specific styles, if the style is used on more than one page, moveit to shared styles.
+        -->
         <style include="shared-styles">
              :host {
                 width: 100vw;
@@ -44,18 +44,15 @@ This code may only be used under the license found at https://github.com/swarmci
                 width: 100%;
             }
 
-            .header {
-                background-color: #f4f3f4;
+            .header {                              
                 @apply --layout-horizontal;
+                background-color: #f4f3f4;
                 box-sizing: border-box;
                 padding: 40px 40px 0 40px;
                 position: fixed;
                 top: 0;
                 width: 100%;
-                height: 100px;
-                @apply --layout-end-justified;
             }
-
 
             .topleft {
                 @apply --layout-vertical;
@@ -64,46 +61,64 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-flex;
             }
 
-            .account {
-                width: 150px;
-                height: 52px;
-                background-color: green;
-            }
+            display-my-info {}
 
             .topright {
                 @apply --logout-grey3-small;
+                cursor: pointer;
+            }
+            .container[wide-layout] .topright {
+                @apply --logout-grey3-normal;
             }
 
             display-filter-list {
                 --paper-slider-knob-color: var(--swarm-city-yellow);
                 --paper-slider-active-color: var(--swarm-city-yellow);
                 cursor: pointer;
+                margin-top: 50px;
+                margin-bottom: 18px;
             }
 
             display-hashtag-list {
-                margin-left: 10vw;
-                margin-top: 150px;
+                
+                margin-top: 138px;
             }
+
+            .pushdown {
+                height: 40px;
+            }
+            .container[wide-layout] .pushdown {    
+                height: 60px;
+            }
+
+            .container[wide-layout] .header {              
+                box-sizing: border-box;
+                padding: 60px 10vw 0 10vw;
+            }
+
+            .container[wide-layout] display-filter-list  { 
+                margin-top: 100px;
+            } 
+
+            .container[wide-layout] display-hashtag-list { 
+                margin-top: 208px;
+            } 
         </style>
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
-        <div class="container">
+        <div class="container" wide-layout$="{{wide}}">
             <div class="header">
                 <div class="topleft">
-                    <div class="account">account</div>
+                    <display-my-info complete-account="{{completeAccount}}"></display-my-info>
                     <display-filter-list range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
                 </div>
-                <div class="topright"></div>
+                <div class="topright" on-click="_back"></div>
             </div>
-
+            <template is="dom-if" if="{{completeAccount}}">
+                <div class="pushdown"></div>
+            </template>
             <display-hashtag-list range="[[range]]" path="{{path}}"></display-hashtag-list>
         </div>
-        <!--         <div class="container">
-            <display-my-info></display-my-info>
-            <div class="back" on-click="_back"></div>
-            <display-filter-list range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
-            <display-hashtag-list range="[[range]]" path="{{path}}"></display-hashtag-list>
-        </div> -->
-
     </template>
 
     <script>
@@ -126,6 +141,9 @@ This code may only be used under the license found at https://github.com/swarmci
                     path: {
                         type: String,
                         observer: '_path',
+                    },
+                    completeAccount: {
+                        type: Boolean,
                     },
                     /**
                      * Entry and exit animation
