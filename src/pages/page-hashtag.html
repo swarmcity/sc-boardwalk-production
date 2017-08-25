@@ -125,6 +125,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .pushdown {
                 height: 6px;
+                
             }
 
             display-hashtag-deals {
@@ -139,18 +140,19 @@ This code may only be used under the license found at https://github.com/swarmci
                 margin-top: 218px;
             }
 
-            display-deal-btn {
+            .dealbtn {
+                
                 position: fixed;
                 bottom: 50px;
-                right: 30px;                
+                right: 30px;
             }
 
-            .container[wide-layout] display-deal-btn {
+            .container[wide-layout] .dealbtn {
                 bottom: auto;
                 right: 10vw;
-                top: 260px; 
-                
+                top: 248px;
             }
+            
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
@@ -172,15 +174,20 @@ This code may only be used under the license found at https://github.com/swarmci
                     <!-- <display-filter-deals range="{{range}}" path="{{path}}"></display-filter-deals> -->
                 </div>
             </div>
-            <template is="dom-if" if="{{completeAccount}}">
+            <template is="dom-if" if="{{!completeAccount}}">
                 <div class="pushdown"></div>
             </template>
             <display-hashtag-deals range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}"></display-hashtag-deals>
-            <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn>
+            <div class="dealbtn">
+                    <template is="dom-if" if="{{!completeAccount}}">
+                            <div class="pushdown"></div>
+                        </template>
+                <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn>
+            </div>
         </div>
 
 
-        
+
     </template>
 
     <script>
