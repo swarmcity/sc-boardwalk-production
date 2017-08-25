@@ -39,19 +39,17 @@ This code may only be used under the license found at https://github.com/swarmci
              :host {
                 width: 100vw;
                 display: block;
-                background-color: #f4f3f4;
             }
 
             .container {
-
-                background-color: #f4f3f4;
                 width: 100%;
+                min-height: 100vh;
+                background-color: rgba(250, 250, 250, 0.7);
             }
 
             .header {
                 @apply --layout-vertical;
                 background-color: var(--sc-grey1);
-
                 box-sizing: border-box;
                 padding: 40px 40px 0 40px;
                 position: fixed;
@@ -68,7 +66,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-horizontal;
                 @apply --layout-wrap;
                 width: 100%;
-                margin-bottom: 14px;
+                margin-bottom: 28px;
             }
 
             .container[wide-layout] .header {
@@ -130,7 +128,7 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             display-hashtag-deals {
-                margin: 166px 10vw 0 10vw;
+                margin: 180px 0 0 0;
             }
 
             .container[wide-layout] .pushdown {
@@ -138,14 +136,14 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container[wide-layout] display-hashtag-deals {
-                margin-top: 176px;
+                margin-top: 190px;
             }
+
             display-deal-btn {
                 position: fixed;
                 bottom: 50px;
-                right: 20px;
+                right: 30px;
             }
-
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
