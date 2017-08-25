@@ -1,5 +1,5 @@
 {
-    "en": {
+    "EN": {
         "language": "EN",
         "locale": "English",
         "name": "swarm.city",
@@ -82,7 +82,7 @@
         "convert my ARC": "convert my ARC",
         "Youve downloaded your account file.": "You've downloaded your account file."
     },
-    "cn": {
+    "CN": {
         "language": "CN",
         "locale": "中文",
         "name": "一群市",
@@ -115,7 +115,7 @@
         "Can we ask for your location": "我们可以要求您的位置吗",
         "When accepting your browser will ask you": "接受浏览器时会要求您启用位置服务"
     },
-    "fr": {
+    "FR": {
         "No account was found": "Aucun compte trouvé. Lorsque vous restaurez ou créez un nouveau compte, il est stocké localement sur votre machine.",
         "Restore your account file": "Restaurer son compte",
         "upload an account file": "Uploader un compte",
@@ -167,7 +167,7 @@
         "world wide": "le monde entier",
         "restore account": "Restaurer son compte"
     },
-    "nl": {
+    "NL": {
         "No account was found": "Er werd geen account gevonden. Maak een nieuw account aan of laadt een bestaand account op. Het wordt dan lokaal opgeslagen op uw toestel.",
         "Restore your account file": "Stel een account terug in",
         "upload an account file": "Laad uw account bestand op",
@@ -219,7 +219,7 @@
         "world wide": "wereldwijd",
         "restore account": "herstel account"
     },
-    "ru": {
+    "RU": {
         "language": "RU",
         "locale": "Pусский",
         "name": "Swarm City",
@@ -228,7 +228,7 @@
         "enter here": "регистрация здесь",
         "Choose a language": "Выберите язык"
     },
-    "de": {
+    "DE": {
         "No account was found": "Es wurde kein Konto gefunden. Wenn ein neues Konto erstellt oder ein bestehendes Konto wiederhergestellt wird, werden die Informationen auf deinem Gerät gespeichert. ",
         "Restore your account file": "Stelle deine Kontodatei wiederher. ",
         "upload an account file": "Lade eine Kontodatei hoch.",
@@ -280,7 +280,7 @@
         "world wide": "weltweit",
         "restore account": "Kontowiederherstellung"
     },
-    "es": {
+    "ES": {
         "language": "ES",
         "locale": "Español",
         "name": "Swarm City",
@@ -289,7 +289,7 @@
         "enter here": "accede aquí",
         "Choose a language": "Elija un idioma"
     },
-    "pl": {
+    "PL": {
         "No account was found": "Nie znaleziono konta. Kiedy przywracasz istniejące lub tworzysz nowe konto, jest ono zapisywane lokalnie na Twoim urządzeniu.",
         "Restore your account file": "Przywróć plik kopi zapasowej",
         "upload an account file": "Wskaż plik kopi zapasowej",
@@ -341,7 +341,7 @@
         "world wide": "cały świat",
         "restore account": "Przywróć konto"
     },
-    "tr": {
+    "TR": {
         "No account was found": "Hesap bulunamadı. Eski hesabınız geri yüklediğinizde veya yeni bir hesap oluşturduğunuzda, hesap cihazınızda lokal olarak saklanır.",
         "Restore your account file": "Kullanıcı hesabınızı geri yükleyin",
         "upload an account file": "Kullanıcı hesap dosyasını karşıya yükleyin",

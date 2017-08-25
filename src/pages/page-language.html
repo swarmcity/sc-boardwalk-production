@@ -32,7 +32,7 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
-                display: block;                
+                display: block;
             }
 
             .close {
@@ -56,10 +56,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 top: 0;
                 width: 100vw;
             }
+
             .list {
                 @apply --layout-vertical;
                 @apply --layout-center;
             }
+
             display-language {
                 @apply --layout-vertical;
                 @apply --layout-center;
@@ -72,7 +74,7 @@ This code may only be used under the license found at https://github.com/swarmci
         <div class="container">
             <div class="header">
                 <div class="close" on-click="_close"></div>
-                <div class="title">Choose a language</div>
+                <div class="title">{{localize('Choose a language')}}</div>
             </div>
             <div class="list">
                 <display-language buttons path="{{path}}"></display-language>
@@ -93,6 +95,10 @@ This code may only be used under the license found at https://github.com/swarmci
             }
             static get properties() {
                 return {
+                    language: {
+                        type: String,
+                        statePath: 'language',
+                    },
                     /**
                      * Path is the current or requested path
                      * @type {String}
