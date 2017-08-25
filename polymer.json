@@ -31,14 +31,16 @@
   "extraDependencies": [
     "manifest.json",
     "bower_components/webcomponentsjs/*.js",
-    "redux.min.js"
+    "redux.min.js",
+    "src/swarm-city.min.js"
   ],
   "lint": {
     "rules": ["polymer-2"]
   },
   "builds": [
     {
-      "preset": "es6-bundled"
+      "preset": "es5-bundled",
+      "bundle": {"excludes": ["swarm-city.min.js"]}
     }
   ]
 }

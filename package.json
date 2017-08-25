@@ -1,25 +1,32 @@
 {
   "name": "polymer-starter-kit",
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "devDependencies": {
-    "eslint": "^3.19.0",
-    "eslint-config-google": "^0.7.0",
-    "eslint-plugin-html": "^2.0.0"
+    "eslint": "^4.4.1",
+    "eslint-config-google": "^0.9.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-html": "^3.2.0",
+    "eslint-plugin-mocha": "^4.8.0",
+    "eslint-plugin-promise": "^3.0.0",
+    "eslint-plugin-standard": "^3.0.1"
   },
   "scripts": {
-    "lint": "npm run lint:javascript && polymer lint",
-    "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
+    "lint": "npm run lint:javascript",
+    "lint:javascript": "eslint . --ext js,html",
     "test": "polymer test",
-    "browserify": "browserify browserify.js --standalone swarmCity -t [ babelify --presets [ es2015 ] ] > src/swarm-city.min.js"
+    "browserify": "browserify browserify.js --standalone swarmCity -t [ babelify --presets [ es2015 ] ] | uglifyjs > src/swarm-city.min.js"
   },
   "dependencies": {
     "browserify": "^14.4.0",
+    "eslint-plugin-import": "^2.7.0",
     "ethereumjs-tx": "^1.3.3",
     "ethereumjs-util": "^5.1.2",
     "keythereum": "^1.0.2",
     "moment": "^2.18.1",
     "redux": "^3.7.2",
     "uglifyjs": "^2.4.11",
-    "web3": "^1.0.0-beta2"
+    "web3": "^1.0.0-beta.18",
+    "web3-core": "^1.0.0-beta.18"
   }
 }
