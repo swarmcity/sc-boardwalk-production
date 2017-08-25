@@ -13,3 +13,4 @@ service-worker.js
 sw-precache-config.js
 src/swarm-city.min.js
 browserify.js
+functions/
