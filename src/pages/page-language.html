@@ -32,21 +32,51 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
-                display: block;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
+                display: block;                
+            }
+
+            .close {
+                @apply --xmark-grey4-small;
+                @apply --close;
             }
 
             .title {
-                text-align: center;
-                padding-top: 113px;
-                padding-bottom: 48px;
+                @apply --body-default;
+                position: fixed;
+                margin-top: 100px;
+            }
+
+            .header {
+                @apply --layout-vertical;
+                @apply --layout-center;
+                background-color: #F4F4F4;
+                box-sizing: border-box;
+                height: 160px;
+                position: fixed;
+                top: 0;
+                width: 100vw;
+            }
+            .list {
+                @apply --layout-vertical;
+                @apply --layout-center;
+            }
+            display-language {
+                @apply --layout-vertical;
+                @apply --layout-center;
+                width: 80vw;
+                max-width: 375px;
+                margin-top: 160px;
             }
         </style>
         <app-location route="{{route}}"></app-location>
         <div class="container">
-            <div class="title">{{localize('Choose a language')}}</div>
-            <display-language buttons path="{{path}}"></display-language>
+            <div class="header">
+                <div class="close" on-click="_close"></div>
+                <div class="title">Choose a language</div>
+            </div>
+            <div class="list">
+                <display-language buttons path="{{path}}"></display-language>
+            </div>
         </div>
     </template>
 
@@ -75,7 +105,7 @@ This code may only be used under the license found at https://github.com/swarmci
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
@@ -103,7 +133,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
-
+            /**
+             * changes the current path to welcome-page
+             */
+            _close() {
+                this.path = 'welcome/';
+            }
             /**
              * changes the current path
              */

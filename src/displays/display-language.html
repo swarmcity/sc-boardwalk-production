@@ -23,15 +23,18 @@ Example:
             }
 
             .big-btn {
-                @apply --big-btn;
-            }
-
-            .big-btn:hover {
-                @apply --big-btn-hover;
+                @apply --text-button-big;
+                color: var(--sc-grey4);
+                width: 100%;
+                box-sizing: border-box;
+                margin-bottom: 10px;
+                padding: 28px 42px 28px 42px;
+                @apply --layout-vertical;
+                @apply --layout-center-center;
             }
 
             .big-btn:active {
-                transform: scale(0.97, 0.97);
+                @apply --button-active;
             }
         </style>
 
@@ -102,7 +105,7 @@ Example:
              */
             static get actions() {
                 return Object.assign({
-                    LANGUAGE: function(language) {
+                    LANGUAGE: function (language) {
                         return {
                             type: 'LANGUAGE',
                             language: language,
