@@ -71,9 +71,8 @@ This code may only be used under the license found at https://github.com/swarmci
             }
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
-        <iron-media-query query="(min-width: 1281px)" query-matches="{{extrawide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
-        <div class="container" wide-layout$="{{wide}}" extrawide-layout$="{{extrawide}}">
+        <div class="container" wide-layout$="{{wide}}">
             <div class="header">
                 <div class="close" on-click="_close"></div>
                 <div class="title">{{localize('Choose a language')}}</div>
