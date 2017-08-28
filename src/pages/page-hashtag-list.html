@@ -44,7 +44,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 width: 100%;
             }
 
-            .header {                              
+            .header {
                 @apply --layout-horizontal;
                 background-color: #f4f3f4;
                 box-sizing: border-box;
@@ -78,29 +78,30 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             display-hashtag-list {
-                
-                margin-top: 152px;
+
+                margin-top: 112px;
             }
 
             .pushdown {
                 height: 40px;
             }
-            .container[wide-layout] .pushdown {    
+
+            .container[wide-layout] .pushdown {
                 height: 50px;
             }
 
-            .container[wide-layout] .header {              
+            .container[wide-layout] .header {
                 box-sizing: border-box;
                 padding: 60px 10vw 0 10vw;
             }
 
-            .container[wide-layout] display-filter-list  { 
+            .container[wide-layout] display-filter-list {
                 margin-top: 40px;
-            } 
+            }
 
-            .container[wide-layout] display-hashtag-list { 
-                margin-top: 190px;
-            } 
+            .container[wide-layout] display-hashtag-list {
+                margin-top: 140px;
+            }
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
@@ -108,15 +109,13 @@ This code may only be used under the license found at https://github.com/swarmci
             <div class="header">
                 <div class="topleft">
                     <display-my-info complete-account="{{completeAccount}}"></display-my-info>
-                    <template is="dom-if" if="{{!completeAccount}}">
-                        <div class="pushdown"></div>
-                    </template>
                     <display-filter-list range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
                 </div>
                 <div class="topright" on-click="_back"></div>
-
             </div>
-
+            <template is="dom-if" if="{{completeAccount}}">
+                <div class="pushdown"></div>
+            </template>
             <display-hashtag-list range="[[range]]" path="{{path}}"></display-hashtag-list>
         </div>
     </template>
@@ -149,7 +148,7 @@ This code may only be used under the license found at https://github.com/swarmci
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
