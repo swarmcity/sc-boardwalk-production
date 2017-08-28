@@ -136,13 +136,12 @@ The following custom properties and mixins are available for styling:
             .container[wide-layout] .for {
                 @apply --body-bold;
                 font-size: 14px;
-                margin:0 6px 2px 0;
+                margin: 0 6px 2px 0;
             }
 
             .container[wide-layout] .price {
 
                 @apply --main-title4;
-                
             }
 
             .container[wide-layout] {
@@ -433,15 +432,17 @@ The following custom properties and mixins are available for styling:
             }
 
             _next() {
+                // stores the current hashtag choice in session
+                sessionStorage.setItem('hashtagID', this.routeData.page);
                 this.path = 'new-here/';
-/*                 
-if (!this.completeAccount) {
-// stores the current hashtag choice in session
-sessionStorage.setItem('hashtagID', this.routeData.page);
-this.path = 'new-here/';
-} else {
-this.path = 'new-deal/';
-} */
+                /*                 
+                if (!this.completeAccount) {
+                // stores the current hashtag choice in session
+                sessionStorage.setItem('hashtagID', this.routeData.page);
+                this.path = 'new-here/';
+                } else {
+                this.path = 'new-deal/';
+                } */
             }
         }
         window.customElements.define(DisplayHashtagDeals.is, DisplayHashtagDeals);
