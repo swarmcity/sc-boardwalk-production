@@ -36,13 +36,17 @@ Example:
             .big-btn:active {
                 @apply --button-active;
             }
+
+            .language {
+                text-transform: uppercase;
+            }
         </style>
 
         <data-local-storage id="localStorage"></data-local-storage>
         <data-utility id="utility"></data-utility>
 
         <template is="dom-if" if="{{selected}}">
-            <div on-click="_navigateTo">
+            <div class="language" on-click="_navigateTo">
                 {{language}}
             </div>
         </template>
@@ -148,7 +152,7 @@ Example:
                     .then((data) => {
                         if (data.found == false) {
                             // If we dont have the translation use english
-                            this.language = 'EN';
+                            this.language = 'en';
                             this.dispatch('LANGUAGE', this.language);
                             return;
                         } else {
