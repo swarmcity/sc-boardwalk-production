@@ -1,125 +1,95 @@
-# Polymer App Toolbox - Starter Kit
+![Swarm City](https://github.com/swarmcity/sc-boardwalk-production/blob/master/images/icons/icon-48x48.png?raw=true "Swarm City")
 
-[![Build Status](https://travis-ci.org/PolymerElements/polymer-starter-kit.svg?branch=master)](https://travis-ci.org/PolymerElements/polymer-starter-kit)
 
-This template is a starting point for building apps using a drawer-based
-layout. The layout is provided by `app-layout` elements.
+# Swarm City
+### boardwalk-production
+[![Build Status](https://travis-ci.org/swarmcity/sc-boardwalk-production.svg?branch=master)](https://travis-ci.org/swarmcity/sc-boardwalk-production) 
 
-This template, along with the `polymer-cli` toolchain, also demonstrates use
-of the "PRPL pattern" This pattern allows fast first delivery and interaction with
-the content at the initial route requested by the user, along with fast subsequent
-navigation by pre-caching the remaining components required by the app and
-progressively loading them on-demand as the user navigates through the app.
+Refactor of Boardwalk in Polymer 2.0
 
-The PRPL pattern, in a nutshell:
+## Contributions 
+We actively welcome community contributions. Below are a set of instructions to get your dev environment setup. We have a living [Production Wiki](https://github.com/swarmcity/sc-boardwalk-production/wiki/Welcome-to-Swarm-City) detailing what, how and why we are developing this production release. Once setup head on over to the issues and see what's marked for contributions welcome.
 
-* **Push** components required for the initial route
-* **Render** initial route ASAP
-* **Pre-cache** components for remaining routes
-* **Lazy-load** and progressively upgrade next routes on-demand
+* Keep a lookout for weekend "Tidy-up" sprints, and issues labeled with "Contributions Welcome" these are a great way to meet the team and get started making contributions.
 
-### Migrating from Polymer Starter Kit v1?
+## Setup verssion control & clone 
 
-[Check out our blog post that covers what's changed in PSK2 and how to migrate!](https://www.polymer-project.org/1.0/blog/2016-08-18-polymer-starter-kit-or-polymer-cli.html)
+grab a copy of [Source Forge](https://sourceforge.net/) or [Gitkracken](https://www.gitkraken.com/) then clone the repo!
 
-### Quickstart
-
-We've recorded a Polycast to get you up and running with PSK2 fast!
-
-<p align="center">
-  <a href="https://www.youtube.com/watch?v=HgJ0XCyBwzY&list=PLNYkxOF6rcIDdS7HWIC_BYRunV6MHs5xo&index=10">
-    <img src="https://img.youtube.com/vi/HgJ0XCyBwzY/0.jpg" alt="Polymer Starter Kit 2 video">
-  </a>
-</p>
-
-### Setup
-
-##### Prerequisites
-
-First, install [Polymer CLI](https://github.com/Polymer/polymer-cli) using
+## Install development environment
+next install [Polymer CLI](https://github.com/Polymer/polymer-cli) using
 [npm](https://www.npmjs.com) (we assume you have pre-installed [node.js](https://nodejs.org)).
 
     npm install -g polymer-cli
 
-Second, install [Bower](https://bower.io/) using [npm](https://www.npmjs.com)
+Install [Bower](https://bower.io/) using [npm](https://www.npmjs.com)
 
     npm install -g bower
 
-##### Initialize project from template
+*Linux permissions issues can be solved by adding --allow-root*
 
-    mkdir my-app
-    cd my-app
-    polymer init polymer-2-starter-kit
+Bower install
 
-### Start the development server
+    bower install
 
-This command serves the app at `http://127.0.0.1:8081` and provides basic URL
-routing for the app:
+After install check to see which version of chai you have installed:
+
+    bower ls | grep chai
+
+If chai is a version lower than 4.0.2 install it manually:
+
+    bower i -D chai
+
+npm install
+
+    npm install
+
+## Docker install
+
+    alias dc='docker-compose'
+    dc build prplserver && dc up prplserver
+    dc build contracts
+    dc build lint
+
+## Linting with eslint
+Ensuring the code base stays clean and standardized we need all merges to pass linting 
+
+    npm run lint
+
+If you're on Windows, add the following line to .eslintrc.json to make sure linebreaks are read correctly:
+
+    "linebreak-style": ["error", "windows"]
+
+## Test with Mocha and Chai via WCT
+
+    polymer test -p
+
+*On Windows systems the tests might fail on their first run if the firewall permissions have yet to be set*
+
+## Build
+Ensure the project builds before testing 
+
+    polymer build
+
+## Serve
+polymer serve
 
     polymer serve
+    polymer serve build/production
 
-### Build
+## Deploy
+netlify deploy, set the deploy directory to build/production
 
-The `polymer build` command builds your Polymer application for production, using build configuration options provided by the command line or in your project's `polymer.json` file.  
+    npm install netlify-cli -g
+    netlify deploy
 
-You can configure your `polymer.json` file to create multiple builds. This is necessary if you will be serving different builds optimized for different browsers. You can define your own named builds, or use presets. See the documentation on [building your project for production](https://www.polymer-project.org/2.0/toolbox/build-for-production) for more information.
+## Truffle compile/deploy/test
 
-The Polymer Starter Kit is configured to create three builds using [the three supported presets](https://www.polymer-project.org/2.0/toolbox/build-for-production#build-presets):
+    truffle migrate --reset --compile-all
+    truffle test ./test/contracts/arcTokenTest.js
 
-```
-"builds": [
-  {
-    "preset": "es5-bundled"
-  },
-  {
-    "preset": "es6-bundled"
-  },
-  {
-    "preset": "es6-unbundled"
-  }
-]
-```
+## Browser Testing
 
-Builds will be output to a subdirectory under the `build/` directory as follows:
+[![BrowserStack](http://i.imgur.com/Pg0utrk.png)](http://browserstack.com/)
 
-```
-build/
-  es5-bundled/
-  es6-bundled/
-  es6-unbundled/
-```
-
-* `es5-bundled` is a bundled, minified build with a service worker. ES6 code is compiled to ES5 for compatibility with older browsers.
-* `es6-bundled` is a bundled, minified build with a service worker. ES6 code is served as-is. This build is for browsers that can handle ES6 code - see [building your project for production](https://www.polymer-project.org/2.0/toolbox/build-for-production#compiling) for a list.
-* `es6-unbundled` is an unbundled, minified build with a service worker. ES6 code is served as-is. This build is for browsers that support HTTP/2 push.
-
-Run `polymer help build` for the full list of available options and optimizations. Also, see the documentation on the [polymer.json specification](https://www.polymer-project.org/2.0/docs/tools/polymer-json) and [building your Polymer application for production](https://www.polymer-project.org/2.0/toolbox/build-for-production).
-
-### Preview the build
-
-This command serves your app. Replace `build-folder-name` with the folder name of the build you want to serve.
-
-    polymer serve build/build-folder-name/
-
-### Run tests
-
-This command will run [Web Component Tester](https://github.com/Polymer/web-component-tester)
-against the browsers currently installed on your machine:
-
-    polymer test
-
-If running Windows you will need to set the following environment variables:
-
-- LAUNCHPAD_BROWSERS
-- LAUNCHPAD_CHROME
-
-Read More here [daffl/launchpad](https://github.com/daffl/launchpad#environment-variables-impacting-local-browsers-detection)
-
-### Adding a new view
-
-You can extend the app by adding more views that will be demand-loaded
-e.g. based on the route, or to progressively render non-critical sections of the
-application. Each new demand-loaded fragment should be added to the list of
-`fragments` in the included `polymer.json` file. This will ensure those
-components and their dependencies are added to the list of pre-cached components
-and will be included in the build.
+Thanks to the support of [BrowserStack](http://browserstack.com/) we can do real cross browser testing on multiple desktop and mobile platforms.
