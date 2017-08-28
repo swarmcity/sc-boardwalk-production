@@ -75,7 +75,7 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .leftbottom {
-                margin-top: 40px;
+                margin-top: 10px;
                 @apply --layout-horizontal;
                 @apply --layout-flex;
                 @apply --layout-start-justified;
@@ -116,28 +116,27 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             display-filter-deals {
-                margin-top: 40px;
+                margin-top: 10px;
             }
 
             .pushdown {
                 height: 6px;
-                
             }
 
             display-hashtag-deals {
-                margin: 180px 0 0 0;
+                margin: 150px 0 0 0;
             }
 
             .container[wide-layout] .pushdown {
-                height: 6px;
+                height: 14px;
             }
 
             .container[wide-layout] display-hashtag-deals {
-                margin-top: 218px;
+                margin-top: 170px;
             }
 
             .dealbtn {
-                
+
                 position: fixed;
                 bottom: 50px;
                 right: 30px;
@@ -148,7 +147,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 right: 10vw;
                 top: 248px;
             }
-            
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
@@ -170,14 +168,14 @@ This code may only be used under the license found at https://github.com/swarmci
                     <!-- <display-filter-deals range="{{range}}" path="{{path}}"></display-filter-deals> -->
                 </div>
             </div>
-            <template is="dom-if" if="{{!completeAccount}}">
+            <template is="dom-if" if="{{completeAccount}}">
                 <div class="pushdown"></div>
             </template>
             <display-hashtag-deals range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}"></display-hashtag-deals>
             <div class="dealbtn">
-                    <template is="dom-if" if="{{!completeAccount}}">
-                            <div class="pushdown"></div>
-                        </template>
+                <template is="dom-if" if="{{completeAccount}}">
+                    <div class="pushdown"></div>
+                </template>
                 <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn>
             </div>
         </div>
@@ -211,7 +209,7 @@ This code may only be used under the license found at https://github.com/swarmci
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
