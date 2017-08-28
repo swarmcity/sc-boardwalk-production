@@ -40,8 +40,15 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --close;
             }
 
+            .container {
+                @apply --layout-vertical;
+                @apply --layout-center;
+                background-color: #F4F4F4;
+            }
+
             .title {
                 @apply --body-default;
+
                 position: fixed;
                 margin-top: 100px;
             }
@@ -57,17 +64,33 @@ This code may only be used under the license found at https://github.com/swarmci
                 width: 100vw;
             }
 
-            .list {
-                @apply --layout-vertical;
-                @apply --layout-center;
-            }
+            
 
             display-language {
-                @apply --layout-vertical;
-                @apply --layout-center;
                 width: 80vw;
                 max-width: 375px;
                 margin-top: 160px;
+            }
+
+            .container[wide-layout] {
+                @apply --layout-vertical;
+                @apply --layout-start;
+            }
+
+           
+            .container[wide-layout] .header {
+                @apply --layout-vertical;
+                @apply --layout-start;
+                
+            }
+
+            .container[wide-layout] .title {
+                margin-left: 10vw;
+                
+            }
+
+            .container[wide-layout] display-language {
+                margin-left: 10vw;
             }
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
