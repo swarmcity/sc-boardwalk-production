@@ -39,19 +39,17 @@ This code may only be used under the license found at https://github.com/swarmci
              :host {
                 width: 100vw;
                 display: block;
-                background-color: #f4f3f4;
             }
 
             .container {
-
-                background-color: #f4f3f4;
                 width: 100%;
+                min-height: 100vh;
+                background-color: rgba(250, 250, 250, 0.7);
             }
 
             .header {
                 @apply --layout-vertical;
                 background-color: var(--sc-grey1);
-
                 box-sizing: border-box;
                 padding: 40px 40px 0 40px;
                 position: fixed;
@@ -68,7 +66,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-horizontal;
                 @apply --layout-wrap;
                 width: 100%;
-                margin-bottom: 14px;
+                margin-bottom: 18px;
+            }
+
+            .container .bottom {
+                margin-bottom: 28px;
             }
 
             .container[wide-layout] .header {
@@ -77,11 +79,15 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .leftbottom {
-                margin-top: 40px;
+                margin-top: 30px;
                 @apply --layout-horizontal;
                 @apply --layout-flex;
                 @apply --layout-start-justified;
                 @apply --layout-end;
+            }
+
+            .container[wide-layout] .leftbottom {
+                margin-top: 40px;
             }
 
             .hashtag {
@@ -92,10 +98,6 @@ This code may only be used under the license found at https://github.com/swarmci
             .back {
                 cursor: pointer;
                 @apply --arrowleft-grey3-small;
-            }
-
-            .container[wide-layout] .back {
-                @apply --arrowleft-grey3-normal;
             }
 
             .about {
@@ -122,30 +124,37 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             display-filter-deals {
-                margin-top: 40px;
+                margin-top: 10px;
             }
 
             .pushdown {
-                height: 10px;
+                height: 6px;
             }
 
             display-hashtag-deals {
-                margin: 166px 10vw 0 10vw;
+                margin: 170px 0 0 0;
             }
 
             .container[wide-layout] .pushdown {
-                height: 40px;
+                height: 14px;
             }
 
             .container[wide-layout] display-hashtag-deals {
-                margin-top: 176px;
-            }
-            display-deal-btn {
-                position: fixed;
-                bottom: 50px;
-                right: 20px;
+                margin-top: 200px;
             }
 
+            .dealbtn {
+
+                position: fixed;
+                bottom: 50px;
+                right: 30px;
+            }
+
+            .container[wide-layout] .dealbtn {
+                bottom: auto;
+                right: 10vw;
+                top: 248px;
+            }
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
@@ -171,10 +180,16 @@ This code may only be used under the license found at https://github.com/swarmci
                 <div class="pushdown"></div>
             </template>
             <display-hashtag-deals range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}"></display-hashtag-deals>
+            <div class="dealbtn">
+                <template is="dom-if" if="{{completeAccount}}">
+                    <div class="pushdown"></div>
+                </template>
+                <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn>
+            </div>
         </div>
 
 
-        <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn>
+
     </template>
 
     <script>

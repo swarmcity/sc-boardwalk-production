@@ -310,7 +310,7 @@ Colors are all lower case, There is a space after the :
                     outline: none;
                     border: 0;
                     box-sizing: border-box;
-                    padding: 25px 42px;
+                    padding: 30px 42px;
                     border-radius: 2px;
                     background-color: rgba(255, 255, 255, 0.2);
                     cursor: pointer;
@@ -335,6 +335,11 @@ Colors are all lower case, There is a space after the :
                     top: 18px;
                     right: 18px;
                     cursor: pointer;
+                }
+
+                --close-wide: {
+                    top: 30px;
+                    right: 30px;
                 }
 
 
@@ -442,8 +447,8 @@ Colors are all lower case, There is a space after the :
                     padding: 0 14vw;
                 }
                 --location-upper-wide: {
-                    height: 55%;
-                    padding: 0 12vw 7vh;
+                    height: 60%;
+                    padding: 0 12vw 14vh;
                     @apply --layout-start;
                     @apply --layout-end-justified;
                 }
@@ -475,7 +480,7 @@ Colors are all lower case, There is a space after the :
                     height: 30%;
                 }
                 --location-bottom-wide: {
-                    height: 45%;
+                    height: 40%;
                     padding: 0 12vw;
                     @apply --layout-start;
                 }
@@ -783,11 +788,13 @@ Colors are all lower case, There is a space after the :
                     @apply --layout-vertical;
                     @apply --center-center;
                     @apply --layout-flex;
+                    height: 100%;
                     width: 100%;
                 }
                 --welcome-switchcontainer-wide: {
                     @apply --layout-horizontal;
                     @apply --layout-center-center;
+                    
                 }
                 --welcome-banner: {
                     @apply --layout-vertical;
@@ -955,28 +962,10 @@ Colors are all lower case, There is a space after the :
                     cursor: pointer;
                 }
                 --big-btn: {
-                    width: 276px;
-                    height: 30px;
-                    line-height: 30px;
-                    text-align: center;
-                    margin-bottom: 10px;
-                    display: block;
-                    border: none;
-                    outline: none;
-                    font-size: 15px;
-                    cursor: pointer;
-                    font-weight: 900;
-                    color: var(--grey-4);
-                    padding: 28px 42px 28px 42px;
-                    background-color: rgba(255, 255, 255, 0.1);
-                    box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                    -o-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                    -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                    -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                    overflow: hidden;
+
                 }
                 --big-btn-hover: {
-                    color: black;
+                    
                 }
 
                 --display-my-info-balance: {

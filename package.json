@@ -28,6 +28,7 @@
     "redux": "^3.7.2",
     "uglifyjs": "^2.4.11",
     "web3": "^1.0.0-beta.18",
-    "web3-core": "^1.0.0-beta.18"
+    "web3-core": "^1.0.0-beta.18",
+    "web3-utils": "^1.0.0-beta.17"
   }
 }
