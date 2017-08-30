@@ -2,6 +2,7 @@
   "name": "swarm-city",
   "license": "MIT",
   "devDependencies": {
+    "babel-preset-env": "^1.6.0",
     "eslint": "^4.4.1",
     "eslint-config-google": "^0.9.1",
     "eslint-config-standard": "^10.2.1",
@@ -15,7 +16,9 @@
     "lint": "npm run lint:javascript",
     "lint:javascript": "eslint . --ext js,html",
     "test": "polymer test",
-    "browserify": "browserify browserify.js --standalone swarmCity -t [ babelify --presets [ es2015 ] ] | uglifyjs > src/swarm-city.min.js"
+    "browserify": "browserify browserify.js --standalone swarmCity -t [ babelify --presets [ es2015 ] ] | uglifyjs > src/swarm-city.min.js",
+    "browserify-deploy": "browserify browserify.js --standalone swarmCity -t [ babelify --presets [ es2015 ] ] | uglifyjs > build/es5-bundled/src/swarm-city.min.js",
+    "deploy": "polymer build && npm run browserify-deploy && netlify deploy"
   },
   "dependencies": {
     "browserify": "^14.4.0",
