@@ -30,59 +30,90 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
-                @apply --stop-signup-host;
+                background-color: var(--sc-blue);
+                height: 100vh;
+                width: 100vw;
+                display: block;
             }
 
             .container {
-                @apply --stop-signup-container;
+                background-color: var(--sc-blue);
+                height: 100%;
+                width: 100%;
+                @apply --layout-vertical;
             }
 
             .container>div:nth-child(1) {
-                @apply --stop-signup-upper;
+                height: 70%;
+                @apply --layout-vertical;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+                box-sizing: border-box;
+                padding: 0 14vw;
             }
 
             .container>div:nth-child(1)>div:nth-child(1) {
-                @apply --stop-signup-title;
+                @apply --main-title1;
+                color: var(--sc-white);
+                text-align: center;
             }
 
             .container>div:nth-child(1)>div:nth-child(2) {
-                @apply --stop-signup-subtitle;
+                @apply --small-light;
+                margin: 20px 0 0;
+                color: var(--sc-white);
+                text-align: center;
             }
 
             .container>div:nth-child(2) {
-                @apply --stop-signup-bottom;
+                box-sizing: border-box;
+                padding: 0 14vw;
+                @apply --layout-vertical;
+                @apply --layout-center;
+                @apply --layout-start-justified;
+                height: 30%;
             }
 
             .container>div:nth-child(2)>div:nth-child(1) {
-                @apply --stop-signup-buttons;
+                @apply --layout-horizontal;
+                @apply --layout-center-center;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
-                @apply --stop-signup-xmark;
+                @apply --xmark-grey4-normal;
+                cursor: pointer;
+                margin-right: 20px;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
-                @apply --stop-signup-icon-button-big;
+                @apply --icon-button-big;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
-                @apply --stop-signup-vmark;
+                @apply --vmark-blue-normal;
             }
 
             .container[wide-layout]>div:nth-child(1) {
-                @apply --stop-signup-upper-wide;
+                height: 55%;
+                padding: 0 12vw 7vh;
+                @apply --layout-start;
+                @apply --layout-end-justified;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(1) {
-                @apply --stop-signup-title-wide;
+                @apply --main-title1-wide;
+                text-align: left;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(2) {
-                @apply --stop-signup-subtitle-wide;
+                @apply --small-light-wide;
+                text-align: left;
             }
 
             .container[wide-layout]>div:nth-child(2) {
-                @apply --stop-signup-bottom-wide;
+                height: 45%;
+                padding: 0 12vw;
+                @apply --layout-start;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1):active,
@@ -147,7 +178,7 @@ This code may only be used under the license found at https://github.com/swarmci
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
