@@ -129,15 +129,15 @@ This code may only be used under the license found at https://github.com/swarmci
                 </div>
                 <div class="topright">
                     <div class="back" on-click="_back"></div>
-                    <display-filter-list toggle class="toggle" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
+                    <display-filter-list toggle on-click="toggle" class="toggle" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
                 </div>
             </div>
             <template is="dom-if" if="{{completeAccount}}">
                 <div class="pushdown"></div>
             </template>
-            <template is="dom-if" if="{{showSlider}}">
+            <teiron-collapse>
                 <display-filter-list slider class="slider" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
-            </template>
+            </iron-collapse>
             <display-hashtag-list id="list" range="[[range]]" path="{{path}}"></display-hashtag-list>
         </div>
     </template>
@@ -177,7 +177,7 @@ This code may only be used under the license found at https://github.com/swarmci
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function () {
+                        value: function() {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',

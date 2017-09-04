@@ -46,7 +46,6 @@ The following custom properties and mixins are available for styling:
                 @apply --body-default;
                 color: var(--sc-grey2);
             }
-
         </style>
 
         <data-local-storage id="storage"></data-local-storage>
@@ -57,12 +56,12 @@ The following custom properties and mixins are available for styling:
                 <div class="toggle" on-click="_toggleSlider">filter list</div>
             </template>
             <template is="dom-if" if="{{slider}}">
-                
-                    <span class="activity">Looking for hashtags...</span>
-                    <br>
-                    <span class="range-description">{{rangeDescription}}</span>
-                    <paper-slider id="ratings" min="1" max="6" value="{{value}}" on-immediate-value-change="_calcRange" expand></paper-slider>
-                
+
+                <span class="activity">Looking for hashtags...</span>
+                <br>
+                <span class="range-description">{{rangeDescription}}</span>
+                <paper-slider id="ratings" min="1" max="6" value="{{value}}" on-immediate-value-change="_calcRange" expand></paper-slider>
+
             </template>
 
 
@@ -192,28 +191,32 @@ The following custom properties and mixins are available for styling:
                         this.range = 10000000000000000000;
                         break;
                     case (x < 3):
-                        this.rangeDescription = this.localize('within +/- 1000km from your location');
+                        this.rangeDescription =
+                            this.localize('within +/- 1000km from your location');
                         this.range = 1000000;
                         break;
                     case (x < 4):
-                        this.rangeDescription = this.localize('within +/- 100km from your location');
+                        this.rangeDescription =
+                            this.localize('within +/- 100km from your location');
                         this.range = 100000;
                         break;
                     case (x < 5):
-                        this.rangeDescription = this.localize('within +/- 10km from your location');
+                        this.rangeDescription =
+                            this.localize('within +/- 10km from your location');
                         this.range = 10000;
                         break;
                     case (x < 6):
-                        this.rangeDescription = this.localize('within +/- 1km from your location');
+                        this.rangeDescription =
+                            this.localize('within +/- 1km from your location');
                         this.range = 1000;
                         break;
                     case (x < 7):
-                        this.rangeDescription = this.localize('within +/- 0.5km from your location');
+                        this.rangeDescription =
+                            this.localize('within +/- 0.5km from your location');
                         this.range = 500;
                 }
             }
             _toggleSlider() {
-
                 this.$.storage.accountExists()
                     .then((account) => {
                         if (!account.location) {
@@ -227,16 +230,16 @@ The following custom properties and mixins are available for styling:
             /**
              * See if location has been added on route change
              */
-/*             _routeChanged() {
-                if (this.route.path == '/hashtag-list/') {
-                    this.$.storage.accountExists()
-                        .then((account) => {
-                            if (account.location) {
-                                this.showSlider = !this.showSlider;
+            /*             _routeChanged() {
+                            if (this.route.path == '/hashtag-list/') {
+                                this.$.storage.accountExists()
+                                    .then((account) => {
+                                        if (account.location) {
+                                            this.showSlider = !this.showSlider;
+                                        }
+                                    });
                             }
-                        });
-                }
-            } */
+                        } */
         }
         window.customElements.define(MyFilterList.is, MyFilterList);
     </script>
