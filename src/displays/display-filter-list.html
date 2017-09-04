@@ -47,27 +47,6 @@ The following custom properties and mixins are available for styling:
                 color: var(--sc-grey2);
             }
 
-            .sliderbox {
-                
-            }
-
-            @keyframes slideDown {
-                0% {
-                    transform: translateY(-80%);
-                }
-                100% {
-                    transform: translateY(0%);
-                }
-            }
-
-            @keyframes scaleIn {
-                0% {
-                    transform: scale(0, 0);
-                }
-                100% {
-                    transform: scale(1, 1);
-                }
-            }
         </style>
 
         <data-local-storage id="storage"></data-local-storage>
@@ -78,12 +57,12 @@ The following custom properties and mixins are available for styling:
                 <div class="toggle" on-click="_toggleSlider">filter list</div>
             </template>
             <template is="dom-if" if="{{slider}}">
-                <div class="sliderbox">
+                
                     <span class="activity">Looking for hashtags...</span>
                     <br>
                     <span class="range-description">{{rangeDescription}}</span>
                     <paper-slider id="ratings" min="1" max="6" value="{{value}}" on-immediate-value-change="_calcRange" expand></paper-slider>
-                </div>
+                
             </template>
 
 
@@ -248,7 +227,7 @@ The following custom properties and mixins are available for styling:
             /**
              * See if location has been added on route change
              */
-            _routeChanged() {
+/*             _routeChanged() {
                 if (this.route.path == '/hashtag-list/') {
                     this.$.storage.accountExists()
                         .then((account) => {
@@ -257,7 +236,7 @@ The following custom properties and mixins are available for styling:
                             }
                         });
                 }
-            }
+            } */
         }
         window.customElements.define(MyFilterList.is, MyFilterList);
     </script>
