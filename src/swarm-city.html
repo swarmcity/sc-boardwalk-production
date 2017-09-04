@@ -2,6 +2,9 @@
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../bower_components/app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
+<link rel="import" href="../bower_components/polymerfire/firebase.html">
+<link rel="import" href="../bower_components/polymerfire/polymerfire.html">
 
 <link rel="lazy-import" href="pages/page-welcome.html">
 <link rel="lazy-import" href="pages/page-hashtag-list.html">
@@ -35,6 +38,25 @@
         margin:0;
       }
     </style>
+
+    <firebase-app
+      database-url="https://swarmcity-23c70.firebaseio.com" 
+      api-key="AIzaSyDXAHgocTVa9PLVoKqCnQF9PDkUH7F-EFY" 
+      auth-domain="swarmcity-23c70.firebaseapp.com">
+    </firebase-app>
+
+    <firebase-query
+      path="/hashtags"
+      data="{{hashtagdata}}">
+    </firebase-query>
+
+    <app-indexeddb-mirror
+      key="hashtags"
+      data="{{hashtagdata}}"
+      persisted-data="{{hashtags}}">
+    </app-indexeddb-mirror>
+
+
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route
         route="{{route}}"
