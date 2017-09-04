@@ -5,6 +5,7 @@
 <link rel="import" href="../bower_components/app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
 <link rel="import" href="../bower_components/polymerfire/firebase.html">
 <link rel="import" href="../bower_components/polymerfire/polymerfire.html">
+<link rel="import" href="redux-state.html">
 
 <link rel="lazy-import" href="pages/page-welcome.html">
 <link rel="lazy-import" href="pages/page-hashtag-list.html">
@@ -94,7 +95,7 @@
   </template>
 
   <script>
-    class SwarmCity extends Polymer.Element {
+    class SwarmCity extends new ReduxMixin(Polymer.Element) {
       static get is() {return 'swarm-city';}
 
       static get properties() {
@@ -104,10 +105,32 @@
             reflectToAttribute: true,
             observer: '_pageChanged',
           },
+          hashtagdata:{
+            type: Array,
+            observer: '_hashtagChanged',
+          },
+          hashtags:{
+            type: Array,
+          },
           routeData: Object,
           subroute: String,
           rootPath: String,
         };
+      }
+
+      /**
+        * Redux action for sertting language
+        * @param {hashtags} hashtags
+        */
+        static get actions() {
+          return Object.assign({
+              HASHTAGS: function(hashtags) {
+                  return {
+                      type: 'HASHTAGS',
+                      hashtags: hashtags,
+                  };
+              },
+          });
       }
 
       static get observers() {
@@ -116,6 +139,9 @@
         ];
       }
 
+      _hashtagChanged(){
+        this.dispatch('HASHTAGS', this.hashtags);
+      }
       _routePageChanged(page) {
         this.page = page || 'welcome';
       }
