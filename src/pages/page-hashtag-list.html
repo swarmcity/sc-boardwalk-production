@@ -61,29 +61,43 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-flex;
             }
 
-            display-my-info {}
-
             .topright {
-                @apply --logout-grey3-small;
-                cursor: pointer;
+                @apply --layout-end;
+                @apply --layout-vertical;
             }
 
+            .back {
+                cursor: pointer;
+                @apply --logout-grey3-small;
+            }
 
-            display-filter-list {
+            .slider {
+                border-bottom: 1px solid black;
+                animation-name: scaleIn;
+                animation: slideDown 0.2s forwards;
+                position: fixed;
+                top: 153px;
+                width: 100vw;
                 --paper-slider-knob-color: var(--swarm-city-yellow);
                 --paper-slider-active-color: var(--swarm-city-yellow);
                 cursor: pointer;
-                margin-top: 30px;
-                margin-bottom: 18px;
+                background-color: #f4f3f4;
             }
 
             display-hashtag-list {
-
                 margin-top: 112px;
             }
 
             .pushdown {
                 height: 40px;
+            }
+
+            .toggle {
+                cursor: pointer;
+                @apply --small-bold;
+                color: var(--sc-grey3);
+                margin-top: 80px;
+                border-bottom: 2px dotted var(--sc-grey3);
             }
 
             .container[wide-layout] .pushdown {
@@ -109,23 +123,28 @@ This code may only be used under the license found at https://github.com/swarmci
             <div class="header">
                 <div class="topleft">
                     <display-my-info complete-account="{{completeAccount}}"></display-my-info>
-                    <display-filter-list range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
                 </div>
-                <div class="topright" on-click="_back"></div>
+                <div class="topright">
+                    <div class="back" on-click="_back"></div>
+                    <display-filter-list toggle class="toggle" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
+                </div>
             </div>
             <template is="dom-if" if="{{completeAccount}}">
                 <div class="pushdown"></div>
             </template>
-            <display-hashtag-list range="[[range]]" path="{{path}}"></display-hashtag-list>
+            <template is="dom-if" if="{{showSlider}}">
+                <display-filter-list slider class="slider" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
+            </template>
+            <display-hashtag-list id="list" range="[[range]]" path="{{path}}"></display-hashtag-list>
         </div>
     </template>
 
     <script>
         class HashtagList extends new ReduxMixin(Polymer.mixinBehaviors([
-                Polymer.AppLocalizeBehavior,
-                Polymer.NeonAnimationRunnerBehavior,
-                Polymer.NeonAnimatableBehavior,
-            ],
+            Polymer.AppLocalizeBehavior,
+            Polymer.NeonAnimationRunnerBehavior,
+            Polymer.NeonAnimatableBehavior,
+        ],
             Polymer.Element
         )) {
             static get is() {
@@ -145,10 +164,17 @@ This code may only be used under the license found at https://github.com/swarmci
                         type: Boolean,
                     },
                     /**
+                     * showSlider determines of the slider is show or not
+                     * @type {Boolean}
+                     */
+                    showSlider: {
+                        type: Boolean,
+                    },
+                    /**
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',

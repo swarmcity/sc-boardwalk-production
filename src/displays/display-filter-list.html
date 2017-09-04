@@ -35,16 +35,29 @@ The following custom properties and mixins are available for styling:
                 display: block;
             }
 
-            .toggle {
-                @apply --small-bold;
-                color: var(--sc-grey3);
-                border-bottom: 2px dotted var(--sc-grey3);
+
+
+            .range-description {
+                @apply --body-default;
+                color: var(--sc-grey4);
             }
 
-            paper-slider {
-                animation-name: scaleIn;
-                animation: scaleIn 0.5s forwards;
-                @apply --filter-list;
+            .activity {
+                @apply --body-default;
+                color: var(--sc-grey2);
+            }
+
+            .sliderbox {
+                
+            }
+
+            @keyframes slideDown {
+                0% {
+                    transform: translateY(-80%);
+                }
+                100% {
+                    transform: translateY(0%);
+                }
             }
 
             @keyframes scaleIn {
@@ -61,18 +74,26 @@ The following custom properties and mixins are available for styling:
         <display-language language="{{language}}"></display-language>
 
         <div class="container">
-            <span class="toggle" on-click="_toggleSlider">{{localize('filter list')}}</span>
-<!--             <template is="dom-if" if="{{showSlider}}">
-                <p class="range-description">{{rangeDescription}}</p>
-                <paper-slider id="ratings" min="1" max="6" value="{{value}}" on-immediate-value-change="_calcRange" expand></paper-slider>
-            </template> -->
+            <template is="dom-if" if="{{toggle}}">
+                <div class="toggle" on-click="_toggleSlider">filter list</div>
+            </template>
+            <template is="dom-if" if="{{slider}}">
+                <div class="sliderbox">
+                    <span class="activity">Looking for hashtags...</span>
+                    <br>
+                    <span class="range-description">{{rangeDescription}}</span>
+                    <paper-slider id="ratings" min="1" max="6" value="{{value}}" on-immediate-value-change="_calcRange" expand></paper-slider>
+                </div>
+            </template>
+
+
         </div>
 
     </template>
     <script>
         class MyFilterList extends new ReduxMixin(Polymer.mixinBehaviors([
-                Polymer.AppLocalizeBehavior,
-            ],
+            Polymer.AppLocalizeBehavior,
+        ],
             Polymer.Element
         )) {
             static get is() {
@@ -97,6 +118,22 @@ The following custom properties and mixins are available for styling:
                         type: Boolean,
                         value: false,
                         notify: true,
+                    },
+                    /**
+                     * Selected if true shows the toggle text
+                     * @type {String}
+                     */
+                    toggle: {
+                        type: Boolean,
+                        value: false,
+                    },
+                    /**
+                     * Selected if true shows the slider
+                     * @type {String}
+                     */
+                    slider: {
+                        type: Boolean,
+                        value: false,
                     },
                     /**
                      * range is the range the user selected in slider
@@ -133,20 +170,21 @@ The following custom properties and mixins are available for styling:
                         observer: '_calcRange',
                     },
                     /**
-                     * showSlider determines of the slider is show or not
+                     * rangeDescription is the description of the range
+                     * @type {String}
+                     */
+                    rangeDescription: {
+                        type: String,
+                    },
+                    /**
+                     * showSlider determines if the slider is shown or not
                      * @type {Boolean}
                      */
                     showSlider: {
                         type: Boolean,
                         value: false,
                         observer: '_setDesc',
-                    },
-                    /**
-                     * rangeDescription is the description of the range
-                     * @type {String}
-                     */
-                    rangeDescription: {
-                        type: String,
+                        notify: true,
                     },
                 };
             }
@@ -157,7 +195,7 @@ The following custom properties and mixins are available for styling:
             }
 
             /**
-             * When the slider is shown se the default description
+             * When the slider is shown set the default description
              */
             _setDesc() {
                 this.rangeDescription = this.localize('world wide');
@@ -175,31 +213,28 @@ The following custom properties and mixins are available for styling:
                         this.range = 10000000000000000000;
                         break;
                     case (x < 3):
-                        this.rangeDescription = this.localize('within 1000km');
+                        this.rangeDescription = this.localize('within +/- 1000km from your location');
                         this.range = 1000000;
                         break;
                     case (x < 4):
-                        this.rangeDescription = this.localize('within 100km');
+                        this.rangeDescription = this.localize('within +/- 100km from your location');
                         this.range = 100000;
                         break;
                     case (x < 5):
-                        this.rangeDescription = this.localize('within 10km');
+                        this.rangeDescription = this.localize('within +/- 10km from your location');
                         this.range = 10000;
                         break;
                     case (x < 6):
-                        this.rangeDescription = this.localize('within 1km');
+                        this.rangeDescription = this.localize('within +/- 1km from your location');
                         this.range = 1000;
                         break;
                     case (x < 7):
-                        this.rangeDescription = this.localize('within 05km');
+                        this.rangeDescription = this.localize('within +/- 0.5km from your location');
                         this.range = 500;
                 }
             }
-
-            /**
-             * Show and hide the slider or redirect to location
-             */
             _toggleSlider() {
+
                 this.$.storage.accountExists()
                     .then((account) => {
                         if (!account.location) {
@@ -209,6 +244,7 @@ The following custom properties and mixins are available for styling:
                         }
                     });
             }
+
             /**
              * See if location has been added on route change
              */
