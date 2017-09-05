@@ -64,7 +64,6 @@ This code may only be used under the license found at https://github.com/swarmci
             .topright {
                 @apply --layout-end;
                 @apply --layout-vertical;
-                
             }
 
             .back {
@@ -81,15 +80,13 @@ This code may only be used under the license found at https://github.com/swarmci
                 --paper-slider-active-color: var(--sc-yellow);
                 cursor: pointer;
                 background-color: #f4f3f4;
+                z-index: 1;
             }
 
             display-hashtag-list {
-                margin-top: 112px;
+                margin-top: 152px;
             }
 
-            .pushdown {
-                height: 40px;
-            }
 
             .toggle {
                 cursor: pointer;
@@ -101,14 +98,23 @@ This code may only be used under the license found at https://github.com/swarmci
                 
             }
 
-            .container[wide-layout] .toggle {
+            .toggled {
+                color: white;
+                background-color: var(--sc-grey4);
+                border-bottom: 0;
+                padding: 0 2px;
+                
+            }
+            .faded {
+                opacity: 0.2;
+                
+            }
+            .container[wide-layout] #toggle {
                 margin-top: 59px;
             }
+
             .container[wide-layout] .slider {
                 top: 190px;
-            }
-            .container[wide-layout] .pushdown {
-                height: 50px;
             }
 
             .container[wide-layout] .header {
@@ -117,8 +123,8 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container[wide-layout] display-hashtag-list {
-                margin-top: 140px;
-            } 
+                margin-top: 190px;
+            }
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
@@ -129,15 +135,14 @@ This code may only be used under the license found at https://github.com/swarmci
                 </div>
                 <div class="topright">
                     <div class="back" on-click="_back"></div>
-                    <display-filter-list toggle on-click="toggle" class="toggle" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
+                    <display-filter-list toggle on-click="_toggleStyle" class="toggle" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}"
+                        path="{{path}}"></display-filter-list>
                 </div>
             </div>
-            <template is="dom-if" if="{{completeAccount}}">
-                <div class="pushdown"></div>
-            </template>
-            <teiron-collapse>
+            <template is="dom-if" if="{{showSlider}}">
                 <display-filter-list slider class="slider" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
-            </iron-collapse>
+            </template>
+            <div class="pushdown"></div>
             <display-hashtag-list id="list" range="[[range]]" path="{{path}}"></display-hashtag-list>
         </div>
     </template>
@@ -177,7 +182,7 @@ This code may only be used under the license found at https://github.com/swarmci
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
@@ -204,6 +209,10 @@ This code may only be used under the license found at https://github.com/swarmci
             connectedCallback() {
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
+            _toggleStyle() {
+                this.$$('.toggle').classList.toggle('toggled');
+                this.$.list.classList.toggle('faded');
             }
 
             /**
