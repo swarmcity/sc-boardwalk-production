@@ -216,6 +216,9 @@ The following custom properties and mixins are available for styling:
                         this.range = 500;
                 }
             }
+             /**
+             * Show and hide the slider or redirect to location
+             */
             _toggleSlider() {
                 this.$.storage.accountExists()
                     .then((account) => {

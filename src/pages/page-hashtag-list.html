@@ -95,7 +95,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 margin-bottom: 18px;
                 border-bottom: 2px dotted var(--sc-grey3);
                 margin-top: 41px;
-                
             }
 
             .toggled {
@@ -103,17 +102,18 @@ This code may only be used under the license found at https://github.com/swarmci
                 background-color: var(--sc-grey4);
                 border-bottom: 0;
                 padding: 0 2px;
-                
             }
+
             .faded {
                 opacity: 0.2;
-                
             }
-            .container[wide-layout] #toggle {
+
+            .container[wide-layout] .toggle {
                 margin-top: 59px;
             }
 
             .container[wide-layout] .slider {
+                padding: 0 10vw;
                 top: 190px;
             }
 
@@ -168,6 +168,11 @@ This code may only be used under the license found at https://github.com/swarmci
                         type: String,
                         observer: '_path',
                     },
+                    /**
+                     * completeAccount determines if an account is present 
+                     * in localstorage or not
+                     * @type {Boolean}
+                     */
                     completeAccount: {
                         type: Boolean,
                     },
@@ -210,9 +215,17 @@ This code may only be used under the license found at https://github.com/swarmci
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
+            /**
+             * changes styling according to slider visibility
+             */
             _toggleStyle() {
-                this.$$('.toggle').classList.toggle('toggled');
-                this.$.list.classList.toggle('faded');
+                if (this.showSlider) {
+                    this.$$('.toggle').classList.add('toggled');
+                    this.$.list.classList.add('faded');
+                } else {
+                    this.$$('.toggle').classList.remove('toggled');
+                    this.$.list.classList.remove('faded');
+                }
             }
 
             /**
