@@ -37,7 +37,10 @@
     "paper-styles": "1 - 2",
     "paper-behaviors": "1 - 2",
     "iron-checked-element-behavior": "1 - 2",
-    "paper-ripple": "1 - 2"
+    "paper-ripple": "1 - 2",
+    "iron-media-query": "^2.0.0",
+    "iron-scroll-target-behavior": "1 - 2",
+    "iron-location": "1 - 2"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0"
