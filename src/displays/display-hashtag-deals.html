@@ -325,6 +325,14 @@ The following custom properties and mixins are available for styling:
                         value: null,
                         notify: true,
                     },
+                    /**
+                     * showSlider determines of the slider is show or not
+                     * @type {Boolean}
+                     */
+                     showSlider: {
+                        type: Boolean,
+                        notify: true,
+                    },
                 };
             }
 
@@ -432,6 +440,7 @@ The following custom properties and mixins are available for styling:
             }
 
             _next() {
+                if (!this.showSlider) {
                 // stores the current hashtag choice in session
                 sessionStorage.setItem('hashtagID', this.routeData.page);
                 this.path = 'new-here/';
@@ -443,6 +452,10 @@ The following custom properties and mixins are available for styling:
                 } else {
                 this.path = 'new-deal/';
                 } */
+                } else {
+                    this.showSlider = !this.showSlider;
+                }
+
             }
         }
         window.customElements.define(DisplayHashtagDeals.is, DisplayHashtagDeals);

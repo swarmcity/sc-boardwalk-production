@@ -35,26 +35,58 @@ The following custom properties and mixins are available for styling:
                 display: block;
             }
 
-            .toggle {
-                @apply --small-bold;
-                color: var(--sc-grey3);
-                border-bottom: 2px dotted var(--sc-grey3);
-                cursor: pointer;
+            .togglebox {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-start;
+            }
+
+            .range-description {
+                @apply --body-default;
+                color: var(--sc-grey4);
+                margin-top: 5px;
+            }
+
+            .activity {
+                @apply --body-default;
+                color: var(--sc-grey2);
+            }
+
+            .sliderbox {
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-end;
+                margin-top: 20px;
+                width: 100%;
+                max-width: 800px;
             }
 
             paper-slider {
-                animation-name: scaleIn;
-                animation: scaleIn 0.5s forwards;
-                @apply --filter-list;
+                @apply --layout-flex;
+                --paper-slider-knob-color: var(--sc-yellow);
+                --paper-slider-active-color: var(--sc-yellow);
             }
 
-            @keyframes scaleIn {
-                0% {
-                    transform: scale(0, 0);
-                }
-                100% {
-                    transform: scale(1, 1);
-                }
+            .pin-icon {
+                @apply --locationmarker-grey4-small;
+            }
+
+            .globe-icon {
+                @apply --globe-grey4-small;
+            }
+
+            .arrowup-icon {
+
+
+
+                @apply --next-grey4-small;
+                cursor: pointer;
+            }
+
+            .arrowup {
+                width: 100%;
+                @apply --layout-horizontal;
+                @apply --layout-end-justified;
             }
         </style>
 
@@ -62,12 +94,26 @@ The following custom properties and mixins are available for styling:
         <display-language language="{{language}}"></display-language>
 
         <div class="container">
-            <span class="toggle" on-click="_toggleSlider">filter deals</span>
-<!--             <template is="dom-if" if="{{showSlider}}">
-                <p class="range-description">{{rangeDescription}}</p>
-                <paper-slider id="ratings" min="1" max="6" value="{{value}}" on-immediate-value-change="_calcRange" expand></paper-slider>
-            </template> -->
-        </div>
+                <template is="dom-if" if="{{toggle}}">
+                    <div class="toggle" on-click="_toggleSlider">filter deals</div>
+                </template>
+                <template is="dom-if" if="{{slider}}">
+                    <div class="togglebox">
+                        <div class="activity">Looking for deals...</div>
+                        <div class="range-description">within +/- 100km from your location</div>
+                        <div class="sliderbox">
+                            <div class="pin-icon"></div>
+                            <paper-slider .class="slider" min="1" max="6" value="{{value}}" on-immediate-value-change="_calcRange" expand></paper-slider>
+                            <div class="globe-icon"></div>
+                        </div>
+                        <div class="arrowup">
+                            <div class="arrowup-icon"></div>
+                        </div>
+                    </div>
+                </template>
+    
+    
+            </div>
 
     </template>
     <script>
@@ -98,6 +144,22 @@ The following custom properties and mixins are available for styling:
                         type: Boolean,
                         value: false,
                         notify: true,
+                    },
+                    /**
+                     * Selected if true shows the toggle text
+                     * @type {String}
+                     */
+                     toggle: {
+                        type: Boolean,
+                        value: false,
+                    },
+                    /**
+                     * Selected if true shows the slider
+                     * @type {String}
+                     */
+                     slider: {
+                        type: Boolean,
+                        value: false,
                     },
                     /**
                      * range is the range the user selected in slider
@@ -141,6 +203,7 @@ The following custom properties and mixins are available for styling:
                         type: Boolean,
                         value: false,
                         observer: '_setDesc',
+                        notify: true,
                     },
                     /**
                      * rangeDescription is the description of the range
@@ -168,7 +231,7 @@ The following custom properties and mixins are available for styling:
             /**
              * Determine what the selected range is
              */
-            _calcRange() {
+             _calcRange() {
                 const x = this.value;
                 switch (true) {
                     case (x < 2):
@@ -176,23 +239,28 @@ The following custom properties and mixins are available for styling:
                         this.range = 10000000000000000000;
                         break;
                     case (x < 3):
-                        this.rangeDescription = this.localize('within 1000km');
+                        this.rangeDescription =
+                            this.localize('within +/- 1000km from your location');
                         this.range = 1000000;
                         break;
                     case (x < 4):
-                        this.rangeDescription = this.localize('within 100km');
+                        this.rangeDescription =
+                            this.localize('within +/- 100km from your location');
                         this.range = 100000;
                         break;
                     case (x < 5):
-                        this.rangeDescription = this.localize('within 10km');
+                        this.rangeDescription =
+                            this.localize('within +/- 10km from your location');
                         this.range = 10000;
                         break;
                     case (x < 6):
-                        this.rangeDescription = this.localize('within 1km');
+                        this.rangeDescription =
+                            this.localize('within +/- 1km from your location');
                         this.range = 1000;
                         break;
                     case (x < 7):
-                        this.rangeDescription = this.localize('within 05km');
+                        this.rangeDescription =
+                            this.localize('within +/- 0.5km from your location');
                         this.range = 500;
                 }
             }
@@ -213,7 +281,7 @@ The following custom properties and mixins are available for styling:
             /**
              * See if location has been added on route change
              */
-            _routeChanged() {
+/*             _routeChanged() {
                 if (this.route.path == '/hashtag-list/') {
                     this.$.storage.accountExists()
                         .then((account) => {
@@ -222,7 +290,7 @@ The following custom properties and mixins are available for styling:
                             }
                         });
                 }
-            }
+            } */
         }
         window.customElements.define(MyFilterDeals.is, MyFilterDeals);
     </script>

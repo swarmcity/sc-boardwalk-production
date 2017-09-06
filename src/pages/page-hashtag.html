@@ -112,12 +112,24 @@ This code may only be used under the license found at https://github.com/swarmci
                 cursor: pointer;
             }
 
-            .filter {
+            .toggle {
                 @apply --small-bold;
                 color: var(--sc-grey3);
                 margin: 0px 0px 8px 10px;
                 border-bottom: 2px dotted var(--sc-grey3);
                 cursor: pointer;
+            }
+
+            .toggled {
+                color: white;
+                background-color: var(--sc-grey4);
+                border-bottom: 0;
+                padding: 1px 2px;
+            }
+
+            .faded {
+                
+                animation: fadeIn 0.1s forwards;
             }
 
             display-my-info {
@@ -157,6 +169,42 @@ This code may only be used under the license found at https://github.com/swarmci
                 right: 10vw;
                 top: 248px;
             }
+
+            .slider {
+                border-bottom: 1px solid black;
+                position: fixed;
+                top: 152px;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0 40px 2vh 40px;
+                background-color: #f4f3f4;
+                z-index: 1;
+                animation: slideDown 0.1s ease-out;
+            }
+
+            .container[wide-layout] .slider {
+                
+                padding: 0 10vw 2vh 10vw;
+                top: 206px;
+            }
+
+            @keyframes slideDown {
+                0% {
+                    transform: translateY(-80%);
+                }
+                100% {
+                    transform: translateY(0%);
+                }
+            }
+
+            @keyframes fadeIn {
+                0% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0.2;
+                }
+            }
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
@@ -172,20 +220,15 @@ This code may only be used under the license found at https://github.com/swarmci
                     <div class="leftbottom">
                         <div class="hashtag">#{{hashtag.name}}</div>
                         <div class="about" on-click="_toggle">i</div>
-                        <!-- <display-hashtag-about hashtag="[[hashtag]]"></display-hashtag-about> -->
                     </div>
-                    <div class="filter" on-click="_toggle">filter deals</div>
-                    <!-- <display-filter-deals range="{{range}}" path="{{path}}"></display-filter-deals> -->
+                    <display-filter-deals toggle class="toggle" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-deals>
                 </div>
             </div>
-            <template is="dom-if" if="{{completeAccount}}">
-                <div class="pushdown"></div>
-            </template>
-            <display-hashtag-deals range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}"></display-hashtag-deals>
-            <div class="dealbtn">
-                <template is="dom-if" if="{{completeAccount}}">
-                    <div class="pushdown"></div>
+            <template is="dom-if" if="{{showSlider}}">
+                    <display-filter-list slider class="slider" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
                 </template>
+            <display-hashtag-deals id="list" range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}" show-slider="{{showSlider}}"></display-hashtag-deals>
+            <div class="dealbtn">
                 <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn>
             </div>
         </div>
@@ -214,6 +257,14 @@ This code may only be used under the license found at https://github.com/swarmci
                     path: {
                         type: String,
                         observer: '_path',
+                    },
+                                        /**
+                     * showSlider determines of the slider is show or not
+                     * @type {Boolean}
+                     */
+                     showSlider: {
+                        type: Boolean,
+                        observer: '_toggleStyle',
                     },
                     /**
                      * Entry and exit animation
@@ -256,6 +307,18 @@ This code may only be used under the license found at https://github.com/swarmci
                     this.set('route.path', this.path);
                 }
                 this.path = null;
+            }
+            /**
+             * changes styling according to slider visibility
+             */
+             _toggleStyle() {
+                if (this.showSlider) {
+                    this.$$('.toggle').classList.add('toggled');
+                    this.$.list.classList.add('faded');
+                } else {
+                    this.$$('.toggle').classList.remove('toggled');
+                    this.$.list.classList.remove('faded');
+                }
             }
 
             /**
