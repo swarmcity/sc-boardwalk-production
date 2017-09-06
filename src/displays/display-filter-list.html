@@ -34,15 +34,59 @@ The following custom properties and mixins are available for styling:
              :host {
                 display: block;
             }
-            
+
+            .togglebox {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-start;
+            }
+
             .range-description {
                 @apply --body-default;
                 color: var(--sc-grey4);
+                margin-top: 5px;
             }
 
             .activity {
                 @apply --body-default;
                 color: var(--sc-grey2);
+            }
+
+            .sliderbox {
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-end;
+                margin-top: 20px;
+                width: 100%;
+                max-width: 800px;
+            }
+
+            paper-slider {
+                @apply --layout-flex;
+                --paper-slider-knob-color: var(--sc-yellow);
+                --paper-slider-active-color: var(--sc-yellow);
+            }
+
+            .pin-icon {
+                @apply --locationmarker-grey4-small;
+            }
+
+            .globe-icon {
+                @apply --globe-grey4-small;
+            }
+
+            .arrowup-icon {
+
+
+
+                @apply --next-grey4-small;
+                cursor: pointer;
+            }
+
+            .arrowup {
+                width: 100%;
+                @apply --layout-horizontal;
+                @apply --layout-end-justified;
             }
         </style>
 
@@ -54,12 +98,18 @@ The following custom properties and mixins are available for styling:
                 <div class="toggle" on-click="_toggleSlider">filter list</div>
             </template>
             <template is="dom-if" if="{{slider}}">
-
-                <span class="activity">Looking for hashtags...</span>
-                <br>
-                <span class="range-description">{{rangeDescription}}</span>
-                <paper-slider id="ratings" min="1" max="6" value="{{value}}" on-immediate-value-change="_calcRange" expand></paper-slider>
-
+                <div class="togglebox">
+                    <div class="activity">Looking for hashtags...</div>
+                    <div class="range-description">within +/- 100km from your location</div>
+                    <div class="sliderbox">
+                        <div class="pin-icon"></div>
+                        <paper-slider .class="slider" min="1" max="6" value="{{value}}" on-immediate-value-change="_calcRange" expand></paper-slider>
+                        <div class="globe-icon"></div>
+                    </div>
+                    <div class="arrowup">
+                        <div class="arrowup-icon"></div>
+                    </div>
+                </div>
             </template>
 
 
@@ -214,9 +264,9 @@ The following custom properties and mixins are available for styling:
                         this.range = 500;
                 }
             }
-             /**
-             * Show and hide the slider or redirect to location
-             */
+            /**
+            * Show and hide the slider or redirect to location
+            */
             _toggleSlider() {
                 this.$.storage.accountExists()
                     .then((account) => {
