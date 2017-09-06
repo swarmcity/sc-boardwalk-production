@@ -52,7 +52,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 position: fixed;
                 top: 0;
                 width: 100%;
-                
+
                 z-index: 1;
             }
 
@@ -83,22 +83,29 @@ This code may only be used under the license found at https://github.com/swarmci
                 cursor: pointer;
                 background-color: #f4f3f4;
                 z-index: 1;
-                animation: slideDown 0.2s forwards; 
-                
+                animation: slideDown 0.2s forwards;
             }
 
-            @keyframes slideDown { 
-                0% { 
-                    transform: translateY(-80%); 
-                } 
-                100% { 
-                    transform: translateY(0%); 
-                } 
-            } 
+            @keyframes slideDown {
+                0% {
+                    transform: translateY(-80%);
+                }
+                100% {
+                    transform: translateY(0%);
+                }
+            }
+
+            @keyframes fadeIn {
+                0% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0.2;
+                }
+            }
 
             display-hashtag-list {
                 margin-top: 152px;
-                
             }
 
 
@@ -119,8 +126,8 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .faded {
-                opacity: 0.2;
                 
+                animation: fadeIn 0.1s forwards;
             }
 
             .container[wide-layout] .toggle {
@@ -135,7 +142,6 @@ This code may only be used under the license found at https://github.com/swarmci
             .container[wide-layout] .header {
                 box-sizing: border-box;
                 padding: 60px 10vw 0 10vw;
-                
             }
 
             .container[wide-layout] display-hashtag-list {
@@ -151,8 +157,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 </div>
                 <div class="topright">
                     <div class="back" on-click="_back"></div>
-                    <display-filter-list toggle on-click="_toggleStyle" class="toggle" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}"
-                        path="{{path}}"></display-filter-list>
+                    <display-filter-list toggle class="toggle" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
                 </div>
             </div>
             <template is="dom-if" if="{{showSlider}}">
@@ -198,12 +203,13 @@ This code may only be used under the license found at https://github.com/swarmci
                      */
                     showSlider: {
                         type: Boolean,
+                        observer: '_toggleStyle',
                     },
                     /**
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
