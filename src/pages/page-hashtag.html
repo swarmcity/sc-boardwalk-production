@@ -55,6 +55,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 position: fixed;
                 top: 0;
                 width: 100%;
+                z-index: 2;
             }
 
             .top {
@@ -101,18 +102,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --arrowleft-grey3-small;
             }
 
-            .about {
-
-                @apply --small-bold;
-                color: var(--sc-blue);
-                border-bottom: 2px dotted var(--sc-blue);
-
+            .info-toggle {
                 margin: 0px 0px 8px 10px;
-
-                cursor: pointer;
             }
 
-            .toggle {
+            .filter-toggle {
                 @apply --small-bold;
                 color: var(--sc-grey3);
                 margin: 0px 0px 8px 10px;
@@ -120,7 +114,14 @@ This code may only be used under the license found at https://github.com/swarmci
                 cursor: pointer;
             }
 
-            .toggled {
+            .show-info {
+                color: white;
+                background-color: var(--sc-blue);
+                border-bottom: 0;
+                padding: 1px 2px;
+            }
+
+            .show-filter {
                 color: white;
                 background-color: var(--sc-grey4);
                 border-bottom: 0;
@@ -128,19 +129,13 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .faded {
-                
+
                 animation: fadeIn 0.1s forwards;
             }
 
             display-my-info {
                 @apply --layout-flex;
             }
-
-            display-filter-deals {
-                margin-top: 10px;
-            }
-
-
 
             display-hashtag-deals {
                 margin: 184px 0 0 0;
@@ -153,10 +148,11 @@ This code may only be used under the license found at https://github.com/swarmci
             .container[wide-layout] display-hashtag-deals {
                 margin-top: 206px;
             }
+
             .container[wide-layout] .top {
                 height: 42px;
-            
             }
+
             .dealbtn {
 
                 position: fixed;
@@ -173,17 +169,33 @@ This code may only be used under the license found at https://github.com/swarmci
             .slider {
                 border-bottom: 1px solid black;
                 position: fixed;
-                top: 152px;
+                top: 184px;
                 width: 100%;
                 box-sizing: border-box;
                 padding: 0 40px 2vh 40px;
-                background-color: #f4f3f4;
+                background-color: var(--sc-grey1);
+                z-index: 1;
+                animation: slideDown 0.1s ease-out;
+            }
+
+            .info {
+                border-bottom: 1px solid var(--sc-blue);
+                position: fixed;
+                top: 184px;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0 40px 2vh 40px;
+                background-color: var(--sc-grey1);
                 z-index: 1;
                 animation: slideDown 0.1s ease-out;
             }
 
             .container[wide-layout] .slider {
-                
+                padding: 0 10vw 2vh 10vw;
+                top: 206px;
+            }
+
+            .container[wide-layout] .info {
                 padding: 0 10vw 2vh 10vw;
                 top: 206px;
             }
@@ -219,30 +231,31 @@ This code may only be used under the license found at https://github.com/swarmci
                 <div class="bottom">
                     <div class="leftbottom">
                         <div class="hashtag">#{{hashtag.name}}</div>
-                        <div class="about" on-click="_toggle">i</div>
+                        <display-hashtag-about toggle class="info-toggle" show-info="{{showInfo}}"></display-hashtag-about>
                     </div>
-                    <display-filter-deals toggle class="toggle" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-deals>
+                    <display-filter-deals toggle class="filter-toggle" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-deals>
                 </div>
             </div>
+            <template is="dom-if" if="{{showInfo}}">
+                <display-hashtag-about info class="info"></display-hashtag-about>
+            </template>
             <template is="dom-if" if="{{showSlider}}">
-                    <display-filter-list slider class="slider" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
-                </template>
-            <display-hashtag-deals id="list" range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}" show-slider="{{showSlider}}"></display-hashtag-deals>
+                <display-filter-deals slider class="slider" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-deals>
+            </template>
+            <display-hashtag-deals id="list" range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}" show-slider="{{showSlider}}" show-info="{{showInfo}}"></display-hashtag-deals>
             <div class="dealbtn">
                 <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn>
             </div>
         </div>
 
-
-
     </template>
 
     <script>
         class NewHashtag extends new ReduxMixin(Polymer.mixinBehaviors([
-                Polymer.AppLocalizeBehavior,
-                Polymer.NeonAnimationRunnerBehavior,
-                Polymer.NeonAnimatableBehavior,
-            ],
+            Polymer.AppLocalizeBehavior,
+            Polymer.NeonAnimationRunnerBehavior,
+            Polymer.NeonAnimatableBehavior,
+        ],
             Polymer.Element
         )) {
             static get is() {
@@ -258,19 +271,27 @@ This code may only be used under the license found at https://github.com/swarmci
                         type: String,
                         observer: '_path',
                     },
-                                        /**
+                    /**
                      * showSlider determines of the slider is show or not
                      * @type {Boolean}
                      */
-                     showSlider: {
+                    showSlider: {
                         type: Boolean,
-                        observer: '_toggleStyle',
+                        observer: '_toggle',
+                    },
+                    /**
+                     * showInfo indicates if the hashtag info panel is open or not
+                     * @type {Boolean}
+                     */
+                     showInfo: {
+                        type: Boolean,
+                        observer: '_toggle',
                     },
                     /**
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
@@ -311,12 +332,20 @@ This code may only be used under the license found at https://github.com/swarmci
             /**
              * changes styling according to slider visibility
              */
-             _toggleStyle() {
+            _toggle() {
                 if (this.showSlider) {
-                    this.$$('.toggle').classList.add('toggled');
+                    this.showInfo = false;
+                    this.$$('.filter-toggle').classList.add('show-filter');
                     this.$.list.classList.add('faded');
-                } else {
-                    this.$$('.toggle').classList.remove('toggled');
+                }
+                if (this.showInfo) {
+                    this.showSlider = false;
+                    this.$$('.info-toggle').classList.add('show-info');
+                    this.$.list.classList.add('faded');
+                } 
+                else {
+                    this.$$('.filter-toggle').classList.remove('show-filter');
+                    this.$$('.info-toggle').classList.remove('show-info');
                     this.$.list.classList.remove('faded');
                 }
             }

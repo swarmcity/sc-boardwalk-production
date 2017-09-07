@@ -91,32 +91,32 @@ The following custom properties and mixins are available for styling:
         <display-language language="{{language}}"></display-language>
 
         <div class="container">
-                <template is="dom-if" if="{{toggle}}">
-                    <div class="toggle" on-click="_toggleSlider">filter deals</div>
-                </template>
-                <template is="dom-if" if="{{slider}}">
-                    <div class="togglebox">
-                        <div class="activity">Looking for deals...</div>
-                        <div class="range-description">within +/- 100km from your location</div>
-                        <div class="sliderbox">
-                            <div class="pin-icon"></div>
-                            <paper-slider .class="slider" min="1" max="6" value="{{value}}" on-immediate-value-change="_calcRange" expand></paper-slider>
-                            <div class="globe-icon"></div>
-                        </div>
-                        <div class="arrowup">
-                            <div class="arrowup-icon"></div>
-                        </div>
+            <template is="dom-if" if="{{toggle}}">
+                <div class="toggle" on-click="_toggleSlider">filter deals</div>
+            </template>
+            <template is="dom-if" if="{{slider}}">
+                <div class="togglebox">
+                    <div class="activity">Looking for deals...</div>
+                    <div class="range-description">within +/- 100km from your location</div>
+                    <div class="sliderbox">
+                        <div class="pin-icon"></div>
+                        <paper-slider .class="slider" min="1" max="6" value="{{value}}" on-immediate-value-change="_calcRange" expand></paper-slider>
+                        <div class="globe-icon"></div>
                     </div>
-                </template>
-    
-    
-            </div>
+                    <div class="arrowup">
+                        <div class="arrowup-icon"></div>
+                    </div>
+                </div>
+            </template>
+
+
+        </div>
 
     </template>
     <script>
         class MyFilterDeals extends new ReduxMixin(Polymer.mixinBehaviors([
-                Polymer.AppLocalizeBehavior,
-            ],
+            Polymer.AppLocalizeBehavior,
+        ],
             Polymer.Element
         )) {
             static get is() {
@@ -146,7 +146,7 @@ The following custom properties and mixins are available for styling:
                      * Selected if true shows the toggle text
                      * @type {String}
                      */
-                     toggle: {
+                    toggle: {
                         type: Boolean,
                         value: false,
                     },
@@ -154,7 +154,7 @@ The following custom properties and mixins are available for styling:
                      * Selected if true shows the slider
                      * @type {String}
                      */
-                     slider: {
+                    slider: {
                         type: Boolean,
                         value: false,
                     },
@@ -228,7 +228,7 @@ The following custom properties and mixins are available for styling:
             /**
              * Determine what the selected range is
              */
-             _calcRange() {
+            _calcRange() {
                 const x = this.value;
                 switch (true) {
                     case (x < 2):
@@ -278,16 +278,16 @@ The following custom properties and mixins are available for styling:
             /**
              * See if location has been added on route change
              */
-/*             _routeChanged() {
-                if (this.route.path == '/hashtag-list/') {
-                    this.$.storage.accountExists()
-                        .then((account) => {
-                            if (account.location) {
-                                this.showSlider = !this.showSlider;
+            /*             _routeChanged() {
+                            if (this.route.path == '/hashtag-list/') {
+                                this.$.storage.accountExists()
+                                    .then((account) => {
+                                        if (account.location) {
+                                            this.showSlider = !this.showSlider;
+                                        }
+                                    });
                             }
-                        });
-                }
-            } */
+                        } */
         }
         window.customElements.define(MyFilterDeals.is, MyFilterDeals);
     </script>
