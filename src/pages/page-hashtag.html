@@ -36,17 +36,15 @@ This code may only be used under the license found at https://github.com/swarmci
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
 -->
         <style include="shared-styles">
-             :host {
+            :host {
                 width: 100vw;
                 display: block;
             }
-
             .container {
                 width: 100%;
                 min-height: 100vh;
                 background-color: rgba(250, 250, 250, 0.7);
             }
-
             .header {
                 @apply --layout-vertical;
                 background-color: var(--sc-grey1);
@@ -57,12 +55,10 @@ This code may only be used under the license found at https://github.com/swarmci
                 width: 100%;
                 z-index: 2;
             }
-
             .top {
                 @apply --layout-horizontal;
                 height: 50px;
             }
-
             .bottom {
                 @apply --layout-end;
                 @apply --layout-horizontal;
@@ -70,16 +66,13 @@ This code may only be used under the license found at https://github.com/swarmci
                 width: 100%;
                 margin-bottom: 18px;
             }
-
             .container .bottom {
                 margin-bottom: 28px;
             }
-
             .container[wide-layout] .header {
                 box-sizing: border-box;
                 padding: 60px 10vw 0 10vw;
             }
-
             .leftbottom {
                 margin-top: 30px;
                 @apply --layout-horizontal;
@@ -87,21 +80,17 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-start-justified;
                 @apply --layout-end;
             }
-
             .container[wide-layout] .leftbottom {
                 margin-top: 40px;
             }
-
             .hashtag {
                 @apply --main-title2;
                 color: var(--sc-grey4);
             }
-
             .back {
                 cursor: pointer;
                 @apply --arrowleft-grey3-small;
             }
-
             .info-toggle {
                 @apply --small-bold;
                 color: var(--sc-blue);
@@ -110,7 +99,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 margin: 0px 0px 8px 10px;
                 padding: 1px 3px;
             }
-
             .filter-toggle {
                 @apply --small-bold;
                 color: var(--sc-grey3);
@@ -118,60 +106,47 @@ This code may only be used under the license found at https://github.com/swarmci
                 border-bottom: 2px dotted var(--sc-grey3);
                 cursor: pointer;
             }
-
             .show-info {
                 color: white;
                 background-color: var(--sc-blue);
                 border-bottom: 0;
                 padding: 1px 3px;
             }
-
             .show-filter {
                 color: white;
                 background-color: var(--sc-grey4);
                 border-bottom: 0;
                 padding: 1px 2px;
             }
-
             .faded {
-
                 animation: fadeIn 0.3s forwards;
             }
-
             display-my-info {
                 @apply --layout-flex;
             }
-
             display-hashtag-deals {
                 margin: 184px 0 0 0;
             }
-
             .container[wide-layout] .pushdown {
                 height: 14px;
             }
-
             .container[wide-layout] display-hashtag-deals {
                 margin-top: 206px;
             }
-
             .container[wide-layout] .top {
                 height: 42px;
             }
-
             .dealbtn {
-
                 position: fixed;
                 bottom: 50px;
                 right: 30px;
             }
-
             .container[wide-layout] .dealbtn {
                 bottom: auto;
                 right: 10vw;
                 top: 248px;
             }
-
-            .slider {
+            .slider{
                 border-bottom: 1px solid black;
                 position: fixed;
                 top: 184px;
@@ -180,9 +155,16 @@ This code may only be used under the license found at https://github.com/swarmci
                 padding: 0 40px 2vh 40px;
                 background-color: var(--sc-grey1);
                 z-index: 1;
-                animation: slideDown 0.1s ease-out;
             }
-
+            .slider-hidden-visable {
+                animation: slideDown 0.3s cubic-bezier(0.68, -0.55, 0.265, 1) forwards;
+            }
+            .slider-visable-hidden{
+                animation: slideUp 0.3s cubic-bezier(0.68, -0.55, 0.265, 1) forwards;
+            }
+            .slider-hidden {
+                display: none;
+            }
             .info {
                 border-bottom: 2px solid var(--sc-blue);
                 position: fixed;
@@ -194,17 +176,22 @@ This code may only be used under the license found at https://github.com/swarmci
                 z-index: 1;
                 animation: slideDown 0.1s ease-out;
             }
-
             .container[wide-layout] .slider {
                 padding: 0 10vw 2vh 10vw;
                 top: 206px;
             }
-
             .container[wide-layout] .info {
                 padding: 0 10vw 2vh 10vw;
                 top: 206px;
             }
-
+            @keyframes slideUp {
+                0% {
+                    transform: translateY(0%);
+                }
+                100% {
+                    transform: translateY(-80%);
+                }
+            }
             @keyframes slideDown {
                 0% {
                     transform: translateY(-80%);
@@ -213,7 +200,6 @@ This code may only be used under the license found at https://github.com/swarmci
                     transform: translateY(0%);
                 }
             }
-
             @keyframes fadeIn {
                 0% {
                     opacity: 0.5;
@@ -226,12 +212,13 @@ This code may only be used under the license found at https://github.com/swarmci
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
         <app-route route="{{route}}" pattern="/hashtag/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+        
         <div class="container" wide-layout$="{{wide}}">
+
             <div class="header">
                 <div class="top">
                     <display-my-info complete-account="{{completeAccount}}"></display-my-info>
                     <div class="back" on-click="_back"></div>
-
                 </div>
                 <div class="bottom">
                     <div class="leftbottom">
@@ -241,17 +228,21 @@ This code may only be used under the license found at https://github.com/swarmci
                     <display-filter-deals toggle class="filter-toggle" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-deals>
                 </div>
             </div>
+
             <template is="dom-if" if="{{showInfo}}">
                 <display-hashtag-about info class="info"></display-hashtag-about>
             </template>
-            <template is="dom-if" if="{{showSlider}}">
-                <display-filter-deals slider class="slider" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-deals>
-            </template>
+
+            <display-filter-deals slider class$="slider [[sliderState]]" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-deals>
+
             <display-hashtag-deals id="list" range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}" show-slider="{{showSlider}}"
-                show-info="{{showInfo}}"></display-hashtag-deals>
+                show-info="{{showInfo}}">
+            </display-hashtag-deals>
+
             <div class="dealbtn">
                 <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn>
             </div>
+
         </div>
 
     </template>
@@ -270,32 +261,40 @@ This code may only be used under the license found at https://github.com/swarmci
             static get properties() {
                 return {
                     /**
-                     * Path is the current or requested path
-                     * @type {String}
-                     */
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                     * showSlider determines of the slider is show or not
-                     * @type {Boolean}
-                     */
+                    * sliderState represents the state of the slider
+                    * @type {String}
+                    */
+                    sliderState: {
+                        type: String,
+                        value: 'slider-hidden'
+                    },
+                    /**
+                    * showSlider determines of the slider is show or not
+                    * @type {Boolean}
+                    */
                     showSlider: {
                         type: Boolean,
-                        observer: '_toggle',
+                        observer: '_toggleSlider',
                     },
                     /**
-                     * showInfo indicates if the hashtag info panel is open or not
-                     * @type {Boolean}
-                     */
+                    * showInfo indicates if the hashtag info panel is open or not
+                    * @type {Boolean}
+                    */
                     showInfo: {
                         type: Boolean,
-                        observer: '_toggle',
+                        observer: '_toggleInfo',
                     },
                     /**
-                     * Entry and exit animation
-                     */
+                    * Entry and exit animation
+                    */
                     animationConfig: {
                         value: function() {
                             return {
@@ -327,8 +326,8 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             /**
-             * changes the current path
-             */
+            * changes the current path
+            */
             _path() {
                 if (this.path != null) {
                     this.set('route.path', this.path);
@@ -336,9 +335,27 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
             /**
-             * changes styling according to slider visibility
-             */
+            * shows and hides the slider
+            */
+            _toggleSlider(){
+                switch (this.sliderState) {
+                    case 'slider-hidden':
+                        this.sliderState = 'slider-hidden-visable';
+                        break;
+                    case 'slider-hidden-visable':
+                        this.sliderState = 'slider-visable-hidden';
+                        break;
+                    case 'slider-visable-hidden':
+                        this.sliderState = 'slider-hidden-visable';
+                        break;
+
+                }
+            }
+            /**
+            * changes styling according to slider visibility
+            */
             _toggle() {
+                console.log("TOGLE");
                 if (this.showSlider || this.showInfo) {
                     this.$.list.classList.add('faded');
                     if (this.showSlider) {
@@ -354,15 +371,15 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             /**
-             * takes the user to the hashtag list page
-             */
+            * takes the user to the hashtag list page
+            */
             _back() {
                 this.path = 'hashtag-list/';
             }
 
             /**
-             * takes the user to the welcome page
-             */
+            * takes the user to the welcome page
+            */
             _toWelcome() {
                 this.set('route.path', 'welcome/');
             }

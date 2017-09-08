@@ -31,7 +31,7 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-filter-deals">
     <template>
         <style>
-             :host {
+            :host {
                 display: block;
             }
 
@@ -125,77 +125,77 @@ The following custom properties and mixins are available for styling:
             static get properties() {
                 return {
                     /**
-                     * Language is the users selected or determined language
-                     * @type {String}
-                     */
+                    * Language is the users selected or determined language
+                    * @type {String}
+                    */
                     language: {
                         type: String,
                         statePath: 'language',
                         observer: '_calcRange',
                     },
                     /**
-                     * Loading indicates if the componant is loading
-                     * @type {Boolean}
-                     */
+                    * Loading indicates if the componant is loading
+                    * @type {Boolean}
+                    */
                     loading: {
                         type: Boolean,
                         value: false,
                         notify: true,
                     },
                     /**
-                     * Selected if true shows the toggle text
-                     * @type {String}
-                     */
+                    * Selected if true shows the toggle text
+                    * @type {String}
+                    */
                     toggle: {
                         type: Boolean,
                         value: false,
                     },
                     /**
-                     * Selected if true shows the slider
-                     * @type {String}
-                     */
+                    * Selected if true shows the slider
+                    * @type {String}
+                    */
                     slider: {
                         type: Boolean,
                         value: false,
                     },
                     /**
-                     * range is the range the user selected in slider
-                     * @type {Number}
-                     */
+                    * range is the range the user selected in slider
+                    * @type {Number}
+                    */
                     range: {
                         type: Number,
                         notify: true,
                     },
                     /**
-                     * Path signlas to the parent to change the path
-                     * @type {String}
-                     */
+                    * Path signlas to the parent to change the path
+                    * @type {String}
+                    */
                     path: {
                         type: String,
                         value: null,
                         notify: true,
                     },
                     /**
-                     * Route represents the current route
-                     * @type {Object}
-                     */
+                    * Route represents the current route
+                    * @type {Object}
+                    */
                     route: {
                         type: Object,
                         observer: '_routeChanged',
                     },
                     /**
-                     * Value is the value of the slider
-                     * @type {Number}
-                     */
+                    * Value is the value of the slider
+                    * @type {Number}
+                    */
                     value: {
                         type: Number,
                         value: 0,
                         observer: '_calcRange',
                     },
                     /**
-                     * showSlider determines of the slider is show or not
-                     * @type {Boolean}
-                     */
+                    * showSlider determines of the slider is show or not
+                    * @type {Boolean}
+                    */
                     showSlider: {
                         type: Boolean,
                         value: false,
@@ -203,9 +203,9 @@ The following custom properties and mixins are available for styling:
                         notify: true,
                     },
                     /**
-                     * rangeDescription is the description of the range
-                     * @type {String}
-                     */
+                    * rangeDescription is the description of the range
+                    * @type {String}
+                    */
                     rangeDescription: {
                         type: String,
                     },
@@ -218,16 +218,16 @@ The following custom properties and mixins are available for styling:
             }
 
             /**
-             * When the slider is shown se the default description
-             */
+            * When the slider is shown se the default description
+            */
             _setDesc() {
                 this.rangeDescription = this.localize('world wide');
                 this.value = 1;
             }
 
             /**
-             * Determine what the selected range is
-             */
+            * Determine what the selected range is
+            */
             _calcRange() {
                 const x = this.value;
                 switch (true) {
@@ -263,8 +263,8 @@ The following custom properties and mixins are available for styling:
             }
 
             /**
-             * Show and hide the slider or redirect to location
-             */
+            * Show and hide the slider or redirect to location
+            */
             _toggleSlider() {
                 this.$.storage.accountExists()
                     .then((account) => {
@@ -275,19 +275,7 @@ The following custom properties and mixins are available for styling:
                         }
                     });
             }
-            /**
-             * See if location has been added on route change
-             */
-            /*             _routeChanged() {
-                            if (this.route.path == '/hashtag-list/') {
-                                this.$.storage.accountExists()
-                                    .then((account) => {
-                                        if (account.location) {
-                                            this.showSlider = !this.showSlider;
-                                        }
-                                    });
-                            }
-                        } */
+
         }
         window.customElements.define(MyFilterDeals.is, MyFilterDeals);
     </script>
