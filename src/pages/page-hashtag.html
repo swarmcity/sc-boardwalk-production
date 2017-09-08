@@ -97,7 +97,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 border-bottom: 2px dotted var(--sc-blue);
                 cursor: pointer;
                 margin: 0px 0px 8px 10px;
-                padding: 1px 3px;
             }
             .filter-toggle {
                 @apply --small-bold;
@@ -110,7 +109,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 color: white;
                 background-color: var(--sc-blue);
                 border-bottom: 0;
-                padding: 1px 3px;
             }
             .show-filter {
                 color: white;
@@ -197,7 +195,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     transform: translateY(0%);
                 }
                 100% {
-                    transform: translateY(-80%);
+                    transform: translateY(-110%);
                 }
             }
             @keyframes slideDown {
@@ -214,12 +212,12 @@ This code may only be used under the license found at https://github.com/swarmci
                     transform: translateY(0%);
                 }
                 100% {
-                    transform: translateY(-100%);
+                    transform: translateY(-110%);
                 }
             }
             @keyframes infoDown {
                 0% {
-                    transform: translateY(-100%);
+                    transform: translateY(-80%);
                 }
                 100% {
                     transform: translateY(0%);
@@ -371,28 +369,34 @@ This code may only be used under the license found at https://github.com/swarmci
                 switch (this.sliderState) {
                     case 'slider-hidden':
                         this.sliderState = 'slider-hidden-visable';
+                        this.$$('.filter-toggle').classList.add('show-filter');
                         break;
                     case 'slider-hidden-visable':
                         this.sliderState = 'slider-visable-hidden';
+                        this.$$('.filter-toggle').classList.remove('show-filter');
                         break;
                     case 'slider-visable-hidden':
                         this.sliderState = 'slider-hidden-visable';
+                        this.$$('.filter-toggle').classList.add('show-filter');
                 }
             }
             /**
             * shows and hides the info box
             */
             _toggleInfo() {
-                console.log('ddd')
+                console.log('ddd');
                 switch (this.infoState) {
                     case 'info-hidden':
                         this.infoState = 'info-hidden-visable';
+                        this.$$('.info-toggle').classList.add('show-info');
                         break;
                     case 'info-hidden-visable':
                         this.infoState = 'info-visable-hidden';
+                        this.$$('.info-toggle').classList.remove('show-info');
                         break;
                     case 'info-visable-hidden':
                         this.infoState = 'info-hidden-visable';
+                        this.$$('.info-toggle').classList.add('show-info');
                 }
             }
 
