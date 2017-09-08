@@ -69,6 +69,9 @@ The following custom properties and mixins are available for styling:
                 margin-top: 8px;
             }
 
+            .toggle {
+                padding: 1px 3px;
+            }
             .links {
                 @apply --small-bold;
                 color: var(--sc-blue);
@@ -87,7 +90,7 @@ The following custom properties and mixins are available for styling:
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <div class="container" wide-layout$="{{wide}}">
             <template is="dom-if" if="{{toggle}}">
-                <div on-click="_toggle">i</div>
+                <div class="toggle" on-click="_toggle">i</div>
             </template>
             <template is="dom-if" if="{{info}}">
                 <div>
