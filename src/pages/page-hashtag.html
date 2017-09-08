@@ -155,7 +155,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 z-index: 1;
             }
             .slider-hidden-visable {
-                animation: slideDown 0.3s cubic-bezier(0.68, -0.55, 0.265, 1) forwards;
+                animation: slideDown 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
             }
             .slider-visable-hidden{
                 animation: slideUp 0.3s cubic-bezier(0.68, -0.55, 0.265, 1) forwards;
@@ -370,33 +370,38 @@ This code may only be used under the license found at https://github.com/swarmci
                     case 'slider-hidden':
                         this.sliderState = 'slider-hidden-visable';
                         this.$$('.filter-toggle').classList.add('show-filter');
+                        this.$.list.classList.add('faded');
                         break;
                     case 'slider-hidden-visable':
                         this.sliderState = 'slider-visable-hidden';
                         this.$$('.filter-toggle').classList.remove('show-filter');
+                        this.$.list.classList.remove('faded');
                         break;
                     case 'slider-visable-hidden':
                         this.sliderState = 'slider-hidden-visable';
                         this.$$('.filter-toggle').classList.add('show-filter');
+                        this.$.list.classList.add('faded');
                 }
             }
             /**
             * shows and hides the info box
             */
             _toggleInfo() {
-                console.log('ddd');
                 switch (this.infoState) {
                     case 'info-hidden':
                         this.infoState = 'info-hidden-visable';
                         this.$$('.info-toggle').classList.add('show-info');
+                        this.$.list.classList.add('faded');
                         break;
                     case 'info-hidden-visable':
                         this.infoState = 'info-visable-hidden';
                         this.$$('.info-toggle').classList.remove('show-info');
+                        this.$.list.classList.remove('faded');
                         break;
                     case 'info-visable-hidden':
                         this.infoState = 'info-hidden-visable';
                         this.$$('.info-toggle').classList.add('show-info');
+                        this.$.list.classList.add('faded');
                 }
             }
 
