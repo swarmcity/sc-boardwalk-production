@@ -81,7 +81,35 @@ This code may only be used under the license found at https://github.com/swarmci
                 padding: 0 40px 2vh 40px;
                 background-color: #f4f3f4;
                 z-index: 1;
-                animation: slideDown 0.1s ease-out;
+            }
+
+            .slider-hidden-visible {
+                animation: slideDown 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
+            }
+
+            .slider-visible-hidden {
+                animation: slideUp 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
+            }
+
+            .slider-hidden {
+                display: none;
+            }
+
+            .fade-hidden-visible {
+                animation: fadeIn 0.1s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
+            }
+
+            .fade-visible-hidden {
+                animation: fadeOut 0.1s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
+            }
+
+            @keyframes slideUp {
+                0% {
+                    transform: translateY(0%);
+                }
+                100% {
+                    transform: translateY(-110%);
+                }
             }
 
             @keyframes slideDown {
@@ -95,10 +123,19 @@ This code may only be used under the license found at https://github.com/swarmci
 
             @keyframes fadeIn {
                 0% {
-                    opacity: 0.5;
+                    opacity: 1;
                 }
                 100% {
                     opacity: 0.2;
+                }
+            }
+
+            @keyframes fadeOut {
+                0% {
+                    opacity: 0.2;
+                }
+                100% {
+                    opacity: 1;
                 }
             }
 
@@ -121,11 +158,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 background-color: var(--sc-grey4);
                 border-bottom: 0;
                 padding: 1px 2px;
-            }
-
-            .faded {
-                
-                animation: fadeIn 0.3s forwards;
             }
 
             .container[wide-layout] .toggle {
@@ -159,9 +191,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 </div>
             </div>
             <template is="dom-if" if="{{showSlider}}">
-                <display-filter-list slider class="slider" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
+                <display-filter-list slider class$="slider [[sliderState]]" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
             </template>
-            <display-hashtag-list id="list" range="[[range]]" path="{{path}}" show-slider="{{showSlider}}"></display-hashtag-list>
+            <div class$="fade [[fadeState]]" on-click="_fadeClose">
+                <display-hashtag-list range="[[range]]" path="{{path}}" show-slider="{{showSlider}}"></display-hashtag-list>
+            </div>
         </div>
     </template>
 
@@ -179,35 +213,42 @@ This code may only be used under the license found at https://github.com/swarmci
             static get properties() {
                 return {
                     /**
-                     * Path is the current or requested path
-                     * @type {String}
-                     */
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                     * completeAccount determines if an account is present 
-                     * in localstorage or not
-                     * @type {Boolean}
-                     */
+                    * completeAccount determines if an account is present 
+                    * in localstorage or not
+                    * @type {Boolean}
+                    */
                     completeAccount: {
                         type: Boolean,
                     },
                     /**
-                     * showSlider determines of the slider is show or not
-                     * @type {Boolean}
-                     */
-                    showSlider: {
-                        type: Boolean,
-                        value: false,
-                        observer: '_toggleStyle',
+                    * sliderState represents the state of the slider
+                    * @type {String}
+                    */
+                    sliderState: {
+                        type: String,
+                        value: 'slider-hidden',
                     },
                     /**
-                     * Entry and exit animation
-                     */
+                    * showSlider determines of the slider is show or not
+                    * @type {Boolean}
+                    */
+                    showSlider: {
+                        type: Boolean,
+                        observer: '_toggleSlider',
+                    },
+                    /**
+                    * Entry and exit animation
+                    */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
@@ -236,21 +277,34 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             /**
-             * changes styling according to slider visibility
-             */
-            _toggleStyle() {
-                if (this.showSlider) {
-                    this.$$('.toggle').classList.add('toggled');
-                    this.$.list.classList.add('faded');
-                } else {
-                    this.$$('.toggle').classList.remove('toggled');
-                    this.$.list.classList.remove('faded');
+            * shows and hides the slider
+            */
+            _toggleSlider() {
+                console.log("showSlider " + this.showSlider);
+                switch (this.sliderState) {
+                    case 'slider-hidden':
+                        this.sliderState = 'slider-hidden-visible';
+                        this.fadeState = 'fade-hidden-visible';
+                        break;
+                    case 'slider-hidden-visible':
+                        this.sliderState = 'slider-visible-hidden';
+                        this.fadeState = 'fade-visible-hidden';
+                        break;
+                    case 'slider-visible-hidden':
+                        this.sliderState = 'slider-hidden-visible';
+                        this.fadeState = 'fade-hidden-visible';
                 }
+            }
+            /**
+            * closes open slider boxe
+            */
+            _fadeClose() {
+                this.showSlider = false;
             }
 
             /**
-             * changes the current path
-             */
+            * changes the current path
+            */
             _path() {
                 if (this.path != null) {
                     this.set('route.path', this.path);
@@ -259,8 +313,8 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             /**
-             * takes the user to the welcome page
-             */
+            * takes the user to the welcome page
+            */
             _back() {
                 this.set('route.path', 'welcome/');
             }
