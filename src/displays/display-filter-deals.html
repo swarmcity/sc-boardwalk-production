@@ -31,7 +31,7 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-filter-deals">
     <template>
         <style>
-            :host {
+             :host {
                 display: block;
             }
 
@@ -203,6 +203,14 @@ The following custom properties and mixins are available for styling:
                         notify: true,
                     },
                     /**
+                    * showInfo indicates if the info panel is open or not
+                    * @type {Boolean}
+                    */
+                    showInfo: {
+                        type: Boolean,
+                        notify: true,
+                    },
+                    /**
                     * rangeDescription is the description of the range
                     * @type {String}
                     */
@@ -271,6 +279,9 @@ The following custom properties and mixins are available for styling:
                         if (!account.location) {
                             this.path = 'location/';
                         } else {
+                            if (this.showInfo) {
+                                this.showInfo = !this.showInfo;
+                            }
                             this.showSlider = !this.showSlider;
                         }
                     });

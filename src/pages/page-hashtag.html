@@ -131,8 +131,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 padding: 1px 2px;
             }
 
-            .faded {}
-
             display-my-info {
                 @apply --layout-flex;
             }
@@ -200,11 +198,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 display: none;
             }
 
-            .deals-hidden-visible {
+            .fade-hidden-visible {
                 animation: fadeIn 0.1s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
             }
 
-            .deals-visible-hidden {
+            .fade-visible-hidden {
                 animation: fadeOut 0.1s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
             }
 
@@ -298,21 +296,23 @@ This code may only be used under the license found at https://github.com/swarmci
                 <div class="bottom">
                     <div class="leftbottom">
                         <div class="hashtag">#{{hashtag.name}}</div>
-                        <display-hashtag-about toggle class="info-toggle" show-info="{{showInfo}}"></display-hashtag-about>
+                        <display-hashtag-about toggle class="info-toggle" show-info="{{showInfo}}" show-slider="{{showSlider}}"></display-hashtag-about>
                     </div>
-                    <display-filter-deals toggle class="filter-toggle" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-deals>
+                    <display-filter-deals toggle class="filter-toggle" show-slider="{{showSlider}}" show-info="{{showInfo}}" range="{{range}}"
+                        route="{{route}}" path="{{path}}"></display-filter-deals>
                 </div>
             </div>
 
             <display-hashtag-about info class$="info [[infoState]]"></display-hashtag-about>
             <display-filter-deals slider class$="slider [[sliderState]]" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-deals>
+            <div class$="fade [[fadeState]]" on-click="_fadeClose">
+                <display-hashtag-deals range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}" show-slider="{{showSlider}}"
+                    show-info="{{showInfo}}">
+                </display-hashtag-deals>
 
-            <display-hashtag-deals class$="deals [[dealsState]]" range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}"
-                show-slider="{{showSlider}}" show-info="{{showInfo}}">
-            </display-hashtag-deals>
-
-            <div class="dealbtn">
-                <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn>
+                <div class="dealbtn">
+                    <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn>
+                </div>
             </div>
         </div>
 
@@ -356,12 +356,13 @@ This code may only be used under the license found at https://github.com/swarmci
                         value: 'info-hidden',
                     },
                     /**
-                    * dealsState represents the state of the deals area
+                    * fadeState represents the state of the fade area
                     * @type {String}
                     */
-                    dealsState: {
+                    fadeState: {
                         type: String,
-                        value: 'deals-hidden',
+                        value: false,
+                        value: 'fade-hidden',
                     },
                     /**
                     * showSlider determines of the slider is show or not
@@ -383,7 +384,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     * Entry and exit animation
                     */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
@@ -431,20 +432,22 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.infoState = 'info-hidden';
                         this.$$('.filter-toggle').classList.add('show-filter');
                         this.$$('.info-toggle').classList.remove('show-info');
-                        this.dealsState = 'deals-hidden-visible';
+                        this.fadeState = 'fade-hidden-visible';
                         break;
                     case 'slider-hidden-visible':
                         this.sliderState = 'slider-visible-hidden';
                         this.$$('.filter-toggle').classList.remove('show-filter');
-                        this.dealsState = 'deals-visible-hidden';
+                        this.fadeState = 'fade-visible-hidden';
                         break;
                     case 'slider-visible-hidden':
                         this.sliderState = 'slider-hidden-visible';
                         this.infoState = 'info-hidden';
                         this.$$('.filter-toggle').classList.add('show-filter');
                         this.$$('.info-toggle').classList.remove('show-info');
-                        this.dealsState = 'deals-hidden-visible';
+                        this.fadeState = 'fade-hidden-visible';
                 }
+                console.log("showSlider: " + this.showSlider);
+                console.log("showInfo: " + this.showInfo);
             }
             /**
             * shows and hides the info box
@@ -456,22 +459,36 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.sliderState = 'slider-hidden';
                         this.$$('.filter-toggle').classList.remove('show-filter');
                         this.$$('.info-toggle').classList.add('show-info');
-                        this.dealsState = 'deals-hidden-visible';
+                        this.fadeState = 'fade-hidden-visible';
+
                         break;
                     case 'info-hidden-visible':
                         this.infoState = 'info-visible-hidden';
                         this.$$('.info-toggle').classList.remove('show-info');
-                        this.dealsState = 'deals-visible-hidden';
+                        this.fadeState = 'fade-visible-hidden';
+
                         break;
                     case 'info-visible-hidden':
                         this.infoState = 'info-hidden-visible';
                         this.sliderState = 'slider-hidden';
                         this.$$('.filter-toggle').classList.remove('show-filter');
                         this.$$('.info-toggle').classList.add('show-info');
-                        this.dealsState = 'deals-hidden-visible';
+                        this.fadeState = 'fade-hidden-visible';
                 }
+                console.log("showSlider: " + this.showSlider);
+                console.log("showInfo: " + this.showInfo);
             }
-
+            /**
+            * closes open header boxes
+            */
+            _fadeClose() {
+                if (this.showSlider) {
+                        this.showSlider = !this.showSlider;
+                    }
+                    else if (this.showInfo) {
+                        this.showInfo = !this.showInfo;
+                    }
+            }
             /**
             * takes the user to the hashtag list page
             */

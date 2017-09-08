@@ -448,14 +448,11 @@ The following custom properties and mixins are available for styling:
             }
 
             _next() {
-                if (!this.showSlider || !this.showInfo) {
+                if (!this.showSlider && !this.showInfo) {
                     // stores the current hashtag choice in session
                     sessionStorage.setItem('hashtagID', this.routeData.page);
                     this.path = 'new-here/';
-                } else {
-                    this.showSlider = false;
-                    this.showInfo = false;
-                }
+                } 
             }
         }
         window.customElements.define(DisplayHashtagDeals.is, DisplayHashtagDeals);

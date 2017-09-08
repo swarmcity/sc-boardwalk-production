@@ -154,7 +154,15 @@ The following custom properties and mixins are available for styling:
                      */
                     showInfo: {
                         type: Boolean,
+                        notify: true,
                         value: false,
+                    },
+                                        /**
+                    * showSlider determines of the slider is show or not
+                    * @type {Boolean}
+                    */
+                    showSlider: {
+                        type: Boolean,
                         notify: true,
                     },
                     /**
@@ -171,6 +179,9 @@ The following custom properties and mixins are available for styling:
              * Togles if the information is shown or hidden
              */
             _toggle() {
+                if (this.showSlider) {
+                    this.showSlider = !this.showSlider;
+                }
                 this.showInfo = !this.showInfo;
             }
 
