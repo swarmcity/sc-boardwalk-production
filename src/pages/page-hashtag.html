@@ -165,6 +165,9 @@ This code may only be used under the license found at https://github.com/swarmci
             .slider-hidden {
                 display: none;
             }
+            .info-hidden{
+                display: none;
+            }
             .info {
                 border-bottom: 2px solid var(--sc-blue);
                 position: fixed;
@@ -229,10 +232,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 </div>
             </div>
 
-            <template is="dom-if" if="{{showInfo}}">
-                <display-hashtag-about info class="info"></display-hashtag-about>
-            </template>
-
+            <display-hashtag-about info class$="info [[infoState]]"></display-hashtag-about>
             <display-filter-deals slider class$="slider [[sliderState]]" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-deals>
 
             <display-hashtag-deals id="list" range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}" show-slider="{{showSlider}}"
@@ -274,7 +274,15 @@ This code may only be used under the license found at https://github.com/swarmci
                     */
                     sliderState: {
                         type: String,
-                        value: 'slider-hidden'
+                        value: 'slider-hidden',
+                    },
+                    /**
+                    * infoState represents the state of the info area
+                    * @type {String}
+                    */
+                    infoState: {
+                        type: String,
+                        value: 'info-hidden',
                     },
                     /**
                     * showSlider determines of the slider is show or not
@@ -337,7 +345,7 @@ This code may only be used under the license found at https://github.com/swarmci
             /**
             * shows and hides the slider
             */
-            _toggleSlider(){
+            _toggleSlider() {
                 switch (this.sliderState) {
                     case 'slider-hidden':
                         this.sliderState = 'slider-hidden-visable';
@@ -347,26 +355,21 @@ This code may only be used under the license found at https://github.com/swarmci
                         break;
                     case 'slider-visable-hidden':
                         this.sliderState = 'slider-hidden-visable';
-                        break;
-
                 }
             }
             /**
-            * changes styling according to slider visibility
+            * shows and hides the info box
             */
-            _toggle() {
-                console.log("TOGLE");
-                if (this.showSlider || this.showInfo) {
-                    this.$.list.classList.add('faded');
-                    if (this.showSlider) {
-                        this.$$('.filter-toggle').classList.add('show-filter');
-                    } else {
-                        this.$$('.info-toggle').classList.add('show-info');
-                    }
-                } else {
-                    this.$$('.info-toggle').classList.remove('show-info');
-                    this.$$('.filter-toggle').classList.remove('show-filter');
-                    this.$.list.classList.remove('faded');
+            _toggleInfo() {
+                switch (this.infoState) {
+                    case 'info-hidden':
+                        this.infoState = 'info-hidden-visable';
+                        break;
+                    case 'info-hidden-visable':
+                        this.infoState = 'info-visable-hidden';
+                        break;
+                    case 'info-visable-hidden':
+                        this.infoState = 'info-hidden-visable';
                 }
             }
 
