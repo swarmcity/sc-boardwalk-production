@@ -361,7 +361,6 @@ This code may only be used under the license found at https://github.com/swarmci
                     */
                     fadeState: {
                         type: String,
-                        value: false,
                         value: 'fade-hidden',
                     },
                     /**
@@ -384,7 +383,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     * Entry and exit animation
                     */
                     animationConfig: {
-                        value: function () {
+                        value: function() {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
@@ -446,8 +445,6 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.$$('.info-toggle').classList.remove('show-info');
                         this.fadeState = 'fade-hidden-visible';
                 }
-                console.log("showSlider: " + this.showSlider);
-                console.log("showInfo: " + this.showInfo);
             }
             /**
             * shows and hides the info box
@@ -475,8 +472,6 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.$$('.info-toggle').classList.add('show-info');
                         this.fadeState = 'fade-hidden-visible';
                 }
-                console.log("showSlider: " + this.showSlider);
-                console.log("showInfo: " + this.showInfo);
             }
             /**
             * closes open header boxes
