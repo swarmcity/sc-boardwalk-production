@@ -274,8 +274,8 @@ The following custom properties and mixins are available for styling:
     </template>
     <script>
         class DisplayHashtagDeals extends Polymer.mixinBehaviors([
-                Polymer.AppLocalizeBehavior,
-            ],
+            Polymer.AppLocalizeBehavior,
+        ],
             Polymer.Element
         ) {
             static get is() {
@@ -329,7 +329,7 @@ The following custom properties and mixins are available for styling:
                      * showSlider determines of the slider is show or not
                      * @type {Boolean}
                      */
-                     showSlider: {
+                    showSlider: {
                         type: Boolean,
                         notify: true,
                     },
@@ -337,7 +337,7 @@ The following custom properties and mixins are available for styling:
                      * showInfo indicates if the hashtag info panel is open or not
                      * @type {Boolean}
                      */
-                     showInfo: {
+                    showInfo: {
                         type: Boolean,
                         notify: true,
                     },
@@ -370,9 +370,9 @@ The following custom properties and mixins are available for styling:
             _getDeals() {
                 this.deals = [];
                 Promise.all([
-                        this.$.storage.accountExists(),
-                        this.$.web3.deals(this.hashtag.id),
-                    ])
+                    this.$.storage.accountExists(),
+                    this.$.web3.deals(this.hashtag.id),
+                ])
                     .then((data) => {
                         if (data[0].username && data[0].address && data[0].avatar) {
                             this.completeAccount = true;
@@ -385,7 +385,7 @@ The following custom properties and mixins are available for styling:
                             this._getTimeImage(data);
                         }
                     })
-                    .catch((err) => {});
+                    .catch((err) => { });
             }
 
             /**
@@ -395,11 +395,11 @@ The following custom properties and mixins are available for styling:
             _getDistanceTimeImage(data) {
                 for (let i = 0; i < data[1].items.length; i++) {
                     Promise.all([
-                            this.$.utility.geoHashDistance(data[0].location,
-                                data[1].items[i].location),
-                            this.$.utility.convertTime(data[1].items[i].time),
-                            this.$.ipfs.getHash(data[1].items[i].avatar),
-                        ])
+                        this.$.utility.geoHashDistance(data[0].location,
+                            data[1].items[i].location),
+                        this.$.utility.convertTime(data[1].items[i].time),
+                        this.$.ipfs.getHash(data[1].items[i].avatar),
+                    ])
                         .then((details) => {
                             data[1].items[i].distance = details[0];
                             data[1].items[i].time = details[1];
@@ -416,9 +416,9 @@ The following custom properties and mixins are available for styling:
             _getTimeImage(data) {
                 for (let i = 0; i < data[1].items.length; i++) {
                     Promise.all([
-                            this.$.utility.convertTime(data[1].items[i].time),
-                            this.$.ipfs.getHash(data[1].items[i].avatar),
-                        ])
+                        this.$.utility.convertTime(data[1].items[i].time),
+                        this.$.ipfs.getHash(data[1].items[i].avatar),
+                    ])
                         .then((details) => {
                             data[1].items[i].time = details[0];
                             data[1].items[i].avatar = details[1];
@@ -448,20 +448,13 @@ The following custom properties and mixins are available for styling:
             }
 
             _next() {
-                if (!this.showSlider) {
-                // stores the current hashtag choice in session
-                sessionStorage.setItem('hashtagID', this.routeData.page);
-                this.path = 'new-here/';
-                /*                 
-                if (!this.completeAccount) {
-                // stores the current hashtag choice in session
-                sessionStorage.setItem('hashtagID', this.routeData.page);
-                this.path = 'new-here/';
+                if (!this.showSlider || !this.showInfo) {
+                    // stores the current hashtag choice in session
+                    sessionStorage.setItem('hashtagID', this.routeData.page);
+                    this.path = 'new-here/';
                 } else {
-                this.path = 'new-deal/';
-                } */
-                } else {
-                    this.showSlider = !this.showSlider;
+                    this.showSlider = false;
+                    this.showInfo = false;
                 }
             }
         }

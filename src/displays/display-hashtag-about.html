@@ -4,6 +4,7 @@ Copyright (c) 2017 Swarm City
 This code may only be used under the license found at https://github.com/swarmcity/license
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <!--
 
@@ -33,26 +34,76 @@ The following custom properties and mixins are available for styling:
                 display: block;
             }
 
-            .toggle {
+            .container {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+            }
+
+            .info {
+                width: 100%;
+                @apply --body-default;
+                color: var(--sc-grey4);
+                word-wrap: break-word;
+                line-height: 20px;
+            }
+
+            .commission {
+                width: 100%;
+                @apply --body-default;
+                color: var(--sc-grey4);
+                word-wrap: break-word;
+                margin-top: 15px;
+            }
+
+            .container[wide-layout] .commission {
+                margin-top: 5px;
+            }
+
+            .contact {
+                margin-top: 30px;
+                @apply --small-light;
+                color: var(--sc-grey2);
+            }
+
+            .linkbox {
+                margin-top: 8px;
+            }
+
+            .links {
                 @apply --small-bold;
                 color: var(--sc-blue);
-                border-bottom: 2px dotted var(--sc-blue);
+                border-bottom: 1px dotted var(--sc-blue);
+            }
+            .arrowup {
+                width: 100%;
+                @apply --layout-horizontal;
+                @apply --layout-end-justified;
+            }
+            .arrowup-icon {
+                @apply --arrowup-blue-small;
                 cursor: pointer;
             }
         </style>
-
-        <div class="container">
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+        <div class="container" wide-layout$="{{wide}}">
             <template is="dom-if" if="{{toggle}}">
-                <div class="toggle" on-click="_toggle">i</div>
+                <div on-click="_toggle">i</div>
             </template>
             <template is="dom-if" if="{{info}}">
                 <div>
-                    <div>This hashtag is maintained by 0x369D787F3EcF4a0e57cDfCFB2Db92134e1982e09.</div>
-                    <div>The hashtagcommission is 0.05 SWT</div>
-                    <div>Contact:</div>
-                    <div>hashtagman@gmail.com</div>
-                    <div>@hashtag (Twitter)</div>
+                    <div class="info">This hashtag is maintained by 0x369D787F3EcF4a0e57cDfCFB2Db92134e1982e09.</div>
+                    <div class="commission">The hashtagcommission is 0.05 SWT.</div>
+                    <div class="contact">Contact:</div>
+                    <div class="linkbox">
+                        <span class="links">
+                        hashtagman@gmail.com</span>
+                    </div>
+                    <div class="linkbox">
+                        <span class="links">@hashtag (Twitter)</span></div>
                 </div>
+                <div class="arrowup" on-click="_toggle">
+                        <div class="arrowup-icon"></div>
+                    </div>
             </template>
         </div>
 
@@ -89,7 +140,7 @@ The following custom properties and mixins are available for styling:
                      * Selected if true shows the info panel
                      * @type {String}
                      */
-                     info: {
+                    info: {
                         type: Boolean,
                         value: false,
                     },
