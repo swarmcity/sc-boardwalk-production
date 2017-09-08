@@ -383,7 +383,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     * Entry and exit animation
                     */
                     animationConfig: {
-                        value: function () {
+                        value: function() {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
@@ -430,7 +430,7 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.sliderState = 'slider-hidden-visible';
                         this.infoState = 'info-hidden';
                         this.$$('.filter-toggle').classList.add('show-filter');
-                        this.$$('.info-toggle').classList.remove('show-info');  
+                        this.$$('.info-toggle').classList.remove('show-info');
                         this.dealsState = 'deals-hidden-visible';
                         break;
                     case 'slider-hidden-visible':
@@ -442,7 +442,7 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.sliderState = 'slider-hidden-visible';
                         this.infoState = 'info-hidden';
                         this.$$('.filter-toggle').classList.add('show-filter');
-                        this.$$('.info-toggle').classList.remove('show-info');  
+                        this.$$('.info-toggle').classList.remove('show-info');
                         this.dealsState = 'deals-hidden-visible';
                 }
             }
@@ -460,7 +460,7 @@ This code may only be used under the license found at https://github.com/swarmci
                         break;
                     case 'info-hidden-visible':
                         this.infoState = 'info-visible-hidden';
-                        this.$$('.info-toggle').classList.remove('show-info');                        
+                        this.$$('.info-toggle').classList.remove('show-info');
                         this.dealsState = 'deals-visible-hidden';
                         break;
                     case 'info-visible-hidden':
