@@ -117,7 +117,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 padding: 1px 2px;
             }
             .faded {
-                animation: fadeIn 0.3s forwards;
+                animation: fadeIn 0.1s cubic-bezier(0.42,0,0.177,0.751) forwards;
             }
             display-my-info {
                 @apply --layout-flex;
@@ -227,7 +227,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
             @keyframes fadeIn {
                 0% {
-                    opacity: 0.5;
+                    opacity: 1;
                 }
                 100% {
                     opacity: 0.2;
