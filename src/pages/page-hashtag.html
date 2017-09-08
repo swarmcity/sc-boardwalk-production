@@ -165,6 +165,12 @@ This code may only be used under the license found at https://github.com/swarmci
             .slider-hidden {
                 display: none;
             }
+            .info-hidden-visable {
+                animation: infoDown 0.3s cubic-bezier(0.68, -0.55, 0.265, 1) forwards;
+            }
+            .info-visable-hidden{
+                animation: infoUp 0.3s cubic-bezier(0.68, -0.55, 0.265, 1) forwards;
+            }
             .info-hidden{
                 display: none;
             }
@@ -177,7 +183,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 padding: 0 40px 2vh 40px;
                 background-color: var(--sc-grey1);
                 z-index: 1;
-                animation: slideDown 0.1s ease-out;
             }
             .container[wide-layout] .slider {
                 padding: 0 10vw 2vh 10vw;
@@ -203,6 +208,25 @@ This code may only be used under the license found at https://github.com/swarmci
                     transform: translateY(0%);
                 }
             }
+
+            @keyframes infoUp {
+                0% {
+                    transform: translateY(0%);
+                }
+                100% {
+                    transform: translateY(-100%);
+                }
+            }
+            @keyframes infoDown {
+                0% {
+                    transform: translateY(-100%);
+                }
+                100% {
+                    transform: translateY(0%);
+                }
+            }
+
+
             @keyframes fadeIn {
                 0% {
                     opacity: 0.5;
@@ -235,14 +259,12 @@ This code may only be used under the license found at https://github.com/swarmci
             <display-hashtag-about info class$="info [[infoState]]"></display-hashtag-about>
             <display-filter-deals slider class$="slider [[sliderState]]" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-deals>
 
-            <display-hashtag-deals id="list" range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}" show-slider="{{showSlider}}"
-                show-info="{{showInfo}}">
+            <display-hashtag-deals id="list" range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}" show-slider="{{showSlider}}" show-info="{{showInfo}}">
             </display-hashtag-deals>
 
             <div class="dealbtn">
                 <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn>
             </div>
-
         </div>
 
     </template>
@@ -361,6 +383,7 @@ This code may only be used under the license found at https://github.com/swarmci
             * shows and hides the info box
             */
             _toggleInfo() {
+                console.log('ddd')
                 switch (this.infoState) {
                     case 'info-hidden':
                         this.infoState = 'info-hidden-visable';
