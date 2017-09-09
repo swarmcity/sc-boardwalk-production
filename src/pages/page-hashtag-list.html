@@ -124,7 +124,16 @@ This code may only be used under the license found at https://github.com/swarmci
 
             @keyframes fadeIn {
                 0% {
-                    opacity: 0.5;
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes fadeOut {
+                0% {
+                    opacity: 0.2;
                 }
                 100% {
                     opacity: 1;
@@ -199,6 +208,9 @@ This code may only be used under the license found at https://github.com/swarmci
                 <display-hashtag-list range="[[range]]" path="{{path}}" show-slider="{{showSlider}}"></display-hashtag-list>
             </div>
 
+            <div class$="fade [[fadeState]]" on-click="_fadeClose">
+                <display-hashtag-list range="[[range]]" path="{{path}}" show-slider="{{showSlider}}"></display-hashtag-list>
+            </div>
         </div>
     </template>
 
