@@ -148,7 +148,7 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
 
-            .toggle {
+            .filter-toggle {
                 cursor: pointer;
                 @apply --small-bold;
                 color: var(--sc-grey3);
@@ -157,14 +157,14 @@ This code may only be used under the license found at https://github.com/swarmci
                 margin-top: 41px;
             }
 
-            .toggled {
+            .show-filter {
                 color: white;
                 background-color: var(--sc-grey4);
                 border-bottom: 0;
                 padding: 1px 2px;
             }
 
-            .container[wide-layout] .toggle {
+            .container[wide-layout] .filter-toggle {
                 margin-top: 59px;
             }
 
@@ -191,7 +191,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 </div>
                 <div class="topright">
                     <div class="back" on-click="_back"></div>
-                    <display-filter-list toggle class="toggle" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
+                    <display-filter-list toggle class="filter-toggle" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
                 </div>
             </div>
             <display-filter-list slider class$="slider [[sliderState]]" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
@@ -296,14 +296,17 @@ This code may only be used under the license found at https://github.com/swarmci
                 switch (this.sliderState) {
                     case 'slider-hidden':
                         this.sliderState = 'slider-hidden-visible';
+                        this.$$('.filter-toggle').classList.add('show-filter');
                         this.fadeState = 'fade-visible-transparent';
                         break;
                     case 'slider-hidden-visible':
                         this.sliderState = 'slider-visible-hidden';
+                        this.$$('.filter-toggle').classList.remove('show-filter');
                         this.fadeState = 'fade-transparent-visible';
                         break;
                     case 'slider-visible-hidden':
                         this.sliderState = 'slider-hidden-visible';
+                        this.$$('.filter-toggle').classList.add('show-filter');
                         this.fadeState = 'fade-visible-transparent';
                 }
             }
