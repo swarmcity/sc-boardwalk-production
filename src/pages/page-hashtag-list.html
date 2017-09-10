@@ -83,13 +83,16 @@ This code may only be used under the license found at https://github.com/swarmci
                 z-index: 1;
             }
 
+            .fade-hidden {
+                opacity: 1;
+            }
 
             .slider-hidden-visible {
-                animation: slideDown 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
+                animation: slideDown 2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
             }
 
             .slider-visible-hidden {
-                animation: slideUp 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
+                animation: slideUp 2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
             }
 
             .slider-hidden {
@@ -97,11 +100,12 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .fade-hidden-visible {
-                animation: fadeIn 0.1s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
+                animation: fadeOut 2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
             }
 
             .fade-visible-hidden {
-                animation: fadeOut 0.1s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
+                animation: fadeIn 2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
+                
             }
 
             @keyframes slideUp {
@@ -127,16 +131,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     opacity: 1;
                 }
                 100% {
-                    opacity: 1;
-                }
-            }
-
-            @keyframes fadeOut {
-                0% {
                     opacity: 0.2;
-                }
-                100% {
-                    opacity: 1;
                 }
             }
 
@@ -208,9 +203,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 <display-hashtag-list range="[[range]]" path="{{path}}" show-slider="{{showSlider}}"></display-hashtag-list>
             </div>
 
-            <div class$="fade [[fadeState]]" on-click="_fadeClose">
-                <display-hashtag-list range="[[range]]" path="{{path}}" show-slider="{{showSlider}}"></display-hashtag-list>
-            </div>
+
         </div>
     </template>
 
@@ -250,6 +243,14 @@ This code may only be used under the license found at https://github.com/swarmci
                     sliderState: {
                         type: String,
                         value: 'slider-hidden',
+                    },
+                    /**
+                    * fadeState represents the state of hashtaglist container 
+                    * @type {String} 
+                    */
+                    fadeState: {
+                        type: String,
+                        value: 'fade-hidden',
                     },
                     /** 
                     * showSlider determines of the slider is show or not 
@@ -291,11 +292,19 @@ This code may only be used under the license found at https://github.com/swarmci
             connectedCallback() {
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
+                console.log('callback');
+/*                 console.log('showSlider ' + this.showSlider);
+                console.log('sliderState ' + this.sliderState);
+                console.log('fadeState ' + this.fadeState); */
             }
             /**
             * shows and hides the slider 
             */
             _toggleSlider() {
+                console.log('_toggleSlider');
+/*                 console.log('showSlider ' + this.showSlider);
+                console.log('sliderState ' + this.sliderState);
+                console.log('fadeState ' + this.fadeState); */
                 switch (this.sliderState) {
                     case 'slider-hidden':
                         this.sliderState = 'slider-hidden-visible';
