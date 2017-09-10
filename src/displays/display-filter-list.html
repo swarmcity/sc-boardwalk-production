@@ -92,12 +92,12 @@ The following custom properties and mixins are available for styling:
 
         <div class="container">
             <template is="dom-if" if="{{toggle}}">
-                <div class="toggle" on-click="_toggleSlider">filter list</div>
+                <div class="toggle" on-click="_toggleSlider">{{localize('filter list')}}</div>
             </template>
             <template is="dom-if" if="{{slider}}">
                 <div class="togglebox">
-                    <div class="activity">Looking for hashtags...</div>
-                    <div class="range-description">within +/- 100km from your location</div>
+                    <div class="activity">{{localize('Looking for hashtags')}}...</div>
+                    <div class="range-description">{{localize('within +/- 100km from your location')}}</div>
                     <div class="sliderbox">
                         <div class="pin-icon"></div>
                         <paper-slider .class="slider" min="1" max="6" value="{{value}}" on-immediate-value-change="_calcRange" expand></paper-slider>

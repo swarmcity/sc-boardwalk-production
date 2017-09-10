@@ -26,7 +26,6 @@
         "Reddit": "Reddit",
         "Discord": "Discord",
         "deals done": "deals done",
-        "filter list": "filter list",
         "world wide": "world wide",
         "within 1000km": "within 1000km",
         "within 100km": "within 100km",
@@ -80,7 +79,12 @@
         "Your account file combined with your password will always give you access to your SWT balance.": "Your account file combined with your password will always give you access to your SWT balance.",
         "enter": "enter",
         "convert my ARC": "convert my ARC",
-        "Youve downloaded your account file.": "You've downloaded your account file."
+        "Youve downloaded your account file.": "You've downloaded your account file.",
+        "filter list": "filter list",
+        "filter deals": "filter deals",
+        "Looking for hashtags": "Looking for hashtags",
+        "within +/- 100km from your location": "within +/- 100km from your location",
+        "Looking for deals": "Looking for deals"
     },
     "cn": {
         "language": "cn",
