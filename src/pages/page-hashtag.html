@@ -410,7 +410,6 @@ This code may only be used under the license found at https://github.com/swarmci
             connectedCallback() {
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
-                console.log('callback');
             }
 
             /**
@@ -426,7 +425,6 @@ This code may only be used under the license found at https://github.com/swarmci
             * shows and hides the slider
             */
             _toggleSlider() {
-                console.log('_toggleSlider');
                 switch (this.sliderState) {
                     case 'slider-hidden':
                         this.sliderState = 'slider-hidden-visible';
@@ -480,11 +478,11 @@ This code may only be used under the license found at https://github.com/swarmci
             */
             _fadeClose() {
                 if (this.showSlider) {
-                        this.showSlider = !this.showSlider;
-                    }
-                    else if (this.showInfo) {
-                        this.showInfo = !this.showInfo;
-                    }
+                    this.showSlider = !this.showSlider;
+                }
+                else if (this.showInfo) {
+                    this.showInfo = !this.showInfo;
+                }
             }
             /**
             * takes the user to the hashtag list page

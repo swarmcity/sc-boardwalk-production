@@ -88,24 +88,23 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .slider-hidden-visible {
-                animation: slideDown 2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
+                animation: slideDown 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
             }
 
             .slider-visible-hidden {
-                animation: slideUp 2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
+                animation: slideUp 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
             }
 
             .slider-hidden {
                 display: none;
             }
 
-            .fade-hidden-visible {
-                animation: fadeOut 2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
+            .fade-transparent-visible {
+                animation: fadeOut 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
             }
 
-            .fade-visible-hidden {
-                animation: fadeIn 2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
-                
+            .fade-visible-transparent {
+                animation: fadeIn 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
             }
 
             @keyframes slideUp {
@@ -195,9 +194,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     <display-filter-list toggle class="toggle" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
                 </div>
             </div>
-            <template is="dom-if" if="{{showSlider}}">
-                <display-filter-list slider class$="slider [[sliderState]]" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
-            </template>
+            <display-filter-list slider class$="slider [[sliderState]]" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
 
             <div class$="fade [[fadeState]]" on-click="_fadeClose">
                 <display-hashtag-list range="[[range]]" path="{{path}}" show-slider="{{showSlider}}"></display-hashtag-list>
@@ -258,7 +255,6 @@ This code may only be used under the license found at https://github.com/swarmci
                     */
                     showSlider: {
                         type: Boolean,
-                        value: false,
                         observer: '_toggleSlider',
                     },
                     /**
@@ -292,31 +288,23 @@ This code may only be used under the license found at https://github.com/swarmci
             connectedCallback() {
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
-                console.log('callback');
-/*                 console.log('showSlider ' + this.showSlider);
-                console.log('sliderState ' + this.sliderState);
-                console.log('fadeState ' + this.fadeState); */
             }
             /**
             * shows and hides the slider 
             */
             _toggleSlider() {
-                console.log('_toggleSlider');
-/*                 console.log('showSlider ' + this.showSlider);
-                console.log('sliderState ' + this.sliderState);
-                console.log('fadeState ' + this.fadeState); */
                 switch (this.sliderState) {
                     case 'slider-hidden':
                         this.sliderState = 'slider-hidden-visible';
-                        this.fadeState = 'fade-hidden-visible';
+                        this.fadeState = 'fade-visible-transparent';
                         break;
                     case 'slider-hidden-visible':
                         this.sliderState = 'slider-visible-hidden';
-                        this.fadeState = 'fade-visible-hidden';
+                        this.fadeState = 'fade-transparent-visible';
                         break;
                     case 'slider-visible-hidden':
                         this.sliderState = 'slider-hidden-visible';
-                        this.fadeState = 'fade-hidden-visible';
+                        this.fadeState = 'fade-visible-transparent';
                 }
             }
             /** 
