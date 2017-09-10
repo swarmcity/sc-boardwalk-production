@@ -55,6 +55,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 z-index: 2;
             }
 
+            .container[wide-layout] .header {
+                box-sizing: border-box;
+                padding: 60px 10vw 0 10vw;
+            }
+
             .topleft {
                 @apply --layout-vertical;
                 @apply --layout-start;
@@ -83,8 +88,13 @@ This code may only be used under the license found at https://github.com/swarmci
                 z-index: 1;
             }
 
-            .fade-hidden {
-                opacity: 1;
+            .container[wide-layout] .slider {
+                padding: 0 10vw 2vh 10vw;
+                top: 190px;
+            }
+
+            .slider-hidden {
+                display: none;
             }
 
             .slider-hidden-visible {
@@ -95,8 +105,8 @@ This code may only be used under the license found at https://github.com/swarmci
                 animation: slideUp 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
             }
 
-            .slider-hidden {
-                display: none;
+            .fade-hidden {
+                opacity: 1;
             }
 
             .fade-transparent-visible {
@@ -105,6 +115,34 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .fade-visible-transparent {
                 animation: fadeIn 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
+            }
+
+            .filter-toggle {
+                cursor: pointer;
+                @apply --small-bold;
+                color: var(--sc-grey3);
+                margin-bottom: 18px;
+                border-bottom: 2px dotted var(--sc-grey3);
+                margin-top: 41px;
+            }
+
+            .container[wide-layout] .filter-toggle {
+                margin-top: 59px;
+            }
+
+            .show-filter {
+                color: white;
+                background-color: var(--sc-grey4);
+                border-bottom: 0;
+                padding: 1px 2px;
+            }
+
+            display-hashtag-list {
+                margin-top: 152px;
+            }
+
+            .container[wide-layout] display-hashtag-list {
+                margin-top: 190px;
             }
 
             @keyframes slideUp {
@@ -143,45 +181,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 }
             }
 
-            display-hashtag-list {
-                margin-top: 152px;
-            }
-
-
-            .filter-toggle {
-                cursor: pointer;
-                @apply --small-bold;
-                color: var(--sc-grey3);
-                margin-bottom: 18px;
-                border-bottom: 2px dotted var(--sc-grey3);
-                margin-top: 41px;
-            }
-
-            .show-filter {
-                color: white;
-                background-color: var(--sc-grey4);
-                border-bottom: 0;
-                padding: 1px 2px;
-            }
-
-            .container[wide-layout] .filter-toggle {
-                margin-top: 59px;
-            }
-
-            .container[wide-layout] .slider {
-                padding: 0 10vw 2vh 10vw;
-                top: 190px;
-            }
-
-            .container[wide-layout] .header {
-                box-sizing: border-box;
-                padding: 60px 10vw 0 10vw;
-            }
-
-            .container[wide-layout] display-hashtag-list {
-                margin-top: 190px;
-            }
-
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
@@ -203,12 +202,9 @@ This code may only be used under the license found at https://github.com/swarmci
                 </div>
             </div>
             <display-filter-list slider class$="slider [[sliderState]]" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
-
             <div class$="fade [[fadeState]]" on-click="_fadeClose">
                 <display-hashtag-list range="[[range]]" path="{{path}}" show-slider="{{showSlider}}"></display-hashtag-list>
             </div>
-
-
         </div>
     </template>
 
@@ -241,8 +237,16 @@ This code may only be used under the license found at https://github.com/swarmci
                     completeAccount: {
                         type: Boolean,
                     },
+                    /** 
+                    * showSlider determines if the slider is show or not 
+                    * @type {Boolean} 
+                    */
+                    showSlider: {
+                        type: Boolean,
+                        observer: '_toggleSlider',
+                    },
                     /**
-                    * sliderState represents the state of the slider 
+                    * sliderState represents style state of the slider 
                     * @type {String} 
                     */
                     sliderState: {
@@ -257,19 +261,11 @@ This code may only be used under the license found at https://github.com/swarmci
                         type: String,
                         value: 'fade-hidden',
                     },
-                    /** 
-                    * showSlider determines of the slider is show or not 
-                    * @type {Boolean} 
-                    */
-                    showSlider: {
-                        type: Boolean,
-                        observer: '_toggleSlider',
-                    },
                     /**
                     * Entry and exit animation
                     */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
@@ -298,7 +294,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             /**
-            * shows and hides the slider 
+            * observer  and hides the slider 
             */
             _toggleSlider() {
                 switch (this.sliderState) {
@@ -319,10 +315,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 }
             }
             /** 
-            * closes open slider boxe 
+            * closes open slider box 
             */
             _fadeClose() {
-                this.showSlider = false;
+                if (this.showSlider) {
+                    this.showSlider = !this, showSlider;
+                }
             }
 
             /**
