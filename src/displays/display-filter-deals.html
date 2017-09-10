@@ -85,6 +85,13 @@ The following custom properties and mixins are available for styling:
                 @apply --layout-horizontal;
                 @apply --layout-end-justified;
             }
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .arrowup-icon, .globe-icon, .pin-icon {
+                    @apply --retina;
+                }
+            }
         </style>
 
         <data-local-storage id="storage"></data-local-storage>

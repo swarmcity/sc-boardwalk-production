@@ -281,6 +281,14 @@ This code may only be used under the license found at https://github.com/swarmci
                     opacity: 1;
                 }
             }
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .back {
+                    @apply --retina;
+                }
+            }
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
@@ -489,13 +497,6 @@ This code may only be used under the license found at https://github.com/swarmci
             */
             _back() {
                 this.path = 'hashtag-list/';
-            }
-
-            /**
-            * takes the user to the welcome page
-            */
-            _toWelcome() {
-                this.set('route.path', 'welcome/');
             }
         }
         window.customElements.define(NewHashtag.is, NewHashtag);
