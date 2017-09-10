@@ -198,11 +198,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 display: none;
             }
 
-            .fade-hidden-visible {
+            .fade-transparent-visible {
                 animation: fadeOut 0.1s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
             }
 
-            .fade-visible-hidden {
+            .fade-visible-transparent {
                 animation: fadeIn 0.1s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
             }
 
@@ -433,19 +433,19 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.infoState = 'info-hidden';
                         this.$$('.filter-toggle').classList.add('show-filter');
                         this.$$('.info-toggle').classList.remove('show-info');
-                        this.fadeState = 'fade-visible-hidden';
+                        this.fadeState = 'fade-visible-transparent';
                         break;
                     case 'slider-hidden-visible':
                         this.sliderState = 'slider-visible-hidden';
                         this.$$('.filter-toggle').classList.remove('show-filter');
-                        this.fadeState = 'fade-hidden-visible';
+                        this.fadeState = 'fade-transparent-visible';
                         break;
                     case 'slider-visible-hidden':
                         this.sliderState = 'slider-hidden-visible';
                         this.infoState = 'info-hidden';
                         this.$$('.filter-toggle').classList.add('show-filter');
                         this.$$('.info-toggle').classList.remove('show-info');
-                        this.fadeState = 'fade-visible-hidden';
+                        this.fadeState = 'fade-visible-transparent';
                 }
             }
             /**
@@ -458,13 +458,13 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.sliderState = 'slider-hidden';
                         this.$$('.filter-toggle').classList.remove('show-filter');
                         this.$$('.info-toggle').classList.add('show-info');
-                        this.fadeState = 'fade-hidden-visible';
+                        this.fadeState = 'fade-visible-transparent';
 
                         break;
                     case 'info-hidden-visible':
                         this.infoState = 'info-visible-hidden';
                         this.$$('.info-toggle').classList.remove('show-info');
-                        this.fadeState = 'fade-visible-hidden';
+                        this.fadeState = 'fade-transparent-visible';
 
                         break;
                     case 'info-visible-hidden':
@@ -472,7 +472,7 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.sliderState = 'slider-hidden';
                         this.$$('.filter-toggle').classList.remove('show-filter');
                         this.$$('.info-toggle').classList.add('show-info');
-                        this.fadeState = 'fade-hidden-visible';
+                        this.fadeState = 'fade-visible-transparent';
                 }
             }
             /**
