@@ -339,7 +339,7 @@ This code may only be used under the license found at https://github.com/swarmci
                                         duration: 300,
                                     },
                                 },
-                                'exit': {
+                                'exit': [{
                                     name: 'scale-down-animation',
                                     node: this,
                                     nodeDelay: 50,
@@ -347,6 +347,14 @@ This code may only be used under the license found at https://github.com/swarmci
                                         duration: 3000,
                                     },
                                 },
+                                {
+                                    name: 'fade-in-animation',
+                                    node: this,
+                                    nodeDelay: 50,
+                                    timing: {
+                                        duration: 3000,
+                                    },
+                                }],
                             };
                         },
                     },
