@@ -21,6 +21,8 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/scale-up-animation.html">
+
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
 <dom-module id="page-welcome">
@@ -256,7 +258,7 @@ This code may only be used under the license found at https://github.com/swarmci
         <iron-media-query query="(min-width: 1281px)" query-matches="{{extrawide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
         <div class="container" wide-layout$="{{wide}}" extrawide-layout$="{{extrawide}}">
-            <div>
+            <div id="yellowpart">
                 <div>
                     <display-language selected path="{{path}}"></display-language>
                 </div>
@@ -339,11 +341,12 @@ This code may only be used under the license found at https://github.com/swarmci
                                     },
                                 },
                                 'exit': {
-                                    name: 'fade-out-animation',
+                                    name: 'scale-up-animation',
                                     node: this,
+                                    // node: this.$.yellowpart,
                                     nodeDelay: 300,
                                     timing: {
-                                        duration: 300,
+                                        duration: 1000,
                                     },
                                 },
                             };
