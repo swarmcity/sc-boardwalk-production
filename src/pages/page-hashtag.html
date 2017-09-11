@@ -106,7 +106,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --small-bold;
                 color: var(--sc-blue);
                 border-bottom: 2px dotted var(--sc-blue);
-
                 margin: 0px 0px 8px 10px;
             }
 
@@ -118,13 +117,13 @@ This code may only be used under the license found at https://github.com/swarmci
                 cursor: pointer;
             }
 
-            .show-info {
+            [highlight-info] {
                 color: white;
                 background-color: var(--sc-blue);
                 border-bottom: 0;
             }
 
-            [show-filter] {
+            [highlight-filter] {
                 color: white;
                 background-color: var(--sc-grey4);
                 border-bottom: 0;
@@ -307,6 +306,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     <display-hashtag-about 
                         toggle 
                         class="info-toggle" 
+                        highlight-info$="{{highlightInfoToggle}}"
                         show-info="{{showInfo}}" 
                         show-slider="{{showSlider}}">
                     </display-hashtag-about>
@@ -314,7 +314,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     <display-filter-deals 
                         toggle 
                         class="filter-toggle"
-                        show-filter$="{{showFilter}}"
+                        highlight-filter$="{{highlightFilterToggle}}"
                         show-slider="{{showSlider}}" 
                         show-info="{{showInfo}}" 
                         range="{{range}}"
@@ -414,10 +414,18 @@ This code may only be used under the license found at https://github.com/swarmci
                         observer: '_toggleInfo',
                     },
                     /**
-                    * showFilter togles the background systle of the show filter text link
+                    * highlightFilterToggle togles the background systle of the show filter text link
                     * @type {Boolean}
                     */
-                    showFilter: {
+                    highlightFilterToggle: {
+                        type: Boolean,
+                        value: false,
+                    },
+                    /**
+                    * highlightInfoToggle togles the background systle of the show filter text link
+                    * @type {Boolean}
+                    */
+                    highlightInfoToggle: {
                         type: Boolean,
                         value: false,
                     },
@@ -475,13 +483,13 @@ This code may only be used under the license found at https://github.com/swarmci
                     case 'slider-hidden':
                         this.sliderState = 'slider-hidden-visible';
                         this.fadeState = 'fade-visible-hidden';
-                        this.showFilter = true;
-                        // this.$$('.info-toggle').classList.remove('show-info');
+                        this.highlightFilterToggle = true;
+                        this.highlightInfoToggle = false;
                         break;
                     case 'slider-hidden-visible':
-                        this.showFilter = false;
                         this.sliderState = 'slider-visible-hidden';
                         this.fadeState = 'fade-hidden-visible';
+                        this.highlightFilterToggle = false;
                         setTimeout(() =>{ 
                             this.sliderState = 'slider-hidden'
                         }, 300);
@@ -489,7 +497,8 @@ This code may only be used under the license found at https://github.com/swarmci
                     case 'slider-visible-hidden':
                         this.sliderState = 'slider-hidden-visible';
                         this.fadeState = 'fade-visible-hidden';
-                        // this.$$('.info-toggle').classList.remove('show-info');
+                        this.highlightFilterToggle = true;
+                        this.highlightInfoToggle = false;
                 }
             }
             /**
@@ -504,15 +513,20 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.infoState = 'info-hidden-visible';
                         this.sliderState = 'slider-hidden';
                         this.fadeState = 'fade-visible-transparent';
+                        this.highlightInfoToggle = true;
+                        this.highlightFilterToggle = false;
                         break;
                     case 'info-hidden-visible':
                         this.infoState = 'info-visible-hidden';
                         this.fadeState = 'fade-transparent-visible';
+                        this.highlightInfoToggle = false;
                         break;
                     case 'info-visible-hidden':
                         this.infoState = 'info-hidden-visible';
                         this.sliderState = 'slider-hidden';
                         this.fadeState = 'fade-visible-transparent';
+                        this.highlightInfoToggle = true;
+                        this.highlightFilterToggle = false;
                 }
             }
             /**
