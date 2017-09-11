@@ -414,7 +414,8 @@ This code may only be used under the license found at https://github.com/swarmci
                         observer: '_toggleInfo',
                     },
                     /**
-                    * highlightFilterToggle togles the background systle of the show filter text link
+                    * highlightFilterToggle toggles 
+                    * the background style of the show filter text link
                     * @type {Boolean}
                     */
                     highlightFilterToggle: {
@@ -422,7 +423,8 @@ This code may only be used under the license found at https://github.com/swarmci
                         value: false,
                     },
                     /**
-                    * highlightInfoToggle togles the background systle of the show filter text link
+                    * highlightInfoToggle toggles 
+                    * the background style of the show filter text link
                     * @type {Boolean}
                     */
                     highlightInfoToggle: {
@@ -490,8 +492,8 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.sliderState = 'slider-visible-hidden';
                         this.fadeState = 'fade-hidden-visible';
                         this.highlightFilterToggle = false;
-                        setTimeout(() =>{ 
-                            this.sliderState = 'slider-hidden'
+                        setTimeout(() =>{
+                            this.sliderState = 'slider-hidden';
                         }, 300);
                         break;
                     case 'slider-visible-hidden':
@@ -544,7 +546,7 @@ This code may only be used under the license found at https://github.com/swarmci
             * takes the user to the hashtag list page
             */
             _back() {
-                this.set('route.path', 'hashtag-list/'); 
+                this.set('route.path', 'hashtag-list/');
             }
         }
         window.customElements.define(NewHashtag.is, NewHashtag);
