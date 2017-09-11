@@ -299,14 +299,14 @@ The following custom properties and mixins are available for styling:
                         value: false,
                         notify: true,
                     },
-                    /**
-                     * range is the range the usert selected in slider
-                     * @type {Number}
-                     */
-                    range: {
-                        type: Number,
-                        observer: '_rangeChanged',
-                    },
+                    // /**
+                    //  * range is the range the usert selected in slider
+                    //  * @type {Number}
+                    //  */
+                    // range: {
+                    //     type: Number,
+                    //     observer: '_rangeChanged',
+                    // },
                     /**
                      * route data represents the curent route
                      * @type {String}
@@ -434,25 +434,25 @@ The following custom properties and mixins are available for styling:
                 }
             }
 
-            /**
-             * re renders the dom repeat when the users changes the range
-             */
-            _rangeChanged() {
-                this.$.domRepeat.render();
-            }
+            // /**
+            //  * re renders the dom repeat when the users changes the range
+            //  */
+            // _rangeChanged() {
+            //     this.$.domRepeat.render();
+            // }
 
-            /**
-             * filters the list according to the selected range
-             * @param {object} event is curent iteration in the dom repeat
-             * @return {boolean} true if there is no distance
-             */
-            _isWithinRange(event) {
-                if (event.distance) {
-                    return (this.range > event.distance);
-                } else {
-                    return true;
-                }
-            }
+            // /**
+            //  * filters the list according to the selected range
+            //  * @param {object} event is curent iteration in the dom repeat
+            //  * @return {boolean} true if there is no distance
+            //  */
+            // _isWithinRange(event) {
+            //     if (event.distance) {
+            //         return (this.range > event.distance);
+            //     } else {
+            //         return true;
+            //     }
+            // }
 
             _next() {
                 if (!this.showSlider && !this.showInfo) {

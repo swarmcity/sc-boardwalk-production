@@ -306,14 +306,34 @@ This code may only be used under the license found at https://github.com/swarmci
                         <div class="hashtag">#{{hashtag.name}}</div>
                         <display-hashtag-about toggle class="info-toggle" show-info="{{showInfo}}" show-slider="{{showSlider}}"></display-hashtag-about>
                     </div>
-                    <display-filter-deals toggle class="filter-toggle" show-slider="{{showSlider}}" show-info="{{showInfo}}" range="{{range}}"
-                        route="{{route}}" path="{{path}}"></display-filter-deals>
+                    <display-filter-deals 
+                        toggle 
+                        class="filter-toggle" 
+                        show-slider="{{showSlider}}" 
+                        show-info="{{showInfo}}" 
+                        range="{{range}}"
+                        route="{{route}}" 
+                        path="{{path}}">
+                    </display-filter-deals>
                 </div>
             </div>
 
-            <display-hashtag-about info class$="info [[infoState]]"></display-hashtag-about>
-            <display-filter-deals slider class$="slider [[sliderState]]" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-deals>
-            <div class$="fade [[fadeState]]" on-click="_fadeClose">
+            <display-hashtag-about 
+                info 
+                class$="info [[infoState]]"
+                show-info="{{showInfo}}" >
+            </display-hashtag-about>
+
+            <display-filter-deals 
+                slider 
+                class$="slider [[sliderState]]" 
+                show-slider="{{showSlider}}" 
+                range="{{range}}" 
+                route="{{route}}" 
+                path="{{path}}">
+            </display-filter-deals>
+
+            <div class$="fade [[fadeState2]]" on-click="_fadeClose">
                 <display-hashtag-deals range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}" show-slider="{{showSlider}}"
                     show-info="{{showInfo}}">
                 </display-hashtag-deals>
@@ -353,7 +373,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     */
                     sliderState: {
                         type: String,
-                        value: 'slider-hidden',
+                        value: 'slider-initial',
                     },
                     /**
                     * infoState represents the state of the info area
@@ -361,7 +381,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     */
                     infoState: {
                         type: String,
-                        value: 'info-hidden',
+                        value: 'info-initial',
                     },
                     /**
                     * fadeState represents the state of the fade area
@@ -369,7 +389,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     */
                     fadeState: {
                         type: String,
-                        value: 'fade-hidden',
+                        value: 'fade-transparent-visible',
                     },
                     /**
                     * showSlider determines of the slider is show or not
@@ -434,24 +454,29 @@ This code may only be used under the license found at https://github.com/swarmci
             */
             _toggleSlider() {
                 switch (this.sliderState) {
+                    case 'slider-initial':
+                        this.sliderState = 'slider-hidden';
+                        this.fadeState = 'fade-visible-hidden';
+                        break;
                     case 'slider-hidden':
                         this.sliderState = 'slider-hidden-visible';
-                        this.infoState = 'info-hidden';
-                        this.$$('.filter-toggle').classList.add('show-filter');
-                        this.$$('.info-toggle').classList.remove('show-info');
-                        this.fadeState = 'fade-visible-transparent';
+                        this.fadeState = 'fade-visible-hidden';
+                        // this.$$('.filter-toggle').classList.add('show-filter');
+                        // this.$$('.info-toggle').classList.remove('show-info');
                         break;
                     case 'slider-hidden-visible':
                         this.sliderState = 'slider-visible-hidden';
-                        this.$$('.filter-toggle').classList.remove('show-filter');
-                        this.fadeState = 'fade-transparent-visible';
+                        this.fadeState = 'fade-hidden-visible';
+                        setTimeout(() =>{ 
+                            this.sliderState = 'slider-hidden'
+                        }, 300);
+                        // this.$$('.filter-toggle').classList.remove('show-filter');
                         break;
                     case 'slider-visible-hidden':
                         this.sliderState = 'slider-hidden-visible';
-                        this.infoState = 'info-hidden';
-                        this.$$('.filter-toggle').classList.add('show-filter');
-                        this.$$('.info-toggle').classList.remove('show-info');
-                        this.fadeState = 'fade-visible-transparent';
+                        this.fadeState = 'fade-visible-hidden';
+                        // this.$$('.filter-toggle').classList.add('show-filter');
+                        // this.$$('.info-toggle').classList.remove('show-info');
                 }
             }
             /**
@@ -459,25 +484,21 @@ This code may only be used under the license found at https://github.com/swarmci
             */
             _toggleInfo() {
                 switch (this.infoState) {
+                    case 'info-initial':
+                        this.infoState = 'info-hidden';
+                        break;
                     case 'info-hidden':
                         this.infoState = 'info-hidden-visible';
                         this.sliderState = 'slider-hidden';
-                        this.$$('.filter-toggle').classList.remove('show-filter');
-                        this.$$('.info-toggle').classList.add('show-info');
                         this.fadeState = 'fade-visible-transparent';
-
                         break;
                     case 'info-hidden-visible':
                         this.infoState = 'info-visible-hidden';
-                        this.$$('.info-toggle').classList.remove('show-info');
                         this.fadeState = 'fade-transparent-visible';
-
                         break;
                     case 'info-visible-hidden':
                         this.infoState = 'info-hidden-visible';
                         this.sliderState = 'slider-hidden';
-                        this.$$('.filter-toggle').classList.remove('show-filter');
-                        this.$$('.info-toggle').classList.add('show-info');
                         this.fadeState = 'fade-visible-transparent';
                 }
             }
@@ -496,7 +517,7 @@ This code may only be used under the license found at https://github.com/swarmci
             * takes the user to the hashtag list page
             */
             _back() {
-                this.path = 'hashtag-list/';
+                this.set('route.path', 'hashtag-list/'); 
             }
         }
         window.customElements.define(NewHashtag.is, NewHashtag);

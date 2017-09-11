@@ -109,12 +109,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 opacity: 1;
             }
 
-            .fade-transparent-visible {
-                animation: fadeOut 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
+            .fade-hidden-visible {
+                animation: fadeIn 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
             }
 
-            .fade-visible-transparent {
-                animation: fadeIn 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
+            .fade-visible-hidden {
+                animation: fadeOut 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
             }
 
             .filter-toggle {
@@ -128,13 +128,6 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .container[wide-layout] .filter-toggle {
                 margin-top: 59px;
-            }
-
-            .show-filter {
-                color: white;
-                background-color: var(--sc-grey4);
-                border-bottom: 0;
-                padding: 1px 2px;
             }
 
             display-hashtag-list {
@@ -165,19 +158,19 @@ This code may only be used under the license found at https://github.com/swarmci
 
             @keyframes fadeIn {
                 0% {
-                    opacity: 1;
+                    opacity: 0.2;
                 }
                 100% {
-                    opacity: 0.2;
+                    opacity: 1;
                 }
             }
 
             @keyframes fadeOut {
                 0% {
-                    opacity: 0.2;
+                    opacity: 1;
                 }
                 100% {
-                    opacity: 1;
+                    opacity: 0.2;
                 }
             }
 
@@ -198,12 +191,34 @@ This code may only be used under the license found at https://github.com/swarmci
                 </div>
                 <div class="topright">
                     <div class="back" on-click="_back"></div>
-                    <display-filter-list toggle class="filter-toggle" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
+
+                    <display-filter-list 
+                        toggle 
+                        class="filter-toggle" 
+                        show-slider="{{showSlider}}" 
+                        range="{{range}}" 
+                        route="{{route}}" 
+                        path="{{path}}">
+                    </display-filter-list>
+
                 </div>
             </div>
-            <display-filter-list slider class$="slider [[sliderState]]" range="{{range}}" route="{{route}}" path="{{path}}"></display-filter-list>
+
+            <display-filter-list 
+                slider 
+                class$="slider [[sliderState]]" 
+                show-slider="{{showSlider}}" 
+                range="{{range}}" 
+                route="{{route}}" 
+                path="{{path}}">
+            </display-filter-list>
+        
             <div class$="fade [[fadeState]]" on-click="_fadeClose">
-                <display-hashtag-list range="[[range]]" path="{{path}}" show-slider="{{showSlider}}"></display-hashtag-list>
+                <display-hashtag-list 
+                    range="[[range]]" 
+                    path="{{path}}" 
+                    show-slider="{{showSlider}}">
+                </display-hashtag-list>
             </div>
         </div>
     </template>
@@ -230,6 +245,14 @@ This code may only be used under the license found at https://github.com/swarmci
                         observer: '_path',
                     },
                     /**
+                    * sliderState represents style state of the slider 
+                    * @type {String} 
+                    */
+                    sliderState: {
+                        type: String,
+                        value: 'slider-hidden',
+                    },
+                    /**
                     * completeAccount determines if an account is present 
                     * in localstorage or not
                     * @type {Boolean}
@@ -244,14 +267,6 @@ This code may only be used under the license found at https://github.com/swarmci
                     showSlider: {
                         type: Boolean,
                         observer: '_toggleSlider',
-                    },
-                    /**
-                    * sliderState represents style state of the slider 
-                    * @type {String} 
-                    */
-                    sliderState: {
-                        type: String,
-                        value: 'slider-hidden',
                     },
                     /**
                     * fadeState represents the state of hashtaglist container 
@@ -294,24 +309,24 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             /**
-            * observer  and hides the slider 
+            * determines the state of the slider and the fade
             */
             _toggleSlider() {
                 switch (this.sliderState) {
                     case 'slider-hidden':
                         this.sliderState = 'slider-hidden-visible';
-                        this.$$('.filter-toggle').classList.add('show-filter');
-                        this.fadeState = 'fade-visible-transparent';
+                        this.fadeState = 'fade-visible-hidden';
                         break;
                     case 'slider-hidden-visible':
                         this.sliderState = 'slider-visible-hidden';
-                        this.$$('.filter-toggle').classList.remove('show-filter');
-                        this.fadeState = 'fade-transparent-visible';
+                        this.fadeState = 'fade-hidden-visible';
+                        setTimeout(() =>{ 
+                            this.sliderState = 'slider-hidden'
+                        }, 300);
                         break;
                     case 'slider-visible-hidden':
                         this.sliderState = 'slider-hidden-visible';
-                        this.$$('.filter-toggle').classList.add('show-filter');
-                        this.fadeState = 'fade-visible-transparent';
+                        this.fadeState = 'fade-visible-hidden';
                 }
             }
             /** 
@@ -332,7 +347,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 }
                 this.path = null;
             }
-
             /**
             * takes the user to the welcome page
             */

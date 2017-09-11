@@ -111,7 +111,7 @@ The following custom properties and mixins are available for styling:
                         <div class="globe-icon"></div>
                     </div>
                     <div class="arrowup">
-                        <div class="arrowup-icon"></div>
+                        <div class="arrowup-icon" on-click="_closeSlider"></div>
                     </div>
                 </div>
             </template>
@@ -183,14 +183,6 @@ The following custom properties and mixins are available for styling:
                         notify: true,
                     },
                     /**
-                    * Route represents the current route
-                    * @type {Object}
-                    */
-                    route: {
-                        type: Object,
-                        observer: '_routeChanged',
-                    },
-                    /**
                     * Value is the value of the slider
                     * @type {Number}
                     */
@@ -231,7 +223,12 @@ The following custom properties and mixins are available for styling:
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
-
+            /**
+            * Closes the slider
+            */
+            _closeSlider(){
+                this.showSlider = false;
+            }
             /**
             * When the slider is shown se the default description
             */

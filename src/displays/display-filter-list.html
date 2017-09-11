@@ -112,7 +112,7 @@ The following custom properties and mixins are available for styling:
                         <div class="globe-icon"></div>
                     </div>
                     <div class="arrowup">
-                        <div class="arrowup-icon"></div>
+                        <div class="arrowup-icon" on-click="_closeSlider"></div>
                     </div>
                 </div>
             </template>
@@ -184,14 +184,6 @@ The following custom properties and mixins are available for styling:
                         notify: true,
                     },
                     /**
-                    * Route represents the current route
-                    * @type {Object}
-                    */
-                    route: {
-                        type: Object,
-                        observer: '_routeChanged',
-                    },
-                    /**
                     * Value is the value of the slider
                     * @type {Number}
                     */
@@ -211,9 +203,15 @@ The following custom properties and mixins are available for styling:
                     * showSlider determines if the slider is shown or not
                     * @type {Boolean}
                     */
-                    showSlider: {
-                        type: Boolean,
-                        // observer: '_setDesc',    
+                    showSlider: { 
+                        notify: true,
+                    },
+                    /**
+                    * showSlider determines if the slider is shown or not
+                    * @type {Boolean}
+                    */
+                    sliderState: {
+                        type: String,
                         notify: true,
                     },
                 };
@@ -222,6 +220,12 @@ The following custom properties and mixins are available for styling:
             connectedCallback() {
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
+            /**
+            * Closes the slider
+            */
+            _closeSlider(){
+                this.showSlider = false;
             }
 
             /**
@@ -282,19 +286,7 @@ The following custom properties and mixins are available for styling:
                     });
             }
 
-            /**
-            * See if location has been added on route change
-            */
-            /*             _routeChanged() {
-                            if (this.route.path == '/hashtag-list/') {
-                                this.$.storage.accountExists()
-                                    .then((account) => {
-                                        if (account.location) {
-                                            this.showSlider = !this.showSlider;
-                                        }
-                                    });
-                            }
-                        } */
+
         }
         window.customElements.define(MyFilterList.is, MyFilterList);
     </script>
