@@ -87,7 +87,8 @@
         "Looking for deals": "Looking for deals",
         "This hashtag is maintained by": "This hashtag is maintained by",
         "The hashtagcommission is": "The hashtagcommission is",
-        "Contact": "Contact"
+        "Contact": "Contact",
+        "Currently no deals selected. Try a broader search.": "Currently no deals selected. Try a broader search."
     },
     "cn": {
         "language": "cn",
@@ -169,7 +170,8 @@
         "Looking for deals": "Awaiting Translation",
         "This hashtag is maintained by": "Awaiting Translation",
         "The hashtagcommission is": "Awaiting Translation",
-        "Contact": "Awaiting Translation"
+        "Contact": "Awaiting Translation",
+        "Currently no deals selected. Try a broader search.": "Awaiting Translation"
     },
     "fr": {
         "No account was found": "Aucun compte trouvé. Lorsque vous restaurez ou créez un nouveau compte, il est stocké localement sur votre machine.",
@@ -260,7 +262,8 @@
         "Looking for deals": "Awaiting Translation",
         "This hashtag is maintained by": "Awaiting Translation",
         "The hashtagcommission is": "Awaiting Translation",
-        "Contact": "Awaiting Translation"
+        "Contact": "Awaiting Translation",
+        "Currently no deals selected. Try a broader search.": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -350,7 +353,8 @@
         "This means you are responsible for your own account at all times.": "Dat betekent dat je ten alle tijde verantwoordelijk bent voor jouw account file.",
         "enter": "enter",
         "tell me more": "meer weten",
-        "world wide": "wereldwijd"
+        "world wide": "wereldwijd",
+        "Currently no deals selected. Try a broader search.": "Awaiting Translation"
     },
     "ru": {
         "language": "ru",
@@ -441,7 +445,8 @@
         "Looking for deals": "Awaiting Translation",
         "This hashtag is maintained by": "Awaiting Translation",
         "The hashtagcommission is": "Awaiting Translation",
-        "Contact": "Awaiting Translation"
+        "Contact": "Awaiting Translation",
+        "Currently no deals selected. Try a broader search.": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -531,7 +536,8 @@
         "This means you are responsible for your own account at all times.": "Dies bedeutet du bist verantwortlich für dein Konto zu jeder Zeit. ",
         "enter": "Eintreten",
         "tell me more": "Erzähl mir mehr",
-        "world wide": "weltweit"
+        "world wide": "weltweit",
+        "Currently no deals selected. Try a broader search.": "Awaiting Translation"
     },
     "es": {
         "language": "es",
@@ -622,7 +628,8 @@
         "Looking for deals": "Awaiting Translation",
         "This hashtag is maintained by": "Awaiting Translation",
         "The hashtagcommission is": "Awaiting Translation",
-        "Contact": "Awaiting Translation"
+        "Contact": "Awaiting Translation",
+        "Currently no deals selected. Try a broader search.": "Awaiting Translation"
     },
     "pl": {
         "No account was found": "Nie znaleziono konta. Kiedy przywracasz istniejące lub tworzysz nowe konto, jest ono zapisywane lokalnie na Twoim urządzeniu.",
@@ -713,7 +720,8 @@
         "Looking for deals": "Awaiting Translation",
         "This hashtag is maintained by": "Awaiting Translation",
         "The hashtagcommission is": "Awaiting Translation",
-        "Contact": "Awaiting Translation"
+        "Contact": "Awaiting Translation",
+        "Currently no deals selected. Try a broader search.": "Awaiting Translation"
     },
     "tr": {
         "No account was found": "Hesap bulunamadı. Eski hesabınız geri yüklediğinizde veya yeni bir hesap oluşturduğunuzda, hesap cihazınızda lokal olarak saklanır.",
@@ -804,6 +812,7 @@
         "Looking for deals": "Awaiting Translation",
         "This hashtag is maintained by": "Awaiting Translation",
         "The hashtagcommission is": "Awaiting Translation",
-        "Contact": "Awaiting Translation"
+        "Contact": "Awaiting Translation",
+        "Currently no deals selected. Try a broader search.": "Awaiting Translation"
     }
 }
