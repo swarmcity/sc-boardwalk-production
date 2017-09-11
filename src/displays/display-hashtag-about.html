@@ -5,7 +5,9 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="display-language.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../redux-state.html">
 <!--
 
 Example:
@@ -89,15 +91,16 @@ The following custom properties and mixins are available for styling:
             }
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+        <display-language language="{{language}}"></display-language>
         <div class="container" wide-layout$="{{wide}}">
             <template is="dom-if" if="{{toggle}}">
                 <div class="toggle" on-click="_toggle">i</div>
             </template>
             <template is="dom-if" if="{{info}}">
                 <div>
-                    <div class="info">This hashtag is maintained by 0x369D787F3EcF4a0e57cDfCFB2Db92134e1982e09.</div>
-                    <div class="commission">The hashtagcommission is 0.05 SWT.</div>
-                    <div class="contact">Contact:</div>
+                    <div class="info">{{localize('This hashtag is maintained by')}} 0x369D787F3EcF4a0e57cDfCFB2Db92134e1982e09.</div>
+                    <div class="commission">{{localize('The hashtagcommission is')}} 0.05 SWT.</div>
+                    <div class="contact">{{localize('Contact')}}:</div>
                     <div class="linkbox">
                         <span class="links">
                         hashtagman@gmail.com</span>
@@ -113,45 +116,54 @@ The following custom properties and mixins are available for styling:
 
     </template>
     <script>
-        class DisplayHashtagAbout extends Polymer.mixinBehaviors([
+        class DisplayHashtagAbout extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
         ],
             Polymer.Element
-        ) {
+        )) {
             static get is() {
                 return 'display-hashtag-about';
             }
             static get properties() {
                 return {
                     /**
-                     * Loading indicates if the componant is loading
-                     * @type {Boolean}
-                     */
+                    * Language is the users selected or determined language
+                    * @type {String}
+                    */
+                    language: {
+                        type: String,
+                        statePath: 'language',
+                        observer: '_calcRange',
+                    },
+                    /**
+                    * Loading indicates if the componant is loading
+                    * @type {Boolean}
+                    */
                     loading: {
                         type: Boolean,
                         value: false,
                         notify: true,
                     },
                     /**
-                     * Selected if true shows the toggle text
-                     * @type {String}
-                     */
+                    * Selected if true shows the toggle text
+                    * @type {String}
+                    */
                     toggle: {
                         type: Boolean,
                         value: false,
                     },
                     /**
-                     * Selected if true shows the info panel
-                     * @type {String}
-                     */
+                    * Selected if true shows the info panel
+                    * @type {String}
+                    */
                     info: {
                         type: Boolean,
                         value: false,
                     },
                     /**
-                     * showInfo indicates if the info panel is open or not
-                     * @type {Boolean}
-                     */
+                    * showInfo indicates if the info panel is open or not
+                    * @type {Boolean}
+                    */
                     showInfo: {
                         type: Boolean,
                         notify: true,
@@ -166,13 +178,17 @@ The following custom properties and mixins are available for styling:
                         notify: true,
                     },
                     /**
-                     * hashtag represents the hashtag data
-                     * @type {Object}
-                     */
+                    * hashtag represents the hashtag data
+                    * @type {Object}
+                    */
                     hashtag: {
                         type: Object,
                     },
                 };
+            }
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             /**
             * Closes the slider
@@ -181,8 +197,8 @@ The following custom properties and mixins are available for styling:
                 this.showInfo = true;
             }
             /**
-             * Togles if the information is shown or hidden
-             */
+            * Togles if the information is shown or hidden
+            */
             _toggle() {
                 if (this.showSlider) {
                     this.showSlider = !this.showSlider;
@@ -191,8 +207,8 @@ The following custom properties and mixins are available for styling:
             }
 
             /**
-             * TGet the hashtags
-             */
+            * TGet the hashtags
+            */
             _getHashtag() {
                 if (this.routeData.page) {
                     this.loading = true;

@@ -84,7 +84,10 @@
         "filter deals": "filter deals",
         "Looking for hashtags": "Looking for hashtags",
         "within +/- 100km from your location": "within +/- 100km from your location",
-        "Looking for deals": "Looking for deals"
+        "Looking for deals": "Looking for deals",
+        "This hashtag is maintained by": "This hashtag is maintained by",
+        "The hashtagcommission is": "The hashtagcommission is",
+        "Contact": "Contact"
     },
     "cn": {
         "language": "cn",
