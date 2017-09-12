@@ -21,7 +21,6 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
-<link rel="import" href="../../bower_components/neon-animation/animations/scale-down-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
 <dom-module id="page-welcome">
@@ -44,6 +43,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-center-center;
                 height: 80vh;
                 background-color: var(--sc-yellow);
+                position: relative;
             }
 
             .container>div:nth-child(1)>div:nth-child(1) {
@@ -276,7 +276,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     </div>
                 </div>
             </div>
-            <div>
+            <div id="middle">
                 <ul>
                     <li><a href="https://thisis.swarm.city/" target="_blank">{{localize('This is Swarm City')}}</a></li>
                     <li><a href="http://swarmcitizens.org/" target="_blank">{{localize('Support')}}</a></li>
@@ -284,7 +284,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     <li><a href="https://advisors.swarm.city/" target="_blank">{{localize('Advisors')}}</a></li>
                 </ul>
             </div>
-            <div>
+            <div id="bottom">
                 <div>{{localize('Find Swarm City on')}}</div>
                 <ul>
                     <li><a href="https://www.facebook.com/groups/SwarmCity/" target="_blank">{{localize('Facebook')}}</a></li>
@@ -318,16 +318,16 @@ This code may only be used under the license found at https://github.com/swarmci
                         statePath: 'language',
                     },
                     /**
-                     * Path is the current or requested path
-                     * @type {String}
-                     */
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                     * Entry and exit animation
-                     */
+                    * Entry and exit animation
+                    */
                     animationConfig: {
                         value: function() {
                             return {
@@ -336,25 +336,18 @@ This code may only be used under the license found at https://github.com/swarmci
                                     node: this,
                                     nodeDelay: 300,
                                     timing: {
-                                        duration: 300,
+                                        duration: 1500,
                                     },
                                 },
-                                'exit': [{
-                                    name: 'scale-down-animation',
-                                    node: this,
-                                    nodeDelay: 50,
-                                    timing: {
-                                        duration: 3000,
-                                    },
-                                },
-                                {
-                                    name: 'fade-in-animation',
-                                    node: this,
-                                    nodeDelay: 50,
-                                    timing: {
-                                        duration: 3000,
-                                    },
-                                }],
+                                // 'exit': {
+                                //     name: 'fade-out-animation',
+                                //     node: this,
+                                //     nodeDelay: 0,
+                                //     timing: {
+                                //         duration: 50,
+                                //         delay: 0,
+                                //     },
+                                // },
                             };
                         },
                     },
@@ -366,8 +359,8 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             /**
-             * changes the current path
-             */
+            * changes the current path
+            */
             _path() {
                 if (this.path != null) {
                     this.set('route.path', this.path);
@@ -376,11 +369,61 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             /**
-             * takes the user to the hashtag list page
-             */
+            * loads the next page, once loaded fires the exit animation
+            */
             _btnClick() {
+                Polymer.importHref('src/pages/page-hashtag-list.html', this._exitAnimation.bind(this), null, false);
+            }
+
+            /**
+            * loads the next page 
+            */
+            _exitAnimation(){
+                    const exitAnim = this.$.top.animate(
+                    [
+                        {'transform': 'translate(0)'},
+                        {'transform': 'translateY(-100%)'}
+                    ], {
+                        fill: 'none',
+                        duration: 300,
+                        iterations: 1,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 0,
+                    }
+                    );
+
+                    this.$.middle.animate(
+                    [
+                        {'transform': 'translate(0)'},
+                        {'transform': 'translateY(300%)'}
+                    ], {
+                        fill: 'none',
+                        duration: 300,
+                        iterations: 1,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 0,
+                    }
+                    );
+
+                    this.$.bottom.animate(
+                    [
+                        {'transform': 'translate(0)'},
+                        {'transform': 'translateY(300%)'}
+                    ], {
+                        fill: 'none',
+                        duration: 300,
+                        iterations: 1,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 0,
+                    }
+                    );
+
+                    exitAnim.onfinish = this._changePage.bind(this);
+            }
+            _changePage(){
                 this.set('route.path', 'hashtag-list/');
             }
+
         }
         window.customElements.define(PageWelcome.is, PageWelcome);
     </script>
