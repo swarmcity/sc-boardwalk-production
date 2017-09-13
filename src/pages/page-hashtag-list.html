@@ -194,13 +194,14 @@ This code may only be used under the license found at https://github.com/swarmci
         <div class="container" wide-layout$="{{wide}}">
             <div class="header">
                 <div class="topleft">
-                    <display-my-info complete-account="{{completeAccount}}"></display-my-info>
+                    <display-my-info id="myInfo" complete-account="{{completeAccount}}"></display-my-info>
                 </div>
                 <div class="topright">
-                    <div class="back" on-click="_back"></div>
+                    <div class="back" on-click="_back" id="back"></div>
 
                     <display-filter-list 
                         toggle 
+                        id="filterToggle"
                         class="filter-toggle"
                         highlight-filter$="{{highlightFilterToggle}}"
                         show-slider="{{showSlider}}" 
@@ -223,6 +224,7 @@ This code may only be used under the license found at https://github.com/swarmci
         
             <div class$="fade [[fadeState]]" on-click="_fadeClose">
                 <display-hashtag-list 
+                    id="hashtagList"
                     range="[[range]]" 
                     path="{{path}}" 
                     show-slider="{{showSlider}}">
@@ -339,17 +341,52 @@ This code may only be used under the license found at https://github.com/swarmci
             */
             _entryAnimation(){
                 if(this.location == 'hashtag-list'){
-                    console.log(this.location);
-                    this.$.middle.animate(
+                    this.$.hashtagList.animate(
                     [
-                        {'transform': 'translate(0)'},
-                        {'transform': 'translateY(300%)'},
+                        {'opacity':'0', 'transform':'translate(0)'},
+                        {'opacity':'1', 'transform':'translateY(-100px)'},
                     ], {
                         fill: 'none',
-                        duration: 300,
+                        duration: 200,
                         iterations: 1,
                         easing: 'cubic-bezier(0.42,0,0.58,1)',
-                        delay: 0,
+                        delay: 100,
+                    }
+                    );
+                    this.$.back.animate(
+                    [
+                        {'opacity':'0'},
+                        {'opacity':'1'},
+                    ], {
+                        fill: 'none',
+                        duration: 200,
+                        iterations: 1,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 100,
+                    }
+                    );
+                    this.$.filterToggle.animate(
+                    [
+                        {'opacity':'0'},
+                        {'opacity':'1'},
+                    ], {
+                        fill: 'none',
+                        duration: 200,
+                        iterations: 1,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 100,
+                    }
+                    );
+                    this.$.myInfo.animate(
+                    [
+                        {'opacity':'0', 'transform':'translate(0)'},
+                        {'opacity':'1', 'transform':'translateY(30px)'},
+                    ], {
+                        fill: 'none',
+                        duration: 200,
+                        iterations: 1,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 100,
                     }
                     );
                 }
