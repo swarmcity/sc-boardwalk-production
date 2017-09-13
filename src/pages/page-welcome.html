@@ -372,17 +372,18 @@ This code may only be used under the license found at https://github.com/swarmci
             * loads the next page, once loaded fires the exit animation
             */
             _btnClick() {
-                Polymer.importHref('src/pages/page-hashtag-list.html', this._exitAnimation.bind(this), null, false);
+                Polymer.importHref('src/pages/page-hashtag-list.html', 
+                this._exitAnimation.bind(this), null, false);
             }
 
             /**
             * loads the next page 
             */
-            _exitAnimation(){
+            _exitAnimation() {
                     const exitAnim = this.$.top.animate(
                     [
                         {'transform': 'translate(0)'},
-                        {'transform': 'translateY(-100%)'}
+                        {'transform': 'translateY(-100%)'},
                     ], {
                         fill: 'none',
                         duration: 300,
@@ -395,7 +396,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     this.$.middle.animate(
                     [
                         {'transform': 'translate(0)'},
-                        {'transform': 'translateY(300%)'}
+                        {'transform': 'translateY(300%)'},
                     ], {
                         fill: 'none',
                         duration: 300,
@@ -408,7 +409,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     this.$.bottom.animate(
                     [
                         {'transform': 'translate(0)'},
-                        {'transform': 'translateY(300%)'}
+                        {'transform': 'translateY(300%)'},
                     ], {
                         fill: 'none',
                         duration: 300,
@@ -420,11 +421,9 @@ This code may only be used under the license found at https://github.com/swarmci
 
                     exitAnim.onfinish = this._changePage.bind(this);
             }
-            _changePage(){
+            _changePage() {
                 this.set('route.path', 'hashtag-list/');
             }
-
-        }
-        window.customElements.define(PageWelcome.is, PageWelcome);
+        } window.customElements.define(PageWelcome.is, PageWelcome);
     </script>
 </dom-module>
