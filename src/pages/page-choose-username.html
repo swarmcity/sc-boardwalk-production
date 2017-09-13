@@ -32,48 +32,73 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
+                height: 100vh;
+                width: 100vw;
                 display: block;
+            }
+
+            .container {
+                @apply --layout-vertical;
+                background-color: var(--sc-white);
+                height: 100%;
+                width: 100%;
+            }
+
+            .close {
+                @apply --xmark-grey4-normal;
+                @apply --close;
+            }
+
+            .top {
+                @apply --layout-vertical;
+                @apply --layout-center;
+                @apply --layout-end-justified;
+                height: 40vh;
+                box-sizing: border-box;
+                padding: 0 14vw 10vh;
+            }
+
+            .container[wide-layout] .top {
+                @apply --layout-start;
+                height: 50vh;
+                padding: 0 12vw 7vh;
+            }
+
+            .title {
+                @apply --main-title1;
+                color: var(--sc-grey3);
+                word-wrap: break-word;
+                text-align: center;
+            }
+
+            img {
+                width: 90px;
+                height: 90px;
+                cursor: pointer;
+                border-radius: 50%;
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
             }
 
-            .close {
-                position: fixed;
-                top: 18px;
-                right: 18px;
-                width: 36px;
-                height: 36px;
-                background-image: url('../../images/SwarmCity-Sprite-normal.png');
-                background-repeat: no-repeat;
-                background-size: 288px 270px;
-                background-position: -216px -234px;
-                cursor: pointer;
+            .bottom {
+                box-sizing: border-box;
+                padding: 0 14vw;
+                @apply --layout-vertical;
+                @apply --layout-center;
+                @apply --layout-start-justified;
+                height: 40%;
             }
 
-            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-            only screen and (min--moz-device-pixel-ratio: 1.5),
-            only screen and (min-resolution: 240dpi) {
-                .retina {
-                    background-image: url('../../images/SwarmCity-Sprite-doublesize.png');
-                }
+            .container[wide-layout] .bottom {
+                @apply --layout-start;
+                height: 50vh;
+                padding: 0 12vw;
             }
 
-            .container {
-                max-width: 400px;
-            }
-
-            .sprite {
-                background: url('../images/SwarmCity-Sprite-normal.png');
-                background-repeat: no-repeat;
-            }
-
-            .title {
-                color: var(--grey-4);
-                padding: 221px 50px 50px 50px;
-                text-align: center;
-                font-weight: 200;
-                font-size: 16px;
-                line-height: 15px;
+            .container[wide-layout] paper-input {
+                
+                text-align: left;
+                margin-top: 40px;
             }
 
             .btn {
@@ -82,34 +107,98 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             paper-input {
+                margin-top: 40px;
+                text-align: center;
                 padding: 0 0 50px 0;
                 --paper-input-container-color: var(--swarm-city-blue);
                 --paper-input-container-focus-color: var(--swarm-city-blue);
             }
 
-            .btn .agree {
-                @apply --agree-blue;
+            .btn {
+                @apply --icon-button-big;
+            }
+
+            .agree {
+                @apply --next-blue-normal;
+            }
+            .avatar {
+                margin-left: 36px;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                @apply --layout-end;
+            }
+            .arrowcontainer {
+                @apply --base-shadow;
+                border-radius: 50%;
+                background-color: var(--sc-blue);
+                height: 36px;
+                width: 36px;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                @apply --layout-end;
+                position: relative;
+                right: 30px;
+                
+            }
+            .arrowup {
+                @apply --arrowup-white-small;
+            }
+            
+            .bottom-upper {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+            }
+
+            .container[wide-layout] .bottom-upper {
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+            }
+
+            .container[wide-layout] .avatar {
+                margin-left: 0;
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-end;
+            }
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .close,
+                .arrowup {
+                    @apply --retina;
+                }
             }
         </style>
         <app-location route="{{route}}"></app-location>
-
-        <div class="close retina" on-click="_close"></div>
-        <div class="container">
-            <div class="title">{{localize('Choose a username')}}</div>
-            <paper-input label=""></paper-input>
-            <div class="btn">
-                <div class="agree" on-click="_agree"></div>
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+        <div class="container" wide-layout$="{{wide}}">
+            <div class="close" on-click="_close"></div>
+            <div class="top">
+                <div class="title">{{localize('Choose an avatar and a username.')}}</div>
             </div>
+            <div class="bottom">
+                <div class="bottom-upper">
+                    <div class="avatar"><img src="../../images/defaultavatar.png"><div class="arrowcontainer"><div class="arrowup"></div></div></div>
+                    <paper-input label="Username" always-float-label></paper-input>
+                </div>
+                <div class="btn">
+                    <div class="agree" on-click="_agree"></div>
+                </div>
+            </div>
+        </div>
         </div>
 
     </template>
 
     <script>
         class MyChooseUsername extends new ReduxMixin(Polymer.mixinBehaviors([
-                Polymer.AppLocalizeBehavior,
-                Polymer.NeonAnimationRunnerBehavior,
-                Polymer.NeonAnimatableBehavior,
-            ],
+            Polymer.AppLocalizeBehavior,
+            Polymer.NeonAnimationRunnerBehavior,
+            Polymer.NeonAnimatableBehavior,
+        ],
             Polymer.Element
         )) {
             static get is() {
@@ -133,7 +222,7 @@ This code may only be used under the license found at https://github.com/swarmci
                      * Entry and exit animation
                      */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
