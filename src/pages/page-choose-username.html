@@ -211,16 +211,16 @@ This code may only be used under the license found at https://github.com/swarmci
                         statePath: 'language',
                     },
                     /**
-                     * Path is the current or requested path
-                     * @type {String}
-                     */
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                     * Entry and exit animation
-                     */
+                    * Entry and exit animation
+                    */
                     animationConfig: {
                         value: function() {
                             return {
@@ -251,20 +251,20 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             /**
-             * takes the user to page-stop-signup
-             */
+            * takes the user to page-stop-signup
+            */
             _close() {
                 this.path = 'stop-signup/';
             }
             /**
-             * takes the user to the next page in user creation
-             */
+            * takes the user to the next page in user creation
+            */
             _agree() {
-                this.path = 'choose-avatar/';
+                this.path = 'resize-avatar/';
             }
             /**
-             * changes the current path
-             */
+            * changes the current path
+            */
             _path() {
                 if (this.path != null) {
                     this.set('route.path', this.path);
