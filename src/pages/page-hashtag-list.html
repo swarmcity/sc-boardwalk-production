@@ -245,6 +245,15 @@ This code may only be used under the license found at https://github.com/swarmci
             static get properties() {
                 return {
                     /**
+                    * Location is the page path the user is on
+                    * @type {String}
+                    */
+                    location: {
+                        type: String,
+                        statePath: 'location',
+                        observer: '_entryAnimation',
+                    },
+                    /**
                     * Path is the current or requested path
                     * @type {String}
                     */
@@ -324,6 +333,26 @@ This code may only be used under the license found at https://github.com/swarmci
             connectedCallback() {
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
+            /**
+            * location checks if the user is on this page and fires the entry animation
+            */
+            _entryAnimation(){
+                if(this.location == 'hashtag-list'){
+                    console.log(this.location);
+                    this.$.middle.animate(
+                    [
+                        {'transform': 'translate(0)'},
+                        {'transform': 'translateY(300%)'},
+                    ], {
+                        fill: 'none',
+                        duration: 300,
+                        iterations: 1,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 0,
+                    }
+                    );
+                }
             }
             /**
             * determines the state of the slider and the fade
