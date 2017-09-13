@@ -131,6 +131,12 @@
                       hashtags: hashtags,
                   };
               },
+              LOCATION: function(location) {
+                  return {
+                      type: 'LOCATION',
+                      location: location,
+                  };
+              },
           });
       }
 
@@ -147,6 +153,7 @@
         this.page = page || 'welcome';
       }
       _pageChanged(page) {
+        this.dispatch('LOCATION', this.location);
         var resolvedPageUrl = this.resolveUrl('pages/page-' + page + '.html');
         Polymer.importHref(
             resolvedPageUrl,
