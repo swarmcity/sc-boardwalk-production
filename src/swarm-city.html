@@ -104,11 +104,13 @@
             reflectToAttribute: true,
             observer: '_pageChanged',
           },
+
           hashtagdata: {
             type: Array,
             observer: '_hashtagChanged',
           },
           hashtags: {
+
             type: Array,
           },
           routeData: Object,
@@ -116,6 +118,7 @@
           rootPath: String,
         };
       }
+
       /**
         * Redux action for sertting language
         * @param {hashtags} hashtags
@@ -130,11 +133,13 @@
               },
           });
       }
+
       static get observers() {
         return [
           '_routePageChanged(routeData.page)',
         ];
       }
+
       _hashtagChanged() {
         this.dispatch('HASHTAGS', this.hashtags);
       }

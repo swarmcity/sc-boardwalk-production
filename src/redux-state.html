@@ -10,14 +10,20 @@ let reducer = function(state, action) {
         return initialState;
     }
     switch (action.type) {
-        case 'LANGUAGE':
-            {
-                let language = state.language;
-                language = action.language;
-                return Object.assign({}, state, {
-                    language: language,
-                });
-            }
+        case 'LANGUAGE': {
+            let language = state.language;
+            language = action.language;
+            return Object.assign({}, state, {
+                language: language,
+            });
+        }
+        case 'HASHTAGS': {
+            let hashtags = state.hashtags;
+            hashtags = action.hashtags;
+            return Object.assign({}, state, {
+                hashtags: hashtags,
+            });
+        }
     }
 };
 const store = Redux.createStore(reducer, /* preloadedState, */
