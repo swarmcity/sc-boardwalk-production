@@ -318,14 +318,14 @@ This code may only be used under the license found at https://github.com/swarmci
                                 //         duration: 300,
                                 //     },
                                 // },
-                                'exit': {
-                                    name: 'fade-out-animation',
-                                    node: this,
-                                    nodeDelay: 300,
-                                    timing: {
-                                        duration: 300,
-                                    },
-                                },
+                                // 'exit': {
+                                //     name: 'fade-out-animation',
+                                //     node: this,
+                                //     nodeDelay: 300,
+                                //     timing: {
+                                //         duration: 300,
+                                //     },
+                                // },
                             };
                         },
                     },
@@ -343,14 +343,14 @@ This code may only be used under the license found at https://github.com/swarmci
                 if(this.location == 'hashtag-list'){
                     this.$.hashtagList.animate(
                     [
-                        {'opacity':'0', 'transform':'translate(0)'},
-                        {'opacity':'1', 'transform':'translateY(-100px)'},
+                        {'opacity':'0', 'transform':'translateY(100px)'},
+                        {'opacity':'1', 'transform':'translateY(0)'},
                     ], {
                         fill: 'none',
-                        duration: 200,
+                        duration: 300,
                         iterations: 1,
                         easing: 'cubic-bezier(0.42,0,0.58,1)',
-                        delay: 100,
+                        delay: 0,
                     }
                     );
                     this.$.back.animate(
@@ -359,10 +359,10 @@ This code may only be used under the license found at https://github.com/swarmci
                         {'opacity':'1'},
                     ], {
                         fill: 'none',
-                        duration: 200,
+                        duration: 300,
                         iterations: 1,
                         easing: 'cubic-bezier(0.42,0,0.58,1)',
-                        delay: 100,
+                        delay: 0,
                     }
                     );
                     this.$.filterToggle.animate(
@@ -371,22 +371,22 @@ This code may only be used under the license found at https://github.com/swarmci
                         {'opacity':'1'},
                     ], {
                         fill: 'none',
-                        duration: 200,
+                        duration: 300,
                         iterations: 1,
                         easing: 'cubic-bezier(0.42,0,0.58,1)',
-                        delay: 100,
+                        delay: 0,
                     }
                     );
                     this.$.myInfo.animate(
                     [
-                        {'opacity':'0', 'transform':'translate(0)'},
-                        {'opacity':'1', 'transform':'translateY(30px)'},
+                        {'opacity':'0', 'transform':'translateY(-30px)'},
+                        {'opacity':'1', 'transform':'translateY(0)'},
                     ], {
                         fill: 'none',
-                        duration: 200,
+                        duration: 300,
                         iterations: 1,
                         easing: 'cubic-bezier(0.42,0,0.58,1)',
-                        delay: 100,
+                        delay: 0,
                     }
                     );
                 }
