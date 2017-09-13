@@ -153,7 +153,7 @@
         this.page = page || 'welcome';
       }
       _pageChanged(page) {
-        this.dispatch('LOCATION', this.location);
+        this.dispatch('LOCATION', page);
         var resolvedPageUrl = this.resolveUrl('pages/page-' + page + '.html');
         Polymer.importHref(
             resolvedPageUrl,
