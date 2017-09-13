@@ -97,7 +97,6 @@
   <script>
     class SwarmCity extends new ReduxMixin(Polymer.Element) {
       static get is() {return 'swarm-city';}
-
       static get properties() {
         return {
           page: {
@@ -105,11 +104,13 @@
             reflectToAttribute: true,
             observer: '_pageChanged',
           },
-          hashtagdata:{
+
+          hashtagdata: {
             type: Array,
             observer: '_hashtagChanged',
           },
-          hashtags:{
+          hashtags: {
+
             type: Array,
           },
           routeData: Object,
@@ -139,7 +140,7 @@
         ];
       }
 
-      _hashtagChanged(){
+      _hashtagChanged() {
         this.dispatch('HASHTAGS', this.hashtags);
       }
       _routePageChanged(page) {
@@ -157,7 +158,6 @@
         this.page = 'view404';
       }
     }
-
     window.customElements.define(SwarmCity.is, SwarmCity);
   </script>
 </dom-module>

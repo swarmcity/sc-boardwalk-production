@@ -31,55 +31,86 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
-                @apply --location-host;
+                background-color: var(--sc-blue);
+                height: 100vh;
+                width: 100vw;
+                display: block;
             }
 
             .container {
-                @apply --location-container;
+                background-color: var(--sc-blue);
+                height: 100%;
+                width: 100%;
+                @apply --layout-vertical;
             }
 
             .container>div:nth-child(1) {
-                @apply --location-upper;
+                height: 70%;
+                @apply --layout-vertical;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+                box-sizing: border-box;
+                padding: 0 14vw;
             }
 
             .container>div:nth-child(1)>div:nth-child(1) {
-                @apply --location-title;
+                @apply --main-title1;
+                color: var(--sc-white);
+                text-align: center;
             }
 
             .container>div:nth-child(1)>div:nth-child(2) {
-                @apply --location-subtitle;
+                @apply --small-light;
+                margin: 20px 0 0;
+                color: var(--sc-white);
+                text-align: center;
             }
 
             .container>div:nth-child(2) {
-                @apply --location-bottom;
+                box-sizing: border-box;
+                padding: 0 14vw;
+                @apply --layout-vertical;
+                @apply --layout-center;
+                @apply --layout-start-justified;
+                height: 30%;
             }
 
             .container>div:nth-child(2)>div:nth-child(1) {
-                @apply --location-buttons;
+                @apply --layout-horizontal;
+                @apply --layout-center-center;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
-                @apply --location-xmark
-            }
-
-            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1):active {
-                @apply --location-xmark-active;
+                @apply --xmark-grey4-normal;
+                cursor: pointer;
+                margin-right: 20px;
             }
 
             .container[wide-layout]>div:nth-child(1) {
-                @apply --location-upper-wide;
+                height: 55%;
+                padding: 0 12vw 7vh;
+                @apply --layout-start;
+                @apply --layout-end-justified;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(1) {
-                @apply --location-title-wide;
+                @apply --main-title1-wide;
+                text-align: left;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(2) {
-                @apply --location-subtitle-wide;
+                @apply --small-light-wide;
+                text-align: left;
             }
 
             .container[wide-layout]>div:nth-child(2) {
-                @apply --location-bottom-wide;
+                height: 40%;
+                padding: 0 12vw;
+                @apply --layout-start;
+            }
+
+            .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1):active {
+                @apply --button-active;
             }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
@@ -100,7 +131,7 @@ This code may only be used under the license found at https://github.com/swarmci
             </div>
             <div>
                 <div>
-                    <div on-click="_btnClick"></div>
+                    <div on-click="_disagree"></div>
                     <display-geolocation path="{{path}}"></display-geolocation>
                 </div>
             </div>
@@ -168,8 +199,8 @@ This code may only be used under the license found at https://github.com/swarmci
             /**
              * takes the user to the hashtag list page
              */
-            _btnClick() {
-                this.path = 'hashtag-list/';
+            _disagree() {
+                window.history.back();
             }
 
             /**

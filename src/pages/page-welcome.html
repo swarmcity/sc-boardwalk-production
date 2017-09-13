@@ -29,151 +29,220 @@ This code may only be used under the license found at https://github.com/swarmci
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
 -->
         <style include="shared-styles">
-
-
              :host {
-                @apply --welcome-host;
+                width: 100vw;
+                display: block;
             }
 
             .container {
-                @apply --welcome-container;
+                width: 100%;
             }
 
             .container>div:nth-child(1) {
-                @apply --welcome-top;
+                @apply --layout-vertical;
+                @apply --layout-center-center;
+                height: 80vh;
+                background-color: var(--sc-yellow);
+                position: relative;
             }
 
             .container>div:nth-child(1)>div:nth-child(1) {
-                @apply --welcome-language;
+                @apply --layout-horizontal;
+                @apply --layout-end-justified;
+                box-sizing: border-box;
+                padding: 30px 30px 0 0;
+                width: 100%;
             }
 
             display-language {
                 cursor: pointer;
                 @apply --small-bold;
+                text-transform: uppercase;
             }
 
             .container>div:nth-child(1)>div:nth-child(2) {
-                @apply --welcome-switchcontainer;
+                @apply --layout-vertical;
+                @apply --center-center;
+                @apply --layout-flex;
+                height: 100%;
+                width: 100%;
             }
 
             .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
-                @apply --welcome-banner;
+                @apply --layout-vertical;
+                @apply --layout-center;
+                @apply --layout-end-justified;
+                box-sizing: border-box;
+                padding: 0 0 8vh 0;
+                height: 60%;
             }
 
             .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
-                @apply --welcome-logo;
+                @apply --swlogo-grey4;
+                margin-bottom: 20px;
             }
 
             .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
-                @apply --welcome-uppertitle;
+                @apply --body-detail;
+                font-size: 22px;
+                font-weight: 100;
             }
 
             .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(3) {
-                @apply --welcome-title;
+                @apply --main-title1;
             }
 
             .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(2) {
-                @apply --welcome-buttoncontainer;
+                @apply --layout-vertical;
+                @apply --layout-center-center;
+                height: 40%;
             }
 
             .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(1) {
-                @apply --welcome-button;
+
+                width: 75vw;
+                min-width: 200px;
+                max-width: 300px;
+                border: 1px solid black;
+                @apply --text-button-big;
+                background-color: rgba(250, 250, 250, 0.09);
             }
 
             .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
-                @apply --welcome-version;
+                @apply --smallest-light;
             }
 
             .container>div:nth-child(2) {
-                @apply --welcome-middle;
+
+                box-sizing: border-box;
+                background-color: var(--sc-white);
+                padding: 40px 0 40px 0;
             }
 
             .container>div:nth-child(2) ul li {
-                @apply --welcome-middle-list-li;
+                box-sizing: border-box;
+                list-style-type: none;
+                padding-bottom: 16px
             }
 
             .container>div:nth-child(2) ul li a {
-                @apply --welcome-middle-list-li-a;
+
+                @apply --small-bold;
+                color: var(--sc-blue);
+                text-decoration: none;
             }
 
             .container>div:nth-child(3) {
-                @apply --welcome-bottom;
+                box-sizing: border-box;
+                padding: 50px 0 50px 10vw;
+                background-color: #e6e6e6;
             }
 
             .container>div:nth-child(3)>div:nth-child(1) {
-                @apply --welcome-footertitle;
+                @apply --small-bold;
+                margin-bottom: 10px;
             }
 
             .container>div:nth-child(3) ul {
-                @apply --welcome-bottom-list;
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                text-decoration: none;
             }
 
             .container>div:nth-child(3) ul li {
-                @apply --welcome-bottom-list-li;
+                box-sizing: border-box;
+                list-style-type: none;
+                padding-bottom: 8px;
             }
 
             .container>div:nth-child(3) ul li a {
-                @apply --welcome-bottom-list-li-a;
+                @apply --small-light;
+                color: var(--sc-grey4);
+                text-decoration: none;
+                border-bottom: 1px dotted var(--sc-grey2);
             }
 
             .container[wide-layout]>div:nth-child(1) {
-                @apply --welcome-top-wide;
+                height: 80vh;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(2) {
-                @apply --welcome-switchcontainer-wide;
+                @apply --layout-horizontal;
+                @apply --layout-center-center;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
-                @apply --welcome-banner-wide;
+                @apply --layout-start;
+                @apply --layout-end-justified;
+                @apply --layout-flex;
+                box-sizing: border-box;
+                padding: 0 0 18vh 10vw;
+                height: 100%;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
-                @apply --welcome-uppertitle-wide;
+                font-size: 34px;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(3) {
-                @apply --welcome-title-wide;
+                font-size: 78px;
+                line-height: 68px;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
-                @apply --welcome-logo-wide;
+                margin-bottom: 30px;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(2) {
-                @apply --welcome-buttoncontainer-wide;
+                @apply --layout-vertical;
+                @apply --layout-end;
+                @apply --layout-end-justified;
+                box-sizing: border-box;
+                padding: 0 10vw 18vh 0;
+                height: 100%;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(1) {
-                @apply --welcome-button-wide;
+                padding: 36px 42px;
+                max-width: 220px;
             }
 
             .container[wide-layout]>div:nth-child(2) ul {
-                @apply --welcome-middle-list-wide;
+                box-sizing: border-box;
+                padding: 0 0 0 10vw;
             }
 
             .container[wide-layout]>div:nth-child(2) ul li {
-                @apply --welcome-middle-list-li-wide;
+                box-sizing: border-box;
+                display: inline;
+                list-style-type: none;
+                padding-right: 20px;
             }
 
             .container[wide-layout]>div:nth-child(2) ul li a {
-                @apply --welcome-middle-list-li-a-wide;
+                @apply --small-bold;
+                color: var(--sc-blue);
+                text-decoration: none;
+            }
+
+            .container[wide-layout]>div:nth-child(2) ul li a ::before {
+                border-bottom: 2px dotted var(--sc-blue);
             }
 
             .container[wide-layout]>div:nth-child(3) ul li {
-                @apply --welcome-bottom-list-li-wide;
+                box-sizing: border-box;
+                display: inline;
+                padding-right: 20px;
             }
 
             .container[extrawide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
-                @apply --welcome-logo-extrawide;
-            }
-
-            .container[extrawide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
-                @apply --welcome-uppertitle-extrawide;
+                margin-bottom: 40px;
             }
 
             .container[extrawide-layout]>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(3) {
-                @apply --welcome-title-extrawide;
+                font-size: 98px;
+                line-height: 82px;
             }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
@@ -188,7 +257,7 @@ This code may only be used under the license found at https://github.com/swarmci
         <iron-media-query query="(min-width: 1281px)" query-matches="{{extrawide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
         <div class="container" wide-layout$="{{wide}}" extrawide-layout$="{{extrawide}}">
-            <div>
+            <div id="top">
                 <div>
                     <display-language selected path="{{path}}"></display-language>
                 </div>
@@ -207,7 +276,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     </div>
                 </div>
             </div>
-            <div>
+            <div id="middle">
                 <ul>
                     <li><a href="https://thisis.swarm.city/" target="_blank">{{localize('This is Swarm City')}}</a></li>
                     <li><a href="http://swarmcitizens.org/" target="_blank">{{localize('Support')}}</a></li>
@@ -215,12 +284,12 @@ This code may only be used under the license found at https://github.com/swarmci
                     <li><a href="https://advisors.swarm.city/" target="_blank">{{localize('Advisors')}}</a></li>
                 </ul>
             </div>
-            <div>
+            <div id="bottom">
                 <div>{{localize('Find Swarm City on')}}</div>
                 <ul>
                     <li><a href="https://www.facebook.com/groups/SwarmCity/" target="_blank">{{localize('Facebook')}}</a></li>
                     <li><a href="https://discordapp.com/invite/6CsYT64" target="_blank">{{localize('Discord')}}</a></li>
-                    <li><a href="https://swarm-slack-invite.herokuapp.com/" target="_blank">{{localize('Slack')}}</a></li>
+                    <li><a href="https://slackinvite.swarm.city" target="_blank">{{localize('Slack')}}</a></li>
                     <li><a href="https://medium.com/swarm-city-times" target="_blank">{{localize('Medium')}}</a></li>
                     <li><a href="https://github.com/swarmcity" target="_blank">{{localize('Github')}}</a></li>
                     <li><a href="https://twitter.com/swarmcitydapp" target="_blank">{{localize('Twitter')}}</a></li>
@@ -249,16 +318,16 @@ This code may only be used under the license found at https://github.com/swarmci
                         statePath: 'language',
                     },
                     /**
-                     * Path is the current or requested path
-                     * @type {String}
-                     */
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                     * Entry and exit animation
-                     */
+                    * Entry and exit animation
+                    */
                     animationConfig: {
                         value: function() {
                             return {
@@ -267,17 +336,18 @@ This code may only be used under the license found at https://github.com/swarmci
                                     node: this,
                                     nodeDelay: 300,
                                     timing: {
-                                        duration: 300,
+                                        duration: 1500,
                                     },
                                 },
-                                'exit': {
-                                    name: 'fade-out-animation',
-                                    node: this,
-                                    nodeDelay: 300,
-                                    timing: {
-                                        duration: 300,
-                                    },
-                                },
+                                // 'exit': {
+                                //     name: 'fade-out-animation',
+                                //     node: this,
+                                //     nodeDelay: 0,
+                                //     timing: {
+                                //         duration: 50,
+                                //         delay: 0,
+                                //     },
+                                // },
                             };
                         },
                     },
@@ -289,8 +359,8 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             /**
-             * changes the current path
-             */
+            * changes the current path
+            */
             _path() {
                 if (this.path != null) {
                     this.set('route.path', this.path);
@@ -299,12 +369,61 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             /**
-             * takes the user to the hashtag list page
-             */
+            * loads the next page, once loaded fires the exit animation
+            */
             _btnClick() {
+                Polymer.importHref('src/pages/page-hashtag-list.html',
+                this._exitAnimation.bind(this), null, false);
+            }
+
+            /**
+            * loads the next page 
+            */
+            _exitAnimation() {
+                    const exitAnim = this.$.top.animate(
+                    [
+                        {'transform': 'translate(0)'},
+                        {'transform': 'translateY(-100%)'},
+                    ], {
+                        fill: 'none',
+                        duration: 300,
+                        iterations: 1,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 0,
+                    }
+                    );
+
+                    this.$.middle.animate(
+                    [
+                        {'transform': 'translate(0)'},
+                        {'transform': 'translateY(300%)'},
+                    ], {
+                        fill: 'none',
+                        duration: 300,
+                        iterations: 1,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 0,
+                    }
+                    );
+
+                    this.$.bottom.animate(
+                    [
+                        {'transform': 'translate(0)'},
+                        {'transform': 'translateY(300%)'},
+                    ], {
+                        fill: 'none',
+                        duration: 300,
+                        iterations: 1,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 0,
+                    }
+                    );
+
+                    exitAnim.onfinish = this._changePage.bind(this);
+            }
+            _changePage() {
                 this.set('route.path', 'hashtag-list/');
             }
-        }
-        window.customElements.define(PageWelcome.is, PageWelcome);
+        } window.customElements.define(PageWelcome.is, PageWelcome);
     </script>
 </dom-module>

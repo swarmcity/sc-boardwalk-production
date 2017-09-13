@@ -463,21 +463,7 @@ this.$.web3.hashtags()
                             description: 'a test hashtag for the devs',
                         },
                     ];
-                    this._getHashTagIpfsTag('HashtagList',
-                        '0x2e17d4c60a2fc3f1d586d2ca9d66b52f80a043c0');
                     resolve(fakeResponse);
-                    // Promise.all([this._loadAbi(contractName),
-                    // this._loadAddress(contractName)])
-                    // .then((data) => {
-                    //     const abiArray = data[0];
-                    //     const contractAddress = data[1];
-                    //     var contract = swarmCity.web3.eth.contract(abiArray)
-                    //      .at(contractAddress);
-                    //     resolve(object);
-                    // })
-                    // .catch((err) => {
-                    //     reject(Error(err));
-                    // });
                 });
             }
 
