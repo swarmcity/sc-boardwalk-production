@@ -147,6 +147,7 @@
           '_routePageChanged(routeData.page)',
         ];
       }
+      
 
       _hashtagChanged() {
         this.dispatch('HASHTAGS', this.hashtags);
@@ -157,13 +158,10 @@
       _pageChanged(page) {
         if(!this.location){
           this.dispatch('LOCATION', {nowAt: page});
-          console.log(this.location)
         } else {
           let lastAt = this.location.nowAt
           this.dispatch('LOCATION', {lastAt: lastAt, nowAt: page});
-          console.log(this.location)
         }
-       // this.dispatch('LOCATION', page);
         var resolvedPageUrl = this.resolveUrl('pages/page-' + page + '.html');
         Polymer.importHref(
             resolvedPageUrl,
