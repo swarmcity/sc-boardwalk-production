@@ -104,6 +104,10 @@
             reflectToAttribute: true,
             observer: '_pageChanged',
           },
+          location: {
+            type: String,
+            statePath: 'location',
+          },
           hashtagdata: {
             type: Array,
             observer: '_hashtagChanged',
@@ -151,7 +155,15 @@
         this.page = page || 'welcome';
       }
       _pageChanged(page) {
-        this.dispatch('LOCATION', page);
+        if(!this.location){
+          this.dispatch('LOCATION', {nowAt: page});
+          console.log(this.location)
+        } else {
+          let lastAt = this.location.nowAt
+          this.dispatch('LOCATION', {lastAt: lastAt, nowAt: page});
+          console.log(this.location)
+        }
+       // this.dispatch('LOCATION', page);
         var resolvedPageUrl = this.resolveUrl('pages/page-' + page + '.html');
         Polymer.importHref(
             resolvedPageUrl,
