@@ -340,7 +340,7 @@ This code may only be used under the license found at https://github.com/swarmci
             * location checks if the user is on this page and fires the entry animation
             */
             _entryAnimation(){
-                if(this.location == 'hashtag-list'){
+                if(this.location.nowAt == 'hashtag-list'){
                     this.$.hashtagList.animate(
                     [
                         {'opacity':'0', 'transform':'translateY(100px)'},
