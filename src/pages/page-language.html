@@ -176,7 +176,7 @@ This code may only be used under the license found at https://github.com/swarmci
             * location checks if the user is on this page and fires the entry animation
             */
             _entryAnimation(){
-                if(this.location == 'language'){
+                if(this.location.nowAt == 'language'){
                     this.$.displayLanguage.animate(
                     [
                         {'transform':'translateY(-100%)'},
