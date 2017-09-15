@@ -60,7 +60,7 @@
         "password?": "password?",
         "Confirm password": "Confirm password",
         "Great!": "Great!",
-        "You now have a Swarm City account": "You now have a Swarm City account",
+        "You now have a Swarm City account.": "You now have a Swarm City account.",
         "There are no central servers on which accounts are stored.": "There are no central servers on which accounts are stored.",
         "This means you are responsible for your own account at all times.": "This means you are responsible for your own account at all times.",
         "Your backup is encrypted with your password.": "Your backup is encrypted with your password.",
@@ -91,7 +91,8 @@
         "Currently no deals selected. Try a broader search.": "Currently no deals selected. Try a broader search.",
         "Choose an avatar and a username.": "Choose an avatar and a username.",
         "Choose a password..": "Choose a password..",
-        "Choose your password with care.": "Choose your password with care."
+        "Choose your password with care.": "Choose your password with care.",
+        "Lets create a backup and youre all set!": "Let's create a backup and you're all set!"
     },
     "cn": {
         "language": "cn",
@@ -147,7 +148,7 @@
         "password?": "Awaiting Translation",
         "Confirm password": "Awaiting Translation",
         "Great!": "Awaiting Translation",
-        "You now have a Swarm City account": "Awaiting Translation",
+        "You now have a Swarm City account.": "Awaiting Translation",
         "There are no central servers on which accounts are stored.": "Awaiting Translation",
         "This means you are responsible for your own account at all times.": "Awaiting Translation",
         "Your backup is encrypted with your password.": "Awaiting Translation",
@@ -176,7 +177,8 @@
         "Contact": "Awaiting Translation",
         "Currently no deals selected. Try a broader search.": "Awaiting Translation",
         "Choose a password..": "Awaiting Translation",
-        "Choose your password with care.": "Awaiting Translation"
+        "Choose your password with care.": "Awaiting Translation",
+        "Lets create a backup and youre all set!": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -208,7 +210,7 @@
         "Your private key": "Votre clé privée",
         "Facebook": "Facebook",
         "within 0.5km": "Dans un rayon de 500 m",
-        "You now have a Swarm City account": "Vous avez enfin votre compte Swarm City",
+        "You now have a Swarm City account.": "Vous avez enfin votre compte Swarm City",
         "The next step is choosing a password. Choose a password. with care.": "Maintenant, choisissez un mot de passe.  ",
         "within 1km": "Dans un rayon de 1 km",
         "Youtube": "Youtube",
@@ -269,7 +271,8 @@
         "world wide": "le monde entier",
         "Currently no deals selected. Try a broader search.": "Awaiting Translation",
         "Choose a password..": "Awaiting Translation",
-        "Choose your password with care.": "Awaiting Translation"
+        "Choose your password with care.": "Awaiting Translation",
+        "Lets create a backup and youre all set!": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -301,7 +304,7 @@
         "Your private key": "Jouw publieke key",
         "Facebook": "Facebook",
         "within 0.5km": "minder dan 0.5km",
-        "You now have a Swarm City account": "Je hebt nu een Swarm City account",
+        "You now have a Swarm City account.": "Je hebt nu een Swarm City account",
         "The next step is choosing a password. Choose a password. with care.": "Bij de volgende stap kies je een paswoord. Denk goed na over jouw paswoord.",
         "within 1km": "binnen 1km",
         "Youtube": "Youtube",
@@ -362,7 +365,8 @@
         "tell me more": "meer weten",
         "world wide": "wereldwijd",
         "Choose a password..": "Awaiting Translation",
-        "Choose your password with care.": "Awaiting Translation"
+        "Choose your password with care.": "Awaiting Translation",
+        "Lets create a backup and youre all set!": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -394,7 +398,7 @@
         "Your private key": "Ваш приватный ключ",
         "Facebook": "Facebook",
         "within 0.5km": "в пределах 0.5 км",
-        "You now have a Swarm City account": "Поздравляем, теперь у вас есть свой Swarm City аккаунт",
+        "You now have a Swarm City account.": "Поздравляем, теперь у вас есть свой Swarm City аккаунт",
         "The next step is choosing a password. Choose a password. with care.": "Следующий шаг - выбор пароля. Придумайте безопасный пароль.",
         "within 1km": "в пределах 1 км",
         "Youtube": "Youtube",
@@ -455,7 +459,8 @@
         "world wide": "во всем мире",
         "Currently no deals selected. Try a broader search.": "Awaiting Translation",
         "Choose a password..": "Awaiting Translation",
-        "Choose your password with care.": "Awaiting Translation"
+        "Choose your password with care.": "Awaiting Translation",
+        "Lets create a backup and youre all set!": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -487,7 +492,7 @@
         "Your private key": "Dein privater Schlüssel",
         "Facebook": "Facebook",
         "within 0.5km": "innerhalb 0,5km",
-        "You now have a Swarm City account": "Du hast nun ein Swarm City Konto",
+        "You now have a Swarm City account.": "Du hast nun ein Swarm City Konto",
         "The next step is choosing a password. Choose a password. with care.": "Der nächste Schritt ist ein Passwort zu wählen. Wähle das Passwort mit Vorsicht.",
         "within 1km": "innerhalb 1km",
         "Youtube": "Youtube",
@@ -548,7 +553,8 @@
         "world wide": "weltweit",
         "Currently no deals selected. Try a broader search.": "Awaiting Translation",
         "Choose a password..": "Awaiting Translation",
-        "Choose your password with care.": "Awaiting Translation"
+        "Choose your password with care.": "Awaiting Translation",
+        "Lets create a backup and youre all set!": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -580,7 +586,7 @@
         "Your private key": "Su clave privada",
         "Facebook": "Facebook",
         "within 0.5km": "Entre 0.5Km",
-        "You now have a Swarm City account": "Usted ahora tiene una cuenta con Swarm City",
+        "You now have a Swarm City account.": "Usted ahora tiene una cuenta con Swarm City",
         "The next step is choosing a password. Choose a password. with care.": "El proximo paso es escoger su contraseña. Escoja su contraseña con cuidado.",
         "within 1km": "dentro de 1km",
         "Youtube": "Youtube",
@@ -641,7 +647,8 @@
         "world wide": "world wide",
         "Currently no deals selected. Try a broader search.": "Awaiting Translation",
         "Choose a password..": "Awaiting Translation",
-        "Choose your password with care.": "Awaiting Translation"
+        "Choose your password with care.": "Awaiting Translation",
+        "Lets create a backup and youre all set!": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -673,7 +680,7 @@
         "Your private key": "Twój klucz prywatny",
         "Facebook": "Facebook",
         "within 0.5km": "do 0.5 km",
-        "You now have a Swarm City account": "Teraz posiadasz konto Swarm City",
+        "You now have a Swarm City account.": "Teraz posiadasz konto Swarm City",
         "The next step is choosing a password. Choose a password. with care.": "Następnym krokiem jest wybór hasła. Wybierz je z rozwagą.",
         "within 1km": "do 1 km",
         "Youtube": "Youtube",
@@ -734,7 +741,8 @@
         "world wide": "cały świat",
         "Currently no deals selected. Try a broader search.": "Awaiting Translation",
         "Choose a password..": "Awaiting Translation",
-        "Choose your password with care.": "Awaiting Translation"
+        "Choose your password with care.": "Awaiting Translation",
+        "Lets create a backup and youre all set!": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -766,7 +774,7 @@
         "Your private key": "Özel anahtarınız",
         "Facebook": "Facebook",
         "within 0.5km": "0.5 km içinde",
-        "You now have a Swarm City account": "Şimdi Swarm City hesabınız var. ",
+        "You now have a Swarm City account.": "Şimdi Swarm City hesabınız var. ",
         "The next step is choosing a password. Choose a password. with care.": "Sonraki adım şifrenizi seçmek. Şifrenizi dikkatle seçin. ",
         "within 1km": "1 km içinde",
         "Youtube": "Youtube",
@@ -827,6 +835,7 @@
         "world wide": "Dünya geneli",
         "Currently no deals selected. Try a broader search.": "Awaiting Translation",
         "Choose a password..": "Awaiting Translation",
-        "Choose your password with care.": "Awaiting Translation"
+        "Choose your password with care.": "Awaiting Translation",
+        "Lets create a backup and youre all set!": "Awaiting Translation"
     }
 }
