@@ -31,7 +31,7 @@ This code may only be used under the license found at https://github.com/swarmci
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
 -->
         <style include="shared-styles">
-             :host {
+            :host {
                 display: block;
             }
 
@@ -147,7 +147,7 @@ This code may only be used under the license found at https://github.com/swarmci
                         value: function() {
                             return {
                                 'entry': {
-                                    name: 'fade-in-animation',
+                                    name: 'slide-down-animation',
                                     node: this,
                                     nodeDelay: 300,
                                     timing: {
@@ -216,8 +216,9 @@ This code may only be used under the license found at https://github.com/swarmci
             * triggered after the user selects a language 
             */
             _path() {
-                console.log('FIRE')
-                this._exitAnimation();
+                if(this.path){
+                    this._exitAnimation();
+                }
             }
         }
         window.customElements.define(MyLanguage.is, MyLanguage);

@@ -415,6 +415,12 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.highlightFilterToggle = true;
                 }
             }
+            /**
+            * the exit animation
+            */
+            _exitAnimation() {
+
+            }
             /** 
             * closes open slider box 
             */
@@ -428,10 +434,17 @@ This code may only be used under the license found at https://github.com/swarmci
             * changes the current path
             */
             _path() {
-                if (this.path != null) {
-                    this.set('route.path', this.path);
+                if(this.path){
+                    console.log(this.path);
+                    const location = 'src/pages/page-hashtag.html';
+                    console.log(location);
+                    Polymer.importHref(location, this._exitAnimation.bind(this), null, false);
                 }
-                this.path = null;
+
+                // if (this.path != null) {
+                //     this.set('route.path', this.path);
+                // }
+                // this.path = null;
             }
             /**
             * takes the user to the welcome page
