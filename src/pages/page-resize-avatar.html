@@ -35,62 +35,26 @@ This code may only be used under the license found at https://github.com/swarmci
                 display: block;
             }
 
+            .container {
+                @apply --layout-vertical;
+                @apply --layout-center;
+                background-color: #F4F4F4;
+            }
+
             .close {
                 @apply --xmark-grey3-small;
                 @apply --close;
             }
 
-            .container {
-                max-width: 400px;
-            }
-
-            .title {
-                color: var(--grey-4);
-                padding: 221px 50px 50px 50px;
-                text-align: center;
-                font-weight: 200;
-                font-size: 16px;
-                line-height: 15px;
-                width: 260px;
-            }
-
-            .btn {
-                color: var(--swarm-city-blue);
-                cursor: pointer;
-                padding-top: 100px;
-                @apply --layout-horizontal;
+            .top {
+                @apply --layout-vertical;
                 @apply --layout-center-justified;
-            }
-
-            paper-input {
-                padding: 0 0 50px 0;
-                --paper-input-container-color: var(--swarm-city-blue);
-                --paper-input-container-focus-color: var(--swarm-city-blue);
-            }
-
-            .disagree {
-                border-radius: 50%;
-                width: 76px;
-                height: 76px;
-                background: url('../../../images/swarm-city-sprite.png') -688px -63px;
-                cursor: pointer;
-            }
-
-            .buttons {
-                margin-top: 55px;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
-            }
-
-            .agree {
-                @apply --agree-blue;
             }
 
             .avatarcontainer {
                 @apply --layout-vertical;
-
                 @apply --layout-end-justified;
-
+                margin-top: 87px;
                 background-color: var(--sc-grey4);
                 width: 250px;
                 height: 250px;
@@ -125,19 +89,47 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .blacktext {
-                color: #333333;
-                font-size: 12px;
-                font-weight: bold;
-                line-height: 22px;
-                text-align: center;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                @apply --small-bold;
+                color: var(--sc-grey4);
             }
 
-            .bluetext {}
+            .bottom {
+                @apply --layout-vertical;
+                @apply --layout-center;
+            }
+
+            .bluetext {
+                @apply --small-bold;
+                color: var(--sc-blue);
+                border-bottom: 2px dotted var(--sc-blue);
+            }
+
+            .buttons {
+                @apply --layout-horizontal;
+                @apply --layout-center-center;
+            }
+
+            .disagree {
+                @apply --xmark-grey4-normal;
+                cursor: pointer;
+                margin-right: 20px;
+            }
+
+            .round-button {
+                @apply --icon-button-big;
+            }
+
+            .agree {
+                @apply --vmark-blue-normal;
+            }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
-                .close {
+                .close,
+                .rotate-icon {
                     @apply --retina;
                 }
             }
@@ -157,17 +149,19 @@ This code may only be used under the license found at https://github.com/swarmci
             </div>
             <template is="dom-if" if="{{wide}}">
                 <div class="middle">
-                    <div class="bluetext" on-click="_previous">{{localize('Choose another file')}}</div>
+                    <span class="bluetext" on-click="_previous">{{localize('choose another file')}}</span>
                 </div>
             </template>
             <div class="bottom">
                 <div class="buttons">
-                    <div class="disagree" on-click="_btnClickDisagree"></div>
-                    <div class="agree" on-click="_btnClickAgree"></div>
+                    <div class="disagree" on-click="_disagree"></div>
+                    <div class="round-button" on-click="_agree">
+                        <div class="agree"></div>
+                    </div>
                 </div>
-                <template is="dom-if" if="{{wide}}">
-                    <div class="bluetext" on-click="_previous">{{localize('Choose another file')}}</div>
-                </template>
+                <!-- <template is="dom-if" if="{{wide}}"> -->
+                    <span class="bluetext" on-click="_previous">{{localize('choose another file')}}</span>
+                <!-- </template> -->
             </div>
         </div>
 
@@ -202,7 +196,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     * Entry and exit animation
                     */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
@@ -236,13 +230,13 @@ This code may only be used under the license found at https://github.com/swarmci
             /**
             *changes the current path to choose avatar
             **/
-            _btnClickDisagree() {
+            _agree() {
                 this.path = 'choose-avatar/';
             }
             /**
             *changes the current path to password warning
             **/
-            _btnClickAgree() {
+            _disagree() {
                 this.path = 'password-warning/';
             }
             /**
