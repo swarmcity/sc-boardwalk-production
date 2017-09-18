@@ -194,7 +194,9 @@ This code may only be used under the license found at https://github.com/swarmci
         <div class="container" wide-layout$="{{wide}}">
             <div class="header">
                 <div class="topleft">
-                    <display-my-info id="myInfo" complete-account="{{completeAccount}}"></display-my-info>
+                    <template is="dom-if" if="{{completeAccount}}">
+                        <display-my-info id="myInfo" complete-account="{{completeAccount}}"></display-my-info>
+                    </template>
                 </div>
                 <div class="topright">
                     <div class="back" on-click="_back" id="back"></div>
@@ -410,22 +412,16 @@ This code may only be used under the license found at https://github.com/swarmci
             */
             _path() {
                 if(this.path){
-                    console.log(this.path);
                     const location = 'src/pages/page-hashtag.html';
-                    console.log(location);
                     Polymer.importHref(location, this._exitAnimation.bind(this), null, false);
                 }
-
-                // if (this.path != null) {
-                //     this.set('route.path', this.path);
-                // }
-                // this.path = null;
             }
             /**
             * takes the user to the welcome page
             */
             _back() {
                 this.set('route.path', 'welcome/');
+                this.path = null;
             }
         }
         window.customElements.define(HashtagList.is, HashtagList);
