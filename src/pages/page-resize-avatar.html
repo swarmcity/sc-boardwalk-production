@@ -125,6 +125,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .bluetext {
                 @apply --small-bold;
+                cursor: pointer;
                 color: var(--sc-blue);
                 border-bottom: 2px dotted var(--sc-blue);
             }
@@ -174,7 +175,7 @@ This code may only be used under the license found at https://github.com/swarmci
             </div>
             <template is="dom-if" if="{{wide}}">
                 <div class="middle">
-                    <span class="bluetext" on-click="_previous">{{localize('choose another file')}}</span>
+                    <span class="bluetext">{{localize('choose another file')}}</span>
                 </div>
             </template>
             <div class="bottom">
@@ -185,7 +186,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     </div>
                 </div>
                 <template is="dom-if" if="{{!wide}}">
-                    <span class="bluetext" on-click="_previous">{{localize('choose another file')}}</span>
+                    <span class="bluetext">{{localize('choose another file')}}</span>
                 </template>
             </div>
         </div>
@@ -249,20 +250,17 @@ This code may only be used under the license found at https://github.com/swarmci
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
-            _close() {
-                this.path = 'stop-signup/';
-            }
             /**
             *changes the current path to choose avatar
             **/
             _agree() {
-                this.path = 'choose-avatar/';
+                this.path = 'password-warning/';
             }
             /**
             *changes the current path to password warning
             **/
             _disagree() {
-                this.path = 'password-warning/';
+                this.path = 'choose-avatar-and-username/';
             }
             /**
             *changes the current path to previous
