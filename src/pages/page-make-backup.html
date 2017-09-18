@@ -45,6 +45,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 padding: 0 12vw;
             }
 
+            .container[wide-layout] {
+                @apply --layout-vertical;
+                @apply --layout--start-justified;
+                @apply --layout-start;
+            }
+
             .close {
                 @apply --xmark-grey4-small;
                 @apply --close;
@@ -57,11 +63,24 @@ This code may only be used under the license found at https://github.com/swarmci
                 text-align: center;
             }
 
+            .container[wide-layout] .title {
+                margin-top: 25vh;
+                @apply --layout-horizontal;
+                @apply --layout--start-justified;
+                @apply --main-title1-wide;
+            }
+
             .trianglecontainer {
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
                 position: relative;
                 top: 25px;
+            }
+
+            .container[wide-layout] .trianglecontainer {
+                @apply --layout-start-justified;
+                top: 85px;
+                left: 25px;
             }
 
             .triangle {
@@ -74,7 +93,10 @@ This code may only be used under the license found at https://github.com/swarmci
                 padding: 40px 30px 30px;
                 box-sizing: border-box;
                 background-color: var(--sc-white);
-                max-width: 450px;
+            }
+
+            .container[wide-layout] .box {
+                padding: 40px 40px 40px 100px;
             }
 
             .textbox {
@@ -82,6 +104,14 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --body-bold;
                 color: var(--sc-grey4);
                 text-align: center;
+            }
+
+            .container[wide-layout] .textbox {
+                text-align: left;
+            }
+
+            .container[wide-layout] .inner-middle {
+                margin: 0 0 15px 0;
             }
 
             .inner-middle {
@@ -96,6 +126,10 @@ This code may only be used under the license found at https://github.com/swarmci
                 width: 100%;
             }
 
+            .container[wide-layout] .bottom {
+                @apply --layout-start;
+            }
+
             .buttons {
                 margin-top: 40px;
             }
@@ -103,7 +137,7 @@ This code may only be used under the license found at https://github.com/swarmci
             .button {
                 @apply --text-button-big;
                 box-sizing: border-box;
-                    padding: 30px 30px;
+                padding: 30px 30px;
                 color: var(--sc-blue);
                 margin-bottom: 10px;
             }
@@ -135,7 +169,8 @@ This code may only be used under the license found at https://github.com/swarmci
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
-                .close {
+                .close,
+                .triangle {
                     @apply --retina;
                 }
             }
