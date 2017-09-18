@@ -30,19 +30,14 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
+                height: 100vh;
+                width: 100vw;
                 display: block;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
             }
 
             .close {
-                position: fixed;
-                top: 18px;
-                right: 18px;
-                width: 20px;
-                height: 20px;
-                background: url('../../../images/swarm-city-sprite.png') -60px -84px;
-                cursor: pointer;
+                @apply --xmark-grey3-small;
+                @apply --close;
             }
 
             .container {
@@ -119,9 +114,9 @@ This code may only be used under the license found at https://github.com/swarmci
             }
         </style>
         <app-location route="{{route}}"></app-location>
-
-        <div class="close" on-click="_close"></div>
-        <div class="container">
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+        <div class="container" wide-layout$="{{wide}}">
+            <div class="close" on-click="_close"></div>
             <div class="avatarcontainer"></div>
             <div class="blacktext">{{localize('Scroll to zoom - drag to move')}}</div>
             <div class="buttons">
