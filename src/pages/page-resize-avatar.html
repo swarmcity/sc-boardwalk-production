@@ -36,25 +36,38 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container {
+                height: 100%;
+                width: 100%;
                 @apply --layout-vertical;
-                @apply --layout-center;
                 background-color: #F4F4F4;
             }
 
-            .close {
-                @apply --xmark-grey3-small;
-                @apply --close;
+            .container[wide-layout] {
+                padding: 0 0 0 12vw;
             }
 
             .top {
                 @apply --layout-vertical;
-                @apply --layout-center-justified;
+                @apply --layout-center;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 10vh 0 0 0;
+                @apply --layout-flex;
+            }
+
+            .container[wide-layout] .top {
+                @apply --layout-start;
+                padding: 15vh 0 0 0;
+            }
+
+            .container[wide-layout] .middle {
+                @apply --layout-start;
+                height: 10vh;
             }
 
             .avatarcontainer {
                 @apply --layout-vertical;
                 @apply --layout-end-justified;
-                margin-top: 87px;
                 background-color: var(--sc-grey4);
                 width: 250px;
                 height: 250px;
@@ -65,6 +78,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-center-justified;
                 width: 100%;
                 height: 100%;
+                box-sizing: border-box;
                 padding-top: 73px;
             }
 
@@ -93,11 +107,20 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-center-justified;
                 @apply --small-bold;
                 color: var(--sc-grey4);
+                margin-top: 10px;
             }
 
             .bottom {
                 @apply --layout-vertical;
+                @apply --layout-start-justified;
                 @apply --layout-center;
+                height: 40vh;
+                width: 100%;
+            }
+
+            .container[wide-layout] .bottom {
+                @apply --layout-start;
+                height: 35vh;
             }
 
             .bluetext {
@@ -109,12 +132,13 @@ This code may only be used under the license found at https://github.com/swarmci
             .buttons {
                 @apply --layout-horizontal;
                 @apply --layout-center-center;
+                margin-bottom: 100px;
             }
 
             .disagree {
-                @apply --xmark-grey4-normal;
+                @apply --xmark-grey4-small;
                 cursor: pointer;
-                margin-right: 20px;
+                margin-right: 10px;
             }
 
             .round-button {
@@ -129,7 +153,9 @@ This code may only be used under the license found at https://github.com/swarmci
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
                 .close,
-                .rotate-icon {
+                .rotate-icon,
+                .disagree,
+                .agree {
                     @apply --retina;
                 }
             }
@@ -137,7 +163,6 @@ This code may only be used under the license found at https://github.com/swarmci
         <app-location route="{{route}}"></app-location>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <div class="container" wide-layout$="{{wide}}">
-            <div class="close" on-click="_close"></div>
             <div class="top">
                 <div class="avatarcontainer">
                     <div class="avatar"><img src="../../images/defaultavatar.png"></div>
@@ -159,9 +184,9 @@ This code may only be used under the license found at https://github.com/swarmci
                         <div class="agree"></div>
                     </div>
                 </div>
-                <!-- <template is="dom-if" if="{{wide}}"> -->
+                <template is="dom-if" if="{{!wide}}">
                     <span class="bluetext" on-click="_previous">{{localize('choose another file')}}</span>
-                <!-- </template> -->
+                </template>
             </div>
         </div>
 
