@@ -87,10 +87,41 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .avatarcontainer {
-                margin-top: 87px;
-                height: 235px;
-                width: 235px;
-                background-color: #333333;
+                @apply --layout-vertical;
+
+                @apply --layout-end-justified;
+
+                background-color: var(--sc-grey4);
+                width: 250px;
+                height: 250px;
+            }
+
+            .avatar {
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                width: 100%;
+                height: 100%;
+                padding-top: 73px;
+            }
+
+            img {
+                width: 100px;
+                height: 100px;
+                cursor: pointer;
+                border-radius: 50%;
+                border: 2px solid var(--sc-blue);
+            }
+
+            .rotate {
+                width: 100%;
+                @apply --layout-horizontal;
+                @apply --layout-end-justified;
+                @apply --layout-end;
+            }
+
+            .rotate-icon {
+                @apply --rotate-blue-normal;
+                cursor: pointer;
             }
 
             .blacktext {
@@ -116,6 +147,12 @@ This code may only be used under the license found at https://github.com/swarmci
         <div class="container" wide-layout$="{{wide}}">
             <div class="close" on-click="_close"></div>
             <div class="top">
+                <div class="avatarcontainer">
+                    <div class="avatar"><img src="../../images/defaultavatar.png"></div>
+                    <div class="rotate">
+                        <div class="rotate-icon"></div>
+                    </div>
+                </div>
                 <div class="blacktext">{{localize('Scroll to zoom - drag to move')}}</div>
             </div>
             <template is="dom-if" if="{{wide}}">
@@ -165,7 +202,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     * Entry and exit animation
                     */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
