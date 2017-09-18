@@ -97,7 +97,7 @@ This code may only be used under the license found at https://github.com/swarmci
         <app-location route="{{route}}"></app-location>
         <div class="container" wide-layout$="{{wide}}">
             <div class="header">
-                <div class="close" on-click="_exitAnimation"></div>
+                <div class="close" on-click="_changePage"></div>
                 <div class="title">{{localize('Choose a language')}}</div>
             </div>
             <div class="list">
@@ -139,31 +139,6 @@ This code may only be used under the license found at https://github.com/swarmci
                     path: {
                         type: String,
                         observer: '_path',
-                    },
-                    /**
-                    * Entry and exit animation
-                    */
-                    animationConfig: {
-                        value: function() {
-                            return {
-                                'entry': {
-                                    name: 'slide-down-animation',
-                                    node: this,
-                                    nodeDelay: 300,
-                                    timing: {
-                                        duration: 300,
-                                    },
-                                },
-                                'exit': {
-                                    name: 'fade-out-animation',
-                                    node: this,
-                                    nodeDelay: 300,
-                                    timing: {
-                                        duration: 300,
-                                    },
-                                },
-                            };
-                        },
                     },
                 };
             }
