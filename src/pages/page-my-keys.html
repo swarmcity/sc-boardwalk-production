@@ -45,26 +45,44 @@ This code may only be used under the license found at https://github.com/swarmci
                 padding: 0 12vw;
             }
 
+            .container[wide-layout] {
+                padding: 0 14vw;
+            }
+
             .close {
                 @apply --xmark-grey4-small;
                 @apply --close;
             }
 
-            .pubkey-container,
-            .privkey-container {
+            .pubkey-container {
                 @apply --layout-vertical;
                 @apply --layout-start-justified;
                 @apply --layout-center;
-            }
-
-            .pubkey-container {
-
+                width: 100%;
                 margin-top: 15vh;
                 height: 35vh;
             }
 
+            .container[wide-layout] .pubkey-container {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-start;
+                margin-top: 20vh;
+                height: 30vh;
+            }
+
             .privkey-container {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                width: 100%;
                 margin-top: 8vh;
+            }
+
+            .container[wide-layout] .privkey-container {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-start;
             }
 
 
@@ -78,6 +96,10 @@ This code may only be used under the license found at https://github.com/swarmci
                 color: var(--sc-grey4);
                 text-align: center;
                 margin: 1vh 0 3vh 0;
+            }
+
+            .container[wide-layout] .pubkey {
+                text-align: left;
             }
 
             .bluetext {
@@ -100,17 +122,15 @@ This code may only be used under the license found at https://github.com/swarmci
                 height: 1px;
             }
 
-            .bottom {
-                @apply --layout-vertical;
-                @apply --layout-start-justified;
-                @apply --layout-center;
-            }
-
             .warning {
                 @apply --body-default;
                 color: var(--sc-grey4);
                 text-align: center;
                 margin: 1vh 0 3vh 0;
+            }
+
+            .container[wide-layout] .warning {
+                text-align: left;
             }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
