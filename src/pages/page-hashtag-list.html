@@ -193,14 +193,20 @@ This code may only be used under the license found at https://github.com/swarmci
         <app-location route="{{route}}"></app-location>
         <div class="container" wide-layout$="{{wide}}">
             <div class="header">
+                
                 <div class="topleft">
-                    <display-my-info complete-account="{{completeAccount}}"></display-my-info>
+                    <template is="dom-if" if="{{completeAccount}}">
+                        <display-my-info id="myInfo" complete-account="{{completeAccount}}"></display-my-info>
+                    </template>
                 </div>
+
+                
                 <div class="topright">
-                    <div class="back" on-click="_back"></div>
+                    <div class="back" on-click="_back" id="back"></div>
 
                     <display-filter-list 
                         toggle 
+                        id="filterToggle"
                         class="filter-toggle"
                         highlight-filter$="{{highlightFilterToggle}}"
                         show-slider="{{showSlider}}" 
@@ -210,8 +216,9 @@ This code may only be used under the license found at https://github.com/swarmci
                     </display-filter-list>
 
                 </div>
+                
             </div>
-
+            
             <display-filter-list 
                 slider 
                 class$="slider [[sliderState]]" 
@@ -220,9 +227,10 @@ This code may only be used under the license found at https://github.com/swarmci
                 route="{{route}}" 
                 path="{{path}}">
             </display-filter-list>
-        
+    
             <div class$="fade [[fadeState]]" on-click="_fadeClose">
                 <display-hashtag-list 
+                    id="hashtagList"
                     range="[[range]]" 
                     path="{{path}}" 
                     show-slider="{{showSlider}}">
@@ -244,6 +252,15 @@ This code may only be used under the license found at https://github.com/swarmci
             }
             static get properties() {
                 return {
+                    /**
+                    * Location is the page path the user is on
+                    * @type {String}
+                    */
+                    location: {
+                        type: String,
+                        statePath: 'location',
+                        observer: '_entryAnimation',
+                    },
                     /**
                     * Path is the current or requested path
                     * @type {String}
@@ -293,37 +310,67 @@ This code may only be used under the license found at https://github.com/swarmci
                         type: Boolean,
                         value: false,
                     },
-                    /**
-                    * Entry and exit animation
-                    */
-                    animationConfig: {
-                        value: function() {
-                            return {
-                                // 'entry': {
-                                //     name: 'fade-in-animation',
-                                //     node: this,
-                                //     nodeDelay: 300,
-                                //     timing: {
-                                //         duration: 300,
-                                //     },
-                                // },
-                                'exit': {
-                                    name: 'fade-out-animation',
-                                    node: this,
-                                    nodeDelay: 300,
-                                    timing: {
-                                        duration: 300,
-                                    },
-                                },
-                            };
-                        },
-                    },
                 };
             }
 
             connectedCallback() {
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
+            /**
+            * location checks if the user is on this page and fires the entry animation
+            */
+            _entryAnimation() {
+                if (this.location.nowAt == 'hashtag-list') {
+                    this.$.hashtagList.animate(
+                    [
+                        {'opacity': '0', 'transform': 'translateY(100px)'},
+                        {'opacity': '1', 'transform': 'translateY(0)'},
+                    ], {
+                        fill: 'none',
+                        duration: 300,
+                        iterations: 1,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 0,
+                    }
+                    );
+                    this.$.back.animate(
+                    [
+                        {'opacity': '0'},
+                        {'opacity': '1'},
+                    ], {
+                        fill: 'none',
+                        duration: 300,
+                        iterations: 1,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 0,
+                    }
+                    );
+                    this.$.filterToggle.animate(
+                    [
+                        {'opacity': '0'},
+                        {'opacity': '1'},
+                    ], {
+                        fill: 'none',
+                        duration: 300,
+                        iterations: 1,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 0,
+                    }
+                    );
+                    // this.$.myInfo.animate(
+                    // [
+                    //     {'opacity':'0', 'transform':'translateY(-30px)'},
+                    //     {'opacity':'1', 'transform':'translateY(0)'},
+                    // ], {
+                    //     fill: 'none',
+                    //     duration: 300,
+                    //     iterations: 1,
+                    //     easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    //     delay: 0,
+                    // }
+                    // );
+                }
             }
             /**
             * determines the state of the slider and the fade
@@ -349,6 +396,12 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.highlightFilterToggle = true;
                 }
             }
+            /**
+            * the exit animation
+            */
+            _exitAnimation() {
+
+            }
             /** 
             * closes open slider box 
             */
@@ -362,16 +415,19 @@ This code may only be used under the license found at https://github.com/swarmci
             * changes the current path
             */
             _path() {
-                if (this.path != null) {
-                    this.set('route.path', this.path);
+                if (this.path) {
+                    const location = 'src/pages/page-hashtag.html';
+                    Polymer.importHref(location,
+                    this._exitAnimation.bind(this),
+                    null, false);
                 }
-                this.path = null;
             }
             /**
             * takes the user to the welcome page
             */
             _back() {
                 this.set('route.path', 'welcome/');
+                this.path = null;
             }
         }
         window.customElements.define(HashtagList.is, HashtagList);

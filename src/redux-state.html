@@ -10,6 +10,13 @@ let reducer = function(state, action) {
         return initialState;
     }
     switch (action.type) {
+        case 'LOCATION': {
+            let location = state.location;
+            location = action.location;
+            return Object.assign({}, state, {
+                location: location,
+            });
+        }
         case 'LANGUAGE': {
             let language = state.language;
             language = action.language;
