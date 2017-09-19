@@ -144,13 +144,17 @@
 
       static get observers() {
         return [
+          '_hashtagChanged(hashtagdata.*)',
           '_routePageChanged(routeData.page)',
         ];
       }
       
 
       _hashtagChanged() {
-        this.dispatch('HASHTAGS', this.hashtags);
+        if(this.hashtagdata.length >= 1){
+          this.dispatch('HASHTAGS', null);
+          this.dispatch('HASHTAGS', this.hashtagdata);
+        }
       }
       _routePageChanged(page) {
         this.page = page || 'welcome';

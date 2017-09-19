@@ -93,14 +93,13 @@ The following custom properties and mixins are available for styling:
         <data-web3 id="web3"></data-web3>
         <data-local-storage id="storage"></data-local-storage>
         <data-utility id="utility"></data-utility>
-
         <div class="container" wide-layout$="{{wide}}">
 
-            <template is="dom-repeat" items="{{hashtags}}" filter="_isWithinRange" sort="_sort" id="domRepeat">
+            <template is="dom-repeat" items="{{hashtags}}" id="domRepeat">
                 <div class="box" on-click="_toHashtag">
                     <div class="flex">
                         <div class="hashtag">
-                            <span class="cursor">#[[item.name]]</span>
+                            <span class="cursor">#[[item.hashtag_name]]</span>
                         </div>
                         <div class="deals">[[item.deals]] {{localize('deals done')}}</div>
                     </div>
@@ -108,7 +107,6 @@ The following custom properties and mixins are available for styling:
                 </div>
             </template>
         </div>
-
     </template>
     <script>
         class DisplayHashtagList extends new ReduxMixin(Polymer.mixinBehaviors([
@@ -153,6 +151,7 @@ The following custom properties and mixins are available for styling:
                     */
                     hashtags: {
                         type: Array,
+                        statePath: 'hashtags'
                     },
                     /**
                     * range is the range the usert selected in slider
@@ -172,12 +171,20 @@ The following custom properties and mixins are available for styling:
                 };
             }
 
+            static get observers() {
+                return [
+                '_hashtagChanged(hashtags.*)',
+                ];
+            }
+
             connectedCallback() {
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
-                this._getHashtags();
             }
 
+            _hashtagChanged(){
+                this.$.domRepeat.render();
+            }
             /**
             * Gets the hashtags and checks if the user has a location
             */
@@ -235,11 +242,11 @@ The following custom properties and mixins are available for styling:
             * @return {boolean} if a should be ordered before b
             */
             _isWithinRange(event) {
-                if (event.distance) {
-                    return (this.range > event.distance);
-                } else {
-                    return true;
-                }
+                // if (event.distance) {
+                //     return (this.range > event.distance);
+                // } else {
+                //     return true;
+                // }
             }
 
             /**
