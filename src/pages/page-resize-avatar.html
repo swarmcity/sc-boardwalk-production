@@ -62,7 +62,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .container[wide-layout] .middle {
                 @apply --layout-start;
-                height: 10vh;
+                height: 20vh;
             }
 
             .avatarcontainer {
@@ -130,6 +130,10 @@ This code may only be used under the license found at https://github.com/swarmci
                 border-bottom: 2px dotted var(--sc-blue);
             }
 
+            .container[wide-layout] .bluetext {
+                margin-top: 40px;
+            }
+
             .buttons {
                 @apply --layout-horizontal;
                 @apply --layout-center-center;
@@ -176,12 +180,10 @@ This code may only be used under the license found at https://github.com/swarmci
                     </div>
                 </div>
                 <div class="blacktext">{{localize('Scroll to zoom - drag to move')}}</div>
-            </div>
-            <template is="dom-if" if="{{wide}}">
-                <div class="middle">
+                <template is="dom-if" if="{{wide}}">
                     <span class="bluetext">{{localize('choose another file')}}</span>
-                </div>
-            </template>
+                </template>
+            </div>
             <div class="bottom">
                 <div class="buttons">
                     <div class="disagree" on-click="_disagree"></div>
@@ -194,9 +196,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 </template>
             </div>
         </div>
-
     </template>
-
     <script>
         class MyResizeAvatar extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
