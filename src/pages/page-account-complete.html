@@ -106,7 +106,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-center-justified;
             }
 
-            .container[wide-layout] .info{
+            .container[wide-layout] .info {
                 margin-left: 15px;
             }
 
@@ -127,14 +127,15 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .middle {
                 @apply --layout-vertical;
-                @apply --layout-center-justified;
+                @apply --layout-end-justified;
                 box-sizing: border-box;
                 width: 100%;
                 height: 35vh;
             }
 
             .container[wide-layout] .middle {
-                height: 25vh;
+                height: 15vh;
+                margin-bottom: 70px;
             }
 
             .bottom {
@@ -146,6 +147,7 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container[wide-layout] .bottom {
+                @apply --layout-start-justified;
                 padding: 0 0 30vh 0;
             }
 
@@ -165,6 +167,8 @@ This code may only be used under the license found at https://github.com/swarmci
             .btn {
                 @apply --text-button-big;
                 color: var(--sc-blue);
+                /* background-color: white; */
+                background-color: var(--sc-white);
             }
 
             .btn:active {
