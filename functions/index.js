@@ -11,7 +11,7 @@ var ipfs = ipfsAPI({
 admin.initializeApp(functions.config().firebase);
 
 // https://us-central1-swarmcity-23c70.cloudfunctions.net/addHashtag?hashtag_name=pioneer&last_deal=1503397878&deals=0&description=This is a description&maintainer=this hash tag is maintained by Swarm City&name=twitter&link=http://www.twitter.com
-exports.addHashtag = functions.https.onRequest((req, res) => { 
+exports.addHashtag = functions.https.onRequest((req, res) => {
     const hashtag_id = uuidv4();
     let ipfs_hash = 'awaiting hash';
     const data = {
@@ -29,7 +29,7 @@ exports.addHashtag = functions.https.onRequest((req, res) => {
     }
     admin.database().ref('/hashtags').push(data)
     .then(snapshot => {
-        return snapshot.ref.toString().split("/")[4]; 
+        return snapshot.ref.toString().split("/")[4];
     })
     .then(data1 => {
         // TODO for the will : convert this to a promise.
@@ -42,13 +42,13 @@ exports.addHashtag = functions.https.onRequest((req, res) => {
 
 
 function data2Hash(data,cb) {
-        var bufferdata = new Buffer(JSON.stringify(data);
+        var bufferdata = new Buffer(JSON.stringify(data));
         return new Promise((resolve, reject) => {
             ipfs.add(bufferdata, function(err, res) {
                 if (err){
                     return reject();
                 }
-                return resolve(res);
+                return resolve(res[0].hash);
             });
         });
 
