@@ -46,10 +46,11 @@ exports.addHashtag = functions.https.onRequest((req, res) => {
 * @param {string} budget a budget you are willing to pay for for your request
 * @param {string} lookingFor a description of what you are requesting
 * @param {string} location a geohash
-* @param {string} hashtagId a geohash
+* @param {string} hashtagId the promary key from a hashtag
+* TODO: We need to check this hashtagId exists
 * @return {string} a 200 OK is returned
 */
-// https://us-central1-swarmcity-23c70.cloudfunctions.net/addRequest?budget=150&lookingFor=A%20Place%20To%20Stay&location=k3lj45
+// https://us-central1-swarmcity-23c70.cloudfunctions.net/addRequest?budget=150&lookingFor=A%20Place%20To%20Stay&location=k3lj45&hashtagId=20349
 exports.addRequest = functions.https.onRequest((req, res) => {
     const request_id = uuidv4();
     let ipfs_hash = 'awaiting hash';
@@ -66,6 +67,33 @@ exports.addRequest = functions.https.onRequest((req, res) => {
     })
     .then(data1 => {
         admin.database().ref('/requests/'+data1).update({ipfs_hash:ipfs_hash});
+        res.status(200).send('OK');
+    });
+})
+
+/**
+* @param {string} offer a budget you are willing to offer for for the request
+* @param {string} requestId the promary key from a request 
+* TODO: We need to check this requestId exists
+* @param {string} reply a description of the reply to an offer
+* @return {string} a 200 OK is returned
+*/
+// https://us-central1-swarmcity-23c70.cloudfunctions.net/addReply?offer=150&reply=A%20Place%20To%20Stay&requestId=k3lj45&hashtagId=20349
+exports.addReply = functions.https.onRequest((req, res) => {
+    const reply_id = uuidv4();
+    let ipfs_hash = 'awaiting hash';
+    const data = {
+        request_id: req.query.requestId,
+        offer: req.query.offer,
+        reply: req.query.reply,
+    }
+    admin.database().ref('/replies').push(data)
+    .then(snapshot => {
+        ipfs_hash = data2Hash(data);
+        return snapshot.ref.toString().split("/")[4]; 
+    })
+    .then(data1 => {
+        admin.database().ref('/replies/'+data1).update({ipfs_hash:ipfs_hash});
         res.status(200).send('OK');
     });
 })
