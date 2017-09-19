@@ -71,6 +71,7 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container[wide-layout] .title{
+                text-align: left;
                 @apply --main-title1-wide;
             }
 
@@ -189,7 +190,7 @@ This code may only be used under the license found at https://github.com/swarmci
             </div>
             <div class="bottom">
                 <div class="bottom-upper">
-                    <div class="avatar"><img src="../../images/defaultavatar.png"><div class="arrowcontainer"><div class="arrowup"></div></div></div>
+                    <div class="avatar"><img src="../../images/defaultavatar.png"><div class="arrowcontainer" on-click="_toResizeAvatar"><div class="arrowup"></div></div></div>
                     <paper-input label="Username" always-float-label></paper-input>
                 </div>
                 <div class="btn">
@@ -267,8 +268,12 @@ This code may only be used under the license found at https://github.com/swarmci
             /**
             * takes the user to the next page in user creation
             */
-            _agree() {
+            _toResizeAvatar() {
                 this.path = 'resize-avatar/';
+            }
+
+            _agree() {
+                this.path = 'password-warning/';
             }
             /**
             * changes the current path
