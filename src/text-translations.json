@@ -94,7 +94,8 @@
         "Choose an avatar and a username.": "Choose an avatar and a username.",
         "Choose a password..": "Choose a password..",
         "Choose your password with care.": "Choose your password with care.",
-        "Lets create a backup and youre all set!": "Let's create a backup and you're all set!"
+        "Lets create a backup and youre all set!": "Let's create a backup and you're all set!",
+        "The file has been sent to your email.": "The file has been sent to your email."
     },
     "cn": {
         "language": "cn",
@@ -180,7 +181,8 @@
         "Currently no deals selected. Try a broader search.": "Awaiting Translation",
         "Choose a password..": "Awaiting Translation",
         "Choose your password with care.": "Awaiting Translation",
-        "Lets create a backup and youre all set!": "Awaiting Translation"
+        "Lets create a backup and youre all set!": "Awaiting Translation",
+        "The file has been sent to your email.": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -275,7 +277,8 @@
         "Currently no deals selected. Try a broader search.": "Awaiting Translation",
         "Choose a password..": "Awaiting Translation",
         "Choose your password with care.": "Awaiting Translation",
-        "Lets create a backup and youre all set!": "Awaiting Translation"
+        "Lets create a backup and youre all set!": "Awaiting Translation",
+        "The file has been sent to your email.": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -370,7 +373,8 @@
         "world wide": "wereldwijd",
         "Choose a password..": "Awaiting Translation",
         "Choose your password with care.": "Awaiting Translation",
-        "Lets create a backup and youre all set!": "Awaiting Translation"
+        "Lets create a backup and youre all set!": "Awaiting Translation",
+        "The file has been sent to your email.": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -465,7 +469,8 @@
         "Currently no deals selected. Try a broader search.": "Awaiting Translation",
         "Choose a password..": "Awaiting Translation",
         "Choose your password with care.": "Awaiting Translation",
-        "Lets create a backup and youre all set!": "Awaiting Translation"
+        "Lets create a backup and youre all set!": "Awaiting Translation",
+        "The file has been sent to your email.": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -560,7 +565,8 @@
         "Currently no deals selected. Try a broader search.": "Awaiting Translation",
         "Choose a password..": "Awaiting Translation",
         "Choose your password with care.": "Awaiting Translation",
-        "Lets create a backup and youre all set!": "Awaiting Translation"
+        "Lets create a backup and youre all set!": "Awaiting Translation",
+        "The file has been sent to your email.": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -655,7 +661,8 @@
         "Currently no deals selected. Try a broader search.": "Awaiting Translation",
         "Choose a password..": "Awaiting Translation",
         "Choose your password with care.": "Awaiting Translation",
-        "Lets create a backup and youre all set!": "Awaiting Translation"
+        "Lets create a backup and youre all set!": "Awaiting Translation",
+        "The file has been sent to your email.": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -750,7 +757,8 @@
         "Currently no deals selected. Try a broader search.": "Awaiting Translation",
         "Choose a password..": "Awaiting Translation",
         "Choose your password with care.": "Awaiting Translation",
-        "Lets create a backup and youre all set!": "Awaiting Translation"
+        "Lets create a backup and youre all set!": "Awaiting Translation",
+        "The file has been sent to your email.": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -845,6 +853,7 @@
         "Currently no deals selected. Try a broader search.": "Awaiting Translation",
         "Choose a password..": "Awaiting Translation",
         "Choose your password with care.": "Awaiting Translation",
-        "Lets create a backup and youre all set!": "Awaiting Translation"
+        "Lets create a backup and youre all set!": "Awaiting Translation",
+        "The file has been sent to your email.": "Awaiting Translation"
     }
 }
