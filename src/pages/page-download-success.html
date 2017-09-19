@@ -29,105 +29,111 @@ This code may only be used under the license found at https://github.com/swarmci
     -->
         <style include="shared-styles">
              :host {
+                height: 100vh;
+                width: 100vw;
                 display: block;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
-            }
-
-            .close {
-                position: fixed;
-                top: 18px;
-                right: 18px;
-                width: 20px;
-                height: 20px;
-                background: url('../../../images/swarm-city-sprite.png') -60px -84px;
-                cursor: pointer;
             }
 
             .container {
-                max-width: 400px;
-            }
-
-            .btn {
-                margin-top: 25px;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
-            }
-
-            .greytext {
-                width: 280px;
-                margin: 16px auto 50px;
-                color: #333333;
-                font-size: 16px;
-                font-weight: 300;
-                text-align: center;
-            }
-
-            .greytext2 {
-                width: 200px;
-                margin: 16px auto;
-                color: #333333;
-                font-size: 16px;
-                font-weight: 300;
-                text-align: center;
-            }
-
-            .btn {
-                width: 275px;
-                height: 72px;
-                line-height: 30px;
-                text-align: center;
-                display: block;
-                border: none;
-
-                cursor: pointer;
+                height: 100%;
+                width: 100%;
+                @apply --layout-vertical;
+                @apply --layout-end-justified;
+                background-color: var(--sc-bg);
                 box-sizing: border-box;
-                padding: 20px;
-                color: var(--grey-4);
-                background-color: rgba(255, 255, 255, 0.1);
-                box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -o-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                overflow: hidden;
-                color: var(--swarm-city-black);
-                margin: 180px auto 0;
-                color: #000000;
-                font-size: 18px;
+                padding: 0 14vw;
+            }
 
-                text-align: center;
+            .container[wide-layout] {
+                padding: 0 12vw 0 12vw;
             }
 
             .title {
-                margin-top: 148px;
-                color: #24B1FF;
-                font-size: 35px;
-                font-weight: bold;
+                @apply --main-title1;
+                color: var(--sc-blue);
+                word-wrap: break-word;
                 text-align: center;
+                margin: 15vh 0 4vh 0;
             }
 
-            .link {
-                color: var(--swarm-city-blue);
-                margin-top: 20px;
-                font-weight: bold;
+            .container[wide-layout] .title {
+                margin: 25vh 0 4vh 0;
+                @apply --layout-horizontal;
+                @apply --layout--start-justified;
+                @apply --main-title1-wide;
+            }
+
+            .top {
+                @apply --layout-flex;
+                height: 100%;
+                width: 100%;
+            }
+
+            .greytext {
+                @apply --body-bold;
+                color: var(--sc-grey4);
+                margin-bottom: 4vh;
                 text-align: center;
+                line-height: 22px;
+            }
+
+            .container[wide-layout] .greytext {
+                margin-bottom: 2vh;
+                text-align: left;
+            }
+
+            .button {
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                @apply --text-button-big;
+                width: 100%;
+                max-width: 300px;
+                margin-top: 12vh;
+            }
+
+            .container[wide-layout] .button {
+                margin-top: 0px;
+            }
+
+            .button:active {
+                @apply --button-active;
+            }
+
+            .bluetext {
+                @apply --small-bold;
                 cursor: pointer;
+                color: var(--sc-blue);
+                border-bottom: 2px dotted var(--sc-blue);
+                margin-top: 4vh;
             }
 
-            .bold {
-                font-weight: bold;
+            .bottom {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                height: 40vh;
+                width: 100%;
+            }
+
+            .container[wide-layout] .bottom {
+                @apply --layout-start;
+                height: 35vh;
             }
         </style>
 
         <app-location route="{{route}}"></app-location>
-        <div class="container">
-            <div class="title">{{localize('Success!')}}</div>
-            <div class="greytext2">{{localize('Youve downloaded your account file.')}}</div>
-            <div class="greytext">{{localize('Your account file combined with your password will always give you access to your SWT balance.')}}</div>
-            <div class="btn" on-click="_enter">{{localize('enter')}} <span class="bold">swarm.city</span></div>
-            <div class="link">{{localize('convert my ARC')}}</div>
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+        <div class="container" wide-layout$="{{wide}}">
+            <div class="top">
+                <div class="title">{{localize('Success!')}}</div>
+                <div class="greytext">{{localize('Youve downloaded your account file.')}}</div>
+                <div class="greytext">{{localize('Your account file combined with your password will always give you access to your SWT balance.')}}</div>
+            </div>
+            <div class="bottom">
+                <div class="button" on-click="_enter">{{localize('enter')}}&nbsp;<span class="bold">swarm.city</span></div>
+                <div class="bluetext">{{localize('convert my ARC')}}</div>
+            </div>
         </div>
-
     </template>
 
     <script>
