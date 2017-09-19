@@ -393,6 +393,7 @@ Colors are all lower case, There is a space after the :
                     @apply --main-title1;
                     color: var(--sc-white);
                     text-align: center;
+                    max-width: 900px;
                 }
                 --new-here-title-wide: {
                     @apply --main-title1-wide;
@@ -403,6 +404,7 @@ Colors are all lower case, There is a space after the :
                     margin: 20px 0 0;
                     color: var(--sc-white);
                     text-align: center;
+                    max-width: 900px;
                 }
                 --new-here-subtitle-wide: {
                     @apply --small-light-wide;
@@ -419,7 +421,6 @@ Colors are all lower case, There is a space after the :
                 --new-here-bottom-wide: {
                     height: 45%;
                     padding: 0 12vw;
-                    @apply --layout-start;
                 }
                 --new-here-buttons: {
                     @apply --layout-vertical;
@@ -427,8 +428,9 @@ Colors are all lower case, There is a space after the :
                     width: 100%;
                 }
                 --new-here-buttons-wide: {
-                    @apply --layout-horizontal;
+                    @apply --layout-vertical;
                     @apply --layout-start-justified;
+                    @apply --layout-start;
                 }
                 --new-here-text-button-big: {
                     @apply --layout-vertical;
