@@ -325,32 +325,6 @@ This code may only be used under the license found at https://github.com/swarmci
                         type: String,
                         observer: '_path',
                     },
-                    /**
-                    * Entry and exit animation
-                    */
-                    animationConfig: {
-                        value: function() {
-                            return {
-                                'entry': {
-                                    name: 'fade-in-animation',
-                                    node: this,
-                                    nodeDelay: 300,
-                                    timing: {
-                                        duration: 1500,
-                                    },
-                                },
-                                // 'exit': {
-                                //     name: 'fade-out-animation',
-                                //     node: this,
-                                //     nodeDelay: 0,
-                                //     timing: {
-                                //         duration: 50,
-                                //         delay: 0,
-                                //     },
-                                // },
-                            };
-                        },
-                    },
                 };
             }
             connectedCallback() {
@@ -380,16 +354,18 @@ This code may only be used under the license found at https://github.com/swarmci
             * loads the next page 
             */
             _exitAnimation() {
-                    const exitAnim = this.$.top.animate(
+                    this.$.top.animate(
                     [
                         {'transform': 'translate(0)'},
                         {'transform': 'translateY(-100%)'},
                     ], {
                         fill: 'none',
-                        duration: 300,
+                        duration: 200,
                         iterations: 1,
+                        iterationStart: 0,
                         easing: 'cubic-bezier(0.42,0,0.58,1)',
                         delay: 0,
+                        endDelay: 400,
                     }
                     );
 
@@ -399,10 +375,12 @@ This code may only be used under the license found at https://github.com/swarmci
                         {'transform': 'translateY(300%)'},
                     ], {
                         fill: 'none',
-                        duration: 300,
+                        duration: 200,
                         iterations: 1,
+                        iterationStart: 0,
                         easing: 'cubic-bezier(0.42,0,0.58,1)',
                         delay: 0,
+                        endDelay: 400,
                     }
                     );
 
@@ -412,17 +390,17 @@ This code may only be used under the license found at https://github.com/swarmci
                         {'transform': 'translateY(300%)'},
                     ], {
                         fill: 'none',
-                        duration: 300,
+                        duration: 200,
                         iterations: 1,
+                        iterationStart: 0,
                         easing: 'cubic-bezier(0.42,0,0.58,1)',
                         delay: 0,
+                        endDelay: 400,
                     }
                     );
-
-                    exitAnim.onfinish = this._changePage.bind(this);
-            }
-            _changePage() {
-                this.set('route.path', 'hashtag-list/');
+                    setTimeout(()=>{
+                        this.set('route.path', 'hashtag-list/');
+                    }, 200);
             }
         } window.customElements.define(PageWelcome.is, PageWelcome);
     </script>

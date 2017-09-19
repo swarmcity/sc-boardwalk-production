@@ -104,13 +104,15 @@
             reflectToAttribute: true,
             observer: '_pageChanged',
           },
-
+          location: {
+            type: String,
+            statePath: 'location',
+          },
           hashtagdata: {
             type: Array,
             observer: '_hashtagChanged',
           },
           hashtags: {
-
             type: Array,
           },
           routeData: Object,
@@ -131,22 +133,38 @@
                       hashtags: hashtags,
                   };
               },
+              LOCATION: function(location) {
+                  return {
+                      type: 'LOCATION',
+                      location: location,
+                  };
+              },
           });
       }
 
       static get observers() {
         return [
+          '_hashtagChanged(hashtagdata.*)',
           '_routePageChanged(routeData.page)',
         ];
       }
 
       _hashtagChanged() {
-        this.dispatch('HASHTAGS', this.hashtags);
+        if (this.hashtagdata.length >= 1) {
+          this.dispatch('HASHTAGS', null);
+          this.dispatch('HASHTAGS', this.hashtagdata);
+        }
       }
       _routePageChanged(page) {
         this.page = page || 'welcome';
       }
       _pageChanged(page) {
+        if (!this.location) {
+          this.dispatch('LOCATION', {nowAt: page});
+        } else {
+          let lastAt = this.location.nowAt;
+          this.dispatch('LOCATION', {lastAt: lastAt, nowAt: page});
+        }
         var resolvedPageUrl = this.resolveUrl('pages/page-' + page + '.html');
         Polymer.importHref(
             resolvedPageUrl,
