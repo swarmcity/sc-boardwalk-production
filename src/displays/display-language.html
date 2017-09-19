@@ -195,15 +195,15 @@ Example:
                 this.$.localStorage.saveAccount(account);
                 this.language = this.iso[event.model.__data.index];
                 this.dispatch('LANGUAGE', this.language);
-                if(this.path == undefined){
+                if (this.path == undefined) {
                     this.path = 'welcome/';
                 }
-                if(this.path == 'welcome/'){
+                if (this.path == 'welcome/') {
                     this.path = '/';
                 } 
-                if(this.path == '/'){
+                if (this.path == '/') {
                     this.path = 'welcome/';
-                }            
+                }
             }
 
             /**

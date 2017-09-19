@@ -150,12 +150,12 @@ This code may only be used under the license found at https://github.com/swarmci
             /**
             * location checks if the user is on this page and fires the entry animation
             */
-            _entryAnimation(){
-                if(this.location.nowAt == 'language'){
+            _entryAnimation() {
+                if (this.location.nowAt == 'language') {
                     this.$.displayLanguage.animate(
                     [
-                        {'transform':'translateY(-100%)'},
-                        {'transform':'translate(0)'},
+                        {'transform': 'translateY(-100%)'},
+                        {'transform': 'translate(0)'},
                     ], {
                         fill: 'none',
                         duration: 300,
@@ -172,8 +172,8 @@ This code may only be used under the license found at https://github.com/swarmci
             _exitAnimation() {
                 const exitAnim = this.$.displayLanguage.animate(
                     [
-                        {'transform':'translate(0)'},
-                        {'transform':'translateY(-100%)'},
+                        {'transform': 'translate(0)'},
+                        {'transform': 'translateY(-100%)'},
                     ], {
                         fill: 'none',
                         duration: 300,
@@ -191,7 +191,7 @@ This code may only be used under the license found at https://github.com/swarmci
             * triggered after the user selects a language 
             */
             _path() {
-                if(this.path){
+                if (this.path) {
                     this.set('route.path', 'welcome/');
                 }
             }

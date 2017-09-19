@@ -148,10 +148,9 @@
           '_routePageChanged(routeData.page)',
         ];
       }
-      
 
       _hashtagChanged() {
-        if(this.hashtagdata.length >= 1){
+        if (this.hashtagdata.length >= 1) {
           this.dispatch('HASHTAGS', null);
           this.dispatch('HASHTAGS', this.hashtagdata);
         }
@@ -160,10 +159,10 @@
         this.page = page || 'welcome';
       }
       _pageChanged(page) {
-        if(!this.location){
+        if (!this.location) {
           this.dispatch('LOCATION', {nowAt: page});
         } else {
-          let lastAt = this.location.nowAt
+          let lastAt = this.location.nowAt;
           this.dispatch('LOCATION', {lastAt: lastAt, nowAt: page});
         }
         var resolvedPageUrl = this.resolveUrl('pages/page-' + page + '.html');

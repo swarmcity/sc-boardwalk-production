@@ -384,7 +384,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     }
                     );
 
-                    const exitAnim = this.$.bottom.animate(
+                    this.$.bottom.animate(
                     [
                         {'transform': 'translate(0)'},
                         {'transform': 'translateY(300%)'},
@@ -398,14 +398,11 @@ This code may only be used under the license found at https://github.com/swarmci
                         endDelay: 400,
                     }
                     );
-                    setTimeout(()=>{ 
+                    setTimeout(()=>{
                         this.set('route.path', 'hashtag-list/');
                     }, 200);
-                    //exitAnim.onfinish = this._changePage.bind(this);
             }
-            // _changePage() {
-            //     this.set('route.path', 'hashtag-list/');
-            // }
+
         } window.customElements.define(PageWelcome.is, PageWelcome);
     </script>
 </dom-module>

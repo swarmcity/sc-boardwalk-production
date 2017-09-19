@@ -320,12 +320,12 @@ This code may only be used under the license found at https://github.com/swarmci
             /**
             * location checks if the user is on this page and fires the entry animation
             */
-            _entryAnimation(){
-                if(this.location.nowAt == 'hashtag-list'){
+            _entryAnimation() {
+                if (this.location.nowAt == 'hashtag-list') {
                     this.$.hashtagList.animate(
                     [
-                        {'opacity':'0', 'transform':'translateY(100px)'},
-                        {'opacity':'1', 'transform':'translateY(0)'},
+                        {'opacity': '0', 'transform': 'translateY(100px)'},
+                        {'opacity': '1', 'transform': 'translateY(0)'},
                     ], {
                         fill: 'none',
                         duration: 300,
@@ -336,8 +336,8 @@ This code may only be used under the license found at https://github.com/swarmci
                     );
                     this.$.back.animate(
                     [
-                        {'opacity':'0'},
-                        {'opacity':'1'},
+                        {'opacity': '0'},
+                        {'opacity': '1'},
                     ], {
                         fill: 'none',
                         duration: 300,
@@ -348,8 +348,8 @@ This code may only be used under the license found at https://github.com/swarmci
                     );
                     this.$.filterToggle.animate(
                     [
-                        {'opacity':'0'},
-                        {'opacity':'1'},
+                        {'opacity': '0'},
+                        {'opacity': '1'},
                     ], {
                         fill: 'none',
                         duration: 300,
@@ -415,9 +415,11 @@ This code may only be used under the license found at https://github.com/swarmci
             * changes the current path
             */
             _path() {
-                if(this.path){
+                if (this.path) {
                     const location = 'src/pages/page-hashtag.html';
-                    Polymer.importHref(location, this._exitAnimation.bind(this), null, false);
+                    Polymer.importHref(location, 
+                    this._exitAnimation.bind(this), 
+                    null, false);
                 }
             }
             /**

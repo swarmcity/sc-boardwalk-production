@@ -151,7 +151,7 @@ The following custom properties and mixins are available for styling:
                     */
                     hashtags: {
                         type: Array,
-                        statePath: 'hashtags'
+                        statePath: 'hashtags',
                     },
                     /**
                     * range is the range the usert selected in slider
@@ -182,7 +182,7 @@ The following custom properties and mixins are available for styling:
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
 
-            _hashtagChanged(){
+            _hashtagChanged() {
                 this.$.domRepeat.render();
             }
             /**
@@ -234,19 +234,6 @@ The following custom properties and mixins are available for styling:
             */
             _sort(a, b) {
                 return a.deals < b.deals;
-            }
-
-            /**
-            * filters the list acording to the selected range
-            * @param {object} event  represents the curent iteration of the dom repeat
-            * @return {boolean} if a should be ordered before b
-            */
-            _isWithinRange(event) {
-                // if (event.distance) {
-                //     return (this.range > event.distance);
-                // } else {
-                //     return true;
-                // }
             }
 
             /**
