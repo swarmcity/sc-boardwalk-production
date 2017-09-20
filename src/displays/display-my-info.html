@@ -6,8 +6,14 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="../data/data-web3.html">
+<link rel="import" href="../data/data-utility.html">
 <link rel="import" href="../data/data-ipfs.html">
-<link rel="import" href="../data/data-local-storage.html">
+<link rel="import" href="../data/data-local-storage.html">\
+<link rel="import" href="../redux-state.html">
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-storage.js"></script>
+
 <!--
 
 Example:
@@ -48,7 +54,7 @@ The following custom properties and mixins are available for styling:
                 cursor: pointer;
                 border-radius: 50%;
                 margin-right: 10px;
-                
+
                 background-size: 40px;
             }
 
@@ -66,7 +72,7 @@ The following custom properties and mixins are available for styling:
 
             .container div:nth-child(2)>div:nth-child(2) {
             @apply --main-title4;
-            color: var(--sc-yellow);          
+            color: var(--sc-yellow);
             cursor: pointer;
             }
         </style>
@@ -74,26 +80,39 @@ The following custom properties and mixins are available for styling:
         <data-web3 id="web3"></data-web3>
         <data-ipfs id="ipfs"></data-ipfs>
         <data-local-storage id="storage"></data-local-storage>
+
+        <firebase-app
+            database-url="https://swarmcity-23c70.firebaseio.com"
+            storage-bucket="warmcity-23c70.appspot.com"
+            api-key="AIzaSyDXAHgocTVa9PLVoKqCnQF9PDkUH7F-EFY"
+            auth-domain="swarmcity-23c70.firebaseapp.com">
+        </firebase-app>
+        <firebase-document
+    path="/usercache/{{publicKey}}"
+    data="{{balances}}"
+    log>
+</firebase-document>
+
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <template is="dom-if" if="{{completeAccount}}">
             <div class="container" wide-layout$="{{wide}}">
-                
+
                     <img src="../../images/defaultavatar.png">
-                
+
                 <div>
-                    <div>Xavier Hendrickx</div>
-                    <div>25 SWT</div>
+                    <div>{{publicKey}}</div>
+                    <div>{{balance_swt}} SWT</div>
                 </div>
             </div>
         </template>
 
     </template>
     <script>
-        class DisplayMyInfo extends Polymer.mixinBehaviors([
+        class DisplayMyInfo extends new ReduxMixin(Polymer.mixinBehaviors([
                 Polymer.AppLocalizeBehavior,
             ],
             Polymer.Element
-        ) {
+        )) {
             static get is() {
                 return 'display-my-info';
             }
@@ -123,11 +142,26 @@ The following custom properties and mixins are available for styling:
                         type: String,
                     },
                     /**
+                    * PublicKey represents the users pubkey
+                    * @type {String}
+                    */
+                    publicKey: {
+                        type: String,
+                    },
+                    /**
                     * Balance represents the users SWT balance
                     * @type {Number}
                     */
-                    balance: {
+                    balance_swt: {
                         type: Number,
+                    },
+                    /**
+                    * Balances holds the user balances of swt, arc and eth
+                    * @type {Object}
+                    */
+                    balances: {
+                        type: Object,
+                        observer: '_balances'
                     },
                     /**
                     * completeAccount represents true of the user
@@ -154,14 +188,15 @@ The following custom properties and mixins are available for styling:
             * Gets the users details from local storage
             */
             _getUser() {
-                this.$.storage.accountExists()
-                    .then((account) => {
-                        if (account.username && account.address && account.avatar) {
-                            this.username = account.username;
-                            this.completeAccount = true;
-                            this._complete(account);
-                        }
-                    });
+              this.publicKey = localStorage.getItem("publicKey");
+                // this.$.storage.get('publicKey')
+                    // .then((account) => {
+                    //     if (account.username && account.address && account.avatar) {
+                    //         this.username = account.username;
+                    //         this.completeAccount = true;
+                    //         this._complete(account);
+                    //     }
+                    // });
             }
 
             /**
@@ -177,6 +212,21 @@ The following custom properties and mixins are available for styling:
                         this.avatar = data[0];
                         this.balance = data[1];
                     });
+            }
+
+            /**
+            * Gets the users balances
+            * @param {object} balances of the user
+            */
+            _balances() {
+              console.log(this.balances);
+              var balance_swt = this.balances.swt / 1e18;
+              this.balance_swt = this.formatbalance(balance_swt);
+            }
+
+            formatbalance(b){
+              if (!b || b <= 0) return 0;
+              return(b.toFixed(4));
             }
         }
         window.customElements.define(DisplayMyInfo.is, DisplayMyInfo);

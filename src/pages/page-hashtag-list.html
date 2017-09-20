@@ -193,46 +193,46 @@ This code may only be used under the license found at https://github.com/swarmci
         <app-location route="{{route}}"></app-location>
         <div class="container" wide-layout$="{{wide}}">
             <div class="header">
-                
+
                 <div class="topleft">
                     <template is="dom-if" if="{{completeAccount}}">
                         <display-my-info id="myInfo" complete-account="{{completeAccount}}"></display-my-info>
                     </template>
                 </div>
 
-                
+
                 <div class="topright">
                     <div class="back" on-click="_back" id="back"></div>
 
-                    <display-filter-list 
-                        toggle 
+                    <display-filter-list
+                        toggle
                         id="filterToggle"
                         class="filter-toggle"
                         highlight-filter$="{{highlightFilterToggle}}"
-                        show-slider="{{showSlider}}" 
-                        range="{{range}}" 
-                        route="{{route}}" 
+                        show-slider="{{showSlider}}"
+                        range="{{range}}"
+                        route="{{route}}"
                         path="{{path}}">
                     </display-filter-list>
 
                 </div>
-                
+
             </div>
-            
-            <display-filter-list 
-                slider 
-                class$="slider [[sliderState]]" 
-                show-slider="{{showSlider}}" 
-                range="{{range}}" 
-                route="{{route}}" 
+
+            <display-filter-list
+                slider
+                class$="slider [[sliderState]]"
+                show-slider="{{showSlider}}"
+                range="{{range}}"
+                route="{{route}}"
                 path="{{path}}">
             </display-filter-list>
-    
+
             <div class$="fade [[fadeState]]" on-click="_fadeClose">
-                <display-hashtag-list 
+                <display-hashtag-list
                     id="hashtagList"
-                    range="[[range]]" 
-                    path="{{path}}" 
+                    range="[[range]]"
+                    path="{{path}}"
                     show-slider="{{showSlider}}">
                 </display-hashtag-list>
             </div>
@@ -270,39 +270,40 @@ This code may only be used under the license found at https://github.com/swarmci
                         observer: '_path',
                     },
                     /**
-                    * sliderState represents style state of the slider 
-                    * @type {String} 
+                    * sliderState represents style state of the slider
+                    * @type {String}
                     */
                     sliderState: {
                         type: String,
                         value: 'slider-hidden',
                     },
                     /**
-                    * completeAccount determines if an account is present 
+                    * completeAccount determines if an account is present
                     * in localstorage or not
                     * @type {Boolean}
                     */
                     completeAccount: {
                         type: Boolean,
+                        value: true
                     },
-                    /** 
-                    * showSlider determines if the slider is show or not 
-                    * @type {Boolean} 
+                    /**
+                    * showSlider determines if the slider is show or not
+                    * @type {Boolean}
                     */
                     showSlider: {
                         type: Boolean,
                         observer: '_toggleSlider',
                     },
                     /**
-                    * fadeState represents the state of hashtaglist container 
-                    * @type {String} 
+                    * fadeState represents the state of hashtaglist container
+                    * @type {String}
                     */
                     fadeState: {
                         type: String,
                         value: 'fade-hidden',
                     },
                     /**
-                    * highlightFilterToggle toggles 
+                    * highlightFilterToggle toggles
                     * the background style of the show filter text link
                     * @type {Boolean}
                     */
@@ -402,8 +403,8 @@ This code may only be used under the license found at https://github.com/swarmci
             _exitAnimation() {
 
             }
-            /** 
-            * closes open slider box 
+            /**
+            * closes open slider box
             */
             _fadeClose() {
                 if (this.showSlider) {
