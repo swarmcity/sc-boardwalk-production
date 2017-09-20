@@ -33,6 +33,14 @@ Colors are all lower case, There is a space after the :
                 --sc-grey3b: #ACACAC;
                 --sc-green2: #23B460;
                 --sc-red2: #D0021B;
+                /* Component colors */
+                --paper-checkbox-unchecked-color: var(--sc-grey4);
+                --paper-checkbox-unchecked-ink-color: var(--sc-grey4);
+                --paper-checkbox-checkmark-color: var(--sc-white);
+                --paper-checkbox-checked-color: var(--sc-blue);
+                --paper-checkbox-checked-ink-color: var(--sc-blue);
+                --paper-input-container-color: var(--sc-grey4);
+                --paper-input-container-focus-color: var(--sc-blue);
 
                 /*----------TYPOGRAPHY----------*/
                 --main-title1: {
@@ -133,6 +141,22 @@ Colors are all lower case, There is a space after the :
                     font-size: 10px;
                     letter-spacing: 0;
                     line-height: 13px;
+                }
+                /* Component typography */
+                --paper-input-container-label: {
+                    @apply(--body-default);
+                }
+                --paper-input-error: {
+                    @apply(--body-bold);
+                }
+                --paper-input-container-input: {
+                    @apply(--body-default);
+                }
+                --paper-input-prefix: {
+                    @apply(--body-default);
+                }
+                --paper-input-suffix: {
+                    @apply(--body-default);
                 }
 
                 /*----------ICONS----------*/
