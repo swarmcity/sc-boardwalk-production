@@ -39,9 +39,20 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .container {
                 @apply --layout-vertical;
+                @apply --layout--start-justified;
+                @apply --layout-center;
                 background-color: var(--sc-bg);
                 height: 100%;
                 width: 100%;
+                box-sizing: border-box;
+                padding: 0 14vw;
+            }
+
+            .container[wide-layout] {
+                @apply --layout-vertical;
+                @apply --layout--start-justified;
+                @apply --layout-start;
+                padding: 0 12vw;
             }
 
             .close {
@@ -53,14 +64,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-vertical;
                 @apply --layout-center;
                 @apply --layout-end-justified;
-                height: 44vh;
-                box-sizing: border-box;
-                padding: 0 14vw 10vh;
+                @apply --layout-flex;
             }
 
             .container[wide-layout] .top {
                 @apply --layout-start;
-                padding: 0 12vw 7vh;
             }
 
             .title {
@@ -70,9 +78,14 @@ This code may only be used under the license found at https://github.com/swarmci
                 text-align: center;
             }
 
-            .container[wide-layout] .title{
+            .container[wide-layout] .title {
                 text-align: left;
                 @apply --main-title1-wide;
+            }
+
+            .input {
+                height: 25vh;
+                width: 100%;
             }
 
             img {
@@ -85,21 +98,20 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .bottom {
-                box-sizing: border-box;
-                padding: 0 14vw;
                 @apply --layout-vertical;
                 @apply --layout-center;
                 @apply --layout-start-justified;
-            
+                height: 40vh;
+                width: 100%;
             }
 
             .container[wide-layout] .bottom {
                 @apply --layout-start;
-                padding: 0 12vw;
+                height: 35vh;
             }
 
             .container[wide-layout] paper-input {
-                
+
                 text-align: left;
                 margin-top: 40px;
             }
@@ -117,9 +129,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --icon-button-big;
             }
 
-            .container[wide-layout] .btn {
-                margin-top: 6vh;
-            }
+            .container[wide-layout] .btn {}
 
             .btn:active {
                 @apply --button-active;
@@ -128,12 +138,14 @@ This code may only be used under the license found at https://github.com/swarmci
             .agree {
                 @apply --next-blue-normal;
             }
+
             .avatar {
                 margin-left: 36px;
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
                 @apply --layout-end;
             }
+
             .arrowcontainer {
                 @apply --base-shadow;
                 border-radius: 50%;
@@ -146,22 +158,22 @@ This code may only be used under the license found at https://github.com/swarmci
                 position: relative;
                 right: 25px;
                 cursor: pointer;
-                
             }
+
             .arrowup {
                 @apply --arrowup-white-mini;
             }
-            
-            .bottom-upper {
+
+            .input {
                 @apply --layout-vertical;
-                @apply --layout-start-justified;
-                @apply --layout-center;
+                @apply --layout--start-justified;
+                margin-bottom: 40px;
             }
 
-            .container[wide-layout] .bottom-upper {
+            .container[wide-layout] .input {
                 @apply --layout-horizontal;
-                @apply --layout-start-justified;
-                @apply --layout-center;
+                @apply --layout-center-justified;
+                margin-bottom: 70px;
             }
 
             .container[wide-layout] .avatar {
@@ -184,21 +196,51 @@ This code may only be used under the license found at https://github.com/swarmci
         <app-location route="{{route}}"></app-location>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <div class="container" wide-layout$="{{wide}}">
-            <div class="close" on-click="_close"></div>
             <div class="top">
+                <div class="close" on-click="_close"></div>
                 <div class="title">{{localize('Choose an avatar and a username.')}}</div>
-            </div>
-            <div class="bottom">
-                <div class="bottom-upper">
-                    <div class="avatar"><img src="../../images/defaultavatar.png"><div class="arrowcontainer" on-click="_toResizeAvatar"><div class="arrowup"></div></div></div>
+                <div class="input">
+                    <div class="avatar"><img src="../../images/defaultavatar.png">
+                        <div class="arrowcontainer" on-click="_toResizeAvatar">
+                            <div class="arrowup"></div>
+                        </div>
+                    </div>
                     <paper-input label="Username" always-float-label></paper-input>
                 </div>
+            </div>
+
+            <div class="bottom">
                 <div class="btn">
                     <div class="agree" on-click="_agree"></div>
                 </div>
             </div>
         </div>
         </div>
+
+
+        <div class="container" wide-layout$="{{wide}}">
+            <div class="top">
+                <div class="close" on-click="_close"></div>
+                <div class="title">{{localize('Choose a password.')}}</div>
+                <div class="trianglecontainer">
+                    <div class="triangle"></div>
+                </div>
+                <div class="box">
+                    <div class="textbox">
+                        <div class="inner-top">{{localize('There is no password recovery available in Swarm City.')}}</div>
+                        <div class="inner-bottom">{{localize('Choose your password with care.')}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="btn">
+                    <div class="agree" on-click="_agree"></div>
+                </div>
+            </div>
+
+        </div>
+
+
 
     </template>
 
