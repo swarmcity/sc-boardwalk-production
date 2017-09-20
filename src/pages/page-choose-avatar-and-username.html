@@ -131,19 +131,31 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container[wide-layout] paper-input {
-                @apply --layout-vertical;
-                @apply --layout-end-justified;
+
                 text-align: left;
                 margin-top: 4vh;
             }
 
-
             paper-input {
                 margin-top: 4vh;
                 text-align: center;
-                padding: 0 0 2vh 0;
-                --paper-input-container-color: var(--swarm-city-blue);
-                --paper-input-container-focus-color: var(--swarm-city-blue);
+                padding: 0 0 50px 0;
+                @apply --sc-paper-input;
+                --paper-input-container-label: {
+                    @apply --body-default;
+                }
+                --paper-input-container-input: {
+                    @apply(--body-default);
+                }
+                --paper-input-error: {
+                    @apply(--body-bold);
+                }
+                --paper-input-prefix: {
+                    @apply(--body-default);
+                }
+                --paper-input-suffix: {
+                    @apply(--body-default);
+                }
             }
 
             .btn {
