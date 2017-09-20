@@ -40,6 +40,7 @@
     </style>
 
     <firebase-app
+      name ='swarmCity'
       database-url="https://swarmcity-23c70.firebaseio.com" 
       api-key="AIzaSyDXAHgocTVa9PLVoKqCnQF9PDkUH7F-EFY" 
       auth-domain="swarmcity-23c70.firebaseapp.com">
@@ -55,6 +56,12 @@
       data="{{hashtagdata}}"
       persisted-data="{{hashtags}}">
     </app-indexeddb-mirror>
+
+    <firebase-document 
+      app-name='swarmCity'
+      id="connectedx"
+      path="/connected/[[publicKey]]">
+    </firebase-document>
 
 
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
@@ -110,12 +117,11 @@
             type: Array,
             observer: '_hashtagChanged',
           },
-          hashtags: {
-            type: Array,
-          },
+          hashtags: Array,
           routeData: Object,
           subroute: String,
           rootPath: String,
+          publicKey: String,
         };
       }
 
@@ -145,6 +151,29 @@
           '_hashtagChanged(hashtagdata.*)',
           '_routePageChanged(routeData.page)',
         ];
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+        this._connectedToFirebase()
+      }
+
+      _connectedToFirebase() {
+        // This will be replaced with the wallet
+        if(localStorage.getItem("publicKey")){
+          const fakePublicKey = localStorage.getItem("publicKey");
+        } else {
+          const fakePublicKey = '0x855e3d4578dc6a1d8af9318d131430bd2b7b2dc9';
+          localStorage.setItem("publicKey", fakePublicKey);
+        }
+        // Check the location of the public key, it will nbeinside te wallt object
+        this.publicKey = localStorage.getItem("publicKey");
+        this.$.connectedx.ref.onDisconnect().remove();
+        this.$.connectedx.ref.set({
+            SWT: 0,
+            ARC: 0,
+            ETH: 0,
+        });
       }
 
       _hashtagChanged() {
