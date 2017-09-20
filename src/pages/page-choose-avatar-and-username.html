@@ -72,20 +72,36 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .title {
+                @apply --layout-vertical;
+                @apply --layout-center-justified;
                 @apply --main-title1;
                 color: var(--sc-grey3b);
                 word-wrap: break-word;
                 text-align: center;
+                height: 100%;
             }
 
             .container[wide-layout] .title {
-                text-align: left;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                @apply --layout-center;
                 @apply --main-title1-wide;
+                margin-top: 20vh;
+                text-align: left;
             }
 
             .input {
-                height: 25vh;
+                @apply --layout-vertical;
+                @apply --layout--start-justified;
                 width: 100%;
+                height: 15vh;
+                margin-bottom: 2vh;
+            }
+
+            .container[wide-layout] .input {
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                margin-bottom: 4vh;
             }
 
             img {
@@ -100,27 +116,32 @@ This code may only be used under the license found at https://github.com/swarmci
             .bottom {
                 @apply --layout-vertical;
                 @apply --layout-center;
-                @apply --layout-start-justified;
+                @apply --layout-end-justified;
                 height: 40vh;
                 width: 100%;
+                box-sizing: border-box;
+                padding: 0 0 15vh 0;
             }
 
             .container[wide-layout] .bottom {
+                @apply --layout-start-justified;
                 @apply --layout-start;
                 height: 35vh;
+                padding: 0 0 0 0;
             }
 
             .container[wide-layout] paper-input {
-
+                @apply --layout-vertical;
+                @apply --layout-end-justified;
                 text-align: left;
-                margin-top: 40px;
+                margin-top: 4vh;
             }
 
 
             paper-input {
-                margin-top: 40px;
+                margin-top: 4vh;
                 text-align: center;
-                padding: 0 0 50px 0;
+                padding: 0 0 2vh 0;
                 --paper-input-container-color: var(--swarm-city-blue);
                 --paper-input-container-focus-color: var(--swarm-city-blue);
             }
@@ -128,8 +149,6 @@ This code may only be used under the license found at https://github.com/swarmci
             .btn {
                 @apply --icon-button-big;
             }
-
-            .container[wide-layout] .btn {}
 
             .btn:active {
                 @apply --button-active;
@@ -140,10 +159,17 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .avatar {
-                margin-left: 36px;
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
                 @apply --layout-end;
+                margin-left: 3.6vh;
+            }
+
+            .container[wide-layout] .avatar {
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                @apply --layout-end;
+                margin-left: 0;
             }
 
             .arrowcontainer {
@@ -167,20 +193,19 @@ This code may only be used under the license found at https://github.com/swarmci
             .input {
                 @apply --layout-vertical;
                 @apply --layout--start-justified;
-                margin-bottom: 40px;
+                margin-bottom: 4vh;
             }
 
             .container[wide-layout] .input {
                 @apply --layout-horizontal;
-                @apply --layout-center-justified;
-                margin-bottom: 70px;
+                @apply --layout-start-justified;
+                margin-bottom: 7vh;
             }
 
-            .container[wide-layout] .avatar {
-                margin-left: 0;
+            .inputcontainer {
+                height: 100%;
                 @apply --layout-horizontal;
-                @apply --layout-start-justified;
-                @apply --layout-end;
+                @apply --layout-center-justified;
             }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
@@ -205,7 +230,9 @@ This code may only be used under the license found at https://github.com/swarmci
                             <div class="arrowup"></div>
                         </div>
                     </div>
-                    <paper-input label="Username" always-float-label></paper-input>
+                    <div class="inputcontainer">
+                        <paper-input label="Username" always-float-label></paper-input>
+                    </div>
                 </div>
             </div>
 
