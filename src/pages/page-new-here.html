@@ -122,10 +122,10 @@ This code may only be used under the license found at https://github.com/swarmci
 
     <script>
         class MyNewHere extends new ReduxMixin(Polymer.mixinBehaviors([
-                Polymer.AppLocalizeBehavior,
-                Polymer.NeonAnimationRunnerBehavior,
-                Polymer.NeonAnimatableBehavior,
-            ],
+            Polymer.AppLocalizeBehavior,
+            Polymer.NeonAnimationRunnerBehavior,
+            Polymer.NeonAnimatableBehavior,
+        ],
             Polymer.Element
         )) {
             static get is() {
@@ -138,16 +138,16 @@ This code may only be used under the license found at https://github.com/swarmci
                         statePath: 'language',
                     },
                     /**
-                     * Path is the current or requested path
-                     * @type {String}
-                     */
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                     * Entry and exit animation
-                     */
+                    * Entry and exit animation
+                    */
                     animationConfig: {
                         value: function() {
                             return {
@@ -179,27 +179,28 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             /**
-             * takes the user to the next page in user creation
-             */
+            * takes the user to the next page in user creation
+            */
             _create() {
-                this.path = 'choose-username/';
+                this.path = 'choose-avatar-and-username/';
             }
             /**
-             * takes the user to the previous page
-             */
+            * takes the user to the previous page
+            */
             _close() {
-                this.path = 'stop-signup/';
+                this.path = 'hashtag/' + sessionStorage.getItem('hashtagID');
+                sessionStorage.clear();
             }
             /**
-             * takes the user to the hashtag list page
-             */
+            * takes the user to the hashtag list page
+            */
             _restore() {
                 this.path = 'restore-account/';
             }
 
             /**
-             * changes the current path
-             */
+            * changes the current path
+            */
             _path() {
                 if (this.path != null) {
                     this.set('route.path', this.path);

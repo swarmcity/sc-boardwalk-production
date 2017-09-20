@@ -31,12 +31,23 @@ The following custom properties and mixins are available for styling:
             }
 
             .container {
-                @apply --display-deal-btn;
+                @apply --icon-button-big;
+                cursor: pointer;
+            }
+
+            .container:active {
+                @apply --button-active;
+            }
+
+            .icon {
+                @apply --plus-blue-normal;
             }
         </style>
 
         <data-local-storage id="storage"></data-local-storage>
-        <div class="container" on-click="_next"></div>
+        <div class="container" on-click="_next">
+            <div class="icon"></div>
+        </div>
 
     </template>
     <script>

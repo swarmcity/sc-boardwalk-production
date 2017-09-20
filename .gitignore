@@ -1,11 +1,3 @@
 bower_components/
 build/
 node_modules/
-.netlify
-firebase.json
-firebase-debug.log
-.firebaserc
-service-worker.js
-sw-precache-config.js
-src/contracts/
-npm-debug.log

@@ -1,15 +1,13 @@
-<!--
-@license
-Copyright (c) 2017 Swarm City
-This code may only be used under the license found at https://github.com/swarmcity/license
--->
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
-<!--
-  Lazy import all routes. Do not import any element from data or displays
--->
+<link rel="import" href="../bower_components/app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
+<link rel="import" href="../bower_components/polymerfire/firebase.html">
+<link rel="import" href="../bower_components/polymerfire/polymerfire.html">
+<link rel="import" href="redux-state.html">
+
+<link rel="lazy-import" href="pages/page-welcome.html">
 <link rel="lazy-import" href="pages/page-hashtag-list.html">
 <link rel="lazy-import" href="pages/page-hashtag.html">
 <link rel="lazy-import" href="pages/page-language.html">
@@ -18,11 +16,8 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="lazy-import" href="pages/page-private-key.html">
 <link rel="lazy-import" href="pages/page-new-here.html">
 <link rel="lazy-import" href="pages/page-json-file.html">
-<link rel="lazy-import" href="pages/page-choose-username.html">
-<link rel="lazy-import" href="pages/page-choose-avatar.html">
+<link rel="lazy-import" href="pages/page-choose-avatar-and-username.html">
 <link rel="lazy-import" href="pages/page-resize-avatar.html">
-<link rel="lazy-import" href="pages/page-view404.html">
-<link rel="lazy-import" href="pages/page-welcome.html">
 <link rel="lazy-import" href="pages/page-stop-signup.html">
 <link rel="lazy-import" href="pages/page-password-warning.html">
 <link rel="lazy-import" href="pages/page-choose-password.html">
@@ -32,19 +27,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="lazy-import" href="pages/page-show-private-key.html">
 <link rel="lazy-import" href="pages/page-email-success.html">
 <link rel="lazy-import" href="pages/page-download-success.html">
-
-<!--
-The main swarm city element that handles all routing.
-When adding a new route ensure to...
-1 - Lazy import it
-2 - Add it and name it in neon-animated-pages
-3 - Add it as afragment inpolymer.json
-
-Example:
-```
-<swarm-city></swarm-city>
-```
--->
+<link rel="lazy-import" href="pages/page-view404.html">
 
 <dom-module id="swarm-city">
   <template>
@@ -55,50 +38,62 @@ Example:
         margin:0;
       }
     </style>
-<!--
-  app-location and app-route elements provide the state of the URL for the app.
--->
-    <app-location route="{{route}}"></app-location>
+
+    <firebase-app
+      database-url="https://swarmcity-23c70.firebaseio.com" 
+      api-key="AIzaSyDXAHgocTVa9PLVoKqCnQF9PDkUH7F-EFY" 
+      auth-domain="swarmcity-23c70.firebaseapp.com">
+    </firebase-app>
+
+    <firebase-query
+      path="/hashtags"
+      data="{{hashtagdata}}">
+    </firebase-query>
+
+    <app-indexeddb-mirror
+      key="hashtags"
+      data="{{hashtagdata}}"
+      persisted-data="{{hashtags}}">
+    </app-indexeddb-mirror>
+
+
+    <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route
         route="{{route}}"
-        pattern="[[rootPattern]]:page"
+        pattern="[[rootPath]]:page"
         data="{{routeData}}"
-        tail="{{subroute}}">
-    </app-route>
-<!--
-  neon-animated-pages shows and hides the reuested page componnt
--->
+        tail="{{subroute}}"></app-route>
+
     <neon-animated-pages
         selected="[[page]]"
         attr-for-selected="name"
         fallback-selection="view404"
         role="main">
-      <page-welcome name="welcome"></page-welcome>
-      <page-hashtag name="hashtag"></page-hashtag>
-      <page-new-here name="new-here"></page-new-here>
-      <page-language name="language"></page-language>
-      <page-hashtag-list name="hashtag-list"></page-hashtag-list>
-      <page-restore-account name="restore-account"></page-restore-account>
-      <page-choose-avatar name="choose-avatar"></page-choose-avatar>
-      <page-resize-avatar name="resize-avatar"></page-resize-avatar>
-      <page-private-key name="private-key"></page-private-key>
-      <page-choose-username name="choose-username"></page-choose-username>
-      <page-location name="location"></page-location>
-      <page-json-file name="json-file"></page-json-file>
-      <page-view404 name="view404"></page-view404>
-      <page-stop-signup name="stop-signup"></page-stop-signup>
-      <page-password-warning name="password-warning"></page-password-warning>
-      <page-choose-password name="choose-password"></page-choose-password>
-      <page-account-complete name="account-complete"></page-account-complete>
-      <page-make-backup name="make-backup"></page-make-backup>
-      <page-my-keys name="my-keys"></page-my-keys>
-      <page-show-private-key name="show-private-key"></page-show-private-key>
-      <page-email-success name="email-success"></page-email-success>
-      <page-download-success name="download-success"></page-download-success>
-    </neon-animated-pages>
+    <page-welcome name="welcome"></page-welcome>
+    <page-hashtag name="hashtag"></page-hashtag>
+    <page-new-here name="new-here"></page-new-here>
+    <page-language name="language"></page-language>
+    <page-hashtag-list name="hashtag-list"></page-hashtag-list>
+    <page-restore-account name="restore-account"></page-restore-account>
+    <page-resize-avatar name="resize-avatar"></page-resize-avatar>
+    <page-private-key name="private-key"></page-private-key>
+    <page-choose-avatar-and-username name="choose-avatar-and-username"></page-choose-avatar-and-username>
+    <page-location name="location"></page-location>
+    <page-json-file name="json-file"></page-json-file>
+    <page-stop-signup name="stop-signup"></page-stop-signup>
+    <page-password-warning name="password-warning"></page-password-warning>
+    <page-choose-password name="choose-password"></page-choose-password>
+    <page-account-complete name="account-complete"></page-account-complete>
+    <page-make-backup name="make-backup"></page-make-backup>
+    <page-my-keys name="my-keys"></page-my-keys>
+    <page-show-private-key name="show-private-key"></page-show-private-key>
+    <page-email-success name="email-success"></page-email-success>
+    <page-download-success name="download-success">
+    <page-view404 name="view404"></page-view404></page-download-success></neon-animated-pages>
   </template>
+
   <script>
-    class SwarmCity extends Polymer.Element {
+    class SwarmCity extends new ReduxMixin(Polymer.Element) {
       static get is() {return 'swarm-city';}
       static get properties() {
         return {
@@ -107,27 +102,67 @@ Example:
             reflectToAttribute: true,
             observer: '_pageChanged',
           },
-          rootPattern: String,
+          location: {
+            type: String,
+            statePath: 'location',
+          },
+          hashtagdata: {
+            type: Array,
+            observer: '_hashtagChanged',
+          },
+          hashtags: {
+            type: Array,
+          },
           routeData: Object,
           subroute: String,
+          rootPath: String,
         };
       }
+
+      /**
+        * Redux action for sertting language
+        * @param {hashtags} hashtags
+        */
+        static get actions() {
+          return Object.assign({
+              HASHTAGS: function(hashtags) {
+                  return {
+                      type: 'HASHTAGS',
+                      hashtags: hashtags,
+                  };
+              },
+              LOCATION: function(location) {
+                  return {
+                      type: 'LOCATION',
+                      location: location,
+                  };
+              },
+          });
+      }
+
       static get observers() {
         return [
+          '_hashtagChanged(hashtagdata.*)',
           '_routePageChanged(routeData.page)',
         ];
       }
-      constructor() {
-        super();
-        this.rootPattern = (new URL(this.rootPath)).pathname;
+
+      _hashtagChanged() {
+        if (this.hashtagdata.length >= 1) {
+          this.dispatch('HASHTAGS', null);
+          this.dispatch('HASHTAGS', this.hashtagdata);
+        }
       }
       _routePageChanged(page) {
-        if (page === undefined) {
-          return;
-        }
         this.page = page || 'welcome';
       }
       _pageChanged(page) {
+        if (!this.location) {
+          this.dispatch('LOCATION', {nowAt: page});
+        } else {
+          let lastAt = this.location.nowAt;
+          this.dispatch('LOCATION', {lastAt: lastAt, nowAt: page});
+        }
         var resolvedPageUrl = this.resolveUrl('pages/page-' + page + '.html');
         Polymer.importHref(
             resolvedPageUrl,
@@ -138,6 +173,7 @@ Example:
       _showPage404() {
         this.page = 'view404';
       }
-    } window.customElements.define(SwarmCity.is, SwarmCity);
+    }
+    window.customElements.define(SwarmCity.is, SwarmCity);
   </script>
 </dom-module>

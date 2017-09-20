@@ -9,6 +9,8 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="../redux-state.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+
 <!--
     Displays and shared styles only
 -->
@@ -16,17 +18,18 @@ This code may only be used under the license found at https://github.com/swarmci
 <!--
     Aimation pack, only load the animations you need for this page.
 -->
+
 <link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
 <link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
-<dom-module id="page-password-warning">
+<dom-module id="page-choose-avatar-and-username">
     <template>
         <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
-    -->
+-->
         <style include="shared-styles">
              :host {
                 height: 100vh;
@@ -36,40 +39,28 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .container {
                 @apply --layout-vertical;
-                @apply --layout--start-justified;
-                @apply --layout-center;
                 background-color: var(--sc-bg);
                 height: 100%;
                 width: 100%;
-                box-sizing: border-box;
-                padding: 0 14vw;
             }
 
-            .container[wide-layout] {
-                @apply --layout-vertical;
-                @apply --layout--start-justified;
-                @apply --layout-start;
-                padding: 0 12vw;
+            .close {
+                @apply --xmark-grey2-small;
+                @apply --close;
             }
 
             .top {
                 @apply --layout-vertical;
                 @apply --layout-center;
                 @apply --layout-end-justified;
-                width: 100%;
+                height: 44vh;
                 box-sizing: border-box;
-                padding: 10vh 0 0 0;
-                @apply --layout-flex;
+                padding: 0 14vw 10vh;
             }
 
             .container[wide-layout] .top {
                 @apply --layout-start;
-                padding: 15vh 0 0 0;
-            }
-
-            .close {
-                @apply --xmark-grey4-small;
-                @apply --close;
+                padding: 0 12vw 7vh;
             }
 
             .title {
@@ -79,74 +70,47 @@ This code may only be used under the license found at https://github.com/swarmci
                 text-align: center;
             }
 
-            .container[wide-layout] .title {
-                @apply --layout-horizontal;
-                @apply --layout--start-justified;
+            .container[wide-layout] .title{
+                text-align: left;
                 @apply --main-title1-wide;
-                text-align: left;
             }
 
-            .box {
-                @apply --layout-vertical;
-                @apply --layout--start-justified;
-                padding: 54px 25px 25px;
-                box-sizing: border-box;
-                background-color: var(--sc-white);
-                max-width: 450px;
-                margin-bottom: 40px;
-            }
-
-            .container[wide-layout] .box {
-                padding: 40px 25px 25px 115px;
+            img {
+                width: 90px;
+                height: 90px;
+                cursor: pointer;
+                border-radius: 50%;
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
-                margin-bottom: 70px;
-            }
-
-            .trianglecontainer {
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
-                position: relative;
-                top: 25px;
-            }
-
-            .container[wide-layout] .trianglecontainer {
-                top: 85px;
-                left: 26px;
-            }
-
-            .triangle {
-                @apply --alert-blue-normal;
-                position: relative;
-            }
-
-            .textbox {
-                @apply --body-bold;
-                color: var(--sc-grey4);
-                @apply --layout-vertical;
-                @apply --layout-center-justified;
-                text-align: center;
-            }
-
-            .container[wide-layout] .textbox {
-                text-align: left;
-            }
-
-            .inner-bottom {
-                margin-top: 10px;
             }
 
             .bottom {
+                box-sizing: border-box;
+                padding: 0 14vw;
                 @apply --layout-vertical;
-                @apply --layout-start-justified;
                 @apply --layout-center;
-                height: 40vh;
-                width: 100%;
+                @apply --layout-start-justified;
+            
             }
 
             .container[wide-layout] .bottom {
                 @apply --layout-start;
-                height: 35vh;
+                padding: 0 12vw;
+            }
+
+            .container[wide-layout] paper-input {
+                
+                text-align: left;
+                margin-top: 40px;
+            }
+
+
+            paper-input {
+                margin-top: 40px;
+                text-align: center;
+                padding: 0 0 50px 0;
+                --paper-input-container-color: var(--swarm-city-blue);
+                --paper-input-container-focus-color: var(--swarm-city-blue);
             }
 
             .btn {
@@ -154,6 +118,7 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container[wide-layout] .btn {
+                margin-top: 6vh;
             }
 
             .btn:active {
@@ -163,12 +128,54 @@ This code may only be used under the license found at https://github.com/swarmci
             .agree {
                 @apply --next-blue-normal;
             }
+            .avatar {
+                margin-left: 36px;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                @apply --layout-end;
+            }
+            .arrowcontainer {
+                @apply --base-shadow;
+                border-radius: 50%;
+                background-color: var(--sc-blue);
+                height: 30px;
+                width: 30px;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                @apply --layout-center;
+                position: relative;
+                right: 25px;
+                cursor: pointer;
+                
+            }
+            .arrowup {
+                @apply --arrowup-white-mini;
+            }
+            
+            .bottom-upper {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+            }
+
+            .container[wide-layout] .bottom-upper {
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+            }
+
+            .container[wide-layout] .avatar {
+                margin-left: 0;
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-end;
+            }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
                 .close,
-                .triangle,
+                .arrowup,
                 .agree {
                     @apply --retina;
                 }
@@ -177,31 +184,26 @@ This code may only be used under the license found at https://github.com/swarmci
         <app-location route="{{route}}"></app-location>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <div class="container" wide-layout$="{{wide}}">
+            <div class="close" on-click="_close"></div>
             <div class="top">
-                <div class="close" on-click="_close"></div>
-                <div class="title">{{localize('Choose a password.')}}</div>
-                <div class="trianglecontainer">
-                    <div class="triangle"></div>
-                </div>
-                <div class="box">
-                    <div class="textbox">
-                        <div class="inner-top">{{localize('There is no password recovery available in Swarm City.')}}</div>
-                        <div class="inner-bottom">{{localize('Choose your password with care.')}}</div>
-                    </div>
-                </div>
+                <div class="title">{{localize('Choose an avatar and a username.')}}</div>
             </div>
             <div class="bottom">
+                <div class="bottom-upper">
+                    <div class="avatar"><img src="../../images/defaultavatar.png"><div class="arrowcontainer" on-click="_toResizeAvatar"><div class="arrowup"></div></div></div>
+                    <paper-input label="Username" always-float-label></paper-input>
+                </div>
                 <div class="btn">
                     <div class="agree" on-click="_agree"></div>
                 </div>
             </div>
-
+        </div>
         </div>
 
     </template>
 
     <script>
-        class MyPasswordWarning extends new ReduxMixin(Polymer.mixinBehaviors([
+        class MyChooseAvatarAndUsername extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
             Polymer.NeonAnimationRunnerBehavior,
             Polymer.NeonAnimatableBehavior,
@@ -209,7 +211,7 @@ This code may only be used under the license found at https://github.com/swarmci
             Polymer.Element
         )) {
             static get is() {
-                return 'page-password-warning';
+                return 'page-choose-avatar-and-username';
             }
             static get properties() {
                 return {
@@ -266,8 +268,12 @@ This code may only be used under the license found at https://github.com/swarmci
             /**
             * takes the user to the next page in user creation
             */
+            _toResizeAvatar() {
+                this.path = 'resize-avatar/';
+            }
+
             _agree() {
-                this.path = 'choose-password/';
+                this.path = 'password-warning/';
             }
             /**
             * changes the current path
@@ -279,6 +285,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
         }
-        window.customElements.define(MyPasswordWarning.is, MyPasswordWarning);
+        window.customElements
+            .define(MyChooseAvatarAndUsername.is, MyChooseAvatarAndUsername);
     </script>
 </dom-module>

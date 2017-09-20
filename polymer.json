@@ -1,16 +1,15 @@
 {
   "entrypoint": "index.html",
   "shell": "src/swarm-city.html",
-    "fragments": [
+  "fragments": [
     "src/pages/page-welcome.html",
     "src/pages/page-language.html",
     "src/pages/page-location.html",
     "src/pages/page-hashtag.html",
     "src/pages/page-new-here.html",
     "src/pages/page-hashtag-list.html",
-    "src/pages/page-choose-username.html",
+    "src/pages/page-choose-avatar-and-username.html",
     "src/pages/page-private-key.html",
-    "src/pages/page-choose-avatar.html",
     "src/pages/page-resize-avatar.html",
     "src/pages/page-json-file.html",
     "src/pages/page-view404.html",
@@ -25,7 +24,6 @@
   ],
   "sources": [
     "src/**/*",
-    "src/pages/**/*",
     "images/**/*",
     "bower.json"
   ],
@@ -33,29 +31,16 @@
     "manifest.json",
     "bower_components/webcomponentsjs/*.js",
     "node_modules/redux/dist/redux.min.js",
-    "src/text-translations.json",
-    "src/swarm-city.min.js"
+    "src/swarm-city.min.js",
+    "_redirects"
   ],
+  "lint": {
+    "rules": ["polymer-2"]
+  },
   "builds": [
     {
       "preset": "es5-bundled",
-      "basePath": true,
-      "bundle": {"excludes": ["swarm-city.min.js"]}
-    },
-    {
-      "preset": "es6-bundled",
-      "basePath": true,
-      "bundle": {"excludes": ["swarm-city.min.js"]}
-    },
-    {
-      "preset": "es6-unbundled",
-      "basePath": true,
       "bundle": {"excludes": ["swarm-city.min.js"]}
     }
-  ],
-  "lint": {
-    "rules": [
-      "polymer-2"
-    ]
-  }
+  ]
 }

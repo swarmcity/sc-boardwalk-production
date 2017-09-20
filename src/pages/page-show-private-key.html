@@ -29,86 +29,144 @@ This code may only be used under the license found at https://github.com/swarmci
     -->
         <style include="shared-styles">
              :host {
+                height: 100vh;
+                width: 100vw;
                 display: block;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
-            }
-
-            .close {
-                position: fixed;
-                top: 18px;
-                right: 18px;
-                width: 20px;
-                height: 20px;
-                background: url('../../../images/swarm-city-sprite.png') -60px -84px;
-                cursor: pointer;
             }
 
             .container {
-                margin-top: 100px;
-                max-width: 400px;
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                background-color: var(--sc-bg);
+                height: 100%;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0 12vw;
+            }
+
+            .container[wide-layout] {
+                padding: 0 14vw;
+            }
+
+            .close {
+                @apply --xmark-grey4-small;
+                @apply --close;
+            }
+
+            .pubkey-container {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                width: 100%;
+                margin-top: 15vh;
+                height: 35vh;
+            }
+
+            .container[wide-layout] .pubkey-container {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-start;
+                margin-top: 20vh;
+                height: 30vh;
+            }
+
+            .privkey-container {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                width: 100%;
+                margin-top: 8vh;
+            }
+
+            .container[wide-layout] .privkey-container {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-start;
             }
 
 
             .greytext {
-                width: 230px;
-                margin: 10px auto 0;
-                color: #333333;
-                font-size: 16px;
-                font-weight: 300;
-                text-align: center;
+                @apply --small-light;
+                color: var(--sc-grey4);
             }
 
-            .smallgrey {
+            .pubkey {
+                @apply --body-bold;
+                color: var(--sc-grey4);
                 text-align: center;
-                color: #B3B3B3;
-                font-size: 12px;
-                margin: 0 auto 0;
+                margin: 1vh 0 3vh 0;
             }
 
-            .bluelink {
-                color: var(--swarm-city-blue);
-                font-weight: bold;
-                text-align: center;
-                margin: 30px auto 0;
+            .container[wide-layout] .pubkey {
+                text-align: left;
+            }
+
+            .bluetext {
+                @apply --small-bold;
                 cursor: pointer;
-            }
-
-            .key {
-                width: 230px;
-                margin: 10px auto 0;
-                color: #666666;
-                text-align: center;
+                color: var(--sc-blue);
+                border-bottom: 2px dotted var(--sc-blue);
             }
 
             .qrcode {
+                margin: 4vh 0 0 0;
                 width: 70px;
                 height: 70px;
-                background-color: grey;
-                margin: 30px auto 90px;
+            }
+
+            .divider {
+                width: 100vw;
+                background-color: #9B9B9B;
+                opacity: 0.2;
+                height: 1px;
+            }
+
+            .warning {
+                @apply --body-default;
+                color: var(--sc-grey4);
+                text-align: center;
+                margin: 1vh 0 3vh 0;
+            }
+
+            .container[wide-layout] .warning {
+                text-align: left;
+            }
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .close {
+                    @apply --retina;
+                }
             }
         </style>
-
         <app-location route="{{route}}"></app-location>
-        <div class="close" on-click="_close"></div>
-        <div class="container">
-            <div class="smallgrey">{{localize('Your public key')}}</div>
-            <div class="key">0x369D787F4EdF4a0e57cDfCFB3 Dd92134e1982e06</div>
-            <div class="bluelink">{{localize('copy public key')}}</div>
-            <div class="qrcode"></div>
-            <div class="smallgrey">{{localize('Your private key')}}</div>
-            <div class="key">0x369D787F4EdF4a0e57cDfCFB3 Dd92134e1982e06</div>
-            <div class="bluelink">{{localize('copy private key')}}</div>
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+        <div class="container" wide-layout$="{{wide}}">
+            <div class="close" on-click="_close"></div>
+            <div class="pubkey-container">
+                <div class="greytext">{{localize('Your public key')}}</div>
+                <div class="pubkey">0x369D787F4EdF4a0e57cDfCFB3 Dd92134e1982e06</div>
+                <span class="bluetext">{{localize('copy public key')}}</span>
+                <div class="qrcode"><img src="../../images/qrcode.png"></div>
+            </div>
+            <div class="divider"></div>
+            <div class="privkey-container">
+                <div class="greytext">{{localize('Your private key')}}</div>
+                <div class="pubkey">0x369D787F4EdF4a0e57cDfCFB3 Dd92134e1982e06</div>
+                <span class="bluetext" on-click="_showPrivKey">{{localize('copy private key')}}</span>
+                <div class="qrcode"><img src="../../images/qrcode.png"></div>
+            </div>
         </div>
-
     </template>
 
     <script>
         class MyShowPrivateKey extends new ReduxMixin(Polymer.mixinBehaviors([
-                Polymer.AppLocalizeBehavior,
-                Polymer.NeonAnimationRunnerBehavior,
-                Polymer.NeonAnimatableBehavior,
-            ],
+            Polymer.AppLocalizeBehavior,
+            Polymer.NeonAnimationRunnerBehavior,
+            Polymer.NeonAnimatableBehavior,
+        ],
             Polymer.Element
         )) {
             static get is() {
@@ -121,16 +179,16 @@ This code may only be used under the license found at https://github.com/swarmci
                         statePath: 'language',
                     },
                     /**
-                     * Path is the current or requested path
-                     * @type {String}
-                     */
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                     * Entry and exit animation
-                     */
+                    * Entry and exit animation
+                    */
                     animationConfig: {
                         value: function() {
                             return {
@@ -161,14 +219,14 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             /**
-             * takes the user to page-stop-signup
-             */
+            * takes the user to page-stop-signup
+            */
             _close() {
                 this.path = 'stop-signup/';
             }
             /**
-             * changes the current path
-             */
+            * changes the current path
+            */
             _path() {
                 if (this.path != null) {
                     this.set('route.path', this.path);

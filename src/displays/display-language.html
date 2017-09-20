@@ -23,15 +23,18 @@ Example:
             }
 
             .big-btn {
-                @apply --big-btn;
-            }
+                @apply --text-button-big;
+                color: var(--sc-grey4);
+                width: 100%;
+                box-sizing: border-box;
+                margin-bottom: 10px;
 
-            .big-btn:hover {
-                @apply --big-btn-hover;
+                @apply --layout-vertical;
+                @apply --layout-center-center;
             }
 
             .big-btn:active {
-                transform: scale(0.97, 0.97);
+                @apply --button-active;
             }
         </style>
 
@@ -39,7 +42,7 @@ Example:
         <data-utility id="utility"></data-utility>
 
         <template is="dom-if" if="{{selected}}">
-            <div on-click="_navigateTo">
+            <div class="language" on-click="_navigateTo">
                 {{language}}
             </div>
         </template>
@@ -91,7 +94,7 @@ Example:
                      */
                     path: {
                         type: String,
-                        value: null,
+                        reflectToAttribute: true,
                         notify: true,
                     },
                 };
@@ -192,7 +195,15 @@ Example:
                 this.$.localStorage.saveAccount(account);
                 this.language = this.iso[event.model.__data.index];
                 this.dispatch('LANGUAGE', this.language);
-                this.path = '/';
+                if (this.path == undefined) {
+                    this.path = 'welcome/';
+                }
+                if (this.path == 'welcome/') {
+                    this.path = '/';
+                }
+                if (this.path == '/') {
+                    this.path = 'welcome/';
+                }
             }
 
             /**

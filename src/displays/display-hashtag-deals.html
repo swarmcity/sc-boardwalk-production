@@ -9,6 +9,8 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../data/data-ipfs.html">
 <link rel="import" href="../data/data-utility.html">
 <link rel="import" href="../data/data-local-storage.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../redux-state.html">
 <!--
 
 Example:
@@ -40,133 +42,336 @@ The following custom properties and mixins are available for styling:
             }
 
             .container {
-                animation: scaleIn 0.5s forwards;
+                box-sizing: border-box;
+
+                width: 100%;
+            }
+
+            .box {
+                background-color: var(--sc-white);
                 @apply --layout-vertical;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 25px 40px;
+                cursor: pointer;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+            .empty {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 30px 10vw;
+                word-wrap: break-word;
+                @apply --body-default;
+                color: var(--sc-grey3);
+            }
+
+            .container[wide-layout] .empty {
+                padding: 0;
+            }
+
+            .top {
+                @apply --layout-horizontal;
+            }
+
+            .meta {
                 @apply --layout-center-justified;
-                @apply --display-hashtag-deals-container;
+                @apply --layout-vertical;
+                @apply --layout-flex;
             }
 
-            .container .top {
+            .bottom {
+                margin-top: 12px;
                 @apply --layout-horizontal;
             }
 
-            .container .bottom {
+            .avatar {
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                border-radius: 50%;
+                margin-right: 10px;
+                background-image: url("../../images/defaultavatar.png");
+                background-size: 30px;
+            }
+
+            .date {
+                @apply --smallest-light;
+                color: var(--sc-grey3);
+            }
+
+            .replycount {
+                @apply --small-bold;
+                margin-top: 2px;
+                color: var(--sc-grey4);
+            }
+
+            .user {
+                @apply --small-bold;
+                color: var(--sc-blue);
+            }
+
+            .replyicon {
+                @apply --reply-grey4-mini;
+            }
+
+            .description {
+                @apply --layout-flex;
+                @apply --layout-vertical;
+                @apply --layout-end-justified;
+                @apply --body-default;
+                color: var(--sc-grey4);
+                padding-right: 10px;
+            }
+
+            .pricebox {
+                @apply --layout-vertical;
+                @apply --layout-end;
+                @apply --layout-end-justified;
+            }
+
+            .price {
+
+                @apply --body-bold;
+                color: var(--sc-yellow);
+            }
+
+            .for {
+
+                @apply --smallest-bold;
+                color: var(--sc-yellow);
+            }
+
+            .container[wide-layout] .pricebox {
                 @apply --layout-horizontal;
+                @apply --layout-end;
+                @apply --layout-end-justified;
             }
 
-            .container .top img {
-                @apply --display-hashtag-deals-avatar;
+            .container[wide-layout] .for {
+                @apply --body-bold;
+                font-size: 14px;
+                margin: 0 6px 2px 0;
             }
 
-            .container .top div {
-                @apply --display-hashtag-deals-top-container;
+            .container[wide-layout] .price {
+
+                @apply --main-title4;
             }
 
-            .container .top div div:nth-child(1) {
-                @apply --display-hashtag-deals-time;
+            .container[wide-layout] {
+                padding: 30px 10vw;
             }
 
-            .container .top div div:nth-child(2) {
-                @apply --display-hashtag-deals-name;
+            .container[wide-layout] .box {
+                max-width: 900px;
             }
 
-            .container .bottom div:nth-child(1) {
-                @apply --display-hashtag-deals-description;
-            }
-
-            .container .bottom div:nth-child(2) span {
-                @apply --display-hashtag-deals-for;
-            }
-
-            .container .bottom div:nth-child(2) {
-                @apply --display-hashtag-deals-amount;
-            }
-
-            @keyframes scaleIn {
-                0% {
-                    transform: scale(0, 0);
-                }
-                100% {
-                    transform: scale(1, 1);
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .replyicon {
+                    @apply --retina;
                 }
             }
         </style>
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <data-web3 id="web3"></data-web3>
         <data-ipfs id="ipfs"></data-ipfs>
         <data-utility id="utility"></data-utility>
         <data-local-storage id="storage"></data-local-storage>
-
-        <template is="dom-repeat" items="{{deals}}" filter="_isWithinRange" id="domRepeat">
-            <div class="container" on-click="_next">
-
+        <display-language language="{{language}}"></display-language>
+        <div class="container" wide-layout$="{{wide}}">
+            <div class="empty">{{localize('Currently no deals selected. Try a broader search.')}}</div>
+            <!--  <div class="box" on-click="_next">
                 <div class="top">
-                    <template is="dom-if" if="{{item.avatar}}"><img src$="{{item.avatar}}"></template>
-                    <div>
-                        <div>{{item.time}}</div>
-                        <div>{{item.username}} - {{item.reputation}} REP</div>
+                    <div class="avatar"></div>
+                    <div class="meta">
+                        <div class="date">Yesterday, 18:21</div>
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </div>
+                    <div class="replycount">5</div>
+                    <div class="replyicon"></div>
+                </div>
+                <div class="bottom">
+                    <div class="description">Looking for a ride to the airport</div>
+                    <div class="pricebox">
+                        <div class="for">for</div>
+                        <div class="price">55500 SWT</div>
                     </div>
                 </div>
-
-                <div class="bottom">
-                    <div>{{item.description}}</div>
-                    <div><span>for</span>{{item.value}} SWT</div>
-                </div>
-
             </div>
-        </template>
-
+            <div class="box" on-click="_next">
+                <div class="top">
+                    <div class="avatar"></div>
+                    <div class="meta">
+                        <div class="date">Yesterday, 18:21</div>
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </div>
+                    <div class="replycount">5</div>
+                    <div class="replyicon"></div>
+                </div>
+                <div class="bottom">
+                    <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                        deserunt mollit anim id est laborum.</div>
+                    <div class="pricebox">
+                        <div class="for">for</div>
+                        <div class="price">5 SWT</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" on-click="_next">
+                <div class="top">
+                    <div class="avatar"></div>
+                    <div class="meta">
+                        <div class="date">Yesterday, 18:21</div>
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </div>
+                    <div class="replycount">5</div>
+                    <div class="replyicon"></div>
+                </div>
+                <div class="bottom">
+                    <div class="description">Looking for a ride to the airport</div>
+                    <div class="pricebox">
+                        <div class="for">for</div>
+                        <div class="price">5 SWT</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" on-click="_next">
+                <div class="top">
+                    <div class="avatar"></div>
+                    <div class="meta">
+                        <div class="date">Yesterday, 18:21</div>
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </div>
+                    <div class="replycount">5</div>
+                    <div class="replyicon"></div>
+                </div>
+                <div class="bottom">
+                    <div class="description">Looking for a ride to the airport</div>
+                    <div class="pricebox">
+                        <div class="for">for</div>
+                        <div class="price">5 SWT</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" on-click="_next">
+                <div class="top">
+                    <div class="avatar"></div>
+                    <div class="meta">
+                        <div class="date">Yesterday, 18:21</div>
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </div>
+                    <div class="replycount">5</div>
+                    <div class="replyicon"></div>
+                </div>
+                <div class="bottom">
+                    <div class="description">Looking for a ride to the airport</div>
+                    <div class="pricebox">
+                        <div class="for">for</div>
+                        <div class="price">5 SWT</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" on-click="_next">
+                <div class="top">
+                    <div class="avatar"></div>
+                    <div class="meta">
+                        <div class="date">Yesterday, 18:21</div>
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </div>
+                    <div class="replycount">5</div>
+                    <div class="replyicon"></div>
+                </div>
+                <div class="bottom">
+                    <div class="description">Looking for a ride to the airport</div>
+                    <div class="pricebox">
+                        <div class="for">for</div>
+                        <div class="price">5 SWT</div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
     </template>
     <script>
-        class DisplayHashtagDeals extends Polymer.mixinBehaviors([
-                Polymer.AppLocalizeBehavior,
-            ],
+        class DisplayHashtagDeals extends new ReduxMixin(Polymer.mixinBehaviors([
+            Polymer.AppLocalizeBehavior,
+        ],
             Polymer.Element
-        ) {
+        )) {
             static get is() {
                 return 'display-hashtag-deals';
             }
             static get properties() {
                 return {
                     /**
-                     * Loading indicates if the componant is loading
-                     * @type {Boolean}
-                     */
+                    * Language is the users selected or determined language
+                    * @type {String}
+                    */
+                    language: {
+                        type: String,
+                        statePath: 'language',
+                    },
+                    /**
+                    * Loading indicates if the componant is loading
+                    * @type {Boolean}
+                    */
                     loading: {
                         type: Boolean,
                         value: false,
                         notify: true,
                     },
+                    // /**
+                    //  * range is the range the usert selected in slider
+                    //  * @type {Number}
+                    //  */
+                    // range: {
+                    //     type: Number,
+                    //     observer: '_rangeChanged',
+                    // },
                     /**
-                     * range is the range the usert selected in slider
-                     * @type {Number}
-                     */
-                    range: {
-                        type: Number,
-                        observer: '_rangeChanged',
-                    },
-                    /**
-                     * route data represents the curent route
-                     * @type {String}
-                     */
+                    * route data represents the curent route
+                    * @type {String}
+                    */
                     routeData: {
                         type: String,
                         observer: '_getHashtag',
                     },
                     /**
-                     * Hashtag represents the selected hashtag
-                     * @type {String}
-                     */
+                    * Hashtag represents the selected hashtag
+                    * @type {String}
+                    */
                     hashtag: {
                         type: String,
                         notify: true,
                     },
                     /**
-                     * Path signlas to the parent to change the path
-                     * @type {Boolean}
-                     */
+                    * Path signlas to the parent to change the path
+                    * @type {Boolean}
+                    */
                     path: {
                         type: String,
                         value: null,
+                        notify: true,
+                    },
+                    /**
+                    * showSlider determines of the slider is show or not
+                    * @type {Boolean}
+                    */
+                    showSlider: {
+                        type: Boolean,
+                        notify: true,
+                    },
+                    /**
+                    * showInfo indicates if the hashtag info panel is open or not
+                    * @type {Boolean}
+                    */
+                    showInfo: {
+                        type: Boolean,
                         notify: true,
                     },
                 };
@@ -178,8 +383,8 @@ The following custom properties and mixins are available for styling:
             }
 
             /**
-             * Gets the selected hashtag
-             */
+            * Gets the selected hashtag
+            */
             _getHashtag() {
                 if (this.routeData.page) {
                     this.loading = true;
@@ -193,14 +398,14 @@ The following custom properties and mixins are available for styling:
             }
 
             /**
-             * Gets the deals for the selected hashtag
-             */
+            * Gets the deals for the selected hashtag
+            */
             _getDeals() {
                 this.deals = [];
                 Promise.all([
-                        this.$.storage.accountExists(),
-                        this.$.web3.deals(this.hashtag.id),
-                    ])
+                    this.$.storage.accountExists(),
+                    this.$.web3.deals(this.hashtag.id),
+                ])
                     .then((data) => {
                         if (data[0].username && data[0].address && data[0].avatar) {
                             this.completeAccount = true;
@@ -213,21 +418,21 @@ The following custom properties and mixins are available for styling:
                             this._getTimeImage(data);
                         }
                     })
-                    .catch((err) => {});
+                    .catch((err) => { });
             }
 
             /**
-             * Gets the distance time and image for a deal
-             * @param {array} data data is an array of the users acocunt and the deals
-             */
+            * Gets the distance time and image for a deal
+            * @param {array} data data is an array of the users acocunt and the deals
+            */
             _getDistanceTimeImage(data) {
                 for (let i = 0; i < data[1].items.length; i++) {
                     Promise.all([
-                            this.$.utility.geoHashDistance(data[0].location,
-                                data[1].items[i].location),
-                            this.$.utility.convertTime(data[1].items[i].time),
-                            this.$.ipfs.getHash(data[1].items[i].avatar),
-                        ])
+                        this.$.utility.geoHashDistance(data[0].location,
+                            data[1].items[i].location),
+                        this.$.utility.convertTime(data[1].items[i].time),
+                        this.$.ipfs.getHash(data[1].items[i].avatar),
+                    ])
                         .then((details) => {
                             data[1].items[i].distance = details[0];
                             data[1].items[i].time = details[1];
@@ -238,15 +443,15 @@ The following custom properties and mixins are available for styling:
             }
 
             /**
-             * Gets the time and image for a deal
-             * @param {array} data data is an array of the users acocunt and the deals
-             */
+            * Gets the time and image for a deal
+            * @param {array} data data is an array of the users acocunt and the deals
+            */
             _getTimeImage(data) {
                 for (let i = 0; i < data[1].items.length; i++) {
                     Promise.all([
-                            this.$.utility.convertTime(data[1].items[i].time),
-                            this.$.ipfs.getHash(data[1].items[i].avatar),
-                        ])
+                        this.$.utility.convertTime(data[1].items[i].time),
+                        this.$.ipfs.getHash(data[1].items[i].avatar),
+                    ])
                         .then((details) => {
                             data[1].items[i].time = details[0];
                             data[1].items[i].avatar = details[1];
@@ -255,33 +460,31 @@ The following custom properties and mixins are available for styling:
                 }
             }
 
-            /**
-             * re renders the dom repeat when the users changes the range
-             */
-            _rangeChanged() {
-                this.$.domRepeat.render();
-            }
+            // /**
+            //  * re renders the dom repeat when the users changes the range
+            //  */
+            // _rangeChanged() {
+            //     this.$.domRepeat.render();
+            // }
 
-            /**
-             * filters the list according to the selected range
-             * @param {object} event is curent iteration in the dom repeat
-             * @return {boolean} true if there is no distance
-             */
-            _isWithinRange(event) {
-                if (event.distance) {
-                    return (this.range > event.distance);
-                } else {
-                    return true;
-                }
-            }
+            // /**
+            //  * filters the list according to the selected range
+            //  * @param {object} event is curent iteration in the dom repeat
+            //  * @return {boolean} true if there is no distance
+            //  */
+            // _isWithinRange(event) {
+            //     if (event.distance) {
+            //         return (this.range > event.distance);
+            //     } else {
+            //         return true;
+            //     }
+            // }
 
             _next() {
-                if (!this.completeAccount) {
+                if (!this.showSlider && !this.showInfo) {
                     // stores the current hashtag choice in session
                     sessionStorage.setItem('hashtagID', this.routeData.page);
                     this.path = 'new-here/';
-                } else {
-                    this.path = 'new-deal/';
                 }
             }
         }
