@@ -25,7 +25,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
-<dom-module id="page-choose-username">
+<dom-module id="page-choose-avatar-and-username">
     <template>
         <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
@@ -39,13 +39,13 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .container {
                 @apply --layout-vertical;
-                background-color: var(--sc-white);
+                background-color: var(--sc-bg);
                 height: 100%;
                 width: 100%;
             }
 
             .close {
-                @apply --xmark-grey4-normal;
+                @apply --xmark-grey2-small;
                 @apply --close;
             }
 
@@ -53,22 +53,26 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-vertical;
                 @apply --layout-center;
                 @apply --layout-end-justified;
-                height: 40vh;
+                height: 44vh;
                 box-sizing: border-box;
                 padding: 0 14vw 10vh;
             }
 
             .container[wide-layout] .top {
                 @apply --layout-start;
-                height: 50vh;
                 padding: 0 12vw 7vh;
             }
 
             .title {
                 @apply --main-title1;
-                color: var(--sc-grey3);
+                color: var(--sc-grey3b);
                 word-wrap: break-word;
                 text-align: center;
+            }
+
+            .container[wide-layout] .title{
+                text-align: left;
+                @apply --main-title1-wide;
             }
 
             img {
@@ -86,12 +90,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-vertical;
                 @apply --layout-center;
                 @apply --layout-start-justified;
-                height: 40%;
+            
             }
 
             .container[wide-layout] .bottom {
                 @apply --layout-start;
-                height: 50vh;
                 padding: 0 12vw;
             }
 
@@ -101,10 +104,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 margin-top: 40px;
             }
 
-            .btn {
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
-            }
 
             paper-input {
                 margin-top: 40px;
@@ -116,6 +115,14 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .btn {
                 @apply --icon-button-big;
+            }
+
+            .container[wide-layout] .btn {
+                margin-top: 6vh;
+            }
+
+            .btn:active {
+                @apply --button-active;
             }
 
             .agree {
@@ -131,17 +138,18 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --base-shadow;
                 border-radius: 50%;
                 background-color: var(--sc-blue);
-                height: 36px;
-                width: 36px;
+                height: 30px;
+                width: 30px;
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
-                @apply --layout-end;
+                @apply --layout-center;
                 position: relative;
-                right: 30px;
+                right: 25px;
+                cursor: pointer;
                 
             }
             .arrowup {
-                @apply --arrowup-white-small;
+                @apply --arrowup-white-mini;
             }
             
             .bottom-upper {
@@ -167,7 +175,8 @@ This code may only be used under the license found at https://github.com/swarmci
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
                 .close,
-                .arrowup {
+                .arrowup,
+                .agree {
                     @apply --retina;
                 }
             }
@@ -181,7 +190,7 @@ This code may only be used under the license found at https://github.com/swarmci
             </div>
             <div class="bottom">
                 <div class="bottom-upper">
-                    <div class="avatar"><img src="../../images/defaultavatar.png"><div class="arrowcontainer"><div class="arrowup"></div></div></div>
+                    <div class="avatar"><img src="../../images/defaultavatar.png"><div class="arrowcontainer" on-click="_toResizeAvatar"><div class="arrowup"></div></div></div>
                     <paper-input label="Username" always-float-label></paper-input>
                 </div>
                 <div class="btn">
@@ -194,7 +203,7 @@ This code may only be used under the license found at https://github.com/swarmci
     </template>
 
     <script>
-        class MyChooseUsername extends new ReduxMixin(Polymer.mixinBehaviors([
+        class MyChooseAvatarAndUsername extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
             Polymer.NeonAnimationRunnerBehavior,
             Polymer.NeonAnimatableBehavior,
@@ -202,7 +211,7 @@ This code may only be used under the license found at https://github.com/swarmci
             Polymer.Element
         )) {
             static get is() {
-                return 'page-choose-username';
+                return 'page-choose-avatar-and-username';
             }
             static get properties() {
                 return {
@@ -211,18 +220,18 @@ This code may only be used under the license found at https://github.com/swarmci
                         statePath: 'language',
                     },
                     /**
-                     * Path is the current or requested path
-                     * @type {String}
-                     */
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                     * Entry and exit animation
-                     */
+                    * Entry and exit animation
+                    */
                     animationConfig: {
-                        value: function () {
+                        value: function() {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
@@ -251,20 +260,24 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             /**
-             * takes the user to page-stop-signup
-             */
+            * takes the user to page-stop-signup
+            */
             _close() {
                 this.path = 'stop-signup/';
             }
             /**
-             * takes the user to the next page in user creation
-             */
+            * takes the user to the next page in user creation
+            */
+            _toResizeAvatar() {
+                this.path = 'resize-avatar/';
+            }
+
             _agree() {
-                this.path = 'choose-avatar/';
+                this.path = 'password-warning/';
             }
             /**
-             * changes the current path
-             */
+            * changes the current path
+            */
             _path() {
                 if (this.path != null) {
                     this.set('route.path', this.path);
@@ -272,6 +285,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
         }
-        window.customElements.define(MyChooseUsername.is, MyChooseUsername);
+        window.customElements
+            .define(MyChooseAvatarAndUsername.is, MyChooseAvatarAndUsername);
     </script>
 </dom-module>

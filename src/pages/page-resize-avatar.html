@@ -30,115 +30,179 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
+                height: 100vh;
+                width: 100vw;
                 display: block;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
-            }
-
-            .close {
-                position: fixed;
-                top: 18px;
-                right: 18px;
-                width: 20px;
-                height: 20px;
-                background: url('../../../images/swarm-city-sprite.png') -60px -84px;
-                cursor: pointer;
             }
 
             .container {
-                max-width: 400px;
+                height: 100%;
+                width: 100%;
+                @apply --layout-vertical;
+                background-color: #F4F4F4;
             }
 
-            .title {
-                color: var(--grey-4);
-                padding: 221px 50px 50px 50px;
-                text-align: center;
-                font-weight: 200;
-                font-size: 16px;
-                line-height: 15px;
-                width: 260px;
+            .container[wide-layout] {
+                padding: 0 0 0 12vw;
             }
 
-            .btn {
-                color: var(--swarm-city-blue);
-                cursor: pointer;
-                padding-top: 100px;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
+            .top {
+                @apply --layout-vertical;
+                @apply --layout-center;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 10vh 0 0 0;
+                @apply --layout-flex;
             }
 
-            paper-input {
-                padding: 0 0 50px 0;
-                --paper-input-container-color: var(--swarm-city-blue);
-                --paper-input-container-focus-color: var(--swarm-city-blue);
+            .container[wide-layout] .top {
+                @apply --layout-start;
+                padding: 15vh 0 0 0;
             }
 
-            .disagree {
-                border-radius: 50%;
-                width: 76px;
-                height: 76px;
-                background: url('../../../images/swarm-city-sprite.png') -688px -63px;
-                cursor: pointer;
-            }
-
-            .buttons {
-                margin-top: 55px;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
-            }
-
-            .agree {
-                @apply --agree-blue;
+            .container[wide-layout] .middle {
+                @apply --layout-start;
+                height: 20vh;
             }
 
             .avatarcontainer {
-                margin-top: 87px;
-                height: 235px;
-                width: 235px;
-                background-color: #333333;
+                @apply --layout-vertical;
+                @apply --layout-end-justified;
+                background-color: var(--sc-grey4);
+                width: 250px;
+                height: 250px;
+            }
+
+            .avatar {
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                padding-top: 73px;
+            }
+
+            img {
+                width: 100px;
+                height: 100px;
+                cursor: pointer;
+                border-radius: 50%;
+                border: 2px solid var(--sc-blue);
+            }
+
+            .rotate {
+                width: 100%;
+                @apply --layout-horizontal;
+                @apply --layout-end-justified;
+                @apply --layout-end;
+            }
+
+            .rotate-icon {
+                @apply --rotate-blue-normal;
+                cursor: pointer;
             }
 
             .blacktext {
-                color: #333333;
-                font-size: 12px;
-                font-weight: bold;
-                line-height: 22px;
-                text-align: center;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                @apply --small-bold;
+                color: var(--sc-grey4);
+                margin-top: 10px;
+            }
+
+            .bottom {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                height: 40vh;
+                width: 100%;
+            }
+
+            .container[wide-layout] .bottom {
+                @apply --layout-start;
+                height: 35vh;
             }
 
             .bluetext {
-                margin-top: 98px;
-                color: #24B1FF;
-                font-size: 12px;
-                font-weight: bold;
-                line-height: 22px;
-                text-align: center;
+                @apply --small-bold;
                 cursor: pointer;
-                text-decoration: underline;
-                text-decoration-style: dotted;
+                color: var(--sc-blue);
+                border-bottom: 2px dotted var(--sc-blue);
+            }
+
+            .container[wide-layout] .bluetext {
+                margin-top: 40px;
+            }
+
+            .buttons {
+                @apply --layout-horizontal;
+                @apply --layout-center-center;
+                margin-bottom: 100px;
+            }
+
+            .disagree {
+                @apply --xmark-grey4-small;
+                cursor: pointer;
+                margin-right: 10px;
+            }
+
+            .round-button {
+                @apply --icon-button-big;
+            }
+
+            .round-button:active {
+                @apply --button-active;
+            }
+
+            .agree {
+                @apply --vmark-blue-normal;
+            }
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .close,
+                .rotate-icon,
+                .disagree,
+                .agree {
+                    @apply --retina;
+                }
             }
         </style>
         <app-location route="{{route}}"></app-location>
-
-        <div class="close" on-click="_close"></div>
-        <div class="container">
-            <div class="avatarcontainer"></div>
-            <div class="blacktext">{{localize('Scroll to zoom - drag to move')}}</div>
-            <div class="buttons">
-                <div class="disagree" on-click="_btnClickDisagree"></div>
-                <div class="agree" on-click="_btnClickAgree"></div>
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+        <div class="container" wide-layout$="{{wide}}">
+            <div class="top">
+                <div class="avatarcontainer">
+                    <div class="avatar"><img src="../../images/defaultavatar.png"></div>
+                    <div class="rotate">
+                        <div class="rotate-icon"></div>
+                    </div>
+                </div>
+                <div class="blacktext">{{localize('Scroll to zoom - drag to move')}}</div>
+                <template is="dom-if" if="{{wide}}">
+                    <span class="bluetext">{{localize('choose another file')}}</span>
+                </template>
             </div>
-            <div class="bluetext" on-click="_previous">{{localize('Choose another image file')}}</div>
+            <div class="bottom">
+                <div class="buttons">
+                    <div class="disagree" on-click="_disagree"></div>
+                    <div class="round-button" on-click="_agree">
+                        <div class="agree"></div>
+                    </div>
+                </div>
+                <template is="dom-if" if="{{!wide}}">
+                    <span class="bluetext">{{localize('choose another file')}}</span>
+                </template>
+            </div>
         </div>
-
     </template>
-
     <script>
         class MyResizeAvatar extends new ReduxMixin(Polymer.mixinBehaviors([
-                Polymer.AppLocalizeBehavior,
-                Polymer.NeonAnimationRunnerBehavior,
-                Polymer.NeonAnimatableBehavior,
-            ],
+            Polymer.AppLocalizeBehavior,
+            Polymer.NeonAnimationRunnerBehavior,
+            Polymer.NeonAnimatableBehavior,
+        ],
             Polymer.Element
         )) {
             static get is() {
@@ -151,16 +215,16 @@ This code may only be used under the license found at https://github.com/swarmci
                         statePath: 'language',
                     },
                     /**
-                     * Path is the current or requested path
-                     * @type {String}
-                     */
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                     * Entry and exit animation
-                     */
+                    * Entry and exit animation
+                    */
                     animationConfig: {
                         value: function() {
                             return {
@@ -190,30 +254,27 @@ This code may only be used under the license found at https://github.com/swarmci
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
-            _close() {
-                this.path = 'stop-signup/';
-            }
             /**
-             *changes the current path to choose avatar
-             **/
-            _btnClickDisagree() {
-                this.path = 'choose-avatar/';
-            }
-            /**
-             *changes the current path to password warning
-             **/
-            _btnClickAgree() {
+            *changes the current path to choose avatar
+            **/
+            _agree() {
                 this.path = 'password-warning/';
             }
             /**
-             *changes the current path to previous
-             **/
+            *changes the current path to password warning
+            **/
+            _disagree() {
+                this.path = 'choose-avatar-and-username/';
+            }
+            /**
+            *changes the current path to previous
+            **/
             _previous() {
                 window.history.back();
             }
             /**
-             * changes the current path
-             */
+            * changes the current path
+            */
             _path() {
                 if (this.path != null) {
                     this.set('route.path', this.path);

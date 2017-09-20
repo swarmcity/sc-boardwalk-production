@@ -167,16 +167,16 @@ This code may only be used under the license found at https://github.com/swarmci
                         statePath: 'language',
                     },
                     /**
-                     * Path is the current or requested path
-                     * @type {String}
-                     */
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                     * Entry and exit animation
-                     */
+                    * Entry and exit animation
+                    */
                     animationConfig: {
                         value: function() {
                             return {
@@ -208,23 +208,23 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             /**
-             * takes the user to the previous page
-             */
+            * takes the user to the previous page
+            */
             _disagree() {
                 window.history.back();
             }
 
             /**
-             * takes the user to the initiating hashtag page
-             */
+            * takes the user to the initiating hashtag page
+            */
             _agree() {
                 this.path = 'hashtag/' + sessionStorage.getItem('hashtagID');
                 sessionStorage.clear();
             }
 
             /**
-             * changes the current path
-             */
+            * changes the current path
+            */
             _path() {
                 if (this.path != null) {
                     this.set('route.path', this.path);

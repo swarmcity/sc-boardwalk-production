@@ -29,92 +29,187 @@ This code may only be used under the license found at https://github.com/swarmci
     -->
         <style include="shared-styles">
              :host {
+                height: 100vh;
+                width: 100vw;
                 display: block;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
-            }
-
-            .close {
-                position: fixed;
-                top: 18px;
-                right: 18px;
-                width: 20px;
-                height: 20px;
-                background: url('../../../images/swarm-city-sprite.png') -60px -84px;
-                cursor: pointer;
             }
 
             .container {
-                max-width: 400px;
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                background-color: var(--sc-bg);
+                height: 100%;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0 12vw;
             }
 
-            .btn {
-                margin-top: 25px;
+            .container[wide-layout] {
+                @apply --layout-vertical;
+                @apply --layout--start-justified;
+                @apply --layout-start;
+            }
+
+            .close {
+                @apply --xmark-grey4-small;
+                @apply --close;
+            }
+
+            .title {
+                @apply --main-title1;
+                color: var(--sc-grey3b);
+                margin-top: 15vh;
+                text-align: center;
+            }
+
+            .container[wide-layout] .title {
+                margin-top: 25vh;
+                @apply --layout-horizontal;
+                @apply --layout--start-justified;
+                @apply --main-title1-wide;
+            }
+
+            .trianglecontainer {
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
+                position: relative;
+                top: 25px;
             }
 
-            .greytext {
-                width: 230px;
-                margin: 136px auto 75px;
-                color: #333333;
-                font-size: 16px;
-                font-weight: 300;
-                text-align: center;
+            .container[wide-layout] .trianglecontainer {
+                @apply --layout-start-justified;
+                top: 85px;
+                left: 25px;
             }
 
-            .btn {
-                width: 275px;
-                height: 72px;
-                line-height: 30px;
-                text-align: center;
-                display: block;
-                border: none;
-                font-size: 15px;
-                cursor: pointer;
+            .triangle {
+                @apply --alert-blue-normal;
+            }
+
+            .box {
+                @apply --layout-vertical;
+                @apply --layout--start-justified;
+                padding: 40px 30px 30px;
                 box-sizing: border-box;
-                padding: 20px;
-                color: var(--grey-4);
-                background-color: rgba(255, 255, 255, 0.1);
-                box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -o-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
-                overflow: hidden;
-                color: var(--swarm-city-black);
-                margin: 40px auto;
-                color: #000000;
-                font-size: 18px;
-                font-weight: bold;
+                background-color: var(--sc-white);
+            }
+
+            .container[wide-layout] .box {
+                padding: 40px 40px 40px 100px;
+            }
+
+            .textbox {
+                @apply --layout-vertical;
+                @apply --body-bold;
+                color: var(--sc-grey4);
                 text-align: center;
             }
 
-            .link {
-                color: var(--swarm-city-blue);
-                font-weight: bold;
-                text-align: center;
-                margin: 67px;
+            .container[wide-layout] .textbox {
+                text-align: left;
+            }
+
+            .container[wide-layout] .inner-middle {
+                margin: 0 0 15px 0;
+            }
+
+            .inner-middle {
+                margin: 15px 0;
+            }
+
+            .bottom {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                height: 50vh;
+                width: 100%;
+            }
+
+            .container[wide-layout] .bottom {
+                @apply --layout-start;
+            }
+
+            .buttons {
+                margin-top: 40px;
+            }
+
+            .button {
+                @apply --text-button-big;
+                box-sizing: border-box;
+                padding: 30px 30px;
+                color: var(--sc-blue);
+                margin-bottom: 10px;
+            }
+
+            .button:active {
+                @apply --button-active;
+            }
+
+            .container[wide-layout] .button {
+                @apply --layout-vertical;
+                @apply --layout-center-center;
+                @apply --text-button-big;
+                box-sizing: border-box;
+                width: 100%;
+                height: 15vh;
+                margin: 0 14px 14px 0;
+                max-width: 276px;
+                max-height: 75px;
+            }
+
+            .bluetext {
+                @apply --small-bold;
                 cursor: pointer;
+                color: var(--sc-blue);
+                border-bottom: 2px dotted var(--sc-blue);
+                margin: 40px 0 60px 0;
+            }
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .close,
+                .triangle {
+                    @apply --retina;
+                }
             }
         </style>
 
         <app-location route="{{route}}"></app-location>
-        <div class="close" on-click="_close"></div>
-        <div class="container">
-            <div class="greytext">{{localize('Email the account file to yourself or choose the download option to start a direct download.')}}</div>
-            <div class="btn" on-click="_mail">{{localize('email my account file')}}</div>
-            <div class="btn" on-click="_download">{{localize('download my account file')}}</div>
-            <div class="link" on-click="_toKeys">{{localize('show my keys')}}</div>
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+        <div class="container" wide-layout$="{{wide}}">
+            <div class="close" on-click="_close"></div>
+            <div class="top">
+                <div class="title">{{localize('Make a backup.')}}</div>
+                <div class="trianglecontainer">
+                    <div class="triangle"></div>
+                </div>
+                <div class="box">
+                    <div class="textbox">
+                        <div class="inner-top">{{localize('There are no central servers on which accounts are stored.')}}</div>
+                        <div class="inner-middle">{{localize('This means you are responsible for your own account at all times.')}}</div>
+                        <div class="inner-bottom">{{localize('Your backup is encrypted with your current password.')}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="buttons">
+                    <div class="button" on-click="_mail">{{localize('email my file')}}</div>
+                    <div class="button" on-click="_download">{{localize('download my file')}}</div>
+                </div>
+                <div class="bluetext" on-click="_toKeys">{{localize('show my keys')}}</div>
+            </div>
         </div>
 
     </template>
 
     <script>
         class MyMakeBackup extends new ReduxMixin(Polymer.mixinBehaviors([
-                Polymer.AppLocalizeBehavior,
-                Polymer.NeonAnimationRunnerBehavior,
-                Polymer.NeonAnimatableBehavior,
-            ],
+            Polymer.AppLocalizeBehavior,
+            Polymer.NeonAnimationRunnerBehavior,
+            Polymer.NeonAnimatableBehavior,
+        ],
             Polymer.Element
         )) {
             static get is() {
@@ -127,16 +222,16 @@ This code may only be used under the license found at https://github.com/swarmci
                         statePath: 'language',
                     },
                     /**
-                     * Path is the current or requested path
-                     * @type {String}
-                     */
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                     * Entry and exit animation
-                     */
+                    * Entry and exit animation
+                    */
                     animationConfig: {
                         value: function() {
                             return {
@@ -167,33 +262,33 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             /**
-             * takes the user to page-stop-signup
-             */
+            * takes the user to page-stop-signup
+            */
             _close() {
                 this.path = 'stop-signup/';
             }
             /**
-             * opens mailto with account info, after success routs to email-success
-             */
+            * opens mailto with account info, after success routs to email-success
+            */
             _mail() {
                 this.path = 'email-success/';
             }
 
             /**
-             * downloads account info, after success routs to download-success
-             */
+            * downloads account info, after success routs to download-success
+            */
             _download() {
                 this.path = 'download-success/';
             }
             /**
-             * changes the current path to my-keys
-             */
+            * changes the current path to my-keys
+            */
             _toKeys() {
                 this.path = 'my-keys/';
             }
             /**
-             * changes the current path
-             */
+            * changes the current path
+            */
             _path() {
                 if (this.path != null) {
                     this.set('route.path', this.path);
