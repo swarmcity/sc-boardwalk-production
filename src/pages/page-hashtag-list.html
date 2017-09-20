@@ -415,12 +415,7 @@ This code may only be used under the license found at https://github.com/swarmci
             * changes the current path
             */
             _path() {
-                if (this.path) {
-                    const location = 'src/pages/page-hashtag.html';
-                    Polymer.importHref(location,
-                    this._exitAnimation.bind(this),
-                    null, false);
-                }
+                this.set('route.path', this.path);
             }
             /**
             * takes the user to the welcome page

@@ -144,6 +144,7 @@ The following custom properties and mixins are available for styling:
                         type: String,
                         value: null,
                         notify: true,
+                        reflectToAtribute: true,
                     },
                     /**
                     * Hashtags represents the array of hashtags to display
@@ -240,10 +241,8 @@ The following custom properties and mixins are available for styling:
             * @param {object} selected represents the selected hashtag
             * When a hashtag is selected change the route to include the hashtag id.
             */
-            _toHashtag(selected) {
-                if (!this.showSlider) {
-                    this.path = 'hashtag/' + selected.model.__data.item.hashtagID + '/';
-                }
+            _toHashtag(e) {
+                    this.path = 'hashtag/' + e.model.__data.item.hashtag_id +  '/';
             }
         }
         window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);
