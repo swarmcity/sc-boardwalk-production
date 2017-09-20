@@ -70,7 +70,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 text-align: center;
             }
 
-            .container[wide-layout] .title{
+            .container[wide-layout] .title {
                 text-align: left;
                 @apply --main-title1-wide;
             }
@@ -90,7 +90,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-vertical;
                 @apply --layout-center;
                 @apply --layout-start-justified;
-            
             }
 
             .container[wide-layout] .bottom {
@@ -99,18 +98,31 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container[wide-layout] paper-input {
-                
+
                 text-align: left;
                 margin-top: 40px;
             }
-
 
             paper-input {
                 margin-top: 40px;
                 text-align: center;
                 padding: 0 0 50px 0;
-                --paper-input-container-color: var(--swarm-city-blue);
-                --paper-input-container-focus-color: var(--swarm-city-blue);
+                @apply --sc-paper-input;
+                --paper-input-container-label: {
+                    @apply --body-default;
+                }
+                --paper-input-container-input: {
+                    @apply(--body-default);
+                }
+                --paper-input-error: {
+                    @apply(--body-bold);
+                }
+                --paper-input-prefix: {
+                    @apply(--body-default);
+                }
+                --paper-input-suffix: {
+                    @apply(--body-default);
+                }
             }
 
             .btn {
@@ -128,12 +140,14 @@ This code may only be used under the license found at https://github.com/swarmci
             .agree {
                 @apply --next-blue-normal;
             }
+
             .avatar {
                 margin-left: 36px;
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
                 @apply --layout-end;
             }
+
             .arrowcontainer {
                 @apply --base-shadow;
                 border-radius: 50%;
@@ -146,12 +160,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 position: relative;
                 right: 25px;
                 cursor: pointer;
-                
             }
+
             .arrowup {
                 @apply --arrowup-white-mini;
             }
-            
+
             .bottom-upper {
                 @apply --layout-vertical;
                 @apply --layout-start-justified;
@@ -190,7 +204,11 @@ This code may only be used under the license found at https://github.com/swarmci
             </div>
             <div class="bottom">
                 <div class="bottom-upper">
-                    <div class="avatar"><img src="../../images/defaultavatar.png"><div class="arrowcontainer" on-click="_toResizeAvatar"><div class="arrowup"></div></div></div>
+                    <div class="avatar"><img src="../../images/defaultavatar.png">
+                        <div class="arrowcontainer" on-click="_toResizeAvatar">
+                            <div class="arrowup"></div>
+                        </div>
+                    </div>
                     <paper-input label="Username" always-float-label></paper-input>
                 </div>
                 <div class="btn">
