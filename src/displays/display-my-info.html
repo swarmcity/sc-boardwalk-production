@@ -37,52 +37,34 @@ The following custom properties and mixins are available for styling:
             }
 
             .container {
-                @apply --layout-horizontal;
-                @apply --layout-start-justified;
-                @apply --layout-center;
+                @apply --display-my-info-container;
             }
 
-            .container > img {
-                width: 40px;
-                height: 40px;
-                cursor: pointer;
-                border-radius: 50%;
-                margin-right: 10px;
-                
-                background-size: 40px;
+            .container div:nth-child(1) img {
+                @apply --display-my-info-avatar
             }
 
-            .container[wide-layout] > img {
-                width: 50px;
-                height: 50px;
-                margin-right: 20px;
-                background-size: 50px;
+            .container div:nth-child(2) div:nth-child(1) {
+                @apply --display-my-info-username
             }
 
-            .container div:nth-child(2)>div:nth-child(1) {
-                @apply --small-bold;
-                cursor: pointer;
-            }
-
-            .container div:nth-child(2)>div:nth-child(2) {
-            @apply --main-title4;
-            color: var(--sc-yellow);          
-            cursor: pointer;
+            .container div:nth-child(2) div:nth-child(2) {
+                @apply --display-my-info-balance
             }
         </style>
 
         <data-web3 id="web3"></data-web3>
         <data-ipfs id="ipfs"></data-ipfs>
         <data-local-storage id="storage"></data-local-storage>
-        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+
         <template is="dom-if" if="{{completeAccount}}">
-            <div class="container" wide-layout$="{{wide}}">
-                
-                    <img src="../../images/defaultavatar.png">
-                
+            <div class="container">
                 <div>
-                    <div>Xavier Hendrickx</div>
-                    <div>25 SWT</div>
+                    <img src="../../images/defaultavatar.png">
+                </div>
+                <div>
+                    <div>{{username}}</div>
+                    <div>{{balance}} SWT</div>
                 </div>
             </div>
         </template>
@@ -100,59 +82,58 @@ The following custom properties and mixins are available for styling:
             static get properties() {
                 return {
                     /**
-                    * Loading indicates if the componant is loading
-                    * @type {Boolean}
-                    */
+                     * Loading indicates if the componant is loading
+                     * @type {Boolean}
+                     */
                     loading: {
                         type: Boolean,
                         value: false,
                         notify: true,
                     },
                     /**
-                    * Username represents the users username
-                    * @type {String}
-                    */
+                     * Username represents the users username
+                     * @type {String}
+                     */
                     username: {
                         type: String,
                     },
                     /**
-                    * Avatar represents the users IPFS to their avatar image
-                    * @type {String}
-                    */
+                     * Avatar represents the users IPFS to their avatar image
+                     * @type {String}
+                     */
                     avatar: {
                         type: String,
                     },
                     /**
-                    * Balance represents the users SWT balance
-                    * @type {Number}
-                    */
+                     * Balance represents the users SWT balance
+                     * @type {Number}
+                     */
                     balance: {
                         type: Number,
                     },
                     /**
-                    * completeAccount represents true of the user
-                    * has a username, avatar and address
-                    * @type {Boolean}
-                    */
+                     * completeAccount represents true of the user
+                     * has a username, avatar and address
+                     * @type {Boolean}
+                     */
                     completeAccount: {
                         type: Boolean,
-                        notify: true,
-                        value: true,
+                        value: false,
                     },
                 };
             }
 
             /**
-            * Fired when the component first loads
-            */
+             * Fired when the component first loads
+             */
             connectedCallback() {
                 super.connectedCallback();
                 this._getUser();
             }
 
             /**
-            * Gets the users details from local storage
-            */
+             * Gets the users details from local storage
+             */
             _getUser() {
                 this.$.storage.accountExists()
                     .then((account) => {
@@ -165,9 +146,9 @@ The following custom properties and mixins are available for styling:
             }
 
             /**
-            * Gets the users balance and avatar
-            * @param {object} account of the user
-            */
+             * Gets the users balance and avatar
+             * @param {object} account of the user
+             */
             _complete(account) {
                 Promise.all([
                         this.$.ipfs.getHash(account.avatar, 'img'),

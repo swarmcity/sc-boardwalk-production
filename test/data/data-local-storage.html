@@ -1,0 +1,67 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<!--
+    Name the title the same as the component
+-->
+    <title>data-local-storage</title>
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../bower_components/web-component-tester/browser.js"></script>
+<!--
+    Load component to test
+-->
+    <link rel="import" href="../../src/data/data-local-storage.html">
+</head>
+<body>
+<!--
+    Add component to test fixure and give it an incrementing id
+-->
+<test-fixture id="fixture-one">
+    <template>
+        <data-local-storage id="storage"></data-local-storage>
+    </template>
+</test-fixture>
+
+    <script>
+// Name the suite the same as the type of tests
+    suite('Public Method Tests', function() {
+        // Name ofthe function totest
+        test('Acocunt Exists', () => {
+            // Call the function
+            return fixture('fixture-one').accountExists()
+            .then((res) => {
+                // Test the response
+                assert.equal(res, false);
+            });
+        });
+
+        test('Save Account', () => {
+            return fixture('fixture-one').saveAccount({test: 'testing'})
+            .then((res) => {
+                assert.equal(res.test, 'testing');
+                return fixture('fixture-one').removeAccount();
+            });
+        });
+
+        test('Remove Account', () => {
+            return fixture('fixture-one').saveAccount({test: 'testing'})
+            .then((res) => {
+                assert.equal(res.test, 'testing');
+                return fixture('fixture-one').accountExists();
+            })
+            .then((res) => {
+                assert.equal(res.test, 'testing');
+                return fixture('fixture-one').removeAccount();
+            });
+        });
+    });
+    </script>
+</body>
+</html>

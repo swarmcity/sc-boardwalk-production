@@ -1,0 +1,48 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<!--
+    Name the title the same as the component
+-->
+    <title>data-local-storage</title>
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../bower_components/web-component-tester/browser.js"></script>
+<!--
+    Load component to test
+-->
+    <link rel="import" href="../../src/data/data-ipfs.html">
+</head>
+<body>
+<!--
+    Add component to test fixure and give it an incrementing id
+-->
+<test-fixture id="fixture-one">
+    <template>
+        <data-ipfs id="ipfs"></data-ipfs>
+    </template>
+</test-fixture>
+
+    <script>
+// Name the suite the same as the type of tests
+    suite('Public Method Tests', function() {
+        // Name ofthe function totest
+        test('Image Exists', () => {
+            // Call the function
+            return fixture('fixture-one')
+.getHash('QmTWh9FwdByJ15TiqVrgrHchaxrtT3WKRHGpnXe8GXzM7o', 'img')
+            .then((res) => {
+                // Test the response
+                assert.equal(res, 'https://ipfs.io/ipfs/QmTWh9FwdByJ15TiqVrgrHchaxrtT3WKRHGpnXe8GXzM7o/');
+            });
+        });
+    });
+    </script>
+</body>
+</html>

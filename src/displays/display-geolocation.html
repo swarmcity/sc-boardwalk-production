@@ -34,15 +34,15 @@ The following custom properties and mixins are available for styling:
             }
 
             .container>div:nth-child(1) {
-                @apply --icon-button-big;
+                @apply --location-icon-button-big;
             }
 
             .container>div:nth-child(1):active {
-                @apply --button-active;
+                @apply --location-icon-button-big-active;
             }
 
             .container>div:nth-child(1)>div:nth-child(1) {
-                @apply --vmark-blue-normal;
+                @apply --location-vmark;
             }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
@@ -56,7 +56,7 @@ The following custom properties and mixins are available for styling:
         <data-utility id="utility"></data-utility>
         <data-local-storage id="storage"></data-local-storage>
         <div class="container">
-            <div>
+            <div on-click="_getLocation">
                 <div on-click="_getLocation"></div>
             </div>
         </div>

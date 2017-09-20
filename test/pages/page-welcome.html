@@ -1,0 +1,48 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<!--
+    Name the title the same as the component
+-->
+<title>page-welcome</title>
+<script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+<script src="../../bower_components/web-component-tester/browser.js"></script>
+<!--
+    Load component to test
+-->
+<link rel="import" href="../../src/pages/page-welcome.html">
+</head>
+<body>
+<!--
+    Add component to test fixture and give it an incrementing id
+-->
+<test-fixture id="fixture-one">
+    <template>
+        <page-welcome></page-welcome>
+    </template>
+</test-fixture>
+<script>
+    suite('Query Selector Tests', function() {
+        test('H2 font size is 11px', function() {
+            var test = fixture('fixture-one')
+            .shadowRoot.querySelector('h2');
+            assert.equal(window.getComputedStyle(test, null)
+                .getPropertyValue('font-size'), '11px');
+        });
+        test('H2 font size is not 31px', function() {
+            var test = fixture('fixture-one')
+            .shadowRoot.querySelector('h2');
+            assert.notEqual(window.getComputedStyle(test, null)
+                .getPropertyValue('font-size'), '31px');
+        });
+    });
+</script>
+</body>
+</html>

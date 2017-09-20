@@ -15,7 +15,7 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../shared-styles.html">
 <link rel="import" href="../displays/display-my-info.html">
-<link rel="import" href="../displays/display-filter-list.html">
+<link rel="import" href="../displays/display-distance-slider.html">
 <link rel="import" href="../displays/display-hashtag-list.html">
 <!--
     Aimation pack, only load the animations you need for this page.
@@ -31,220 +31,37 @@ This code may only be used under the license found at https://github.com/swarmci
 <dom-module id="page-hashtag-list">
     <template>
         <!--
-        Page specific styles, if the style is used on more than one page, moveit to shared styles.
-        -->
+    Page specific styles, if the style is used on more than one page, moveit to shared styles.
+-->
         <style include="shared-styles">
              :host {
-                width: 100vw;
                 display: block;
-                background-color: #f4f3f4;
-            }
-
-            .container {
-                width: 100%;
-            }
-
-            .header {
                 @apply --layout-horizontal;
-                background-color: #f4f3f4;
-                box-sizing: border-box;
-                padding: 40px 40px 0 40px;
-                position: fixed;
-                top: 0;
-                width: 100%;
-                z-index: 2;
-            }
-
-            .container[wide-layout] .header {
-                box-sizing: border-box;
-                padding: 60px 10vw 0 10vw;
-            }
-
-            .topleft {
-                @apply --layout-vertical;
-                @apply --layout-start;
-                @apply --layout-start-justified;
-                @apply --layout-flex;
-            }
-
-            .topright {
-                @apply --layout-end;
-                @apply --layout-vertical;
+                @apply --layout-center-justified;
             }
 
             .back {
+                @apply --page-hashtag-list-back;
+                margin-top: 18px;
                 cursor: pointer;
-                @apply --logout-grey3-small;
-            }
-
-            .slider {
-                border-bottom: 2px solid black;
-                position: fixed;
-                top: 152px;
-                width: 100%;
-                box-sizing: border-box;
-                padding: 0 40px 2vh 40px;
-                background-color: #f4f3f4;
-                z-index: 1;
-            }
-
-            .container[wide-layout] .slider {
-                padding: 0 10vw 2vh 10vw;
-                top: 190px;
-            }
-
-            .slider-hidden {
-                display: none;
-            }
-
-            .slider-hidden-visible {
-                animation: slideDown 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
-            }
-
-            .slider-visible-hidden {
-                animation: slideUp 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
-            }
-
-            .fade-hidden {
-                opacity: 1;
-            }
-
-            .fade-hidden-visible {
-                animation: fadeIn 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
-            }
-
-            .fade-visible-hidden {
-                animation: fadeOut 0.2s cubic-bezier(0.42, 0, 0.177, 0.751) forwards;
-            }
-
-            .filter-toggle {
-                cursor: pointer;
-                @apply --small-bold;
-                color: var(--sc-grey3);
-                margin-bottom: 18px;
-                border-bottom: 2px dotted var(--sc-grey3);
-                margin-top: 41px;
-            }
-
-            [highlight-filter] {
-                color: white;
-                background-color: var(--sc-grey4);
-                border-bottom: 0;
-                padding: 1px 2px;
-            }
-
-            .container[wide-layout] .filter-toggle {
-                margin-top: 59px;
-            }
-
-            display-hashtag-list {
-                margin-top: 152px;
-            }
-
-            .container[wide-layout] display-hashtag-list {
-                margin-top: 190px;
-            }
-
-            @keyframes slideUp {
-                0% {
-                    transform: translateY(0%);
-                }
-                100% {
-                    transform: translateY(-110%);
-                }
-            }
-
-            @keyframes slideDown {
-                0% {
-                    transform: translateY(-80%);
-                }
-                100% {
-                    transform: translateY(0%);
-                }
-            }
-
-            @keyframes fadeIn {
-                0% {
-                    opacity: 0.2;
-                }
-                100% {
-                    opacity: 1;
-                }
-            }
-
-            @keyframes fadeOut {
-                0% {
-                    opacity: 1;
-                }
-                100% {
-                    opacity: 0.2;
-                }
-            }
-
-            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-            only screen and (min--moz-device-pixel-ratio: 1.5),
-            only screen and (min-resolution: 240dpi) {
-                .back {
-                    @apply --retina;
-                }
             }
         </style>
-        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <app-location route="{{route}}"></app-location>
-        <div class="container" wide-layout$="{{wide}}">
-            <div class="header">
-                
-                <div class="topleft">
-                    <template is="dom-if" if="{{completeAccount}}">
-                        <display-my-info id="myInfo" complete-account="{{completeAccount}}"></display-my-info>
-                    </template>
-                </div>
-
-                
-                <div class="topright">
-                    <div class="back" on-click="_back" id="back"></div>
-
-                    <display-filter-list 
-                        toggle 
-                        id="filterToggle"
-                        class="filter-toggle"
-                        highlight-filter$="{{highlightFilterToggle}}"
-                        show-slider="{{showSlider}}" 
-                        range="{{range}}" 
-                        route="{{route}}" 
-                        path="{{path}}">
-                    </display-filter-list>
-
-                </div>
-                
-            </div>
-            
-            <display-filter-list 
-                slider 
-                class$="slider [[sliderState]]" 
-                show-slider="{{showSlider}}" 
-                range="{{range}}" 
-                route="{{route}}" 
-                path="{{path}}">
-            </display-filter-list>
-    
-            <div class$="fade [[fadeState]]" on-click="_fadeClose">
-                <display-hashtag-list 
-                    id="hashtagList"
-                    range="[[range]]" 
-                    path="{{path}}" 
-                    show-slider="{{showSlider}}">
-                </display-hashtag-list>
-            </div>
+        <div class="container">
+            <display-my-info></display-my-info>
+            <div class="back" on-click="_back"></div>
+            <display-distance-slider range="{{range}}" route="{{route}}" path="{{path}}"></display-distance-slider>
+            <display-hashtag-list range="[[range]]" path="{{path}}"></display-hashtag-list>
         </div>
+
     </template>
 
     <script>
         class HashtagList extends new ReduxMixin(Polymer.mixinBehaviors([
-            Polymer.AppLocalizeBehavior,
-            Polymer.NeonAnimationRunnerBehavior,
-            Polymer.NeonAnimatableBehavior,
-        ],
+                Polymer.AppLocalizeBehavior,
+                Polymer.NeonAnimationRunnerBehavior,
+                Polymer.NeonAnimatableBehavior,
+            ],
             Polymer.Element
         )) {
             static get is() {
@@ -253,62 +70,37 @@ This code may only be used under the license found at https://github.com/swarmci
             static get properties() {
                 return {
                     /**
-                    * Location is the page path the user is on
-                    * @type {String}
-                    */
-                    location: {
-                        type: String,
-                        statePath: 'location',
-                        observer: '_entryAnimation',
-                    },
-                    /**
-                    * Path is the current or requested path
-                    * @type {String}
-                    */
+                     * Path is the current or requested path
+                     * @type {String}
+                     */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                    * sliderState represents style state of the slider 
-                    * @type {String} 
-                    */
-                    sliderState: {
-                        type: String,
-                        value: 'slider-hidden',
-                    },
-                    /**
-                    * completeAccount determines if an account is present 
-                    * in localstorage or not
-                    * @type {Boolean}
-                    */
-                    completeAccount: {
-                        type: Boolean,
-                    },
-                    /** 
-                    * showSlider determines if the slider is show or not 
-                    * @type {Boolean} 
-                    */
-                    showSlider: {
-                        type: Boolean,
-                        observer: '_toggleSlider',
-                    },
-                    /**
-                    * fadeState represents the state of hashtaglist container 
-                    * @type {String} 
-                    */
-                    fadeState: {
-                        type: String,
-                        value: 'fade-hidden',
-                    },
-                    /**
-                    * highlightFilterToggle toggles 
-                    * the background style of the show filter text link
-                    * @type {Boolean}
-                    */
-                    highlightFilterToggle: {
-                        type: Boolean,
-                        value: false,
+                     * Entry and exit animation
+                     */
+                    animationConfig: {
+                        value: function() {
+                            return {
+                                'entry': {
+                                    name: 'fade-in-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {
+                                        duration: 300,
+                                    },
+                                },
+                                'exit': {
+                                    name: 'fade-out-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {
+                                        duration: 300,
+                                    },
+                                },
+                            };
+                        },
                     },
                 };
             }
@@ -317,117 +109,22 @@ This code may only be used under the license found at https://github.com/swarmci
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
-            /**
-            * location checks if the user is on this page and fires the entry animation
-            */
-            _entryAnimation() {
-                if (this.location.nowAt == 'hashtag-list') {
-                    this.$.hashtagList.animate(
-                    [
-                        {'opacity': '0', 'transform': 'translateY(100px)'},
-                        {'opacity': '1', 'transform': 'translateY(0)'},
-                    ], {
-                        fill: 'none',
-                        duration: 300,
-                        iterations: 1,
-                        easing: 'cubic-bezier(0.42,0,0.58,1)',
-                        delay: 0,
-                    }
-                    );
-                    this.$.back.animate(
-                    [
-                        {'opacity': '0'},
-                        {'opacity': '1'},
-                    ], {
-                        fill: 'none',
-                        duration: 300,
-                        iterations: 1,
-                        easing: 'cubic-bezier(0.42,0,0.58,1)',
-                        delay: 0,
-                    }
-                    );
-                    this.$.filterToggle.animate(
-                    [
-                        {'opacity': '0'},
-                        {'opacity': '1'},
-                    ], {
-                        fill: 'none',
-                        duration: 300,
-                        iterations: 1,
-                        easing: 'cubic-bezier(0.42,0,0.58,1)',
-                        delay: 0,
-                    }
-                    );
-                    // this.$.myInfo.animate(
-                    // [
-                    //     {'opacity':'0', 'transform':'translateY(-30px)'},
-                    //     {'opacity':'1', 'transform':'translateY(0)'},
-                    // ], {
-                    //     fill: 'none',
-                    //     duration: 300,
-                    //     iterations: 1,
-                    //     easing: 'cubic-bezier(0.42,0,0.58,1)',
-                    //     delay: 0,
-                    // }
-                    // );
-                }
-            }
-            /**
-            * determines the state of the slider and the fade
-            */
-            _toggleSlider() {
-                switch (this.sliderState) {
-                    case 'slider-hidden':
-                        this.sliderState = 'slider-hidden-visible';
-                        this.fadeState = 'fade-visible-hidden';
-                        this.highlightFilterToggle = true;
-                        break;
-                    case 'slider-hidden-visible':
-                        this.sliderState = 'slider-visible-hidden';
-                        this.fadeState = 'fade-hidden-visible';
-                        this.highlightFilterToggle = false;
-                        setTimeout(() =>{
-                            this.sliderState = 'slider-hidden';
-                        }, 300);
-                        break;
-                    case 'slider-visible-hidden':
-                        this.sliderState = 'slider-hidden-visible';
-                        this.fadeState = 'fade-visible-hidden';
-                        this.highlightFilterToggle = true;
-                }
-            }
-            /**
-            * the exit animation
-            */
-            _exitAnimation() {
-
-            }
-            /** 
-            * closes open slider box 
-            */
-            _fadeClose() {
-                if (this.showSlider) {
-                    this.showSlider = !this.showSlider;
-                }
-            }
 
             /**
-            * changes the current path
-            */
+             * changes the current path
+             */
             _path() {
-                if (this.path) {
-                    const location = 'src/pages/page-hashtag.html';
-                    Polymer.importHref(location,
-                    this._exitAnimation.bind(this),
-                    null, false);
+                if (this.path != null) {
+                    this.set('route.path', this.path);
                 }
+                this.path = null;
             }
+
             /**
-            * takes the user to the welcome page
-            */
+             * takes the user to the welcome page
+             */
             _back() {
                 this.set('route.path', 'welcome/');
-                this.path = null;
             }
         }
         window.customElements.define(HashtagList.is, HashtagList);

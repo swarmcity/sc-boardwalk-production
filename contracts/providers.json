@@ -1,0 +1,8 @@
+{
+  "ipfs": ["https://ipfs.io/ipfs/", "https://ipfs.swarm.city/ipfs/", "https://ipfs.infura.io/ipfs/"],
+  "shh": ["https://eth.swarm.city/"],
+  "web3": {
+    "main": ["https://mainnet.infura.io/", "https://ethpool.swarm.city/"],
+    "ropsten": ["https://ropsten.swarm.city/", "https://ropsten.infura.io/"]
+  }
+}
