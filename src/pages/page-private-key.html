@@ -101,6 +101,26 @@ This code may only be used under the license found at https://github.com/swarmci
                 height: 25vh;
             }
 
+            paper-input {
+                text-align: center;
+                @apply --sc-paper-input;
+                --paper-input-container-label: {
+                    @apply --body-default;
+                }
+                --paper-input-container-input: {
+                    @apply(--body-default);
+                }
+                --paper-input-error: {
+                    @apply(--body-bold);
+                }
+                --paper-input-prefix: {
+                    @apply(--body-default);
+                }
+                --paper-input-suffix: {
+                    @apply(--body-default);
+                }
+            }
+
             .container[wide-layout] .bottom {
                 @apply --layout-start;
                 height: 35vh;
@@ -174,7 +194,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     * Entry and exit animation
                     */
                     animationConfig: {
-                        value: function () {
+                        value: function() {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',

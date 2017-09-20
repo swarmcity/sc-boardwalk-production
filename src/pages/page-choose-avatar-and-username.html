@@ -64,44 +64,40 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-vertical;
                 @apply --layout-center;
                 @apply --layout-end-justified;
-                @apply --layout-flex;
+                width: 100%;
+                height: 30vh;
             }
 
             .container[wide-layout] .top {
                 @apply --layout-start;
+                height: 35vh;
             }
 
             .title {
-                @apply --layout-vertical;
-                @apply --layout-center-justified;
                 @apply --main-title1;
                 color: var(--sc-grey3b);
                 word-wrap: break-word;
                 text-align: center;
-                height: 100%;
             }
 
             .container[wide-layout] .title {
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
-                @apply --layout-center;
                 @apply --main-title1-wide;
-                margin-top: 20vh;
                 text-align: left;
             }
 
-            .input {
+            .middle {
                 @apply --layout-vertical;
-                @apply --layout--start-justified;
+                @apply --layout-center-justified;
+                @apply --layout-flex;
                 width: 100%;
-                height: 15vh;
-                margin-bottom: 2vh;
             }
 
-            .container[wide-layout] .input {
+            .container[wide-layout] .middle {
                 @apply --layout-horizontal;
-                @apply --layout-center-justified;
-                margin-bottom: 4vh;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                box-sizing: border-box;
+                padding: 0 0 5vh 0;
             }
 
             img {
@@ -116,11 +112,9 @@ This code may only be used under the license found at https://github.com/swarmci
             .bottom {
                 @apply --layout-vertical;
                 @apply --layout-center;
-                @apply --layout-end-justified;
-                height: 40vh;
+                @apply --layout-start-justified;
+                height: 30vh;
                 width: 100%;
-                box-sizing: border-box;
-                padding: 0 0 15vh 0;
             }
 
             .container[wide-layout] .bottom {
@@ -131,15 +125,13 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container[wide-layout] paper-input {
-
                 text-align: left;
-                margin-top: 4vh;
             }
 
             paper-input {
-                margin-top: 4vh;
+
                 text-align: center;
-                padding: 0 0 50px 0;
+
                 @apply --sc-paper-input;
                 --paper-input-container-label: {
                     @apply --body-default;
@@ -202,22 +194,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --arrowup-white-mini;
             }
 
-            .input {
-                @apply --layout-vertical;
-                @apply --layout--start-justified;
-                margin-bottom: 4vh;
-            }
-
-            .container[wide-layout] .input {
-                @apply --layout-horizontal;
-                @apply --layout-start-justified;
-                margin-bottom: 7vh;
-            }
-
             .inputcontainer {
-                height: 100%;
+
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
+                @apply --layout-end;
             }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
@@ -236,18 +217,18 @@ This code may only be used under the license found at https://github.com/swarmci
             <div class="top">
                 <div class="close" on-click="_close"></div>
                 <div class="title">{{localize('Choose an avatar and a username.')}}</div>
-                <div class="input">
-                    <div class="avatar"><img src="../../images/defaultavatar.png">
-                        <div class="arrowcontainer" on-click="_toResizeAvatar">
-                            <div class="arrowup"></div>
-                        </div>
-                    </div>
-                    <div class="inputcontainer">
-                        <paper-input label="Username" always-float-label></paper-input>
+
+            </div>
+            <div class="middle">
+                <div class="avatar"><img src="../../images/defaultavatar.png">
+                    <div class="arrowcontainer" on-click="_toResizeAvatar">
+                        <div class="arrowup"></div>
                     </div>
                 </div>
+                <div class="inputcontainer">
+                    <paper-input label="Username" always-float-label></paper-input>
+                </div>
             </div>
-
             <div class="bottom">
                 <div class="btn">
                     <div class="agree" on-click="_agree"></div>
@@ -286,7 +267,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     * Entry and exit animation
                     */
                     animationConfig: {
-                        value: function () {
+                        value: function() {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
