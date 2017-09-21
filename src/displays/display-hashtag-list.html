@@ -178,12 +178,12 @@ The following custom properties and mixins are available for styling:
                 this.$.domRepeat.render();
             }
             /**
-            * @param {object} selected represents the selected hashtag
+            * @param {object} e represents the selected hashtag
             * When a hashtag is selected change the route to include the hashtag id.
             */
             _toHashtag(e) {
-                    this.path = null;
-                    this.path = 'hashtag/' + e.model.__data.item.hashtag_id +  '/';
+                this.path = null;
+                this.path = 'hashtag/'+e.model.__data.item.hashtag_id+'/';
             }
         }
         window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);
