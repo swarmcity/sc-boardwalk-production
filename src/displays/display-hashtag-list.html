@@ -142,8 +142,8 @@ The following custom properties and mixins are available for styling:
                     */
                     path: {
                         type: String,
-                        value: null,
                         notify: true,
+                        reflectToAttribute: true,
                     },
                     /**
                     * Hashtags represents the array of hashtags to display
@@ -152,14 +152,6 @@ The following custom properties and mixins are available for styling:
                     hashtags: {
                         type: Array,
                         statePath: 'hashtags',
-                    },
-                    /**
-                    * range is the range the usert selected in slider
-                    * @type {Number}
-                    */
-                    range: {
-                        type: Number,
-                        observer: '_rangeChanged',
                     },
                     /**
                     * showSlider determines of the slider is show or not
@@ -186,64 +178,12 @@ The following custom properties and mixins are available for styling:
                 this.$.domRepeat.render();
             }
             /**
-            * Gets the hashtags and checks if the user has a location
-            */
-            _getHashtags() {
-                this.hashtags = [];
-                Promise.all([
-                    this.$.storage.accountExists(),
-                    this.$.web3.hashtags(),
-                ])
-                    .then((data) => {
-                        if (data[0].location) {
-                            this.location = data[0].location;
-                            this._getDistance(data);
-                        } else {
-                            this.hashtags = data[1];
-                        }
-                    });
-            }
-
-            /**
-            * Get the distance between the user and the hashtag
-            * @param {data} data is an array of the users acocunt and the hashtags
-            */
-            _getDistance(data) {
-                for (let i = 0; i < data[1].length; i++) {
-                    this.$.utility
-                        .geoHashDistance(data[1][i].location, data[0].location)
-                        .then((distance) => {
-                            data[1][i].distance = distance;
-                            this.push('hashtags', data[1][i]);
-                        });
-                }
-            }
-
-            /**
-            * re renders the dom repeat when the users changes the range
-            */
-            _rangeChanged() {
-                this.$.domRepeat.render();
-            }
-
-            /**
-            * sorts the list of hashtags by the number of deals
-            * @param {object} a represents the curent iteration of the dom repeat
-            * @param {object} b represents the next iteration of the dom repeat
-            * @return {boolean} if a should be ordered before b
-            */
-            _sort(a, b) {
-                return a.deals < b.deals;
-            }
-
-            /**
-            * @param {object} selected represents the selected hashtag
+            * @param {object} e represents the selected hashtag
             * When a hashtag is selected change the route to include the hashtag id.
             */
-            _toHashtag(selected) {
-                if (!this.showSlider) {
-                    this.path = 'hashtag/' + selected.model.__data.item.hashtagID + '/';
-                }
+            _toHashtag(e) {
+                this.path = null;
+                this.path = 'hashtag/'+e.model.__data.item.hashtag_id+'/';
             }
         }
         window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);
