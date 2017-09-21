@@ -39,9 +39,20 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .container {
                 @apply --layout-vertical;
+                @apply --layout--start-justified;
+                @apply --layout-center;
                 background-color: var(--sc-bg);
                 height: 100%;
                 width: 100%;
+                box-sizing: border-box;
+                padding: 0 14vw;
+            }
+
+            .container[wide-layout] {
+                @apply --layout-vertical;
+                @apply --layout--start-justified;
+                @apply --layout-start;
+                padding: 0 12vw;
             }
 
             .close {
@@ -53,14 +64,13 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-vertical;
                 @apply --layout-center;
                 @apply --layout-end-justified;
-                height: 44vh;
-                box-sizing: border-box;
-                padding: 0 14vw 10vh;
+                width: 100%;
+                height: 30vh;
             }
 
             .container[wide-layout] .top {
                 @apply --layout-start;
-                padding: 0 12vw 7vh;
+                height: 35vh;
             }
 
             .title {
@@ -70,9 +80,24 @@ This code may only be used under the license found at https://github.com/swarmci
                 text-align: center;
             }
 
-            .container[wide-layout] .title{
-                text-align: left;
+            .container[wide-layout] .title {
                 @apply --main-title1-wide;
+                text-align: left;
+            }
+
+            .middle {
+                @apply --layout-vertical;
+                @apply --layout-center-justified;
+                @apply --layout-flex;
+                width: 100%;
+            }
+
+            .container[wide-layout] .middle {
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                box-sizing: border-box;
+                padding: 0 0 5vh 0;
             }
 
             img {
@@ -85,40 +110,48 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .bottom {
-                box-sizing: border-box;
-                padding: 0 14vw;
                 @apply --layout-vertical;
                 @apply --layout-center;
                 @apply --layout-start-justified;
-            
+                height: 30vh;
+                width: 100%;
             }
 
             .container[wide-layout] .bottom {
+                @apply --layout-start-justified;
                 @apply --layout-start;
-                padding: 0 12vw;
+                height: 35vh;
+                padding: 0 0 0 0;
             }
 
             .container[wide-layout] paper-input {
-                
                 text-align: left;
-                margin-top: 40px;
             }
 
-
             paper-input {
-                margin-top: 40px;
+
                 text-align: center;
-                padding: 0 0 50px 0;
-                --paper-input-container-color: var(--swarm-city-blue);
-                --paper-input-container-focus-color: var(--swarm-city-blue);
+
+                @apply --sc-paper-input;
+                --paper-input-container-label: {
+                    @apply --body-default;
+                }
+                --paper-input-container-input: {
+                    @apply(--body-default);
+                }
+                --paper-input-error: {
+                    @apply(--body-bold);
+                }
+                --paper-input-prefix: {
+                    @apply(--body-default);
+                }
+                --paper-input-suffix: {
+                    @apply(--body-default);
+                }
             }
 
             .btn {
                 @apply --icon-button-big;
-            }
-
-            .container[wide-layout] .btn {
-                margin-top: 6vh;
             }
 
             .btn:active {
@@ -128,12 +161,21 @@ This code may only be used under the license found at https://github.com/swarmci
             .agree {
                 @apply --next-blue-normal;
             }
+
             .avatar {
-                margin-left: 36px;
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
                 @apply --layout-end;
+                margin-left: 3.6vh;
             }
+
+            .container[wide-layout] .avatar {
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                @apply --layout-end;
+                margin-left: 0;
+            }
+
             .arrowcontainer {
                 @apply --base-shadow;
                 border-radius: 50%;
@@ -146,28 +188,16 @@ This code may only be used under the license found at https://github.com/swarmci
                 position: relative;
                 right: 25px;
                 cursor: pointer;
-                
             }
+
             .arrowup {
                 @apply --arrowup-white-mini;
             }
-            
-            .bottom-upper {
-                @apply --layout-vertical;
-                @apply --layout-start-justified;
-                @apply --layout-center;
-            }
 
-            .container[wide-layout] .bottom-upper {
-                @apply --layout-horizontal;
-                @apply --layout-start-justified;
-                @apply --layout-center;
-            }
+            .inputcontainer {
 
-            .container[wide-layout] .avatar {
-                margin-left: 0;
                 @apply --layout-horizontal;
-                @apply --layout-start-justified;
+                @apply --layout-center-justified;
                 @apply --layout-end;
             }
 
@@ -184,22 +214,28 @@ This code may only be used under the license found at https://github.com/swarmci
         <app-location route="{{route}}"></app-location>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <div class="container" wide-layout$="{{wide}}">
-            <div class="close" on-click="_close"></div>
             <div class="top">
+                <div class="close" on-click="_close"></div>
                 <div class="title">{{localize('Choose an avatar and a username.')}}</div>
+
             </div>
-            <div class="bottom">
-                <div class="bottom-upper">
-                    <div class="avatar"><img src="../../images/defaultavatar.png"><div class="arrowcontainer" on-click="_toResizeAvatar"><div class="arrowup"></div></div></div>
+            <div class="middle">
+                <div class="avatar"><img src="../../images/defaultavatar.png">
+                    <div class="arrowcontainer" on-click="_toResizeAvatar">
+                        <div class="arrowup"></div>
+                    </div>
+                </div>
+                <div class="inputcontainer">
                     <paper-input label="Username" always-float-label></paper-input>
                 </div>
+            </div>
+            <div class="bottom">
                 <div class="btn">
                     <div class="agree" on-click="_agree"></div>
                 </div>
             </div>
         </div>
         </div>
-
     </template>
 
     <script>

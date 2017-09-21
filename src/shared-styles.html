@@ -32,7 +32,6 @@ Colors are all lower case, There is a space after the :
                 --sc-grey3: #666666;
                 --sc-grey3b: #ACACAC;
                 --sc-green2: #23B460;
-                --sc-red2: #D0021B;
 
                 /*----------TYPOGRAPHY----------*/
                 --main-title1: {
@@ -134,6 +133,7 @@ Colors are all lower case, There is a space after the :
                     letter-spacing: 0;
                     line-height: 13px;
                 }
+
 
                 /*----------ICONS----------*/
                 --retina: {
@@ -333,6 +333,12 @@ Colors are all lower case, There is a space after the :
                     background-color: rgba(255, 255, 255, 0.2);
                     cursor: pointer;
                 }
+
+                --text-button-big-fullwhite :{
+                    @apply --text-button-big;
+                    background-color: var(--sc-white);
+                }
+
                 --text-button-small: {
                     @apply --small-bold;
                     @apply --base-shadow;
@@ -360,6 +366,15 @@ Colors are all lower case, There is a space after the :
                     right: 30px;
                 }
 
+                --sc-paper-input: {
+                    --paper-checkbox-unchecked-color: var(--sc-grey4);
+                    --paper-checkbox-unchecked-ink-color: var(--sc-grey4);
+                    --paper-checkbox-checkmark-color: var(--sc-white);
+                    --paper-checkbox-checked-color: var(--sc-blue);
+                    --paper-checkbox-checked-ink-color: var(--sc-blue);
+                    --paper-input-container-color: var(--sc-grey4);
+                    --paper-input-container-focus-color: var(--sc-blue);                                
+                }
 
                 /*----------PAGE STRUCTURE----------*/
                 /* NEW-HERE */

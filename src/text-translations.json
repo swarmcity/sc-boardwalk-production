@@ -95,7 +95,8 @@
         "Choose a password..": "Choose a password..",
         "Choose your password with care.": "Choose your password with care.",
         "Lets create a backup and youre all set!": "Let's create a backup and you're all set!",
-        "The file has been sent to your email.": "The file has been sent to your email."
+        "The file has been sent to your email.": "The file has been sent to your email.",
+        "Submit your private key.": "Submit your private key."
     },
     "cn": {
         "language": "cn",
@@ -182,7 +183,8 @@
         "Choose a password..": "Awaiting Translation",
         "Choose your password with care.": "Awaiting Translation",
         "Lets create a backup and youre all set!": "Awaiting Translation",
-        "The file has been sent to your email.": "Awaiting Translation"
+        "The file has been sent to your email.": "Awaiting Translation",
+        "Submit your private key.": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -278,7 +280,8 @@
         "Choose a password..": "Awaiting Translation",
         "Choose your password with care.": "Awaiting Translation",
         "Lets create a backup and youre all set!": "Awaiting Translation",
-        "The file has been sent to your email.": "Awaiting Translation"
+        "The file has been sent to your email.": "Awaiting Translation",
+        "Submit your private key.": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -374,7 +377,8 @@
         "Choose a password..": "Awaiting Translation",
         "Choose your password with care.": "Awaiting Translation",
         "Lets create a backup and youre all set!": "Awaiting Translation",
-        "The file has been sent to your email.": "Awaiting Translation"
+        "The file has been sent to your email.": "Awaiting Translation",
+        "Submit your private key.": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -470,7 +474,8 @@
         "Choose a password..": "Awaiting Translation",
         "Choose your password with care.": "Awaiting Translation",
         "Lets create a backup and youre all set!": "Awaiting Translation",
-        "The file has been sent to your email.": "Awaiting Translation"
+        "The file has been sent to your email.": "Awaiting Translation",
+        "Submit your private key.": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -566,7 +571,8 @@
         "Choose a password..": "Awaiting Translation",
         "Choose your password with care.": "Awaiting Translation",
         "Lets create a backup and youre all set!": "Awaiting Translation",
-        "The file has been sent to your email.": "Awaiting Translation"
+        "The file has been sent to your email.": "Awaiting Translation",
+        "Submit your private key.": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -662,7 +668,8 @@
         "Choose a password..": "Awaiting Translation",
         "Choose your password with care.": "Awaiting Translation",
         "Lets create a backup and youre all set!": "Awaiting Translation",
-        "The file has been sent to your email.": "Awaiting Translation"
+        "The file has been sent to your email.": "Awaiting Translation",
+        "Submit your private key.": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -758,7 +765,8 @@
         "Choose a password..": "Awaiting Translation",
         "Choose your password with care.": "Awaiting Translation",
         "Lets create a backup and youre all set!": "Awaiting Translation",
-        "The file has been sent to your email.": "Awaiting Translation"
+        "The file has been sent to your email.": "Awaiting Translation",
+        "Submit your private key.": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -854,6 +862,7 @@
         "Choose a password..": "Awaiting Translation",
         "Choose your password with care.": "Awaiting Translation",
         "Lets create a backup and youre all set!": "Awaiting Translation",
-        "The file has been sent to your email.": "Awaiting Translation"
+        "The file has been sent to your email.": "Awaiting Translation",
+        "Submit your private key.": "Awaiting Translation"
     }
 }
