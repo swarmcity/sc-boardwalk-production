@@ -16,7 +16,6 @@ admin.initializeApp(functions.config().firebase);
 */
 // https://us-central1-swarmcity-23c70.cloudfunctions.net/addHashtag?hashtag_name=pioneer&last_deal=1503397878&deals=0&description=This is a description&maintainer=this hash tag is maintained by Swarm City&name=twitter&link=http://www.twitter.com
 exports.addHashtag = functions.https.onRequest((req, res) => { 
-    const hashtag_id = uuidv4();
     let ipfs_hash = 'awaiting hash';
     const data = {
         contacts: {
@@ -25,7 +24,6 @@ exports.addHashtag = functions.https.onRequest((req, res) => {
         },
         deals: req.query.deals,
         description: req.query.description,
-        hashtag_id: hashtag_id,
         hashtag_name: req.query.hashtag_name,
         ipfs_hash: ipfs_hash,
         last_deal: req.query.last_deal,
