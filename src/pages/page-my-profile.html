@@ -32,8 +32,9 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
-                height: 100vh;
+                height: 100%;
                 width: 100vw;
+                max-width: 100%;
                 display: block;
             }
 
@@ -42,17 +43,15 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-start-justified;
                 @apply --layout-center;
                 background-image: var(--sc-bg);
-                height: 100%;
                 width: 100%;
-                box-sizing: border-box;
-                padding: 0 14vw;
+                max-width: 100%;
             }
 
             .container[wide-layout] {
                 @apply --layout-vertical;
                 @apply --layout-start-justified;
-                @apply --layout-start;
-                padding: 0 12vw;
+                @apply --layout-center;
+                max-width: 100%;
             }
 
             .top {
@@ -61,6 +60,9 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-end-justified;
                 width: 100%;
                 height: 65vh;
+                box-sizing: border-box;
+                padding: 0 14vw;
+                max-width: 100%;
             }
 
             .container[wide-layout] .top {
@@ -69,7 +71,10 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-start;
                 box-sizing: border-box;
                 padding: 10vh 0 0 0;
-                height: 35vh;
+                height: 25vh;
+                box-sizing: border-box;
+                padding: 10vh 12vw 0 12vw;
+                max-width: 100%;
             }
 
             .close {
@@ -95,7 +100,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-center-justified;
                 @apply --layout-end;
                 margin-left: 3.6vh;
-                margin-top: 10vh;
+                margin-top: 12vh;
             }
 
             .container[wide-layout] .avatar {
@@ -130,7 +135,7 @@ This code may only be used under the license found at https://github.com/swarmci
             paper-input {
                 width: 100%;
                 text-align: center;
-                margin-top: 8vh;
+                margin-top: 6vh;
 
                 @apply --sc-paper-input;
                 --paper-input-container-label: {
@@ -161,7 +166,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-start-justified;
                 @apply --layout-center;
                 box-sizing: border-box;
-                padding: 5vh 0 0 0;
+                padding: 3vh 0 0 0;
                 width: 100%;
             }
 
@@ -224,7 +229,144 @@ This code may only be used under the license found at https://github.com/swarmci
                 margin-top: 0;
             }
 
+            .hashtagbox {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 5vh 14vw 0 14vw;
+                min-height: 25vh;
+                max-width: 100%;
+            }
 
+            .container[wide-layout] .hashtagbox {
+                box-sizing: border-box;
+                padding: 15vh 12w 0 12vw;
+            }
+
+            .temp {
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                box-sizing: border-box;
+                padding: 5px;
+                width: 100%;
+            }
+
+            .hashtagname {
+                @apply --body-bold;
+                box-sizing: border-box;
+                padding-right: 10px;
+            }
+
+            .deals {
+                @apply --layout-flex;
+                margin-bottom: 5px;
+            }
+
+            .container[wide-layout] .hashtagbox {
+                box-sizing: border-box;
+                padding: 0 12vw;
+            }
+
+            .reputation {
+                @apply --body-bold;
+            }
+
+            .divider {
+                width: 100vw;
+                background-color: #9B9B9B;
+                opacity: 0.2;
+                height: 1px;
+                max-width: 100%;
+            }
+
+            .buttonbox {
+                @apply --layout-vertical;
+                @apply --layout-center-justified;
+                @apply --layout-center;
+                width: 100%;
+                height: 40vh;
+                box-sizing: border-box;
+                padding: 0 14vw;
+                max-width: 100%;
+            }
+
+            .container[wide-layout] .buttonbox {
+                @apply --layout-start;
+                height: 30vh;
+                box-sizing: border-box;
+                padding: 0 12vw;
+            }
+
+            .logout {
+                @apply --layout-vertical;
+                @apply --layout-center-center;
+                @apply --text-button-big-fullwhite;
+                box-sizing: border-box;
+                width: 100%;
+                height: 15vh;
+                margin: 0 0 14px 0;
+                max-width: 320px;
+                max-height: 75px;
+            }
+
+            .logout:active {
+                @apply --button-active;
+            }
+
+            .backup {
+                @apply --layout-vertical;
+                @apply --layout-center-center;
+                @apply --text-button-big-fullwhite;
+                box-sizing: border-box;
+                width: 100%;
+                height: 15vh;
+                margin: 0 0 0 0;
+                max-width: 320px;
+                max-height: 75px;
+            }
+
+            .backup:active {
+                @apply --button-active;
+            }
+
+
+            .delete {
+                @apply --layout-vertical;
+                @apply --layout-center-center;
+                @apply --text-button-big;
+                color: var(--sc-red);
+                box-sizing: border-box;
+                width: 100%;
+                height: 15vh;
+                max-width: 320px;
+                max-height: 75px;
+            }
+
+            .delete:active {
+                @apply --button-active;
+            }
+
+            .bottom {
+                @apply --layout-vertical;
+                @apply --layout-center-justified;
+                @apply --layout-center;
+                width: 100%;
+                background-color: #DADADA;
+                height: 35vh;
+                box-sizing: border-box;
+                padding: 0 14vw 4vh 14vw;
+                max-width: 100%;
+            }
+
+            .container[wide-layout] .bottom {
+                @apply --layout-start;
+                height: 20vh;
+                box-sizing: border-box;
+                padding: 0 12vw 4vh 12vw;
+            }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
@@ -261,6 +403,37 @@ This code may only be used under the license found at https://github.com/swarmci
                 <div class="topright">
                     <div class="notifications">{{localize('no new notifications')}}</div>
                 </div>
+            </div>
+            <div class="hashtagbox">
+                <div class="temp">
+                    <div class="hashtagname">#pioneer</div>
+                    <div class="deals">
+                        <span class="bluetext">show deals</span>
+                    </div>
+                    <div class="reputation">16 SWR</div>
+                </div>
+                <div class="temp">
+                    <div class="hashtagname">#needaride</div>
+                    <div class="deals">
+                        <span class="bluetext">show deals</span>
+                    </div>
+                    <div class="reputation">7 SWR</div>
+                </div>
+                <div class="temp">
+                    <div class="hashtagname">#swarmbnb</div>
+                    <div class="deals">
+                        <span class="bluetext">show deals</span>
+                    </div>
+                    <div class="reputation">2 SWR</div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="buttonbox">
+                <div class="logout" on-click="_logout">logout this user</div>
+                <div class="backup" on-click="_backup">backup this user</div>
+            </div>
+            <div class="bottom">
+                <div class="delete" on-click="_delete">delete this user</div>
             </div>
         </div>
 
