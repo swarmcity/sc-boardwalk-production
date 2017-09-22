@@ -60,15 +60,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-center;
                 @apply --layout-end-justified;
                 width: 100%;
-                height: 100%;
-                box-sizing: border-box;
-                padding: 10vh 0 0 0;
-                @apply --layout-flex;
+                height: 30vh;
             }
 
             .container[wide-layout] .top {
                 @apply --layout-start;
-                padding: 15vh 0 0 0;
+                height: 35vh;
             }
 
             .close {
@@ -88,17 +85,9 @@ This code may only be used under the license found at https://github.com/swarmci
                 text-align: left;
             }
 
-            .bottom {
-                @apply --layout-vertical;
-                @apply --layout-start-justified;
-                @apply --layout-center;
-                height: 30vh;
-                width: 100%;
-            }
-
             .middle {
                 width: 100%;
-                height: 25vh;
+                @apply --layout-flex;
             }
 
             paper-input {
@@ -119,6 +108,14 @@ This code may only be used under the license found at https://github.com/swarmci
                 --paper-input-suffix: {
                     @apply(--body-default);
                 }
+            }
+
+            .bottom {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                height: 30vh;
+                width: 100%;
             }
 
             .container[wide-layout] .bottom {
