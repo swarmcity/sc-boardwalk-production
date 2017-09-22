@@ -34,10 +34,11 @@ This code may only be used under the license found at https://github.com/swarmci
         Page specific styles, if the style is used on more than one page, moveit to shared styles.
         -->
         <style include="shared-styles">
-            :host {
+             :host {
                 width: 100vw;
                 display: block;
                 background-image: var(--sc-bg);
+                max-width: 100%;
             }
 
             .container {
@@ -193,47 +194,31 @@ This code may only be used under the license found at https://github.com/swarmci
         <app-location route="{{route}}"></app-location>
         <div class="container" wide-layout$="{{wide}}">
             <div class="header">
-                
+
                 <div class="topleft">
                     <template is="dom-if" if="{{completeAccount}}">
                         <display-my-info id="myInfo" complete-account="{{completeAccount}}"></display-my-info>
                     </template>
                 </div>
 
-                
+
                 <div class="topright">
                     <div class="back" on-click="_back" id="back"></div>
 
-                    <display-filter-list 
-                        toggle 
-                        id="filterToggle"
-                        class="filter-toggle"
-                        highlight-filter$="{{highlightFilterToggle}}"
-                        show-slider="{{showSlider}}" 
-                        range="{{range}}" 
-                        route="{{route}}" 
-                        path="{{path}}">
+                    <display-filter-list toggle id="filterToggle" class="filter-toggle" highlight-filter$="{{highlightFilterToggle}}" show-slider="{{showSlider}}"
+                        range="{{range}}" route="{{route}}" path="{{path}}">
                     </display-filter-list>
 
                 </div>
-                
+
             </div>
-            
-            <display-filter-list 
-                slider 
-                class$="slider [[sliderState]]" 
-                show-slider="{{showSlider}}" 
-                range="{{range}}" 
-                route="{{route}}" 
+
+            <display-filter-list slider class$="slider [[sliderState]]" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}"
                 path="{{path}}">
             </display-filter-list>
-    
+
             <div class$="fade [[fadeState]]" on-click="_fadeClose">
-                <display-hashtag-list 
-                    id="hashtagList"
-                    range="[[range]]" 
-                    path="{{path}}" 
-                    show-slider="{{showSlider}}">
+                <display-hashtag-list id="hashtagList" range="[[range]]" path="{{path}}" show-slider="{{showSlider}}">
                 </display-hashtag-list>
             </div>
         </div>
@@ -328,40 +313,40 @@ This code may only be used under the license found at https://github.com/swarmci
             _entryAnimation() {
                 if (this.location.nowAt == 'hashtag-list') {
                     this.$.hashtagList.animate(
-                    [
-                        {'opacity': '0', 'transform': 'translateY(100px)'},
-                        {'opacity': '1', 'transform': 'translateY(0)'},
-                    ], {
-                        fill: 'none',
-                        duration: 300,
-                        iterations: 1,
-                        easing: 'cubic-bezier(0.42,0,0.58,1)',
-                        delay: 0,
-                    }
+                        [
+                            { 'opacity': '0', 'transform': 'translateY(100px)' },
+                            { 'opacity': '1', 'transform': 'translateY(0)' },
+                        ], {
+                            fill: 'none',
+                            duration: 300,
+                            iterations: 1,
+                            easing: 'cubic-bezier(0.42,0,0.58,1)',
+                            delay: 0,
+                        }
                     );
                     this.$.back.animate(
-                    [
-                        {'opacity': '0'},
-                        {'opacity': '1'},
-                    ], {
-                        fill: 'none',
-                        duration: 300,
-                        iterations: 1,
-                        easing: 'cubic-bezier(0.42,0,0.58,1)',
-                        delay: 0,
-                    }
+                        [
+                            { 'opacity': '0' },
+                            { 'opacity': '1' },
+                        ], {
+                            fill: 'none',
+                            duration: 300,
+                            iterations: 1,
+                            easing: 'cubic-bezier(0.42,0,0.58,1)',
+                            delay: 0,
+                        }
                     );
                     this.$.filterToggle.animate(
-                    [
-                        {'opacity': '0'},
-                        {'opacity': '1'},
-                    ], {
-                        fill: 'none',
-                        duration: 300,
-                        iterations: 1,
-                        easing: 'cubic-bezier(0.42,0,0.58,1)',
-                        delay: 0,
-                    }
+                        [
+                            { 'opacity': '0' },
+                            { 'opacity': '1' },
+                        ], {
+                            fill: 'none',
+                            duration: 300,
+                            iterations: 1,
+                            easing: 'cubic-bezier(0.42,0,0.58,1)',
+                            delay: 0,
+                        }
                     );
                 }
             }
@@ -379,7 +364,7 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.sliderState = 'slider-visible-hidden';
                         this.fadeState = 'fade-hidden-visible';
                         this.highlightFilterToggle = false;
-                        setTimeout(() =>{
+                        setTimeout(() => {
                             this.sliderState = 'slider-hidden';
                         }, 300);
                         break;
