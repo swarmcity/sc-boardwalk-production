@@ -43,7 +43,7 @@
         "upload an account file": "upload an account file",
         "Paste your private key": "Paste your private key",
         "Private key": "private key?",
-        "Restore your account file": "Restore your account file",
+        "Restore your account file.": "Restore your account file.",
         "select your account file": "select your account file",
         "Profile picture": "Profile picture",
         "choose an image file": "choose an image file",
@@ -98,7 +98,9 @@
         "The file has been sent to your email.": "The file has been sent to your email.",
         "Submit your private key.": "Submit your private key.",
         "Private key?": "Private key?",
-        "scan QR code": "scan QR code"
+        "scan QR code": "scan QR code",
+        "select file": "select file",
+        "Upload your account file." : "Upload your account file."
     },
     "cn": {
         "language": "cn",
@@ -137,7 +139,7 @@
         "upload an account file": "Awaiting Translation",
         "Paste your private key": "Awaiting Translation",
         "Private key": "Awaiting Translation",
-        "Restore your account file": "Awaiting Translation",
+        "Restore your account file.": "Awaiting Translation",
         "select your account file": "Awaiting Translation",
         "Profile picture": "Awaiting Translation",
         "choose an image file": "Awaiting Translation",
@@ -188,7 +190,9 @@
         "The file has been sent to your email.": "Awaiting Translation",
         "Submit your private key.": "Awaiting Translation",
         "Private key?": "Awaiting Translation",
-        "scan QR code": "scan QR code"
+        "scan QR code": "Awaiting Translation",
+        "select file": "Awaiting Translation",
+        "Upload your account file.": "Awaiting Translation."
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -258,7 +262,7 @@
         "Do you want to stop creating your account?": "Voulez-vous mettre un terme à la création de votre compte ?",
         "restore account": "Restaurer son compte",
         "Choose a username": "Choisir un identifiant",
-        "Restore your account file": "Restaurer son compte",
+        "Restore your account file.": "Restaurer son compte",
         "password?": "mot de passe ?",
         "boardwalk": "Boardwalk",
         "Its an open source project so you can jump right in": "C'est un projet Open Source auquel vous pouvez participer",
@@ -287,7 +291,9 @@
         "The file has been sent to your email.": "Awaiting Translation",
         "Submit your private key.": "Awaiting Translation",
         "Private key?": "Awaiting Translation",
-        "scan QR code": "scan QR code"
+        "scan QR code": "Awaiting Translation",
+        "select file": "Awaiting Translation",
+        "Upload your account file.": "Awaiting Translation."
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -359,7 +365,7 @@
         "Do you want to stop creating your account?": "Stoppen met het creëren van een account?",
         "restore account": "herstel account",
         "Choose a username": "Kies een gebruikersnaam",
-        "Restore your account file": "Stel een account terug in",
+        "Restore your account file.": "Stel een account terug in",
         "password?": "paswoord?",
         "boardwalk": "Boardwalk",
         "Its an open source project so you can jump right in": "HEt is een opens source project, iedereen is welkom om samen te werken",
@@ -386,7 +392,9 @@
         "The file has been sent to your email.": "Awaiting Translation",
         "Submit your private key.": "Awaiting Translation",
         "Private key?": "Awaiting Translation",
-        "scan QR code": "scan QR code"
+        "scan QR code": "scan QR code",
+        "select file": "Awaiting Translation",
+        "Upload your account file.": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -457,7 +465,7 @@
         "Do you want to stop creating your account?": "Вы хотели бы приостановить создание аккаунта?",
         "restore account": "восстановить аккаунт",
         "Choose a username": "Придумайте логин",
-        "Restore your account file": "Восстановить учетную запись из файла",
+        "Restore your account file.": "Восстановить учетную запись из файла",
         "password?": "пароль?",
         "boardwalk": "Boardwalk",
         "Its an open source project so you can jump right in": "Это открытый проект, вы можете принять в нем участие",
@@ -485,7 +493,9 @@
         "The file has been sent to your email.": "Awaiting Translation",
         "Submit your private key.": "Awaiting Translation",
         "Private key?": "Awaiting Translation",
-        "scan QR code": "scan QR code"
+        "scan QR code": "Awaiting Translation",
+        "select file": "Awaiting Translation",
+        "Upload your account file.": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -556,7 +566,7 @@
         "Do you want to stop creating your account?": "Willst du den Kontoerstellungsprozess abbrechen?",
         "restore account": "Kontowiederherstellung",
         "Choose a username": "Wähle einen Benutzernamen",
-        "Restore your account file": "Stelle deine Kontodatei wiederher. ",
+        "Restore your account file.": "Stelle deine Kontodatei wiederher. ",
         "password?": "Passwort?",
         "boardwalk": "Boardwalk",
         "Its an open source project so you can jump right in": "Es ist ein quelloffenes Projekt. Du kannst also sofort starten. ",
@@ -584,7 +594,9 @@
         "The file has been sent to your email.": "Awaiting Translation",
         "Submit your private key.": "Awaiting Translation",
         "Private key?": "Awaiting Translation",
-        "scan QR code": "scan QR code"
+        "scan QR code": "Awaiting Translation",
+        "select file": "Awaiting Translation",
+        "Upload your account file.": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -655,7 +667,7 @@
         "Do you want to stop creating your account?": "¿Usted desea parar creando  su cuenta?",
         "restore account": "restablecer el usuario",
         "Choose a username": "Escoge un usuario",
-        "Restore your account file": "Restaurar su archivo de cuenta ",
+        "Restore your account file.": "Restaurar su archivo de cuenta ",
         "password?": "¿contraseña?",
         "boardwalk": "Explanada",
         "Its an open source project so you can jump right in": "Es un proyecto de código abierto, súbete a bordo !",
@@ -683,7 +695,9 @@
         "The file has been sent to your email.": "Awaiting Translation",
         "Submit your private key.": "Awaiting Translation",
         "Private key?": "Awaiting Translation",
-        "scan QR code": "scan QR code"
+        "scan QR code": "Awaiting Translation",
+        "select file": "Awaiting Translation",
+        "Upload your account file.": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -754,7 +768,7 @@
         "Do you want to stop creating your account?": "Chcesz zatrzymać tworzenie Twojego konta?",
         "restore account": "Przywróć konto",
         "Choose a username": "Wybierz login",
-        "Restore your account file": "Przywróć konto z pliku",
+        "Restore your account file.": "Przywróć konto z pliku",
         "password?": "hasło?",
         "boardwalk": "Broadwalk",
         "Its an open source project so you can jump right in": "Projekt open source - dołącz już dziś!",
@@ -782,7 +796,9 @@
         "The file has been sent to your email.": "Awaiting Translation",
         "Submit your private key.": "Awaiting Translation",
         "Private key?": "Awaiting Translation",
-        "scan QR code": "scan QR code"
+        "scan QR code": "Awaiting Translation",
+        "select file": "Awaiting Translation",
+        "Upload your account file.": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -853,7 +869,7 @@
         "Do you want to stop creating your account?": "Hesabınız oluşturma işlemini durdurmak istiyor musunuz?",
         "restore account": "Hesap geri yükle",
         "Choose a username": "Kullanıcı adı seçin",
-        "Restore your account file": "Kullanıcı hesabınızı geri yükleyin",
+        "Restore your account file.": "Kullanıcı hesabınızı geri yükleyin",
         "password?": "Şifre?",
         "boardwalk": "Tahta yol",
         "Its an open source project so you can jump right in": "Bu açık kaynak kodlu bir projedir, doğrudan başlayabilirsiniz.",
@@ -881,6 +897,8 @@
         "The file has been sent to your email.": "Awaiting Translation",
         "Submit your private key.": "Awaiting Translation",
         "Private key?": "Awaiting Translation",
-        "scan QR code": "scan QR code"
+        "scan QR code": "Awaiting Translation",
+        "select file": "Awaiting Translation",
+        "Upload your account file.": "Awaiting Translation"
     }
 }
