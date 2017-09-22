@@ -1,0 +1,327 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../redux-state.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+
+<!--
+    Displays and shared styles only
+-->
+<link rel="import" href="../shared-styles.html">
+<!--
+    Aimation pack, only load the animations you need for this page.
+-->
+
+<link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/web-animations.html">
+
+<dom-module id="page-my-profile">
+    <template>
+        <!--
+    Page specific styles, if the style is used on more than one page, moveit to shared styles.
+-->
+        <style include="shared-styles">
+             :host {
+                height: 100vh;
+                width: 100vw;
+                display: block;
+            }
+
+            .container {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                background-image: var(--sc-bg);
+                height: 100%;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0 14vw;
+            }
+
+            .container[wide-layout] {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-start;
+                padding: 0 12vw;
+            }
+
+            .top {
+                @apply --layout-vertical;
+                @apply --layout-center;
+                @apply --layout-end-justified;
+                width: 100%;
+                height: 65vh;
+            }
+
+            .container[wide-layout] .top {
+                @apply --layout-start;
+                height: 35vh;
+            }
+
+            .close {
+                @apply --xmark-grey3-small;
+                @apply --close;
+            }
+
+            .close:active {
+                @apply --button-active;
+            }
+
+            img {
+                width: 90px;
+                height: 90px;
+                cursor: pointer;
+                border-radius: 50%;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+            }
+
+            .avatar {
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                @apply --layout-end;
+                margin-left: 3.6vh;
+            }
+
+            .container[wide-layout] .avatar {
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                @apply --layout-end;
+                margin-left: 0;
+            }
+
+            .arrowcontainer {
+                @apply --base-shadow;
+                border-radius: 50%;
+                background-color: var(--sc-blue);
+                height: 30px;
+                width: 30px;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                @apply --layout-center;
+                position: relative;
+                right: 25px;
+                cursor: pointer;
+            }
+
+            .arrowup {
+                @apply --arrowup-white-mini;
+            }
+
+            paper-input {
+                width: 100%;
+                text-align: center;
+                margin-top: 8vh;
+
+                @apply --sc-paper-input;
+                --paper-input-container-label: {
+                    @apply --body-default;
+                }
+                --paper-input-container-input: {
+                    @apply --body-bold;
+                }
+                --paper-input-error: {
+                    @apply --body-bold;
+                }
+                --paper-input-prefix: {
+                    @apply --body-default;
+                }
+                --paper-input-suffix: {
+                    @apply --body-default;
+                }
+            }
+
+
+
+            .pubkey {
+                margin-top: 3vh;
+                max-width: 75px;
+            }
+
+            .greytext {
+                @apply --small-light;
+                color: var(--sc-grey3);
+            }
+
+            .keybox {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+            }
+
+            .showkeys {
+                margin-top: 1vh;
+            }
+
+            .bluetext {
+                @apply --small-bold;
+                cursor: pointer;
+                color: var(--sc-blue);
+                border-bottom: 2px dotted var(--sc-blue);
+            }
+
+            .notifications {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --small-light;
+                color: var(--sc-grey4);
+                background-color: #DADADA;
+                box-sizing: border-box;
+                padding: 2px 8px 4px 8px;
+                border-radius: 12px;
+                margin-top: 7vh;
+            }
+
+
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .close {
+                    @apply --retina;
+                }
+            }
+        </style>
+        <app-location route="{{route}}"></app-location>
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+        <div class="container" wide-layout$="{{wide}}">
+            <div class="top">
+                <div class="close" on-click="_close"></div>
+                <div class="avatarcontainer">
+                    <div class="avatar"><img src="../../images/defaultavatar.png">
+                        <div class="arrowcontainer" on-click="_toResizeAvatar">
+                            <div class="arrowup"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="topflex">
+                    <div class="username">
+                        <paper-input label="Username" always-float-label></paper-input>
+                    </div>
+                    <div class="keybox">
+                        <div class="pubkey">
+                            <span class="greytext">      0x339D78...</span></div>
+                        <div class="showkeys">
+                            <span class="bluetext">{{localize('show my keys')}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="topright">
+                    <div class="notifications">{{localize('no new notifications')}}</div>
+                </div>
+            </div>
+        </div>
+
+    </template>
+
+    <script>
+        class MyProfile extends new ReduxMixin(Polymer.mixinBehaviors([
+            Polymer.AppLocalizeBehavior,
+            Polymer.NeonAnimationRunnerBehavior,
+            Polymer.NeonAnimatableBehavior,
+        ],
+            Polymer.Element
+        )) {
+            static get is() {
+                return 'page-my-profile';
+            }
+            static get properties() {
+                return {
+                    language: {
+                        type: String,
+                        statePath: 'language',
+                    },
+                    /**
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
+                    path: {
+                        type: String,
+                        observer: '_path',
+                    },
+                    /**
+                    * Error is a string message being shown when passwords don't match
+                    * @type {String}
+                    */
+                    error: {
+                        type: String,
+                        value: '',
+                    },
+                    /**
+                    * Entry and exit animation
+                    */
+                    animationConfig: {
+                        value: function() {
+                            return {
+                                'entry': {
+                                    name: 'fade-in-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {
+                                        duration: 300,
+                                    },
+                                },
+                                'exit': {
+                                    name: 'fade-out-animation',
+                                    node: this,
+                                    nodeDelay: 300,
+                                    timing: {
+                                        duration: 300,
+                                    },
+                                },
+                            };
+                        },
+                    },
+                };
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
+            /**
+            * takes the user to page-stop-signup
+            */
+            _close() {
+                this.path = 'stop-signup/';
+            }
+            /**
+            * takes the user to the next page in user creation
+            */
+            _agree() {
+                this.path = 'account-complete/';
+            }
+            /**
+            * compares written passwords and updates label with it
+            */
+            _equals() {
+                if (this.$.password.value == this.$.repeat.value ||
+                    this.$.repeat.value == '') {
+                    this.error = '';
+                } else {
+                    this.error = '[' + this.localize('password mismatch?') + ']';
+                }
+            }
+            /**
+            * changes the current path
+            */
+            _path() {
+                if (this.path != null) {
+                    this.set('route.path', this.path);
+                }
+                this.path = null;
+            }
+        }
+        window.customElements.define(MyProfile.is, MyProfile);
+    </script>
+</dom-module>

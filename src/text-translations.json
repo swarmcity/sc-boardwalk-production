@@ -100,7 +100,8 @@
         "Private key?": "Private key?",
         "scan QR code": "scan QR code",
         "select file": "select file",
-        "Upload your account file." : "Upload your account file."
+        "Upload your account file." : "Upload your account file.",
+        "no new notifications": "no new notifications"
     },
     "cn": {
         "language": "cn",
@@ -192,7 +193,8 @@
         "Private key?": "Awaiting Translation",
         "scan QR code": "Awaiting Translation",
         "select file": "Awaiting Translation",
-        "Upload your account file.": "Awaiting Translation."
+        "Upload your account file.": "Awaiting Translation.",
+        "no new notifications": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -293,7 +295,8 @@
         "Private key?": "Awaiting Translation",
         "scan QR code": "Awaiting Translation",
         "select file": "Awaiting Translation",
-        "Upload your account file.": "Awaiting Translation."
+        "Upload your account file.": "Awaiting Translation.",
+        "no new notifications": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -394,7 +397,8 @@
         "Private key?": "Awaiting Translation",
         "scan QR code": "scan QR code",
         "select file": "Awaiting Translation",
-        "Upload your account file.": "Awaiting Translation"
+        "Upload your account file.": "Awaiting Translation",
+        "no new notifications": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -495,7 +499,8 @@
         "Private key?": "Awaiting Translation",
         "scan QR code": "Awaiting Translation",
         "select file": "Awaiting Translation",
-        "Upload your account file.": "Awaiting Translation"
+        "Upload your account file.": "Awaiting Translation",
+        "no new notifications": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -596,7 +601,8 @@
         "Private key?": "Awaiting Translation",
         "scan QR code": "Awaiting Translation",
         "select file": "Awaiting Translation",
-        "Upload your account file.": "Awaiting Translation"
+        "Upload your account file.": "Awaiting Translation",
+        "no new notifications": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -697,7 +703,8 @@
         "Private key?": "Awaiting Translation",
         "scan QR code": "Awaiting Translation",
         "select file": "Awaiting Translation",
-        "Upload your account file.": "Awaiting Translation"
+        "Upload your account file.": "Awaiting Translation",
+        "no new notifications": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -798,7 +805,8 @@
         "Private key?": "Awaiting Translation",
         "scan QR code": "Awaiting Translation",
         "select file": "Awaiting Translation",
-        "Upload your account file.": "Awaiting Translation"
+        "Upload your account file.": "Awaiting Translation",
+        "no new notifications": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -899,6 +907,7 @@
         "Private key?": "Awaiting Translation",
         "scan QR code": "Awaiting Translation",
         "select file": "Awaiting Translation",
-        "Upload your account file.": "Awaiting Translation"
+        "Upload your account file.": "Awaiting Translation",
+        "no new notifications": "Awaiting Translation"
     }
 }
