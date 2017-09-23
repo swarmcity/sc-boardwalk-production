@@ -60,20 +60,21 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-center;
                 @apply --layout-end-justified;
                 width: 100%;
-                height: 100%;
-                box-sizing: border-box;
-                padding: 10vh 0 0 0;
-                @apply --layout-flex;
+                height: 40vh;
             }
 
             .container[wide-layout] .top {
                 @apply --layout-start;
-                padding: 15vh 0 0 0;
+                height: 35vh;
             }
 
             .close {
                 @apply --xmark-grey3-small;
                 @apply --close;
+            }
+
+            .close:active {
+                @apply --button-active;
             }
 
             .title {
@@ -86,29 +87,26 @@ This code may only be used under the license found at https://github.com/swarmci
             .container[wide-layout] .title {
                 @apply --main-title1-wide;
                 text-align: left;
-            }
-
-            .bottom {
-                @apply --layout-vertical;
-                @apply --layout-start-justified;
-                @apply --layout-center;
-                height: 30vh;
-                width: 100%;
+                max-width: 750px;
             }
 
             .middle {
                 width: 100%;
-                height: 25vh;
+                @apply --layout-flex;
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
             }
 
             paper-input {
+                width: 100%;
+                margin-top: 6vh;
                 text-align: center;
                 @apply --sc-paper-input;
                 --paper-input-container-label: {
                     @apply --body-default;
                 }
                 --paper-input-container-input: {
-                    @apply(--body-default);
+                    @apply(--body-bold);
                 }
                 --paper-input-error: {
                     @apply(--body-bold);
@@ -119,6 +117,51 @@ This code may only be used under the license found at https://github.com/swarmci
                 --paper-input-suffix: {
                     @apply(--body-default);
                 }
+            }
+
+            .container[wide-layout] paper-input {
+                text-align: left;
+                max-width: 400px;
+            }
+
+            .messagebox {
+                margin-top: 2vh;
+                height: 4vh;
+                width: 100%;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+            }
+
+            .container[wide-layout] .messagebox {
+                @apply --layout-start-justified;
+            }
+
+            .qrbox {
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                @apply --layout-start;
+                margin-top: 8vh;
+                width: 100%;
+            }
+
+            .container[wide-layout] .qrbox {
+                @apply --layout-start-justified;
+                margin-top: 4vh;
+            }
+
+            .bluetext {
+                @apply --small-bold;
+                cursor: pointer;
+                color: var(--sc-blue);
+                border-bottom: 2px dotted var(--sc-blue);
+            }
+
+            .bottom {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                height: 30vh;
+                width: 100%;
             }
 
             .container[wide-layout] .bottom {
@@ -156,7 +199,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 <div class="close" on-click="_close"></div>
                 <div class="title">{{localize('Submit your private key.')}}</div>
             </div>
-            <div class="middle"></div>
+            <div class="middle">
+                <paper-input label="{{localize('Private key?')}}" type="txt"></paper-input>
+                <div class="messagebox"></div>
+                <div class="qrbox"><span class="bluetext">{{localize('scan QR code')}}</span></div>
+            </div>
             <div class="bottom">
                 <div class="btn">
                     <div class="agree" on-click="_agree"></div>
@@ -229,7 +276,7 @@ This code may only be used under the license found at https://github.com/swarmci
             * takes the user to the hashtag list page
             */
             _agree() {
-                this.path = 'choose-username/';
+                this.path = 'choose-avatar-and-username/';
             }
             /**
             * changes the current path

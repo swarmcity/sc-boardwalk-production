@@ -36,13 +36,15 @@ This code may only be used under the license found at https://github.com/swarmci
         <style include="shared-styles">
              :host {
                 width: 100vw;
-                display: block;
-                background-image: var(--sc-bg);
+                min-height: 80vh;
+                display: block;              
                 max-width: 100%;
             }
-
+            
             .container {
+                height: 100%;
                 width: 100%;
+                background-color: var(--sc-grey1);
             }
 
             .header {
@@ -85,11 +87,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 width: 100%;
                 box-sizing: border-box;
                 padding: 0 40px 2vh 40px;
-                background-color: #f4f3f4;
+                background-image: var(--sc-bg);
                 z-index: 1;
             }
 
             .container[wide-layout] .slider {
+                padding: 0 40px 2vh 40px;
                 padding: 0 10vw 2vh 10vw;
                 top: 190px;
             }
@@ -131,6 +134,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 color: white;
                 background-color: var(--sc-grey4);
                 border-bottom: 0;
+                padding: 0 40px 2vh 40px;
                 padding: 1px 2px;
             }
 
@@ -144,6 +148,10 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .container[wide-layout] display-hashtag-list {
                 margin-top: 190px;
+            }
+
+            .fullheight {
+                height: 100%;
             }
 
             @keyframes slideUp {
@@ -197,7 +205,8 @@ This code may only be used under the license found at https://github.com/swarmci
 
                 <div class="topleft">
                     <template is="dom-if" if="{{completeAccount}}">
-                        <display-my-info id="myInfo" complete-account="{{completeAccount}}"></display-my-info>
+                        <display-my-info id="myInfo" complete-account="{{completeAccount}}">
+                        </display-my-info>
                     </template>
                 </div>
 
@@ -217,8 +226,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 path="{{path}}">
             </display-filter-list>
 
-            <div class$="fade [[fadeState]]" on-click="_fadeClose">
-                <display-hashtag-list id="hashtagList" range="[[range]]" path="{{path}}" show-slider="{{showSlider}}">
+            <div class$="fade [[fadeState]] fullheight" on-click="_fadeClose">
+                <display-hashtag-list 
+                    id="hashtagList" 
+                    range="[[range]]" 
+                    path="{{path}}" 
+                    show-slider="{{showSlider}}">
                 </display-hashtag-list>
             </div>
         </div>

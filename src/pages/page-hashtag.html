@@ -39,13 +39,15 @@ This code may only be used under the license found at https://github.com/swarmci
         <style include="shared-styles">
              :host {
                 width: 100vw;
+                height: 100%;
                 display: block;
                 max-width: 100%;
             }
 
             .container {
                 width: 100%;
-                min-height: 100vh;
+                height: 100%;
+                background-color: var(--sc-grey1);
             }
 
             .header {
@@ -227,6 +229,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 top: 206px;
             }
 
+            .fullheight {
+                height: 100%;
+            }
+
+
             @keyframes slideUp {
                 0% {
                     transform: translateY(0%);
@@ -340,13 +347,21 @@ This code may only be used under the license found at https://github.com/swarmci
                 path="{{path}}">
             </display-filter-deals>
 
-            <div class$="fade [[fadeState]]" on-click="_fadeClose">
-                <display-hashtag-deals range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}" show-slider="{{showSlider}}"
+            <div class$="fade [[fadeState]] fullheight" on-click="_fadeClose">
+                <display-hashtag-deals 
+                    range="{{range}}" 
+                    hashtag="{{hashtag}}" 
+                    route-data="[[routeData]]" 
+                    path="{{path}}" 
+                    show-slider="{{showSlider}}"
                     show-info="{{showInfo}}">
                 </display-hashtag-deals>
 
                 <div class="dealbtn">
-                    <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn>
+                    <display-deal-btn 
+                    route-data="[[routeData]]" 
+                    path="{{path}}">
+                </display-deal-btn>
                 </div>
             </div>
         </div>

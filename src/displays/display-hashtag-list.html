@@ -182,8 +182,10 @@ The following custom properties and mixins are available for styling:
             * When a hashtag is selected change the route to include the hashtag id.
             */
             _toHashtag(e) {
-                this.path = null;
-                this.path = 'hashtag/'+e.model.__data.item.$key+'/';
+                    if (!this.showSlider) {
+                    this.path = null;
+                    this.path = 'hashtag/'+e.model.__data.item.$key+'/';
+                }
             }
         }
         window.customElements.define(DisplayHashtagList.is, DisplayHashtagList);
