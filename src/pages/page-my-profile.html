@@ -93,11 +93,17 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-center-justified;
             }
 
+            .avatarcontainer {
+                width: 100%;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+            }
+
             .avatar {
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
                 @apply --layout-end;
-                margin-left: 3.6vh;
+                margin-left: 40px;
                 margin-top: 12vh;
             }
 
@@ -235,8 +241,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 background-image: var(--sc-bg);
                 width: 100%;
                 box-sizing: border-box;
-                padding: 5vh 14vw 0 14vw;
-                max-width: 100%;
+                padding: 50px 14vw 50px 14vw;
             }
 
             .container[wide-layout] .hashtagbox {
@@ -252,7 +257,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 box-sizing: border-box;
                 padding: 2px 0 2px 0;
                 width: 100%;
-                max-width: 60vw;
+                overflow: auto;
             }
 
             .hashtagname {
@@ -260,13 +265,21 @@ This code may only be used under the license found at https://github.com/swarmci
                 box-sizing: border-box;
                 padding-right: 10px;
             }
+            .deals {
+                min-width:75px;
+            }
 
             .ruler {
                 @apply --layout-flex;
+            }
+
+            .container[wide-layout] .ruler {                
                 box-sizing: border-box;
                 margin: 0 35px 4px 35px;
                 border-bottom: 2px solid rgba(25, 25, 25, 0.1);
+
             }
+
 
             .rep-amount {
                 @apply --body-bold;
@@ -292,7 +305,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 background-image: var(--sc-bg);
                 width: 100%;
                 box-sizing: border-box;
-                padding: 0 14vw;
+                padding: 50px 14vw;
                 max-width: 100%;
             }
 
@@ -357,7 +370,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-center;
                 width: 100%;
                 box-sizing: border-box;
-                padding: 0 14vw 25px 14vw;
+                padding: 45px 14vw 35px 14vw;
                 max-width: 100%;
             }
 
