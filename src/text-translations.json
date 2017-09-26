@@ -56,7 +56,7 @@
         "The next step is choosing a password. Choose a password. with care.": "The next step is choosing a password. Choose a password. with care.",
         "There is no password recovery available in Swarm City.": "There is no password recovery available in Swarm City.",
         "Choose a password.": "Choose a password.",
-        "password mismatch?": "password mismatch?",
+        "The passwords dont match.": "The passwords don't match.",
         "password?": "password?",
         "Confirm password": "Confirm password",
         "Great!": "Great!",
@@ -157,7 +157,6 @@
         "The next step is choosing a password. Choose a password. with care.": "Awaiting Translation",
         "There is no password recovery available in Swarm City.": "Awaiting Translation",
         "Choose a password.": "Awaiting Translation",
-        "password mismatch?": "Awaiting Translation",
         "password?": "Awaiting Translation",
         "Confirm password": "Awaiting Translation",
         "Great!": "Awaiting Translation",
@@ -202,7 +201,8 @@
         "show deals": "Awaiting Translation",
         "logout this user": "Awaiting Translation",
         "backup this user": "Awaiting Translation",
-        "delete this user": "Awaiting Translation"
+        "delete this user": "Awaiting Translation",
+        "The passwords dont match.": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -288,7 +288,7 @@
         "Confirm password": "Confirmer le mot de passe",
         "enter here": "Entrer ici",
         "Discord": "Discord",
-        "password mismatch?": "Mots de passe différents ?",
+        "The passwords dont match.": "Les mots de passe sont différents.",
         "This hashtag is maintained by": "Ce hashtag appartient à ",
         "This means you are responsible for your own account at all times.": "Cela signifie que vous êtes l'unique responsable de votre compte.",
         "enter": "entrez",
@@ -395,7 +395,7 @@
         "Confirm password": "Bevestig paswoord",
         "enter here": "enter here",
         "Discord": "Discord",
-        "password mismatch?": "paswoord komt niet overeen?",
+        "The passwords dont match.": "de paswoorden komen niet overeen.",
         "This hashtag is maintained by": "Deze hashtag wordt beheerd door",
         "This means you are responsible for your own account at all times.": "Dat betekent dat je ten alle tijde verantwoordelijk bent voor jouw account file.",
         "enter": "enter",
@@ -500,7 +500,6 @@
         "Confirm password": "Подтвердить пароль",
         "enter here": "регистрация здесь",
         "Discord": "Discord",
-        "password mismatch?": "несовпадение пароля?",
         "This hashtag is maintained by": "Этот хэштег поддерживается",
         "This means you are responsible for your own account at all times.": "Это значит, что вы всегда несете ответственность за свою учетную запись",
         "enter": "вход",
@@ -520,7 +519,8 @@
         "show deals": "Awaiting Translation",
         "logout this user": "Awaiting Translation",
         "backup this user": "Awaiting Translation",
-        "delete this user": "Awaiting Translation"
+        "delete this user": "Awaiting Translation",
+        "The passwords dont match.": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -606,7 +606,7 @@
         "Confirm password": "Bestätige das Passwort",
         "enter here": "Hier eintreten",
         "Discord": "Discord",
-        "password mismatch?": "Passwörter sind nicht gleich",
+        "The passwords dont match.": "Passwörter sind nicht gleich.",
         "This hashtag is maintained by": "Dieser Hashtag wird unterhalten von",
         "This means you are responsible for your own account at all times.": "Dies bedeutet du bist verantwortlich für dein Konto zu jeder Zeit. ",
         "enter": "Eintreten",
@@ -712,7 +712,6 @@
         "Confirm password": "Confirmar contraseña",
         "enter here": "accede aquí",
         "Discord": "Discord",
-        "password mismatch?": "¿contraseña incompatible?",
         "This hashtag is maintained by": "Este hashtag es mantenido por",
         "This means you are responsible for your own account at all times.": "Esto significa que usted es responsable de su propia cuenta en todo momento.",
         "enter": "Entrar",
@@ -732,7 +731,8 @@
         "show deals": "Awaiting Translation",
         "logout this user": "Awaiting Translation",
         "backup this user": "Awaiting Translation",
-        "delete this user": "Awaiting Translation"
+        "delete this user": "Awaiting Translation",
+        "The passwords dont match.": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -818,7 +818,6 @@
         "Confirm password": "Potwierdź hasło",
         "enter here": "Wejdź",
         "Discord": "Odrzuć",
-        "password mismatch?": "niepoprawne hasło?",
         "This hashtag is maintained by": "Ten hashtag jest utrzymywany przez",
         "This means you are responsible for your own account at all times.": "To oznacza, że zawsze jesteś odpowiedzialny za swoje własne konto.",
         "enter": "wejdź",
@@ -838,7 +837,8 @@
         "show deals": "Awaiting Translation",
         "logout this user": "Awaiting Translation",
         "backup this user": "Awaiting Translation",
-        "delete this user": "Awaiting Translation"
+        "delete this user": "Awaiting Translation",
+        "The passwords dont match.": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -924,7 +924,6 @@
         "Confirm password": "Şifreyi doğrula",
         "enter here": "Buraya girin",
         "Discord": "Discord",
-        "password mismatch?": "Şifre eşleşmiyor?",
         "This hashtag is maintained by": "Etiket şu kişi tarafından korunmaktadır",
         "This means you are responsible for your own account at all times.": "Bu, kendi hesabınızdan her zaman sorumlu olduğunuz anlamına gelir.",
         "enter": "Giriş",
@@ -944,6 +943,7 @@
         "show deals": "Awaiting Translation",
         "logout this user": "Awaiting Translation",
         "backup this user": "Awaiting Translation",
-        "delete this user": "Awaiting Translation"
+        "delete this user": "Awaiting Translation",
+        "The passwords dont match.": "Awaiting Translation"
     }
 }
