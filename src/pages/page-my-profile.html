@@ -94,7 +94,6 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .avatarcontainer {
-                width: 100%;
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
             }
@@ -189,7 +188,7 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container[wide-layout] .pubkey {
-                margin: 0px 3vw 0 0;
+                margin: 0px 10px 0 0;
             }
 
             .greytext {
@@ -205,11 +204,19 @@ This code may only be used under the license found at https://github.com/swarmci
                 margin-top: 0px;
             }
 
-            .bluetext {
+            .bluelink {
                 @apply --small-bold;
                 cursor: pointer;
                 color: var(--sc-blue);
                 border-bottom: 2px dotted var(--sc-blue);
+            }
+
+            .greylink {
+                @apply --small-bold;
+                cursor: pointer;
+                color: var(--sc-grey3);
+                text-decoration: none;
+                border-bottom: 2px dotted var(--sc-grey2);
             }
 
             .container[wide-layout] .topright {
@@ -265,19 +272,19 @@ This code may only be used under the license found at https://github.com/swarmci
                 box-sizing: border-box;
                 padding-right: 10px;
             }
+
             .deals {
-                min-width:75px;
+                min-width: 75px;
             }
 
             .ruler {
                 @apply --layout-flex;
             }
 
-            .container[wide-layout] .ruler {                
+            .container[wide-layout] .ruler {
                 box-sizing: border-box;
                 margin: 0 35px 4px 35px;
                 border-bottom: 2px solid rgba(25, 25, 25, 0.1);
-
             }
 
 
@@ -409,7 +416,7 @@ This code may only be used under the license found at https://github.com/swarmci
                         <div class="pubkey">
                             <span class="greytext">      0x339D78...</span></div>
                         <div class="showkeys">
-                            <span class="bluetext">{{localize('show my keys')}}</span>
+                            <span class="bluelink">{{localize('show my keys')}}</span>
                         </div>
                     </div>
                 </div>
@@ -421,7 +428,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 <div class="temp">
                     <div class="hashtagname">#pioneer</div>
                     <div class="deals">
-                        <span class="bluetext">show deals</span>
+                        <span class="greylink">show deals</span>
                     </div>
                     <div class="ruler"></div>
                     <div class="rep-amount">16</div>
@@ -430,7 +437,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 <div class="temp">
                     <div class="hashtagname">#needaride</div>
                     <div class="deals">
-                        <span class="bluetext">show deals</span>
+                        <span class="greylink">show deals</span>
                     </div>
                     <div class="ruler"></div>
                     <div class="rep-amount">7</div>
@@ -439,7 +446,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 <div class="temp">
                     <div class="hashtagname">#swarmbnb</div>
                     <div class="deals">
-                        <span class="bluetext">show deals</span>
+                        <span class="greylink">show deals</span>
                     </div>
                     <div class="ruler"></div>
                     <div class="rep-amount">2</div>
