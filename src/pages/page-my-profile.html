@@ -265,6 +265,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 padding: 2px 0 2px 0;
                 width: 100%;
                 overflow: auto;
+                max-width: 60vw;
             }
 
             .hashtagname {
@@ -402,7 +403,7 @@ This code may only be used under the license found at https://github.com/swarmci
             <div class="top">
                 <div class="close" on-click="_close"></div>
                 <div class="avatarcontainer">
-                    <div class="avatar"><img src="../../images/defaultavatar.png">
+                    <div class="avatar"><img src="../../images/defaultavatar.png" on-click="_toResizeAvatar">
                         <div class="arrowcontainer" on-click="_toResizeAvatar">
                             <div class="arrowup"></div>
                         </div>
@@ -414,7 +415,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     </div>
                     <div class="keybox">
                         <div class="pubkey">
-                            <span class="greytext">      0x339D78...</span></div>
+                            <span class="greytext">0x339D78...</span></div>
                         <div class="showkeys">
                             <span class="bluelink">{{localize('show my keys')}}</span>
                         </div>
@@ -428,7 +429,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 <div class="temp">
                     <div class="hashtagname">#pioneer</div>
                     <div class="deals">
-                        <span class="greylink">show deals</span>
+                        <span class="greylink">{{localize('show deals')}}</span>
                     </div>
                     <div class="ruler"></div>
                     <div class="rep-amount">16</div>
@@ -455,11 +456,11 @@ This code may only be used under the license found at https://github.com/swarmci
             </div>
             <div class="divider"></div>
             <div class="buttonbox">
-                <div class="logout" on-click="_logout">logout this user</div>
-                <div class="backup" on-click="_backup">backup this user</div>
+                <div class="logout" on-click="_logout">{{localize('logout this user')}}</div>
+                <div class="backup" on-click="_backup">{{localize('backup this user')}}</div>
             </div>
             <div class="bottom">
-                <div class="delete" on-click="_delete">delete this user</div>
+                <div class="delete" on-click="_delete">{{localize('delete this user')}}</div>
             </div>
         </div>
 
@@ -502,7 +503,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     * Entry and exit animation
                     */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
@@ -539,8 +540,14 @@ This code may only be used under the license found at https://github.com/swarmci
             /**
             * takes the user to the next page in user creation
             */
-            _agree() {
-                this.path = 'account-complete/';
+            _toResizeAvatar() {
+                this.path = 'resize-avatar/';
+            }
+            /**
+            * takes the user to make-backup-profile
+            */
+            _backup() {
+                this.path = 'make-backup-profile/';
             }
             /**
             * compares written passwords and updates label with it
