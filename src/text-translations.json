@@ -100,7 +100,7 @@
         "Private key?": "Private key?",
         "scan QR code": "scan QR code",
         "select file": "select file",
-        "Upload your account file." : "Upload your account file.",
+        "Upload your account file.": "Upload your account file.",
         "no new notifications": "no new notifications",
         "show deals": "show deals",
         "logout this user": "logout this user",
@@ -108,7 +108,12 @@
         "delete this user": "delete this user",
         "back to profile": "back to profile",
         "Do you want to delete this account?": "Do you want to delete this account?",
-        "This can not be undone.": "This can not be undone."
+        "This can not be undone.": "This can not be undone.",
+        "new chat message from": "new chat message from",
+        "in deal": "in deal",
+        "accepted": "accepted",
+        "You are now in a deal with": "You are now in a deal with",
+        "for": "for"
     },
     "cn": {
         "language": "cn",
@@ -208,7 +213,12 @@
         "The passwords dont match.": "Awaiting Translation",
         "back to profile": "Awaiting Translation",
         "Do you want to delete this account?": "Awaiting Translation",
-        "This can not be undone.": "Awaiting Translation"
+        "This can not be undone.": "Awaiting Translation",
+        "new chat message from": "Awaiting Translation",
+        "in deal": "Awaiting Translation",
+        "accepted": "Awaiting Translation",
+        "You are now in a deal with": "Awaiting Translation",
+        "for": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -317,7 +327,12 @@
         "delete this user": "Awaiting Translation",
         "back to profile": "Awaiting Translation",
         "Do you want to delete this account?": "Awaiting Translation",
-        "This can not be undone.": "Awaiting Translation"
+        "This can not be undone.": "Awaiting Translation",
+        "new chat message from": "Awaiting Translation",
+        "in deal": "Awaiting Translation",
+        "accepted": "Awaiting Translation",
+        "You are now in a deal with": "Awaiting Translation",
+        "for": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -426,7 +441,12 @@
         "delete this user": "Awaiting Translation",
         "back to profile": "Awaiting Translation",
         "Do you want to delete this account?": "Awaiting Translation",
-        "This can not be undone.": "Awaiting Translation"
+        "This can not be undone.": "Awaiting Translation",
+        "new chat message from": "Awaiting Translation",
+        "in deal": "Awaiting Translation",
+        "accepted": "Awaiting Translation",
+        "You are now in a deal with": "Awaiting Translation",
+        "for": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -535,7 +555,12 @@
         "The passwords dont match.": "Awaiting Translation",
         "back to profile": "Awaiting Translation",
         "Do you want to delete this account?": "Awaiting Translation",
-        "This can not be undone.": "Awaiting Translation"
+        "This can not be undone.": "Awaiting Translation",
+        "new chat message from": "Awaiting Translation",
+        "in deal": "Awaiting Translation",
+        "accepted": "Awaiting Translation",
+        "You are now in a deal with": "Awaiting Translation",
+        "for": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -644,7 +669,12 @@
         "delete this user": "Awaiting Translation",
         "back to profile": "Awaiting Translation",
         "Do you want to delete this account?": "Awaiting Translation",
-        "This can not be undone.": "Awaiting Translation"
+        "This can not be undone.": "Awaiting Translation",
+        "new chat message from": "Awaiting Translation",
+        "in deal": "Awaiting Translation",
+        "accepted": "Awaiting Translation",
+        "You are now in a deal with": "Awaiting Translation",
+        "for": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -753,7 +783,12 @@
         "The passwords dont match.": "Awaiting Translation",
         "back to profile": "Awaiting Translation",
         "Do you want to delete this account?": "Awaiting Translation",
-        "This can not be undone.": "Awaiting Translation"
+        "This can not be undone.": "Awaiting Translation",
+        "new chat message from": "Awaiting Translation",
+        "in deal": "Awaiting Translation",
+        "accepted": "Awaiting Translation",
+        "You are now in a deal with": "Awaiting Translation",
+        "for": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -862,7 +897,12 @@
         "The passwords dont match.": "Awaiting Translation",
         "back to profile": "Awaiting Translation",
         "Do you want to delete this account?": "Awaiting Translation",
-        "This can not be undone.": "Awaiting Translation"
+        "This can not be undone.": "Awaiting Translation",
+        "new chat message from": "Awaiting Translation",
+        "in deal": "Awaiting Translation",
+        "accepted": "Awaiting Translation",
+        "You are now in a deal with": "Awaiting Translation",
+        "for": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -971,6 +1011,11 @@
         "The passwords dont match.": "Awaiting Translation",
         "back to profile": "Awaiting Translation",
         "Do you want to delete this account?": "Awaiting Translation",
-        "This can not be undone.": "Awaiting Translation"
+        "This can not be undone.": "Awaiting Translation",
+        "new chat message from": "Awaiting Translation",
+        "in deal": "Awaiting Translation",
+        "accepted": "Awaiting Translation",
+        "You are now in a deal with": "Awaiting Translation",
+        "for": "Awaiting Translation"
     }
 }
