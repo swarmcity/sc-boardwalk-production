@@ -22,7 +22,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
-<dom-module id="page-email-success">
+<dom-module id="page-email-success-profile">
     <template>
         <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
@@ -132,14 +132,14 @@ This code may only be used under the license found at https://github.com/swarmci
                 <div class="greytext">{{localize('Your account file combined with your password will always give you access to your SWT balance.')}}</div>
             </div>
             <div class="bottom">
-                <div class="button" on-click="_back">{{localize('back to profile')}}&nbsp;<span class="bold">swarm.city</span></div>
+                <div class="button" on-click="_back">{{localize('back to profile')}}</div>
             </div>
         </div>
 
     </template>
 
     <script>
-        class MyEmailBackup extends new ReduxMixin(Polymer.mixinBehaviors([
+        class MyEmailBackupProfile extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
             Polymer.NeonAnimationRunnerBehavior,
             Polymer.NeonAnimatableBehavior,
@@ -147,7 +147,7 @@ This code may only be used under the license found at https://github.com/swarmci
             Polymer.Element
         )) {
             static get is() {
-                return 'page-email-success';
+                return 'page-email-success-profile';
             }
             static get properties() {
                 return {
@@ -217,6 +217,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
         }
-        window.customElements.define(MyEmailBackup.is, MyEmailBackup);
+        window.customElements.define(MyEmailBackupProfile.is, MyEmailBackupProfile);
     </script>
 </dom-module>
