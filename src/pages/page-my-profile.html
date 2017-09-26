@@ -42,9 +42,10 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-vertical;
                 @apply --layout-start-justified;
                 @apply --layout-center;
-                background-image: var(--sc-bg);
+                background-color: #DADADA;
                 width: 100%;
                 max-width: 100%;
+                overflow: auto
             }
 
             .container[wide-layout] {
@@ -52,15 +53,14 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-start-justified;
                 @apply --layout-center;
                 max-width: 100%;
-                
             }
 
             .top {
                 @apply --layout-vertical;
                 @apply --layout-center;
                 @apply --layout-end-justified;
+                background-image: var(--sc-bg);
                 width: 100%;
-                height: 65vh;
                 box-sizing: border-box;
                 padding: 0 14vw;
                 max-width: 100%;
@@ -70,9 +70,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-horizontal;
                 @apply --layout-start-justified;
                 @apply --layout-start;
-                box-sizing: border-box;
-                padding: 10vh 0 0 0;
-                height: 25vh;
                 box-sizing: border-box;
                 padding: 10vh 12vw 0 12vw;
                 max-width: 100%;
@@ -235,25 +232,27 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-vertical;
                 @apply --layout-start-justified;
                 @apply --layout-center;
+                background-image: var(--sc-bg);
                 width: 100%;
                 box-sizing: border-box;
                 padding: 5vh 14vw 0 14vw;
-                min-height: 25vh;
                 max-width: 100%;
             }
 
             .container[wide-layout] .hashtagbox {
+                @apply --layout-start;
                 box-sizing: border-box;
-                padding: 15vh 12w 0 12vw;
+                padding: 40px 12vw 70px 12vw;
             }
 
             .temp {
                 @apply --layout-horizontal;
                 @apply --layout-start-justified;
-                @apply --layout-center;
+                @apply --layout-end;
                 box-sizing: border-box;
-                padding: 5px;
+                padding: 2px 0 2px 0;
                 width: 100%;
+                max-width: 60vw;
             }
 
             .hashtagname {
@@ -263,17 +262,23 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .deals {
+                margin-bottom: 2px;
+            }
+
+            .ruler {
                 @apply --layout-flex;
-                margin-bottom: 5px;
-            }
-
-            .container[wide-layout] .hashtagbox {
                 box-sizing: border-box;
-                padding: 0 12vw;
+                margin: 0 35px 4px 35px;
+                border-bottom: 2px solid rgba(25, 25, 25, 0.1);
             }
 
-            .reputation {
+            .rep-amount {
                 @apply --body-bold;
+            }
+
+            .rep {
+                @apply --small-bold;
+                margin: 0 0 0.5px 5px;
             }
 
             .divider {
@@ -288,8 +293,8 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-vertical;
                 @apply --layout-center-justified;
                 @apply --layout-center;
+                background-image: var(--sc-bg);
                 width: 100%;
-                height: 40vh;
                 box-sizing: border-box;
                 padding: 0 14vw;
                 max-width: 100%;
@@ -297,9 +302,8 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .container[wide-layout] .buttonbox {
                 @apply --layout-start;
-                height: 30vh;
                 box-sizing: border-box;
-                padding: 0 12vw;
+                padding: 50px 12vw;
             }
 
             .logout {
@@ -353,21 +357,19 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .bottom {
                 @apply --layout-vertical;
-                @apply --layout-center-justified;
+                @apply --layout-end-justified;
                 @apply --layout-center;
                 width: 100%;
-                background-color: #DADADA;
-                height: 35vh;
                 box-sizing: border-box;
-                padding: 0 14vw 4vh 14vw;
+                padding: 0 14vw 25px 14vw;
                 max-width: 100%;
             }
 
             .container[wide-layout] .bottom {
+                @apply --layout-start-justified;
                 @apply --layout-start;
-                height: 20vh;
                 box-sizing: border-box;
-                padding: 0 12vw 4vh 12vw;
+                padding: 40px 12vw 25px 12vw;
             }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
@@ -412,21 +414,27 @@ This code may only be used under the license found at https://github.com/swarmci
                     <div class="deals">
                         <span class="bluetext">show deals</span>
                     </div>
-                    <div class="reputation">16 SWR</div>
+                    <div class="ruler"></div>
+                    <div class="rep-amount">16</div>
+                    <div class="rep">SWR</div>
                 </div>
                 <div class="temp">
                     <div class="hashtagname">#needaride</div>
                     <div class="deals">
                         <span class="bluetext">show deals</span>
                     </div>
-                    <div class="reputation">7 SWR</div>
+                    <div class="ruler"></div>
+                    <div class="rep-amount">7</div>
+                    <div class="rep">SWR</div>
                 </div>
                 <div class="temp">
                     <div class="hashtagname">#swarmbnb</div>
                     <div class="deals">
                         <span class="bluetext">show deals</span>
                     </div>
-                    <div class="reputation">2 SWR</div>
+                    <div class="ruler"></div>
+                    <div class="rep-amount">2</div>
+                    <div class="rep">SWR</div>
                 </div>
             </div>
             <div class="divider"></div>
@@ -510,7 +518,7 @@ This code may only be used under the license found at https://github.com/swarmci
             * takes the user to page-stop-signup
             */
             _close() {
-                this.path = 'stop-signup/';
+                window.history.back();
             }
             /**
             * takes the user to the next page in user creation
