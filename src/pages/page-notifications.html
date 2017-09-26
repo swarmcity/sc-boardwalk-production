@@ -39,26 +39,57 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .container {
                 @apply --layout-vertical;
-                @apply --layout-end-justified;
+                @apply --layout-start-justified;
                 @apply --layout-center;
-                background-image: var(--sc-bg);
-                height: 100%;
-                width: 100%;
                 box-sizing: border-box;
-                padding: 0 14vw;
+                padding: 10vh 14vw 0 14vw;
+                background-image: var(--sc-bg);
+                width: 100%;
+                max-width: 100%;
+                overflow: auto;
+                min-height: 100vh;
             }
 
             .container[wide-layout] {
                 @apply --layout-vertical;
-                @apply --layout-end-justified;
-                @apply --layout-start;
-                padding: 0 12vw;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                box-sizing: border-box;
+                padding: 10vh 12vw 0 12vw;
+            }
+
+            .close {
+                @apply --xmark-grey3-small;
+                @apply --close;
+            }
+
+            .chat {
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+            }
+
+            img {
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                border-radius: 50%;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+            }
+
+            .chat-icon {
+                @apply --chat-blue-small;
+            }
+
+            .next {
+                @apply --next-blue-small;
             }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
-                .close {
+                .close,
+                .chat-icon {
                     @apply --retina;
                 }
             }
@@ -66,7 +97,36 @@ This code may only be used under the license found at https://github.com/swarmci
         <app-location route="{{route}}"></app-location>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <div class="container" wide-layout$="{{wide}}">
-
+            <div class="close" on-click="_close"></div>
+            <div class="chatbox">
+                <div class="chat">
+                    <div class="left">
+                        <div class="avatar"><img src="../../images/defaultavatar.png"></div>
+                        <div class="chat-icon"></div>
+                    </div>
+                    <div class="middle">
+                        <div class="message">1 new chat message from Sally Singer</div>
+                        <div class="dealinfo">in deal 'Jzpjedoz'</div>
+                    </div>
+                    <div class="next"></div>
+                </div>
+                <div class="chat">
+                    <div class="left">
+                        <div class="avatar"><img src="../../images/defaultavatar.png"></div>
+                        <div class="chat-icon"></div>
+                    </div>
+                    <div class="middle">
+                        <div class="message">3 new chat messages from Faffy Paffy</div>
+                        <div class="dealinfo">in deal 'buttplay'</div>
+                    </div>
+                    <div class="next"></div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="regularbox">
+                <div class="regular"></div>
+                <div class="regular"></div>
+            </div>
         </div>
 
     </template>
