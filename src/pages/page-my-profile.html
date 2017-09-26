@@ -235,6 +235,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 padding: 2px 8px 4px 8px;
                 border-radius: 12px;
                 margin-top: 7vh;
+                cursor: pointer;
             }
 
             .container[wide-layout] .notifications {
@@ -422,7 +423,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     </div>
                 </div>
                 <div class="topright">
-                    <div class="notifications">{{localize('no new notifications')}}</div>
+                    <div class="notifications" on-click="_toNotifications">{{localize('no new notifications')}}</div>
                 </div>
             </div>
             <div class="hashtagbox">
@@ -532,16 +533,22 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             /**
-            * takes the user to page-stop-signup
+            * takes the user to hashtag page he came from or hashtag-list
             */
             _close() {
                 window.history.back();
             }
             /**
-            * takes the user to the next page in user creation
+            * takes the user to page-resize-avatar
             */
             _toResizeAvatar() {
                 this.path = 'resize-avatar/';
+            }
+            /**
+            * takes the user to page notifications
+            */
+            _toNotifications() {
+                this.path= 'notifications/';
             }
             /**
             * takes the user to make-backup-profile
