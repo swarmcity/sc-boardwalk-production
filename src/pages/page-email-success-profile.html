@@ -22,153 +22,83 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
-<dom-module id="page-make-backup-profile">
+<dom-module id="page-email-success">
     <template>
         <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
     -->
         <style include="shared-styles">
              :host {
-                height: 100%;
+                height: 100vh;
                 width: 100vw;
-                max-width: 100%;
                 display: block;
             }
 
             .container {
-                @apply --layout-vertical;
-                @apply --layout-start-justified;
-                @apply --layout-center;
-                background-image: var(--sc-bg);
                 height: 100%;
                 width: 100%;
-                box-sizing: border-box;
-                padding: 0 12vw;
-            }
-
-            .container[wide-layout] {
                 @apply --layout-vertical;
-                @apply --layout--start-justified;
-                @apply --layout-start;
+                @apply --layout-end-justified;
+                background-image: var(--sc-bg);
                 box-sizing: border-box;
                 padding: 0 14vw;
             }
 
-            .top {
-                width: 100%;
-            }
-
-            .close {
-                @apply --xmark-grey3-small;
-                @apply --close;
-            }
-
-            .close:active {
-                @apply --button-active;
+            .container[wide-layout] {
+                padding: 0 12vw 0 12vw;
             }
 
             .title {
                 @apply --main-title1;
-                color: var(--sc-grey3b);
-                margin-top: 15vh;
+                color: var(--sc-blue);
+                word-wrap: break-word;
                 text-align: center;
+                margin: 15vh 0 4vh 0;
             }
 
             .container[wide-layout] .title {
-                margin-top: 25vh;
+                margin: 25vh 0 4vh 0;
                 @apply --layout-horizontal;
                 @apply --layout--start-justified;
                 @apply --main-title1-wide;
+                max-width: 750px;
             }
 
-            .trianglecontainer {
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
-                position: relative;
-                top: 25px;
-            }
-
-            .container[wide-layout] .trianglecontainer {
-                @apply --layout-start-justified;
-                top: 85px;
-                left: 25px;
-            }
-
-            .triangle {
-                @apply --alert-blue-normal;
-            }
-
-            .box {
-                @apply --layout-vertical;
-                @apply --layout--start-justified;
-                padding: 54px 25px 40px;
-                box-sizing: border-box;
-                background-color: var(--sc-white);
-                max-width: 700px;
-            }
-
-            .container[wide-layout] .box {
-                box-sizing: border-box;
-                padding: 40px 40px 40px 100px;
-            }
-
-            .textbox {
-                @apply --layout-vertical;
-                @apply --body-bold;
-                color: var(--sc-grey4);
-                text-align: center;
-            }
-
-            .container[wide-layout] .textbox {
-                text-align: left;
-            }
-
-            .container[wide-layout] .inner-middle {
-                margin: 0 0 15px 0;
-            }
-
-            .inner-middle {
-                margin: 15px 0;
-            }
-
-            .bottom {
-                @apply --layout-vertical;
-                @apply --layout-start-justified;
-                @apply --layout-center;
-                height: 50vh;
+            .top {
+                @apply --layout-flex;
+                height: 100%;
                 width: 100%;
             }
 
-            .container[wide-layout] .bottom {
-                @apply --layout-start;
+            .greytext {
+                @apply --body-bold;
+                color: var(--sc-grey4);
+                margin-bottom: 4vh;
+                text-align: center;
+                line-height: 22px;
             }
 
-            .buttons {
-                margin-top: 40px;
-                width: 100%
+            .container[wide-layout] .greytext {
+                margin-bottom: 2vh;
+                text-align: left;
+                max-width: 430px;
             }
 
             .button {
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
                 @apply --text-button-big-fullwhite;
-                box-sizing: border-box;
-                padding: 30px 30px;
-                color: var(--sc-blue);
-                margin-bottom: 10px;
+                width: 100%;
+                max-width: 320px;
+                margin-top: 12vh;
+            }
+
+            .container[wide-layout] .button {
+                margin-top: 0px;
             }
 
             .button:active {
                 @apply --button-active;
-            }
-
-            .container[wide-layout] .button {
-                @apply --layout-vertical;
-                @apply --layout-center-center;
-                box-sizing: border-box;
-                width: 100%;
-                height: 15vh;
-                margin: 0 14px 14px 0;
-                max-width: 320px;
-                max-height: 75px;
             }
 
             .bluetext {
@@ -176,16 +106,20 @@ This code may only be used under the license found at https://github.com/swarmci
                 cursor: pointer;
                 color: var(--sc-blue);
                 border-bottom: 2px dotted var(--sc-blue);
-                margin: 40px 0 60px 0;
+                margin-top: 4vh;
             }
 
-            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-            only screen and (min--moz-device-pixel-ratio: 1.5),
-            only screen and (min-resolution: 240dpi) {
-                .close,
-                .triangle {
-                    @apply --retina;
-                }
+            .bottom {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                height: 40vh;
+                width: 100%;
+            }
+
+            .container[wide-layout] .bottom {
+                @apply --layout-start;
+                height: 35vh;
             }
         </style>
 
@@ -193,32 +127,19 @@ This code may only be used under the license found at https://github.com/swarmci
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <div class="container" wide-layout$="{{wide}}">
             <div class="top">
-                <div class="close" on-click="_close"></div>
-                <div class="title">{{localize('Make a backup.')}}</div>
-                <div class="trianglecontainer">
-                    <div class="triangle"></div>
-                </div>
-                <div class="box">
-                    <div class="textbox">
-                        <div class="inner-top">{{localize('There are no central servers on which accounts are stored.')}}</div>
-                        <div class="inner-middle">{{localize('This means you are responsible for your own account at all times.')}}</div>
-                        <div class="inner-bottom">{{localize('Your backup is encrypted with your current password.')}}</div>
-                    </div>
-                </div>
+                <div class="title">{{localize('Success!')}}</div>
+                <div class="greytext">{{localize('The file has been sent to your email.')}}</div>
+                <div class="greytext">{{localize('Your account file combined with your password will always give you access to your SWT balance.')}}</div>
             </div>
             <div class="bottom">
-                <div class="buttons">
-                    <div class="button" on-click="_mail">{{localize('email my file')}}</div>
-                    <div class="button" on-click="_download">{{localize('download my file')}}</div>
-                </div>
-                <div class="bluetext" on-click="_toKeys">{{localize('show my keys')}}</div>
+                <div class="button" on-click="_back">{{localize('back to profile')}}&nbsp;<span class="bold">swarm.city</span></div>
             </div>
         </div>
 
     </template>
 
     <script>
-        class MyMakeBackupProfile extends new ReduxMixin(Polymer.mixinBehaviors([
+        class MyEmailBackup extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
             Polymer.NeonAnimationRunnerBehavior,
             Polymer.NeonAnimatableBehavior,
@@ -226,7 +147,7 @@ This code may only be used under the license found at https://github.com/swarmci
             Polymer.Element
         )) {
             static get is() {
-                return 'page-make-backup-profile';
+                return 'page-email-success';
             }
             static get properties() {
                 return {
@@ -275,29 +196,16 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             /**
-            * takes the user to page-my-profile
+            * takes the user to page-stop-signup
             */
             _close() {
+                this.path = 'stop-signup/';
+            }
+            /**
+            * takes the user to page-my-profile
+            */
+            _back() {
                 this.path = 'my-profile/';
-            }
-            /**
-            * opens mailto with account info, after success routs to email-success
-            */
-            _mail() {
-                this.path = 'email-success-profile/';
-            }
-
-            /**
-            * downloads account info, after success routs to download-success
-            */
-            _download() {
-                this.path = 'download-success-profile/';
-            }
-            /**
-            * changes the current path to my-keys
-            */
-            _toKeys() {
-                this.path = 'my-keys/';
             }
             /**
             * changes the current path
@@ -309,6 +217,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
         }
-        window.customElements.define(MyMakeBackupProfile.is, MyMakeBackupProfile);
+        window.customElements.define(MyEmailBackup.is, MyEmailBackup);
     </script>
 </dom-module>
