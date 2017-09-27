@@ -41,21 +41,19 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-vertical;
                 @apply --layout-start-justified;
                 @apply --layout-center;
-                box-sizing: border-box;
-                padding: 10vh 14vw 0 14vw;
                 background-image: var(--sc-bg);
                 width: 100%;
                 max-width: 100%;
                 overflow: auto;
                 min-height: 100vh;
+                box-sizing: border-box;
+                padding-top: 10vh;
             }
 
             .container[wide-layout] {
                 @apply --layout-vertical;
                 @apply --layout-start-justified;
-                @apply --layout-center;
-                box-sizing: border-box;
-                padding: 10vh 12vw 0 12vw;
+                @apply --layout-start;
             }
 
             .close {
@@ -64,8 +62,43 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .chat {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 20px 14vw 5px 14vw;
+            }
+
+            .container[wide-layout] .chat {
+                box-sizing: border-box;
+                padding: 20px 12vw 5px 12vw;
+            }
+
+            .content {
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                width: 100%;
+                max-width: 800px;
+            }
+
+            .container[wide-layout] .content {
                 @apply --layout-horizontal;
                 @apply --layout-start-justified;
+            }
+
+            .left {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-start;
+                height: 100%;
+            }
+
+            .container[wide-layout] .left {
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+                @apply --layout-center;
+            }
+
+            .middle {
+                @apply --layout-flex;
             }
 
             img {
@@ -85,6 +118,30 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --next-blue-small;
             }
 
+            .greyline {
+                width: 100vw;
+                background-color: #9B9B9B;
+                opacity: 0.2;
+                height: 1px;
+            }
+
+            .bluebox {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0 0 0 14vw;
+            }
+
+            .container[wide-layout] .bluebox {
+                box-sizing: border-box;
+                padding: 0 12vw 0 12vw;
+            }
+
+            .blueline {
+                border: 2px solid var(--sc-blue);
+                width: 100%;
+                max-width: 800px;
+            }
+
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
@@ -98,8 +155,8 @@ This code may only be used under the license found at https://github.com/swarmci
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <div class="container" wide-layout$="{{wide}}">
             <div class="close" on-click="_close"></div>
-            <div class="chatbox">
-                <div class="chat">
+            <div class="chat">
+                <div class="content">
                     <div class="left">
                         <div class="avatar"><img src="../../images/defaultavatar.png"></div>
                         <div class="chat-icon"></div>
@@ -110,7 +167,10 @@ This code may only be used under the license found at https://github.com/swarmci
                     </div>
                     <div class="next"></div>
                 </div>
-                <div class="chat">
+            </div>
+            <div class="greyline"></div>
+            <div class="chat">
+                <div class="content">
                     <div class="left">
                         <div class="avatar"><img src="../../images/defaultavatar.png"></div>
                         <div class="chat-icon"></div>
@@ -121,6 +181,10 @@ This code may only be used under the license found at https://github.com/swarmci
                     </div>
                     <div class="next"></div>
                 </div>
+            </div>
+            <div class="greyline"></div>
+            <div class="bluebox">
+                <div class="blueline"></div>
             </div>
             <div class="divider"></div>
             <div class="regularbox">
