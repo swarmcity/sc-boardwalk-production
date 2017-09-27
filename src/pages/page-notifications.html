@@ -61,15 +61,21 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --close;
             }
 
-            .chat {
+            .notificationbox {
                 width: 100%;
                 box-sizing: border-box;
-                padding: 20px 14vw 5px 14vw;
+                transition: background-color 0.5s ease;
+                padding: 20px 10vw 15px 14vw;
+                cursor: pointer;
             }
 
-            .container[wide-layout] .chat {
+            .notificationbox:hover {
+                background-color: var(--sc-white);
+            }
+
+            .container[wide-layout] .notificationbox {
                 box-sizing: border-box;
-                padding: 20px 12vw 5px 12vw;
+                padding: 20px 12vw 20px 12vw;
             }
 
             .content {
@@ -98,20 +104,65 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .middle {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                @apply --layout-flex;
+                box-sizing: border-box;
+                padding: 0 0 0 15px;
+            }
+
+            .container[wide-layout] .middle {
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                box-sizing: border-box;
+                padding: 0 0 0 25px;
+            }
+
+            .chat-message {
+                @apply --body-bold;
+                color: var(--sc-blue);
+                width: 100%;
+                text-align: left;
+            }
+
+            .container[wide-layout] .chat-message {
+                width: auto;
+            }
+
+            .chat-dealinfo {
+                @apply --layout-vertical;
+                @apply --layout-center-justified;
+                @apply --body-default;
+                color: var(--sc-blue);
+                width: 100%;
+                text-align: left;
+                height: 30px;
+            }
+
+            .container[wide-layout] .chat-dealinfo {
+                box-sizing: border-box;
+                padding: 0 0 0 5px;
+                width: auto;
                 @apply --layout-flex;
             }
 
             img {
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
                 width: 30px;
                 height: 30px;
                 cursor: pointer;
                 border-radius: 50%;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
             }
 
             .chat-icon {
                 @apply --chat-blue-small;
+            }
+
+            .container[wide-layout] .chat-icon {
+                margin-left: 8px;
             }
 
             .next {
@@ -142,6 +193,22 @@ This code may only be used under the license found at https://github.com/swarmci
                 max-width: 800px;
             }
 
+            .divider {
+                width: 100%;
+                height: 5vh;
+            }
+
+            .text {
+                @apply --body-default;
+                box-sizing: border-box;
+                padding: 0 5px 0 0;
+                width: 100%;
+            }
+
+            .container[wide-layout] .text {
+                width: auto;
+            }
+
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
@@ -155,29 +222,29 @@ This code may only be used under the license found at https://github.com/swarmci
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <div class="container" wide-layout$="{{wide}}">
             <div class="close" on-click="_close"></div>
-            <div class="chat">
+            <div class="notificationbox">
                 <div class="content">
                     <div class="left">
                         <div class="avatar"><img src="../../images/defaultavatar.png"></div>
                         <div class="chat-icon"></div>
                     </div>
                     <div class="middle">
-                        <div class="message">1 new chat message from Sally Singer</div>
-                        <div class="dealinfo">in deal 'Jzpjedoz'</div>
+                        <div class="chat-message">1 new chat message from Sally Singer</div>
+                        <div class="chat-dealinfo">in deal 'Jzpjedoz'</div>
                     </div>
                     <div class="next"></div>
                 </div>
             </div>
             <div class="greyline"></div>
-            <div class="chat">
+            <div class="notificationbox">
                 <div class="content">
                     <div class="left">
                         <div class="avatar"><img src="../../images/defaultavatar.png"></div>
                         <div class="chat-icon"></div>
                     </div>
                     <div class="middle">
-                        <div class="message">3 new chat messages from Faffy Paffy</div>
-                        <div class="dealinfo">in deal 'buttplay'</div>
+                        <div class="chat-message">3 new chat messages from Faffy Paffy</div>
+                        <div class="chat-dealinfo">in deal 'buttplay'</div>
                     </div>
                     <div class="next"></div>
                 </div>
@@ -187,10 +254,34 @@ This code may only be used under the license found at https://github.com/swarmci
                 <div class="blueline"></div>
             </div>
             <div class="divider"></div>
-            <div class="regularbox">
-                <div class="regular"></div>
-                <div class="regular"></div>
+
+
+            <div class="notificationbox">
+                <div class="content">
+                    <div class="left">
+                        <div class="avatar"><img src="../../images/defaultavatar.png"></div>
+                    </div>
+                    <div class="middle">
+                        <div class="text">Sally Singer accepted. You are now in a deal with Sally Singer for 1 SWT.</div>
+                    </div>
+                    <div class="next"></div>
+                </div>
             </div>
+            <div class="greyline"></div>
+            <div class="notificationbox">
+                <div class="content">
+                    <div class="left">
+                        <div class="avatar"><img src="../../images/defaultavatar.png"></div>
+                    </div>
+                    <div class="middle">
+                        <div class="text">Sally Singer accepted. You are now in a deal with Sally Singer for 1 SWT.</div>
+                    </div>
+                    <div class="next"></div>
+                </div>
+            </div>
+            <div class="greyline"></div>
+
+
         </div>
 
     </template>
@@ -256,7 +347,7 @@ This code may only be used under the license found at https://github.com/swarmci
             * takes the user to 
             */
             _close() {
-
+                this.path = 'my-profile/';
             }
             /**
             * changes the current path
