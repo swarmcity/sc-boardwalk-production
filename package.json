@@ -12,7 +12,7 @@
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "uglify-es": "^3.0.28"
+    "uglify-es": "^3.1.2"
   },
   "scripts": {
     "lint": "npm run lint:javascript",
