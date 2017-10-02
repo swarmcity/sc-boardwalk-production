@@ -34,19 +34,22 @@ This code may only be used under the license found at https://github.com/swarmci
         Page specific styles, if the style is used on more than one page, moveit to shared styles.
         -->
         <style include="shared-styles">
-            :host {
+             :host {
                 width: 100vw;
-                display: block;
-                background-color: #f4f3f4;
+                min-height: 80vh;
+                display: block;              
+                max-width: 100%;
             }
-
+            
             .container {
+                height: 100%;
                 width: 100%;
+                background-color: var(--sc-grey1);
             }
 
             .header {
                 @apply --layout-horizontal;
-                background-color: #f4f3f4;
+                background-image: var(--sc-bg);
                 box-sizing: border-box;
                 padding: 40px 40px 0 40px;
                 position: fixed;
@@ -84,11 +87,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 width: 100%;
                 box-sizing: border-box;
                 padding: 0 40px 2vh 40px;
-                background-color: #f4f3f4;
+                background-image: var(--sc-bg);
                 z-index: 1;
             }
 
             .container[wide-layout] .slider {
+                padding: 0 40px 2vh 40px;
                 padding: 0 10vw 2vh 10vw;
                 top: 190px;
             }
@@ -130,6 +134,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 color: white;
                 background-color: var(--sc-grey4);
                 border-bottom: 0;
+                padding: 0 40px 2vh 40px;
                 padding: 1px 2px;
             }
 
@@ -143,6 +148,10 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .container[wide-layout] display-hashtag-list {
                 margin-top: 190px;
+            }
+
+            .fullheight {
+                height: 100%;
             }
 
             @keyframes slideUp {
@@ -193,44 +202,33 @@ This code may only be used under the license found at https://github.com/swarmci
         <app-location route="{{route}}"></app-location>
         <div class="container" wide-layout$="{{wide}}">
             <div class="header">
-                
+
                 <div class="topleft">
                     <template is="dom-if" if="{{completeAccount}}">
-                        <display-my-info id="myInfo" complete-account="{{completeAccount}}"></display-my-info>
+                        <display-my-info id="myInfo" complete-account="{{completeAccount}}">
+                        </display-my-info>
                     </template>
                 </div>
 
-                
+
                 <div class="topright">
                     <div class="back" on-click="_back" id="back"></div>
 
-                    <display-filter-list 
-                        toggle 
-                        id="filterToggle"
-                        class="filter-toggle"
-                        highlight-filter$="{{highlightFilterToggle}}"
-                        show-slider="{{showSlider}}" 
-                        range="{{range}}" 
-                        route="{{route}}" 
-                        path="{{path}}">
+                    <display-filter-list toggle id="filterToggle" class="filter-toggle" highlight-filter$="{{highlightFilterToggle}}" show-slider="{{showSlider}}"
+                        range="{{range}}" route="{{route}}" path="{{path}}">
                     </display-filter-list>
 
                 </div>
-                
+
             </div>
-            
-            <display-filter-list 
-                slider 
-                class$="slider [[sliderState]]" 
-                show-slider="{{showSlider}}" 
-                range="{{range}}" 
-                route="{{route}}" 
+
+            <display-filter-list slider class$="slider [[sliderState]]" show-slider="{{showSlider}}" range="{{range}}" route="{{route}}"
                 path="{{path}}">
             </display-filter-list>
-    
-            <div class$="fade [[fadeState]]" on-click="_fadeClose">
+
+            <div class$="fade [[fadeState]] fullheight" on-click="_fadeClose">
                 <display-hashtag-list 
-                    id="hashtagList"
+                    id="hashtagList" 
                     range="[[range]]" 
                     path="{{path}}" 
                     show-slider="{{showSlider}}">
@@ -328,40 +326,40 @@ This code may only be used under the license found at https://github.com/swarmci
             _entryAnimation() {
                 if (this.location.nowAt == 'hashtag-list') {
                     this.$.hashtagList.animate(
-                    [
-                        {'opacity': '0', 'transform': 'translateY(100px)'},
-                        {'opacity': '1', 'transform': 'translateY(0)'},
-                    ], {
-                        fill: 'none',
-                        duration: 300,
-                        iterations: 1,
-                        easing: 'cubic-bezier(0.42,0,0.58,1)',
-                        delay: 0,
-                    }
+                        [
+                            {'opacity': '0', 'transform': 'translateY(100px)'},
+                            {'opacity': '1', 'transform': 'translateY(0)'},
+                        ], {
+                            fill: 'none',
+                            duration: 300,
+                            iterations: 1,
+                            easing: 'cubic-bezier(0.42,0,0.58,1)',
+                            delay: 0,
+                        }
                     );
                     this.$.back.animate(
-                    [
-                        {'opacity': '0'},
-                        {'opacity': '1'},
-                    ], {
-                        fill: 'none',
-                        duration: 300,
-                        iterations: 1,
-                        easing: 'cubic-bezier(0.42,0,0.58,1)',
-                        delay: 0,
-                    }
+                        [
+                            {'opacity': '0'},
+                            {'opacity': '1'},
+                        ], {
+                            fill: 'none',
+                            duration: 300,
+                            iterations: 1,
+                            easing: 'cubic-bezier(0.42,0,0.58,1)',
+                            delay: 0,
+                        }
                     );
                     this.$.filterToggle.animate(
-                    [
-                        {'opacity': '0'},
-                        {'opacity': '1'},
-                    ], {
-                        fill: 'none',
-                        duration: 300,
-                        iterations: 1,
-                        easing: 'cubic-bezier(0.42,0,0.58,1)',
-                        delay: 0,
-                    }
+                        [
+                            {'opacity': '0'},
+                            {'opacity': '1'},
+                        ], {
+                            fill: 'none',
+                            duration: 300,
+                            iterations: 1,
+                            easing: 'cubic-bezier(0.42,0,0.58,1)',
+                            delay: 0,
+                        }
                     );
                 }
             }
@@ -379,7 +377,7 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.sliderState = 'slider-visible-hidden';
                         this.fadeState = 'fade-hidden-visible';
                         this.highlightFilterToggle = false;
-                        setTimeout(() =>{
+                        setTimeout(() => {
                             this.sliderState = 'slider-hidden';
                         }, 300);
                         break;

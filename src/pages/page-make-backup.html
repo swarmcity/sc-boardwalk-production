@@ -29,8 +29,9 @@ This code may only be used under the license found at https://github.com/swarmci
     -->
         <style include="shared-styles">
              :host {
-                height: 100vh;
+                height: 100%;
                 width: 100vw;
+                max-width: 100%;
                 display: block;
             }
 
@@ -38,7 +39,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-vertical;
                 @apply --layout-start-justified;
                 @apply --layout-center;
-                background-color: var(--sc-bg);
+                background-image: var(--sc-bg);
                 height: 100%;
                 width: 100%;
                 box-sizing: border-box;
@@ -51,9 +52,17 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-start;
             }
 
+            .top {
+                width: 100%;
+            }
+
             .close {
-                @apply --xmark-grey4-small;
+                @apply --xmark-grey3-small;
                 @apply --close;
+            }
+
+            .close:active {
+                @apply --button-active;
             }
 
             .title {
@@ -90,12 +99,14 @@ This code may only be used under the license found at https://github.com/swarmci
             .box {
                 @apply --layout-vertical;
                 @apply --layout--start-justified;
-                padding: 40px 30px 30px;
+                padding: 54px 25px 40px;
                 box-sizing: border-box;
                 background-color: var(--sc-white);
+                max-width:700px;
             }
 
             .container[wide-layout] .box {
+                box-sizing: border-box;
                 padding: 40px 40px 40px 100px;
             }
 
@@ -132,10 +143,11 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .buttons {
                 margin-top: 40px;
+                width: 100%
             }
 
             .button {
-                @apply --text-button-big;
+                @apply --text-button-big-fullwhite;
                 box-sizing: border-box;
                 padding: 30px 30px;
                 color: var(--sc-blue);
@@ -149,12 +161,11 @@ This code may only be used under the license found at https://github.com/swarmci
             .container[wide-layout] .button {
                 @apply --layout-vertical;
                 @apply --layout-center-center;
-                @apply --text-button-big;
                 box-sizing: border-box;
                 width: 100%;
                 height: 15vh;
                 margin: 0 14px 14px 0;
-                max-width: 276px;
+                max-width: 320px;
                 max-height: 75px;
             }
 
@@ -179,8 +190,8 @@ This code may only be used under the license found at https://github.com/swarmci
         <app-location route="{{route}}"></app-location>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <div class="container" wide-layout$="{{wide}}">
-            <div class="close" on-click="_close"></div>
             <div class="top">
+                <div class="close" on-click="_close"></div>
                 <div class="title">{{localize('Make a backup.')}}</div>
                 <div class="trianglecontainer">
                     <div class="triangle"></div>

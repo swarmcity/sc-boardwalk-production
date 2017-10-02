@@ -39,17 +39,20 @@ This code may only be used under the license found at https://github.com/swarmci
         <style include="shared-styles">
              :host {
                 width: 100vw;
+                height: 100%;
                 display: block;
+                max-width: 100%;
             }
 
             .container {
                 width: 100%;
-                min-height: 100vh;
+                height: 100%;
+                background-color: var(--sc-grey1);
             }
 
             .header {
                 @apply --layout-vertical;
-                background-color: var(--sc-grey1);
+                background-image: var(--sc-bg);
                 box-sizing: border-box;
                 padding: 40px 40px 0 40px;
                 position: fixed;
@@ -165,7 +168,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 width: 100%;
                 box-sizing: border-box;
                 padding: 0 40px 2vh 40px;
-                background-color: var(--sc-grey1);
+                background-image: var(--sc-bg);
                 z-index: 1;
             }
 
@@ -212,7 +215,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 width: 100%;
                 box-sizing: border-box;
                 padding: 0 40px 2vh 40px;
-                background-color: var(--sc-grey1);
+                background-image: var(--sc-bg);
                 z-index: 1;
             }
 
@@ -225,6 +228,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 padding: 0 10vw 2vh 10vw;
                 top: 206px;
             }
+
+            .fullheight {
+                height: 100%;
+            }
+
 
             @keyframes slideUp {
                 0% {
@@ -339,13 +347,21 @@ This code may only be used under the license found at https://github.com/swarmci
                 path="{{path}}">
             </display-filter-deals>
 
-            <div class$="fade [[fadeState]]" on-click="_fadeClose">
-                <display-hashtag-deals range="{{range}}" hashtag="{{hashtag}}" route-data="[[routeData]]" path="{{path}}" show-slider="{{showSlider}}"
+            <div class$="fade [[fadeState]] fullheight" on-click="_fadeClose">
+                <display-hashtag-deals 
+                    range="{{range}}" 
+                    hashtag="{{hashtag}}" 
+                    route-data="[[routeData]]" 
+                    path="{{path}}" 
+                    show-slider="{{showSlider}}"
                     show-info="{{showInfo}}">
                 </display-hashtag-deals>
 
                 <div class="dealbtn">
-                    <display-deal-btn route-data="[[routeData]]" path="{{path}}"></display-deal-btn>
+                    <display-deal-btn 
+                    route-data="[[routeData]]" 
+                    path="{{path}}">
+                </display-deal-btn>
                 </div>
             </div>
         </div>
