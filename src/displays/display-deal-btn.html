@@ -52,8 +52,8 @@ The following custom properties and mixins are available for styling:
     </template>
     <script>
         class DisplayDealBtn extends Polymer.mixinBehaviors([
-                Polymer.AppLocalizeBehavior,
-            ],
+            Polymer.AppLocalizeBehavior,
+        ],
             Polymer.Element
         ) {
             static get is() {
@@ -62,25 +62,25 @@ The following custom properties and mixins are available for styling:
             static get properties() {
                 return {
                     /**
-                     * Loading indicates if the componant is loading
-                     * @type {Boolean}
-                     */
+                    * Loading indicates if the componant is loading
+                    * @type {Boolean}
+                    */
                     loading: {
                         type: Boolean,
                         value: false,
                         notify: true,
                     },
                     /**
-                     * route data represents the curent route
-                     * @type {String}
-                     */
+                    * route data represents the curent route
+                    * @type {String}
+                    */
                     routeData: {
                         type: String,
                     },
                     /**
-                     * Path signlas to the parent to change the path
-                     * @type {Boolean}
-                     */
+                    * Path signlas to the parent to change the path
+                    * @type {Boolean}
+                    */
                     path: {
                         type: String,
                         value: null,
@@ -95,8 +95,8 @@ The following custom properties and mixins are available for styling:
             }
 
             /**
-             * Get the user
-             */
+            * Get the user
+            */
             _getUser() {
                 this.$.storage.accountExists()
                     .then((account) => {
@@ -108,9 +108,9 @@ The following custom properties and mixins are available for styling:
             }
 
             /**
-             * Eithe rgo to the new here or new deal page depending if the user has a
-             * complete acocunt.
-             */
+            * Eithe rgo to the new here or new deal page depending if the user has a
+            * complete acocunt.
+            */
             _next() {
                 if (!this.completeAccount) {
                     sessionStorage.setItem('hashtagID', this.routeData.page);

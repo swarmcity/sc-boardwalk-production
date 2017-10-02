@@ -257,21 +257,15 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             /**
-            *changes the current path to choose avatar
+            *changes the current path to password warning
             **/
             _agree() {
                 this.path = 'password-warning/';
             }
             /**
-            *changes the current path to password warning
-            **/
-            _disagree() {
-                this.path = 'choose-avatar-and-username/';
-            }
-            /**
             *changes the current path to previous
             **/
-            _previous() {
+            _disagree() {
                 window.history.back();
             }
             /**
