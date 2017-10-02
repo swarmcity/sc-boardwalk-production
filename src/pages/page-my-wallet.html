@@ -48,8 +48,8 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .container[wide-layout] {
                 @apply --layout-vertical;
-                @apply --layout--start-justified;
-                @apply --layout-start;
+                @apply --layout-start-justified;
+                @apply --layout-center;
                 box-sizing: border-box;
                 padding: 0 12vw;
             }
@@ -61,6 +61,13 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .close:active {
                 @apply --button-active;
+            }
+
+            .divider {
+                width: 100vw;
+                background-color: #9B9B9B;
+                opacity: 0.2;
+                height: 1px;
             }
 
 
@@ -76,7 +83,21 @@ This code may only be used under the license found at https://github.com/swarmci
         <app-location route="{{route}}"></app-location>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <div class="container" wide-layout$="{{wide}}">
-            <div class="close" on-click="_close"></div>
+            <div class="top">
+                <div class="close" on-click="_close"></div>
+                <div class="yellowbox">
+                    <div class="swt">44 SWT</div>
+                    <div class="fiat">= 44 USD</div>
+                </div>
+                <div class="eth"></div>
+            </div>
+            <div class="divider"></div>
+            <div class="middle"><div class="buttons">
+                    <div class="button" on-click="_mail">{{localize('email my file')}}</div>
+                    <div class="button" on-click="_download">{{localize('download my file')}}</div>
+                </div></div>
+            <div class="divider"></div>
+            <div class="bottom"></div>
         </div>
 
     </template>
@@ -110,7 +131,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     * Entry and exit animation
                     */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
