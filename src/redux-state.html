@@ -24,13 +24,6 @@ let reducer = function(state, action) {
                 language: language,
             });
         }
-        case 'HASHTAGS': {
-            let hashtags = state.hashtags;
-            hashtags = action.hashtags;
-            return Object.assign({}, state, {
-                hashtags: hashtags,
-            });
-        }
     }
 };
 const store = Redux.createStore(reducer, /* preloadedState, */
