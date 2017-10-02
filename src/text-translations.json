@@ -113,7 +113,9 @@
         "in deal": "in deal",
         "accepted": "accepted",
         "You are now in a deal with": "You are now in a deal with",
-        "for": "for"
+        "for": "for",
+        "send SWT": "send SWT",
+        "shortcode": "shortcode"
     },
     "cn": {
         "language": "cn",
@@ -218,7 +220,9 @@
         "in deal": "Awaiting Translation",
         "accepted": "Awaiting Translation",
         "You are now in a deal with": "Awaiting Translation",
-        "for": "Awaiting Translation"
+        "for": "Awaiting Translation",
+        "send SWT": "Awaiting Translation",
+        "shortcode": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -332,7 +336,9 @@
         "in deal": "Awaiting Translation",
         "accepted": "Awaiting Translation",
         "You are now in a deal with": "Awaiting Translation",
-        "for": "Awaiting Translation"
+        "for": "Awaiting Translation",
+        "send SWT": "Awaiting Translation",
+        "shortcode": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -446,7 +452,9 @@
         "in deal": "Awaiting Translation",
         "accepted": "Awaiting Translation",
         "You are now in a deal with": "Awaiting Translation",
-        "for": "Awaiting Translation"
+        "for": "Awaiting Translation",
+        "send SWT": "Awaiting Translation",
+        "shortcode": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -560,7 +568,9 @@
         "in deal": "Awaiting Translation",
         "accepted": "Awaiting Translation",
         "You are now in a deal with": "Awaiting Translation",
-        "for": "Awaiting Translation"
+        "for": "Awaiting Translation",
+        "send SWT": "Awaiting Translation",
+        "shortcode": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -674,7 +684,9 @@
         "in deal": "Awaiting Translation",
         "accepted": "Awaiting Translation",
         "You are now in a deal with": "Awaiting Translation",
-        "for": "Awaiting Translation"
+        "for": "Awaiting Translation",
+        "send SWT": "Awaiting Translation",
+        "shortcode": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -788,7 +800,9 @@
         "in deal": "Awaiting Translation",
         "accepted": "Awaiting Translation",
         "You are now in a deal with": "Awaiting Translation",
-        "for": "Awaiting Translation"
+        "for": "Awaiting Translation",
+        "send SWT": "Awaiting Translation",
+        "shortcode": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -902,7 +916,9 @@
         "in deal": "Awaiting Translation",
         "accepted": "Awaiting Translation",
         "You are now in a deal with": "Awaiting Translation",
-        "for": "Awaiting Translation"
+        "for": "Awaiting Translation",
+        "send SWT": "Awaiting Translation",
+        "shortcode": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -1016,6 +1032,8 @@
         "in deal": "Awaiting Translation",
         "accepted": "Awaiting Translation",
         "You are now in a deal with": "Awaiting Translation",
-        "for": "Awaiting Translation"
+        "for": "Awaiting Translation",
+        "send SWT": "Awaiting Translation",
+        "shortcode": "Awaiting Translation"
     }
 }
