@@ -29,7 +29,8 @@
     "src/pages/page-warning-delete.html",
     "src/pages/page-my-wallet.html",
     "src/pages/page-notifications.html",
-    "src/pages/page-show-private-key.html"
+    "src/pages/page-show-private-key.html",
+    "src/pages/page-confirm-sending.html"
   ],
   "sources": [
     "src/**/*",
