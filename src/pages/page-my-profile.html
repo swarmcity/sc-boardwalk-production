@@ -44,8 +44,8 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-center;
                 background-color: #DADADA;
                 width: 100%;
+                min-height: 100vh;
                 max-width: 100%;
-                overflow: auto
             }
 
             .container[wide-layout] {
@@ -265,7 +265,9 @@ This code may only be used under the license found at https://github.com/swarmci
                 box-sizing: border-box;
                 padding: 2px 0 2px 0;
                 width: 100%;
-                overflow: auto;
+            }
+
+            .container[wide-layout] .temp {
                 max-width: 60vw;
             }
 
@@ -548,7 +550,7 @@ This code may only be used under the license found at https://github.com/swarmci
             * takes the user to page notifications
             */
             _toNotifications() {
-                this.path= 'notifications/';
+                this.path = 'notifications/';
             }
             /**
             * takes the user to make-backup-profile
