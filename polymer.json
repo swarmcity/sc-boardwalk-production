@@ -25,7 +25,8 @@
     "src/pages/page-make-backup-profile.html",
     "src/pages/page-download-success-profile.html",
     "src/pages/page-email-success-profile.html",
-    "src/pages/page-warning-delete.html"
+    "src/pages/page-warning-delete.html",
+    "src/pages/page-notifications.html"
   ],
   "sources": [
     "src/**/*",
