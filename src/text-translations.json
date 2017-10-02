@@ -105,7 +105,8 @@
         "show deals": "show deals",
         "logout this user": "logout this user",
         "backup this user": "backup this user",
-        "delete this user": "delete this user"
+        "delete this user": "delete this user",
+        "back to profile": "back to profile"
     },
     "cn": {
         "language": "cn",
@@ -202,7 +203,8 @@
         "logout this user": "Awaiting Translation",
         "backup this user": "Awaiting Translation",
         "delete this user": "Awaiting Translation",
-        "The passwords dont match.": "Awaiting Translation"
+        "The passwords dont match.": "Awaiting Translation",
+        "back to profile": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -308,7 +310,8 @@
         "show deals": "Awaiting Translation",
         "logout this user": "Awaiting Translation",
         "backup this user": "Awaiting Translation",
-        "delete this user": "Awaiting Translation"
+        "delete this user": "Awaiting Translation",
+        "back to profile": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -414,7 +417,8 @@
         "show deals": "Awaiting Translation",
         "logout this user": "Awaiting Translation",
         "backup this user": "Awaiting Translation",
-        "delete this user": "Awaiting Translation"
+        "delete this user": "Awaiting Translation",
+        "back to profile": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -520,7 +524,8 @@
         "logout this user": "Awaiting Translation",
         "backup this user": "Awaiting Translation",
         "delete this user": "Awaiting Translation",
-        "The passwords dont match.": "Awaiting Translation"
+        "The passwords dont match.": "Awaiting Translation",
+        "back to profile": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -626,7 +631,8 @@
         "show deals": "Awaiting Translation",
         "logout this user": "Awaiting Translation",
         "backup this user": "Awaiting Translation",
-        "delete this user": "Awaiting Translation"
+        "delete this user": "Awaiting Translation",
+        "back to profile": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -732,7 +738,8 @@
         "logout this user": "Awaiting Translation",
         "backup this user": "Awaiting Translation",
         "delete this user": "Awaiting Translation",
-        "The passwords dont match.": "Awaiting Translation"
+        "The passwords dont match.": "Awaiting Translation",
+        "back to profile": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -838,7 +845,8 @@
         "logout this user": "Awaiting Translation",
         "backup this user": "Awaiting Translation",
         "delete this user": "Awaiting Translation",
-        "The passwords dont match.": "Awaiting Translation"
+        "The passwords dont match.": "Awaiting Translation",
+        "back to profile": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -944,6 +952,7 @@
         "logout this user": "Awaiting Translation",
         "backup this user": "Awaiting Translation",
         "delete this user": "Awaiting Translation",
-        "The passwords dont match.": "Awaiting Translation"
+        "The passwords dont match.": "Awaiting Translation",
+        "back to profile": "Awaiting Translation"
     }
 }
