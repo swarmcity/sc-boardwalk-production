@@ -21,7 +21,8 @@
     "src/pages/page-my-keys.html",
     "src/pages/page-email-success.html",
     "src/pages/page-download-success.html",
-    "src/pages/page-my-profile.html"
+    "src/pages/page-my-profile.html",
+    "src/pages/page-make-backup-profile.html"
   ],
   "sources": [
     "src/**/*",
