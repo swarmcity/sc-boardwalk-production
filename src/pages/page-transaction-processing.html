@@ -82,9 +82,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --xmark-grey4-small;
             }
 
-            .icon-receive {
-                
-            }
+            .icon-receive {}
 
             .icon-complete {
                 @apply --xmark-grey4-small;
@@ -105,16 +103,16 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-center-center;
             }
 
-            .agreebox {
+            .successbox {
                 @apply --icon-button-big;
             }
 
-            .agree {
+            .success {
                 @apply --vmark-green-normal;
             }
 
             .container[wide-layout] .top {
-                height: 55%;
+                height: 65%;
                 padding: 0 12vw 7vh;
                 @apply --layout-start;
                 @apply --layout-end-justified;
@@ -131,21 +129,68 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container[wide-layout] .bottom {
-                height: 45%;
+                height: 35%;
                 padding: 0 12vw;
                 @apply --layout-start;
             }
 
-            .disagree,
-            .agreebox {
+            .successbox:active {
                 @apply --button-active;
+            }
+
+            @keyframes loadanimation {
+                0% {
+                    transform: scale(1);
+                    opacity: 0.2;
+                }
+                25% {
+                    transform: scale(1.5);
+                    opacity: 1;
+                }
+                50% {
+                    transform: scale(1);
+                    opacity: 0.2;
+                }
+                100% {
+                    transform: scale(1);
+                    opacity: 0;
+                }
+            }
+
+
+            .loading {
+                @apply --layout-horizontal;
+                margin: 2px 0px 2px 0px;
+                box-sizing: border-box;
+                padding: 4px;
+                @apply --layout-horizontal;
+                @apply --layout-end;
+            }
+
+            .smallpoint {
+                margin: 0px 3px 0px 3px;
+                width: 4px;
+                height: 4px;
+                border-radius: 50%;
+                background-color: var(--sc-grey4);
+            }
+
+            #point1 {
+                animation: loadanimation 1.5s linear 0s infinite;
+            }
+
+            #point2 {
+                animation: loadanimation 1.5s linear 0.3s infinite;
+            }
+
+            #point3 {
+                animation: loadanimation 1.5s linear 0.6s infinite;
             }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
-                .disagree,
-                .agree {
+                .success {
                     @apply --retina;
                 }
             }
@@ -162,17 +207,25 @@ This code may only be used under the license found at https://github.com/swarmci
                         <div class="icon-send"></div>
                     </div>
                     <div class="bar">
-                            <div class="statusinfo">{{localize('Received TXhash')}}</div>
-                            <div class="icon-receive"></div></div>
+                        <div class="statusinfo">{{localize('Received TXhash')}}</div>
+                        <div class="icon-receive">
+                            <div class="loading">
+                                <div class="smallpoint" id="point1"></div>
+                                <div class="smallpoint" id="point2"></div>
+                                <div class="smallpoint" id="point3"></div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="bar">
-                            <div class="statusinfo">{{localize('TX complete')}}</div>
-                            <div class="icon-complete"></div></div>
+                        <div class="statusinfo">{{localize('TX complete')}}</div>
+                        <div class="icon-complete"></div>
+                    </div>
                 </div>
             </div>
             <div class="bottom">
                 <div class="choicebox">
-                    <div class="agreebox" on-click="_agree">
-                        <div class="agree"></div>
+                    <div class="successbox" on-click="_success">
+                        <div class="success"></div>
                     </div>
                 </div>
             </div>
@@ -208,7 +261,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     * Entry and exit animation
                     */
                     animationConfig: {
-                        value: function() {
+                        value: function () {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
@@ -236,19 +289,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
-
+            
             /**
-            * takes the user to the previous page
+            * takes the user to the conversion success page
             */
-            _disagree() {
-                window.history.back();
-            }
-
-            /**
-            * takes the user to the initiating hashtag page
-            */
-            _agree() {
-                this.path = 'transaction-processing';
+            _success() {
+                this.path = 'conversion-success';
             }
 
             /**
