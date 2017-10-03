@@ -261,7 +261,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     * Entry and exit animation
                     */
                     animationConfig: {
-                        value: function () {
+                        value: function() {
                             return {
                                 'entry': {
                                     name: 'fade-in-animation',
@@ -289,7 +289,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
-            
             /**
             * takes the user to the conversion success page
             */
@@ -307,6 +306,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
         }
-        window.customElements.define(MyTransactionProcessing.is, MyTransactionProcessing);
+        window.customElements
+            .define(MyTransactionProcessing.is, MyTransactionProcessing);
     </script>
 </dom-module>
