@@ -117,7 +117,11 @@
         "send SWT": "send SWT",
         "shortcode": "shortcode",
         "Youre about to send": "You're about to send",
-        "to": "to"
+        "to": "to",
+        "Your transaction is being processed.": "Your transaction is being processed.",
+        "Sending SWT": "Sending SWT",
+        "Received TXhash": "Received TXhash",
+        "TX complete": "TX complete"
     },
     "cn": {
         "language": "cn",
@@ -226,7 +230,11 @@
         "send SWT": "Awaiting Translation",
         "shortcode": "Awaiting Translation",
         "Youre about to send": "Awaiting Translation",
-        "to": "Awaiting Translation"
+        "to": "Awaiting Translation",
+        "Your transaction is being processed.": "Awaiting Translation",
+        "Sending SWT": "Awaiting Translation",
+        "Received TXhash": "Awaiting Translation",
+        "TX complete": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -344,7 +352,11 @@
         "send SWT": "Awaiting Translation",
         "shortcode": "Awaiting Translation",
         "Youre about to send": "Awaiting Translation",
-        "to": "Awaiting Translation"
+        "to": "Awaiting Translation",
+        "Your transaction is being processed.": "Awaiting Translation",
+        "Sending SWT": "Awaiting Translation",
+        "Received TXhash": "Awaiting Translation",
+        "TX complete": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -462,7 +474,11 @@
         "send SWT": "Awaiting Translation",
         "shortcode": "Awaiting Translation",
         "Youre about to send": "Awaiting Translation",
-        "to": "Awaiting Translation"
+        "to": "Awaiting Translation",
+        "Your transaction is being processed.": "Awaiting Translation",
+        "Sending SWT": "Awaiting Translation",
+        "Received TXhash": "Awaiting Translation",
+        "TX complete": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -580,7 +596,11 @@
         "send SWT": "Awaiting Translation",
         "shortcode": "Awaiting Translation",
         "Youre about to send": "Awaiting Translation",
-        "to": "Awaiting Translation"
+        "to": "Awaiting Translation",
+        "Your transaction is being processed.": "Awaiting Translation",
+        "Sending SWT": "Awaiting Translation",
+        "Received TXhash": "Awaiting Translation",
+        "TX complete": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -698,7 +718,11 @@
         "send SWT": "Awaiting Translation",
         "shortcode": "Awaiting Translation",
         "Youre about to send": "Awaiting Translation",
-        "to": "Awaiting Translation"
+        "to": "Awaiting Translation",
+        "Your transaction is being processed.": "Awaiting Translation",
+        "Sending SWT": "Awaiting Translation",
+        "Received TXhash": "Awaiting Translation",
+        "TX complete": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -816,7 +840,11 @@
         "send SWT": "Awaiting Translation",
         "shortcode": "Awaiting Translation",
         "Youre about to send": "Awaiting Translation",
-        "to": "Awaiting Translation"
+        "to": "Awaiting Translation",
+        "Your transaction is being processed.": "Awaiting Translation",
+        "Sending SWT": "Awaiting Translation",
+        "Received TXhash": "Awaiting Translation",
+        "TX complete": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -934,7 +962,11 @@
         "send SWT": "Awaiting Translation",
         "shortcode": "Awaiting Translation",
         "Youre about to send": "Awaiting Translation",
-        "to": "Awaiting Translation"
+        "to": "Awaiting Translation",
+        "Your transaction is being processed.": "Awaiting Translation",
+        "Sending SWT": "Awaiting Translation",
+        "Received TXhash": "Awaiting Translation",
+        "TX complete": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -1052,6 +1084,10 @@
         "send SWT": "Awaiting Translation",
         "shortcode": "Awaiting Translation",
         "Youre about to send": "Awaiting Translation",
-        "to": "Awaiting Translation"
+        "to": "Awaiting Translation",
+        "Your transaction is being processed.": "Awaiting Translation",
+        "Sending SWT": "Awaiting Translation",
+        "Received TXhash": "Awaiting Translation",
+        "TX complete": "Awaiting Translation"
     }
 }

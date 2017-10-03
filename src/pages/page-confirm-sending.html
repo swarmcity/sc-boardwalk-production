@@ -150,7 +150,7 @@ This code may only be used under the license found at https://github.com/swarmci
     </template>
 
     <script>
-        class ConfirmSending extends new ReduxMixin(Polymer.mixinBehaviors([
+        class MyConfirmSending extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
             Polymer.NeonAnimationRunnerBehavior,
             Polymer.NeonAnimatableBehavior,
@@ -231,6 +231,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
         }
-        window.customElements.define(ConfirmSending.is, ConfirmSending);
+        window.customElements.define(MyConfirmSending.is, MyConfirmSending);
     </script>
 </dom-module>
