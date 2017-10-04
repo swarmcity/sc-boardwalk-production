@@ -3,21 +3,27 @@
 Copyright (c) 2017 Swarm City
 This code may only be used under the license found at https://github.com/swarmcity/license
 -->
-<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-socket-io-client/iron-socket-io-client.html">
+
+<!-- <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-storage.js"></script> -->
 
-<firebase-app
-    database-url="https://swarmcity-23c70.firebaseio.com" 
-    storage-bucket="warmcity-23c70.appspot.com" 
-    api-key="AIzaSyDXAHgocTVa9PLVoKqCnQF9PDkUH7F-EFY" 
+<!-- <firebase-app
+    database-url="https://swarmcity-23c70.firebaseio.com"
+    storage-bucket="warmcity-23c70.appspot.com"
+    api-key="AIzaSyDXAHgocTVa9PLVoKqCnQF9PDkUH7F-EFY"
     auth-domain="swarmcity-23c70.firebaseapp.com">
-</firebase-app>
-
-<firebase-document
+</firebase-app> -->
+<iron-socket-io-client
+  id="socket"
+  connect-uri="ws://echo.websocket.org">
+</iron-socket-io-client>
+<!-- <firebase-document
     path="/hashtags"
     data="{{hashtagsData}}">
-</firebase-document>
+</firebase-document> -->
 
 <!-- <firebase-query
     id="query"
@@ -25,6 +31,8 @@ This code may only be used under the license found at https://github.com/swarmci
     path="/notes/[[uid]]"
     data="{{data}}">
 </firebase-query> -->
+
+
 
 <app-indexeddb-mirror
     key="hashtags"

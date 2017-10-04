@@ -22,10 +22,11 @@
     "paper-input": "PolymerElements/paper-input#2.0-preview",
     "paper-slider": "2.0-preview",
     "polymerfire": "firebase/polymerfire#^2.1.0",
-    "app-storage": "PolymerElements/app-storage#^2.0.2"
+    "app-storage": "PolymerElements/app-storage#^2.0.2",
+    "iron-socket-io-client": "Collaborne/iron-socket-io-client#^1.1.0"
   },
   "resolutions": {
-    "polymer": "^2.0.0",
+    "polymer": "master",
     "iron-resizable-behavior": "1 - 2",
     "iron-meta": "1 - 2",
     "iron-selector": "1 - 2",

@@ -3,8 +3,11 @@
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
 <link rel="import" href="../bower_components/app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
-<link rel="import" href="../bower_components/polymerfire/firebase.html">
-<link rel="import" href="../bower_components/polymerfire/polymerfire.html">
+<!-- <link rel="import" href="../bower_components/polymerfire/firebase.html"> -->
+<!-- <link rel="import" href="../bower_components/polymerfire/polymerfire.html"> -->
+<link rel="import" href="../bower_components/iron-socket-io-client/iron-socket-io-client.html">
+<script src="http://127.0.0.1:8081/bower_components/socket.io-client/dist/socket.io.js"></script>
+
 <link rel="import" href="redux-state.html">
 
 <link rel="lazy-import" href="pages/page-welcome.html">
@@ -45,16 +48,16 @@
       }
     </style>
 
-    <firebase-app
-      database-url="https://swarmcity-23c70.firebaseio.com" 
-      api-key="AIzaSyDXAHgocTVa9PLVoKqCnQF9PDkUH7F-EFY" 
+    <!-- <firebase-app
+      database-url="https://swarmcity-23c70.firebaseio.com"
+      api-key="AIzaSyDXAHgocTVa9PLVoKqCnQF9PDkUH7F-EFY"
       auth-domain="swarmcity-23c70.firebaseapp.com">
     </firebase-app>
 
     <firebase-query
       path="/hashtags"
       data="{{hashtagdata}}">
-    </firebase-query>
+    </firebase-query> -->
 
     <app-indexeddb-mirror
       key="hashtags"
@@ -125,6 +128,10 @@
           hashtags: {
             type: Array,
           },
+          status: {
+            type: String,
+            observer: '_status'
+          },
           routeData: Object,
           subroute: String,
           rootPath: String,
@@ -157,6 +164,95 @@
           '_hashtagChanged(hashtagdata.*)',
           '_routePageChanged(routeData.page)',
         ];
+      }
+
+      connectedCallback() {
+          super.connectedCallback();
+          var self = this;
+          this._socket = io.connect('wss://socketio-slack-count.now.sh/',
+            { transports: ['websocket'],
+              path: '/socket.io',
+              query: {
+              }
+          });
+
+          this._socket.on('connect', (socket) => {
+            //socket.join('swarmcity');
+            console.log('connected!', this._socket.id);
+          });
+
+          this._socket.on('active', (t, n) => {
+            console.log(t, n);
+          });
+          // Parse response messages retrieving 'type'
+  				this._socket.on('message', (message, callback) => {
+  					// Execute all handlers that are registered for this namespace
+  					for (let handler of this._handlers) {
+  						if (message.type.startsWith(handler.messageType)) {
+  							handler.handler(message);
+  						}
+  					}
+
+  					// Acknologe receiving the message (if the SocketIO server supports this)
+  					if (callback) {
+  						callback();
+  					}
+  				});
+
+  				// Register listeners to expose connection status
+  				this._socket.on('connect', () => this.status = 'connected');
+  				this._socket.on('disconnect', () => this.status = 'disconnected');
+  				this._socket.on('connect_error', () => this.status = 'disconnected');
+  				this._socket.on('reconnecting', () => this.status = 'reconnecting');
+  				this._socket.on('reconnect', () => this.status = 'connected');
+
+  				this._socket.on('error', e => {
+  					console.warn(`WebSocket error: ${JSON.stringify(e)}`);
+  				});
+          // this._socket = new WebSocket('ws://echo.websocket.org/');
+          // this._socket.onopen = function(evt) {
+          //   console.log('socket > open > ',evt);
+          //   self._socket.send('hey fucker ', Date.now());
+          // };
+          // this._socket.onmessage = function(evt) {
+          //   console.log('socket > msg > ',evt.data);
+          // };
+          // this._socket.onclose = function(evt) {
+          //   console.log('socket > close > ',evt);
+          // };
+          // this._socket.onerror = function(evt) {
+          //   console.log('socket > err > ',evt);
+          // };
+            //console.log('Socket.io > ', message);
+  					// Execute all handlers that are registered for this namespace
+  					// for (let handler of this._handlers) {
+  					// 	if (message.type.startsWith(handler.messageType)) {
+  					// 		handler.handler(message);
+  					// 	}
+  					// }
+
+
+  					// Acknologe receiving the message (if the SocketIO server supports this)
+  					// if (callback) {
+  					// 	callback();
+  					// }
+  				//});
+
+          this._socket.on('connection', () => this.status = 'connected');
+  				this._socket.on('disconnect', () => this.status = 'disconnected');
+  				this._socket.on('connect_error', () => this.status = 'connection error');
+  				this._socket.on('reconnecting', () => this.status = 'reconnecting');
+  				this._socket.on('reconnect', () => this.status = 'connected');
+
+  				this._socket.on('error', e => {
+  					console.warn(`WebSocket error: ${JSON.stringify(e)}`);
+  				});
+
+
+      }
+
+      _status() {
+        console.log('Socket.io > Status > ', this.status);
       }
 
       _hashtagChanged() {
