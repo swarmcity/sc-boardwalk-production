@@ -29,8 +29,9 @@ This code may only be used under the license found at https://github.com/swarmci
     -->
         <style include="shared-styles">
              :host {
-                height: 100vh;
+                height: 100%;
                 width: 100vw;
+                max-width: 100%;
                 display: block;
             }
 
@@ -40,10 +41,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-start-justified;
                 @apply --layout-center;
                 background-image: var(--sc-bg);
-                height: 100%;
                 width: 100%;
+                min-height: 100vh;
+                max-width: 100%;
                 box-sizing: border-box;
                 padding: 0 14vw;
+                overflow: auto;
             }
 
             .container[wide-layout] {
@@ -73,15 +76,18 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .top {
-                height: 35vh;
                 @apply --layout-vertical;
                 @apply --layout-end-justified;
                 @apply --layout-center;
                 width: 100%;
+                box-sizing: border-box;
+                padding: 10vh 0 0 0;
             }
 
             .container[wide-layout] .top {
                 @apply --layout-start;
+                box-sizing: border-box;
+                padding: 20vh 0 0 0;
             }
 
             .grey {
@@ -117,29 +123,106 @@ This code may only be used under the license found at https://github.com/swarmci
             .name {
                 @apply --body-bold;
                 color: var(--sc-grey4);
+                text-align: center;
+            }
+
+            .container[wide-layout] .name {
+                text-align: left;
+            }
+
+            .keybox {
+                @apply --layout-vertical;
+                @apply --layout-center;
+                height: 96px;
+            }
+
+            .container[wide-layout] .keybox {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-start;
+                height: 60px;
             }
 
             .pubkey {
                 @apply --small-light;
-                color: var(--sc-grey2);
-                margin-top: 35px;
+                color: var(--sc-grey4);
             }
 
-            .container[wide-layout] .pubkey {
+            .privkey {
+                @apply --small-bold;
+                color: var(--sc-blue);
+            }
+
+            .truncate {
+                @apply --small-light;
+                width: 75px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                color: var(--sc-grey2);
+                cursor: pointer;
+                margin-top: 8px;
+            }
+
+            .pubkeybox {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+            }
+
+            .container[wide-layout] .pubkeybox {
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+            }
+
+            .privkeybox {
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+            }
+
+            .container[wide-layout] .privkeybox {
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+                margin-top: -12px;
+            }
+
+            .keyclose {
+                @apply --xmark-grey4-small;
+                cursor: pointer;
                 margin-top: 10px;
+            }
+
+            .container[wide-layout] .keyclose {
+                margin: 0;
+            }
+
+            .container[wide-layout] .pubkey {}
+
+            .bluelink {
+                @apply --small-bold;
+                cursor: pointer;
+                color: var(--sc-blue);
+                border-bottom: 2px dotted var(--sc-blue);
+                margin-top: 8px;
+            }
+
+            .container[wide-layout] .bluelink {
+                margin-top: 8px;
             }
 
             .middle {
                 @apply --layout-vertical;
                 @apply --layout-end-justified;
                 box-sizing: border-box;
+                padding: 10vh 0 0 0;
                 width: 100%;
-                height: 35vh;
             }
 
             .container[wide-layout] .middle {
-                height: 15vh;
-                margin-bottom: 70px;
+                padding: 10vh 0 5vh 0;
             }
 
             .bottom {
@@ -152,8 +235,18 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container[wide-layout] .bottom {
-                @apply --layout-start-justified;
                 padding: 0 0 30vh 0;
+                height: 500px;
+            }
+
+            .key {
+                margin-top: 10px;
+            }
+
+            .container[wide-layout] .key {
+                margin-top: 0;
+                user-select: all;
+                cursor: pointer;
             }
 
             .title {
@@ -182,8 +275,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --button-active;
             }
 
-
-
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
@@ -206,11 +297,40 @@ This code may only be used under the license found at https://github.com/swarmci
                     <img src="../../images/defaultavatar.png">
                     <div class="info">
                         <div class="name">Tester X</div>
-                        <div class="pubkey">0x339D78...</div>
+                        <div class="keybox">
+                            <template is="dom-if" if="{{!showPubKey}}">
+                                <div class="pubkey truncate" on-click="_togglePubKey">0x50281a1E4a65e2384389483b1E566d2c977a4daC</div>
+                            </template>
+                            <template is="dom-if" if="{{showPubKey}}">
+                                <div class="pubkeybox">
+                                    <div class="pubkey key" title='click to select all'>0x50281a1E4a65e2384389483b1E566d2c977a4daC</div>
+                                    <template is="dom-if" if="{{wide}}">
+                                        <div class="keyclose" on-click="_togglePubKey"></div>
+                                    </template>
+                                </div>
+                                <div class="privkeybox">
+                                    <template is="dom-if" if="{{!showPrivKey}}">
+                                        <span class="bluelink" on-click="_togglePrivKey">show my private key</span>
+                                    </template>
+                                    <template is="dom-if" if="{{showPrivKey}}">
+                                        <div class="privkey key" title='click to select all'>0x50281a1E4a65e2384389483b1E566d2c977a4daC</div>
+                                        <template is="dom-if" if="{{wide}}">
+                                            <div class="keyclose" on-click="_togglePrivKey"></div>
+                                        </template>
+                                    </template>
+                                </div>
+                                <template is="dom-if" if="{{!wide}}">
+                                    <template is="dom-if" if="{{showPubKey}}">
+                                        <div class="keyclose" on-click="_toggleKeys"></div>
+                                    </template>
+                                </template>
+                            </template>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="bottom">
+
                 <div class="btn" on-click="_next">{{localize('backup my account')}}</div>
             </div>
         </div>
@@ -240,6 +360,22 @@ This code may only be used under the license found at https://github.com/swarmci
                     path: {
                         type: String,
                         observer: '_path',
+                    },
+                    /**
+                    * showPubKey determines if the Public Key is shown or not
+                    * @type {Boolean}
+                    */
+                    showPubKey: {
+                        type: Boolean,
+                        value: false,
+                    },
+                    /**
+                    * showPrivKey determines if the Private Key is shown or not
+                    * @type {Boolean}
+                    */
+                    showPrivKey: {
+                        type: Boolean,
+                        value: false,
                     },
                     /**
                     * Entry and exit animation
@@ -278,6 +414,26 @@ This code may only be used under the license found at https://github.com/swarmci
             */
             _close() {
                 this.path = 'stop-signup/';
+            }
+            /**
+            * Toggles the visibility of the full Public Key
+            */
+            _togglePubKey() {
+                this.showPubKey = !this.showPubKey;
+                this.showPrivKey = false;
+            }
+            /**
+            * Toggles the visibility of the Private Key
+            */
+            _togglePrivKey() {
+                this.showPrivKey = !this.showPrivKey;
+            }
+            /**
+            * Toggles the visibility of both keys on mobile
+            */
+            _toggleKeys() {
+                this.showPubKey = false;
+                this.showPrivKey = false;
             }
             /**
             * routes to next page

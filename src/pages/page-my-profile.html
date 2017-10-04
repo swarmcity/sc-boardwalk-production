@@ -184,7 +184,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .pubkey {
                 margin-top: 3vh;
-                max-width: 75px;
+                /* max-width: 75px; */
             }
 
             .container[wide-layout] .pubkey {
@@ -326,6 +326,13 @@ This code may only be used under the license found at https://github.com/swarmci
                 padding: 50px 12vw;
             }
 
+            .truncate {
+                width: 75px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
             .logout {
                 @apply --layout-vertical;
                 @apply --layout-center-center;
@@ -411,8 +418,8 @@ This code may only be used under the license found at https://github.com/swarmci
                         <paper-input label="Username" always-float-label></paper-input>
                     </div>
                     <div class="keybox">
-                        <div class="pubkey">
-                            <span class="greytext">0x339D78...</span></div>
+                        <div class="pubkey truncate">
+                            <span class="greytext">0x339D7851463546164646546435468453546</span></div>
                         <div class="showkeys">
                             <span class="bluelink">{{localize('show my keys')}}</span>
                         </div>
