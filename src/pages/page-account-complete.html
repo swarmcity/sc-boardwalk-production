@@ -134,6 +134,8 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-vertical;
                 @apply --layout-center;
                 height: 96px;
+                box-sizing: border-box; 
+                padding: 0 14vw;
             }
 
             .container[wide-layout] .keybox {
@@ -141,10 +143,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --layout-start-justified;
                 @apply --layout-start;
                 height: 60px;
+                padding: 0;
             }
 
             .pubkey {
                 @apply --small-light;
+                word-wrap: break-word; 
                 color: var(--sc-grey4);
             }
 
@@ -199,8 +203,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 margin: 0;
             }
 
-            .container[wide-layout] .pubkey {}
-
             .bluelink {
                 @apply --small-bold;
                 cursor: pointer;
@@ -241,12 +243,14 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .key {
                 margin-top: 10px;
+                word-wrap: break-word;
             }
 
             .container[wide-layout] .key {
                 margin-top: 0;
                 user-select: all;
                 cursor: pointer;
+                padding: 0;
             }
 
             .title {
