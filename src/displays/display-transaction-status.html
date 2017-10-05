@@ -1,0 +1,101 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../redux-state.html">
+<!--
+
+Example:
+```
+<display-transaction-status></display-transaction-status>
+```
+
+-->
+<dom-module id="display-transaction-status">
+    <template>
+        <style include="shared-styles">
+             :host {
+                display: block;
+            }
+
+            .container {}
+
+            .button {
+                @apply --text-button-big;
+                box-sizing: border-box;
+                padding: 30px 30px;
+                margin-bottom: 10px;
+                max-width: 320px;
+            }
+
+            .button:active {
+                @apply --button-active;
+            }
+        </style>
+        <div class="container">
+            <div class="button" on-click="_send">{{localize('send SWT')}}</div>
+            <div class="button" on-click="_shortcode">{{localize('shortcode')}}</div>
+        </div>
+
+    </template>
+    <script>
+        class DisplayTransactionStatus extends new ReduxMixin(Polymer.mixinBehaviors([
+            Polymer.AppLocalizeBehavior,
+        ],
+            Polymer.Element
+        )) {
+            static get is() {
+                return 'display-transaction-status';
+            }
+            static get properties() {
+                return {
+                    language: {
+                        type: String,
+                        statePath: 'language',
+                    },
+                    /**
+                    * Loading indicates if the componant is loading
+                    * @type {Boolean}
+                    */
+                    loading: {
+                        type: Boolean,
+                        value: false,
+                        notify: true,
+                    },
+                    /**
+                    * route data represents the curent route
+                    * @type {String}
+                    */
+                    routeData: {
+                        type: String,
+                    },
+                    /**
+                    * Path signlas to the parent to change the path
+                    * @type {Boolean}
+                    */
+                    path: {
+                        type: String,
+                        value: null,
+                        notify: true,
+                    },
+                };
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
+            /**
+            * takes the user to page confirm-sending
+            */
+            _send() {
+                this.path = 'confirm-sending';
+            }
+        }
+        window.customElements
+            .define(DisplayTransactionStatus.is, DisplayTransactionStatus);
+    </script>
+</dom-module>
