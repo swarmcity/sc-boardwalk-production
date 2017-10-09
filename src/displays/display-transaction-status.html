@@ -17,11 +17,18 @@ Example:
 <dom-module id="display-transaction-status">
     <template>
         <style include="shared-styles">
-             :host {
+            :host {
                 display: block;
             }
 
-            .container {}
+            .container {
+                @apply --layout-vertical;
+                @apply --layout-end-justified;
+                transition: height 0.1s ease-in-out;
+                height: 184px;
+            }
+
+            .buttonbox {}
 
             .button {
                 @apply --text-button-big;
@@ -34,10 +41,66 @@ Example:
             .button:active {
                 @apply --button-active;
             }
+
+            .shortcode-wrapper {
+                @apply --layout-vertical;
+                @apply --layout-center-center;
+                width: 100%;
+                height: 100%;
+            }
+
+            .greytext {
+                @apply --body-default;
+                color: var(--sc-grey4);
+            }
+
+            .code {
+                @apply --main-title3;
+                color: var(--sc-grey4);
+            }
+
+            .code-close {
+                @apply --xmark-grey3-normal;
+                cursor: pointer;
+            }
+
+            .codebox {
+                @apply --layout-horizontal;
+                @apply --layout-center-center;
+                margin-top: 3px;
+            }
         </style>
-        <div class="container">
-            <div class="button" on-click="_send">{{localize('send SWT')}}</div>
-            <div class="button" on-click="_shortcode">{{localize('shortcode')}}</div>
+        <div class="container" id="container">
+            <template is="dom-if" if="{{start}}">
+                <div class="buttonbox">
+                    <div class="button" on-click="_send">{{localize('send SWT')}}</div>
+                    <div class="button" on-click="_shortcode">{{localize('shortcode')}}</div>
+                </div>
+            </template>
+
+            <template is="dom-if" if="{{shortcode}}">
+                <div class="shortcode-wrapper">
+                    <div class="greytext">Your temporary shortcode</div>
+                    <div class="codebox">
+                        <div class="code">78900</div>
+                        <div class="code-close" on-click="_start"></div>
+                    </div>
+                </div>
+                <p></p>
+            </template>
+
+            <template is="dom-if" if="{{send}}">
+                <p on-click="_start">Amount?</p>
+            </template>
+
+            <template is="dom-if" if="{{looking}}">
+                <p>Looking for receiver...</p>
+            </template>
+
+            <template is="dom-if" if="{{found}}">
+                <p>Receiver round!</p>
+            </template>
+
         </div>
 
     </template>
@@ -55,6 +118,46 @@ Example:
                     language: {
                         type: String,
                         statePath: 'language',
+                    },
+                    /**
+                    * Start if true shows the buttons choice
+                    * @type {String}
+                    */
+                    start: {
+                        type: Boolean,
+                        value: true,
+                    },
+                    /**
+                    * Shortcode if true shows the shortcode
+                    * @type {String}
+                    */
+                    shortcode: {
+                        type: Boolean,
+                        value: false,
+                    },
+                    /**
+                    * Send if true shows the send settings
+                    * @type {String}
+                    */
+                    send: {
+                        type: Boolean,
+                        value: false,
+                    },
+                    /**
+                    * Looking if true shows the looking for receiver display
+                    * @type {String}
+                    */
+                    looking: {
+                        type: Boolean,
+                        value: false,
+                    },
+                    /**
+                    * Found if true shows receiver found display
+                    * @type {String}
+                    */
+                    found: {
+                        type: Boolean,
+                        value: false,
                     },
                     /**
                     * Loading indicates if the componant is loading
@@ -89,10 +192,33 @@ Example:
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             /**
-            * takes the user to page confirm-sending
+            * switches to state send
             */
             _send() {
-                this.path = 'confirm-sending';
+                this.start = false;
+                this.send = true;
+                var container = this.$.container;
+                container.style.height = '0px';
+            }
+            /**
+            * switches to state shortcode
+            */
+            _shortcode() {
+                this.start = false;
+                this.shortcode = true;
+                var container = this.$.container;
+                container.style.height = '105px';
+            }
+            /**
+            * switches to state send
+            */
+            _start() {
+                this.shortcode = false;
+                this.send = false;
+                this.found = false;
+                this.start = true;
+                var container = this.$.container;
+                container.style.height = '184px';
             }
         }
         window.customElements
