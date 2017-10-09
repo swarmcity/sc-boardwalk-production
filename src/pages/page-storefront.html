@@ -1,0 +1,253 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../redux-state.html">
+<!--
+    Displays and shared styles only
+-->
+<link rel="import" href="../shared-styles.html">
+<link rel="import" href="../displays/display-my-info.html">
+<link rel="import" href="../displays/display-hashtag-about.html">
+<link rel="import" href="../displays/display-hashtag-deals.html">
+<link rel="import" href="../displays/display-deal-btn.html">
+<link rel="import" href="../displays/display-filter-deals.html">
+
+<!--
+Storefronts
+-->
+<link rel="import" href="../../storefronts/sc-needaride-storefront/sc-needaride-storefront.html">
+
+<!--
+    Aimation pack, only load the animations you need for this page.
+-->
+
+<link rel="import" href="../../bower_components/neon-animation/animations/scale-down-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
+
+<dom-module id="page-storefront">
+    <template>
+        <!--
+    Page specific styles, if the style is used on more than one page, moveit to shared styles.
+-->
+        <style include="shared-styles">
+             :host {
+                width: 100vw;
+                height: 100%;
+                display: block;
+                max-width: 100%;
+            }
+
+            .container {
+                width: 100%;
+                height: 100%;
+                background-color: var(--sc-grey1);
+            }
+
+
+        </style>
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+        <app-location route="{{route}}"></app-location>
+        <app-route route="{{route}}" pattern="/hashtag/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+
+        <div class="container" wide-layout$="{{wide}}">
+            <!-- depending on how the hashtag is configured (the name of the storefront to be used), this is where we lazyload the component. -->
+            <sc-needaride-storefront></sc-needaride-storefront>
+
+        </div>
+
+    </template>
+
+    <script>
+        class NewHashtag extends new ReduxMixin(Polymer.mixinBehaviors([
+            Polymer.AppLocalizeBehavior,
+            Polymer.NeonAnimationRunnerBehavior,
+            Polymer.NeonAnimatableBehavior,
+        ],
+            Polymer.Element
+        )) {
+            static get is() {
+                return 'page-storefront';
+            }
+            static get properties() {
+                return {
+                    /**
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
+                    path: {
+                        type: String,
+                        observer: '_path',
+                    },
+                    /**
+                    * sliderState represents the state of the slider
+                    * @type {String}
+                    */
+                    sliderState: {
+                        type: String,
+                        value: 'slider-initial',
+                    },
+                    /**
+                    * infoState represents the state of the info area
+                    * @type {String}
+                    */
+                    infoState: {
+                        type: String,
+                        value: 'info-initial',
+                    },
+                    /**
+                    * fadeState represents the state of the fade area
+                    * @type {String}
+                    */
+                    fadeState: {
+                        type: String,
+                        value: 'fade-hidden',
+                    },
+                    /**
+                    * showSlider determines of the slider is show or not
+                    * @type {Boolean}
+                    */
+                    showSlider: {
+                        type: Boolean,
+                        observer: '_toggleSlider',
+                    },
+                    /**
+                    * showInfo indicates if the hashtag info panel is open or not
+                    * @type {Boolean}
+                    */
+                    showInfo: {
+                        type: Boolean,
+                        observer: '_toggleInfo',
+                    },
+                    /**
+                    * highlightFilterToggle toggles
+                    * the background style of the show filter text link
+                    * @type {Boolean}
+                    */
+                    highlightFilterToggle: {
+                        type: Boolean,
+                        value: false,
+                    },
+                    /**
+                    * highlightInfoToggle toggles
+                    * the background style of the show filter text link
+                    * @type {Boolean}
+                    */
+                    highlightInfoToggle: {
+                        type: Boolean,
+                        value: false,
+                    },
+                };
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
+
+            /**
+            * changes the current path
+            */
+            _path() {
+                if (this.path != null) {
+                    this.set('route.path', this.path);
+                }
+                this.path = null;
+            }
+            /**
+            * shows and hides the slider
+            */
+            _toggleSlider() {
+                switch (this.sliderState) {
+                    case 'slider-initial':
+                        this.sliderState = 'slider-hidden';
+                        this.fadeState = 'fade-visible-hidden';
+                        break;
+                    case 'slider-hidden':
+                        this.sliderState = 'slider-hidden-visible';
+                        this.fadeState = 'fade-hidden-visible';
+                        this.highlightFilterToggle = true;
+                        this.highlightInfoToggle = false;
+                        break;
+                    case 'slider-hidden-visible':
+                        this.sliderState = 'slider-visible-hidden';
+                        this.fadeState = 'fade-visible-hidden';
+                        this.highlightFilterToggle = false;
+                        setTimeout(() =>{
+                            this.sliderState = 'slider-hidden';
+                        }, 300);
+                        break;
+                    case 'slider-visible-hidden':
+                        this.sliderState = 'slider-hidden-visible';
+                        this.fadeState = 'fade-hidden-visible';
+                        this.highlightFilterToggle = true;
+                        this.highlightInfoToggle = false;
+                }
+            }
+            /**
+            * shows and hides the info box
+            */
+            _toggleInfo() {
+                switch (this.infoState) {
+                    case 'info-initial':
+                        this.infoState = 'info-hidden';
+                        break;
+                    case 'info-hidden':
+                        this.infoState = 'info-hidden-visible';
+                        this.sliderState = 'slider-hidden';
+                        this.fadeState = 'fade-hidden-visible';
+                        this.highlightInfoToggle = true;
+                        this.highlightFilterToggle = false;
+                        break;
+                    case 'info-hidden-visible':
+                        this.infoState = 'info-visible-hidden';
+                        this.fadeState = 'fade-visible-hidden';
+                        this.highlightInfoToggle = false;
+                        break;
+                    case 'info-visible-hidden':
+                        this.infoState = 'info-hidden-visible';
+                        this.sliderState = 'slider-hidden';
+                        this.fadeState = 'fade-hidden-visible';
+                        this.highlightInfoToggle = true;
+                        this.highlightFilterToggle = false;
+                }
+            }
+            /**
+            * closes open header boxes
+            */
+            _fadeClose() {
+                if (this.showSlider) {
+                    this.showSlider = !this.showSlider;
+                }
+                else if (this.showInfo) {
+                    this.showInfo = !this.showInfo;
+                }
+            }
+            /**
+            * takes the user to the hashtag list page
+            */
+            _back() {
+                this.set('route.path', 'hashtag-list/');
+            }
+            /**
+            * takes the user to the my-profile page
+            */
+            _toProfile() {
+                this.set('route.path', 'my-profile/');
+            }
+        }
+        window.customElements.define(NewHashtag.is, NewHashtag);
+    </script>
+</dom-module>

@@ -1,0 +1,267 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../src/redux-state.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animated-pages.html">
+
+<dom-module id="sc-needaride-storefront">
+<template>
+  <style>
+  :host {
+    display: block;
+  }
+  </style>
+  <h2>Storefront Needaride</h2>
+  <neon-animated-pages
+  selected="[[page]]"
+  attr-for-selected="name"
+  fallback-selection="view404"
+  role="main">
+    <div name="listview">
+      <template is="dom-repeat" items="{{dealitems}}">
+        <h1>{{item.avatar}}</h1>
+      </template>
+    </div>
+    <div name="mapview">
+      <template is="dom-repeat" items="{{dealitems}}">
+        <h1>{{item.avatar}}</h1>
+      </template>
+    </div>
+  </neon-animated-pages>
+</template>
+<script>
+/**
+* `sc-needaride-storefront`
+*
+*
+* @customElement
+* @polymer
+* @demo demo/index.html
+*/
+
+class ScStorefrontProto extends new ReduxMixin(Polymer.mixinBehaviors([
+  Polymer.AppLocalizeBehavior,
+  Polymer.NeonAnimationRunnerBehavior,
+  Polymer.NeonAnimatableBehavior,
+], Polymer.Element
+)) {
+  static get is() { return 'sc-needaride-storefront'; }
+  static get properties() {
+    return {
+      prop1: {
+        type: String,
+        value: 'sc-needaride-storefront'
+      },
+      page: {
+        type: String,
+        value: 'listview'
+      }
+    };
+  }
+
+  connectedCallback() {
+    var self = this;
+    super.connectedCallback();
+    //this.loadResources(this.resolveUrl('../text-translations.json'));
+    this.deals('8317d4c60a2fc3f1d586d2ca9d66b52f80a013c1').then(function(res){
+      console.log(res);
+      self.dealitems = res.items;
+    }, function(err){
+      console.log(err);
+    });
+  }
+  /**
+  * Returns an array with the deals for a hashtag
+  * @return {hashtags} hashtags is an array of objects
+  * @param {hashtagID} hashtagID for which to return deals for
+  */
+  deals(hashtagID) {
+    return new Promise((resolve, reject) => {
+      const fakeResponse1 = {
+        name: 'pioneer',
+        id: '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c1',
+        location: '9q8yfr43d4',
+        deals: 230,
+        description: 'pioneer is the first amazing hashtag',
+        maintainer: 'pioneer is maintained by the hashtag commision',
+        contact: [{
+          name: 'twitter',
+          link: 'http://www.twitter.com/@pioneer',
+        },
+        {
+          name: 'facebook',
+          link: 'http://www.facebook.com/pioneer',
+        },
+      ],
+      items: [{
+        DealID: '1317d4c60a2fc3f1d586d2ca9d66b52f80a013c1',
+        location: '3q8yfr43d4',
+        time: 1500530604,
+        username: 'Arian Bronson',
+        reputation: 12,
+        avatar:
+        'QmTWh9FwdByJ15TiqVrgrHchaxrtT3WKRHGpnXe8GXzM7o',
+        description: 'Ride from literton buss stop to protest',
+        value: 5,
+        offers: 3,
+      },
+      {
+        DealID: '1317d4c60a2fc3f1d586d2ca9d66b52f80a013c2',
+        location: '3q8yfr43d5',
+        time: 1500530604,
+        username: 'James Smith',
+        reputation: 13,
+        avatar:
+        'QmTWh9FwdByJ15TiqVrgrHchaxrtT3WKRHGpnXe8GXzM7o',
+        description: 'Ride from literton buss stop to protest',
+        value: 2,
+        offers: 0,
+      },
+    ],
+  };
+  const fakeResponse2 = {
+    name: 'needaride',
+    id: '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c2',
+    location: '9q8yfr43d4',
+    deals: 230,
+    description: 'needaride is the first amazing hashtag',
+    maintainer: 'needaride is maintained by the hashtag commision',
+    contact: [{
+      name: 'twitter',
+      link: 'http://www.twitter.com/@pneedaride',
+    },
+    {
+      name: 'facebook',
+      link: 'http://www.facebook.com/needaride',
+    },
+  ],
+  items: [{
+    DealID: '1317d4c60a2fc3f1d586d2ca9d66b52f80a013c1',
+    location: '3q8yfr43d4',
+    time: 1500530604,
+    username: 'Arian Bronson',
+    reputation: 12,
+    avatar: 'QmTWh9FwdByJ15TiqVrgrHchaxrtT3WKRHGpnXe8GXzM7o',
+    description: 'Ride from literton buss stop to protest',
+    value: 5,
+    offers: 3,
+  }],
+};
+const fakeResponse3 = {
+  name: 'swarmbnb',
+  id: '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c3',
+  location: '9q8yfr43d4',
+  deals: 230,
+  description: 'swarmbnb is the first amazing hashtag',
+  maintainer: 'swarmbnb is maintained by the hashtag commision',
+  contact: [{
+    name: 'twitter',
+    link: 'http://www.twitter.com/@pswarmbnb',
+  },
+  {
+    name: 'facebook',
+    link: 'http://www.facebook.com/swarmbnb',
+  },
+],
+items: [{
+  DealID: '1317d4c60a2fc3f1d586d2ca9d66b52f80a013c1',
+  location: '3q8yfr43d4',
+  time: 1500530604,
+  username: 'Arian Bronson',
+  reputation: 12,
+  avatar:
+  'QmTWh9FwdByJ15TiqVrgrHchaxrtT3WKRHGpnXe8GXzM7o',
+  description: '2 Beds in London',
+  value: 5,
+  offers: 3,
+},
+{
+  DealID: '1317d4c60a2fc3f1d586d2ca9d66b52f80a013c2',
+  location: '3q8yfr43d5',
+  time: 1500530604,
+  username: 'James Smith',
+  reputation: 13,
+  avatar:
+  'QmTWh9FwdByJ15TiqVrgrHchaxrtT3WKRHGpnXe8GXzM7o',
+  description: '1 Room in Fji',
+  value: 2,
+  offers: 0,
+},
+{
+  DealID: '1317d4c60a2fc3f1d586d2ca9d66b52f80a013c2',
+  location: '3q8yfr43d5',
+  time: 1500530604,
+  username: 'James Smith',
+  reputation: 13,
+  avatar:
+  'QmTWh9FwdByJ15TiqVrgrHchaxrtT3WKRHGpnXe8GXzM7o',
+  description: 'Full house in New York',
+  value: 2,
+  offers: 0,
+},
+],
+};
+const fakeResponse4 = {
+  name: 'dev',
+  id: '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c4',
+  location: '9q8yfr43d4',
+  deals: 230,
+  description: 'dev is the first amazing hashtag',
+  maintainer: 'dev is maintained by the hashtag commision',
+  contact: [{
+    name: 'twitter',
+    link: 'http://www.twitter.com/@dev',
+  },
+  {
+    name: 'facebook',
+    link: 'http://www.facebook.com/dev',
+  },
+],
+items: [{
+  DealID: '1317d4c60a2fc3f1d586d2ca9d66b52f80a013c1',
+  location: '3q8yfr43d4',
+  time: 1500530604,
+  username: 'Arian Bronson',
+  reputation: 12,
+  avatar:
+  'QmTWh9FwdByJ15TiqVrgrHchaxrtT3WKRHGpnXe8GXzM7o',
+  description: 'Write me 5 unit tests',
+  value: 5,
+  offers: 3,
+},
+{
+  DealID: '1317d4c60a2fc3f1d586d2ca9d66b52f80a013c2',
+  location: '3q8yfr43d5',
+  time: 1500530604,
+  username: 'James Smith',
+  reputation: 13,
+  avatar:
+  'QmTWh9FwdByJ15TiqVrgrHchaxrtT3WKRHGpnXe8GXzM7o',
+  description: 'Test this on all mobile devices',
+  value: 2,
+  offers: 0,
+},
+],
+};
+if (hashtagID == '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c1') {
+  resolve(fakeResponse1);
+}
+if (hashtagID == '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c2') {
+  resolve(fakeResponse2);
+}
+if (hashtagID == '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c3') {
+  resolve(fakeResponse3);
+}
+if (hashtagID == '8317d4c60a2fc3f1d586d2ca9d66b52f80a013c4') {
+  resolve(fakeResponse4);
+}
+});
+}
+
+_deals() {
+  console.log('deals: ', this.deals);
+}
+
+}
+
+window.customElements.define(ScStorefrontProto.is, ScStorefrontProto);
+</script>
+</dom-module>
