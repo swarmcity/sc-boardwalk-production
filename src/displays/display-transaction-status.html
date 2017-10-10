@@ -6,6 +6,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="../redux-state.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <!--
 
 Example:
@@ -23,13 +24,15 @@ Example:
             }
 
             .container {
-                @apply --layout-horizontal;
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
                 @apply --layout-center;
-                transition: height 0.1s ease-in-out;
-                height: var(--container-height);        
+                transition: height 0.3s ease-in-out;
+                height: var(--container-height);
+                width: 100%;
             }
 
-            .buttonbox {
+            .start-buttonbox {
                 width: 100%;
             }
 
@@ -45,16 +48,10 @@ Example:
                 @apply --button-active;
             }
 
-            .shortcode-wrapper {
-                @apply --layout-vertical;
-                @apply --layout-center-center;
-                width: 100%;
-                height: 100%;
-            }
-
-            .greytext {
+            .shortcode-greytext {
                 @apply --body-default;
                 color: var(--sc-grey4);
+                margin-top: 8px;
             }
 
             .code {
@@ -72,36 +69,249 @@ Example:
                 @apply --layout-center-center;
                 margin-top: 3px;
             }
+
+            paper-input {
+                width: 100%;
+
+                @apply --sc-paper-input;
+                --paper-input-container-label: {
+                    @apply --body-default;
+                }
+                --paper-input-container-input: {
+                    @apply --body-bold;
+                }
+                --paper-input-error: {
+                    @apply --body-bold;
+                }
+                --paper-input-prefix: {
+                    @apply --body-default;
+                }
+                --paper-input-suffix: {
+                    @apply --body-default;
+                }
+            }
+
+            .send-buttonbox {
+                margin-top: 20px;
+                @apply --layout-horizontal;
+                @apply --layout-center-center;
+            }
+
+            .disagree {
+                @apply --xmark-grey4-small;
+                cursor: pointer;
+                margin-right: 10px;
+            }
+
+            .round-button {
+                @apply --icon-button-big;
+            }
+
+            .round-button:active {
+                @apply --button-active;
+            }
+
+            .agree {
+                @apply --next-blue-normal;
+            }
+
+            .looking-box {
+                @apply --layout-vertical;
+                @apply --layout-center-justified;
+                @apply --layout-center;
+                box-sizing: border-box;
+                padding: 18px 0 0px 0;
+            }
+
+            .looking-textbox {
+                @apply --layout-horizontal;
+                @apply --layout-end;
+                margin-bottom: 5px;
+            }
+
+            .looking-greytext {
+                @apply --body-default;
+                color: var(--sc-grey4);
+                margin-bottom: 2px;
+            }
+
+            .looking-close {
+                @apply --xmark-grey4-small;
+                cursor: pointer;
+            }
+
+            @keyframes loadanimation {
+                0% {
+                    transform: scale(1);
+                    opacity: 0.2;
+                }
+                25% {
+                    transform: scale(1.5);
+                    opacity: 1;
+                }
+                50% {
+                    transform: scale(1);
+                    opacity: 0.2;
+                }
+                100% {
+                    transform: scale(1);
+                    opacity: 0;
+                }
+            }
+
+            .loading {
+                @apply --layout-horizontal;
+                margin: 2px 0px 2px 0px;
+                box-sizing: border-box;
+                padding: 4px;
+                @apply --layout-horizontal;
+                @apply --layout-end;
+            }
+
+            .smallpoint {
+                margin: 0px 3px 0px 3px;
+                width: 2px;
+                height: 2px;
+                border-radius: 50%;
+                background-color: var(--sc-grey4);
+            }
+
+            #point1 {
+                animation: loadanimation 1.5s linear 0s infinite;
+            }
+
+            #point2 {
+                animation: loadanimation 1.5s linear 0.3s infinite;
+            }
+
+            #point3 {
+                animation: loadanimation 1.5s linear 0.6s infinite;
+            }
+
+            .found-greytext {
+                margin-top: 8px;
+                @apply --body-default;
+                color: var(--sc-grey4);
+            }
+
+            .found-buttonbox {
+                margin-top: 24px;
+                @apply --layout-horizontal;
+                @apply --layout-center-center;
+            }
+
+            .found-avatarbox {
+                @apply --layout-horizontal;
+                margin: 30px 0 0 25vw;
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .found-infobox {
+                @apply --layout-vertical;
+                @apply --layout-center-justified;
+                width: 100%;
+            }
+
+            .found-name {
+                @apply --body-bold;
+                color: var(--sc-grey4);
+                margin-bottom: 3px;
+            }
+
+            .found-pubkey {
+                @apply --small-light;
+                color: var(--sc-grey4);
+                cursor: pointer;
+                max-width: 60%;
+                overflow: scroll;
+                overflow-wrap: break-all;
+            }
+
+            .truncate {
+                width: 90px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            img {
+                width: 50px;
+                height: 50px;
+                cursor: pointer;
+                border-radius: 50%;
+                margin-right: 10px;
+                background-size: 40px;
+            }
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .code-close,
+                .disagree,
+                .agree {
+                    @apply --retina;
+                }
+            }
         </style>
         <div class="container" id="container">
             <template is="dom-if" if="{{start}}">
-                <div class="buttonbox">
+                <div class="start-buttonbox">
                     <div class="button" on-click="_send">{{localize('send SWT')}}</div>
                     <div class="button" on-click="_shortcode">{{localize('shortcode')}}</div>
                 </div>
             </template>
 
             <template is="dom-if" if="{{shortcode}}">
-                <div class="shortcode-wrapper">
-                    <div class="greytext">Your temporary shortcode</div>
-                    <div class="codebox">
-                        <div class="code">78900</div>
-                        <div class="code-close" on-click="_start"></div>
-                    </div>
+                <div class="shortcode-greytext">{{localize('Your temporary shortcode')}}</div>
+                <div class="codebox">
+                    <div class="code">78900</div>
+                    <div class="code-close" on-click="_start"></div>
                 </div>
-                <p></p>
             </template>
 
             <template is="dom-if" if="{{send}}">
-                <p on-click="_start">Amount?</p>
+                <paper-input class="send-amount" label="{{localize('Amount')}}" type="password"></paper-input>
+                <paper-input class="send-destination" label="{{localize('Receivers shortcode or public key')}}" type="password" on-input="_equals"></paper-input>
+                <div class="send-buttonbox">
+                    <div class="disagree" on-click="_start"></div>
+                    <div class="round-button" on-click="_looking">
+                        <div class="agree"></div>
+                    </div>
+                </div>
             </template>
 
             <template is="dom-if" if="{{looking}}">
-                <p>Looking for receiver...</p>
+                <div class="looking-box">
+                    <div class="looking-textbox">
+                        <div class="looking-greytext" on-click="_found">{{localize('Looking for receiver')}}</div>
+                        <div class="loading">
+                            <div class="smallpoint" id="point1"></div>
+                            <div class="smallpoint" id="point2"></div>
+                            <div class="smallpoint" id="point3"></div>
+                        </div>
+                    </div>
+                    <div class="looking-close" on-click="_send"></div>
+                </div>
             </template>
 
             <template is="dom-if" if="{{found}}">
-                <p>Receiver round!</p>
+                <div class="found-greytext">{{localize('Receiver found!')}}</div>
+                <div class="found-avatarbox">
+                    <div class="found-avatar">
+                        <img src="../../images/defaultavatar.png">
+                    </div>
+                    <div class="found-infobox">
+                        <div class="found-name">Sally Singer</div>
+                        <div class="found-pubkey truncate">0x50281a1E4a65e2384389483b1E566d2c977a4daC</div>
+                    </div>
+                </div>
+                <div class="found-buttonbox">
+                    <div class="disagree" on-click="_send"></div>
+                    <div class="round-button" on-click="_confirm">
+                        <div class="agree"></div>
+                    </div>
+                </div>
             </template>
 
         </div>
@@ -199,9 +409,11 @@ Example:
             */
             _send() {
                 this.start = false;
+                this.looking = false;
+                this.found = false;
                 this.send = true;
                 this.updateStyles({
-                    '--container-height': '25px',
+                    '--container-height': '225px',
                 });
             }
             /**
@@ -215,6 +427,26 @@ Example:
                 });
             }
             /**
+            * switches to state looking
+            */
+            _looking() {
+                this.send = false;
+                this.looking = true;
+                this.updateStyles({
+                    '--container-height': '80px',
+                });
+            }
+            /**
+            * switches to state found
+            */
+            _found() {
+                this.looking = false;
+                this.found = true;
+                this.updateStyles({
+                    '--container-height': '210px',
+                });
+            }
+            /**
             * switches to state send
             */
             _start() {
@@ -225,6 +457,12 @@ Example:
                 this.updateStyles({
                     '--container-height': '184px',
                 });
+            }
+            /**
+            * changes the current path to page-confirm-sending
+            */
+            _confirm() {
+                this.path = 'confirm-sending/';
             }
         }
         window.customElements
