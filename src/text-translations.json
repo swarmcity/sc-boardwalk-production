@@ -121,7 +121,9 @@
         "Your transaction is being processed.": "Your transaction is being processed.",
         "Sending SWT": "Sending SWT",
         "Received TXhash": "Received TXhash",
-        "TX complete": "TX complete"
+        "TX complete": "TX complete",
+        "Amount": "Amount",
+        "Receivers shortcode or public key": "Receiver's shortcode or public key"
     },
     "cn": {
         "language": "cn",
@@ -234,7 +236,9 @@
         "Your transaction is being processed.": "Awaiting Translation",
         "Sending SWT": "Awaiting Translation",
         "Received TXhash": "Awaiting Translation",
-        "TX complete": "Awaiting Translation"
+        "TX complete": "Awaiting Translation",
+        "Amount": "Awaiting Translation",
+        "Receivers shortcode or public key": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -356,7 +360,9 @@
         "Your transaction is being processed.": "Awaiting Translation",
         "Sending SWT": "Awaiting Translation",
         "Received TXhash": "Awaiting Translation",
-        "TX complete": "Awaiting Translation"
+        "TX complete": "Awaiting Translation",
+        "Amount": "Awaiting Translation",
+        "Receivers shortcode or public key": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -478,7 +484,9 @@
         "Your transaction is being processed.": "Awaiting Translation",
         "Sending SWT": "Awaiting Translation",
         "Received TXhash": "Awaiting Translation",
-        "TX complete": "Awaiting Translation"
+        "TX complete": "Awaiting Translation",
+        "Amount": "Awaiting Translation",
+        "Receivers shortcode or public key": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -600,7 +608,9 @@
         "Your transaction is being processed.": "Awaiting Translation",
         "Sending SWT": "Awaiting Translation",
         "Received TXhash": "Awaiting Translation",
-        "TX complete": "Awaiting Translation"
+        "TX complete": "Awaiting Translation",
+        "Amount": "Awaiting Translation",
+        "Receivers shortcode or public key": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -722,7 +732,9 @@
         "Your transaction is being processed.": "Awaiting Translation",
         "Sending SWT": "Awaiting Translation",
         "Received TXhash": "Awaiting Translation",
-        "TX complete": "Awaiting Translation"
+        "TX complete": "Awaiting Translation",
+        "Amount": "Awaiting Translation",
+        "Receivers shortcode or public key": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -844,7 +856,9 @@
         "Your transaction is being processed.": "Awaiting Translation",
         "Sending SWT": "Awaiting Translation",
         "Received TXhash": "Awaiting Translation",
-        "TX complete": "Awaiting Translation"
+        "TX complete": "Awaiting Translation",
+        "Amount": "Awaiting Translation",
+        "Receivers shortcode or public key": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -966,7 +980,9 @@
         "Your transaction is being processed.": "Awaiting Translation",
         "Sending SWT": "Awaiting Translation",
         "Received TXhash": "Awaiting Translation",
-        "TX complete": "Awaiting Translation"
+        "TX complete": "Awaiting Translation",
+        "Amount": "Awaiting Translation",
+        "Receivers shortcode or public key": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -1088,6 +1104,8 @@
         "Your transaction is being processed.": "Awaiting Translation",
         "Sending SWT": "Awaiting Translation",
         "Received TXhash": "Awaiting Translation",
-        "TX complete": "Awaiting Translation"
+        "TX complete": "Awaiting Translation",
+        "Amount": "Awaiting Translation",
+        "Receivers shortcode or public key": "Awaiting Translation"
     }
 }
