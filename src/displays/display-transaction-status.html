@@ -19,16 +19,19 @@ Example:
         <style include="shared-styles">
             :host {
                 display: block;
+                --container-height: 184px;
             }
 
             .container {
-                @apply --layout-vertical;
-                @apply --layout-end-justified;
+                @apply --layout-horizontal;
+                @apply --layout-center;
                 transition: height 0.1s ease-in-out;
-                height: 184px;
+                height: var(--container-height);        
             }
 
-            .buttonbox {}
+            .buttonbox {
+                width: 100%;
+            }
 
             .button {
                 @apply --text-button-big;
@@ -197,8 +200,9 @@ Example:
             _send() {
                 this.start = false;
                 this.send = true;
-                var container = this.$.container;
-                container.style.height = '0px';
+                this.updateStyles({
+                    '--container-height': '25px',
+                });
             }
             /**
             * switches to state shortcode
@@ -206,8 +210,9 @@ Example:
             _shortcode() {
                 this.start = false;
                 this.shortcode = true;
-                var container = this.$.container;
-                container.style.height = '105px';
+                this.updateStyles({
+                    '--container-height': '85px',
+                });
             }
             /**
             * switches to state send
@@ -217,8 +222,9 @@ Example:
                 this.send = false;
                 this.found = false;
                 this.start = true;
-                var container = this.$.container;
-                container.style.height = '184px';
+                this.updateStyles({
+                    '--container-height': '184px',
+                });
             }
         }
         window.customElements
