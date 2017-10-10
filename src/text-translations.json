@@ -123,7 +123,10 @@
         "Received TXhash": "Received TXhash",
         "TX complete": "TX complete",
         "Amount": "Amount",
-        "Receivers shortcode or public key": "Receiver's shortcode or public key"
+        "Receivers shortcode or public key": "Receiver's shortcode or public key",
+        "Your temporary shortcode": "Your temporary shortcode",
+        "Looking for receiver": "Looking for receiver",
+        "Receiver found!": "Receiver found!"
     },
     "cn": {
         "language": "cn",
@@ -238,7 +241,10 @@
         "Received TXhash": "Awaiting Translation",
         "TX complete": "Awaiting Translation",
         "Amount": "Awaiting Translation",
-        "Receivers shortcode or public key": "Awaiting Translation"
+        "Receivers shortcode or public key": "Awaiting Translation",
+        "Your temporary shortcode": "Awaiting Translation",
+        "Looking for receiver": "Awaiting Translation",
+        "Receiver found!": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -362,7 +368,10 @@
         "Received TXhash": "Awaiting Translation",
         "TX complete": "Awaiting Translation",
         "Amount": "Awaiting Translation",
-        "Receivers shortcode or public key": "Awaiting Translation"
+        "Receivers shortcode or public key": "Awaiting Translation",
+        "Your temporary shortcode": "Awaiting Translation",
+        "Looking for receiver": "Awaiting Translation",
+        "Receiver found!": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -486,7 +495,10 @@
         "Received TXhash": "Awaiting Translation",
         "TX complete": "Awaiting Translation",
         "Amount": "Awaiting Translation",
-        "Receivers shortcode or public key": "Awaiting Translation"
+        "Receivers shortcode or public key": "Awaiting Translation",
+        "Your temporary shortcode": "Awaiting Translation",
+        "Looking for receiver": "Awaiting Translation",
+        "Receiver found!": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -610,7 +622,10 @@
         "Received TXhash": "Awaiting Translation",
         "TX complete": "Awaiting Translation",
         "Amount": "Awaiting Translation",
-        "Receivers shortcode or public key": "Awaiting Translation"
+        "Receivers shortcode or public key": "Awaiting Translation",
+        "Your temporary shortcode": "Awaiting Translation",
+        "Looking for receiver": "Awaiting Translation",
+        "Receiver found!": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -734,7 +749,10 @@
         "Received TXhash": "Awaiting Translation",
         "TX complete": "Awaiting Translation",
         "Amount": "Awaiting Translation",
-        "Receivers shortcode or public key": "Awaiting Translation"
+        "Receivers shortcode or public key": "Awaiting Translation",
+        "Your temporary shortcode": "Awaiting Translation",
+        "Looking for receiver": "Awaiting Translation",
+        "Receiver found!": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -858,7 +876,10 @@
         "Received TXhash": "Awaiting Translation",
         "TX complete": "Awaiting Translation",
         "Amount": "Awaiting Translation",
-        "Receivers shortcode or public key": "Awaiting Translation"
+        "Receivers shortcode or public key": "Awaiting Translation",
+        "Your temporary shortcode": "Awaiting Translation",
+        "Looking for receiver": "Awaiting Translation",
+        "Receiver found!": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -982,7 +1003,10 @@
         "Received TXhash": "Awaiting Translation",
         "TX complete": "Awaiting Translation",
         "Amount": "Awaiting Translation",
-        "Receivers shortcode or public key": "Awaiting Translation"
+        "Receivers shortcode or public key": "Awaiting Translation",
+        "Your temporary shortcode": "Awaiting Translation",
+        "Looking for receiver": "Awaiting Translation",
+        "Receiver found!": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -1106,6 +1130,9 @@
         "Received TXhash": "Awaiting Translation",
         "TX complete": "Awaiting Translation",
         "Amount": "Awaiting Translation",
-        "Receivers shortcode or public key": "Awaiting Translation"
+        "Receivers shortcode or public key": "Awaiting Translation",
+        "Your temporary shortcode": "Awaiting Translation",
+        "Looking for receiver": "Awaiting Translation",
+        "Receiver found!": "Awaiting Translation"
     }
 }
