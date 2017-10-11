@@ -96,7 +96,7 @@
 
   <script>
     class SwarmCity extends new ReduxMixin(Polymer.Element) {
-      static get is() { return 'swarm-city'; }
+      static get is() {return 'swarm-city';}
       static get properties() {
         return {
           page: {
@@ -127,13 +127,13 @@
         */
       static get actions() {
         return Object.assign({
-          HASHTAGS: function (hashtags) {
+          HASHTAGS: function(hashtags) {
             return {
               type: 'HASHTAGS',
               hashtags: hashtags,
             };
           },
-          LOCATION: function (location) {
+          LOCATION: function(location) {
             return {
               type: 'LOCATION',
               location: location,
@@ -160,10 +160,10 @@
       }
       _pageChanged(page) {
         if (!this.location) {
-          this.dispatch('LOCATION', { nowAt: page });
+          this.dispatch('LOCATION', {nowAt: page});
         } else {
           let lastAt = this.location.nowAt;
-          this.dispatch('LOCATION', { lastAt: lastAt, nowAt: page });
+          this.dispatch('LOCATION', {lastAt: lastAt, nowAt: page});
         }
         var resolvedPageUrl = this.resolveUrl('pages/page-' + page + '.html');
         Polymer.importHref(
