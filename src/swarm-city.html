@@ -1,7 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
-<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
 <link rel="import" href="../bower_components/app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
 <link rel="import" href="../bower_components/polymerfire/firebase.html">
 <link rel="import" href="../bower_components/polymerfire/polymerfire.html">
@@ -43,76 +42,61 @@
     <style>
       :host {
         display: block;
-        padding:0;
-        margin:0;
+        padding: 0;
+        margin: 0;
       }
     </style>
 
-    <firebase-app
-      database-url="https://swarmcity-23c70.firebaseio.com" 
-      api-key="AIzaSyDXAHgocTVa9PLVoKqCnQF9PDkUH7F-EFY" 
-      auth-domain="swarmcity-23c70.firebaseapp.com">
+    <firebase-app database-url="https://swarmcity-23c70.firebaseio.com" api-key="AIzaSyDXAHgocTVa9PLVoKqCnQF9PDkUH7F-EFY" auth-domain="swarmcity-23c70.firebaseapp.com">
     </firebase-app>
 
-    <firebase-query
-      path="/hashtags"
-      data="{{hashtagdata}}">
+    <firebase-query path="/hashtags" data="{{hashtagdata}}">
     </firebase-query>
 
-    <app-indexeddb-mirror
-      key="hashtags"
-      data="{{hashtagdata}}"
-      persisted-data="{{hashtags}}">
+    <app-indexeddb-mirror key="hashtags" data="{{hashtagdata}}" persisted-data="{{hashtags}}">
     </app-indexeddb-mirror>
 
 
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
-    <app-route
-        route="{{route}}"
-        pattern="[[rootPath]]:page"
-        data="{{routeData}}"
-        tail="{{subroute}}"></app-route>
+    <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
-    <neon-animated-pages
-        selected="[[page]]"
-        attr-for-selected="name"
-        fallback-selection="view404"
-        role="main">
-    <page-welcome name="welcome"></page-welcome>
-    <page-hashtag name="hashtag"></page-hashtag>
-    <page-new-here name="new-here"></page-new-here>
-    <page-language name="language"></page-language>
-    <page-hashtag-list name="hashtag-list"></page-hashtag-list>
-    <page-restore-account name="restore-account"></page-restore-account>
-    <page-resize-avatar name="resize-avatar"></page-resize-avatar>
-    <page-private-key name="private-key"></page-private-key>
-    <page-choose-avatar-and-username name="choose-avatar-and-username"></page-choose-avatar-and-username>
-    <page-location name="location"></page-location>
-    <page-json-file name="json-file"></page-json-file>
-    <page-stop-signup name="stop-signup"></page-stop-signup>
-    <page-password-warning name="password-warning"></page-password-warning>
-    <page-choose-password name="choose-password"></page-choose-password>
-    <page-account-complete name="account-complete"></page-account-complete>
-    <page-make-backup name="make-backup"></page-make-backup>
-    <page-my-keys name="my-keys"></page-my-keys>
-    <page-show-private-key name="show-private-key"></page-show-private-key>
-    <page-email-success name="email-success"></page-email-success>
-    <page-download-success name="download-success"></page-download-success>
-    <page-my-profile name="my-profile"></page-my-profile>
-    <page-make-backup-profile name="make-backup-profile"></page-make-backup-profile>
-    <page-download-success-profile name="download-success-profile"></page-download-success-profile>
-    <page-email-success-profile name="email-success-profile"></page-email-success-profile>
-    <page-warning-delete name="warning-delete"></page-warning-delete>
-    <page-notifications name="notifications"></page-notifications>
-    <page-confirm-sending name="confirm-sending"></page-confirm-sending>
-    <page-my-wallet name="my-wallet"></page-my-wallet>
-    <page-transaction-processing name="transaction-processing"></page-transaction-processing>
-    <page-view404 name="view404"></page-view404></neon-animated-pages>
+<!--     <neon-animated-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
+      <page-welcome name="welcome"></page-welcome>
+      <page-hashtag name="hashtag"></page-hashtag>
+      <page-new-here name="new-here"></page-new-here>
+      <page-language name="language"></page-language>
+      <page-hashtag-list name="hashtag-list"></page-hashtag-list>
+      <page-restore-account name="restore-account"></page-restore-account>
+      <page-resize-avatar name="resize-avatar"></page-resize-avatar>
+      <page-private-key name="private-key"></page-private-key>
+      <page-choose-avatar-and-username name="choose-avatar-and-username"></page-choose-avatar-and-username>
+      <page-location name="location"></page-location>
+      <page-json-file name="json-file"></page-json-file>
+      <page-stop-signup name="stop-signup"></page-stop-signup>
+      <page-password-warning name="password-warning"></page-password-warning>
+      <page-choose-password name="choose-password"></page-choose-password>
+      <page-account-complete name="account-complete"></page-account-complete>
+      <page-make-backup name="make-backup"></page-make-backup>
+      <page-my-keys name="my-keys"></page-my-keys>
+      <page-show-private-key name="show-private-key"></page-show-private-key>
+      <page-email-success name="email-success"></page-email-success>
+      <page-download-success name="download-success"></page-download-success>
+      <page-my-profile name="my-profile"></page-my-profile>
+      <page-make-backup-profile name="make-backup-profile"></page-make-backup-profile>
+      <page-download-success-profile name="download-success-profile"></page-download-success-profile>
+      <page-email-success-profile name="email-success-profile"></page-email-success-profile>
+      <page-warning-delete name="warning-delete"></page-warning-delete>
+      <page-notifications name="notifications"></page-notifications>
+      <page-confirm-sending name="confirm-sending"></page-confirm-sending>
+      <page-my-wallet name="my-wallet"></page-my-wallet>
+      <page-transaction-processing name="transaction-processing"></page-transaction-processing>
+      <page-view404 name="view404"></page-view404>
+    </neon-animated-pages> -->
   </template>
 
   <script>
     class SwarmCity extends new ReduxMixin(Polymer.Element) {
-      static get is() {return 'swarm-city';}
+      static get is() { return 'swarm-city'; }
       static get properties() {
         return {
           page: {
@@ -141,21 +125,21 @@
         * Redux action for sertting language
         * @param {hashtags} hashtags
         */
-        static get actions() {
-          return Object.assign({
-              HASHTAGS: function(hashtags) {
-                  return {
-                      type: 'HASHTAGS',
-                      hashtags: hashtags,
-                  };
-              },
-              LOCATION: function(location) {
-                  return {
-                      type: 'LOCATION',
-                      location: location,
-                  };
-              },
-          });
+      static get actions() {
+        return Object.assign({
+          HASHTAGS: function (hashtags) {
+            return {
+              type: 'HASHTAGS',
+              hashtags: hashtags,
+            };
+          },
+          LOCATION: function (location) {
+            return {
+              type: 'LOCATION',
+              location: location,
+            };
+          },
+        });
       }
 
       static get observers() {
@@ -176,17 +160,17 @@
       }
       _pageChanged(page) {
         if (!this.location) {
-          this.dispatch('LOCATION', {nowAt: page});
+          this.dispatch('LOCATION', { nowAt: page });
         } else {
           let lastAt = this.location.nowAt;
-          this.dispatch('LOCATION', {lastAt: lastAt, nowAt: page});
+          this.dispatch('LOCATION', { lastAt: lastAt, nowAt: page });
         }
         var resolvedPageUrl = this.resolveUrl('pages/page-' + page + '.html');
         Polymer.importHref(
-            resolvedPageUrl,
-            null,
-            this._showPage404.bind(this),
-            true);
+          resolvedPageUrl,
+          null,
+          this._showPage404.bind(this),
+          true);
       }
       _showPage404() {
         this.page = 'view404';

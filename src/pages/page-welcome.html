@@ -14,14 +14,6 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../displays/display-language.html">
 <link rel="import" href="../shared-styles.html">
-<!--
-    Animation pack, only load the animations you need for this page.
--->
-<link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
-<link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
-<link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
-<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
-<link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
 <dom-module id="page-welcome">
     <template>
@@ -304,8 +296,6 @@ This code may only be used under the license found at https://github.com/swarmci
     <script>
         class PageWelcome extends new ReduxMixin(Polymer.mixinBehaviors([
                 Polymer.AppLocalizeBehavior,
-                Polymer.NeonAnimationRunnerBehavior,
-                Polymer.NeonAnimatableBehavior,
             ],
             Polymer.Element
         )) {
@@ -349,59 +339,6 @@ This code may only be used under the license found at https://github.com/swarmci
             _btnClick() {
                 Polymer.importHref('src/pages/page-hashtag-list.html',
                 this._exitAnimation.bind(this), null, false);
-            }
-
-            /**
-            * loads the next page 
-            */
-            _exitAnimation() {
-                    this.$.top.animate(
-                    [
-                        {'transform': 'translate(0)'},
-                        {'transform': 'translateY(-100%)'},
-                    ], {
-                        fill: 'none',
-                        duration: 200,
-                        iterations: 1,
-                        iterationStart: 0,
-                        easing: 'cubic-bezier(0.42,0,0.58,1)',
-                        delay: 0,
-                        endDelay: 400,
-                    }
-                    );
-
-                    this.$.middle.animate(
-                    [
-                        {'transform': 'translate(0)'},
-                        {'transform': 'translateY(300%)'},
-                    ], {
-                        fill: 'none',
-                        duration: 200,
-                        iterations: 1,
-                        iterationStart: 0,
-                        easing: 'cubic-bezier(0.42,0,0.58,1)',
-                        delay: 0,
-                        endDelay: 400,
-                    }
-                    );
-
-                    this.$.bottom.animate(
-                    [
-                        {'transform': 'translate(0)'},
-                        {'transform': 'translateY(300%)'},
-                    ], {
-                        fill: 'none',
-                        duration: 200,
-                        iterations: 1,
-                        iterationStart: 0,
-                        easing: 'cubic-bezier(0.42,0,0.58,1)',
-                        delay: 0,
-                        endDelay: 400,
-                    }
-                    );
-                    setTimeout(()=>{
-                        this.set('route.path', 'hashtag-list/');
-                    }, 200);
             }
         } window.customElements.define(PageWelcome.is, PageWelcome);
     </script>
