@@ -21,7 +21,7 @@ This code may only be used under the license found at https://github.com/swarmci
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
 -->
         <style include="shared-styles">
-             :host {
+            :host {
                 width: 100vw;
                 display: block;
                 max-width: 100%;
@@ -92,7 +92,6 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(1) {
-
                 width: 75vw;
                 min-width: 200px;
                 max-width: 300px;
@@ -106,7 +105,6 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container>div:nth-child(2) {
-
                 box-sizing: border-box;
                 background-color: var(--sc-white);
                 padding: 40px 0 40px 0;
@@ -259,7 +257,9 @@ This code may only be used under the license found at https://github.com/swarmci
                         <div></div>
                         <div>{{localize('welcome')}}</div>
                         <div>swarm.
-                            <template is="dom-if" if="{{wide}}"><br></template>city</div>
+                            <template is="dom-if" if="{{wide}}">
+                                <br>
+                            </template>city</div>
                     </div>
                     <div>
                         <div autofocus on-click="_btnClick" on-KeyPress="_btnKeyPress">
@@ -271,23 +271,47 @@ This code may only be used under the license found at https://github.com/swarmci
             </div>
             <div id="middle">
                 <ul>
-                    <li><a href="https://thisis.swarm.city/" target="_blank">{{localize('This is Swarm City')}}</a></li>
-                    <li><a href="http://swarmcitizens.org/" target="_blank">{{localize('Support')}}</a></li>
-                    <li><a href="http://swarmcitizens.org/app.php/help/faq?sid=f4439589cebbcbfea36e2508ec12f155" target="_blank">{{localize('FAQ')}}</a></li>
-                    <li><a href="https://advisors.swarm.city/" target="_blank">{{localize('Advisors')}}</a></li>
+                    <li>
+                        <a href="https://thisis.swarm.city/" target="_blank">{{localize('This is Swarm City')}}</a>
+                    </li>
+                    <li>
+                        <a href="http://swarmcitizens.org/" target="_blank">{{localize('Support')}}</a>
+                    </li>
+                    <li>
+                        <a href="http://swarmcitizens.org/app.php/help/faq?sid=f4439589cebbcbfea36e2508ec12f155" target="_blank">{{localize('FAQ')}}</a>
+                    </li>
+                    <li>
+                        <a href="https://advisors.swarm.city/" target="_blank">{{localize('Advisors')}}</a>
+                    </li>
                 </ul>
             </div>
             <div id="bottom">
                 <div>{{localize('Find Swarm City on')}}</div>
                 <ul>
-                    <li><a href="https://www.facebook.com/groups/SwarmCity/" target="_blank">{{localize('Facebook')}}</a></li>
-                    <li><a href="https://discordapp.com/invite/6CsYT64" target="_blank">{{localize('Discord')}}</a></li>
-                    <li><a href="https://slackinvite.swarm.city" target="_blank">{{localize('Slack')}}</a></li>
-                    <li><a href="https://medium.com/swarm-city-times" target="_blank">{{localize('Medium')}}</a></li>
-                    <li><a href="https://github.com/swarmcity" target="_blank">{{localize('Github')}}</a></li>
-                    <li><a href="https://twitter.com/swarmcitydapp" target="_blank">{{localize('Twitter')}}</a></li>
-                    <li><a href="https://www.youtube.com/channel/UCsHBWn_ytZ3xdMbTyYe5Ifg" target="_blank">{{localize('Youtube')}}</a></li>
-                    <li><a href="https://www.reddit.com/r/SwarmCity/" target="_blank">{{localize('Reddit')}}</a></li>
+                    <li>
+                        <a href="https://www.facebook.com/groups/SwarmCity/" target="_blank">{{localize('Facebook')}}</a>
+                    </li>
+                    <li>
+                        <a href="https://discordapp.com/invite/6CsYT64" target="_blank">{{localize('Discord')}}</a>
+                    </li>
+                    <li>
+                        <a href="https://slackinvite.swarm.city" target="_blank">{{localize('Slack')}}</a>
+                    </li>
+                    <li>
+                        <a href="https://medium.com/swarm-city-times" target="_blank">{{localize('Medium')}}</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/swarmcity" target="_blank">{{localize('Github')}}</a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/swarmcitydapp" target="_blank">{{localize('Twitter')}}</a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/channel/UCsHBWn_ytZ3xdMbTyYe5Ifg" target="_blank">{{localize('Youtube')}}</a>
+                    </li>
+                    <li>
+                        <a href="https://www.reddit.com/r/SwarmCity/" target="_blank">{{localize('Reddit')}}</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -295,8 +319,8 @@ This code may only be used under the license found at https://github.com/swarmci
 
     <script>
         class PageWelcome extends new ReduxMixin(Polymer.mixinBehaviors([
-                Polymer.AppLocalizeBehavior,
-            ],
+            Polymer.AppLocalizeBehavior,
+        ],
             Polymer.Element
         )) {
             static get is() {
@@ -304,6 +328,14 @@ This code may only be used under the license found at https://github.com/swarmci
             }
             static get properties() {
                 return {
+                    /**
+                    * The animation object.
+                    */
+                    animation: {
+                        type: Object,
+                        reflectToAttribute: true,
+                        notify: true,
+                    },
                     language: {
                         type: String,
                         statePath: 'language',
@@ -337,8 +369,26 @@ This code may only be used under the license found at https://github.com/swarmci
             * loads the next page, once loaded fires the exit animation
             */
             _btnClick() {
-                Polymer.importHref('src/pages/page-hashtag-list.html',
-                this._exitAnimation.bind(this), null, false);
+                console.log('hoi');
+                this.animation = {
+                    from: 'welcome',
+                    to: 'hashtag-list',
+                    entryPlaying: false,
+                    exitPlaying: false,
+                    descriptionArray: [
+                        { 'transform': 'translateX(0)' },
+                        { 'transform': 'translateX(-100%)' },
+                    ],
+                    descriptionObject: {
+                        fill: 'forwards',
+                        duration: 300,
+                        iterations: 1,
+                        iterationStart: 0,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 0,
+                        endDelay: 0,
+                    }
+                }
             }
         } window.customElements.define(PageWelcome.is, PageWelcome);
     </script>

@@ -4,6 +4,7 @@
 <link rel="import" href="../bower_components/app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
 <link rel="import" href="../bower_components/polymerfire/firebase.html">
 <link rel="import" href="../bower_components/polymerfire/polymerfire.html">
+<link rel="import" href="../bower_components/faffys-animated-pages/faffys-animated-pages.html">
 <link rel="import" href="redux-state.html">
 
 <link rel="lazy-import" href="pages/page-welcome.html">
@@ -60,7 +61,7 @@
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
-<!--     <neon-animated-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
+    <!--     <neon-animated-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
       <page-welcome name="welcome"></page-welcome>
       <page-hashtag name="hashtag"></page-hashtag>
       <page-new-here name="new-here"></page-new-here>
@@ -92,11 +93,46 @@
       <page-transaction-processing name="transaction-processing"></page-transaction-processing>
       <page-view404 name="view404"></page-view404>
     </neon-animated-pages> -->
+
+    <faffys-animated-pages page="[[page]]" animation="{{animation}}">
+      <page-welcome id="welcome" animation="{{animation}}"></page-welcome>
+      <page-hashtag id="hashtag" animation="{{animation}}"></page-hashtag>
+      <page-new-here id="new-here" animation="{{animation}}"></page-new-here>
+      <page-language id="language" animation="{{animation}}"></page-language>
+      <page-hashtag-list id="hashtag-list" animation="{{animation}}"></page-hashtag-list>
+      <page-restore-account id="restore-account" animation="{{animation}}"></page-restore-account>
+      <page-resize-avatar id="resize-avatar" animation="{{animation}}"></page-resize-avatar>
+      <page-private-key id="private-key" animation="{{animation}}"></page-private-key>
+      <page-choose-avatar-and-username id="choose-avatar-and-username" animation="{{animation}}"></page-choose-avatar-and-username>
+      <page-location id="location" animation="{{animation}}"></page-location>
+      <page-json-file id="json-file" animation="{{animation}}"></page-json-file>
+      <page-stop-signup id="stop-signup" animation="{{animation}}"></page-stop-signup>
+      <page-password-warning id="password-warning" animation="{{animation}}"></page-password-warning>
+      <page-choose-password id="choose-password" animation="{{animation}}"></page-choose-password>
+      <page-account-complete id="account-complete" animation="{{animation}}"></page-account-complete>
+      <page-make-backup id="make-backup" animation="{{animation}}"></page-make-backup>
+      <page-my-keys id="my-keys" animation="{{animation}}"></page-my-keys>
+      <page-show-private-key id="show-private-key" animation="{{animation}}"></page-show-private-key>
+      <page-email-success id="email-success" animation="{{animation}}"></page-email-success>
+      <page-download-success id="download-success" animation="{{animation}}"></page-download-success>
+      <page-my-profile id="my-profile" animation="{{animation}}"></page-my-profile>
+      <page-make-backup-profile id="make-backup-profile" animation="{{animation}}"></page-make-backup-profile>
+      <page-download-success-profile id="download-success-profile" animation="{{animation}}"></page-download-success-profile>
+      <page-email-success-profile id="email-success-profile" animation="{{animation}}"></page-email-success-profile>
+      <page-warning-delete id="warning-delete" animation="{{animation}}"></page-warning-delete>
+      <page-notifications id="notifications" animation="{{animation}}"></page-notifications>
+      <page-confirm-sending id="confirm-sending" animation="{{animation}}"></page-confirm-sending>
+      <page-my-wallet id="my-wallet" animation="{{animation}}"></page-my-wallet>
+      <page-transaction-processing id="transaction-processing" animation="{{animation}}"></page-transaction-processing>
+      <page-view404 id="view404" animation="{{animation}}"></page-view404>
+    </faffys-animated-pages>
+  </template>
+
   </template>
 
   <script>
     class SwarmCity extends new ReduxMixin(Polymer.Element) {
-      static get is() {return 'swarm-city';}
+      static get is() { return 'swarm-city'; }
       static get properties() {
         return {
           page: {
@@ -127,13 +163,13 @@
         */
       static get actions() {
         return Object.assign({
-          HASHTAGS: function(hashtags) {
+          HASHTAGS: function (hashtags) {
             return {
               type: 'HASHTAGS',
               hashtags: hashtags,
             };
           },
-          LOCATION: function(location) {
+          LOCATION: function (location) {
             return {
               type: 'LOCATION',
               location: location,
@@ -160,10 +196,10 @@
       }
       _pageChanged(page) {
         if (!this.location) {
-          this.dispatch('LOCATION', {nowAt: page});
+          this.dispatch('LOCATION', { nowAt: page });
         } else {
           let lastAt = this.location.nowAt;
-          this.dispatch('LOCATION', {lastAt: lastAt, nowAt: page});
+          this.dispatch('LOCATION', { lastAt: lastAt, nowAt: page });
         }
         var resolvedPageUrl = this.resolveUrl('pages/page-' + page + '.html');
         Polymer.importHref(
