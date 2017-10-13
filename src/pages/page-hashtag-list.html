@@ -247,21 +247,6 @@ This code may only be used under the license found at https://github.com/swarmci
                     */
                     entryAnimation: {
                         type: Object,
-                        value: {
-                            descriptionArray: [
-                                { 'transform': 'translateX(100%)' },
-                                { 'transform': 'translateX(0)' },
-                            ],
-                            descriptionObject: {
-                                fill: 'forwards',
-                                duration: 300,
-                                iterations: 1,
-                                iterationStart: 0,
-                                easing: 'cubic-bezier(0.42,0,0.58,1)',
-                                delay: 0,
-                                endDelay: 0,
-                            }
-                        }
                     },
                     /**
                     * Location is the page path the user is on
@@ -327,6 +312,21 @@ This code may only be used under the license found at https://github.com/swarmci
             connectedCallback() {
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
+                this.entryAnimation = {
+                    descriptionArray: [
+                        {'transform': 'translateX(100%)'},
+                        {'transform': 'translateX(0)'},
+                    ],
+                    descriptionObject: {
+                        fill: 'forwards',
+                        duration: 1000,
+                        iterations: 1,
+                        iterationStart: 0,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 0,
+                        endDelay: 0,
+                    },
+                };
             }
             _path() {
                 if (this.path) {
@@ -340,11 +340,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 if (this.location.nowAt == 'hashtag-list') {
                     this.$.hashtagList.animate(
                         [
-                            { 'opacity': '0', 'transform': 'translateY(100px)' },
-                            { 'opacity': '1', 'transform': 'translateY(0)' },
+                            {'opacity': '0', 'transform': 'translateY(100px)'},
+                            {'opacity': '1', 'transform': 'translateY(0)'},
                         ], {
                             fill: 'none',
-                            duration: 300,
+                            duration: 1000,
                             iterations: 1,
                             easing: 'cubic-bezier(0.42,0,0.58,1)',
                             delay: 0,
@@ -352,11 +352,11 @@ This code may only be used under the license found at https://github.com/swarmci
                     );
                     this.$.back.animate(
                         [
-                            { 'opacity': '0' },
-                            { 'opacity': '1' },
+                            {'opacity': '0'},
+                            {'opacity': '1'},
                         ], {
                             fill: 'none',
-                            duration: 300,
+                            duration: 1000,
                             iterations: 1,
                             easing: 'cubic-bezier(0.42,0,0.58,1)',
                             delay: 0,
@@ -364,11 +364,11 @@ This code may only be used under the license found at https://github.com/swarmci
                     );
                     this.$.filterToggle.animate(
                         [
-                            { 'opacity': '0' },
-                            { 'opacity': '1' },
+                            {'opacity': '0'},
+                            {'opacity': '1'},
                         ], {
                             fill: 'none',
-                            duration: 300,
+                            duration: 1000,
                             iterations: 1,
                             easing: 'cubic-bezier(0.42,0,0.58,1)',
                             delay: 0,
@@ -392,7 +392,7 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.highlightFilterToggle = false;
                         setTimeout(() => {
                             this.sliderState = 'slider-hidden';
-                        }, 300);
+                        }, 1000);
                         break;
                     case 'slider-visible-hidden':
                         this.sliderState = 'slider-hidden-visible';
@@ -418,8 +418,25 @@ This code may only be used under the license found at https://github.com/swarmci
             * takes the user to the welcome page
             */
             _back() {
-                this.set('route.path', 'welcome/');
-                this.path = null;
+                this.animation = {
+                    from: 'hashtag-list',
+                    to: 'welcome',
+                    entryPlaying: false,
+                    exitPlaying: false,
+                    descriptionArray: [
+                        {'transform': 'translateX(0)'},
+                        {'transform': 'translateX(100%)'},
+                    ],
+                    descriptionObject: {
+                        fill: 'forwards',
+                        duration: 1000,
+                        iterations: 1,
+                        iterationStart: 0,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 0,
+                        endDelay: 0,
+                    },
+                };
             }
         }
         window.customElements.define(HashtagList.is, HashtagList);

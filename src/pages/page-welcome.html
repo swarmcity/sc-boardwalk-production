@@ -340,6 +340,12 @@ This code may only be used under the license found at https://github.com/swarmci
                         reflectToAttribute: true,
                         notify: true,
                     },
+                    /**
+                    * The entry animation for this page
+                    */
+                    entryAnimation: {
+                        type: Object,
+                    },
                     language: {
                         type: String,
                         statePath: 'language',
@@ -357,6 +363,21 @@ This code may only be used under the license found at https://github.com/swarmci
             connectedCallback() {
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
+                this.entryAnimation = {
+                    descriptionArray: [
+                        {'transform': 'translateX(-100%)'},
+                        {'transform': 'translateX(0)'},
+                    ],
+                    descriptionObject: {
+                        fill: 'forwards',
+                        duration: 1000,
+                        iterations: 1,
+                        iterationStart: 0,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 0,
+                        endDelay: 0,
+                    },
+                };
             }
 
             /**
@@ -373,26 +394,25 @@ This code may only be used under the license found at https://github.com/swarmci
             * loads the next page, once loaded fires the exit animation
             */
             _btnClick() {
-                console.log('hoi');
                 this.animation = {
                     from: 'welcome',
                     to: 'hashtag-list',
                     entryPlaying: false,
                     exitPlaying: false,
                     descriptionArray: [
-                        { 'transform': 'translateX(0)' },
-                        { 'transform': 'translateX(-100%)' },
+                        {'transform': 'translateX(0)'},
+                        {'transform': 'translateX(-100%)'},
                     ],
                     descriptionObject: {
                         fill: 'forwards',
-                        duration: 300,
+                        duration: 1000,
                         iterations: 1,
                         iterationStart: 0,
                         easing: 'cubic-bezier(0.42,0,0.58,1)',
                         delay: 0,
                         endDelay: 0,
-                    }
-                }
+                    },
+                };
             }
         } window.customElements.define(PageWelcome.is, PageWelcome);
     </script>

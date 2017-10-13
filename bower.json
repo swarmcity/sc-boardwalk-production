@@ -22,7 +22,8 @@
     "paper-input": "PolymerElements/paper-input#2.0-preview",
     "paper-slider": "2.0-preview",
     "polymerfire": "firebase/polymerfire#^2.1.0",
-    "app-storage": "PolymerElements/app-storage#^2.0.2"
+    "app-storage": "PolymerElements/app-storage#^2.0.2",
+    "faffys-animated-pages": "^0.0.1"
   },
   "resolutions": {
     "polymer": "^2.0.0",
@@ -41,7 +42,8 @@
     "iron-media-query": "^2.0.0",
     "iron-scroll-target-behavior": "1 - 2",
     "iron-location": "1 - 2",
-    "app-route": "^2.0.0"
+    "app-route": "^2.0.0",
+    "faffys-animated-pages": "^0.0.1"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0"
