@@ -36,7 +36,7 @@ Example:
                 width: 100%;
             }
 
-            .button {
+            .start-button {
                 @apply --text-button-big;
                 box-sizing: border-box;
                 padding: 30px 30px;
@@ -51,11 +51,12 @@ Example:
             .shortcode-box {
                 @apply --layout-vertical;
                 @apply --layout-center-justified;
+                height: 100%;
+                width: 100%;
             }
 
             .container[wide-layout] .shortcode-box {
                 @apply --layout-start;
-                width: 100%;               
             }
 
             .shortcode-greytext {
@@ -64,25 +65,34 @@ Example:
                 margin-top: 8px;
             }
 
-            .code {
+            .shortcode-code {
                 @apply --main-title3;
                 color: var(--sc-grey4);
             }
 
-            .code-close {
+            .shortcode-code-close {
                 @apply --xmark-blue-small;
                 cursor: pointer;
             }
 
-            .codebox {
+            .shortcode-code-close:active {
+                @apply --button-active;
+            }
+
+            .shortcode-codebox {
                 @apply --layout-horizontal;
                 @apply --layout-center-center;
                 margin-top: 3px;
             }
 
+            .container[wide-layout] .send-box {
+                @apply --layout-start;
+                width: 100%;
+            }
+
             paper-input {
                 width: 100%;
-
+                max-width: 400px;
                 @apply --sc-paper-input;
                 --paper-input-container-label: {
                     @apply --body-default;
@@ -107,10 +117,20 @@ Example:
                 @apply --layout-center-center;
             }
 
+            .container[wide-layout] .send-buttonbox {
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-center;
+            }
+
             .disagree {
                 @apply --xmark-grey4-small;
                 cursor: pointer;
                 margin-right: 10px;
+            }
+
+            .disagree:active {
+                @apply --button-active;
             }
 
             .round-button {
@@ -131,6 +151,12 @@ Example:
                 @apply --layout-center;
                 box-sizing: border-box;
                 padding: 18px 0 0px 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .container[wide-layout] .looking-box {
+                @apply --layout-start;
             }
 
             .looking-textbox {
@@ -169,7 +195,7 @@ Example:
                 }
             }
 
-            .loading {
+            .looking-loading {
                 @apply --layout-horizontal;
                 margin: 2px 0px 2px 0px;
                 box-sizing: border-box;
@@ -198,6 +224,17 @@ Example:
                 animation: loadanimation 1.5s linear 0.6s infinite;
             }
 
+            .found-box {
+                @apply --layout-vertical;
+                @apply --layout-center;
+                width: 100%;
+                height: 100%;
+            }
+
+            .container[wide-layout] .found-box {
+                @apply --layout-start;
+            }
+
             .found-greytext {
                 margin-top: 8px;
                 @apply --body-default;
@@ -215,6 +252,11 @@ Example:
                 margin: 30px 0 0 25vw;
                 max-width: 100%;
                 width: 100%;
+            }
+
+            .container[wide-layout] .found-avatarbox{
+                margin: 30px 0 0 0;
+
             }
 
             .found-infobox {
@@ -268,28 +310,30 @@ Example:
         <div class="container" id="container" wide-layout$="{{wide}}">
             <template is="dom-if" if="{{start}}">
                 <div class="start-buttonbox">
-                    <div class="button" on-click="_send">{{localize('send SWT')}}</div>
-                    <div class="button" on-click="_shortcode">{{localize('shortcode')}}</div>
+                    <div class="start-button" on-click="_send">{{localize('send SWT')}}</div>
+                    <div class="start-button" on-click="_shortcode">{{localize('shortcode')}}</div>
                 </div>
             </template>
 
             <template is="dom-if" if="{{shortcode}}">
                 <div class="shortcode-box">
                     <div class="shortcode-greytext">{{localize('Your temporary shortcode')}}</div>
-                    <div class="codebox">
-                        <div class="code">78900</div>
-                        <div class="code-close" on-click="_start"></div>
+                    <div class="shortcode-codebox">
+                        <div class="shortcode-code">78900</div>
+                        <div class="shortcode-code-close" on-click="_start"></div>
                     </div>
                 </div>
             </template>
 
             <template is="dom-if" if="{{send}}">
-                <paper-input class="send-amount" label="{{localize('Amount')}}" type="password"></paper-input>
-                <paper-input class="send-destination" label="{{localize('Receivers shortcode or public key')}}" type="password" on-input="_equals"></paper-input>
-                <div class="send-buttonbox">
-                    <div class="disagree" on-click="_start"></div>
-                    <div class="round-button" on-click="_looking">
-                        <div class="agree"></div>
+                <div class="send-box">
+                    <paper-input class="send-amount" label="{{localize('Amount')}}" type="txt"></paper-input>
+                    <paper-input class="send-destination" label="{{localize('Receivers shortcode or public key')}}" type="txt" on-input="_equals"></paper-input>
+                    <div class="send-buttonbox">
+                        <div class="disagree" on-click="_start"></div>
+                        <div class="round-button" on-click="_looking">
+                            <div class="agree"></div>
+                        </div>
                     </div>
                 </div>
             </template>
@@ -298,7 +342,7 @@ Example:
                 <div class="looking-box">
                     <div class="looking-textbox">
                         <div class="looking-greytext" on-click="_found">{{localize('Looking for receiver')}}</div>
-                        <div class="loading">
+                        <div class="looking-loading">
                             <div class="smallpoint" id="point1"></div>
                             <div class="smallpoint" id="point2"></div>
                             <div class="smallpoint" id="point3"></div>
@@ -309,20 +353,22 @@ Example:
             </template>
 
             <template is="dom-if" if="{{found}}">
-                <div class="found-greytext">{{localize('Receiver found!')}}</div>
-                <div class="found-avatarbox">
-                    <div class="found-avatar">
-                        <img src="../../images/defaultavatar.png">
+                <div class="found-box">
+                    <div class="found-greytext">{{localize('Receiver found!')}}</div>
+                    <div class="found-avatarbox">
+                        <div class="found-avatar">
+                            <img src="../../images/defaultavatar.png">
+                        </div>
+                        <div class="found-infobox">
+                            <div class="found-name">Sally Singer</div>
+                            <div class="found-pubkey truncate">0x50281a1E4a65e2384389483b1E566d2c977a4daC</div>
+                        </div>
                     </div>
-                    <div class="found-infobox">
-                        <div class="found-name">Sally Singer</div>
-                        <div class="found-pubkey truncate">0x50281a1E4a65e2384389483b1E566d2c977a4daC</div>
-                    </div>
-                </div>
-                <div class="found-buttonbox">
-                    <div class="disagree" on-click="_send"></div>
-                    <div class="round-button" on-click="_confirm">
-                        <div class="agree"></div>
+                    <div class="found-buttonbox">
+                        <div class="disagree" on-click="_send"></div>
+                        <div class="round-button" on-click="_confirm">
+                            <div class="agree"></div>
+                        </div>
                     </div>
                 </div>
             </template>
