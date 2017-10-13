@@ -1,12 +1,10 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
-<link rel="import" href="../bower_components/app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
 <link rel="import" href="../bower_components/polymerfire/firebase.html">
 <link rel="import" href="../bower_components/polymerfire/polymerfire.html">
 <link rel="import" href="../bower_components/faffys-animated-pages/faffys-animated-pages.html">
 <link rel="import" href="redux-state.html">
-
 <link rel="lazy-import" href="pages/page-welcome.html">
 <link rel="lazy-import" href="pages/page-hashtag-list.html">
 <link rel="lazy-import" href="pages/page-hashtag.html">
@@ -47,16 +45,6 @@
         margin: 0;
       }
     </style>
-
-    <firebase-app database-url="https://swarmcity-23c70.firebaseio.com" api-key="AIzaSyDXAHgocTVa9PLVoKqCnQF9PDkUH7F-EFY" auth-domain="swarmcity-23c70.firebaseapp.com">
-    </firebase-app>
-
-    <firebase-query path="/hashtags" data="{{hashtagdata}}">
-    </firebase-query>
-
-    <app-indexeddb-mirror key="hashtags" data="{{hashtagdata}}" persisted-data="{{hashtags}}">
-    </app-indexeddb-mirror>
-
 
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
@@ -128,36 +116,24 @@
         * Redux action for sertting language
         * @param {hashtags} hashtags
         */
-      static get actions() {
-        return Object.assign({
-          HASHTAGS: function(hashtags) {
-            return {
-              type: 'HASHTAGS',
-              hashtags: hashtags,
-            };
-          },
-          LOCATION: function(location) {
-            return {
-              type: 'LOCATION',
-              location: location,
-            };
-          },
-        });
+        static get actions() {
+          return Object.assign({
+              LOCATION: function(location) {
+                  return {
+                      type: 'LOCATION',
+                      location: location,
+                  };
+              },
+          });
       }
 
       static get observers() {
         return [
-          '_hashtagChanged(hashtagdata.*)',
           '_routePageChanged(routeData.page)',
         ];
       }
 
-      _hashtagChanged() {
-        if (this.hashtagdata.length >= 1) {
-          this.dispatch('HASHTAGS', null);
-          this.dispatch('HASHTAGS', this.hashtagdata);
-        }
-      }
+
       _routePageChanged(page) {
         this.page = page || 'welcome';
       }
