@@ -17,16 +17,6 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../displays/display-my-info.html">
 <link rel="import" href="../displays/display-filter-list.html">
 <link rel="import" href="../displays/display-hashtag-list.html">
-<!--
-    Aimation pack, only load the animations you need for this page.
--->
-
-<link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
-<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
-<link rel="import" href="../../bower_components/neon-animation/web-animations.html">
-<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
-<link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
-<link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
 
 <dom-module id="page-hashtag-list">
     <template>
@@ -34,13 +24,13 @@ This code may only be used under the license found at https://github.com/swarmci
         Page specific styles, if the style is used on more than one page, moveit to shared styles.
         -->
         <style include="shared-styles">
-             :host {
+            :host {
                 width: 100vw;
                 min-height: 80vh;
-                display: block;              
+                display: block;
                 max-width: 100%;
             }
-            
+
             .container {
                 height: 100%;
                 width: 100%;
@@ -227,11 +217,7 @@ This code may only be used under the license found at https://github.com/swarmci
             </display-filter-list>
 
             <div class$="fade [[fadeState]] fullheight" on-click="_fadeClose">
-                <display-hashtag-list 
-                    id="hashtagList" 
-                    range="[[range]]" 
-                    path="{{path}}" 
-                    show-slider="{{showSlider}}">
+                <display-hashtag-list id="hashtagList" range="[[range]]" path="{{path}}" show-slider="{{showSlider}}">
                 </display-hashtag-list>
             </div>
         </div>
@@ -240,8 +226,6 @@ This code may only be used under the license found at https://github.com/swarmci
     <script>
         class HashtagList extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
-            Polymer.NeonAnimationRunnerBehavior,
-            Polymer.NeonAnimatableBehavior,
         ],
             Polymer.Element
         )) {
@@ -250,6 +234,20 @@ This code may only be used under the license found at https://github.com/swarmci
             }
             static get properties() {
                 return {
+                    /**
+                    * The animation object
+                    */
+                    animation: {
+                        type: Object,
+                        reflectToAttribute: true,
+                        notify: true,
+                    },
+                    /**
+                    * The entry animation for this page
+                    */
+                    entryAnimation: {
+                        type: Object,
+                    },
                     /**
                     * Location is the page path the user is on
                     * @type {String}
@@ -314,6 +312,21 @@ This code may only be used under the license found at https://github.com/swarmci
             connectedCallback() {
                 super.connectedCallback();
                 this.loadResources(this.resolveUrl('../text-translations.json'));
+                this.entryAnimation = {
+                    descriptionArray: [
+                        {'transform': 'translateX(100%)'},
+                        {'transform': 'translateX(0)'},
+                    ],
+                    descriptionObject: {
+                        fill: 'forwards',
+                        duration: 1000,
+                        iterations: 1,
+                        iterationStart: 0,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 0,
+                        endDelay: 0,
+                    },
+                };
             }
             _path() {
                 if (this.path) {
@@ -331,7 +344,7 @@ This code may only be used under the license found at https://github.com/swarmci
                             {'opacity': '1', 'transform': 'translateY(0)'},
                         ], {
                             fill: 'none',
-                            duration: 300,
+                            duration: 1000,
                             iterations: 1,
                             easing: 'cubic-bezier(0.42,0,0.58,1)',
                             delay: 0,
@@ -343,7 +356,7 @@ This code may only be used under the license found at https://github.com/swarmci
                             {'opacity': '1'},
                         ], {
                             fill: 'none',
-                            duration: 300,
+                            duration: 1000,
                             iterations: 1,
                             easing: 'cubic-bezier(0.42,0,0.58,1)',
                             delay: 0,
@@ -355,7 +368,7 @@ This code may only be used under the license found at https://github.com/swarmci
                             {'opacity': '1'},
                         ], {
                             fill: 'none',
-                            duration: 300,
+                            duration: 1000,
                             iterations: 1,
                             easing: 'cubic-bezier(0.42,0,0.58,1)',
                             delay: 0,
@@ -379,7 +392,7 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.highlightFilterToggle = false;
                         setTimeout(() => {
                             this.sliderState = 'slider-hidden';
-                        }, 300);
+                        }, 1000);
                         break;
                     case 'slider-visible-hidden':
                         this.sliderState = 'slider-hidden-visible';
@@ -405,8 +418,25 @@ This code may only be used under the license found at https://github.com/swarmci
             * takes the user to the welcome page
             */
             _back() {
-                this.set('route.path', 'welcome/');
-                this.path = null;
+                this.animation = {
+                    from: 'hashtag-list',
+                    to: 'welcome',
+                    entryPlaying: false,
+                    exitPlaying: false,
+                    descriptionArray: [
+                        {'transform': 'translateX(0)'},
+                        {'transform': 'translateX(100%)'},
+                    ],
+                    descriptionObject: {
+                        fill: 'forwards',
+                        duration: 1000,
+                        iterations: 1,
+                        iterationStart: 0,
+                        easing: 'cubic-bezier(0.42,0,0.58,1)',
+                        delay: 0,
+                        endDelay: 0,
+                    },
+                };
             }
         }
         window.customElements.define(HashtagList.is, HashtagList);

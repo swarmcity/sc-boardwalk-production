@@ -7,7 +7,7 @@ Colors are all lower case, There is a space after the :
 <dom-module id="shared-styles">
     <template>
         <style>
-             :host {
+            :host {
                 /* users can not select unless we explicity allow */
                 -webkit-tap-highlight-color: transparent;
                 -webkit-user-select: none;
@@ -181,6 +181,10 @@ Colors are all lower case, There is a space after the :
                     @apply --icon-normal;
                     background-position: -0px -216px;
                 }
+                --vmark-white-small: {
+                    @apply --icon-small;
+                    background-position: -270px -36px;
+                }
                 --xmark-grey4-normal: {
                     @apply --icon-normal;
                     background-position: -54px -0px;
@@ -196,6 +200,10 @@ Colors are all lower case, There is a space after the :
                 --xmark-white-small: {
                     @apply --icon-small;
                     background-position: -144px -234px;
+                }
+                --xmark-blue-small: {
+                    @apply --icon-small;
+                    background-position: -270px -72px;
                 }
                 --xmark-grey4-small: {
                     @apply --icon-small;
@@ -292,7 +300,7 @@ Colors are all lower case, There is a space after the :
                 --swlogo-grey4: {
                     @apply --sprite;
                     width: 108px;
-                    height: 54px;
+                    height: 50px;
                     background-position: -108px -108px;
                 }
                 --defaultavatar-grey4: {
@@ -338,6 +346,9 @@ Colors are all lower case, There is a space after the :
                     border-radius: 2px;
                     background-color: rgba(255, 255, 255, 0.2);
                     cursor: pointer;
+                    max-height: 82px;
+                    @apply --layout-vertical;
+                    @apply --layout-center-center;
                 }
 
                 --text-button-big-fullwhite: {
@@ -384,7 +395,6 @@ Colors are all lower case, There is a space after the :
 
 
                 /*----------PAGE STRUCTURE----------*/
-
                 /* JSON-FILE */
                 --json-file-host: {
                     height: 100vh;

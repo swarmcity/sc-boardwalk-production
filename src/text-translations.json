@@ -117,7 +117,16 @@
         "send SWT": "send SWT",
         "shortcode": "shortcode",
         "Youre about to send": "You're about to send",
-        "to": "to"
+        "to": "to",
+        "Your transaction is being processed.": "Your transaction is being processed.",
+        "Sending SWT": "Sending SWT",
+        "Received TXhash": "Received TXhash",
+        "TX complete": "TX complete",
+        "Amount": "Amount",
+        "Receivers shortcode or public key": "Receiver's shortcode or public key",
+        "Your temporary shortcode": "Your temporary shortcode",
+        "Looking for receiver": "Looking for receiver",
+        "Receiver found!": "Receiver found!"
     },
     "cn": {
         "language": "cn",
@@ -226,7 +235,16 @@
         "send SWT": "Awaiting Translation",
         "shortcode": "Awaiting Translation",
         "Youre about to send": "Awaiting Translation",
-        "to": "Awaiting Translation"
+        "to": "Awaiting Translation",
+        "Your transaction is being processed.": "Awaiting Translation",
+        "Sending SWT": "Awaiting Translation",
+        "Received TXhash": "Awaiting Translation",
+        "TX complete": "Awaiting Translation",
+        "Amount": "Awaiting Translation",
+        "Receivers shortcode or public key": "Awaiting Translation",
+        "Your temporary shortcode": "Awaiting Translation",
+        "Looking for receiver": "Awaiting Translation",
+        "Receiver found!": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -344,7 +362,16 @@
         "send SWT": "Awaiting Translation",
         "shortcode": "Awaiting Translation",
         "Youre about to send": "Awaiting Translation",
-        "to": "Awaiting Translation"
+        "to": "Awaiting Translation",
+        "Your transaction is being processed.": "Awaiting Translation",
+        "Sending SWT": "Awaiting Translation",
+        "Received TXhash": "Awaiting Translation",
+        "TX complete": "Awaiting Translation",
+        "Amount": "Awaiting Translation",
+        "Receivers shortcode or public key": "Awaiting Translation",
+        "Your temporary shortcode": "Awaiting Translation",
+        "Looking for receiver": "Awaiting Translation",
+        "Receiver found!": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -462,7 +489,16 @@
         "send SWT": "Awaiting Translation",
         "shortcode": "Awaiting Translation",
         "Youre about to send": "Awaiting Translation",
-        "to": "Awaiting Translation"
+        "to": "Awaiting Translation",
+        "Your transaction is being processed.": "Awaiting Translation",
+        "Sending SWT": "Awaiting Translation",
+        "Received TXhash": "Awaiting Translation",
+        "TX complete": "Awaiting Translation",
+        "Amount": "Awaiting Translation",
+        "Receivers shortcode or public key": "Awaiting Translation",
+        "Your temporary shortcode": "Awaiting Translation",
+        "Looking for receiver": "Awaiting Translation",
+        "Receiver found!": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -580,7 +616,16 @@
         "send SWT": "Awaiting Translation",
         "shortcode": "Awaiting Translation",
         "Youre about to send": "Awaiting Translation",
-        "to": "Awaiting Translation"
+        "to": "Awaiting Translation",
+        "Your transaction is being processed.": "Awaiting Translation",
+        "Sending SWT": "Awaiting Translation",
+        "Received TXhash": "Awaiting Translation",
+        "TX complete": "Awaiting Translation",
+        "Amount": "Awaiting Translation",
+        "Receivers shortcode or public key": "Awaiting Translation",
+        "Your temporary shortcode": "Awaiting Translation",
+        "Looking for receiver": "Awaiting Translation",
+        "Receiver found!": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -698,7 +743,16 @@
         "send SWT": "Awaiting Translation",
         "shortcode": "Awaiting Translation",
         "Youre about to send": "Awaiting Translation",
-        "to": "Awaiting Translation"
+        "to": "Awaiting Translation",
+        "Your transaction is being processed.": "Awaiting Translation",
+        "Sending SWT": "Awaiting Translation",
+        "Received TXhash": "Awaiting Translation",
+        "TX complete": "Awaiting Translation",
+        "Amount": "Awaiting Translation",
+        "Receivers shortcode or public key": "Awaiting Translation",
+        "Your temporary shortcode": "Awaiting Translation",
+        "Looking for receiver": "Awaiting Translation",
+        "Receiver found!": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -816,7 +870,16 @@
         "send SWT": "Awaiting Translation",
         "shortcode": "Awaiting Translation",
         "Youre about to send": "Awaiting Translation",
-        "to": "Awaiting Translation"
+        "to": "Awaiting Translation",
+        "Your transaction is being processed.": "Awaiting Translation",
+        "Sending SWT": "Awaiting Translation",
+        "Received TXhash": "Awaiting Translation",
+        "TX complete": "Awaiting Translation",
+        "Amount": "Awaiting Translation",
+        "Receivers shortcode or public key": "Awaiting Translation",
+        "Your temporary shortcode": "Awaiting Translation",
+        "Looking for receiver": "Awaiting Translation",
+        "Receiver found!": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -934,7 +997,16 @@
         "send SWT": "Awaiting Translation",
         "shortcode": "Awaiting Translation",
         "Youre about to send": "Awaiting Translation",
-        "to": "Awaiting Translation"
+        "to": "Awaiting Translation",
+        "Your transaction is being processed.": "Awaiting Translation",
+        "Sending SWT": "Awaiting Translation",
+        "Received TXhash": "Awaiting Translation",
+        "TX complete": "Awaiting Translation",
+        "Amount": "Awaiting Translation",
+        "Receivers shortcode or public key": "Awaiting Translation",
+        "Your temporary shortcode": "Awaiting Translation",
+        "Looking for receiver": "Awaiting Translation",
+        "Receiver found!": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -1052,6 +1124,15 @@
         "send SWT": "Awaiting Translation",
         "shortcode": "Awaiting Translation",
         "Youre about to send": "Awaiting Translation",
-        "to": "Awaiting Translation"
+        "to": "Awaiting Translation",
+        "Your transaction is being processed.": "Awaiting Translation",
+        "Sending SWT": "Awaiting Translation",
+        "Received TXhash": "Awaiting Translation",
+        "TX complete": "Awaiting Translation",
+        "Amount": "Awaiting Translation",
+        "Receivers shortcode or public key": "Awaiting Translation",
+        "Your temporary shortcode": "Awaiting Translation",
+        "Looking for receiver": "Awaiting Translation",
+        "Receiver found!": "Awaiting Translation"
     }
 }

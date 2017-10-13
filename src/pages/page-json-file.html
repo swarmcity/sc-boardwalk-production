@@ -15,15 +15,6 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../shared-styles.html">
 <link rel="import" href="../displays/display-json-upload.html">
-<!--
-    Aimation pack, only load the animations you need for this page.
--->
-
-<link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
-<link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
-<link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
-<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
-<link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
 <dom-module id="page-json-file">
     <template>
@@ -144,10 +135,8 @@ This code may only be used under the license found at https://github.com/swarmci
                 color: var(--sc-blue);
                 box-sizing: border-box;
                 width: 100%;
-                height: 15vh;
                 margin: 0 14px 14px 0;
                 max-width: 320px;
-                max-height: 75px;
             }
 
             .select:active {
@@ -198,8 +187,6 @@ This code may only be used under the license found at https://github.com/swarmci
     <script>
         class MyJSONFile extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
-            Polymer.NeonAnimationRunnerBehavior,
-            Polymer.NeonAnimatableBehavior,
         ],
             Polymer.Element
         )) {
@@ -219,31 +206,6 @@ This code may only be used under the license found at https://github.com/swarmci
                     path: {
                         type: String,
                         observer: '_path',
-                    },
-                    /**
-                    * Entry and exit animation
-                    */
-                    animationConfig: {
-                        value: function() {
-                            return {
-                                'entry': {
-                                    name: 'fade-in-animation',
-                                    node: this,
-                                    nodeDelay: 300,
-                                    timing: {
-                                        duration: 300,
-                                    },
-                                },
-                                'exit': {
-                                    name: 'fade-out-animation',
-                                    node: this,
-                                    nodeDelay: 300,
-                                    timing: {
-                                        duration: 300,
-                                    },
-                                },
-                            };
-                        },
                     },
                 };
             }
