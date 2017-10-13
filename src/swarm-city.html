@@ -61,39 +61,6 @@
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
-    <!--     <neon-animated-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
-      <page-welcome name="welcome"></page-welcome>
-      <page-hashtag name="hashtag"></page-hashtag>
-      <page-new-here name="new-here"></page-new-here>
-      <page-language name="language"></page-language>
-      <page-hashtag-list name="hashtag-list"></page-hashtag-list>
-      <page-restore-account name="restore-account"></page-restore-account>
-      <page-resize-avatar name="resize-avatar"></page-resize-avatar>
-      <page-private-key name="private-key"></page-private-key>
-      <page-choose-avatar-and-username name="choose-avatar-and-username"></page-choose-avatar-and-username>
-      <page-location name="location"></page-location>
-      <page-json-file name="json-file"></page-json-file>
-      <page-stop-signup name="stop-signup"></page-stop-signup>
-      <page-password-warning name="password-warning"></page-password-warning>
-      <page-choose-password name="choose-password"></page-choose-password>
-      <page-account-complete name="account-complete"></page-account-complete>
-      <page-make-backup name="make-backup"></page-make-backup>
-      <page-my-keys name="my-keys"></page-my-keys>
-      <page-show-private-key name="show-private-key"></page-show-private-key>
-      <page-email-success name="email-success"></page-email-success>
-      <page-download-success name="download-success"></page-download-success>
-      <page-my-profile name="my-profile"></page-my-profile>
-      <page-make-backup-profile name="make-backup-profile"></page-make-backup-profile>
-      <page-download-success-profile name="download-success-profile"></page-download-success-profile>
-      <page-email-success-profile name="email-success-profile"></page-email-success-profile>
-      <page-warning-delete name="warning-delete"></page-warning-delete>
-      <page-notifications name="notifications"></page-notifications>
-      <page-confirm-sending name="confirm-sending"></page-confirm-sending>
-      <page-my-wallet name="my-wallet"></page-my-wallet>
-      <page-transaction-processing name="transaction-processing"></page-transaction-processing>
-      <page-view404 name="view404"></page-view404>
-    </neon-animated-pages> -->
-
     <faffys-animated-pages page="[[page]]" animation="{{animation}}">
       <page-welcome id="welcome" animation="{{animation}}"></page-welcome>
       <page-hashtag id="hashtag" animation="{{animation}}"></page-hashtag>
