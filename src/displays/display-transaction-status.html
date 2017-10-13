@@ -48,6 +48,16 @@ Example:
                 @apply --button-active;
             }
 
+            .shortcode-box {
+                @apply --layout-vertical;
+                @apply --layout-center-justified;
+            }
+
+            .container[wide-layout] .shortcode-box {
+                @apply --layout-start;
+                width: 100%;               
+            }
+
             .shortcode-greytext {
                 @apply --body-default;
                 color: var(--sc-grey4);
@@ -254,7 +264,8 @@ Example:
                 }
             }
         </style>
-        <div class="container" id="container">
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+        <div class="container" id="container" wide-layout$="{{wide}}">
             <template is="dom-if" if="{{start}}">
                 <div class="start-buttonbox">
                     <div class="button" on-click="_send">{{localize('send SWT')}}</div>
@@ -263,10 +274,12 @@ Example:
             </template>
 
             <template is="dom-if" if="{{shortcode}}">
-                <div class="shortcode-greytext">{{localize('Your temporary shortcode')}}</div>
-                <div class="codebox">
-                    <div class="code">78900</div>
-                    <div class="code-close" on-click="_start"></div>
+                <div class="shortcode-box">
+                    <div class="shortcode-greytext">{{localize('Your temporary shortcode')}}</div>
+                    <div class="codebox">
+                        <div class="code">78900</div>
+                        <div class="code-close" on-click="_start"></div>
+                    </div>
                 </div>
             </template>
 
