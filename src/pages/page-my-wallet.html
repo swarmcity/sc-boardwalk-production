@@ -220,11 +220,18 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             /**
-            * takes the user to previous page
+            * takes the user to originating page
             */
             _close() {
-                window.history.back();
+                if (typeof sessionStorage.getItem('origin') === 'string'
+                    || sessionStorage.getItem('origin') instanceof String) {
+                    this.path = sessionStorage.getItem('origin');
+                }
+                else {
+                    this.set('route.path', 'hashtag-list');
+                }
             }
+
             /**
             * changes the current path
             */

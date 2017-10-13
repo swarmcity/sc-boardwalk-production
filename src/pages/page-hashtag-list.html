@@ -194,10 +194,8 @@ This code may only be used under the license found at https://github.com/swarmci
             <div class="header">
 
                 <div class="topleft">
-                    <template is="dom-if" if="{{completeAccount}}">
-                        <display-my-info id="myInfo" complete-account="{{completeAccount}}">
-                        </display-my-info>
-                    </template>
+                    <display-my-info id="myInfo" complete-account="{{completeAccount}}">
+                    </display-my-info>
                 </div>
 
 
@@ -255,7 +253,6 @@ This code may only be used under the license found at https://github.com/swarmci
                     location: {
                         type: String,
                         statePath: 'location',
-                        observer: '_entryAnimation',
                     },
                     /**
                     * sliderState represents style state of the slider 
@@ -319,7 +316,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     ],
                     descriptionObject: {
                         fill: 'forwards',
-                        duration: 1000,
+                        duration: 500,
                         iterations: 1,
                         iterationStart: 0,
                         easing: 'cubic-bezier(0.42,0,0.58,1)',
@@ -331,49 +328,6 @@ This code may only be used under the license found at https://github.com/swarmci
             _path() {
                 if (this.path) {
                     this.set('route.path', this.path);
-                }
-            }
-            /**
-            * location checks if the user is on this page and fires the entry animation
-            */
-            _entryAnimation() {
-                if (this.location.nowAt == 'hashtag-list') {
-                    this.$.hashtagList.animate(
-                        [
-                            {'opacity': '0', 'transform': 'translateY(100px)'},
-                            {'opacity': '1', 'transform': 'translateY(0)'},
-                        ], {
-                            fill: 'none',
-                            duration: 1000,
-                            iterations: 1,
-                            easing: 'cubic-bezier(0.42,0,0.58,1)',
-                            delay: 0,
-                        }
-                    );
-                    this.$.back.animate(
-                        [
-                            {'opacity': '0'},
-                            {'opacity': '1'},
-                        ], {
-                            fill: 'none',
-                            duration: 1000,
-                            iterations: 1,
-                            easing: 'cubic-bezier(0.42,0,0.58,1)',
-                            delay: 0,
-                        }
-                    );
-                    this.$.filterToggle.animate(
-                        [
-                            {'opacity': '0'},
-                            {'opacity': '1'},
-                        ], {
-                            fill: 'none',
-                            duration: 1000,
-                            iterations: 1,
-                            easing: 'cubic-bezier(0.42,0,0.58,1)',
-                            delay: 0,
-                        }
-                    );
                 }
             }
             /**
@@ -392,19 +346,13 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.highlightFilterToggle = false;
                         setTimeout(() => {
                             this.sliderState = 'slider-hidden';
-                        }, 1000);
+                        }, 300);
                         break;
                     case 'slider-visible-hidden':
                         this.sliderState = 'slider-hidden-visible';
                         this.fadeState = 'fade-visible-hidden';
                         this.highlightFilterToggle = true;
                 }
-            }
-            /**
-            * the exit animation
-            */
-            _exitAnimation() {
-
             }
             /** 
             * closes open slider box 
@@ -429,7 +377,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     ],
                     descriptionObject: {
                         fill: 'forwards',
-                        duration: 1000,
+                        duration: 500,
                         iterations: 1,
                         iterationStart: 0,
                         easing: 'cubic-bezier(0.42,0,0.58,1)',

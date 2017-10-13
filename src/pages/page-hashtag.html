@@ -294,7 +294,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
             <div class="header">
                 <div class="top">
-                    <display-my-info on-click="_toProfile" complete-account="{{completeAccount}}"></display-my-info>
+                    <display-my-info complete-account="{{completeAccount}}"></display-my-info>
                     <div class="back" on-click="_back"></div>
                 </div>
                 <div class="bottom">
@@ -495,6 +495,9 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.fadeState = 'fade-hidden-visible';
                         this.highlightInfoToggle = true;
                         this.highlightFilterToggle = false;
+                        setTimeout(() =>{
+                            this.sliderState = 'slider-hidden';
+                        }, 300);
                         break;
                     case 'info-hidden-visible':
                         this.infoState = 'info-visible-hidden';
@@ -525,12 +528,6 @@ This code may only be used under the license found at https://github.com/swarmci
             */
             _back() {
                 this.set('route.path', 'hashtag-list/');
-            }
-            /**
-            * takes the user to the my-profile page
-            */
-            _toProfile() {
-                this.set('route.path', 'my-profile/');
             }
         }
         window.customElements.define(NewHashtag.is, NewHashtag);
