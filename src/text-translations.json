@@ -126,7 +126,12 @@
         "Receivers shortcode or public key": "Receiver's shortcode or public key",
         "Your temporary shortcode": "Your temporary shortcode",
         "Looking for receiver": "Looking for receiver",
-        "Receiver found!": "Receiver found!"
+        "Receiver found!": "Receiver found!",
+        "What are you looking for?": "What are you looking for?",
+        "What is your budget?": "What is your budget?",
+        "Total cost:": "Total cost:",
+        "The hasthag fee for": "The hashtag fee for",
+        "is": "is"
     },
     "cn": {
         "language": "cn",
@@ -244,7 +249,12 @@
         "Receivers shortcode or public key": "Awaiting Translation",
         "Your temporary shortcode": "Awaiting Translation",
         "Looking for receiver": "Awaiting Translation",
-        "Receiver found!": "Awaiting Translation"
+        "Receiver found!": "Awaiting Translation",
+        "What are you looking for?": "Awaiting Translation",
+        "What is your budget?": "Awaiting Translation",
+        "Total cost:": "Awaiting Translation",
+        "The hasthag fee for": "Awaiting Translation",
+        "is": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -371,7 +381,12 @@
         "Receivers shortcode or public key": "Awaiting Translation",
         "Your temporary shortcode": "Awaiting Translation",
         "Looking for receiver": "Awaiting Translation",
-        "Receiver found!": "Awaiting Translation"
+        "Receiver found!": "Awaiting Translation",
+        "What are you looking for?": "Awaiting Translation",
+        "What is your budget?": "Awaiting Translation",
+        "Total cost:": "Awaiting Translation",
+        "The hasthag fee for": "Awaiting Translation",
+        "is": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -498,7 +513,12 @@
         "Receivers shortcode or public key": "Awaiting Translation",
         "Your temporary shortcode": "Awaiting Translation",
         "Looking for receiver": "Awaiting Translation",
-        "Receiver found!": "Awaiting Translation"
+        "Receiver found!": "Awaiting Translation",
+        "What are you looking for?": "Awaiting Translation",
+        "What is your budget?": "Awaiting Translation",
+        "Total cost:": "Awaiting Translation",
+        "The hasthag fee for": "Awaiting Translation",
+        "is": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -625,7 +645,12 @@
         "Receivers shortcode or public key": "Awaiting Translation",
         "Your temporary shortcode": "Awaiting Translation",
         "Looking for receiver": "Awaiting Translation",
-        "Receiver found!": "Awaiting Translation"
+        "Receiver found!": "Awaiting Translation",
+        "What are you looking for?": "Awaiting Translation",
+        "What is your budget?": "Awaiting Translation",
+        "Total cost:": "Awaiting Translation",
+        "The hasthag fee for": "Awaiting Translation",
+        "is": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -752,7 +777,12 @@
         "Receivers shortcode or public key": "Awaiting Translation",
         "Your temporary shortcode": "Awaiting Translation",
         "Looking for receiver": "Awaiting Translation",
-        "Receiver found!": "Awaiting Translation"
+        "Receiver found!": "Awaiting Translation",
+        "What are you looking for?": "Awaiting Translation",
+        "What is your budget?": "Awaiting Translation",
+        "Total cost:": "Awaiting Translation",
+        "The hasthag fee for": "Awaiting Translation",
+        "is": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -879,7 +909,12 @@
         "Receivers shortcode or public key": "Awaiting Translation",
         "Your temporary shortcode": "Awaiting Translation",
         "Looking for receiver": "Awaiting Translation",
-        "Receiver found!": "Awaiting Translation"
+        "Receiver found!": "Awaiting Translation",
+        "What are you looking for?": "Awaiting Translation",
+        "What is your budget?": "Awaiting Translation",
+        "Total cost:": "Awaiting Translation",
+        "The hasthag fee for": "Awaiting Translation",
+        "is": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -1006,7 +1041,12 @@
         "Receivers shortcode or public key": "Awaiting Translation",
         "Your temporary shortcode": "Awaiting Translation",
         "Looking for receiver": "Awaiting Translation",
-        "Receiver found!": "Awaiting Translation"
+        "Receiver found!": "Awaiting Translation",
+        "What are you looking for?": "Awaiting Translation",
+        "What is your budget?": "Awaiting Translation",
+        "Total cost:": "Awaiting Translation",
+        "The hasthag fee for": "Awaiting Translation",
+        "is": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -1133,6 +1173,11 @@
         "Receivers shortcode or public key": "Awaiting Translation",
         "Your temporary shortcode": "Awaiting Translation",
         "Looking for receiver": "Awaiting Translation",
-        "Receiver found!": "Awaiting Translation"
+        "Receiver found!": "Awaiting Translation",
+        "What are you looking for?": "Awaiting Translation",
+        "What is your budget?": "Awaiting Translation",
+        "Total cost:": "Awaiting Translation",
+        "The hasthag fee for": "Awaiting Translation",
+        "is": "Awaiting Translation"
     }
 }
