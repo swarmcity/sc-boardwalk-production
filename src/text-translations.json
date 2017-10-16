@@ -135,7 +135,8 @@
         "What is your budget?": "What is your budget?",
         "Total cost:": "Total cost:",
         "The hashtag fee for": "The hashtag fee for",
-        "is": "is"
+        "is": "is",
+        "Do you want to cancel the deal": "Do you want to cancel the deal"
     },
     "cn": {
         "language": "cn",
@@ -262,7 +263,8 @@
         "Create allowance": "Awaiting Translation",
         "Create request": "Awaiting Translation",
         "Sending SWT to deal": "Awaiting Translation",
-        "Your request is being processed.": "Awaiting Translation"
+        "Your request is being processed.": "Awaiting Translation",
+        "Do you want to cancel the deal": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -398,7 +400,8 @@
         "Create allowance": "Awaiting Translation",
         "Create request": "Awaiting Translation",
         "Sending SWT to deal": "Awaiting Translation",
-        "Your request is being processed.": "Awaiting Translation"
+        "Your request is being processed.": "Awaiting Translation",
+        "Do you want to cancel the deal": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -534,7 +537,8 @@
         "Create allowance": "Awaiting Translation",
         "Create request": "Awaiting Translation",
         "Sending SWT to deal": "Awaiting Translation",
-        "Your request is being processed.": "Awaiting Translation"
+        "Your request is being processed.": "Awaiting Translation",
+        "Do you want to cancel the deal": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -670,7 +674,8 @@
         "Create allowance": "Awaiting Translation",
         "Create request": "Awaiting Translation",
         "Sending SWT to deal": "Awaiting Translation",
-        "Your request is being processed.": "Awaiting Translation"
+        "Your request is being processed.": "Awaiting Translation",
+        "Do you want to cancel the deal": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -806,7 +811,8 @@
         "Create allowance": "Awaiting Translation",
         "Create request": "Awaiting Translation",
         "Sending SWT to deal": "Awaiting Translation",
-        "Your request is being processed.": "Awaiting Translation"
+        "Your request is being processed.": "Awaiting Translation",
+        "Do you want to cancel the deal": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -942,7 +948,8 @@
         "Create allowance": "Awaiting Translation",
         "Create request": "Awaiting Translation",
         "Sending SWT to deal": "Awaiting Translation",
-        "Your request is being processed.": "Awaiting Translation"
+        "Your request is being processed.": "Awaiting Translation",
+        "Do you want to cancel the deal": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -1078,7 +1085,8 @@
         "Create allowance": "Awaiting Translation",
         "Create request": "Awaiting Translation",
         "Sending SWT to deal": "Awaiting Translation",
-        "Your request is being processed.": "Awaiting Translation"
+        "Your request is being processed.": "Awaiting Translation",
+        "Do you want to cancel the deal": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -1214,6 +1222,7 @@
         "Create allowance": "Awaiting Translation",
         "Create request": "Awaiting Translation",
         "Sending SWT to deal": "Awaiting Translation",
-        "Your request is being processed.": "Awaiting Translation"
+        "Your request is being processed.": "Awaiting Translation",
+        "Do you want to cancel the deal": "Awaiting Translation"
     }
 }
