@@ -119,9 +119,13 @@
         "Youre about to send": "You're about to send",
         "to": "to",
         "Your transaction is being processed.": "Your transaction is being processed.",
+        "Your request is being processed.": "Your request is being processed.",
         "Sending SWT": "Sending SWT",
         "Received TXhash": "Received TXhash",
         "TX complete": "TX complete",
+        "Create allowance": "Create allowance",
+        "Create request": "Create request",
+        "Sending SWT to deal": "Sending SWT to deal",
         "Amount": "Amount",
         "Receivers shortcode or public key": "Receiver's shortcode or public key",
         "Your temporary shortcode": "Your temporary shortcode",
@@ -254,7 +258,11 @@
         "What is your budget?": "Awaiting Translation",
         "Total cost:": "Awaiting Translation",
         "The hashtag fee for": "Awaiting Translation",
-        "is": "Awaiting Translation"
+        "is": "Awaiting Translation",
+        "Create allowance": "Awaiting Translation",
+        "Create request": "Awaiting Translation",
+        "Sending SWT to deal": "Awaiting Translation",
+        "Your request is being processed.": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -386,7 +394,11 @@
         "What is your budget?": "Awaiting Translation",
         "Total cost:": "Awaiting Translation",
         "The hashtag fee for": "Awaiting Translation",
-        "is": "Awaiting Translation"
+        "is": "Awaiting Translation",
+        "Create allowance": "Awaiting Translation",
+        "Create request": "Awaiting Translation",
+        "Sending SWT to deal": "Awaiting Translation",
+        "Your request is being processed.": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -518,7 +530,11 @@
         "What is your budget?": "Awaiting Translation",
         "Total cost:": "Awaiting Translation",
         "The hashtag fee for": "Awaiting Translation",
-        "is": "Awaiting Translation"
+        "is": "Awaiting Translation",
+        "Create allowance": "Awaiting Translation",
+        "Create request": "Awaiting Translation",
+        "Sending SWT to deal": "Awaiting Translation",
+        "Your request is being processed.": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -650,7 +666,11 @@
         "What is your budget?": "Awaiting Translation",
         "Total cost:": "Awaiting Translation",
         "The hashtag fee for": "Awaiting Translation",
-        "is": "Awaiting Translation"
+        "is": "Awaiting Translation",
+        "Create allowance": "Awaiting Translation",
+        "Create request": "Awaiting Translation",
+        "Sending SWT to deal": "Awaiting Translation",
+        "Your request is being processed.": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -782,7 +802,11 @@
         "What is your budget?": "Awaiting Translation",
         "Total cost:": "Awaiting Translation",
         "The hashtag fee for": "Awaiting Translation",
-        "is": "Awaiting Translation"
+        "is": "Awaiting Translation",
+        "Create allowance": "Awaiting Translation",
+        "Create request": "Awaiting Translation",
+        "Sending SWT to deal": "Awaiting Translation",
+        "Your request is being processed.": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -914,7 +938,11 @@
         "What is your budget?": "Awaiting Translation",
         "Total cost:": "Awaiting Translation",
         "The hashtag fee for": "Awaiting Translation",
-        "is": "Awaiting Translation"
+        "is": "Awaiting Translation",
+        "Create allowance": "Awaiting Translation",
+        "Create request": "Awaiting Translation",
+        "Sending SWT to deal": "Awaiting Translation",
+        "Your request is being processed.": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -1046,7 +1074,11 @@
         "What is your budget?": "Awaiting Translation",
         "Total cost:": "Awaiting Translation",
         "The hashtag fee for": "Awaiting Translation",
-        "is": "Awaiting Translation"
+        "is": "Awaiting Translation",
+        "Create allowance": "Awaiting Translation",
+        "Create request": "Awaiting Translation",
+        "Sending SWT to deal": "Awaiting Translation",
+        "Your request is being processed.": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -1178,6 +1210,10 @@
         "What is your budget?": "Awaiting Translation",
         "Total cost:": "Awaiting Translation",
         "The hashtag fee for": "Awaiting Translation",
-        "is": "Awaiting Translation"
+        "is": "Awaiting Translation",
+        "Create allowance": "Awaiting Translation",
+        "Create request": "Awaiting Translation",
+        "Sending SWT to deal": "Awaiting Translation",
+        "Your request is being processed.": "Awaiting Translation"
     }
 }
