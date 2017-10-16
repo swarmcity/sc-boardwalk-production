@@ -270,16 +270,17 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.loadResources(this.resolveUrl('../text-translations.json'));
             }
             /**
-            * takes the user to page-stop-signup
+            * takes the user to originating page
             */
             _close() {
-                this.path = 'stop-signup/';
-            }
-            /**
-            * takes the user to the next page in user creation
-            */
-            _agree() {
-                this.path = 'account-complete/';
+                if (typeof sessionStorage.getItem('hashtagID') === 'string'
+                    || sessionStorage.getItem('hashtagID') instanceof String) {
+                    this.path = 'hashtag/' + sessionStorage.getItem('hashtagID');
+                    sessionStorage.removeItem('hashtagID');
+                }
+                else {
+                    this.set('route.path', 'hashtag-list');
+                }
             }
             /**
             * changes the current path

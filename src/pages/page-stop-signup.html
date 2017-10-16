@@ -183,7 +183,7 @@ This code may only be used under the license found at https://github.com/swarmci
             */
             _agree() {
                 this.path = 'hashtag/' + sessionStorage.getItem('hashtagID');
-                sessionStorage.clear();
+                sessionStorage.removeItem('hashtagID');
             }
 
             /**

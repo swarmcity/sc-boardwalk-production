@@ -121,8 +121,8 @@ The following custom properties and mixins are available for styling:
             * complete acocunt.
             */
             _next() {
+                sessionStorage.setItem('hashtagID', this.routeData.page);
                 if (!this.completeAccount) {
-                    sessionStorage.setItem('hashtagID', this.routeData.page);
                     this.path = 'new-here/';
                 } else {
                     this.path = 'new-request/';
