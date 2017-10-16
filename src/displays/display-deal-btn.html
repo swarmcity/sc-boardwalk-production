@@ -86,6 +86,15 @@ The following custom properties and mixins are available for styling:
                         value: null,
                         notify: true,
                     },
+                    /**
+                    * completeAccount represents true of the user
+                    * has a username, avatar and address
+                    * @type {Boolean}
+                    */
+                    completeAccount: {
+                        type: Boolean,
+                        value: true,
+                    },
                 };
             }
 
@@ -116,7 +125,7 @@ The following custom properties and mixins are available for styling:
                     sessionStorage.setItem('hashtagID', this.routeData.page);
                     this.path = 'new-here/';
                 } else {
-                    this.path = 'new-deal/';
+                    this.path = 'new-request/';
                 }
             }
         }
