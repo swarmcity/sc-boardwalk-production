@@ -69,7 +69,10 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             paper-textarea {
-                width: 100%;
+                box-sizing: border-box;
+                padding: 0 2px;
+                width: 72vw;
+                margin-top: 5vh;
                 text-align: left;
                 @apply --sc-paper-input;
                 --paper-input-container-label: {
@@ -90,7 +93,8 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container[wide-layout] paper-textarea {
-                width: 500px;
+                width: inherit;
+                max-width: 60vw;
                 margin-top: 5vh;
             }
 
@@ -115,8 +119,9 @@ This code may only be used under the license found at https://github.com/swarmci
                 }
             }
 
-            .request {
-                max-width: 100%;
+            .request {}
+
+            .container[wide-layout] .request {
             }
 
             .budget {
@@ -222,7 +227,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     <div class="fee">{{localize('The hashtag fee for')}} #Pioneer {{localize('is')}} 0.05 SWT</div>
                 </div>
                 <div class="buttonbox">
-                    <div class="disagree"></div>
+                    <div class="disagree" on-click="_close"></div>
                     <div class="round-button">
                         <div class="agree"></div>
                     </div>
