@@ -4,13 +4,13 @@
   "devDependencies": {
     "babel-preset-env": "^1.6.0",
     "bower": "^1.8.2",
-    "eslint": "^4.8.0",
+    "eslint": "^4.9.0",
     "eslint-config-google": "^0.9.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-html": "^3.2.2",
     "eslint-plugin-mocha": "^4.11.0",
-    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "uglify-es": "^3.1.3"
   },
