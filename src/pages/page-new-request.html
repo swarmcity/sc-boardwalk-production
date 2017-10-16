@@ -121,8 +121,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .request {}
 
-            .container[wide-layout] .request {
-            }
+            .container[wide-layout] .request {}
 
             .budget {
                 @apply --layout-flex;
@@ -227,8 +226,8 @@ This code may only be used under the license found at https://github.com/swarmci
                     <div class="fee">{{localize('The hashtag fee for')}} #Pioneer {{localize('is')}} 0.05 SWT</div>
                 </div>
                 <div class="buttonbox">
-                    <div class="disagree" on-click="_close"></div>
-                    <div class="round-button">
+                    <div class="disagree" on-click="_close" on-keypress="_close" tabindex="2" autofocus></div>
+                    <div class="round-button" tabindex="1">
                         <div class="agree"></div>
                     </div>
                 </div>
