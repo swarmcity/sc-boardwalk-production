@@ -10,11 +10,13 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="../redux-state.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
 
 <!--
     Displays and shared styles only
 -->
 <link rel="import" href="../shared-styles.html">
+<link rel="import" href="../displays/display-my-info.html">
 
 <dom-module id="page-new-request">
     <template>
@@ -22,7 +24,7 @@ This code may only be used under the license found at https://github.com/swarmci
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
 -->
         <style include="shared-styles">
-             :host {
+            :host {
                 height: 100vh;
                 width: 100vw;
                 display: block;
@@ -30,82 +32,45 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .container {
                 @apply --layout-vertical;
-                @apply --layout-end-justified;
-                @apply --layout-center;
+                @apply --layout-start-justified;
+                @apply --layout-start;
                 background-image: var(--sc-bg);
                 height: 100%;
                 width: 100%;
                 box-sizing: border-box;
-                padding: 0 14vw;
             }
 
             .container[wide-layout] {
                 @apply --layout-vertical;
-                @apply --layout-end-justified;
+                @apply --layout-start-justified;
                 @apply --layout-start;
+            }
+
+            display-my-info {
+                box-sizing: border-box;
+                padding: 10vh 14vw;
+                width: 100%;
+            }
+
+            .container[wide-layout] display-my-info {
+                padding: 10vh 12vw;
+                z-index: 11;
+            }
+
+            .content {
+                @apply --layout-flex;
+                box-sizing: border-box;
+                padding: 0 14vw;
+                height: 100%;
+            }
+
+            .container[wide-layout] .content {
                 padding: 0 12vw;
             }
 
-            .top {
-                @apply --layout-vertical;
-                @apply --layout-center;
-                @apply --layout-end-justified;
+            paper-textarea {
                 width: 100%;
-                height: 30vh;
-            }
-
-            .container[wide-layout] .top {
-                @apply --layout-start;
-                height: 35vh;
-            }
-
-            .close {
-                @apply --xmark-grey3-small;
-                @apply --close;
-            }
-
-            .close:active {
-                @apply --button-active;
-            }
-
-            .title {
-                @apply --main-title1;
-                color: var(--sc-grey3b);
-                word-wrap: break-word;
-                text-align: center;
-            }
-
-            .container[wide-layout] .title {
-                @apply --main-title1-wide;
                 text-align: left;
-                max-width: 750px;
-            }
-
-            .middle {
-                @apply --layout-vertical;
-                @apply --layout-center;
-                @apply --layout-start-justified;
-                @apply --layout-flex;
-                width: 100%;
-            }
-
-            .container[wide-layout] .middle {
-                @apply --layout-start;
-            }
-
-            #password {
-                margin-top: 5vh;
-            }
-
-            .container[wide-layout] paper-input {
-                text-align: left;
-                max-width: 400px;
-            }
-
-            paper-input {
-                width: 100%;
-                text-align: center;
-
                 @apply --sc-paper-input;
                 --paper-input-container-label: {
                     @apply --body-default;
@@ -124,48 +89,119 @@ This code may only be used under the license found at https://github.com/swarmci
                 }
             }
 
-            .errorcontainer {
-                height: 10vh;
+            .container[wide-layout] paper-textarea {
+                width: 500px;
+                margin-top: 5vh;
             }
 
-            #error {
+            paper-input {
+                width: 100%;
+                text-align: left;
+                @apply --sc-paper-input;
+                --paper-input-container-label: {
+                    @apply --body-default;
+                }
+                --paper-input-container-input: {
+                    @apply --body-bold;
+                }
+                --paper-input-error: {
+                    @apply --body-bold;
+                }
+                --paper-input-prefix: {
+                    @apply --body-default;
+                }
+                --paper-input-suffix: {
+                    @apply --body-default;
+                }
+            }
+
+            .request {
+                max-width: 100%;
+            }
+
+            .budget {
+                @apply --layout-flex;
+                margin-top: 10px;
+                max-width: 250px;
+            }
+
+            .container[wide-layout] .budget {
                 margin-top: 20px;
-                @apply --body-bold;
-                color: var(--sc-red);
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
+                width: 250px;
             }
 
-            .bottom {
-                @apply --layout-vertical;
+            .horizontal {
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                @apply --layout-end;
+            }
+
+            .currency {
+                margin: 0 0 4px 15px;
+                @apply --body-bold;
+                color: var(--sc-grey4);
+            }
+
+            .container[wide-layout] .cost {
+                text-align: left;
+            }
+
+            .cost {
+                @apply --small-bold;
+                margin-top: 8vh;
+                text-align: center;
+                color: var(--sc-grey4);
+            }
+
+            .container[wide-layout] .fee {
+                text-align: left;
+            }
+
+            .fee {
+                @apply --small-light;
+                text-align: center;
+                color: var(--sc-grey4);
+            }
+
+            .buttonbox {
+                margin-top: 10vh;
+                @apply --layout-horizontal;
+                @apply --layout-center-center;
+            }
+
+            .container[wide-layout] .buttonbox {
+                @apply --layout-horizontal;
                 @apply --layout-start-justified;
                 @apply --layout-center;
-                height: 30vh;
-                width: 100%;
+                margin-top: 15vh;
             }
 
-            .container[wide-layout] .bottom {
-                @apply --layout-start;
-                height: 35vh;
+            .disagree {
+                @apply --xmark-grey4-small;
+                cursor: pointer;
+                margin-right: 10px;
             }
 
-            .btn {
+            .disagree:active {
+                @apply --button-active;
+            }
+
+            .round-button {
                 @apply --icon-button-big;
             }
 
-
-            .btn:active {
+            .round-button:active {
                 @apply --button-active;
             }
 
             .agree {
-                @apply --next-blue-normal;
+                @apply --vmark-blue-normal;
             }
+
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
-                .close,
                 .agree {
                     @apply --retina;
                 }
@@ -174,23 +210,26 @@ This code may only be used under the license found at https://github.com/swarmci
         <app-location route="{{route}}"></app-location>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <div class="container" wide-layout$="{{wide}}">
-            <div class="top">
-                <div class="close" on-click="_close"></div>
-                <div class="title">{{localize('Choose a password.')}}</div>
+            <display-my-info avatarSmall></display-my-info>
+            <div class="content">
+                <paper-textarea class="request" label="{{localize('What are you looking for?')}}" type="txt"></paper-textarea>
+                <div class="horizontal">
+                    <paper-input class="budget" label="{{localize('What is your budget?')}}" type="txt"></paper-input>
+                    <div class="currency">SWT</div>
+                </div>
+                <div class="infobox">
+                    <div class="cost">{{localize('Total cost:')}} 20.05 SWT</div>
+                    <div class="fee">{{localize('The hashtag fee for')}} #Pioneer {{localize('is')}} 0.05 SWT</div>
+                </div>
+                <div class="buttonbox">
+                    <div class="disagree"></div>
+                    <div class="round-button">
+                        <div class="agree"></div>
+                    </div>
+                </div>
 
             </div>
-            <div class="middle">
-                <paper-input id="password" label="{{localize('password?')}}" type="password"></paper-input>
-                <paper-input id="repeat" label="{{localize('Confirm password')}}" type="password" on-input="_equals"></paper-input>
-                <div class="errorcontainer">
-                    <span id="error">{{error}}</span>
-                </div>
-            </div>
-            <div class="bottom">
-                <div class="btn">
-                    <div class="agree" on-click="_agree"></div>
-                </div>
-            </div>
+
         </div>
 
     </template>
