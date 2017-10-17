@@ -394,7 +394,100 @@ Colors are all lower case, There is a space after the :
                 }
 
 
-                /*----------PAGE STRUCTURE----------*/
+                /*----------PAGE TEMPLATES----------*/
+                /* CONFIRM-BLUE */
+                --confirm-blue-host: {
+                    background-color: var(--sc-blue);
+                    height: 100vh;
+                    width: 100vw;
+                    display: block;
+                }
+
+                --confirm-blue-container: {
+                    background-color: var(--sc-blue);
+                    height: 100%;
+                    width: 100%;
+                    @apply --layout-vertical;
+                }
+
+                --confirm-blue-top: {
+                    height: 70%;
+                    @apply --layout-vertical;
+                    @apply --layout-center;
+                    @apply --layout-center-justified;
+                    box-sizing: border-box;
+                    padding: 0 14vw;
+                }
+
+                --confirm-blue-top-wide: {
+                    height: 55%;
+                    padding: 0 12vw 7vh;
+                    @apply --layout-start;
+                    @apply --layout-end-justified;
+                }
+
+                --confirm-blue-title: {
+                    @apply --main-title1;
+                    color: var(--sc-white);
+                    text-align: center;
+                }
+
+                --confirm-blue-title-wide: {
+                    @apply --main-title1-wide;
+                    text-align: left;
+                }
+
+                --confirm-blue-subtitle: {
+                    @apply --small-light;
+                    margin: 20px 0 0;
+                    color: var(--sc-white);
+                    text-align: center;
+                }
+
+                --confirm-blue-subtitle-wide: {
+                    @apply --small-light-wide;
+                    text-align: left;
+                }
+
+                --confirm-blue-bottom: {
+                    box-sizing: border-box;
+                    padding: 0 14vw;
+                    @apply --layout-vertical;
+                    @apply --layout-center;
+                    @apply --layout-start-justified;
+                    height: 30%;
+                }
+
+                --confirm-blue-bottom-wide: {
+                    height: 45%;
+                    padding: 0 12vw;
+                    @apply --layout-start;
+                }
+
+                --confirm-blue-buttonbox: {
+                    @apply --layout-horizontal;
+                    @apply --layout-center-center;
+                }
+
+                --confirm-blue-xmark: {
+                    @apply --xmark-grey4-normal;
+                    cursor: pointer;
+                    margin-right: 20px;
+                }
+
+                --confirm-blue-round-button: {
+                    @apply --icon-button-big;
+                }
+
+                --confirm-blue-vmark: {
+                    @apply --vmark-blue-normal;
+                }
+                
+                /* PROCESSING-GREEN */
+
+
+                /* WARNING-RED */
+
                 /* JSON-FILE */
                 --json-file-host: {
                     height: 100vh;
@@ -466,7 +559,6 @@ Colors are all lower case, There is a space after the :
                     height: 45%;
                     padding: 0 12vw;
                 }
-
                 --json-file-icon-button-big: {
                     @apply --icon-button-big;
                 }
@@ -498,16 +590,7 @@ Colors are all lower case, There is a space after the :
                     font-weight: 400;
                     cursor: pointer;
                 }
-                --big-btn: {}
-                --big-btn-hover: {}
 
-                --display-my-info-balance: {}
-                --display-my-info-username: {}
-                --display-my-info-avatar: {}
-                --display-my-info-container: {}
-                --display-hashtag-list-container: {}
-                --display-hashtag-list-hashtag: {}
-                --display-hashtag-list-deals: {}
                 --page-hashtag-list-back: {
                     width: 40px;
                     height: 40px;
@@ -517,19 +600,6 @@ Colors are all lower case, There is a space after the :
                 }
                 --display-deal-btn: {}
 
-
-                --display-hashtag-about-toggle: {}
-                --display-hashtag-about-box: {}
-                --display-hashtag-about-maintained: {}
-                --display-hashtag-about-contact: {}
-                --display-hashtag-deals-container: {}
-                --display-hashtag-deals-avatar: {}
-                --display-hashtag-deals-top-container: {}
-                --display-hashtag-deals-time: {}
-                --display-hashtag-deals-name: {}
-                --display-hashtag-deals-description: {}
-                --display-hashtag-deals-for: {}
-                --display-hashtag-deals-amount: {}
                 --display-upload-container: {
                     display: block;
                     height: var(--display-upload-file-height, 135px);
