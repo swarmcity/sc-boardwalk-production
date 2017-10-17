@@ -137,7 +137,8 @@
         "The hashtag fee for": "The hashtag fee for",
         "is": "is",
         "Do you want to cancel the deal": "Do you want to cancel the deal",
-        "Youre about to payout": "You're about to payout"
+        "Youre about to payout": "You're about to payout",
+        "Your payout is being processed.": "Your payout is being processed"
     },
     "cn": {
         "language": "cn",
@@ -266,7 +267,8 @@
         "Sending SWT to deal": "Awaiting Translation",
         "Your request is being processed.": "Awaiting Translation",
         "Do you want to cancel the deal": "Awaiting Translation",
-        "Youre about to payout": "Awaiting Translation"
+        "Youre about to payout": "Awaiting Translation",
+        "Your payout is being processed.": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -404,7 +406,8 @@
         "Sending SWT to deal": "Awaiting Translation",
         "Your request is being processed.": "Awaiting Translation",
         "Do you want to cancel the deal": "Awaiting Translation",
-        "Youre about to payout": "Awaiting Translation"
+        "Youre about to payout": "Awaiting Translation",
+        "Your payout is being processed.": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -542,7 +545,8 @@
         "Sending SWT to deal": "Awaiting Translation",
         "Your request is being processed.": "Awaiting Translation",
         "Do you want to cancel the deal": "Awaiting Translation",
-        "Youre about to payout": "Awaiting Translation"
+        "Youre about to payout": "Awaiting Translation",
+        "Your payout is being processed.": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -680,7 +684,8 @@
         "Sending SWT to deal": "Awaiting Translation",
         "Your request is being processed.": "Awaiting Translation",
         "Do you want to cancel the deal": "Awaiting Translation",
-        "Youre about to payout": "Awaiting Translation"
+        "Youre about to payout": "Awaiting Translation",
+        "Your payout is being processed.": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -818,7 +823,8 @@
         "Sending SWT to deal": "Awaiting Translation",
         "Your request is being processed.": "Awaiting Translation",
         "Do you want to cancel the deal": "Awaiting Translation",
-        "Youre about to payout": "Awaiting Translation"
+        "Youre about to payout": "Awaiting Translation",
+        "Your payout is being processed.": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -956,7 +962,8 @@
         "Sending SWT to deal": "Awaiting Translation",
         "Your request is being processed.": "Awaiting Translation",
         "Do you want to cancel the deal": "Awaiting Translation",
-        "Youre about to payout": "Awaiting Translation"
+        "Youre about to payout": "Awaiting Translation",
+        "Your payout is being processed.": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -1094,7 +1101,8 @@
         "Sending SWT to deal": "Awaiting Translation",
         "Your request is being processed.": "Awaiting Translation",
         "Do you want to cancel the deal": "Awaiting Translation",
-        "Youre about to payout": "Awaiting Translation"
+        "Youre about to payout": "Awaiting Translation",
+        "Your payout is being processed.": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -1232,6 +1240,7 @@
         "Sending SWT to deal": "Awaiting Translation",
         "Your request is being processed.": "Awaiting Translation",
         "Do you want to cancel the deal": "Awaiting Translation",
-        "Youre about to payout": "Awaiting Translation"
+        "Youre about to payout": "Awaiting Translation",
+        "Your payout is being processed.": "Awaiting Translation"
     }
 }
