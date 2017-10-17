@@ -34,6 +34,7 @@
     "src/pages/page-transaction-processing.html",
     "src/pages/page-new-request.html",
     "src/pages/page-cancel-request.html",
+    "src/pages/page-detail.html",
     "src/pages/page-new-request-processing.html"
   ],
   "sources": [
