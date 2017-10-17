@@ -20,91 +20,60 @@ This code may only be used under the license found at https://github.com/swarmci
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
 -->
         <style include="shared-styles">
-             :host {
-                background-color: var(--sc-blue);
-                height: 100vh;
-                width: 100vw;
-                display: block;
+            :host {
+                @apply --confirm-blue-host;
             }
 
             .container {
-                background-color: var(--sc-blue);
-                height: 100%;
-                width: 100%;
-                @apply --layout-vertical;
+                @apply --confirm-blue-container;
             }
 
             .container>div:nth-child(1) {
-                height: 70%;
-                @apply --layout-vertical;
-                @apply --layout-center;
-                @apply --layout-center-justified;
-                box-sizing: border-box;
-                padding: 0 14vw;
+                @apply --confirm-blue-top;
             }
 
             .container>div:nth-child(1)>div:nth-child(1) {
-                @apply --main-title1;
-                color: var(--sc-white);
-                text-align: center;
+                @apply --confirm-blue-title;
             }
 
             .container>div:nth-child(1)>div:nth-child(2) {
-                @apply --small-light;
-                margin: 20px 0 0;
-                color: var(--sc-white);
-                text-align: center;
+                @apply --confirm-blue-subtitle;
             }
 
             .container>div:nth-child(2) {
-                box-sizing: border-box;
-                padding: 0 14vw;
-                @apply --layout-vertical;
-                @apply --layout-center;
-                @apply --layout-start-justified;
-                height: 30%;
+                @apply --confirm-blue-bottom;
             }
 
             .container>div:nth-child(2)>div:nth-child(1) {
-                @apply --layout-horizontal;
-                @apply --layout-center-center;
+                @apply --confirm-blue-buttonbox;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
-                @apply --xmark-grey4-normal;
-                cursor: pointer;
-                margin-right: 20px;
+                @apply --confirm-blue-xmark;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
-                @apply --icon-button-big;
+                @apply --confirm-blue-round-button;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
-                @apply --vmark-blue-normal;
+                @apply --confirm-blue-vmark;
             }
 
             .container[wide-layout]>div:nth-child(1) {
-                height: 55%;
-                padding: 0 12vw 7vh;
-                @apply --layout-start;
-                @apply --layout-end-justified;
+                @apply --confirm-blue-top-wide;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(1) {
-                @apply --main-title1-wide;
-                text-align: left;
+                @apply --confirm-blue-title-wide;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(2) {
-                @apply --small-light-wide;
-                text-align: left;
+                @apply --confirm-blue-subtitle-wide;
             }
 
             .container[wide-layout]>div:nth-child(2) {
-                height: 45%;
-                padding: 0 12vw;
-                @apply --layout-start;
+                @apply --confirm-blue-bottom-wide;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1):active,
@@ -142,8 +111,8 @@ This code may only be used under the license found at https://github.com/swarmci
 
     <script>
         class StopSignup extends new ReduxMixin(Polymer.mixinBehaviors([
-                Polymer.AppLocalizeBehavior,
-            ],
+            Polymer.AppLocalizeBehavior,
+        ],
             Polymer.Element
         )) {
             static get is() {
