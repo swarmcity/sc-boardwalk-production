@@ -138,7 +138,8 @@
         "is": "is",
         "Do you want to cancel the deal": "Do you want to cancel the deal",
         "Youre about to payout": "You're about to payout",
-        "Your payout is being processed.": "Your payout is being processed"
+        "Your payout is being processed.": "Your payout is being processed",
+        "Youre about to accept this deal.": "You're about to accept this deal."
     },
     "cn": {
         "language": "cn",
