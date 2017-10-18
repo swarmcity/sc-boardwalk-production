@@ -15,6 +15,7 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../shared-styles.html">
 <link rel="import" href="../displays/display-my-info.html">
+<link rel="import" href="../displays/display-dealstate-detail.html">
 
 <dom-module id="page-detail">
     <template>
@@ -174,8 +175,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 border-bottom: 2px dotted var(--sc-grey2);
             }
 
-            .temp {
-                height: 500px;
+            display-dealstate-detail {
                 width: 100%;
                 background-color: var(--sc-white);
                 margin-top: 1.5px;
@@ -220,8 +220,8 @@ This code may only be used under the license found at https://github.com/swarmci
                 <display-my-info></display-my-info>
             </template>
             <template is="dom-if" if="{{!completeAccount}}">
-                    <div class="top-margin"></div>
-            </template>            
+                <div class="top-margin"></div>
+            </template>
             <div class="closebox">
                 <div class="close" on-click="_close" on-keypress="_close" tabindex="1"></div>
             </div>
@@ -246,11 +246,8 @@ This code may only be used under the license found at https://github.com/swarmci
                         <div class="price">5 SWT</div>
                     </div>
                 </div>
-
             </div>
-            <div class="temp"></div>
-            <display-dealstate-detail></display-dealstate-detail>
-
+            <display-dealstate-detail  path="{{path}}"></display-dealstate-detail>
             <div class="reply">
                 <div class="icon"></div>
             </div>
