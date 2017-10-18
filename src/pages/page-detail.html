@@ -26,6 +26,8 @@ This code may only be used under the license found at https://github.com/swarmci
                 height: 100vh;
                 width: 100vw;
                 display: block;
+                max-width: 100%;
+                --max-width: 800px;
             }
 
             .container {
@@ -37,6 +39,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 box-sizing: border-box;
             }
 
+            .container[wide-layout] {
+                box-sizing: border-box;
+                padding: 0 20vw 12vh 12vw;
+
+            }
+
             display-my-info {
                 box-sizing: border-box;
                 padding: 8vh 14vw 5vh 14vw;
@@ -44,8 +52,7 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .container[wide-layout] display-my-info {
-                padding: 10vh 12vw;
-                z-index: 11;
+                padding: 8vh 0 5vh 0;
             }
 
             .page-content {
@@ -55,10 +62,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 box-sizing: border-box;
                 width: 100%;
                 padding: 0 14vw;
+                max-width: var(--max-width);
             }
 
             .container[wide-layout] .page-content {
-                padding: 0 12vw;
+                padding: 0 5vw;
             }
 
             .closebox {
@@ -68,6 +76,11 @@ This code may only be used under the license found at https://github.com/swarmci
                 box-sizing: border-box;
                 padding-top: 3vh;
                 width: 100%;
+                max-width: var(--max-width);
+            }
+
+            .container[wide-layout] .top-margin {
+                height: 10vh;
             }
 
             .close {
@@ -128,6 +141,11 @@ This code may only be used under the license found at https://github.com/swarmci
             .pricebox {
                 @apply --layout-vertical;
                 @apply --layout-end;
+                @apply --layout-start-justified;
+                @apply --layout-flex;
+            }
+
+            .container[wide-layout] .pricebox {
                 @apply --layout-end-justified;
             }
 
@@ -143,8 +161,10 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             .linkbox {
+                @apply --layout-vertical;
+                @apply --layout-end-justified;
                 box-sizing: border-box;
-                padding: 0 0 5vh 0;
+                height: 65px;
             }
 
             .link {
@@ -159,6 +179,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 width: 100%;
                 background-color: var(--sc-white);
                 margin-top: 1.5px;
+                max-width: var(--max-width);
             }
 
             .reply {
@@ -177,6 +198,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 @apply --reply-blue-normal;
             }
 
+            .switch {
+                @apply --layout-horizontal;
+                box-sizing: border-box;
+                padding: 0 0 5vh 0;
+            }
+
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
@@ -189,7 +216,12 @@ This code may only be used under the license found at https://github.com/swarmci
         <app-location route="{{route}}"></app-location>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <div class="container" wide-layout$="{{wide}}">
-            <display-my-info avatarSmall></display-my-info>
+            <template is="dom-if" if="{{completeAccount}}">
+                <display-my-info></display-my-info>
+            </template>
+            <template is="dom-if" if="{{!completeAccount}}">
+                    <div class="top-margin"></div>
+            </template>            
             <div class="closebox">
                 <div class="close" on-click="_close" on-keypress="_close" tabindex="1"></div>
             </div>
@@ -205,13 +237,16 @@ This code may only be used under the license found at https://github.com/swarmci
                     <div class="description">Ride from literon busstop to protest</div>
                 </div>
                 <div class="hashtag">#pioneer</div>
-                <div class="pricebox">
-                    <div class="for">for</div>
-                    <div class="price">5 SWT</div>
+                <div class="switch">
+                    <div class="linkbox">
+                        <span class="link">shareable link</span>
+                    </div>
+                    <div class="pricebox">
+                        <div class="for">for</div>
+                        <div class="price">5 SWT</div>
+                    </div>
                 </div>
-                <div class="linkbox">
-                    <span class="link">shareable link</span>
-                </div>
+
             </div>
             <div class="temp"></div>
             <display-dealstate-detail></display-dealstate-detail>
@@ -245,6 +280,15 @@ This code may only be used under the license found at https://github.com/swarmci
                     path: {
                         type: String,
                         observer: '_path',
+                    },
+                    /**
+                    * completeAccount represents true of the user
+                    * has a username, avatar and address
+                    * @type {Boolean}
+                    */
+                    completeAccount: {
+                        type: Boolean,
+                        value: true,
                     },
                 };
             }
