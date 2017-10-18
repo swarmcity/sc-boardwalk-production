@@ -482,11 +482,86 @@ Colors are all lower case, There is a space after the :
                 --confirm-blue-vmark: {
                     @apply --vmark-blue-normal;
                 }
-                
-                /* PROCESSING-GREEN */
 
                 /* WARNING-RED */
+                --warning-red-host: {
+                    height: 100vh;
+                    width: 100vw;
+                    display: block;
+                }
+                --warning-red-container: {
+                    background-color: var(--sc-red);
+                    height: 100%;
+                    width: 100%;
+                    @apply --layout-vertical;
+                }
+                --warning-red-top: {
+                    height: 70%;
+                    @apply --layout-vertical;
+                    @apply --layout-center;
+                    @apply --layout-center-justified;
+                    box-sizing: border-box;
+                    padding: 0 14vw;
+                }
+                --warning-red-top-wide: {
+                    height: 55%;
+                    padding: 0 12vw 7vh;
+                    @apply --layout-start;
+                    @apply --layout-end-justified;
+                }
+                --warning-red-title: {
+                    @apply --main-title1;
+                    color: var(--sc-white);
+                    text-align: center;
+                }
+                --warning-red-title-wide: {
+                    @apply --main-title1-wide;
+                    text-align: left;
+                }
+                --warning-red-subtitle: {
+                    @apply --small-light;
+                    margin: 20px 0 0;
+                    color: var(--sc-white);
+                    text-align: center;
+                }
+                --warning-red-subtitle-wide: {
+                    @apply --small-light-wide;
+                    text-align: left;
+                }
+                --warning-red-bottom: {
+                    box-sizing: border-box;
+                    padding: 0 14vw;
+                    @apply --layout-vertical;
+                    @apply --layout-center;
+                    @apply --layout-start-justified;
+                    height: 30%;
+                }
+                --warning-red-bottom-wide: {
+                    height: 45%;
+                    padding: 0 12vw;
+                    @apply --layout-start;
 
+                }
+
+                --warning-red-buttonbox: {
+                    @apply --layout-horizontal;
+                    @apply --layout-center-center;
+                }
+                --warning-red-xmark: {
+                    @apply --xmark-grey4-normal;
+                    cursor: pointer;
+                    margin-right: 20px;
+                }
+
+                --warning-red-roundbutton: {
+                    @apply --icon-button-big;
+                }
+
+                --warning-red-vmark: {
+                    @apply --vmark-red-normal;
+                }
+
+                /* PROCESSING-GREEN */
                 /* JSON-FILE */
                 --json-file-host: {
                     height: 100vh;

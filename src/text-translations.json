@@ -139,7 +139,10 @@
         "Do you want to cancel the deal": "Do you want to cancel the deal",
         "Youre about to payout": "You're about to payout",
         "Your payout is being processed.": "Your payout is being processed",
-        "Youre about to accept this deal.": "You're about to accept this deal."
+        "Youre about to accept this deal.": "You're about to accept this deal.",
+        "Are you sure you want to decline this deal?": "Are you sure you want to decline this deal?",
+        "will be notified that you dont want to accept this deal.": "will be notified that you don't want to accept this deal.",
+        "Your reply will be removed.": "Your reply will be removed."
     },
     "cn": {
         "language": "cn",
@@ -269,7 +272,10 @@
         "Your request is being processed.": "Awaiting Translation",
         "Do you want to cancel the deal": "Awaiting Translation",
         "Youre about to payout": "Awaiting Translation",
-        "Your payout is being processed.": "Awaiting Translation"
+        "Your payout is being processed.": "Awaiting Translation",
+        "Are you sure you want to decline this deal?": "Awaiting Translation",
+        "will be notified that you dont want to accept this deal.": "Awaiting Translation",
+        "Your reply will be removed.": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -408,7 +414,10 @@
         "Your request is being processed.": "Awaiting Translation",
         "Do you want to cancel the deal": "Awaiting Translation",
         "Youre about to payout": "Awaiting Translation",
-        "Your payout is being processed.": "Awaiting Translation"
+        "Your payout is being processed.": "Awaiting Translation",
+        "Are you sure you want to decline this deal?": "Awaiting Translation",
+        "will be notified that you dont want to accept this deal.": "Awaiting Translation",
+        "Your reply will be removed.": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -547,7 +556,10 @@
         "Your request is being processed.": "Awaiting Translation",
         "Do you want to cancel the deal": "Awaiting Translation",
         "Youre about to payout": "Awaiting Translation",
-        "Your payout is being processed.": "Awaiting Translation"
+        "Your payout is being processed.": "Awaiting Translation",
+        "Are you sure you want to decline this deal?": "Awaiting Translation",
+        "will be notified that you dont want to accept this deal.": "Awaiting Translation",
+        "Your reply will be removed.": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -686,7 +698,10 @@
         "Your request is being processed.": "Awaiting Translation",
         "Do you want to cancel the deal": "Awaiting Translation",
         "Youre about to payout": "Awaiting Translation",
-        "Your payout is being processed.": "Awaiting Translation"
+        "Your payout is being processed.": "Awaiting Translation",
+        "Are you sure you want to decline this deal?": "Awaiting Translation",
+        "will be notified that you dont want to accept this deal.": "Awaiting Translation",
+        "Your reply will be removed.": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -825,7 +840,10 @@
         "Your request is being processed.": "Awaiting Translation",
         "Do you want to cancel the deal": "Awaiting Translation",
         "Youre about to payout": "Awaiting Translation",
-        "Your payout is being processed.": "Awaiting Translation"
+        "Your payout is being processed.": "Awaiting Translation",
+        "Are you sure you want to decline this deal?": "Awaiting Translation",
+        "will be notified that you dont want to accept this deal.": "Awaiting Translation",
+        "Your reply will be removed.": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -964,7 +982,10 @@
         "Your request is being processed.": "Awaiting Translation",
         "Do you want to cancel the deal": "Awaiting Translation",
         "Youre about to payout": "Awaiting Translation",
-        "Your payout is being processed.": "Awaiting Translation"
+        "Your payout is being processed.": "Awaiting Translation",
+        "Are you sure you want to decline this deal?": "Awaiting Translation",
+        "will be notified that you dont want to accept this deal.": "Awaiting Translation",
+        "Your reply will be removed.": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -1103,7 +1124,10 @@
         "Your request is being processed.": "Awaiting Translation",
         "Do you want to cancel the deal": "Awaiting Translation",
         "Youre about to payout": "Awaiting Translation",
-        "Your payout is being processed.": "Awaiting Translation"
+        "Your payout is being processed.": "Awaiting Translation",
+        "Are you sure you want to decline this deal?": "Awaiting Translation",
+        "will be notified that you dont want to accept this deal.": "Awaiting Translation",
+        "Your reply will be removed.": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -1242,6 +1266,9 @@
         "Your request is being processed.": "Awaiting Translation",
         "Do you want to cancel the deal": "Awaiting Translation",
         "Youre about to payout": "Awaiting Translation",
-        "Your payout is being processed.": "Awaiting Translation"
+        "Your payout is being processed.": "Awaiting Translation",
+        "Are you sure you want to decline this deal?": "Awaiting Translation",
+        "will be notified that you dont want to accept this deal.": "Awaiting Translation",
+        "Your reply will be removed.": "Awaiting Translation"
     }
 }
