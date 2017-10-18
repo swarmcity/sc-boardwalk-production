@@ -142,7 +142,18 @@
         "Youre about to accept this deal.": "You're about to accept this deal.",
         "Are you sure you want to decline this deal?": "Are you sure you want to decline this deal?",
         "will be notified that you dont want to accept this deal.": "will be notified that you don't want to accept this deal.",
-        "Your reply will be removed.": "Your reply will be removed."
+        "Your reply will be removed.": "Your reply will be removed.",
+        "No replies yet": "No replies yet",
+        "Your reply": "Your reply",
+        "Your amount": "Your amount",
+        "selected you to make a deal.": "selected you to make a deal.",
+        "Do you accept?": "Do you accept?",
+        "Its not you.": "It's not you.",
+        "selected a provider.": "selected a provider.",
+        "already selected a provider for this request.": "already selected a provider for this request.",
+        "You accepted.": "You accepted.",
+        "This deal has been completed.": "This deal has been completed.",
+        "see this on ethplorer": "see this on ethplorer"
     },
     "cn": {
         "language": "cn",
@@ -275,7 +286,18 @@
         "Your payout is being processed.": "Awaiting Translation",
         "Are you sure you want to decline this deal?": "Awaiting Translation",
         "will be notified that you dont want to accept this deal.": "Awaiting Translation",
-        "Your reply will be removed.": "Awaiting Translation"
+        "Your reply will be removed.": "Awaiting Translation",
+        "No replies yet": "Awaiting Translation",
+        "Your reply": "Awaiting Translation",
+        "Your amount": "Awaiting Translation",
+        "selected you to make a deal.": "Awaiting Translation",
+        "Do you accept?": "Awaiting Translation",
+        "Its not you.": "Awaiting Translation",
+        "selected a provider.": "Awaiting Translation",
+        "already selected a provider for this request.": "Awaiting Translation",
+        "You accepted.": "Awaiting Translation",
+        "This deal has been completed.": "Awaiting Translation",
+        "see this on ethplorer": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -417,7 +439,18 @@
         "Your payout is being processed.": "Awaiting Translation",
         "Are you sure you want to decline this deal?": "Awaiting Translation",
         "will be notified that you dont want to accept this deal.": "Awaiting Translation",
-        "Your reply will be removed.": "Awaiting Translation"
+        "Your reply will be removed.": "Awaiting Translation",
+        "No replies yet": "Awaiting Translation",
+        "Your reply": "Awaiting Translation",
+        "Your amount": "Awaiting Translation",
+        "selected you to make a deal.": "Awaiting Translation",
+        "Do you accept?": "Awaiting Translation",
+        "Its not you.": "Awaiting Translation",
+        "selected a provider.": "Awaiting Translation",
+        "already selected a provider for this request.": "Awaiting Translation",
+        "You accepted.": "Awaiting Translation",
+        "This deal has been completed.": "Awaiting Translation",
+        "see this on ethplorer": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -559,7 +592,18 @@
         "Your payout is being processed.": "Awaiting Translation",
         "Are you sure you want to decline this deal?": "Awaiting Translation",
         "will be notified that you dont want to accept this deal.": "Awaiting Translation",
-        "Your reply will be removed.": "Awaiting Translation"
+        "Your reply will be removed.": "Awaiting Translation",
+        "No replies yet": "Awaiting Translation",
+        "Your reply": "Awaiting Translation",
+        "Your amount": "Awaiting Translation",
+        "selected you to make a deal.": "Awaiting Translation",
+        "Do you accept?": "Awaiting Translation",
+        "Its not you.": "Awaiting Translation",
+        "selected a provider.": "Awaiting Translation",
+        "already selected a provider for this request.": "Awaiting Translation",
+        "You accepted.": "Awaiting Translation",
+        "This deal has been completed.": "Awaiting Translation",
+        "see this on ethplorer": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -701,7 +745,18 @@
         "Your payout is being processed.": "Awaiting Translation",
         "Are you sure you want to decline this deal?": "Awaiting Translation",
         "will be notified that you dont want to accept this deal.": "Awaiting Translation",
-        "Your reply will be removed.": "Awaiting Translation"
+        "Your reply will be removed.": "Awaiting Translation",
+        "No replies yet": "Awaiting Translation",
+        "Your reply": "Awaiting Translation",
+        "Your amount": "Awaiting Translation",
+        "selected you to make a deal.": "Awaiting Translation",
+        "Do you accept?": "Awaiting Translation",
+        "Its not you.": "Awaiting Translation",
+        "selected a provider.": "Awaiting Translation",
+        "already selected a provider for this request.": "Awaiting Translation",
+        "You accepted.": "Awaiting Translation",
+        "This deal has been completed.": "Awaiting Translation",
+        "see this on ethplorer": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -843,7 +898,18 @@
         "Your payout is being processed.": "Awaiting Translation",
         "Are you sure you want to decline this deal?": "Awaiting Translation",
         "will be notified that you dont want to accept this deal.": "Awaiting Translation",
-        "Your reply will be removed.": "Awaiting Translation"
+        "Your reply will be removed.": "Awaiting Translation",
+        "No replies yet": "Awaiting Translation",
+        "Your reply": "Awaiting Translation",
+        "Your amount": "Awaiting Translation",
+        "selected you to make a deal.": "Awaiting Translation",
+        "Do you accept?": "Awaiting Translation",
+        "Its not you.": "Awaiting Translation",
+        "selected a provider.": "Awaiting Translation",
+        "already selected a provider for this request.": "Awaiting Translation",
+        "You accepted.": "Awaiting Translation",
+        "This deal has been completed.": "Awaiting Translation",
+        "see this on ethplorer": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -985,7 +1051,18 @@
         "Your payout is being processed.": "Awaiting Translation",
         "Are you sure you want to decline this deal?": "Awaiting Translation",
         "will be notified that you dont want to accept this deal.": "Awaiting Translation",
-        "Your reply will be removed.": "Awaiting Translation"
+        "Your reply will be removed.": "Awaiting Translation",
+        "No replies yet": "Awaiting Translation",
+        "Your reply": "Awaiting Translation",
+        "Your amount": "Awaiting Translation",
+        "selected you to make a deal.": "Awaiting Translation",
+        "Do you accept?": "Awaiting Translation",
+        "Its not you.": "Awaiting Translation",
+        "selected a provider.": "Awaiting Translation",
+        "already selected a provider for this request.": "Awaiting Translation",
+        "You accepted.": "Awaiting Translation",
+        "This deal has been completed.": "Awaiting Translation",
+        "see this on ethplorer": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -1127,7 +1204,18 @@
         "Your payout is being processed.": "Awaiting Translation",
         "Are you sure you want to decline this deal?": "Awaiting Translation",
         "will be notified that you dont want to accept this deal.": "Awaiting Translation",
-        "Your reply will be removed.": "Awaiting Translation"
+        "Your reply will be removed.": "Awaiting Translation",
+        "No replies yet": "Awaiting Translation",
+        "Your reply": "Awaiting Translation",
+        "Your amount": "Awaiting Translation",
+        "selected you to make a deal.": "Awaiting Translation",
+        "Do you accept?": "Awaiting Translation",
+        "Its not you.": "Awaiting Translation",
+        "selected a provider.": "Awaiting Translation",
+        "already selected a provider for this request.": "Awaiting Translation",
+        "You accepted.": "Awaiting Translation",
+        "This deal has been completed.": "Awaiting Translation",
+        "see this on ethplorer": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -1269,6 +1357,17 @@
         "Your payout is being processed.": "Awaiting Translation",
         "Are you sure you want to decline this deal?": "Awaiting Translation",
         "will be notified that you dont want to accept this deal.": "Awaiting Translation",
-        "Your reply will be removed.": "Awaiting Translation"
+        "Your reply will be removed.": "Awaiting Translation",
+        "No replies yet": "Awaiting Translation",
+        "Your reply": "Awaiting Translation",
+        "Your amount": "Awaiting Translation",
+        "selected you to make a deal.": "Awaiting Translation",
+        "Do you accept?": "Awaiting Translation",
+        "Its not you.": "Awaiting Translation",
+        "selected a provider.": "Awaiting Translation",
+        "already selected a provider for this request.": "Awaiting Translation",
+        "You accepted.": "Awaiting Translation",
+        "This deal has been completed.": "Awaiting Translation",
+        "see this on ethplorer": "Awaiting Translation"
     }
 }
