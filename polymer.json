@@ -39,6 +39,7 @@
     "src/pages/page-new-request-processing.html",
     "src/pages/page-confirm-deal-accept.html",
     "src/pages/page-stop-deal-accept.html",
+    "src/pages/page-deal-accept-processing.html",
     "src/pages/page-payout-processing.html"
   ],
   "sources": [
