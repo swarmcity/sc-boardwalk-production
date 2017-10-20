@@ -176,26 +176,12 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             display-dealstate-detail {
-                width: 100%;
+                margin-top: 1.14px;
                 background-color: var(--sc-white);
-                margin-top: 1.5px;
+                box-sizing: border-box;
+                width: 100%;
+                padding: 5vh 14vw;
                 max-width: var(--max-width);
-            }
-
-            .reply {
-                @apply --icon-button-big;
-                cursor: pointer;
-                position: fixed;
-                bottom: 50px;
-                right: 30px;
-            }
-
-            .reply:active {
-                @apply --button-active;
-            }
-
-            .icon {
-                @apply --reply-blue-normal;
             }
 
             .switch {
@@ -248,9 +234,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 </div>
             </div>
             <display-dealstate-detail  path="{{path}}"></display-dealstate-detail>
-            <div class="reply">
-                <div class="icon"></div>
-            </div>
+            
         </div>
 
     </template>
