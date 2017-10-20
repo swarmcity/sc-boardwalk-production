@@ -7,6 +7,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="../redux-state.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
 <!--
 
 Example:
@@ -39,8 +40,32 @@ Example:
                 background-size: 40px;
             }
 
+            paper-textarea {
+                text-indent: 2px;
+                margin-top: 5px;
+                box-sizing: border-box;
+                width: 59vw;
+                text-align: left;
+                @apply --sc-paper-input;
+                --paper-input-container-label: {
+                    @apply --body-default;
+                }
+                --paper-input-container-input: {
+                    @apply --body-bold;
+                }
+                --paper-input-error: {
+                    @apply --body-bold;
+                }
+                --paper-input-prefix: {
+                    @apply --body-default;
+                }
+                --paper-input-suffix: {
+                    @apply --body-default;
+                }
+            }
 
             paper-input {
+                text-indent: 1px;
                 width: 100%;
                 max-width: 400px;
                 @apply --sc-paper-input;
@@ -61,9 +86,15 @@ Example:
                 }
             }
 
+            .reply-amount {
+                @apply --layout-flex;
+                max-width: 180px;
+            }
+
             .reply-buttonbox {
                 @apply --layout-horizontal;
                 @apply --layout-center-center;
+                margin-top: 40px;
             }
 
             .disagree {
@@ -104,6 +135,11 @@ Example:
                 @apply --reply-blue-normal;
             }
 
+            .reply-box {
+                @apply --layout-horizontal;
+                @apply --layout-start-justified;
+                width: 100%;
+            }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
@@ -122,8 +158,8 @@ Example:
                         <img src="../../images/defaultavatar.png">
                     </div>
                     <div class="reply-inputbox">
-                        <paper-input class="send-amount" label="{{localize('Your reply')}}" type="txt"></paper-input>
-                        <paper-input class="send-destination" label="{{localize('Your amount')}}" type="txt" on-input="_equals"></paper-input>
+                        <paper-textarea class="reply-messge" label="{{localize('Your reply')}}" type="txt"></paper-textarea>
+                        <paper-input class="reply-amount" label="{{localize('Your amount')}}" type="txt"></paper-input>
                         <div class="reply-buttonbox">
                             <div class="disagree" on-click="_disagree"></div>
                             <div class="round-button" on-click="_agree">
