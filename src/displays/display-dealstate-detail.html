@@ -64,6 +64,10 @@ Example:
                 }
             }
 
+            .container[wide-layout] paper-textarea {
+                width: 80%;
+            }
+
             paper-input {
                 text-indent: 1px;
                 width: 100%;
@@ -86,6 +90,11 @@ Example:
                 }
             }
 
+            .container[wide-layout] paper-input {
+                width: 80%;
+                max-width: 80%;
+            }
+
             .reply-amount {
                 @apply --layout-flex;
                 max-width: 180px;
@@ -93,14 +102,23 @@ Example:
 
             .reply-buttonbox {
                 @apply --layout-horizontal;
-                @apply --layout-center-center;
+                @apply --layout-start-justified;
+                @apply --layout-center;
                 margin-top: 40px;
+                width: 100%;
+                margin-right: 40px;
+            }
+
+            .container[wide-layout] .reply-buttonbox {
+                @apply --layout-start-justified;
+                margin-right: 0;
             }
 
             .disagree {
                 @apply --xmark-grey4-small;
                 cursor: pointer;
                 margin-right: 10px;
+                margin-left: 50px;
             }
 
             .disagree:active {
@@ -138,6 +156,10 @@ Example:
             .reply-box {
                 @apply --layout-horizontal;
                 @apply --layout-start-justified;
+                width: 100%;
+            }
+
+            .reply-inputbox {
                 width: 100%;
             }
 
