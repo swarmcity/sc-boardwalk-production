@@ -133,30 +133,25 @@
         * Redux action for sertting language
         * @param {hashtags} hashtags
         */
-      static get actions() {
-        return Object.assign({
-          LOCATION: function(location) {
-            return {
-              type: 'LOCATION',
-              location: location,
-            };
-          },
-        });
+
+        static get actions() {
+          return Object.assign({
+              LOCATION: function(location) {
+                  return {
+                      type: 'LOCATION',
+                      location: location,
+                  };
+              },
+          });
       }
 
       static get observers() {
         return [
-          '_hashtagChanged(hashtagdata.*)',
           '_routePageChanged(routeData.page)',
         ];
       }
 
-      _hashtagChanged() {
-        if (this.hashtagdata.length >= 1) {
-          this.dispatch('HASHTAGS', null);
-          this.dispatch('HASHTAGS', this.hashtagdata);
-        }
-      }
+
       _routePageChanged(page) {
         this.page = page || 'welcome';
       }
