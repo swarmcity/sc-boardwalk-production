@@ -1,0 +1,287 @@
+<!--
+@license
+Copyright (c) 2017 Swarm City
+This code may only be used under the license found at https://github.com/swarmcity/license
+-->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../data/data-web3.html">
+<link rel="import" href="../data/data-ipfs.html">
+<link rel="import" href="../data/data-utility.html">
+<link rel="import" href="../data/data-local-storage.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../redux-state.html">
+<!--
+
+Example:
+```
+<display-reply></display-reply>
+```
+
+### Styling
+
+Style the button with CSS as you would a normal DOM element.
+
+The following custom properties and mixins are available for styling:
+
+| Custom property | Description | Default |
+| --- | --- | --- |
+| `--display-reply-avatar` | Mixin applied to the avatar | `{}` |
+| `--display-reply-top-container` | Mixin applied to the container | `{}` |
+| `--display-reply-time` | Mixin applied to the time | `{}` |
+| `--display-reply-name` | Mixin applied to the name | `{}` |
+| `--display-reply-description` | Mixin applied to the description | `{}` |
+| `--display-reply-for` | Mixin applied to the word for | `{}` |
+| `--display-reply-amount` | Mixin applied to the amount | `{}` |
+-->
+<dom-module id="display-reply">
+    <template>
+        <style include="shared-styles">
+            :host {
+                display: block;
+            }
+
+            .container {
+                box-sizing: border-box;
+                width: 100%;
+            }
+
+            .box {
+                background-color: var(--sc-white);
+                @apply --layout-vertical;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 25px 0;
+                cursor: pointer;
+            }
+
+            .top {
+                @apply --layout-horizontal;
+            }
+
+            .meta {
+                @apply --layout-center-justified;
+                @apply --layout-vertical;
+                @apply --layout-flex;
+            }
+
+            .bottom {
+                margin-top: 12px;
+                @apply --layout-horizontal;
+            }
+
+            .avatar {
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                border-radius: 50%;
+                margin-right: 10px;
+                background-image: url("../../images/defaultavatar.png");
+                background-size: 30px;
+            }
+
+            .date {
+                @apply --small-light;
+                color: var(--sc-grey2);
+            }
+
+            .user {
+                @apply --small-bold;
+                color: var(--sc-blue);
+            }
+
+            .description {
+                @apply --layout-flex;
+                @apply --layout-vertical;
+                @apply --layout-end-justified;
+                @apply --small-light;
+                color: var(--sc-grey4);
+                padding-right: 10px;
+            }
+
+            .pricebox {
+                @apply --layout-vertical;
+                @apply --layout-end;
+                @apply --layout-end-justified;
+            }
+
+            .price {
+
+                @apply --small-bold;
+                color: var(--sc-grey4);
+            }
+
+            .container[wide-layout] .pricebox {
+                @apply --layout-horizontal;
+                @apply --layout-end;
+                @apply --layout-end-justified;
+            }
+
+            .container[wide-layout] .price {
+
+                @apply --main-title4;
+            }
+
+            .container[wide-layout] {
+                padding: 30px 10vw;
+            }
+
+            .container[wide-layout] .box {
+                max-width: 68vw;
+            }
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min--moz-device-pixel-ratio: 1.5),
+            only screen and (min-resolution: 240dpi) {
+                .replyicon {
+                    @apply --retina;
+                }
+            }
+        </style>
+        <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+        <display-language language="{{language}}"></display-language>
+        <div class="container" wide-layout$="{{wide}}">
+            <div class="box" on-click="_next">
+                <div class="top">
+                    <div class="avatar"></div>
+                    <div class="meta">
+                        <div class="date">Yesterday, 18:21</div>
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="description">I can take you!</div>
+                    <div class="pricebox">
+                        <div class="price">for 555000 SWT</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" on-click="_next">
+                <div class="top">
+                    <div class="avatar"></div>
+                    <div class="meta">
+                        <div class="date">Yesterday, 18:21</div>
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                        deserunt mollit anim id est laborum.</div>
+                    <div class="pricebox">
+                        <div class="price">for 5 SWT</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" on-click="_next">
+                <div class="top">
+                    <div class="avatar"></div>
+                    <div class="meta">
+                        <div class="date">Yesterday, 18:21</div>
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="description">I can take you!</div>
+                    <div class="pricebox">
+                        <div class="price">for 5 SWT</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" on-click="_next">
+                <div class="top">
+                    <div class="avatar"></div>
+                    <div class="meta">
+                        <div class="date">Yesterday, 18:21</div>
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="description">I can take you!</div>
+                    <div class="pricebox">
+                        <div class="price">for 5 SWT</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" on-click="_next">
+                <div class="top">
+                    <div class="avatar"></div>
+                    <div class="meta">
+                        <div class="date">Yesterday, 18:21</div>
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="description">I can take you in my nice car!</div>
+                    <div class="pricebox">
+                        <div class="price">for 5 SWT</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" on-click="_next">
+                <div class="top">
+                    <div class="avatar"></div>
+                    <div class="meta">
+                        <div class="date">Yesterday, 18:21</div>
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="description">I can take you, drinks on the way included!</div>
+                    <div class="pricebox">
+                        <div class="price">for 5 SWT</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <script>
+        class DisplayReply extends new ReduxMixin(Polymer.mixinBehaviors([
+            Polymer.AppLocalizeBehavior,
+        ],
+            Polymer.Element
+        )) {
+            static get is() {
+                return 'display-reply';
+            }
+            static get properties() {
+                return {
+                    /**
+                    * Language is the users selected or determined language
+                    * @type {String}
+                    */
+                    language: {
+                        type: String,
+                        statePath: 'language',
+                    },
+                    /**
+                    * Loading indicates if the componant is loading
+                    * @type {Boolean}
+                    */
+                    loading: {
+                        type: Boolean,
+                        value: false,
+                        notify: true,
+                    },
+                    /**
+                    * Path signlas to the parent to change the path
+                    * @type {Boolean}
+                    */
+                    path: {
+                        type: String,
+                        value: null,
+                        notify: true,
+                    },
+                };
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.loadResources(this.resolveUrl('../text-translations.json'));
+            }
+        }
+        window.customElements.define(DisplayReply.is, DisplayReply);
+    </script>
+</dom-module>

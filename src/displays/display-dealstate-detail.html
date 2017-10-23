@@ -9,6 +9,10 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
 <!--
+    Displays and shared styles only
+-->
+<link rel="import" href="../displays/display-reply.html">
+<!--
 
 Example:
 ```
@@ -229,6 +233,14 @@ Example:
             <template is="dom-if" if="{{false}}">
                 <div class="noreplies-box">
                     <div class="noreplies-text">{{localize('No replies yet')}}</div>
+                    <div class="replybutton">
+                        <div class="replybutton-icon"></div>
+                    </div>
+                </div>
+            </template>
+            <template is="dom-if" if="{{1==1}}">
+                <div class="replies-box">
+                    <display-reply></display-reply>
                     <div class="replybutton">
                         <div class="replybutton-icon"></div>
                     </div>
