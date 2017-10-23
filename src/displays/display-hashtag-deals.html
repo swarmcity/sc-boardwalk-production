@@ -37,13 +37,12 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-hashtag-deals">
     <template>
         <style include="shared-styles">
-             :host {
+            :host {
                 display: block;
             }
 
             .container {
                 box-sizing: border-box;
-
                 width: 100%;
             }
 
@@ -183,7 +182,7 @@ The following custom properties and mixins are available for styling:
         <display-language language="{{language}}"></display-language>
         <div class="container" wide-layout$="{{wide}}">
             <!-- <div class="empty">{{localize('Currently no deals selected. Try a broader search.')}}</div> -->
-            <div class="box" on-click="_next">
+            <div class="box" on-click="_toNewHere">
                 <div class="top">
                     <div class="avatar"></div>
                     <div class="meta">
@@ -201,7 +200,7 @@ The following custom properties and mixins are available for styling:
                     </div>
                 </div>
             </div>
-            <div class="box" on-click="_next">
+            <div class="box" on-click="_toDetail">
                 <div class="top">
                     <div class="avatar"></div>
                     <div class="meta">
@@ -212,11 +211,7 @@ The following custom properties and mixins are available for styling:
                     <div class="replyicon"></div>
                 </div>
                 <div class="bottom">
-                    <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                        deserunt mollit anim id est laborum.</div>
+                    <div class="description">Ride from literon busstop to protest</div>
                     <div class="pricebox">
                         <div class="for">for</div>
                         <div class="price">5 SWT</div>
@@ -234,7 +229,11 @@ The following custom properties and mixins are available for styling:
                     <div class="replyicon"></div>
                 </div>
                 <div class="bottom">
-                    <div class="description">Looking for a ride to the airport</div>
+                    <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                            deserunt mollit anim id est laborum.</div>
                     <div class="pricebox">
                         <div class="for">for</div>
                         <div class="price">5 SWT</div>
@@ -480,11 +479,18 @@ The following custom properties and mixins are available for styling:
             //     }
             // }
 
-            _next() {
+            _toNewHere() {
                 if (!this.showSlider && !this.showInfo) {
                     // stores the current hashtag choice in session
                     sessionStorage.setItem('hashtagID', this.routeData.page);
                     this.path = 'new-here/';
+                }
+            }
+            _toDetail() {
+                if (!this.showSlider && !this.showInfo) {
+                    // stores the current hashtag choice in session
+                    sessionStorage.setItem('hashtagID', this.routeData.page);
+                    this.path = 'detail/';
                 }
             }
         }
