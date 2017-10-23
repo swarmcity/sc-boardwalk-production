@@ -127,146 +127,163 @@ The following custom properties and mixins are available for styling:
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <display-language language="{{language}}"></display-language>
         <div class="container" wide-layout$="{{wide}}">
-            <div class="box">
-                <div class="left">
-                    <div class="avatar"></div>
-                </div>
-                <div class="right">
-                    <div class="date">Yesterday, 18:21</div>
+            <template is="dom-if" if="{{all}}">
+                <div class="box">
+                    <div class="left">
+                        <div class="avatar"></div>
+                    </div>
+                    <div class="right">
+                        <div class="date">Yesterday, 18:21</div>
 
-                    <template is="dom-if" if="{{!myReply}}">
-                        <div class="user">Sally Singer · 1 SWR</div>
-                    </template>
-                    <template is="dom-if" if="{{myReply}}">
-                        <div class="user me">Sally Singer · 1 SWR</div>
-                    </template>
-                    <div class="switchbox">
-                        <div class="description">
-                            nsectetur adipisciipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sng
+                        <template is="dom-if" if="{{!myReply}}">
+                            <div class="user">Sally Singer · 1 SWR</div>
+                        </template>
+                        <template is="dom-if" if="{{myReply}}">
+                            <div class="user me">Sally Singer · 1 SWR</div>
+                        </template>
+                        <div class="switchbox">
+                            <div class="description">
+                                nsectetur adipisciipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sng
+                            </div>
+                            <div class="price">for 9505 SWT</div>
                         </div>
-                        <div class="price">for 9505 SWT</div>
                     </div>
                 </div>
-            </div>
-            <div class="box">
-                <div class="left">
-                    <div class="avatar"></div>
-                </div>
-                <div class="right">
-                    <div class="date">Yesterday, 18:21</div>
+                <div class="box">
+                    <div class="left">
+                        <div class="avatar"></div>
+                    </div>
+                    <div class="right">
+                        <div class="date">Yesterday, 18:21</div>
 
-                    <template is="dom-if" if="{{!myReply}}">
-                        <div class="user">Maximiliaan van Oostenrijk tot Buizingen · 25 SWR</div>
-                    </template>
-                    <template is="dom-if" if="{{myReply}}">
-                        <div class="user me">Sally Singer · 1 SWR</div>
-                    </template>
-                    <div class="switchbox">
-                        <div class="description">
-                            I can take you!
+                        <template is="dom-if" if="{{!myReply}}">
+                            <div class="user">Maximiliaan van Oostenrijk tot Buizingen · 25 SWR</div>
+                        </template>
+                        <template is="dom-if" if="{{myReply}}">
+                            <div class="user me">Sally Singer · 1 SWR</div>
+                        </template>
+                        <div class="switchbox">
+                            <div class="description">
+                                I can take you!
+                            </div>
+                            <div class="price">for 5 SWT</div>
                         </div>
-                        <div class="price">for 5 SWT</div>
                     </div>
                 </div>
-            </div>
-            <div class="box">
-                <div class="left">
-                    <div class="avatar"></div>
+                <div class="box">
+                    <div class="left">
+                        <div class="avatar"></div>
+                    </div>
+                    <div class="right">
+                        <div class="date">Yesterday, 18:21</div>
+                        <template is="dom-if" if="{{false}}">
+                            <div class="user">Sally Singer · 1 SWR</div>
+                        </template>
+                        <template is="dom-if" if="{{1==1}}">
+                            <div class="user me">Xavier Hendrickx · 128 SWR</div>
+                        </template>
+                        <div class="switchbox">
+                            <div class="description">
+                                nsectetur adipisciipiscing elit, sed do eiust aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sng
+                            </div>
+                            <div class="price">for 0.005 SWT</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="right">
-                    <div class="date">Yesterday, 18:21</div>
+                <div class="box">
+                    <div class="left">
+                        <div class="avatar"></div>
+                    </div>
+                    <div class="right">
+                        <div class="date">Yesterday, 18:21</div>
 
-                    <template is="dom-if" if="{{false}}">
-                        <div class="user">Sally Singer · 1 SWR</div>
-                    </template>
-                    <template is="dom-if" if="{{1==1}}">
+                        <template is="dom-if" if="{{!myReply}}">
+                            <div class="user">Sally Singer · 1 SWR</div>
+                        </template>
+                        <template is="dom-if" if="{{myReply}}">
+                            <div class="user me">Sally Singer · 1 SWR</div>
+                        </template>
+                        <div class="switchbox">
+                            <div class="description">
+                                nsectetur adipisciipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sng nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                                in voluptate nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                                in tate nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                                voluptate nisi ut aliqvolupuip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                                in voluptate
+                            </div>
+                            <div class="price">for 5 SWT</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="left">
+                        <div class="avatar"></div>
+                    </div>
+                    <div class="right">
+                        <div class="date">Yesterday, 18:21</div>
+
+                        <template is="dom-if" if="{{!myReply}}">
+                            <div class="user">Sally Singer · 1 SWR</div>
+                        </template>
+                        <template is="dom-if" if="{{myReply}}">
+                            <div class="user me">Sally Singer · 1 SWR</div>
+                        </template>
+                        <div class="switchbox">
+                            <div class="description">
+                                nsectetur adipisciipiscing elit, sed do aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sng
+                            </div>
+                            <div class="price">for 0.15 SWT</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="left">
+                        <div class="avatar"></div>
+                    </div>
+                    <div class="right">
+                        <div class="date">Yesterday, 18:21</div>
+
+                        <template is="dom-if" if="{{!myReply}}">
+                            <div class="user">Sally Singer · 1 SWR</div>
+                        </template>
+                        <template is="dom-if" if="{{myReply}}">
+                            <div class="user me">Sally Singer · 1 SWR</div>
+                        </template>
+                        <div class="switchbox">
+                            <div class="description">
+                                I take you in my beautiful car!
+                            </div>
+                            <div class="price">for 25 SWT</div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template is="dom-if" if="{{mine}}">
+                <div class="box">
+                    <div class="left">
+                        <div class="avatar"></div>
+                    </div>
+                    <div class="right">
+                        <div class="date">Yesterday, 18:21</div>
                         <div class="user me">Xavier Hendrickx · 128 SWR</div>
-                    </template>
-                    <div class="switchbox">
-                        <div class="description">
-                            nsectetur adipisciipiscing elit, sed do eiust aliquip ex ea commodo consequat. Duis aute
-                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sng
+                        <div class="switchbox">
+                            <div class="description">
+                                nsectetur adipisciipiscing elit, sed do eiust aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sng
+                            </div>
+                            <div class="price">for 0.005 SWT</div>
                         </div>
-                        <div class="price">for 0.005 SWT</div>
                     </div>
                 </div>
-            </div>
-            <div class="box">
-                <div class="left">
-                    <div class="avatar"></div>
-                </div>
-                <div class="right">
-                    <div class="date">Yesterday, 18:21</div>
-
-                    <template is="dom-if" if="{{!myReply}}">
-                        <div class="user">Sally Singer · 1 SWR</div>
-                    </template>
-                    <template is="dom-if" if="{{myReply}}">
-                        <div class="user me">Sally Singer · 1 SWR</div>
-                    </template>
-                    <div class="switchbox">
-                        <div class="description">
-                            nsectetur adipisciipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sng nisi ut aliquip ex ea commodo consequat. Duis aute
-                            irure dolor in reprehenderit in voluptate  nisi ut aliquip ex ea commodo consequat. Duis aute
-                            irure dolor in reprehenderit in tate  nisi ut aliquip ex ea commodo consequat. Duis aute
-                            irure dolor in reprehenderit in voluptate  nisi ut aliqvolupuip ex ea commodo consequat. Duis aute
-                            irure dolor in reprehenderit in voluptate 
-                        </div>
-                        <div class="price">for 5 SWT</div>
-                    </div>
-                </div>
-            </div>
-            <div class="box">
-                <div class="left">
-                    <div class="avatar"></div>
-                </div>
-                <div class="right">
-                    <div class="date">Yesterday, 18:21</div>
-
-                    <template is="dom-if" if="{{!myReply}}">
-                        <div class="user">Sally Singer · 1 SWR</div>
-                    </template>
-                    <template is="dom-if" if="{{myReply}}">
-                        <div class="user me">Sally Singer · 1 SWR</div>
-                    </template>
-                    <div class="switchbox">
-                        <div class="description">
-                            nsectetur adipisciipiscing elit, sed do  aliquip ex ea commodo consequat. Duis aute
-                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sng
-                        </div>
-                        <div class="price">for 0.15 SWT</div>
-                    </div>
-                </div>
-            </div>
-            <div class="box">
-                <div class="left">
-                    <div class="avatar"></div>
-                </div>
-                <div class="right">
-                    <div class="date">Yesterday, 18:21</div>
-
-                    <template is="dom-if" if="{{!myReply}}">
-                        <div class="user">Sally Singer · 1 SWR</div>
-                    </template>
-                    <template is="dom-if" if="{{myReply}}">
-                        <div class="user me">Sally Singer · 1 SWR</div>
-                    </template>
-                    <div class="switchbox">
-                        <div class="description">
-                            I take you in my beautiful car!
-                        </div>
-                        <div class="price">for 25 SWT</div>
-                    </div>
-                </div>
-            </div>
+            </template>
         </div>
     </template>
     <script>
@@ -307,13 +324,29 @@ The following custom properties and mixins are available for styling:
                         notify: true,
                     },
                     /**
-                    * myReply indicates if a reply is owned by loaded account
+                    * myReply indicates if a reply is owned by my account
                     * @type {Boolean}
                     */
                     myReply: {
                         type: Boolean,
                         value: false,
                         notify: true,
+                    },
+                    /**
+                    * all indicates if all replies have to loaded
+                    * @type {Boolean}
+                    */
+                    all: {
+                        type: Boolean,
+                        value: false,
+                    },
+                    /**
+                    * mine indicates if only my reply has to be loaded
+                    * @type {Boolean}
+                    */
+                    mine: {
+                        type: Boolean,
+                        value: false,
                     },
                 };
             }
