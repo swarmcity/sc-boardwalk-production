@@ -141,8 +141,14 @@ Example:
                 @apply --icon-button-big;
                 cursor: pointer;
                 position: fixed;
-                bottom: 50px;
-                right: 30px;
+                bottom: 8vh;
+                right: 8vw;
+            }
+
+            .container[wide-layout] .replybutton {
+                position: relative;
+                right: 0;
+                bottom: 8vh;
             }
 
             .replybutton:active {
@@ -163,6 +169,26 @@ Example:
                 width: 100%;
             }
 
+            .noreplies-box {
+                width: 100%;
+            }
+
+            .container[wide-layout] .noreplies-box {
+                @apply --layout-horizontal;
+                max-height: 20px;
+            }
+
+            .noreplies-text {
+                @apply --small-light;
+                color: var(--sc-grey2);
+                text-align: center;
+            }
+
+            .container[wide-layout] .noreplies-text {
+                @apply --layout-flex;
+                text-align: left;
+            }
+
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
@@ -174,7 +200,7 @@ Example:
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <div class="container" id="container" wide-layout$="{{wide}}">
-            <template is="dom-if" if="{{1==1}}">
+            <!-- <template is="dom-if" if="{{false}}">
                 <div class="reply-box">
                     <div class="reply-avatarbox">
                         <img src="../../images/defaultavatar.png">
@@ -190,10 +216,16 @@ Example:
                         </div>
                     </div>
                 </div>
+            </template> -->
+
+            <template is="dom-if" if="{{1==1}}">
+                <div class="noreplies-box">
+                    <div class="noreplies-text">{{localize('No replies yet')}}</div>
+                    <div class="replybutton">
+                        <div class="replybutton-icon"></div>
+                    </div>
+                </div>
             </template>
-            <!-- <div class="replybutton">
-                    <div class="replybutton-icon"></div>
-                </div> -->
         </div>
 
     </template>
