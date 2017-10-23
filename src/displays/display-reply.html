@@ -48,10 +48,10 @@ The following custom properties and mixins are available for styling:
 
             .box {
                 background-color: var(--sc-white);
-                @apply --layout-vertical;
+                @apply --layout-horizontal;
                 width: 100%;
                 box-sizing: border-box;
-                padding: 25px 0;
+                padding-bottom: 25px;
                 cursor: pointer;
             }
 
@@ -88,27 +88,37 @@ The following custom properties and mixins are available for styling:
             .user {
                 @apply --small-bold;
                 color: var(--sc-blue);
+                margin-top: 2px;
+            }
+
+            .me {
+                color: var(--sc-grey4);
             }
 
             .description {
+                text-align: justify;
+                text-justify: inter-word;
+                @apply --layout-horizontal;
                 @apply --layout-flex;
-                @apply --layout-vertical;
-                @apply --layout-end-justified;
                 @apply --small-light;
                 color: var(--sc-grey4);
-                padding-right: 10px;
+                margin-top: 5px;
             }
 
             .pricebox {
-                @apply --layout-vertical;
+                @apply --layout-horizontal;
+
+                @apply --layout-flex;
                 @apply --layout-end;
                 @apply --layout-end-justified;
             }
 
             .price {
-
                 @apply --small-bold;
+                text-align: right;
                 color: var(--sc-grey4);
+                white-space: nowrap;
+                margin-top: 5px;
             }
 
             .container[wide-layout] .pricebox {
@@ -118,16 +128,15 @@ The following custom properties and mixins are available for styling:
             }
 
             .container[wide-layout] .price {
-
                 @apply --main-title4;
-            }
-
-            .container[wide-layout] {
-                padding: 30px 10vw;
             }
 
             .container[wide-layout] .box {
                 max-width: 68vw;
+            }
+
+            .right {
+                @apply --layout-flex;
             }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
@@ -142,97 +151,128 @@ The following custom properties and mixins are available for styling:
         <display-language language="{{language}}"></display-language>
         <div class="container" wide-layout$="{{wide}}">
             <div class="box" on-click="_next">
-                <div class="top">
+                <div class="left">
                     <div class="avatar"></div>
-                    <div class="meta">
-                        <div class="date">Yesterday, 18:21</div>
-                        <div class="user">Sally Singer · 1 SWR</div>
-                    </div>
                 </div>
-                <div class="bottom">
-                    <div class="description">I can take you!</div>
-                    <div class="pricebox">
-                        <div class="price">for 555000 SWT</div>
+                <div class="right">
+                    <div class="date">Yesterday, 18:21</div>
+
+                    <template is="dom-if" if="{{!myReply}}">
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </template>
+                    <template is="dom-if" if="{{myReply}}">
+                        <div class="user me">Sally Singer · 1 SWR</div>
+                    </template>
+
+                    <div class="description">
+                        nsectetur adipisciipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                        sng
                     </div>
+                    <div class="price">for 0.005 SWT</div>
                 </div>
             </div>
             <div class="box" on-click="_next">
-                <div class="top">
+                <div class="left">
                     <div class="avatar"></div>
-                    <div class="meta">
-                        <div class="date">Yesterday, 18:21</div>
-                        <div class="user">Sally Singer · 1 SWR</div>
-                    </div>
                 </div>
-                <div class="bottom">
-                    <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                        deserunt mollit anim id est laborum.</div>
-                    <div class="pricebox">
-                        <div class="price">for 5 SWT</div>
+                <div class="right">
+                    <div class="date">Yesterday, 18:21</div>
+                    <template is="dom-if" if="{{!myReply}}">
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </template>
+                    <template is="dom-if" if="{{myReply}}">
+                        <div class="user me">Sally Singer · 1 SWR</div>
+                    </template>
+                    <div class="description">
+                        I can take you!
                     </div>
+                    <div class="price">for 5 SWT</div>
                 </div>
             </div>
             <div class="box" on-click="_next">
-                <div class="top">
+                <div class="left">
                     <div class="avatar"></div>
-                    <div class="meta">
-                        <div class="date">Yesterday, 18:21</div>
-                        <div class="user">Sally Singer · 1 SWR</div>
-                    </div>
                 </div>
-                <div class="bottom">
-                    <div class="description">I can take you!</div>
-                    <div class="pricebox">
-                        <div class="price">for 5 SWT</div>
+                <div class="right">
+                    <div class="date">Yesterday, 18:21</div>
+                    <template is="dom-if" if="{{!myReply}}">
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </template>
+                    <template is="dom-if" if="{{myReply}}">
+                        <div class="user me">Sally Singer · 1 SWR</div>
+                    </template>
+                    <div class="description">
+                        nsectetur adipisciipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                        sng
                     </div>
+                    <div class="price">for 0.005 SWT</div>
                 </div>
             </div>
             <div class="box" on-click="_next">
-                <div class="top">
+                <div class="left">
                     <div class="avatar"></div>
-                    <div class="meta">
-                        <div class="date">Yesterday, 18:21</div>
-                        <div class="user">Sally Singer · 1 SWR</div>
-                    </div>
                 </div>
-                <div class="bottom">
-                    <div class="description">I can take you!</div>
-                    <div class="pricebox">
-                        <div class="price">for 5 SWT</div>
+                <div class="right">
+                    <div class="date">Yesterday, 18:21</div>
+                    <template is="dom-if" if="{{!myReply}}">
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </template>
+                    <template is="dom-if" if="{{myReply}}">
+                        <div class="user me">Sally Singer · 1 SWR</div>
+                    </template>
+                    <div class="description">
+                        nsectetur adipisciipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                        sng
                     </div>
+                    <div class="price">for 0.005 SWT</div>
                 </div>
             </div>
             <div class="box" on-click="_next">
-                <div class="top">
+                <div class="left">
                     <div class="avatar"></div>
-                    <div class="meta">
-                        <div class="date">Yesterday, 18:21</div>
-                        <div class="user">Sally Singer · 1 SWR</div>
-                    </div>
                 </div>
-                <div class="bottom">
-                    <div class="description">I can take you in my nice car!</div>
-                    <div class="pricebox">
-                        <div class="price">for 5 SWT</div>
+                <div class="right">
+                    <div class="date">Yesterday, 18:21</div>
+                    <template is="dom-if" if="{{false}}">
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </template>
+                    <template is="dom-if" if="{{1==1}}">
+                        <div class="user me">Xavier Hendrickx · 128 SWR</div>
+                    </template>
+                    <div class="description">
+                        nsectetur adipisciipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                        sng
                     </div>
+                    <div class="price">for 0.005 SWT</div>
                 </div>
             </div>
             <div class="box" on-click="_next">
-                <div class="top">
+                <div class="left">
                     <div class="avatar"></div>
-                    <div class="meta">
-                        <div class="date">Yesterday, 18:21</div>
-                        <div class="user">Sally Singer · 1 SWR</div>
-                    </div>
                 </div>
-                <div class="bottom">
-                    <div class="description">I can take you, drinks on the way included!</div>
-                    <div class="pricebox">
-                        <div class="price">for 5 SWT</div>
+                <div class="right">
+                    <div class="date">Yesterday, 18:21</div>
+                    <template is="dom-if" if="{{!myReply}}">
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </template>
+                    <template is="dom-if" if="{{myReply}}">
+                        <div class="user me">Sally Singer · 1 SWR</div>
+                    </template>
+                    <div class="description">
+                        nsectetur adipisciipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                        sng
                     </div>
+                    <div class="price">for 0.005 SWT</div>
                 </div>
             </div>
         </div>
@@ -266,12 +306,21 @@ The following custom properties and mixins are available for styling:
                         notify: true,
                     },
                     /**
-                    * Path signlas to the parent to change the path
+                    * Path signals to the parent to change the path
                     * @type {Boolean}
                     */
                     path: {
                         type: String,
                         value: null,
+                        notify: true,
+                    },
+                    /**
+                    * myReply indicates if a reply is owned by loaded account
+                    * @type {Boolean}
+                    */
+                    myReply: {
+                        type: Boolean,
+                        value: false,
                         notify: true,
                     },
                 };
