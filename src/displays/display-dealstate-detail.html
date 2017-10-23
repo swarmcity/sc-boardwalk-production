@@ -40,6 +40,14 @@ Example:
                 background-size: 40px;
             }
 
+            .reply-avatarbox {
+                max-height: 40px;
+            }
+
+            .reply-horizontal {
+                @apply --layout-horizontal;
+            }
+
             paper-textarea {
                 text-indent: 2px;
                 margin-top: 5px;
@@ -102,23 +110,21 @@ Example:
 
             .reply-buttonbox {
                 @apply --layout-horizontal;
-                @apply --layout-start-justified;
+                @apply --layout-center-justified;
                 @apply --layout-center;
                 margin-top: 40px;
                 width: 100%;
-                margin-right: 40px;
             }
 
             .container[wide-layout] .reply-buttonbox {
                 @apply --layout-start-justified;
-                margin-right: 0;
+                margin-left: 50px;
             }
 
             .disagree {
                 @apply --xmark-grey4-small;
                 cursor: pointer;
                 margin-right: 10px;
-                margin-left: 50px;
             }
 
             .disagree:active {
@@ -160,7 +166,7 @@ Example:
             }
 
             .reply-box {
-                @apply --layout-horizontal;
+                @apply --layout-vertical;
                 @apply --layout-start-justified;
                 width: 100%;
             }
@@ -200,25 +206,27 @@ Example:
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <div class="container" id="container" wide-layout$="{{wide}}">
-            <!-- <template is="dom-if" if="{{false}}">
+            <template is="dom-if" if="{{false}}">
                 <div class="reply-box">
-                    <div class="reply-avatarbox">
-                        <img src="../../images/defaultavatar.png">
+                    <div class="reply-horizontal">
+                        <div class="reply-avatarbox">
+                            <img src="../../images/defaultavatar.png">
+                        </div>
+                        <div class="reply-inputbox">
+                            <paper-textarea class="reply-messge" label="{{localize('Your reply')}}" type="txt"></paper-textarea>
+                            <paper-input class="reply-amount" label="{{localize('Your amount')}}" type="txt"></paper-input>
+                        </div>
                     </div>
-                    <div class="reply-inputbox">
-                        <paper-textarea class="reply-messge" label="{{localize('Your reply')}}" type="txt"></paper-textarea>
-                        <paper-input class="reply-amount" label="{{localize('Your amount')}}" type="txt"></paper-input>
-                        <div class="reply-buttonbox">
-                            <div class="disagree" on-click="_disagree"></div>
-                            <div class="round-button" on-click="_agree">
-                                <div class="agree"></div>
-                            </div>
+                    <div class="reply-buttonbox">
+                        <div class="disagree" on-click="_disagree"></div>
+                        <div class="round-button" on-click="_agree">
+                            <div class="agree"></div>
                         </div>
                     </div>
                 </div>
-            </template> -->
+            </template>
 
-            <template is="dom-if" if="{{1==1}}">
+            <template is="dom-if" if="{{false}}">
                 <div class="noreplies-box">
                     <div class="noreplies-text">{{localize('No replies yet')}}</div>
                     <div class="replybutton">
