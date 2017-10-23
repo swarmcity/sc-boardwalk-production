@@ -108,7 +108,7 @@ The following custom properties and mixins are available for styling:
                     <div class="linkbox">
                         <span class="links">@hashtag (Twitter)</span></div>
                 </div>
-                <div class="arrowup" on-click="_toggle">
+                <div class="arrowup">
                         <div class="arrowup-icon" on-click="_closeInfo"></div>
                     </div>
             </template>
@@ -194,7 +194,7 @@ The following custom properties and mixins are available for styling:
             * Closes the slider
             */
             _closeInfo() {
-                this.showInfo = true;
+                this.showInfo = false;
             }
             /**
             * Togles if the information is shown or hidden

@@ -528,6 +528,11 @@ This code may only be used under the license found at https://github.com/swarmci
             */
             _back() {
                 this.set('route.path', 'hashtag-list/');
+                this.infoState = 'info-hidden';
+                this.sliderState = 'slider-hidden';
+                this.fadeState = 'fade-hidden';
+                this.highlightInfoToggle = false;
+                this.highlightFilterToggle = false;
             }
         }
         window.customElements.define(NewHashtag.is, NewHashtag);
