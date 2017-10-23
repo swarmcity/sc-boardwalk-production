@@ -206,6 +206,27 @@ Example:
                 width: 100%;
             }
 
+            .selected-box {
+                @apply --layout-vertical;
+                width: 100%;
+                text-align: center;
+            }
+
+            .container[wide-layout] .selected-box {
+                @apply --layout-horizontal;
+                text-align: left;
+            }
+
+            .selected-text {
+                @apply --body-default;
+                color: var(--sc-grey4);
+            }
+
+            .not-you {
+                @apply --body-bold;
+                color: var(--sc-grey4);
+            }
+
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
@@ -247,13 +268,26 @@ Example:
                 </div>
             </template>
 
-            <template is="dom-if" if="{{1==1}}">
+            <template is="dom-if" if="{{false}}">
                 <div class="replybutton">
                     <div class="replybutton-icon"></div>
                 </div>
                 <div class="replies-box">
                     <display-reply></display-reply>
                 </div>
+            </template>
+
+            <template is="dom-if" if="{{false}}">
+                <div class="selected-box">
+                    <div class="selected-text">Sally Singer {{localize('already selected a provider for this request.')}}&nbsp;</div>
+                    <div class="not-you">{{localize('Its not you.')}}</div>
+                </div>
+            </template>
+
+            <template is="dom-if" if="{{1==1}}">
+                    <div class="selected-box">
+                            <div class="selected-text">Sally Singer {{localize('already selected a provider for this request.')}}</div>
+                        </div>
             </template>
         </div>
 
