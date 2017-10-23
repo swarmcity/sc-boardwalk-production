@@ -55,21 +55,6 @@ The following custom properties and mixins are available for styling:
                 cursor: pointer;
             }
 
-            .top {
-                @apply --layout-horizontal;
-            }
-
-            .meta {
-                @apply --layout-center-justified;
-                @apply --layout-vertical;
-                @apply --layout-flex;
-            }
-
-            .bottom {
-                margin-top: 12px;
-                @apply --layout-horizontal;
-            }
-
             .avatar {
                 width: 30px;
                 height: 30px;
@@ -99,18 +84,14 @@ The following custom properties and mixins are available for styling:
                 text-align: justify;
                 text-justify: inter-word;
                 @apply --layout-horizontal;
-                @apply --layout-flex;
                 @apply --small-light;
                 color: var(--sc-grey4);
                 margin-top: 5px;
             }
 
-            .pricebox {
-                @apply --layout-horizontal;
-
+            .container[wide-layout] .description {
                 @apply --layout-flex;
-                @apply --layout-end;
-                @apply --layout-end-justified;
+                max-width: 500px;
             }
 
             .price {
@@ -121,36 +102,32 @@ The following custom properties and mixins are available for styling:
                 margin-top: 5px;
             }
 
-            .container[wide-layout] .pricebox {
-                @apply --layout-horizontal;
-                @apply --layout-end;
-                @apply --layout-end-justified;
-            }
-
             .container[wide-layout] .price {
-                @apply --main-title4;
-            }
-
-            .container[wide-layout] .box {
-                max-width: 68vw;
+                @apply --layout-vertical;
+                @apply --layout-end-justified;
+                margin-left: 40px;
             }
 
             .right {
                 @apply --layout-flex;
             }
 
-            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-            only screen and (min--moz-device-pixel-ratio: 1.5),
-            only screen and (min-resolution: 240dpi) {
-                .replyicon {
-                    @apply --retina;
-                }
+            .switchbox {
+                @apply --layout-vertical;
+            }
+
+            .switchbox {
+                @apply --layout-vertical;
+            }
+
+            .container[wide-layout] .switchbox {
+                @apply --layout-horizontal;
             }
         </style>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <display-language language="{{language}}"></display-language>
         <div class="container" wide-layout$="{{wide}}">
-            <div class="box" on-click="_next">
+            <div class="box">
                 <div class="left">
                     <div class="avatar"></div>
                 </div>
@@ -163,116 +140,131 @@ The following custom properties and mixins are available for styling:
                     <template is="dom-if" if="{{myReply}}">
                         <div class="user me">Sally Singer · 1 SWR</div>
                     </template>
+                    <div class="switchbox">
+                        <div class="description">
+                            nsectetur adipisciipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sng
+                        </div>
+                        <div class="price">for 9505 SWT</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="left">
+                    <div class="avatar"></div>
+                </div>
+                <div class="right">
+                    <div class="date">Yesterday, 18:21</div>
 
-                    <div class="description">
-                        nsectetur adipisciipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                        sng
-                    </div>
-                    <div class="price">for 0.005 SWT</div>
-                </div>
-            </div>
-            <div class="box" on-click="_next">
-                <div class="left">
-                    <div class="avatar"></div>
-                </div>
-                <div class="right">
-                    <div class="date">Yesterday, 18:21</div>
                     <template is="dom-if" if="{{!myReply}}">
-                        <div class="user">Sally Singer · 1 SWR</div>
+                        <div class="user">Maximiliaan van Oostenrijk tot Buizingen · 25 SWR</div>
                     </template>
                     <template is="dom-if" if="{{myReply}}">
                         <div class="user me">Sally Singer · 1 SWR</div>
                     </template>
-                    <div class="description">
-                        I can take you!
+                    <div class="switchbox">
+                        <div class="description">
+                            I can take you!
+                        </div>
+                        <div class="price">for 5 SWT</div>
                     </div>
-                    <div class="price">for 5 SWT</div>
                 </div>
             </div>
-            <div class="box" on-click="_next">
+            <div class="box">
                 <div class="left">
                     <div class="avatar"></div>
                 </div>
                 <div class="right">
                     <div class="date">Yesterday, 18:21</div>
-                    <template is="dom-if" if="{{!myReply}}">
-                        <div class="user">Sally Singer · 1 SWR</div>
-                    </template>
-                    <template is="dom-if" if="{{myReply}}">
-                        <div class="user me">Sally Singer · 1 SWR</div>
-                    </template>
-                    <div class="description">
-                        nsectetur adipisciipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                        sng
-                    </div>
-                    <div class="price">for 0.005 SWT</div>
-                </div>
-            </div>
-            <div class="box" on-click="_next">
-                <div class="left">
-                    <div class="avatar"></div>
-                </div>
-                <div class="right">
-                    <div class="date">Yesterday, 18:21</div>
-                    <template is="dom-if" if="{{!myReply}}">
-                        <div class="user">Sally Singer · 1 SWR</div>
-                    </template>
-                    <template is="dom-if" if="{{myReply}}">
-                        <div class="user me">Sally Singer · 1 SWR</div>
-                    </template>
-                    <div class="description">
-                        nsectetur adipisciipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                        sng
-                    </div>
-                    <div class="price">for 0.005 SWT</div>
-                </div>
-            </div>
-            <div class="box" on-click="_next">
-                <div class="left">
-                    <div class="avatar"></div>
-                </div>
-                <div class="right">
-                    <div class="date">Yesterday, 18:21</div>
+
                     <template is="dom-if" if="{{false}}">
                         <div class="user">Sally Singer · 1 SWR</div>
                     </template>
                     <template is="dom-if" if="{{1==1}}">
                         <div class="user me">Xavier Hendrickx · 128 SWR</div>
                     </template>
-                    <div class="description">
-                        nsectetur adipisciipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                        sng
+                    <div class="switchbox">
+                        <div class="description">
+                            nsectetur adipisciipiscing elit, sed do eiust aliquip ex ea commodo consequat. Duis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sng
+                        </div>
+                        <div class="price">for 0.005 SWT</div>
                     </div>
-                    <div class="price">for 0.005 SWT</div>
                 </div>
             </div>
-            <div class="box" on-click="_next">
+            <div class="box">
                 <div class="left">
                     <div class="avatar"></div>
                 </div>
                 <div class="right">
                     <div class="date">Yesterday, 18:21</div>
+
                     <template is="dom-if" if="{{!myReply}}">
                         <div class="user">Sally Singer · 1 SWR</div>
                     </template>
                     <template is="dom-if" if="{{myReply}}">
                         <div class="user me">Sally Singer · 1 SWR</div>
                     </template>
-                    <div class="description">
-                        nsectetur adipisciipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                        sng
+                    <div class="switchbox">
+                        <div class="description">
+                            nsectetur adipisciipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sng nisi ut aliquip ex ea commodo consequat. Duis aute
+                            irure dolor in reprehenderit in voluptate  nisi ut aliquip ex ea commodo consequat. Duis aute
+                            irure dolor in reprehenderit in tate  nisi ut aliquip ex ea commodo consequat. Duis aute
+                            irure dolor in reprehenderit in voluptate  nisi ut aliqvolupuip ex ea commodo consequat. Duis aute
+                            irure dolor in reprehenderit in voluptate 
+                        </div>
+                        <div class="price">for 5 SWT</div>
                     </div>
-                    <div class="price">for 0.005 SWT</div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="left">
+                    <div class="avatar"></div>
+                </div>
+                <div class="right">
+                    <div class="date">Yesterday, 18:21</div>
+
+                    <template is="dom-if" if="{{!myReply}}">
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </template>
+                    <template is="dom-if" if="{{myReply}}">
+                        <div class="user me">Sally Singer · 1 SWR</div>
+                    </template>
+                    <div class="switchbox">
+                        <div class="description">
+                            nsectetur adipisciipiscing elit, sed do  aliquip ex ea commodo consequat. Duis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sng
+                        </div>
+                        <div class="price">for 0.15 SWT</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="left">
+                    <div class="avatar"></div>
+                </div>
+                <div class="right">
+                    <div class="date">Yesterday, 18:21</div>
+
+                    <template is="dom-if" if="{{!myReply}}">
+                        <div class="user">Sally Singer · 1 SWR</div>
+                    </template>
+                    <template is="dom-if" if="{{myReply}}">
+                        <div class="user me">Sally Singer · 1 SWR</div>
+                    </template>
+                    <div class="switchbox">
+                        <div class="description">
+                            I take you in my beautiful car!
+                        </div>
+                        <div class="price">for 25 SWT</div>
+                    </div>
                 </div>
             </div>
         </div>
