@@ -255,7 +255,19 @@ Example:
 
             .selectedme-myreply {
                 box-sizing: border-box;
-                padding: 5vh 14vw 0vh 14vw;
+                padding: 
+                    var(--box-padding-top) 
+                    var(--box-padding-sides) 
+                    0
+                    var(--box-padding-sides);
+            }
+
+            .container[wide-layout] .selectedme-myreply {
+                padding: 
+                    var(--box-padding-top-wide) 
+                    var(--box-padding-sides-wide) 
+                    var(--box-padding-bottom-wide) 
+                    var(--box-padding-sides-wide);
             }
 
             .selectedme-bluebox {
@@ -268,12 +280,30 @@ Example:
                 background-color: var(--sc-blue);
             }
 
+            .container[wide-layout] .selectedme-bluebox {
+                padding: 
+                    var(--box-padding-top-wide) 
+                    var(--box-padding-sides-wide) 
+                    var(--box-padding-bottom-wide) 
+                    var(--box-padding-sides-wide);
+            }
+
             .selectedme-text {
                 width: 100%;
                 text-align: center;
                 @apply --body-bold;
                 color: var(--sc-white);
             }
+
+            .container[wide-layout] .selectedme-text {
+                text-align: left;
+            }
+
+
+            .container[wide-layout] .selectedme-bluebox > .buttonbox {
+                margin-left: 0;
+            }
+
 
             .selected-box {
                 box-sizing: border-box;
@@ -457,13 +487,13 @@ Example:
                 </div>
             </template>
 
-            <template is="dom-if" if="{{false}}">
+            <template is="dom-if" if="{{1}}">
                 <div class="selected-box">
                     <div class="selected-text">Sally Singer {{localize('already selected a provider for this request.')}}</div>
                 </div>
             </template>
 
-            <template is="dom-if" if="{{1}}">
+            <template is="dom-if" if="{{false}}">
                 <div class="indeal-box">
                     <div class="indeal-smalltext">{{localize('You accepted.')}}</div>
                     <div class="indeal-boldtext">{{localize('You are now in a deal with')}} Sally Singer.</div>
