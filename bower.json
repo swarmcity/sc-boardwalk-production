@@ -21,7 +21,7 @@
     "paper-input": "^2.0.2",
     "paper-slider": "^2.0.2",
     "app-storage": "^2.0.2",
-    "faffys-animated-pages": "^0.0.2"
+    "faffys-animated-pages": "^0.0.4"
   },
   "resolutions": {
     "polymer": "^2.0.0",
