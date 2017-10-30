@@ -57,7 +57,7 @@
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
-    <faffys-animated-pages page="[[page]]" animation="{{animation}}">
+    <faffys-animated-pages page="[[page]]" route="{{route}}" animation="{{animation}}">
       <page-welcome id="welcome" animation="{{animation}}"></page-welcome>
       <page-hashtag id="hashtag" animation="{{animation}}"></page-hashtag>
       <page-new-here id="new-here" animation="{{animation}}"></page-new-here>
