@@ -202,7 +202,7 @@ The following custom properties and mixins are available for styling:
             * takes the user to the my-profile page
             */
             _toProfile() {
-                // stores the current hashtag choice in session 
+                // stores the current hashtag choice in session
                 sessionStorage.setItem('origin', this.route.path);
                 this.set('route.path', 'my-profile/');
             }

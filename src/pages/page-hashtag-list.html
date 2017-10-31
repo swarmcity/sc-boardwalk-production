@@ -255,47 +255,47 @@ This code may only be used under the license found at https://github.com/swarmci
                         statePath: 'location',
                     },
                     /**
-                    * sliderState represents style state of the slider 
-                    * @type {String} 
+                    * sliderState represents style state of the slider
+                    * @type {String}
                     */
                     path: {
                         type: String,
                         observer: '_path',
                     },
                     /**
-                    * sliderState represents style state of the slider 
-                    * @type {String} 
+                    * sliderState represents style state of the slider
+                    * @type {String}
                     */
                     sliderState: {
                         type: String,
                         value: 'slider-hidden',
                     },
                     /**
-                    * completeAccount determines if an account is present 
+                    * completeAccount determines if an account is present
                     * in localstorage or not
                     * @type {Boolean}
                     */
                     completeAccount: {
                         type: Boolean,
                     },
-                    /** 
-                    * showSlider determines if the slider is show or not 
-                    * @type {Boolean} 
+                    /**
+                    * showSlider determines if the slider is show or not
+                    * @type {Boolean}
                     */
                     showSlider: {
                         type: Boolean,
                         observer: '_toggleSlider',
                     },
                     /**
-                    * fadeState represents the state of hashtaglist container 
-                    * @type {String} 
+                    * fadeState represents the state of hashtaglist container
+                    * @type {String}
                     */
                     fadeState: {
                         type: String,
                         value: 'fade-hidden',
                     },
                     /**
-                    * highlightFilterToggle toggles 
+                    * highlightFilterToggle toggles
                     * the background style of the show filter text link
                     * @type {Boolean}
                     */
@@ -354,8 +354,8 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.highlightFilterToggle = true;
                 }
             }
-            /** 
-            * closes open slider box 
+            /**
+            * closes open slider box
             */
             _fadeClose() {
                 if (this.showSlider) {
