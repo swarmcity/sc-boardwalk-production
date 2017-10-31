@@ -14,7 +14,7 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../shared-styles.html">
 
-<dom-module id="page-stop-signup">
+<dom-module id="page-confirm-payout">
     <template>
         <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
@@ -95,8 +95,8 @@ This code may only be used under the license found at https://github.com/swarmci
 
         <div class="container" wide-layout$="{{wide}}">
             <div>
-                <div>{{localize('Do you want to stop creating your account?')}}</div>
-                <div>{{localize('This can not be undone. All progress will be lost')}}</div>
+                <div>{{localize('Youre about to payout')}} 5 SWT {{localize('to')}} Sally Singer.</div>
+                <div>{{localize('This can not be undone.')}}</div>
             </div>
             <div>
                 <div>
@@ -110,13 +110,13 @@ This code may only be used under the license found at https://github.com/swarmci
     </template>
 
     <script>
-        class StopSignup extends new ReduxMixin(Polymer.mixinBehaviors([
+        class ConfirmPayout extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
         ],
             Polymer.Element
         )) {
             static get is() {
-                return 'page-stop-signup';
+                return 'page-confirm-payout';
             }
             static get properties() {
                 return {
@@ -148,11 +148,10 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             /**
-            * takes the user to the initiating hashtag page
+            * takes the user to the page payout processing
             */
             _agree() {
-                this.path = 'hashtag/' + sessionStorage.getItem('hashtagID');
-                sessionStorage.removeItem('hashtagID');
+                this.set('route.path', 'payout-processing');
             }
 
             /**
@@ -165,6 +164,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
         }
-        window.customElements.define(StopSignup.is, StopSignup);
+        window.customElements.define(ConfirmPayout.is, ConfirmPayout);
     </script>
 </dom-module>

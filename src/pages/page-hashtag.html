@@ -19,17 +19,6 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../displays/display-hashtag-deals.html">
 <link rel="import" href="../displays/display-deal-btn.html">
 <link rel="import" href="../displays/display-filter-deals.html">
-<!--
-    Aimation pack, only load the animations you need for this page.
--->
-
-<link rel="import" href="../../bower_components/neon-animation/animations/scale-down-animation.html">
-<link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
-<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
-<link rel="import" href="../../bower_components/neon-animation/web-animations.html">
-<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
-<link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
-<link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
 
 <dom-module id="page-hashtag">
     <template>
@@ -305,7 +294,7 @@ This code may only be used under the license found at https://github.com/swarmci
 
             <div class="header">
                 <div class="top">
-                    <display-my-info on-click="_toProfile" complete-account="{{completeAccount}}"></display-my-info>
+                    <display-my-info complete-account="{{completeAccount}}"></display-my-info>
                     <div class="back" on-click="_back"></div>
                 </div>
                 <div class="bottom">
@@ -371,8 +360,6 @@ This code may only be used under the license found at https://github.com/swarmci
     <script>
         class NewHashtag extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
-            Polymer.NeonAnimationRunnerBehavior,
-            Polymer.NeonAnimatableBehavior,
         ],
             Polymer.Element
         )) {
@@ -430,7 +417,7 @@ This code may only be used under the license found at https://github.com/swarmci
                         observer: '_toggleInfo',
                     },
                     /**
-                    * highlightFilterToggle toggles 
+                    * highlightFilterToggle toggles
                     * the background style of the show filter text link
                     * @type {Boolean}
                     */
@@ -439,7 +426,7 @@ This code may only be used under the license found at https://github.com/swarmci
                         value: false,
                     },
                     /**
-                    * highlightInfoToggle toggles 
+                    * highlightInfoToggle toggles
                     * the background style of the show filter text link
                     * @type {Boolean}
                     */
@@ -508,6 +495,9 @@ This code may only be used under the license found at https://github.com/swarmci
                         this.fadeState = 'fade-hidden-visible';
                         this.highlightInfoToggle = true;
                         this.highlightFilterToggle = false;
+                        setTimeout(() =>{
+                            this.sliderState = 'slider-hidden';
+                        }, 300);
                         break;
                     case 'info-hidden-visible':
                         this.infoState = 'info-visible-hidden';
@@ -538,12 +528,11 @@ This code may only be used under the license found at https://github.com/swarmci
             */
             _back() {
                 this.set('route.path', 'hashtag-list/');
-            }
-            /**
-            * takes the user to the my-profile page
-            */
-            _toProfile() {
-                this.set('route.path', 'my-profile/');
+                this.infoState = 'info-hidden';
+                this.sliderState = 'slider-hidden';
+                this.fadeState = 'fade-hidden';
+                this.highlightInfoToggle = false;
+                this.highlightFilterToggle = false;
             }
         }
         window.customElements.define(NewHashtag.is, NewHashtag);

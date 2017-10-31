@@ -13,15 +13,6 @@ This code may only be used under the license found at https://github.com/swarmci
     Displays and shared styles only
 -->
 <link rel="import" href="../shared-styles.html">
-<!--
-    Aimation pack, only load the animations you need for this page.
--->
-
-<link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
-<link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
-<link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
-<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
-<link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
 <dom-module id="page-warning-delete">
     <template>
@@ -30,89 +21,59 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
         <style include="shared-styles">
              :host {
-                height: 100vh;
-                width: 100vw;
-                display: block;
+                @apply --warning-red-host;
             }
 
             .container {
-                background-color: var(--sc-red);
-                height: 100%;
-                width: 100%;
-                @apply --layout-vertical;
+                @apply --warning-red-container;
             }
 
             .container>div:nth-child(1) {
-                height: 70%;
-                @apply --layout-vertical;
-                @apply --layout-center;
-                @apply --layout-center-justified;
-                box-sizing: border-box;
-                padding: 0 14vw;
+                @apply --warning-red-top;
             }
 
             .container>div:nth-child(1)>div:nth-child(1) {
-                @apply --main-title1;
-                color: var(--sc-white);
-                text-align: center;
+                @apply --warning-red-title;
             }
 
             .container>div:nth-child(1)>div:nth-child(2) {
-                @apply --small-light;
-                margin: 20px 0 0;
-                color: var(--sc-white);
-                text-align: center;
+                @apply --warning-red-subtitle;
             }
 
             .container>div:nth-child(2) {
-                box-sizing: border-box;
-                padding: 0 14vw;
-                @apply --layout-vertical;
-                @apply --layout-center;
-                @apply --layout-start-justified;
-                height: 30%;
+                @apply --warning-red-bottom;
             }
 
             .container>div:nth-child(2)>div:nth-child(1) {
-                @apply --layout-horizontal;
-                @apply --layout-center-center;
+                @apply --warning-red-buttonbox;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
-                @apply --xmark-grey4-normal;
-                cursor: pointer;
-                margin-right: 20px;
+                @apply --warning-red-xmark;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
-                @apply --icon-button-big;
+                @apply --warning-red-roundbutton;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
-                @apply --vmark-red-normal;
+                @apply --warning-red-vmark;
             }
 
             .container[wide-layout]>div:nth-child(1) {
-                height: 55%;
-                padding: 0 12vw 7vh;
-                @apply --layout-start;
-                @apply --layout-end-justified;
+                @apply --warning-red-top-wide;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(1) {
-                @apply --main-title1-wide;
-                text-align: left;
+                @apply --warning-top-title-wide;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(2) {
-                @apply --small-light-wide;
-                text-align: left;
+                @apply --warning-red-subtitle-wide;
             }
 
             .container[wide-layout]>div:nth-child(2) {
-                height: 45%;
-                padding: 0 12vw;
-                @apply --layout-start;
+                @apply --warning-red-bottom-wide;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1):active,
@@ -151,8 +112,6 @@ This code may only be used under the license found at https://github.com/swarmci
     <script>
         class MyWarningDelete extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
-            Polymer.NeonAnimationRunnerBehavior,
-            Polymer.NeonAnimatableBehavior,
         ],
             Polymer.Element
         )) {
@@ -173,31 +132,6 @@ This code may only be used under the license found at https://github.com/swarmci
                         type: String,
                         observer: '_path',
                     },
-                    /**
-                    * Entry and exit animation
-                    */
-                    animationConfig: {
-                        value: function() {
-                            return {
-                                'entry': {
-                                    name: 'fade-in-animation',
-                                    node: this,
-                                    nodeDelay: 300,
-                                    timing: {
-                                        duration: 300,
-                                    },
-                                },
-                                'exit': {
-                                    name: 'fade-out-animation',
-                                    node: this,
-                                    nodeDelay: 300,
-                                    timing: {
-                                        duration: 300,
-                                    },
-                                },
-                            };
-                        },
-                    },
                 };
             }
 
@@ -214,7 +148,7 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             /**
-            * takes the user to the initiating hashtag page
+            * deletes the profile
             */
             _deleteProfile() {
             }

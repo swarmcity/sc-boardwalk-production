@@ -62,7 +62,7 @@ The following custom properties and mixins are available for styling:
             static get properties() {
                 return {
                     /**
-                    * Loading indicates if the componant is loading
+                    * Loading indicates if the component is loading
                     * @type {Boolean}
                     */
                     loading: {
@@ -71,20 +71,29 @@ The following custom properties and mixins are available for styling:
                         notify: true,
                     },
                     /**
-                    * route data represents the curent route
+                    * route data represents the current route
                     * @type {String}
                     */
                     routeData: {
                         type: String,
                     },
                     /**
-                    * Path signlas to the parent to change the path
+                    * Path signals to the parent to change the path
                     * @type {Boolean}
                     */
                     path: {
                         type: String,
                         value: null,
                         notify: true,
+                    },
+                    /**
+                    * completeAccount represents true of the user
+                    * has a username, avatar and address
+                    * @type {Boolean}
+                    */
+                    completeAccount: {
+                        type: Boolean,
+                        value: true,
                     },
                 };
             }
@@ -112,11 +121,11 @@ The following custom properties and mixins are available for styling:
             * complete acocunt.
             */
             _next() {
+                sessionStorage.setItem('hashtagID', this.routeData.page);
                 if (!this.completeAccount) {
-                    sessionStorage.setItem('hashtagID', this.routeData.page);
                     this.path = 'new-here/';
                 } else {
-                    this.path = 'new-deal/';
+                    this.path = 'new-request/';
                 }
             }
         }

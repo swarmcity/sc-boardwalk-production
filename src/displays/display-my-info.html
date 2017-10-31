@@ -5,6 +5,7 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
 <link rel="import" href="../data/data-web3.html">
 <link rel="import" href="../data/data-ipfs.html">
 <link rel="import" href="../data/data-local-storage.html">
@@ -32,7 +33,7 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-my-info">
     <template>
         <style include="shared-styles">
-             :host {
+            :host {
                 display: block;
             }
 
@@ -42,17 +43,16 @@ The following custom properties and mixins are available for styling:
                 @apply --layout-center;
             }
 
-            .container > img {
+            .container>img {
                 width: 40px;
                 height: 40px;
                 cursor: pointer;
                 border-radius: 50%;
                 margin-right: 10px;
-                
                 background-size: 40px;
             }
 
-            .container[wide-layout] > img {
+            .container[wide-layout]>img {
                 width: 50px;
                 height: 50px;
                 margin-right: 20px;
@@ -65,9 +65,9 @@ The following custom properties and mixins are available for styling:
             }
 
             .container div:nth-child(2)>div:nth-child(2) {
-            @apply --main-title4;
-            color: var(--sc-yellow);          
-            cursor: pointer;
+                @apply --main-title4;
+                color: var(--sc-yellow);
+                cursor: pointer;
             }
         </style>
 
@@ -75,14 +75,16 @@ The following custom properties and mixins are available for styling:
         <data-ipfs id="ipfs"></data-ipfs>
         <data-local-storage id="storage"></data-local-storage>
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+        <app-location route="{{route}}"></app-location>
+        <app-route route="{{route}}" pattern="/hashtag/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
         <template is="dom-if" if="{{completeAccount}}">
             <div class="container" wide-layout$="{{wide}}">
-                
-                    <img src="../../images/defaultavatar.png">
-                
+
+                <img on-click="_toProfile" src="../../images/defaultavatar.png">
+
                 <div>
-                    <div>Xavier Hendrickx</div>
-                    <div>25 SWT</div>
+                    <div on-click="_toProfile">Xavier Hendrickx</div>
+                    <div on-click="_toWallet">25 SWT</div>
                 </div>
             </div>
         </template>
@@ -90,8 +92,8 @@ The following custom properties and mixins are available for styling:
     </template>
     <script>
         class DisplayMyInfo extends Polymer.mixinBehaviors([
-                Polymer.AppLocalizeBehavior,
-            ],
+            Polymer.AppLocalizeBehavior,
+        ],
             Polymer.Element
         ) {
             static get is() {
@@ -99,6 +101,14 @@ The following custom properties and mixins are available for styling:
             }
             static get properties() {
                 return {
+                    /**
+                    * Path is the current or requested path
+                    * @type {String}
+                    */
+                    path: {
+                        type: String,
+                        observer: '_path',
+                    },
                     /**
                     * Loading indicates if the componant is loading
                     * @type {Boolean}
@@ -151,6 +161,16 @@ The following custom properties and mixins are available for styling:
             }
 
             /**
+            * changes the current path
+            */
+            _path() {
+                if (this.path != null) {
+                    this.set('route.path', this.path);
+                }
+                this.path = null;
+            }
+
+            /**
             * Gets the users details from local storage
             */
             _getUser() {
@@ -170,13 +190,29 @@ The following custom properties and mixins are available for styling:
             */
             _complete(account) {
                 Promise.all([
-                        this.$.ipfs.getHash(account.avatar, 'img'),
-                        this.$.web3.getBalance(account.address, 'SWT'),
-                    ])
+                    this.$.ipfs.getHash(account.avatar, 'img'),
+                    this.$.web3.getBalance(account.address, 'SWT'),
+                ])
                     .then((data) => {
                         this.avatar = data[0];
                         this.balance = data[1];
                     });
+            }
+            /**
+            * takes the user to the my-profile page
+            */
+            _toProfile() {
+                // stores the current hashtag choice in session
+                sessionStorage.setItem('origin', this.route.path);
+                this.set('route.path', 'my-profile/');
+            }
+            /**
+            * takes the user to the my-wallet page
+            */
+            _toWallet() {
+                // stores the current hashtag choice in session
+                sessionStorage.setItem('origin', this.route.path);
+                this.set('route.path', 'my-wallet/');
             }
         }
         window.customElements.define(DisplayMyInfo.is, DisplayMyInfo);

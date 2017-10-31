@@ -32,7 +32,7 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-hashtag-list">
     <template>
         <style>
-             :host {
+            :host {
                 display: block;
             }
 
@@ -94,8 +94,17 @@ The following custom properties and mixins are available for styling:
         <data-local-storage id="storage"></data-local-storage>
         <data-utility id="utility"></data-utility>
         <div class="container" wide-layout$="{{wide}}">
+            <div class="box" on-click="_toHashtag">
+                <div class="flex">
+                    <div class="hashtag">
+                        <span class="cursor">#Pioneer</span>
+                    </div>
+                    <div class="deals">25 {{localize('deals done')}}</div>
+                </div>
+                <div class="right"></div>
+            </div>
 
-            <template is="dom-repeat" items="{{hashtags}}" id="domRepeat">
+            <!-- <template is="dom-repeat" items="{{hashtags}}" id="domRepeat">
                 <div class="box" on-click="_toHashtag">
                     <div class="flex">
                         <div class="hashtag">
@@ -105,7 +114,7 @@ The following custom properties and mixins are available for styling:
                     </div>
                     <div class="right"></div>
                 </div>
-            </template>
+            </template> -->
         </div>
     </template>
     <script>
@@ -165,7 +174,7 @@ The following custom properties and mixins are available for styling:
 
             static get observers() {
                 return [
-                '_hashtagChanged(hashtags.*)',
+                    '_hashtagChanged(hashtags.*)',
                 ];
             }
 
@@ -182,9 +191,9 @@ The following custom properties and mixins are available for styling:
             * When a hashtag is selected change the route to include the hashtag id.
             */
             _toHashtag(e) {
-                    if (!this.showSlider) {
+                if (!this.showSlider) {
                     this.path = null;
-                    this.path = 'hashtag/'+e.model.__data.item.$key+'/';
+                    this.path = 'hashtag/-KuQnhD1zADJ1ukDTiG6/';
                 }
             }
         }

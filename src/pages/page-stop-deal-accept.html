@@ -14,66 +14,66 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../shared-styles.html">
 
-<dom-module id="page-stop-signup">
+<dom-module id="page-stop-deal-accept">
     <template>
         <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
 -->
         <style include="shared-styles">
             :host {
-                @apply --confirm-blue-host;
+                @apply --warning-red-host;
             }
 
             .container {
-                @apply --confirm-blue-container;
+                @apply --warning-red-container;
             }
 
             .container>div:nth-child(1) {
-                @apply --confirm-blue-top;
+                @apply --warning-red-top;
             }
 
             .container>div:nth-child(1)>div:nth-child(1) {
-                @apply --confirm-blue-title;
+                @apply --warning-red-title;
             }
 
             .container>div:nth-child(1)>div:nth-child(2) {
-                @apply --confirm-blue-subtitle;
+                @apply --warning-red-subtitle;
             }
 
             .container>div:nth-child(2) {
-                @apply --confirm-blue-bottom;
+                @apply --warning-red-bottom;
             }
 
             .container>div:nth-child(2)>div:nth-child(1) {
-                @apply --confirm-blue-buttonbox;
+                @apply --warning-red-buttonbox;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
-                @apply --confirm-blue-xmark;
+                @apply --warning-red-xmark;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
-                @apply --confirm-blue-round-button;
+                @apply --warning-red-roundbutton;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
-                @apply --confirm-blue-vmark;
+                @apply --warning-red-vmark;
             }
 
             .container[wide-layout]>div:nth-child(1) {
-                @apply --confirm-blue-top-wide;
+                @apply --warning-red-top-wide;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(1) {
-                @apply --confirm-blue-title-wide;
+                @apply --warning-top-title-wide;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(2) {
-                @apply --confirm-blue-subtitle-wide;
+                @apply --warning-red-subtitle-wide;
             }
 
             .container[wide-layout]>div:nth-child(2) {
-                @apply --confirm-blue-bottom-wide;
+                @apply --warning-red-bottom-wide;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1):active,
@@ -95,13 +95,13 @@ This code may only be used under the license found at https://github.com/swarmci
 
         <div class="container" wide-layout$="{{wide}}">
             <div>
-                <div>{{localize('Do you want to stop creating your account?')}}</div>
-                <div>{{localize('This can not be undone. All progress will be lost')}}</div>
+                <div>{{localize('Are you sure you want to decline this deal?')}}</div>
+                <div>{{localize('This can not be undone.')}} Sally Singer {{localize('will be notified that you dont want to accept this deal.')}} {{localize('Your reply will be removed.')}}</div>
             </div>
             <div>
                 <div>
                     <div on-click="_disagree"></div>
-                    <div on-click="_agree">
+                    <div on-click="_stopAccept">
                         <div></div>
                     </div>
                 </div>
@@ -110,13 +110,13 @@ This code may only be used under the license found at https://github.com/swarmci
     </template>
 
     <script>
-        class StopSignup extends new ReduxMixin(Polymer.mixinBehaviors([
+        class MyStopDealAccept extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
         ],
             Polymer.Element
         )) {
             static get is() {
-                return 'page-stop-signup';
+                return 'page-stop-deal-accept';
             }
             static get properties() {
                 return {
@@ -144,17 +144,14 @@ This code may only be used under the license found at https://github.com/swarmci
             * takes the user to the previous page
             */
             _disagree() {
-                window.history.back();
+                this.path = 'detail/';
             }
 
             /**
-            * takes the user to the initiating hashtag page
+            * deletes the profile
             */
-            _agree() {
-                this.path = 'hashtag/' + sessionStorage.getItem('hashtagID');
-                sessionStorage.removeItem('hashtagID');
+            _stopAccept() {
             }
-
             /**
             * changes the current path
             */
@@ -165,6 +162,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
         }
-        window.customElements.define(StopSignup.is, StopSignup);
+        window.customElements.define(MyStopDealAccept.is, MyStopDealAccept);
     </script>
 </dom-module>

@@ -14,66 +14,96 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../shared-styles.html">
 
-<dom-module id="page-stop-signup">
+<dom-module id="page-cancel-request">
     <template>
         <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
 -->
         <style include="shared-styles">
-            :host {
-                @apply --confirm-blue-host;
+             :host {
+                height: 100vh;
+                width: 100vw;
+                display: block;
             }
 
             .container {
-                @apply --confirm-blue-container;
+                background-color: var(--sc-red);
+                height: 100%;
+                width: 100%;
+                @apply --layout-vertical;
             }
 
             .container>div:nth-child(1) {
-                @apply --confirm-blue-top;
+                height: 70%;
+                @apply --layout-vertical;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+                box-sizing: border-box;
+                padding: 0 14vw;
             }
 
             .container>div:nth-child(1)>div:nth-child(1) {
-                @apply --confirm-blue-title;
+                @apply --main-title1;
+                color: var(--sc-white);
+                text-align: center;
             }
 
             .container>div:nth-child(1)>div:nth-child(2) {
-                @apply --confirm-blue-subtitle;
+                @apply --small-light;
+                margin: 20px 0 0;
+                color: var(--sc-white);
+                text-align: center;
             }
 
             .container>div:nth-child(2) {
-                @apply --confirm-blue-bottom;
+                box-sizing: border-box;
+                padding: 0 14vw;
+                @apply --layout-vertical;
+                @apply --layout-center;
+                @apply --layout-start-justified;
+                height: 30%;
             }
 
             .container>div:nth-child(2)>div:nth-child(1) {
-                @apply --confirm-blue-buttonbox;
+                @apply --layout-horizontal;
+                @apply --layout-center-center;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1) {
-                @apply --confirm-blue-xmark;
+                @apply --xmark-grey4-normal;
+                cursor: pointer;
+                margin-right: 20px;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2) {
-                @apply --confirm-blue-round-button;
+                @apply --icon-button-big;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
-                @apply --confirm-blue-vmark;
+                @apply --vmark-red-normal;
             }
 
             .container[wide-layout]>div:nth-child(1) {
-                @apply --confirm-blue-top-wide;
+                height: 55%;
+                padding: 0 12vw 7vh;
+                @apply --layout-start;
+                @apply --layout-end-justified;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(1) {
-                @apply --confirm-blue-title-wide;
+                @apply --main-title1-wide;
+                text-align: left;
             }
 
             .container[wide-layout]>div:nth-child(1)>div:nth-child(2) {
-                @apply --confirm-blue-subtitle-wide;
+                @apply --small-light-wide;
+                text-align: left;
             }
 
             .container[wide-layout]>div:nth-child(2) {
-                @apply --confirm-blue-bottom-wide;
+                height: 45%;
+                padding: 0 12vw;
+                @apply --layout-start;
             }
 
             .container>div:nth-child(2)>div:nth-child(1)>div:nth-child(1):active,
@@ -95,13 +125,13 @@ This code may only be used under the license found at https://github.com/swarmci
 
         <div class="container" wide-layout$="{{wide}}">
             <div>
-                <div>{{localize('Do you want to stop creating your account?')}}</div>
-                <div>{{localize('This can not be undone. All progress will be lost')}}</div>
+                <div>{{localize('Do you want to cancel the deal')}} 'Needaride from here to there'?</div>
+                <div>{{localize('This can not be undone.')}}</div>
             </div>
             <div>
                 <div>
                     <div on-click="_disagree"></div>
-                    <div on-click="_agree">
+                    <div on-click="_cancelDeal">
                         <div></div>
                     </div>
                 </div>
@@ -110,13 +140,13 @@ This code may only be used under the license found at https://github.com/swarmci
     </template>
 
     <script>
-        class StopSignup extends new ReduxMixin(Polymer.mixinBehaviors([
+        class MyCancelRequest extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
         ],
             Polymer.Element
         )) {
             static get is() {
-                return 'page-stop-signup';
+                return 'page-cancel-request';
             }
             static get properties() {
                 return {
@@ -144,17 +174,15 @@ This code may only be used under the license found at https://github.com/swarmci
             * takes the user to the previous page
             */
             _disagree() {
-                window.history.back();
-            }
-
-            /**
-            * takes the user to the initiating hashtag page
-            */
-            _agree() {
                 this.path = 'hashtag/' + sessionStorage.getItem('hashtagID');
                 sessionStorage.removeItem('hashtagID');
             }
 
+            /**
+            * will delete the deal and bring the user to next page
+            */
+            _cancelDeal() {
+            }
             /**
             * changes the current path
             */
@@ -165,6 +193,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
         }
-        window.customElements.define(StopSignup.is, StopSignup);
+        window.customElements.define(MyCancelRequest.is, MyCancelRequest);
     </script>
 </dom-module>

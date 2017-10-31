@@ -4,8 +4,6 @@ Copyright (c) 2017 Swarm City
 This code may only be used under the license found at https://github.com/swarmcity/license
 -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../data/data-local-storage.html">
-<link rel="import" href="../data/data-utility.html">
 <link rel="import" href="../redux-state.html">
 <!--
 
@@ -80,7 +78,7 @@ Example:
                         value: false,
                     },
                     /**
-                    * Buttons is true shows the buttons 
+                    * Buttons is true shows the buttons
                     * for the user to select a language
                     * @type {Boolean}
                     */
@@ -135,7 +133,7 @@ Example:
                             const language = res[0];
                             return language;
                         } else {
-                            // IF we do have an acocunt, 
+                            // IF we do have an acocunt,
                             // use the language we set previously
                             const language = account.language;
                             return language;
@@ -171,7 +169,7 @@ Example:
             }
 
             /**
-            * If we need to show buttons, 
+            * If we need to show buttons,
             * get all the languages we have translations for
             * @param {event} event represents the button the user clicked
             */

@@ -14,7 +14,7 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../shared-styles.html">
 
-<dom-module id="page-stop-signup">
+<dom-module id="page-confirm-deal-accept">
     <template>
         <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
@@ -95,8 +95,8 @@ This code may only be used under the license found at https://github.com/swarmci
 
         <div class="container" wide-layout$="{{wide}}">
             <div>
-                <div>{{localize('Do you want to stop creating your account?')}}</div>
-                <div>{{localize('This can not be undone. All progress will be lost')}}</div>
+                <div>{{localize('Youre about to accept this deal.')}}</div>
+                <div>When accepting, 5.05 SWT will be sent to this deal.</div>
             </div>
             <div>
                 <div>
@@ -110,13 +110,13 @@ This code may only be used under the license found at https://github.com/swarmci
     </template>
 
     <script>
-        class StopSignup extends new ReduxMixin(Polymer.mixinBehaviors([
+        class MyConfirmDealAccept extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
         ],
             Polymer.Element
         )) {
             static get is() {
-                return 'page-stop-signup';
+                return 'page-confirm-deal-accept';
             }
             static get properties() {
                 return {
@@ -165,6 +165,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
         }
-        window.customElements.define(StopSignup.is, StopSignup);
+        window.customElements.define(MyConfirmDealAccept.is, MyConfirmDealAccept);
     </script>
 </dom-module>

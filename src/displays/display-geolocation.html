@@ -29,7 +29,7 @@ The following custom properties and mixins are available for styling:
 <dom-module id="display-geolocation">
     <template>
         <style>
-             :host {
+            :host {
                 display: block;
             }
 
@@ -63,8 +63,8 @@ The following custom properties and mixins are available for styling:
     </template>
     <script>
         class DisplayGeolocation extends Polymer.mixinBehaviors([
-                Polymer.AppLocalizeBehavior,
-            ],
+            Polymer.AppLocalizeBehavior,
+        ],
             Polymer.Element
         ) {
             static get is() {
@@ -126,7 +126,13 @@ The following custom properties and mixins are available for styling:
                         }
                     })
                     .then((account) => {
-                        this.path = 'hashtag-list/';
+                        if (typeof sessionStorage.getItem('origin') === 'string'
+                            || sessionStorage.getItem('origin') instanceof String) {
+                            this.path = sessionStorage.getItem('origin');
+                        }
+                        else {
+                            this.set('route.path', 'hashtag-list');
+                        }
                     });
             }
         }

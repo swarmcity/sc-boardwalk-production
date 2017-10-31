@@ -281,7 +281,8 @@ The following custom properties and mixins are available for styling:
                 this.$.storage.accountExists()
                     .then((account) => {
                         if (!account.location) {
-                            this.path = 'location/';
+                            sessionStorage.setItem('origin', this.route.path);
+                            this.set('route.path', 'location/');
                         } else {
                             if (this.showInfo) {
                                 this.showInfo = !this.showInfo;
