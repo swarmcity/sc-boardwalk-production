@@ -153,7 +153,9 @@
         "already selected a provider for this request.": "already selected a provider for this request.",
         "You accepted.": "You accepted.",
         "This deal has been completed.": "This deal has been completed.",
-        "see this on ethplorer": "see this on ethplorer"
+        "see this on ethplorer": "see this on ethplorer",
+        "Canceling deal": "Canceling deal",
+        "Refunding SWT": "Refunding SWT"
     },
     "cn": {
         "language": "cn",
@@ -297,7 +299,9 @@
         "already selected a provider for this request.": "Awaiting Translation",
         "You accepted.": "Awaiting Translation",
         "This deal has been completed.": "Awaiting Translation",
-        "see this on ethplorer": "Awaiting Translation"
+        "see this on ethplorer": "Awaiting Translation",
+        "Canceling deal": "Awaiting Translation",
+        "Refunding SWT": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -450,7 +454,9 @@
         "already selected a provider for this request.": "Awaiting Translation",
         "You accepted.": "Awaiting Translation",
         "This deal has been completed.": "Awaiting Translation",
-        "see this on ethplorer": "Awaiting Translation"
+        "see this on ethplorer": "Awaiting Translation",
+        "Canceling deal": "Awaiting Translation",
+        "Refunding SWT": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -603,7 +609,9 @@
         "already selected a provider for this request.": "Awaiting Translation",
         "You accepted.": "Awaiting Translation",
         "This deal has been completed.": "Awaiting Translation",
-        "see this on ethplorer": "Awaiting Translation"
+        "see this on ethplorer": "Awaiting Translation",
+        "Canceling deal": "Awaiting Translation",
+        "Refunding SWT": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -756,7 +764,9 @@
         "already selected a provider for this request.": "Awaiting Translation",
         "You accepted.": "Awaiting Translation",
         "This deal has been completed.": "Awaiting Translation",
-        "see this on ethplorer": "Awaiting Translation"
+        "see this on ethplorer": "Awaiting Translation",
+        "Canceling deal": "Awaiting Translation",
+        "Refunding SWT": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -909,7 +919,9 @@
         "already selected a provider for this request.": "Awaiting Translation",
         "You accepted.": "Awaiting Translation",
         "This deal has been completed.": "Awaiting Translation",
-        "see this on ethplorer": "Awaiting Translation"
+        "see this on ethplorer": "Awaiting Translation",
+        "Canceling deal": "Awaiting Translation",
+        "Refunding SWT": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -1062,7 +1074,9 @@
         "already selected a provider for this request.": "Awaiting Translation",
         "You accepted.": "Awaiting Translation",
         "This deal has been completed.": "Awaiting Translation",
-        "see this on ethplorer": "Awaiting Translation"
+        "see this on ethplorer": "Awaiting Translation",
+        "Canceling deal": "Awaiting Translation",
+        "Refunding SWT": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -1215,7 +1229,9 @@
         "already selected a provider for this request.": "Awaiting Translation",
         "You accepted.": "Awaiting Translation",
         "This deal has been completed.": "Awaiting Translation",
-        "see this on ethplorer": "Awaiting Translation"
+        "see this on ethplorer": "Awaiting Translation",
+        "Canceling deal": "Awaiting Translation",
+        "Refunding SWT": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -1368,6 +1384,8 @@
         "already selected a provider for this request.": "Awaiting Translation",
         "You accepted.": "Awaiting Translation",
         "This deal has been completed.": "Awaiting Translation",
-        "see this on ethplorer": "Awaiting Translation"
+        "see this on ethplorer": "Awaiting Translation",
+        "Canceling deal": "Awaiting Translation",
+        "Refunding SWT": "Awaiting Translation"
     }
 }
