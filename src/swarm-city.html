@@ -107,7 +107,7 @@
 
   <script>
     class SwarmCity extends new ReduxMixin(Polymer.Element) {
-      static get is() {return 'swarm-city';}
+      static get is() { return 'swarm-city'; }
       static get properties() {
         return {
           page: {
@@ -138,16 +138,16 @@
             Type: Array,
             value: [
               {
-                from: 'welcome',
-                to: 'hashtag-list',
+                from: 'hashtag-list',
+                to: 'hashtag',
                 entryAnimation: {
                   descriptionArray: [
-                    {'transform': 'translateX(100%)'},
-                    {'transform': 'translateX(0)'},
+                    { 'transform': 'translateX(100%)' },
+                    { 'transform': 'translateX(0)' },
                   ],
                   descriptionObject: {
                     fill: 'forwards',
-                    duration: 1000,
+                    duration: 512,
                     iterations: 1,
                     iterationStart: 0,
                     easing: 'cubic-bezier(0.42,0,0.58,1)',
@@ -157,12 +157,12 @@
                 },
                 exitAnimation: {
                   descriptionArray: [
-                    {'transform': 'translateX(0)'},
-                    {'transform': 'translateX(-100%)'},
+                    { 'transform': 'translateX(0)' },
+                    { 'transform': 'translateX(-100%)' },
                   ],
                   descriptionObject: {
                     fill: 'forwards',
-                    duration: 1000,
+                    duration: 512,
                     iterations: 1,
                     iterationStart: 0,
                     easing: 'cubic-bezier(0.42,0,0.58,1)',
@@ -172,16 +172,16 @@
                 },
               },
               {
-                from: 'hashtag-list',
-                to: 'welcome',
+                from: 'hashtag',
+                to: 'hashtag-list',
                 entryAnimation: {
                   descriptionArray: [
-                    {'transform': 'translateX(-100%)'},
-                    {'transform': 'translateX(0)'},
+                    { 'transform': 'translateX(-100%)' },
+                    { 'transform': 'translateX(0)' },
                   ],
                   descriptionObject: {
                     fill: 'forwards',
-                    duration: 1000,
+                    duration: 512,
                     iterations: 1,
                     iterationStart: 0,
                     easing: 'cubic-bezier(0.42,0,0.58,1)',
@@ -191,12 +191,146 @@
                 },
                 exitAnimation: {
                   descriptionArray: [
-                    {'transform': 'translateX(0)'},
-                    {'transform': 'translateX(100%)'},
+                    { 'transform': 'translateX(0)' },
+                    { 'transform': 'translateX(100%)' },
                   ],
                   descriptionObject: {
                     fill: 'forwards',
-                    duration: 1000,
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+              }, {
+                from: 'hashtag-list',
+                to: 'my-profile',
+                entryAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateX(-100%)' },
+                    { 'transform': 'translateX(0)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+                exitAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateX(0)' },
+                    { 'transform': 'translateX(100%)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+              },
+              {
+                from: 'my-profile',
+                to: 'hashtag-list',
+                entryAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateX(100%)' },
+                    { 'transform': 'translateX(0)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+                exitAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateX(0)' },
+                    { 'transform': 'translateX(-100%)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+              },{
+                from: 'hashtag-list',
+                to: 'my-wallet',
+                entryAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateY(-110%)' },
+                    { 'transform': 'translateY(0)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+                exitAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateY(0)' },
+                    { 'transform': 'translateY(100%)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+              },
+              {
+                from: 'my-wallet',
+                to: 'hashtag-list',
+                entryAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateY(100%)' },
+                    { 'transform': 'translateY(0)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+                exitAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateY(0)' },
+                    { 'transform': 'translateY(-120%)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
                     iterations: 1,
                     iterationStart: 0,
                     easing: 'cubic-bezier(0.42,0,0.58,1)',
@@ -220,7 +354,7 @@
 
       static get actions() {
         return Object.assign({
-          LOCATION: function(location) {
+          LOCATION: function (location) {
             return {
               type: 'LOCATION',
               location: location,
@@ -241,10 +375,10 @@
       }
       _pageChanged(page) {
         if (!this.location) {
-          this.dispatch('LOCATION', {nowAt: page});
+          this.dispatch('LOCATION', { nowAt: page });
         } else {
           let lastAt = this.location.nowAt;
-          this.dispatch('LOCATION', {lastAt: lastAt, nowAt: page});
+          this.dispatch('LOCATION', { lastAt: lastAt, nowAt: page });
         }
         var resolvedPageUrl = this.resolveUrl('pages/page-' + page + '.html');
         Polymer.importHref(
@@ -271,8 +405,8 @@
             this.animations = {
               entryAnimation: {
                 descriptionArray: [
-                  {'opacity': 0},
-                  {'opacity': 1},
+                  { 'opacity': 0 },
+                  { 'opacity': 1 },
                 ],
                 descriptionObject: {
                   fill: 'forwards',
@@ -286,8 +420,8 @@
               },
               exitAnimation: {
                 descriptionArray: [
-                  {'opacity': 1},
-                  {'opacity': 0},
+                  { 'opacity': 1 },
+                  { 'opacity': 0 },
                 ],
                 descriptionObject: {
                   fill: 'forwards',
