@@ -107,7 +107,7 @@
 
   <script>
     class SwarmCity extends new ReduxMixin(Polymer.Element) {
-      static get is() { return 'swarm-city'; }
+      static get is() {return 'swarm-city';}
       static get properties() {
         return {
           page: {
@@ -142,8 +142,8 @@
                 to: 'hashtag-list',
                 entryAnimation: {
                   descriptionArray: [
-                    { 'transform': 'translateX(100%)' },
-                    { 'transform': 'translateX(0)' },
+                    {'transform': 'translateX(100%)'},
+                    {'transform': 'translateX(0)'},
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -153,12 +153,12 @@
                     easing: 'cubic-bezier(0.42,0,0.58,1)',
                     delay: 0,
                     endDelay: 0,
-                  }
+                  },
                 },
                 exitAnimation: {
                   descriptionArray: [
-                    { 'transform': 'translateX(0)' },
-                    { 'transform': 'translateX(-100%)' },
+                    {'transform': 'translateX(0)'},
+                    {'transform': 'translateX(-100%)'},
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -168,16 +168,16 @@
                     easing: 'cubic-bezier(0.42,0,0.58,1)',
                     delay: 0,
                     endDelay: 0,
-                  }
-                }
+                  },
+                },
               },
               {
                 from: 'hashtag-list',
                 to: 'welcome',
                 entryAnimation: {
                   descriptionArray: [
-                    { 'transform': 'translateX(-100%)' },
-                    { 'transform': 'translateX(0)' },
+                    {'transform': 'translateX(-100%)'},
+                    {'transform': 'translateX(0)'},
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -187,12 +187,12 @@
                     easing: 'cubic-bezier(0.42,0,0.58,1)',
                     delay: 0,
                     endDelay: 0,
-                  }
+                  },
                 },
                 exitAnimation: {
                   descriptionArray: [
-                    { 'transform': 'translateX(0)' },
-                    { 'transform': 'translateX(100%)' },
+                    {'transform': 'translateX(0)'},
+                    {'transform': 'translateX(100%)'},
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -202,10 +202,10 @@
                     easing: 'cubic-bezier(0.42,0,0.58,1)',
                     delay: 0,
                     endDelay: 0,
-                  }
-                }
+                  },
+                },
               },
-            ]
+            ],
           },
           routeData: Object,
           subroute: String,
@@ -220,7 +220,7 @@
 
       static get actions() {
         return Object.assign({
-          LOCATION: function (location) {
+          LOCATION: function(location) {
             return {
               type: 'LOCATION',
               location: location,
@@ -241,10 +241,10 @@
       }
       _pageChanged(page) {
         if (!this.location) {
-          this.dispatch('LOCATION', { nowAt: page });
+          this.dispatch('LOCATION', {nowAt: page});
         } else {
           let lastAt = this.location.nowAt;
-          this.dispatch('LOCATION', { lastAt: lastAt, nowAt: page });
+          this.dispatch('LOCATION', {lastAt: lastAt, nowAt: page});
         }
         var resolvedPageUrl = this.resolveUrl('pages/page-' + page + '.html');
         Polymer.importHref(
@@ -261,7 +261,8 @@
         if (this.routeHistory[0] != this.routeHistory[1]) {
           let transitionFound = false;
           for (let i = 0; i < this.animationsArray.length; i++) {
-            if (this.animationsArray[i].from == this.routeHistory[0] && this.animationsArray[i].to == this.routeHistory[1]) {
+            if (this.animationsArray[i].from == this.routeHistory[0]
+              && this.animationsArray[i].to == this.routeHistory[1]) {
               this.animations = this.animationsArray[i];
               transitionFound = true;
             }
@@ -270,8 +271,8 @@
             this.animations = {
               entryAnimation: {
                 descriptionArray: [
-                  { 'opacity': 0 },
-                  { 'opacity': 1 },
+                  {'opacity': 0},
+                  {'opacity': 1},
                 ],
                 descriptionObject: {
                   fill: 'forwards',
@@ -281,12 +282,12 @@
                   easing: 'cubic-bezier(0.42,0,0.58,1)',
                   delay: 0,
                   endDelay: 0,
-                }
+                },
               },
               exitAnimation: {
                 descriptionArray: [
-                  { 'opacity': 1 },
-                  { 'opacity': 0 },
+                  {'opacity': 1},
+                  {'opacity': 0},
                 ],
                 descriptionObject: {
                   fill: 'forwards',
@@ -296,15 +297,13 @@
                   easing: 'cubic-bezier(0.42,0,0.58,1)',
                   delay: 0,
                   endDelay: 0,
-                }
-              }
+                },
+              },
             };
           }
-
-
-
           /* this.animations = this.animationsArray.filter((obj) => {
-            return obj.from == this.routeHistory[0] && obj.to == this.routeHistory[1];
+            return obj.from == this.routeHistory[0] 
+              && obj.to == this.routeHistory[1];
           }); */
         }
       }
