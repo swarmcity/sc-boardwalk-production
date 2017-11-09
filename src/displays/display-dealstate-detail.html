@@ -367,13 +367,9 @@ Example:
                 @apply --layout-center-center;
                 @apply --small-bold;
                 position: fixed;
-                top: 50px;
-                right: 50px;
-                background-color: red;
-                width: 30px;
-                height: 30px;
+                top: 6px;
+                right: 10px;
                 cursor: pointer;
-                border-radius: 50%;
             }
 
             .prv {
@@ -381,13 +377,9 @@ Example:
                 @apply --layout-center-center;
                 @apply --small-bold;
                 position: fixed;
-                top: 50px;
-                right: 90px;
-                background-color: green;
-                width: 30px;
-                height: 30px;
+                top: 5px;
+                right: 80px;
                 cursor: pointer;
-                border-radius: 50%;
             }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
@@ -402,8 +394,8 @@ Example:
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <div class="container" id="container" wide-layout$="{{wide}}">
 
-            <div class="prv" on-click="_previous">prv</div>
-            <div class="nxt" on-click="_next">nxt</div>
+            <div class="prv" on-click="_previous">(__!__) </div>
+            <div class="nxt" on-click="_next">（。 ㅅ  。）</div>
             <template is="dom-if" if="{{postReply}}">
                 <div class="reply-box">
                     <div class="reply-horizontal">
