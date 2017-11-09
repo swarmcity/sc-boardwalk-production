@@ -362,7 +362,6 @@ Example:
                 cursor: pointer;
             }
 
-
             .nxt {
                 @apply --layout-horizontal;
                 @apply --layout-center-center;
@@ -484,7 +483,6 @@ Example:
             </template>
 
         </div>
-
     </template>
     <script>
         class MyDisplayDealstateDetail extends new ReduxMixin(Polymer.mixinBehaviors([
@@ -574,8 +572,6 @@ Example:
                 this.noReplies = true;
             }
 
-
-
             _next() {
                 if (this.noReplies) {
                     this.noReplies = !this.noReplies;
@@ -611,11 +607,27 @@ Example:
                 else if (this.providerSelected && !this.repliedByMe) {
                     this.repliedByMe = !this.repliedByMe;
                 }
-                else if (this.providerSelected && !this.repliedByMe) { 
-
-                    
+                else if (this.providerSelected && this.repliedByMe) {
+                    this.selectedMe = !this.selectedMe;
+                    this.providerSelected = !this.providerSelected;
+                    this.repliedByMe = !this.repliedByMe;
                 }
-
+                else if (this.repliedByMe) {
+                    this.repliedByMe = !this.repliedByMe;
+                    this.selectedMe = !this.selectedMe;
+                }
+                else if (this.selectedMe) {
+                    this.selectedMe = !this.selectedMe;
+                    this.postReply = !this.postReply;
+                }
+                else if (this.postReply) {
+                    this.postReply = !this.postReply;
+                    this.showReplies = !this.showReplies;
+                }
+                else if (this.showReplies) {
+                    this.showReplies = !this.showReplies;
+                    this.noReplies = !this.noReplies;
+                }
             }
         }
 
