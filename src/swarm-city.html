@@ -58,48 +58,47 @@
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
-    <faffys-animated-pages page="[[page]]" route="{{route}}" route-history="{{routeHistory}}" animations="{{animations}}" entry-playing="{{entryPlaying}}"
-      exit-playing="{{exitPlaying}}">
-      <page-welcome id="welcome" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-welcome>
-      <page-hashtag id="hashtag" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-hashtag>
-      <page-new-here id="new-here" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-new-here>
-      <page-language id="language" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-language>
-      <page-hashtag-list id="hashtag-list" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-hashtag-list>
-      <page-restore-account id="restore-account" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-restore-account>
-      <page-resize-avatar id="resize-avatar" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-resize-avatar>
-      <page-private-key id="private-key" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-private-key>
-      <page-choose-avatar-and-username id="choose-avatar-and-username" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-choose-avatar-and-username>
-      <page-location id="location" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-location>
-      <page-json-file id="json-file" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-json-file>
-      <page-stop-signup id="stop-signup" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-stop-signup>
-      <page-password-warning id="password-warning" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-password-warning>
-      <page-choose-password id="choose-password" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-choose-password>
-      <page-account-complete id="account-complete" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-account-complete>
-      <page-make-backup id="make-backup" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-make-backup>
-      <page-my-keys id="my-keys" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-my-keys>
-      <page-show-private-key id="show-private-key" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-show-private-key>
-      <page-email-success id="email-success" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-email-success>
-      <page-download-success id="download-success" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-download-success>
-      <page-my-profile id="my-profile" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-my-profile>
-      <page-make-backup-profile id="make-backup-profile" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-make-backup-profile>
-      <page-download-success-profile id="download-success-profile" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-download-success-profile>
-      <page-email-success-profile id="email-success-profile" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-email-success-profile>
-      <page-warning-delete id="warning-delete" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-warning-delete>
-      <page-notifications id="notifications" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-notifications>
-      <page-confirm-sending id="confirm-sending" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-confirm-sending>
-      <page-my-wallet id="my-wallet" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-my-wallet>
-      <page-transaction-processing id="transaction-processing" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-transaction-processing>
-      <page-new-request id="new-request" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-new-request>
-      <page-new-request-processing id="new-request-processing" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-new-request-processing>
-      <page-cancel-request id="cancel-request" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-cancel-request>
-      <page-detail id="detail" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-detail>
-      <page-confirm-payout id="confirm-payout" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-confirm-payout>
-      <page-payout-processing id="payout-processing" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-payout-processing>
-      <page-confirm-deal-accept id="confirm-deal-accept" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-confirm-deal-accept>
-      <page-stop-deal-accept id="stop-deal-accept" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-stop-deal-accept>
-      <page-deal-accept-processing id="deal-accept-processing" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-deal-accept-processing>
-      <page-cancel-processing id="cancel-processing" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-cancel-processing>
-      <page-view404 id="view404" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></page-view404>
+    <faffys-animated-pages page="[[page]]" route="{{route}}" route-history="{{routeHistory}}" animations="{{animations}}">
+      <page-welcome id="welcome"></page-welcome>
+      <page-hashtag id="hashtag"></page-hashtag>
+      <page-new-here id="new-here"></page-new-here>
+      <page-language id="language"></page-language>
+      <page-hashtag-list id="hashtag-list"></page-hashtag-list>
+      <page-restore-account id="restore-account"></page-restore-account>
+      <page-resize-avatar id="resize-avatar"></page-resize-avatar>
+      <page-private-key id="private-key"></page-private-key>
+      <page-choose-avatar-and-username id="choose-avatar-and-username"></page-choose-avatar-and-username>
+      <page-location id="location"></page-location>
+      <page-json-file id="json-file"></page-json-file>
+      <page-stop-signup id="stop-signup"></page-stop-signup>
+      <page-password-warning id="password-warning"></page-password-warning>
+      <page-choose-password id="choose-password"></page-choose-password>
+      <page-account-complete id="account-complete"></page-account-complete>
+      <page-make-backup id="make-backup"></page-make-backup>
+      <page-my-keys id="my-keys"></page-my-keys>
+      <page-show-private-key id="show-private-key"></page-show-private-key>
+      <page-email-success id="email-success"></page-email-success>
+      <page-download-success id="download-success"></page-download-success>
+      <page-my-profile id="my-profile"></page-my-profile>
+      <page-make-backup-profile id="make-backup-profile"></page-make-backup-profile>
+      <page-download-success-profile id="download-success-profile"></page-download-success-profile>
+      <page-email-success-profile id="email-success-profile"></page-email-success-profile>
+      <page-warning-delete id="warning-delete"></page-warning-delete>
+      <page-notifications id="notifications"></page-notifications>
+      <page-confirm-sending id="confirm-sending"></page-confirm-sending>
+      <page-my-wallet id="my-wallet"></page-my-wallet>
+      <page-transaction-processing id="transaction-processing"></page-transaction-processing>
+      <page-new-request id="new-request"></page-new-request>
+      <page-new-request-processing id="new-request-processing"></page-new-request-processing>
+      <page-cancel-request id="cancel-request"></page-cancel-request>
+      <page-detail id="detail"></page-detail>
+      <page-confirm-payout id="confirm-payout"></page-confirm-payout>
+      <page-payout-processing id="payout-processing"></page-payout-processing>
+      <page-confirm-deal-accept id="confirm-deal-accept"></page-confirm-deal-accept>
+      <page-stop-deal-accept id="stop-deal-accept"></page-stop-deal-accept>
+      <page-deal-accept-processing id="deal-accept-processing"></page-deal-accept-processing>
+      <page-cancel-processing id="cancel-processing"></page-cancel-processing>
+      <page-view404 id="view404"></page-view404>
     </faffys-animated-pages>
   </template>
 
@@ -107,7 +106,7 @@
 
   <script>
     class SwarmCity extends new ReduxMixin(Polymer.Element) {
-      static get is() {return 'swarm-city';}
+      static get is() { return 'swarm-city'; }
       static get properties() {
         return {
           page: {
@@ -142,8 +141,8 @@
                 to: 'hashtag',
                 entryAnimation: {
                   descriptionArray: [
-                    {'transform': 'translateX(100%)'},
-                    {'transform': 'translateX(0)'},
+                    { 'transform': 'translateX(100%)' },
+                    { 'transform': 'translateX(0)' },
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -157,8 +156,8 @@
                 },
                 exitAnimation: {
                   descriptionArray: [
-                    {'transform': 'translateX(0)'},
-                    {'transform': 'translateX(-100%)'},
+                    { 'transform': 'translateX(0)' },
+                    { 'transform': 'translateX(-100%)' },
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -176,8 +175,8 @@
                 to: 'hashtag-list',
                 entryAnimation: {
                   descriptionArray: [
-                    {'transform': 'translateX(-100%)'},
-                    {'transform': 'translateX(0)'},
+                    { 'transform': 'translateX(-100%)' },
+                    { 'transform': 'translateX(0)' },
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -191,8 +190,8 @@
                 },
                 exitAnimation: {
                   descriptionArray: [
-                    {'transform': 'translateX(0)'},
-                    {'transform': 'translateX(100%)'},
+                    { 'transform': 'translateX(0)' },
+                    { 'transform': 'translateX(100%)' },
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -209,8 +208,8 @@
                 to: 'my-profile',
                 entryAnimation: {
                   descriptionArray: [
-                    {'transform': 'translateX(-100%)'},
-                    {'transform': 'translateX(0)'},
+                    { 'transform': 'translateX(-100%)' },
+                    { 'transform': 'translateX(0)' },
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -224,8 +223,8 @@
                 },
                 exitAnimation: {
                   descriptionArray: [
-                    {'transform': 'translateX(0)'},
-                    {'transform': 'translateX(100%)'},
+                    { 'transform': 'translateX(0)' },
+                    { 'transform': 'translateX(100%)' },
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -243,8 +242,8 @@
                 to: 'hashtag-list',
                 entryAnimation: {
                   descriptionArray: [
-                    {'transform': 'translateX(100%)'},
-                    {'transform': 'translateX(0)'},
+                    { 'transform': 'translateX(100%)' },
+                    { 'transform': 'translateX(0)' },
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -258,8 +257,8 @@
                 },
                 exitAnimation: {
                   descriptionArray: [
-                    {'transform': 'translateX(0)'},
-                    {'transform': 'translateX(-100%)'},
+                    { 'transform': 'translateX(0)' },
+                    { 'transform': 'translateX(-100%)' },
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -276,8 +275,8 @@
                 to: 'my-wallet',
                 entryAnimation: {
                   descriptionArray: [
-                    {'transform': 'translateY(-110%)'},
-                    {'transform': 'translateY(0)'},
+                    { 'transform': 'translateY(-110%)' },
+                    { 'transform': 'translateY(0)' },
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -291,8 +290,8 @@
                 },
                 exitAnimation: {
                   descriptionArray: [
-                    {'transform': 'translateY(0)'},
-                    {'transform': 'translateY(100%)'},
+                    { 'transform': 'translateY(0)' },
+                    { 'transform': 'translateY(100%)' },
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -310,8 +309,8 @@
                 to: 'hashtag-list',
                 entryAnimation: {
                   descriptionArray: [
-                    {'transform': 'translateY(100%)'},
-                    {'transform': 'translateY(0)'},
+                    { 'transform': 'translateY(100%)' },
+                    { 'transform': 'translateY(0)' },
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -325,8 +324,8 @@
                 },
                 exitAnimation: {
                   descriptionArray: [
-                    {'transform': 'translateY(0)'},
-                    {'transform': 'translateY(-120%)'},
+                    { 'transform': 'translateY(0)' },
+                    { 'transform': 'translateY(-120%)' },
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -354,7 +353,7 @@
 
       static get actions() {
         return Object.assign({
-          LOCATION: function(location) {
+          LOCATION: function (location) {
             return {
               type: 'LOCATION',
               location: location,
@@ -375,10 +374,10 @@
       }
       _pageChanged(page) {
         if (!this.location) {
-          this.dispatch('LOCATION', {nowAt: page});
+          this.dispatch('LOCATION', { nowAt: page });
         } else {
           let lastAt = this.location.nowAt;
-          this.dispatch('LOCATION', {lastAt: lastAt, nowAt: page});
+          this.dispatch('LOCATION', { lastAt: lastAt, nowAt: page });
         }
         var resolvedPageUrl = this.resolveUrl('pages/page-' + page + '.html');
         Polymer.importHref(
@@ -405,8 +404,8 @@
             this.animations = {
               entryAnimation: {
                 descriptionArray: [
-                  {'opacity': 0},
-                  {'opacity': 1},
+                  { 'opacity': 0 },
+                  { 'opacity': 1 },
                 ],
                 descriptionObject: {
                   fill: 'forwards',
@@ -420,8 +419,8 @@
               },
               exitAnimation: {
                 descriptionArray: [
-                  {'opacity': 1},
-                  {'opacity': 0},
+                  { 'opacity': 1 },
+                  { 'opacity': 0 },
                 ],
                 descriptionObject: {
                   fill: 'forwards',
