@@ -110,7 +110,7 @@ This code may only be used under the license found at https://github.com/swarmci
     </template>
 
     <script>
-        class MyConfirmPayoutconflict extends new ReduxMixin(Polymer.mixinBehaviors([
+        class MyConfirmPayoutConflict extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
         ],
             Polymer.Element
@@ -166,6 +166,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
         }
-        window.customElements.define(MyConfirmPayoutconflict.is, MyConfirmPayoutconflict);
+        window.customElements.define(MyConfirmPayoutConflict.is,
+                                        MyConfirmPayoutConflict);
     </script>
 </dom-module>

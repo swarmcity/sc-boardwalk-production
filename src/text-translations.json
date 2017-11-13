@@ -159,7 +159,6 @@
         "Do you want to payout":"Do you want to payout ",
         "This cant be undone. The hashtag owner will be notified that the conflict is resolved." : "This can’t be undone. The hashtag owner will be notified that the conflict is resolved.",
         "Youre resolving this conflict" : "You’re resolving this conflict",
-        "Youre resolving this conflict" : "You’re resolving this conflict",
         "will receive":"will receive",
         "Your action is being processed.": "Your action is being processed."
     },
@@ -305,7 +304,14 @@
         "already selected a provider for this request.": "Awaiting Translation",
         "You accepted.": "Awaiting Translation",
         "This deal has been completed.": "Awaiting Translation",
-        "see this on ethplorer": "Awaiting Translation"
+        "see this on ethplorer": "Awaiting Translation",
+        "Do you want to start a conflict on": "Awaiting Translation",
+        "This cant be undone. The funds will be locked and the hashtag provider will be notified and try to solve this conflict." : "Awaiting Translation",
+        "Do you want to payout":"Do you want to payout ",
+        "This cant be undone. The hashtag owner will be notified that the conflict is resolved." : "Awaiting Translation",
+        "Youre resolving this conflict" : "Awaiting Translation",
+        "will receive":"Awaiting Translation",
+        "Your action is being processed.": "Awaiting Translation"
     },
     "fr": {
         "show my keys": "Afficher les clés",
@@ -458,7 +464,14 @@
         "already selected a provider for this request.": "Awaiting Translation",
         "You accepted.": "Awaiting Translation",
         "This deal has been completed.": "Awaiting Translation",
-        "see this on ethplorer": "Awaiting Translation"
+        "see this on ethplorer": "Awaiting Translation",
+        "Do you want to start a conflict on": "Awaiting Translation",
+        "This cant be undone. The funds will be locked and the hashtag provider will be notified and try to solve this conflict." : "Awaiting Translation",
+        "Do you want to payout":"Do you want to payout ",
+        "This cant be undone. The hashtag owner will be notified that the conflict is resolved." : "Awaiting Translation",
+        "Youre resolving this conflict" : "Awaiting Translation",
+        "will receive":"Awaiting Translation",
+        "Your action is being processed.": "Awaiting Translation"
     },
     "nl": {
         "show my keys": "toon mijn keys",
@@ -611,7 +624,14 @@
         "already selected a provider for this request.": "Awaiting Translation",
         "You accepted.": "Awaiting Translation",
         "This deal has been completed.": "Awaiting Translation",
-        "see this on ethplorer": "Awaiting Translation"
+        "see this on ethplorer": "Awaiting Translation",
+        "Do you want to start a conflict on": "Awaiting Translation",
+        "This cant be undone. The funds will be locked and the hashtag provider will be notified and try to solve this conflict." : "Awaiting Translation",
+        "Do you want to payout":"Do you want to payout ",
+        "This cant be undone. The hashtag owner will be notified that the conflict is resolved." : "Awaiting Translation",
+        "Youre resolving this conflict" : "Awaiting Translation",
+        "will receive":"Awaiting Translation",
+        "Your action is being processed.": "Awaiting Translation"
     },
     "ru": {
         "show my keys": "показать свои ключи",
@@ -764,7 +784,14 @@
         "already selected a provider for this request.": "Awaiting Translation",
         "You accepted.": "Awaiting Translation",
         "This deal has been completed.": "Awaiting Translation",
-        "see this on ethplorer": "Awaiting Translation"
+        "see this on ethplorer": "Awaiting Translation",
+        "Do you want to start a conflict on": "Awaiting Translation",
+        "This cant be undone. The funds will be locked and the hashtag provider will be notified and try to solve this conflict." : "Awaiting Translation",
+        "Do you want to payout":"Do you want to payout ",
+        "This cant be undone. The hashtag owner will be notified that the conflict is resolved." : "Awaiting Translation",
+        "Youre resolving this conflict" : "Awaiting Translation",
+        "will receive":"Awaiting Translation",
+        "Your action is being processed.": "Awaiting Translation"
     },
     "de": {
         "show my keys": "Zeige meine Schlüssel",
@@ -917,7 +944,14 @@
         "already selected a provider for this request.": "Awaiting Translation",
         "You accepted.": "Awaiting Translation",
         "This deal has been completed.": "Awaiting Translation",
-        "see this on ethplorer": "Awaiting Translation"
+        "see this on ethplorer": "Awaiting Translation",
+        "Do you want to start a conflict on": "Awaiting Translation",
+        "This cant be undone. The funds will be locked and the hashtag provider will be notified and try to solve this conflict." : "Awaiting Translation",
+        "Do you want to payout":"Do you want to payout ",
+        "This cant be undone. The hashtag owner will be notified that the conflict is resolved." : "Awaiting Translation",
+        "Youre resolving this conflict" : "Awaiting Translation",
+        "will receive":"Awaiting Translation",
+        "Your action is being processed.": "Awaiting Translation"
     },
     "es": {
         "show my keys": "muéstrame la llave",
@@ -1070,7 +1104,14 @@
         "already selected a provider for this request.": "Awaiting Translation",
         "You accepted.": "Awaiting Translation",
         "This deal has been completed.": "Awaiting Translation",
-        "see this on ethplorer": "Awaiting Translation"
+        "see this on ethplorer": "Awaiting Translation",
+        "Do you want to start a conflict on": "Awaiting Translation",
+        "This cant be undone. The funds will be locked and the hashtag provider will be notified and try to solve this conflict." : "Awaiting Translation",
+        "Do you want to payout":"Do you want to payout ",
+        "This cant be undone. The hashtag owner will be notified that the conflict is resolved." : "Awaiting Translation",
+        "Youre resolving this conflict" : "Awaiting Translation",
+        "will receive":"Awaiting Translation",
+        "Your action is being processed.": "Awaiting Translation"
     },
     "pl": {
         "show my keys": "pokaż moje klucze",
@@ -1223,7 +1264,14 @@
         "already selected a provider for this request.": "Awaiting Translation",
         "You accepted.": "Awaiting Translation",
         "This deal has been completed.": "Awaiting Translation",
-        "see this on ethplorer": "Awaiting Translation"
+        "see this on ethplorer": "Awaiting Translation",
+        "Do you want to start a conflict on": "Awaiting Translation",
+        "This cant be undone. The funds will be locked and the hashtag provider will be notified and try to solve this conflict." : "Awaiting Translation",
+        "Do you want to payout":"Do you want to payout ",
+        "This cant be undone. The hashtag owner will be notified that the conflict is resolved." : "Awaiting Translation",
+        "Youre resolving this conflict" : "Awaiting Translation",
+        "will receive":"Awaiting Translation",
+        "Your action is being processed.": "Awaiting Translation"
     },
     "tr": {
         "show my keys": "Anahtarlarimi göster",
@@ -1376,6 +1424,13 @@
         "already selected a provider for this request.": "Awaiting Translation",
         "You accepted.": "Awaiting Translation",
         "This deal has been completed.": "Awaiting Translation",
-        "see this on ethplorer": "Awaiting Translation"
+        "see this on ethplorer": "Awaiting Translation",
+        "Do you want to start a conflict on": "Awaiting Translation",
+        "This cant be undone. The funds will be locked and the hashtag provider will be notified and try to solve this conflict." : "Awaiting Translation",
+        "Do you want to payout":"Do you want to payout ",
+        "This cant be undone. The hashtag owner will be notified that the conflict is resolved." : "Awaiting Translation",
+        "Youre resolving this conflict" : "Awaiting Translation",
+        "will receive":"Awaiting Translation",
+        "Your action is being processed.": "Awaiting Translation"
     }
 }
