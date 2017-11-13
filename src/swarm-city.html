@@ -106,7 +106,7 @@
 
   <script>
     class SwarmCity extends new ReduxMixin(Polymer.Element) {
-      static get is() { return 'swarm-city'; }
+      static get is() {return 'swarm-city';}
       static get properties() {
         return {
           page: {
@@ -141,8 +141,8 @@
                 to: 'hashtag',
                 entryAnimation: {
                   descriptionArray: [
-                    { 'transform': 'translateX(100%)' },
-                    { 'transform': 'translateX(0)' },
+                    {'transform': 'translateX(100%)'},
+                    {'transform': 'translateX(0)'},
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -156,8 +156,8 @@
                 },
                 exitAnimation: {
                   descriptionArray: [
-                    { 'transform': 'translateX(0)' },
-                    { 'transform': 'translateX(-100%)' },
+                    {'transform': 'translateX(0)'},
+                    {'transform': 'translateX(-100%)'},
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -175,8 +175,8 @@
                 to: 'hashtag-list',
                 entryAnimation: {
                   descriptionArray: [
-                    { 'transform': 'translateX(-100%)' },
-                    { 'transform': 'translateX(0)' },
+                    {'transform': 'translateX(-100%)'},
+                    {'transform': 'translateX(0)'},
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -190,8 +190,8 @@
                 },
                 exitAnimation: {
                   descriptionArray: [
-                    { 'transform': 'translateX(0)' },
-                    { 'transform': 'translateX(100%)' },
+                    {'transform': 'translateX(0)'},
+                    {'transform': 'translateX(100%)'},
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -208,8 +208,8 @@
                 to: 'my-profile',
                 entryAnimation: {
                   descriptionArray: [
-                    { 'transform': 'translateX(-100%)' },
-                    { 'transform': 'translateX(0)' },
+                    {'transform': 'translateX(-100%)'},
+                    {'transform': 'translateX(0)'},
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -223,8 +223,8 @@
                 },
                 exitAnimation: {
                   descriptionArray: [
-                    { 'transform': 'translateX(0)' },
-                    { 'transform': 'translateX(100%)' },
+                    {'transform': 'translateX(0)'},
+                    {'transform': 'translateX(100%)'},
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -242,8 +242,8 @@
                 to: 'hashtag-list',
                 entryAnimation: {
                   descriptionArray: [
-                    { 'transform': 'translateX(100%)' },
-                    { 'transform': 'translateX(0)' },
+                    {'transform': 'translateX(100%)'},
+                    {'transform': 'translateX(0)'},
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -257,8 +257,8 @@
                 },
                 exitAnimation: {
                   descriptionArray: [
-                    { 'transform': 'translateX(0)' },
-                    { 'transform': 'translateX(-100%)' },
+                    {'transform': 'translateX(0)'},
+                    {'transform': 'translateX(-100%)'},
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -275,8 +275,8 @@
                 to: 'my-wallet',
                 entryAnimation: {
                   descriptionArray: [
-                    { 'transform': 'translateY(-110%)' },
-                    { 'transform': 'translateY(0)' },
+                    {'transform': 'translateY(-110%)'},
+                    {'transform': 'translateY(0)'},
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -290,8 +290,8 @@
                 },
                 exitAnimation: {
                   descriptionArray: [
-                    { 'transform': 'translateY(0)' },
-                    { 'transform': 'translateY(100%)' },
+                    {'transform': 'translateY(0)'},
+                    {'transform': 'translateY(100%)'},
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -309,8 +309,8 @@
                 to: 'hashtag-list',
                 entryAnimation: {
                   descriptionArray: [
-                    { 'transform': 'translateY(100%)' },
-                    { 'transform': 'translateY(0)' },
+                    {'transform': 'translateY(100%)'},
+                    {'transform': 'translateY(0)'},
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -324,8 +324,8 @@
                 },
                 exitAnimation: {
                   descriptionArray: [
-                    { 'transform': 'translateY(0)' },
-                    { 'transform': 'translateY(-120%)' },
+                    {'transform': 'translateY(0)'},
+                    {'transform': 'translateY(-120%)'},
                   ],
                   descriptionObject: {
                     fill: 'forwards',
@@ -353,7 +353,7 @@
 
       static get actions() {
         return Object.assign({
-          LOCATION: function (location) {
+          LOCATION: function(location) {
             return {
               type: 'LOCATION',
               location: location,
@@ -374,10 +374,10 @@
       }
       _pageChanged(page) {
         if (!this.location) {
-          this.dispatch('LOCATION', { nowAt: page });
+          this.dispatch('LOCATION', {nowAt: page});
         } else {
           let lastAt = this.location.nowAt;
-          this.dispatch('LOCATION', { lastAt: lastAt, nowAt: page });
+          this.dispatch('LOCATION', {lastAt: lastAt, nowAt: page});
         }
         var resolvedPageUrl = this.resolveUrl('pages/page-' + page + '.html');
         Polymer.importHref(
@@ -404,8 +404,8 @@
             this.animations = {
               entryAnimation: {
                 descriptionArray: [
-                  { 'opacity': 0 },
-                  { 'opacity': 1 },
+                  {'opacity': 0},
+                  {'opacity': 1},
                 ],
                 descriptionObject: {
                   fill: 'forwards',
@@ -419,8 +419,8 @@
               },
               exitAnimation: {
                 descriptionArray: [
-                  { 'opacity': 1 },
-                  { 'opacity': 0 },
+                  {'opacity': 1},
+                  {'opacity': 0},
                 ],
                 descriptionObject: {
                   fill: 'forwards',
