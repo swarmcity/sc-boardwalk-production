@@ -10,11 +10,11 @@ This code may only be used under the license found at https://github.com/swarmci
 
 Example:
 ```
-<display-dealstate-mydetail></display-dealstate-mydetail>
+<display-deal-involved></display-deal-involved>
 ```
 
 -->
-<dom-module id="display-dealstate-mydetail">
+<dom-module id="display-deal-involved">
     <template>
         <style include="shared-styles">
             :host {
@@ -35,13 +35,13 @@ Example:
         </div>
     </template>
     <script>
-        class MyDisplayDealstateMydetail extends new ReduxMixin(Polymer.mixinBehaviors([
+        class MyDisplayDealInvolved extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
         ],
             Polymer.Element
         )) {
             static get is() {
-                return 'display-dealstate-mydetail';
+                return 'display-deal-involved';
             }
             static get properties() {
                 return {
@@ -68,6 +68,6 @@ Example:
         }
 
         window.customElements
-            .define(MyDisplayDealstateMydetail.is, MyDisplayDealstateMydetail);
+            .define(MyDisplayDealInvolved.is, MyDisplayDealInvolved);
     </script>
 </dom-module>
