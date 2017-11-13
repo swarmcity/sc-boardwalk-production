@@ -153,7 +153,15 @@
         "already selected a provider for this request.": "already selected a provider for this request.",
         "You accepted.": "You accepted.",
         "This deal has been completed.": "This deal has been completed.",
-        "see this on ethplorer": "see this on ethplorer"
+        "see this on ethplorer": "see this on ethplorer",
+        "Do you want to start a conflict on": "Do you want to start a conflict on",
+        "This cant be undone. The funds will be locked and the hashtag provider will be notified and try to solve this conflict." : "This can’t be undone. The funds will be locked and the hashtag provider will be notified and try to solve this conflict.",
+        "Do you want to payout":"Do you want to payout ",
+        "This cant be undone. The hashtag owner will be notified that the conflict is resolved." : "This can’t be undone. The hashtag owner will be notified that the conflict is resolved.",
+        "Youre resolving this conflict" : "You’re resolving this conflict",
+        "Youre resolving this conflict" : "You’re resolving this conflict",
+        "will receive":"will receive",
+        "Your action is being processed.": "Your action is being processed."
     },
     "cn": {
         "language": "cn",

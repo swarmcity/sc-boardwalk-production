@@ -40,7 +40,13 @@
     "src/pages/page-confirm-deal-accept.html",
     "src/pages/page-stop-deal-accept.html",
     "src/pages/page-deal-accept-processing.html",
-    "src/pages/page-payout-processing.html"
+    "src/pages/page-payout-processing.html",
+    "src/pages/page-confirm-conflict.html",
+    "src/pages/page-confirm-payout-conflict.html",
+    "src/pages/page-confirm-resolve-payout.html",
+    "src/pages/page-conflict-processing.html",
+    "src/pages/page-conflict-payout-processing.html",
+    "src/pages/page-resolve-payout-processing.html"
   ],
   "sources": [
     "src/**/*",
