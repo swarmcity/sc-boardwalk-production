@@ -37,7 +37,6 @@ This code may only be used under the license found at https://github.com/swarmci
 
             .container {
                 width: 100%;
-                height: 100%;
                 background-color: var(--sc-grey1);
             }
 
@@ -124,6 +123,12 @@ This code may only be used under the license found at https://github.com/swarmci
                 margin: 0px 0px 8px 10px;
             }
 
+            .highlight-info {
+                color: white;
+                background-color: var(--sc-blue);
+                border-bottom: 0;
+            }
+
             .filter-toggle {
                 @apply --layout-horizontal;
                 @apply --layout-end-justified;
@@ -132,8 +137,17 @@ This code may only be used under the license found at https://github.com/swarmci
                 padding: 0 40px;
                 color: var(--sc-grey3);
                 cursor: pointer;
-                z-index: 999;
                 margin-top: var(--header-height);
+                z-index: 11;
+                background-image: var(--sc-bg);
+            }
+
+
+            .highlight-filter {
+                color: white;
+                background-color: var(--sc-grey4);
+                border-bottom: 0;
+                padding: 1px 2px;
             }
 
             .filter-text {
@@ -177,25 +191,37 @@ This code may only be used under the license found at https://github.com/swarmci
 
             display-hashtag-about {
                 border-bottom: 2px solid var(--sc-blue);
+                position: absolute;
                 width: 100%;
                 box-sizing: border-box;
                 padding: 0 40px 2vh 40px;
                 background-image: var(--sc-bg);
+                z-index: 9;
             }
 
             display-filter-deals {
-                border-bottom: 2px solid black;
+                border-bottom: 2px solid;
+                position: absolute;
                 width: 100%;
                 box-sizing: border-box;
                 padding: 0 40px 2vh 40px;
                 background-image: var(--sc-bg);
-                z-index: 1;
+                z-index: 8;
 
             }
 
             .toggle {
+                box-sizing: border-box;
                 padding: 1px 3px;
                 cursor: pointer;
+            }
+
+            .slidebox {
+                @apply --layout-vertical;
+                @apply --layout-start-justified;
+                position: sticky;
+                top: 0;
+                z-index: 9;
             }
 
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
@@ -219,42 +245,39 @@ This code may only be used under the license found at https://github.com/swarmci
                 <div class="bottom">
                     <div class="leftbottom">
                         <div class="hashtag">#NeedaRide</div>
-                        <div class="toggle info-toggle" on-click="_toggleInfo">i</div>
+                        <div id="infolink" class="toggle info-toggle" on-click="_toggleInfo">i</div>
                     </div>
 
                 </div>
             </div>
 
-            <div class="filter-toggle" on-click="_toggleSlider">
-                <span class="filter-text">filter deals</span>
-            </div>
-            <!-- <display-deal-involved></display-deal-involved> -->
-
-
             <dom-if if="{{showInfo}}">
                 <template>
                     <display-hashtag-about 
-                        id="about" 
-                        class="info" 
+                        id="about" class="info" 
                         hashtag-info="[[hashtag]]" 
                         show-info="{{showInfo}}">
                     </display-hashtag-about>
                 </template>
             </dom-if>
 
-
-            <dom-if if="{{showSlider}}">
-                <template>
-                    <display-filter-deals 
-                        id="slider"    
-                        class="slider" 
-                        show-slider="{{showSlider}}" 
-                        range="{{range}}">
-                    </display-filter-deals>
-                </template>
-            </dom-if>
+            <div class="slidebox">
+                <div class="filter-toggle" on-click="_toggleSlider">
+                    <span id="filterlink" class="filter-text">filter deals</span>
+                </div>
+                <dom-if if="{{showSlider}}">
+                    <template>
+                        <display-filter-deals 
+                            id="slider" class="slider" 
+                            show-slider="{{showSlider}}" 
+                            range="{{range}}">
+                        </display-filter-deals>
+                    </template>
+                </dom-if>
+            </div>
 
             <div id="fadeArea" on-click="_fadeClose">
+                <!-- <display-deal-involved></display-deal-involved> -->
                 <display-hashtag-deals 
                     range="{{range}}" 
                     hashtag="{{hashtag}}" 
@@ -386,40 +409,43 @@ This code may only be used under the license found at https://github.com/swarmci
             _toggleSlider() {
                 return new Promise((resolve, reject) => {
                     if (this.showInfo) {
+                        this.$.filterlink.classList.add('highlight-filter')
+                        this._fadeInOut();
                         this._toggleInfo().then(() => {
-                            this._fadeInOut();
                             this.showSlider = true;
                             setTimeout(() => {
                                 let animation = this.shadowRoot
-                                        .querySelector('#slider').animate(
+                                    .querySelector('#slider').animate(
                                     this.anim.slideDown.arr,
                                     this.anim.slideDown.obj
-                                );
+                                    );
                                 animation.play();
                             }, 1);
                         });
                     }
                     else if (!this.showSlider) {
+                        this.$.filterlink.classList.add('highlight-filter')
                         this._fadeInOut();
                         this.showSlider = true;
                         setTimeout(() => {
                             let animation = this.shadowRoot
-                                    .querySelector('#slider').animate(
+                                .querySelector('#slider').animate(
                                 this.anim.slideDown.arr,
                                 this.anim.slideDown.obj
-                            );
+                                );
                             animation.play();
                             animation.onfinish = () => {
-                            resolve();
+                                resolve();
                             };
                         }, 1);
                     } else {
+                        this.$.filterlink.classList.remove('highlight-filter')
                         this._fadeInOut();
                         let animation = this.shadowRoot
-                                .querySelector('#slider').animate(
+                            .querySelector('#slider').animate(
                             this.anim.slideUp.arr,
                             this.anim.slideUp.obj
-                        );
+                            );
                         animation.play();
                         animation.onfinish = () => {
                             this.showSlider = false;
@@ -435,44 +461,47 @@ This code may only be used under the license found at https://github.com/swarmci
             _toggleInfo() {
                 return new Promise((resolve, reject) => {
                     if (this.showSlider) {
+                        this.$.infolink.classList.add('highlight-info')
+                        this._fadeInOut();
                         this._toggleSlider().then(() => {
-                            this._fadeInOut();
                             this.showInfo = true;
-
                             setTimeout(() => {
                                 let animation = this.shadowRoot
-                                        .querySelector('#about').animate(
+                                    .querySelector('#about').animate(
                                     this.anim.slideDown.arr,
                                     this.anim.slideDown.obj
-                                );
+                                    );
                                 animation.play();
                             }, 1);
                         });
                     }
                     else if (!this.showInfo) {
+                        this.$.infolink.classList.add('highlight-info')
                         this._fadeInOut();
                         this.showInfo = true;
                         setTimeout(() => {
                             let animation = this.shadowRoot
-                                    .querySelector('#about').animate(
+                                .querySelector('#about').animate(
                                 this.anim.slideDown.arr,
                                 this.anim.slideDown.obj
-                            );
+                                );
                             animation.play();
                             animation.onfinish = () => {
-                            resolve();
+                                resolve();
                             };
                         }, 1);
                     } else {
+                        this.$.infolink.classList.remove('highlight-info')
                         this._fadeInOut();
                         let animation = this.shadowRoot
-                                .querySelector('#about').animate(
+                            .querySelector('#about').animate(
                             this.anim.slideUp.arr,
                             this.anim.slideUp.obj
-                        );
+                            );
                         animation.play();
                         animation.onfinish = () => {
                             this.showInfo = false;
+
                             resolve();
                         };
                     }
@@ -518,41 +547,41 @@ This code may only be used under the license found at https://github.com/swarmci
             _loadAnimations() {
                 this.anim = {
                     slideDown: {
-                        arr: [{transform: 'translateY(-110%)'},
-                        {transform: 'translateY(0%)'}],
+                        arr: [{ transform: 'translateY(0)' },
+                        { transform: 'translateY(161px)' }],
                         obj: {
                             fill: 'both',
-                            duration: 500,
+                            duration: 250,
                             direction: 'normal',
                             easing: 'cubic-bezier(0.42, 0, 0.177, 0.751)',
                         },
                     },
                     slideUp: {
-                        arr: [{transform: 'translateY(0%)'},
-                        {transform: 'translateY(-110%)'}],
+                        arr: [{ transform: 'translateY(161px)' },
+                        { transform: 'translateY(0)' }],
                         obj: {
                             fill: 'both',
-                            duration: 500,
+                            duration: 250,
                             direction: 'normal',
                             easing: 'cubic-bezier(0.42, 0, 0.177, 0.751)',
                         },
                     },
                     fadeOut: {
-                        arr: [{opacity: 1},
-                        {opacity: 0.2}],
+                        arr: [{ opacity: 1 },
+                        { opacity: 0.2 }],
                         obj: {
                             fill: 'both',
-                            duration: 500,
+                            duration: 250,
                             direction: 'normal',
                             easing: 'cubic-bezier(0.42, 0, 0.177, 0.751)',
                         },
                     },
                     fadeIn: {
-                        arr: [{opacity: 0.2},
-                        {opacity: 1}],
+                        arr: [{ opacity: 0.2 },
+                        { opacity: 1 }],
                         obj: {
                             fill: 'both',
-                            duration: 500,
+                            duration: 250,
                             direction: 'normal',
                             easing: 'cubic-bezier(0.42, 0, 0.177, 0.751)',
                         },
