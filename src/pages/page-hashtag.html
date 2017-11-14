@@ -47,7 +47,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 position: fixed;
                 top: 0;
                 width: 100%;
-                z-index: 2;
+                z-index: 10;
             }
 
             .container[wide-layout] .header {
@@ -117,12 +117,19 @@ This code may only be used under the license found at https://github.com/swarmci
                 margin: 0px 0px 8px 10px;
             }
             .filter-toggle {
+                @apply --layout-horizontal;
+                @apply --layout-end-justified;
                 @apply --small-bold;
+                box-sizing: border-box;
+                padding: 0 40px;
                 color: var(--sc-grey3);
-                border-bottom: 2px dotted var(--sc-grey3);
                 cursor: pointer;
                 z-index:999;
                 margin-top: var(--header-height);
+            }
+            .filter-text {
+
+                border-bottom: 2px dotted var(--sc-grey3);
             }
 
             display-my-info {
@@ -144,26 +151,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 right: 10vw;
                 top: 248px;
             }
-            .slider {
-                border-bottom: 2px solid black;
-                position: fixed;
-                top: 184px;
-                width: 100%;
-                box-sizing: border-box;
-                padding: 0 40px 2vh 40px;
-                background-image: var(--sc-bg);
-                z-index: 1;
-            }
-            .info {
-                border-bottom: 2px solid var(--sc-blue);
-                position: fixed;
-                top: var(--header-height);
-                width: 100%;
-                box-sizing: border-box;
-                padding: 0 40px 2vh 40px;
-                background-image: var(--sc-bg);
-                z-index: 1;
-            }
             .container[wide-layout] .slider {
                 padding: 0 10vw 2vh 10vw;
                 top: 206px;
@@ -171,6 +158,23 @@ This code may only be used under the license found at https://github.com/swarmci
             .container[wide-layout] .info {
                 padding: 0 10vw 2vh 10vw;
                 top: 206px;
+            }
+
+            display-hashtag-about {
+                border-bottom: 2px solid var(--sc-blue);
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0 40px 2vh 40px;
+                background-image: var(--sc-bg);
+            }
+
+            display-filter-deals {
+                border-bottom: 2px solid black;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0 40px 2vh 40px;
+                background-image: var(--sc-bg);
+
             }
             .toggle {
                 padding: 1px 3px;
@@ -203,23 +207,23 @@ This code may only be used under the license found at https://github.com/swarmci
                 </div>
             </div>
 
-            <div class="filter-toggle" on-click="_toggleSlider">filter deals</div>
+            <div class="filter-toggle" on-click="_toggleSlider">
+                <span class="filter-text">filter deals</span>
+            </div>
             <!-- <display-deal-involved></display-deal-involved> -->
 
                 <display-hashtag-about
                     id="about"
                     class="info"
                     hashtag-info="[[hashtag]]"
-                    show-info="{{showInfo}}"
-                    info-state="{{infoState}}">
+                    show-info="{{showInfo}}">
                 </display-hashtag-about>
             
                 <display-filter-deals 
                     id="slider" 
                     class="slider" 
                     show-slider="{{showSlider}}" 
-                    range="{{range}}"
-                    slider-state="{{sliderState}}">>
+                    range="{{range}}">
                 </display-filter-deals>
 
             <div id="fadeArea" on-click="_fadeClose">
@@ -269,6 +273,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     */
                     showSlider: {
                         type: Boolean,
+                        value: false,
                     },
                     /**
                     * showInfo indicates if the hashtag info panel is open or not
@@ -276,6 +281,7 @@ This code may only be used under the license found at https://github.com/swarmci
                     */
                     showInfo: {
                         type: Boolean,
+                        value: false,
                     },
                     /**
                     * faded indicates if the dealsarea is faded or not
