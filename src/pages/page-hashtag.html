@@ -18,6 +18,7 @@ This code may only be used under the license found at https://github.com/swarmci
 <link rel="import" href="../displays/display-hashtag-deals.html">
 <link rel="import" href="../displays/display-deal-btn.html">
 <link rel="import" href="../displays/display-filter-deals.html">
+<link rel="import" href="../displays/display-deal-involved.html">
 
 <dom-module id="page-hashtag">
     <template>
@@ -30,6 +31,8 @@ This code may only be used under the license found at https://github.com/swarmci
                 height: 100%;
                 display: block;
                 max-width: 100%;
+                --header-height: 144px;
+                --header-height-wide: 154px;
             }
             .container {
                 width: 100%;
@@ -37,43 +40,68 @@ This code may only be used under the license found at https://github.com/swarmci
                 background-color: var(--sc-grey1);
             }
             .header {
+                box-sizing: border-box;
+                padding: 40px 0 0 0;
                 @apply --layout-vertical;
                 background-image: var(--sc-bg);
-                box-sizing: border-box;
-                padding: 40px 40px 0 40px;
                 position: fixed;
                 top: 0;
                 width: 100%;
                 z-index: 2;
             }
-            .top {
-                @apply --layout-horizontal;
-                height: 50px;
-            }
-            .bottom {
-                @apply --layout-end;
-                @apply --layout-horizontal;
-                @apply --layout-wrap;
-                width: 100%;
-                margin-bottom: 18px;
-            }
-            .container .bottom {
-                margin-bottom: 28px;
-            }
+
             .container[wide-layout] .header {
                 box-sizing: border-box;
-                padding: 60px 10vw 0 10vw;
+                padding: 60px 0 0 0;
+
+            }
+
+            .top {
+                @apply --layout-horizontal;
+                box-sizing: border-box;
+                padding: 0 40px;
+                height: 50px;
+            }
+            .container[wide-layout] .top {
+                box-sizing: border-box;
+                padding: 0 10vw;
+                height: 42px;
+            }
+            .bottom {
+                @apply --layout-start;
+                @apply --layout-horizontal;
+                @apply --layout-wrap;
+                box-sizing: border-box;
+                padding: 5px 40px;
+                width: 100%;
+            }
+
+            .container[wide-layout] .bottom {
+                box-sizing: border-box;
+                padding: 0 10vw;
+            }
+
+            .container .bottom {
+                margin-bottom: 8px;
             }
             .leftbottom {
-                margin-top: 30px;
                 @apply --layout-horizontal;
                 @apply --layout-flex;
                 @apply --layout-start-justified;
                 @apply --layout-end;
             }
-            .container[wide-layout] .leftbottom {
-                margin-top: 40px;
+
+            display-deal-involved {
+                margin-top: 10px;
+                margin-bottom: 20px;
             }
+
+            .container[wide-layout] display-deal-involved {
+                margin-top: 15px;
+                margin-bottom: 2px;
+
+            }
+
             .hashtag {
                 @apply --main-title2;
                 color: var(--sc-grey4);
@@ -91,22 +119,20 @@ This code may only be used under the license found at https://github.com/swarmci
             .filter-toggle {
                 @apply --small-bold;
                 color: var(--sc-grey3);
-                margin: 0px 0px 8px 10px;
                 border-bottom: 2px dotted var(--sc-grey3);
                 cursor: pointer;
+                z-index:999;
+                margin-top: var(--header-height);
             }
 
             display-my-info {
                 @apply --layout-flex;
             }
             display-hashtag-deals {
-                margin: 184px 0 0 0;
+                margin: var(--header-height) 0 0 0;
             }
             .container[wide-layout] display-hashtag-deals {
-                margin-top: 206px;
-            }
-            .container[wide-layout] .top {
-                height: 42px;
+                margin-top: 156px;
             }
             .dealbtn {
                 position: fixed;
@@ -132,7 +158,7 @@ This code may only be used under the license found at https://github.com/swarmci
             .info {
                 border-bottom: 2px solid var(--sc-blue);
                 position: fixed;
-                top: 184px;
+                top: var(--header-height);
                 width: 100%;
                 box-sizing: border-box;
                 padding: 0 40px 2vh 40px;
@@ -147,9 +173,6 @@ This code may only be used under the license found at https://github.com/swarmci
             .container[wide-layout] .info {
                 padding: 0 10vw 2vh 10vw;
                 top: 206px;
-            }
-            .fullheight {
-                height: 100%;
             }
             .toggle {
                 padding: 1px 3px;
@@ -172,21 +195,25 @@ This code may only be used under the license found at https://github.com/swarmci
                 <div class="top">
                     <display-my-info></display-my-info>
                     <div class="back" on-click="_back"></div>
-                </div>
+                </div>                
                 <div class="bottom">
                     <div class="leftbottom">
-                        <div class="hashtag"># {{hashtag.name}}</div>
+                        <div class="hashtag">#NeedaRide</div>
                         <div class="toggle info-toggle" on-click="_toggleInfo">i</div>
                     </div>
-                    <div class="filter-toggle" on-click="_toggleSlider">filter deals</div>
+                    
                 </div>
             </div>
+
+            <div class="filter-toggle" on-click="_toggleSlider">filter deals</div>
+            <!-- <display-deal-involved></display-deal-involved> -->
 
             <display-hashtag-about
                 id="about"
                 class="info"
                 hashtag-info="[[hashtag]]"
-                show-info="{{showInfo}}">
+                show-info="{{showInfo}}"
+                info-state="{{infoState}}">
             </display-hashtag-about>
 
             <display-filter-deals 
@@ -433,7 +460,7 @@ This code may only be used under the license found at https://github.com/swarmci
                 }
             }
             /**
-            * All animations this pages needed
+            * All animations this page needs
             */
             _loadAnimations() {
                 this.anim = {
@@ -444,7 +471,7 @@ This code may only be used under the license found at https://github.com/swarmci
                                 fill: 'both',
                                 duration: 500,
                                 direction: 'normal',
-                                easing: 'cubic-bezier(.6, 0, 1, .6)',
+                                easing: 'cubic-bezier(0.42, 0, 0.177, 0.751)',
                         },
                     },
                     slideUp: {
@@ -454,7 +481,7 @@ This code may only be used under the license found at https://github.com/swarmci
                                 fill: 'both',
                                 duration: 500,
                                 direction: 'normal',
-                                easing: 'cubic-bezier(.6, 0, 1, .6)',
+                                easing: 'cubic-bezier(0.42, 0, 0.177, 0.751)',
                         },
                     },
                     fadeOut: {
@@ -464,7 +491,7 @@ This code may only be used under the license found at https://github.com/swarmci
                                 fill: 'both',
                                 duration: 500,
                                 direction: 'normal',
-                                easing: 'cubic-bezier(.6, 0, 1, .6)',
+                                easing: 'cubic-bezier(0.42, 0, 0.177, 0.751)',
                         },
                     },
                     fadeIn: {
@@ -474,7 +501,7 @@ This code may only be used under the license found at https://github.com/swarmci
                                 fill: 'both',
                                 duration: 500,
                                 direction: 'normal',
-                                easing: 'cubic-bezier(.6, 0, 1, .6)',
+                                easing: 'cubic-bezier(0.42, 0, 0.177, 0.751)',
                         },
                     },
                 };

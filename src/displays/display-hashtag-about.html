@@ -70,17 +70,20 @@ The following custom properties and mixins are available for styling:
             .linkbox {
                 margin-top: 8px;
             }
+
             .links {
                 @apply --small-bold;
                 color: var(--sc-blue);
                 border-bottom: 1px dotted var(--sc-blue);
                 text-decoration: none;
             }
+
             .arrowup {
                 width: 100%;
                 @apply --layout-horizontal;
                 @apply --layout-end-justified;
             }
+
             .arrowup-icon {
                 @apply --arrowup-blue-small;
                 cursor: pointer;
@@ -89,19 +92,22 @@ The following custom properties and mixins are available for styling:
         <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
         <display-language language="{{language}}"></display-language>
         <div class="container" wide-layout$="{{wide}}">
+
+            <template is="dom-if" if="{{infoState}}">
                 <div>
                     <div class="info">{{localize('This hashtag is maintained by')}} {{hashtagInfo.maintainer}}.</div>
                     <div class="commission">{{localize('The hashtagcommission is')}} {{hashtagInfo.commission}} SWT.</div>
                     <div class="contact">{{localize('Contact')}}:</div>
                     <template is="dom-repeat" items="{{hashtagInfo.contact}}">
                         <div class="linkbox">
-                            <a href="{{item.link}}"  target="_blank" class="links">{{item.name}}</a>
+                            <a href="{{item.link}}" target="_blank" class="links">{{item.name}}</a>
                         </div>
                     </template>
                 </div>
                 <div class="arrowup">
                     <div class="arrowup-icon" on-click="_closeInfo"></div>
                 </div>
+            </template>
         </div>
 
     </template>
@@ -132,6 +138,13 @@ The following custom properties and mixins are available for styling:
                         type: Number,
                         notify: true,
                         reflectToAttribute: true,
+                    },
+                    /**
+                    * infoState represents the state of the info area
+                    * @type {String}
+                    */
+                    infoState: {
+                        type: Boolean,
                     },
                     /**
                     * hashtag info represents the selected hashtag
