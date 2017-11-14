@@ -153,7 +153,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 padding: 0 40px 2vh 40px;
                 background-image: var(--sc-bg);
                 z-index: 1;
-                opacity: 0;
             }
             .info {
                 border-bottom: 2px solid var(--sc-blue);
@@ -164,7 +163,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 padding: 0 40px 2vh 40px;
                 background-image: var(--sc-bg);
                 z-index: 1;
-                opacity: 0;
             }
             .container[wide-layout] .slider {
                 padding: 0 10vw 2vh 10vw;
@@ -208,20 +206,21 @@ This code may only be used under the license found at https://github.com/swarmci
             <div class="filter-toggle" on-click="_toggleSlider">filter deals</div>
             <!-- <display-deal-involved></display-deal-involved> -->
 
-            <display-hashtag-about
-                id="about"
-                class="info"
-                hashtag-info="[[hashtag]]"
-                show-info="{{showInfo}}"
-                info-state="{{infoState}}">
-            </display-hashtag-about>
-
-            <display-filter-deals 
-                id="slider" 
-                class="slider" 
-                show-slider="{{showSlider}}" 
-                range="{{range}}">
-            </display-filter-deals>
+                <display-hashtag-about
+                    id="about"
+                    class="info"
+                    hashtag-info="[[hashtag]]"
+                    show-info="{{showInfo}}"
+                    info-state="{{infoState}}">
+                </display-hashtag-about>
+            
+                <display-filter-deals 
+                    id="slider" 
+                    class="slider" 
+                    show-slider="{{showSlider}}" 
+                    range="{{range}}"
+                    slider-state="{{sliderState}}">>
+                </display-filter-deals>
 
             <div id="fadeArea" on-click="_fadeClose">
                 <display-hashtag-deals 
@@ -265,60 +264,24 @@ This code may only be used under the license found at https://github.com/swarmci
                         observer: '_path',
                     },
                     /**
-                    * sliderState represents the state of the slider
-                    * @type {String}
-                    */
-                    sliderState: {
-                        type: Boolean,
-                        value: false,
-                    },
-                    /**
-                    * infoState represents the state of the info area
-                    * @type {String}
-                    */
-                    infoState: {
-                        type: Boolean,
-                        value: false,
-                    },
-                    /**
-                    * fadeState represents the state of the fade area
-                    * @type {String}
-                    */
-                    fadeState: {
-                        type: String,
-                        value: 'fade-hidden',
-                    },
-                    /**
                     * showSlider determines of the slider is show or not
                     * @type {Boolean}
                     */
                     showSlider: {
                         type: Boolean,
-                        observer: '_toggleSlider',
                     },
                     /**
                     * showInfo indicates if the hashtag info panel is open or not
                     * @type {Boolean}
                     */
                     showInfo: {
-                        type: Number,
-                        observer: '_toggleInfo',
-                    },
-                    /**
-                    * highlightFilterToggle toggles
-                    * the background style of the show filter text link
-                    * @type {Boolean}
-                    */
-                    highlightFilterToggle: {
                         type: Boolean,
-                        value: false,
                     },
                     /**
-                    * highlightInfoToggle toggles
-                    * the background style of the show filter text link
+                    * faded indicates if the dealsarea is faded or not
                     * @type {Boolean}
                     */
-                    highlightInfoToggle: {
+                    faded: {
                         type: Boolean,
                         value: false,
                     },
@@ -386,58 +349,98 @@ This code may only be used under the license found at https://github.com/swarmci
             * shows and hides the slider
             */
             _toggleSlider() {
-                if (this.sliderState == false) {
-                    this.$.slider.animate(
+                if (this.showInfo) {
+                    let closeInfo = new Promise((resolve, reject) => {
+                        this._toggleInfo();
+                        console.log('test')
+                        resolve();
+                    })
+                    closeInfo.then(() => {
+                        this._fadeInOut();
+                        this.showSlider = true;
+                        let animation = this.$.slider.animate(
+                            this.anim.slideDown.arr,
+                            this.anim.slideDown.obj
+                        );
+                    animation.play();
+                    })
+                }
+                else if (!this.showSlider) {
+                    this._fadeInOut();
+                    this.showSlider = true;
+                    let animation = this.$.slider.animate(
                         this.anim.slideDown.arr,
                         this.anim.slideDown.obj
-                        );
-                    this.sliderState = true;
-                    if (this.infoState == true) {
-                        this._toggleInfo();
-                    }
+                    );
+                    animation.play();
                 } else {
-                    this.$.slider.animate(
+                    this._fadeInOut();
+                    this.showSlider = false;
+                    let animation = this.$.slider.animate(
                         this.anim.slideUp.arr,
                         this.anim.slideUp.obj
                         );
-                    this.sliderState = false;
+                    animation.play();
+                    animation.onfinish = () => {
+                        this.showSlider = false;
+                    }
                 }
-                this._fadeInOut();
             }
             /**
             * shows and hides the info box
             */
             _toggleInfo() {
-                if (this.infoState == false) {
-                    this.$.about.animate(
+                if (this.showSlider) {
+                    let closeSlider = new Promise((resolve, reject) => {
+                        this._toggleSlider();
+                        console.log('test')
+                        resolve();
+                    })
+                    closeSlider.then(() => {
+                        console.log('hoi');
+                        this._fadeInOut();
+                        this.showInfo = true;
+                        let animation = this.$.about.animate(
+                            this.anim.slideDown.arr,
+                            this.anim.slideDown.obj
+                        );
+                    animation.play();
+                    })
+                }
+                else if (!this.showInfo) {
+                    this._fadeInOut();
+                    this.showInfo = true;
+                    let animation = this.$.about.animate(
                         this.anim.slideDown.arr,
                         this.anim.slideDown.obj
-                        );
-                    this.infoState = true;
-                    if (this.sliderState == true) {
-                        this._toggleSlider();
-                    }
+                    );
+                    animation.play();
                 } else {
-                    this.$.about.animate(
+                    this._fadeInOut();
+                    this.showInfo = false;
+                    let animation = this.$.about.animate(
                         this.anim.slideUp.arr,
                         this.anim.slideUp.obj
                         );
-                    this.infoState = false;
+                    animation.play();
+                    animation.onfinish = () => {
+                        this.showInfo = false;
+                    }
                 }
-                this._fadeInOut();
             }
             /**
             * fades part of the page in and out
             */
             _fadeInOut() {
-                // TODO: Only fade out if we are faded in, 
-                // and only fade in if we are faded out.
-                if (this.infoState == true || this.sliderState == true) {
+                if (!this.faded) {
+                    this.faded = !this.faded;
                     this.$.fadeArea.animate(
                         this.anim.fadeOut.arr,
                         this.anim.fadeOut.obj
                         );
-                } else {
+                }
+                else {
+                    this.faded = !this.faded;
                     this.$.fadeArea.animate(
                         this.anim.fadeIn.arr,
                         this.anim.fadeIn.obj
@@ -465,8 +468,8 @@ This code may only be used under the license found at https://github.com/swarmci
             _loadAnimations() {
                 this.anim = {
                     slideDown: {
-                        arr: [{opacity: 0, transform: 'translateY(-110%)'},
-                            {opacity: 1, transform: 'translateY(0%)'}],
+                        arr: [{transform: 'translateY(-110%)'},
+                            {transform: 'translateY(0%)'}],
                         obj: {
                                 fill: 'both',
                                 duration: 500,
@@ -475,8 +478,8 @@ This code may only be used under the license found at https://github.com/swarmci
                         },
                     },
                     slideUp: {
-                        arr: [{opacity: 1, transform: 'translateY(0%)'},
-                            {opacity: 0, transform: 'translateY(-110%)'}],
+                        arr: [{transform: 'translateY(0%)'},
+                            {transform: 'translateY(-110%)'}],
                         obj: {
                                 fill: 'both',
                                 duration: 500,

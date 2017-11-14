@@ -84,17 +84,19 @@ The following custom properties and mixins are available for styling:
                 @apply --layout-horizontal;
                 @apply --layout-end-justified;
             }
+
             @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
             only screen and (min--moz-device-pixel-ratio: 1.5),
             only screen and (min-resolution: 240dpi) {
-                .arrowup-icon, .globe-icon, .pin-icon {
+                .arrowup-icon,
+                .globe-icon,
+                .pin-icon {
                     @apply --retina;
                 }
             }
         </style>
 
         <display-language language="{{language}}"></display-language>
-
         <div class="container">
             <div class="togglebox">
                 <div class="activity">{{localize('Looking for deals')}}...</div>
@@ -141,22 +143,6 @@ The following custom properties and mixins are available for styling:
                         notify: true,
                     },
                     /**
-                    * Selected if true shows the toggle text
-                    * @type {String}
-                    */
-                    toggle: {
-                        type: Boolean,
-                        value: false,
-                    },
-                    /**
-                    * Selected if true shows the slider
-                    * @type {String}
-                    */
-                    slider: {
-                        type: Boolean,
-                        value: false,
-                    },
-                    /**
                     * range is the range the user selected in slider
                     * @type {Number}
                     */
@@ -190,14 +176,6 @@ The following custom properties and mixins are available for styling:
                         type: Boolean,
                         notify: true,
                         reflectToAttribute: true,
-                    },
-                    /**
-                    * showInfo indicates if the info panel is open or not
-                    * @type {Boolean}
-                    */
-                    showInfo: {
-                        type: Boolean,
-                        notify: true,
                     },
                     /**
                     * rangeDescription is the description of the range
