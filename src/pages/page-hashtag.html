@@ -409,7 +409,7 @@ This code may only be used under the license found at https://github.com/swarmci
             _toggleSlider() {
                 return new Promise((resolve, reject) => {
                     if (this.showInfo) {
-                        this.$.filterlink.classList.add('highlight-filter')
+                        this.$.filterlink.classList.add('highlight-filter');
                         this._fadeInOut();
                         this._toggleInfo().then(() => {
                             this.showSlider = true;
@@ -424,7 +424,7 @@ This code may only be used under the license found at https://github.com/swarmci
                         });
                     }
                     else if (!this.showSlider) {
-                        this.$.filterlink.classList.add('highlight-filter')
+                        this.$.filterlink.classList.add('highlight-filter');
                         this._fadeInOut();
                         this.showSlider = true;
                         setTimeout(() => {
@@ -439,7 +439,7 @@ This code may only be used under the license found at https://github.com/swarmci
                             };
                         }, 1);
                     } else {
-                        this.$.filterlink.classList.remove('highlight-filter')
+                        this.$.filterlink.classList.remove('highlight-filter');
                         this._fadeInOut();
                         let animation = this.shadowRoot
                             .querySelector('#slider').animate(
@@ -461,7 +461,7 @@ This code may only be used under the license found at https://github.com/swarmci
             _toggleInfo() {
                 return new Promise((resolve, reject) => {
                     if (this.showSlider) {
-                        this.$.infolink.classList.add('highlight-info')
+                        this.$.infolink.classList.add('highlight-info');
                         this._fadeInOut();
                         this._toggleSlider().then(() => {
                             this.showInfo = true;
@@ -476,7 +476,7 @@ This code may only be used under the license found at https://github.com/swarmci
                         });
                     }
                     else if (!this.showInfo) {
-                        this.$.infolink.classList.add('highlight-info')
+                        this.$.infolink.classList.add('highlight-info');
                         this._fadeInOut();
                         this.showInfo = true;
                         setTimeout(() => {
@@ -491,7 +491,7 @@ This code may only be used under the license found at https://github.com/swarmci
                             };
                         }, 1);
                     } else {
-                        this.$.infolink.classList.remove('highlight-info')
+                        this.$.infolink.classList.remove('highlight-info');
                         this._fadeInOut();
                         let animation = this.shadowRoot
                             .querySelector('#about').animate(
@@ -547,8 +547,8 @@ This code may only be used under the license found at https://github.com/swarmci
             _loadAnimations() {
                 this.anim = {
                     slideDown: {
-                        arr: [{ transform: 'translateY(0)' },
-                        { transform: 'translateY(161px)' }],
+                        arr: [{transform: 'translateY(0)'},
+                        {transform: 'translateY(161px)'}],
                         obj: {
                             fill: 'both',
                             duration: 250,
@@ -557,8 +557,8 @@ This code may only be used under the license found at https://github.com/swarmci
                         },
                     },
                     slideUp: {
-                        arr: [{ transform: 'translateY(161px)' },
-                        { transform: 'translateY(0)' }],
+                        arr: [{transform: 'translateY(161px)'},
+                        {transform: 'translateY(0)'}],
                         obj: {
                             fill: 'both',
                             duration: 250,
@@ -567,8 +567,8 @@ This code may only be used under the license found at https://github.com/swarmci
                         },
                     },
                     fadeOut: {
-                        arr: [{ opacity: 1 },
-                        { opacity: 0.2 }],
+                        arr: [{opacity: 1},
+                        {opacity: 0.2}],
                         obj: {
                             fill: 'both',
                             duration: 250,
@@ -577,8 +577,8 @@ This code may only be used under the license found at https://github.com/swarmci
                         },
                     },
                     fadeIn: {
-                        arr: [{ opacity: 0.2 },
-                        { opacity: 1 }],
+                        arr: [{opacity: 0.2},
+                        {opacity: 1}],
                         obj: {
                             fill: 'both',
                             duration: 250,
