@@ -42,9 +42,14 @@
 <link rel="lazy-import" href="pages/page-confirm-deal-accept.html">
 <link rel="lazy-import" href="pages/page-stop-deal-accept.html">
 <link rel="lazy-import" href="pages/page-deal-accept-processing.html">
+<link rel="lazy-import" href="pages/page-confirm-conflict.html">
+<link rel="lazy-import" href="pages/page-confirm-payout-conflict.html">
+<link rel="lazy-import" href="pages/page-confirm-resolve-payout.html">
+<link rel="lazy-import" href="pages/page-conflict-processing.html">
+<link rel="lazy-import" href="pages/page-conflict-payout-processing.html">
+<link rel="lazy-import" href="pages/page-resolve-payout-processing.html">
 <link rel="lazy-import" href="pages/page-cancel-processing.html">
 <link rel="lazy-import" href="pages/page-view404.html">
-
 <dom-module id="swarm-city">
   <template>
     <style>
@@ -99,6 +104,12 @@
       <page-deal-accept-processing id="deal-accept-processing"></page-deal-accept-processing>
       <page-cancel-processing id="cancel-processing"></page-cancel-processing>
       <page-view404 id="view404"></page-view404>
+      <page-resolve-payout-processing id="resolve-payout-processing" animation="{{animation}}"></page-resolve-payout-processing>
+      <page-confirm-resolve-payout id="confirm-resolve-payout" animation="{{animation}}"></page-confirm-resolve-payout>
+      <page-conflict-payout-processing id="conflict-payout-processing" animation="{{animation}}"></page-conflict-payout-processing>
+      <page-conflict-processing id="conflict-processing" animation="{{animation}}"></page-conflict-processing>
+      <page-confirm-payout-conflict id="confirm-payout-conflict" animation="{{animation}}"></page-confirm-payout-conflict>
+      <page-confirm-conflict id="confirm-conflict" animation="{{animation}}"></page-confirm-conflict>
     </faffys-animated-pages>
   </template>
 
