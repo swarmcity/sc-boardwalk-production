@@ -14,7 +14,7 @@ This code may only be used under the license found at https://github.com/swarmci
 -->
 <link rel="import" href="../shared-styles.html">
 
-<dom-module id="page-confirm-payout">
+<dom-module id="page-confirm-resolve-payout">
     <template>
         <!--
     Page specific styles, if the style is used on more than one page, moveit to shared styles.
@@ -95,8 +95,8 @@ This code may only be used under the license found at https://github.com/swarmci
 
         <div class="container" wide-layout$="{{wide}}">
             <div>
-                <div>{{localize('Youre about to payout')}} 5 SWT {{localize('to')}} Sally Singer.</div>
-                <div>{{localize('This can not be undone.')}}</div>
+                <div>{{localize('Youre resolving this conflict')}} 50/50%.</div>
+                <div>Sally Singer {{localize('will receive')}} 2.5 SWT. Harry Humble {{localize('will receive')}} 2.5 SWT.</div>
             </div>
             <div>
                 <div>
@@ -110,13 +110,13 @@ This code may only be used under the license found at https://github.com/swarmci
     </template>
 
     <script>
-        class MyConfirmPayout extends new ReduxMixin(Polymer.mixinBehaviors([
+        class MyConfirmResolvePayout extends new ReduxMixin(Polymer.mixinBehaviors([
             Polymer.AppLocalizeBehavior,
         ],
             Polymer.Element
         )) {
             static get is() {
-                return 'page-confirm-payout';
+                return 'page-confirm-resolve-payout';
             }
             static get properties() {
                 return {
@@ -148,10 +148,12 @@ This code may only be used under the license found at https://github.com/swarmci
             }
 
             /**
-            * takes the user to the page payout processing
+            * takes the user to the initiating hashtag page
             */
             _agree() {
-                this.set('route.path', 'payout-processing');
+                // t.b.d. :
+                // this.path = 'hashtag/' + sessionStorage.getItem('hashtagID');
+                // sessionStorage.removeItem('hashtagID');
             }
 
             /**
@@ -164,6 +166,6 @@ This code may only be used under the license found at https://github.com/swarmci
                 this.path = null;
             }
         }
-        window.customElements.define(MyConfirmPayout.is, MyConfirmPayout);
+        window.customElements.define(MyConfirmResolvePayout.is, MyConfirmResolvePayout);
     </script>
 </dom-module>

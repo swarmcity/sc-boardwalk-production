@@ -42,8 +42,14 @@
 <link rel="lazy-import" href="pages/page-confirm-deal-accept.html">
 <link rel="lazy-import" href="pages/page-stop-deal-accept.html">
 <link rel="lazy-import" href="pages/page-deal-accept-processing.html">
+<link rel="lazy-import" href="pages/page-confirm-conflict.html">
+<link rel="lazy-import" href="pages/page-confirm-payout-conflict.html">
+<link rel="lazy-import" href="pages/page-confirm-resolve-payout.html">
+<link rel="lazy-import" href="pages/page-conflict-processing.html">
+<link rel="lazy-import" href="pages/page-conflict-payout-processing.html">
+<link rel="lazy-import" href="pages/page-resolve-payout-processing.html">
+<link rel="lazy-import" href="pages/page-cancel-processing.html">
 <link rel="lazy-import" href="pages/page-view404.html">
-
 <dom-module id="swarm-city">
   <template>
     <style>
@@ -57,46 +63,53 @@
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
-    <faffys-animated-pages page="[[page]]" route="{{route}}" animation="{{animation}}">
-      <page-welcome id="welcome" animation="{{animation}}"></page-welcome>
-      <page-hashtag id="hashtag" animation="{{animation}}"></page-hashtag>
-      <page-new-here id="new-here" animation="{{animation}}"></page-new-here>
-      <page-language id="language" animation="{{animation}}"></page-language>
-      <page-hashtag-list id="hashtag-list" animation="{{animation}}"></page-hashtag-list>
-      <page-restore-account id="restore-account" animation="{{animation}}"></page-restore-account>
-      <page-resize-avatar id="resize-avatar" animation="{{animation}}"></page-resize-avatar>
-      <page-private-key id="private-key" animation="{{animation}}"></page-private-key>
-      <page-choose-avatar-and-username id="choose-avatar-and-username" animation="{{animation}}"></page-choose-avatar-and-username>
-      <page-location id="location" animation="{{animation}}"></page-location>
-      <page-json-file id="json-file" animation="{{animation}}"></page-json-file>
-      <page-stop-signup id="stop-signup" animation="{{animation}}"></page-stop-signup>
-      <page-password-warning id="password-warning" animation="{{animation}}"></page-password-warning>
-      <page-choose-password id="choose-password" animation="{{animation}}"></page-choose-password>
-      <page-account-complete id="account-complete" animation="{{animation}}"></page-account-complete>
-      <page-make-backup id="make-backup" animation="{{animation}}"></page-make-backup>
-      <page-my-keys id="my-keys" animation="{{animation}}"></page-my-keys>
-      <page-show-private-key id="show-private-key" animation="{{animation}}"></page-show-private-key>
-      <page-email-success id="email-success" animation="{{animation}}"></page-email-success>
-      <page-download-success id="download-success" animation="{{animation}}"></page-download-success>
-      <page-my-profile id="my-profile" animation="{{animation}}"></page-my-profile>
-      <page-make-backup-profile id="make-backup-profile" animation="{{animation}}"></page-make-backup-profile>
-      <page-download-success-profile id="download-success-profile" animation="{{animation}}"></page-download-success-profile>
-      <page-email-success-profile id="email-success-profile" animation="{{animation}}"></page-email-success-profile>
-      <page-warning-delete id="warning-delete" animation="{{animation}}"></page-warning-delete>
-      <page-notifications id="notifications" animation="{{animation}}"></page-notifications>
-      <page-confirm-sending id="confirm-sending" animation="{{animation}}"></page-confirm-sending>
-      <page-my-wallet id="my-wallet" animation="{{animation}}"></page-my-wallet>
-      <page-transaction-processing id="transaction-processing" animation="{{animation}}"></page-transaction-processing>
-      <page-new-request id="new-request" animation="{{animation}}"></page-new-request>
-      <page-new-request-processing id="new-request-processing" animation="{{animation}}"></page-new-request-processing>
-      <page-cancel-request id="cancel-request" animation="{{animation}}"></page-cancel-request>
-      <page-detail id="detail" animation="{{animation}}"></page-detail>
-      <page-confirm-payout id="confirm-payout" animation="{{animation}}"></page-confirm-payout>
-      <page-payout-processing id="payout-processing" animation="{{animation}}"></page-payout-processing>
-      <page-confirm-deal-accept id="confirm-deal-accept" animation="{{animation}}"></page-confirm-deal-accept>
-      <page-stop-deal-accept id="stop-deal-accept" animation="{{animation}}"></page-stop-deal-accept>
-      <page-deal-accept-processing id="deal-accept-processing" animation="{{animation}}"></page-deal-accept-processing>
-      <page-view404 id="view404" animation="{{animation}}"></page-view404>
+    <faffys-animated-pages page="[[page]]" route="{{route}}" route-history="{{routeHistory}}" animations="{{animations}}">
+      <page-welcome id="welcome"></page-welcome>
+      <page-hashtag id="hashtag"></page-hashtag>
+      <page-new-here id="new-here"></page-new-here>
+      <page-language id="language"></page-language>
+      <page-hashtag-list id="hashtag-list"></page-hashtag-list>
+      <page-restore-account id="restore-account"></page-restore-account>
+      <page-resize-avatar id="resize-avatar"></page-resize-avatar>
+      <page-private-key id="private-key"></page-private-key>
+      <page-choose-avatar-and-username id="choose-avatar-and-username"></page-choose-avatar-and-username>
+      <page-location id="location"></page-location>
+      <page-json-file id="json-file"></page-json-file>
+      <page-stop-signup id="stop-signup"></page-stop-signup>
+      <page-password-warning id="password-warning"></page-password-warning>
+      <page-choose-password id="choose-password"></page-choose-password>
+      <page-account-complete id="account-complete"></page-account-complete>
+      <page-make-backup id="make-backup"></page-make-backup>
+      <page-my-keys id="my-keys"></page-my-keys>
+      <page-show-private-key id="show-private-key"></page-show-private-key>
+      <page-email-success id="email-success"></page-email-success>
+      <page-download-success id="download-success"></page-download-success>
+      <page-my-profile id="my-profile"></page-my-profile>
+      <page-make-backup-profile id="make-backup-profile"></page-make-backup-profile>
+      <page-download-success-profile id="download-success-profile"></page-download-success-profile>
+      <page-email-success-profile id="email-success-profile"></page-email-success-profile>
+      <page-warning-delete id="warning-delete"></page-warning-delete>
+      <page-notifications id="notifications"></page-notifications>
+      <page-confirm-sending id="confirm-sending"></page-confirm-sending>
+      <page-my-wallet id="my-wallet"></page-my-wallet>
+      <page-transaction-processing id="transaction-processing"></page-transaction-processing>
+      <page-new-request id="new-request"></page-new-request>
+      <page-new-request-processing id="new-request-processing"></page-new-request-processing>
+      <page-cancel-request id="cancel-request"></page-cancel-request>
+      <page-detail id="detail"></page-detail>
+      <page-confirm-payout id="confirm-payout"></page-confirm-payout>
+      <page-payout-processing id="payout-processing"></page-payout-processing>
+      <page-confirm-deal-accept id="confirm-deal-accept"></page-confirm-deal-accept>
+      <page-stop-deal-accept id="stop-deal-accept"></page-stop-deal-accept>
+      <page-deal-accept-processing id="deal-accept-processing"></page-deal-accept-processing>
+      <page-cancel-processing id="cancel-processing"></page-cancel-processing>
+      <page-view404 id="view404"></page-view404>
+      <page-resolve-payout-processing id="resolve-payout-processing"></page-resolve-payout-processing>
+      <page-confirm-resolve-payout id="confirm-resolve-payout"></page-confirm-resolve-payout>
+      <page-conflict-payout-processing id="conflict-payout-processing"></page-conflict-payout-processing>
+      <page-conflict-processing id="conflict-processing"></page-conflict-processing>
+      <page-confirm-payout-conflict id="confirm-payout-conflict"></page-confirm-payout-conflict>
+      <page-confirm-conflict id="confirm-conflict"></page-confirm-conflict>
     </faffys-animated-pages>
   </template>
 
@@ -123,6 +136,221 @@
           hashtags: {
             type: Array,
           },
+          routeHistory: {
+            type: Array,
+            observer: '_loadAnimations',
+          },
+          animations: {
+            type: Object,
+            notify: true,
+          },
+          animationsArray: {
+            Type: Array,
+            value: [
+              {
+                from: 'hashtag-list',
+                to: 'hashtag',
+                entryAnimation: {
+                  descriptionArray: [
+                    {'transform': 'translateX(100%)'},
+                    {'transform': 'translateX(0)'},
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+                exitAnimation: {
+                  descriptionArray: [
+                    {'transform': 'translateX(0)'},
+                    {'transform': 'translateX(-100%)'},
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+              },
+              {
+                from: 'hashtag',
+                to: 'hashtag-list',
+                entryAnimation: {
+                  descriptionArray: [
+                    {'transform': 'translateX(-100%)'},
+                    {'transform': 'translateX(0)'},
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+                exitAnimation: {
+                  descriptionArray: [
+                    {'transform': 'translateX(0)'},
+                    {'transform': 'translateX(100%)'},
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+              }, {
+                from: 'hashtag-list',
+                to: 'my-profile',
+                entryAnimation: {
+                  descriptionArray: [
+                    {'transform': 'translateX(-100%)'},
+                    {'transform': 'translateX(0)'},
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+                exitAnimation: {
+                  descriptionArray: [
+                    {'transform': 'translateX(0)'},
+                    {'transform': 'translateX(100%)'},
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+              },
+              {
+                from: 'my-profile',
+                to: 'hashtag-list',
+                entryAnimation: {
+                  descriptionArray: [
+                    {'transform': 'translateX(100%)'},
+                    {'transform': 'translateX(0)'},
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+                exitAnimation: {
+                  descriptionArray: [
+                    {'transform': 'translateX(0)'},
+                    {'transform': 'translateX(-100%)'},
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+              }, {
+                from: 'hashtag-list',
+                to: 'my-wallet',
+                entryAnimation: {
+                  descriptionArray: [
+                    {'transform': 'translateY(-110%)'},
+                    {'transform': 'translateY(0)'},
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+                exitAnimation: {
+                  descriptionArray: [
+                    {'transform': 'translateY(0)'},
+                    {'transform': 'translateY(100%)'},
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+              },
+              {
+                from: 'my-wallet',
+                to: 'hashtag-list',
+                entryAnimation: {
+                  descriptionArray: [
+                    {'transform': 'translateY(100%)'},
+                    {'transform': 'translateY(0)'},
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+                exitAnimation: {
+                  descriptionArray: [
+                    {'transform': 'translateY(0)'},
+                    {'transform': 'translateY(-120%)'},
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 512,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  },
+                },
+              },
+            ],
+          },
           routeData: Object,
           subroute: String,
           rootPath: String,
@@ -134,15 +362,15 @@
         * @param {hashtags} hashtags
         */
 
-        static get actions() {
-          return Object.assign({
-              LOCATION: function(location) {
-                  return {
-                      type: 'LOCATION',
-                      location: location,
-                  };
-              },
-          });
+      static get actions() {
+        return Object.assign({
+          LOCATION: function(location) {
+            return {
+              type: 'LOCATION',
+              location: location,
+            };
+          },
+        });
       }
 
       static get observers() {
@@ -171,6 +399,53 @@
       }
       _showPage404() {
         this.page = 'view404';
+      }
+
+      _loadAnimations() {
+        if (this.routeHistory[0] != this.routeHistory[1]) {
+          let transitionFound = false;
+          for (let i = 0; i < this.animationsArray.length; i++) {
+            if (this.animationsArray[i].from == this.routeHistory[0]
+              && this.animationsArray[i].to == this.routeHistory[1]) {
+              this.animations = this.animationsArray[i];
+              transitionFound = true;
+            }
+          }
+          if (!transitionFound) {
+            this.animations = {
+              entryAnimation: {
+                descriptionArray: [
+                  {'opacity': 0},
+                  {'opacity': 1},
+                ],
+                descriptionObject: {
+                  fill: 'forwards',
+                  duration: 500,
+                  iterations: 1,
+                  iterationStart: 0,
+                  easing: 'cubic-bezier(0.42,0,0.58,1)',
+                  delay: 0,
+                  endDelay: 0,
+                },
+              },
+              exitAnimation: {
+                descriptionArray: [
+                  {'opacity': 1},
+                  {'opacity': 0},
+                ],
+                descriptionObject: {
+                  fill: 'forwards',
+                  duration: 500,
+                  iterations: 1,
+                  iterationStart: 0,
+                  easing: 'cubic-bezier(0.42,0,0.58,1)',
+                  delay: 0,
+                  endDelay: 0,
+                },
+              },
+            };
+          }
+        }
       }
     }
     window.customElements.define(SwarmCity.is, SwarmCity);
