@@ -1,5 +1,7 @@
 ![Swarm City](https://github.com/swarmcity/sc-boardwalk-production/blob/master/images/icons/icon-48x48.png?raw=true "Swarm City")
 
+Note: The active development has moved to ![Swarm City Site](https://github.com/swarmcity/SwarmCitySite)
+
 
 # Swarm City
 ### boardwalk-production
@@ -12,7 +14,7 @@ We actively welcome community contributions. Below are a set of instructions to 
 
 * Keep a lookout for weekend "Tidy-up" sprints, and issues labeled with "Contributions Welcome" these are a great way to meet the team and get started making contributions.
 
-## Setup verssion control & clone 
+## Setup version control & clone 
 
 grab a copy of [Source Forge](https://sourceforge.net/) or [Gitkracken](https://www.gitkraken.com/) then clone the repo!
 
